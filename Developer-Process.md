@@ -6,7 +6,7 @@
 
 1. Anyone can [create a pull request](https://help.github.com/articles/creating-a-pull-request).
 
-2. A pull request should be unit-tested, `make test-unit`, at the very least. If your code touches anything that goes into distributions, a pull request should test the distributions, `make test-distributions`.
+2. A pull request should be unit-tested, `make test-unit`, at the very least. If your code touches anything that goes into distributions, a pull request should test the distributions, `make test-distributions`. If your code touches the modeling language, you should run the model tests, `make test-models`.
 
 3. Anyone can do an informal code review for a pull request and leave comments on the pull request's page on GitHub.
 
