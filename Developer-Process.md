@@ -1,4 +1,4 @@
-## Contributing Code
+### Contributing Code
 
 **Rule 1.** Branch `master` is in a releasable state.
 
