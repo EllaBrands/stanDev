@@ -13,14 +13,3 @@
 4. One of the admins can start the tests on [Jenkins](http://d1m1s1b1.stat.columbia.edu:8080) (this may take hours).
 
 5. One of the admins can declare code review done and push the patch to `master`.
-
-
-
-
-
-
-
-
-
-
-- We need to explain how things are labeled and milestoned in the issue tracker.
