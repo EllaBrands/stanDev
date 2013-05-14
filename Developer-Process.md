@@ -6,13 +6,8 @@
 
 2. A pull request should be unit-tested, `make test-unit`, at the very least. If your code touches anything that goes into distributions, a pull request should test the distributions, `make test-distributions`.
 
-3. Anyone can review a pull request and comment on it. When reviewing a pull request we want to verify:
+3. Anyone can code review a pull request. [Jenkins](http://d1m1s1b1.stat.columbia.edu:8080) will verify that all tests pass (this may take hours).
 
-- Jenkins will run tests.
-
-- Code review.
-
-- 
 
 
 
