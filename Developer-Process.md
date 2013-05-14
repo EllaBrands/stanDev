@@ -4,7 +4,7 @@
 
 **Rule 2.** All contributions come through pull requests. 
 
-1. Anyone can [create a pull request](https://help.github.com/articles/creating-a-pull-request).
+1. Anyone can [create a pull request](https://help.github.com/articles/creating-a-pull-request). We need you to explicitly assign copyright to the Stan development team.
 
 2. A pull request should be unit-tested, `make test-unit`, at the very least. If your code touches anything that goes into distributions, a pull request should test the distributions, `make test-distributions`. If your code touches the modeling language, you should run the model tests, `make test-models`.
 
@@ -24,5 +24,3 @@
 
 
 - We need to explain how things are labeled and milestoned in the issue tracker.
-- Explain how to review a pull request.
-- How to push the patch.
