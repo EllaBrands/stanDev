@@ -1,5 +1,4 @@
-Note: this is a page of useful tricks for developers. This list is unstructured, but may change format in the future.
-
+Note: this is a page of useful tricks for developers. 
 ## Mac 
 
 ### Git completion
