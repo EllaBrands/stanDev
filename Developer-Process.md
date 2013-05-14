@@ -8,6 +8,7 @@
 
 3. Anyone can code review a pull request. [Jenkins](http://d1m1s1b1.stat.columbia.edu:8080) will verify that all tests pass (this may take hours).
 
+4. Once code review is complete, one of the admins will push to `master`.
 
 
 
