@@ -1,3 +1,5 @@
+# Contributing Code
+
 **Rule 1.** Branch `master` is in a releasable state.
 
 **Rule 2.** All contributions come through pull requests. 
