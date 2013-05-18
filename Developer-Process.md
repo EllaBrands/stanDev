@@ -2,9 +2,9 @@
 
 The Stan developer process is based on the git flow model described at:
 
-> [Nvie:  Successful Git Branching Model](http://nvie.com/posts/a-successful-git-branching-model/ )
+> [Nvie:  A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/ )
 
-If you don't read anything else, just remember:
+If you don't read anything else, please remember:
 
 1. Do not push directly into the `master` or `develop` branches.
 2. For working on code, branch from `develop` into a branch called `feature/<some-descriptive-name>`, then create a pull request back into `develop`.
@@ -14,21 +14,18 @@ The rest of this document details the steps required to follow the above process
 
 ### Permanent Branches
 
-We have two permanent branches:
+The Stan repository has two permanent branches:
 
-* `master`
-* `develop`
+* `master`:  our most recent, production-ready release.  Only production-ready releases are every pushed to this branch
 
-The master branch will always be at our last release. It is currently set to v1.3.0. @nvie calls this production-ready.
+* `develop`:  the current working branch for development integration.  We require this branch to pass all unit tests (`test-unit`, `test-distribution` and `test-models') so that all development work can branch from it. 
 
-The develop branch will be the current working branch. This will be like how we treated master in the past, but with one additional requirement. We will expect this branch to be in a fairly usable state. For the time being, that means it passes all tests: test-unit, test-distributions, test-models.
+To enforce the functional state of the `develop` branch, all pushes to it will be mediated by pull request. 
 
-In order to enforce the good state of the develop branch, all things that get into the develop branch will be done by pull requests.
-
-Note: we are working on an honor system. The active developers will still have the ability to push to the develop and master branches.
+**Note:** We are working on an honor system. The active developers with push permission on the Stan repository will still have the ability to push to the `develop` and `master` branches.  Developers should take the git configuration steps outlined below to prevent unintentional pushes.
 
 
-Non-Permanent Branches
+### Non-Permanent Branches
 
 (quick description. Instructions further below.)
 
