@@ -16,33 +16,27 @@ The rest of this document details the steps required to follow the above process
 
 The Stan repository has two permanent branches:
 
-* `master`:  our most recent, production-ready release.  Only production-ready releases are every pushed to this branch
+* **`master`:**  our most recent, production-ready release.  Only production-ready releases should be pushed to this branch.  Each point on this branch will be tagged with the most recent version number.
 
-* `develop`:  the current working branch for development integration.  We require this branch to pass all unit tests (`test-unit`, `test-distribution` and `test-models') so that all development work can branch from it. 
+* **`develop`:**  the current working branch for development integration.  We require this branch to pass all unit tests so that all developer branches may branch from it.
 
-To enforce the functional state of the `develop` branch, all pushes to it will be mediated by pull request. 
+To enforce the functional state of the `develop` branch, all pushes to it will be mediated by pull request. The unit tests required to pass in order to merge into the `develop` branch are `test-unit`, `test-distribution` and `test-models`.
 
-**Note:** We are working on an honor system. The active developers with push permission on the Stan repository will still have the ability to push to the `develop` and `master` branches.  Developers should take the git configuration steps outlined below to prevent unintentional pushes.
+**Honor System:** We are working on an honor system. The active developers with push permission on the Stan repository will still have the ability to push to the `develop` and `master` branches.  Developers should take the git configuration steps outlined below to prevent unintentional pushes.
 
 
 ### Non-Permanent Branches
 
-(quick description. Instructions further below.)
+There are three types of non-permanent branches:
 
-We will have 3 types of non-permanent branches:
+* **`feature`:**  Any type of new feature, fixing of bugs in a feature that hasn't been released, or pretty much any new development will go in a feature branch. These branch from `develop` and are named `feature/<some-descriptive-name>`. After development is complete on a feature, submit a pull request back to `develop`.
 
-    feature
-    hotfix
-    release
+* **`hotfix`** Fixes to bugs in the current release go in a hotfix branch. There should be an issue created for the bug in Stan's GitHub issue tracker prior to branching. Hotfix branches branch from `master` and are named `hotfix/<next patch version number>`. Once the patch is complete, submit a pull request back to `master` and the fix will be merged into both `master` and `develop` branches.
 
-Feature branches are the most common. Any type of new feature, fixing of bugs in a feature that hasn't been released, or pretty much any new development will go in a feature branch. These branch from "develop" and are named "feature/<some-descriptive-name>". After development is complete on the feature, submit a pull request back to "develop".
-
-Hotfix branches are fixes to bugs in the current release. There should be an issue created for the bug in our issue tracker prior to branching. These branch from "master". These are named "hotfix/<next patch version number>". ONce the patch is complete, this will be merged into both "master" and "develop".
-
-Release branches are branches for new releases. These branch from "develop" and are eventually merged into "master". Most developers won't need to worry about this step.
+* **`release`**  New releases. These branch from `develop` and are eventually merged into `master`. Most developers won't need to worry about this step.
 
 
-How to Contribute with a Clone of the Repository
+### How to Contribute with a Clone of the Repository
 
 (Most of us have been using the repository this way. Using this method, we can share feature branches with ease for collaboration.)
 
