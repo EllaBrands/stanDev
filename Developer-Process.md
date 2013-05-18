@@ -1,11 +1,11 @@
 ### Overview
 
-The Stan developer process is based on the git flow model described by Vincent Driessen in the blog post
+The Stan developer process is based on the gitflow model described by Vincent Driessen in the blog post
 "[A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/ )."  The rest of this document details the steps required from developers.  If you don't read anything else, please remember: 
 
-1. Never push directly into the master or development branches, nor the hotfix-* or release-* branches.
+* Never push directly into the master or development branches, nor the hotfix-* or release-* branches.
 
-2. For working on new features, branch from `develop` into a branch called `feature/<some-descriptive-name>`, and when the work is done (thoroughly tested and documented), create a pull request back into `develop`.
+* For working on new features, branch from `develop` into a branch called `feature/<some-descriptive-name>`, and when the work is done (thoroughly tested and documented), create a pull request back into `develop`.
 
 
 
@@ -22,26 +22,49 @@ The master branch is always at our most recent, production-ready release.  Only 
 The development branch is the current working branch for development integration.  We require this branch to pass all unit tests so that all development branches may branch from it.  To enforce the functional state of the development branch, all pushes to it will be mediated by pull request. The unit tests required to pass in order to merge into the development branch are `test-unit`, `test-distribution` and `test-models`.
 
 #### Honor System
-We are working on an honor system. The active developers with push permission on the Stan repository will still technically have the ability to push to the `develop` and `master` branches, as well as release
-and hotfix branches.  However, developers should take the git configuration steps outlined below to
-prevent unintentional pushes to these branches.
 
-To do so, you need to have git version 1.8 or later installed. Then, from the stan directory, do
+We are working on an honor system. The active developers with push permission on the Stan repository will still technically have the ability to push to the master, development, release, and hotfix branches. 
+
+#### Preventing Mistakes
+
+Developers should take the following steps to configure git to prevent unintentional pushes to the master or development branches.  
+
+First, install git version 1.8 or later.
+
+Second, configure git's push and merge behavior to match the gitflow process requirements.  To configure push and merge behavior just for Stan, change directories to `stan` and execute the following two commands.
 
     > git config push.default simple
     > git config merge.ff false
 
-In either or both of these cases, you can add the --global flag immediately following git config to have
-these settings take effect for all (not just Stan) projects you work on using git. The former configuration tweak implies that only the _current_ branch is git pushed to the specified remote
-repository (typically origin), as opposed to the default behavior of git pushing _all_ local branches to
-the specified remote repository. The latter configuration tweak prevents any fast-forward merges, since
+To make these commands global to all git projects (not just Stan), use the following.
+
+    > git config --global push.default simple
+    > git config --global merge.ff false
+
+The simple push default implies that only the _current_ branch is git pushed to the specified remote
+repository (typically `origin`), as opposed to the default behavior of git pushing _all_ local branches to the specified remote repository. 
+
+The fast-forward merge configuration tweak prevents any fast-forward merges, since
 they are inconsistent with the gitflow development model.
 
-Finally, you should download this [file](https://stan-dev.googlegroups.com/attach/255775ffea1a3d08/pre-push.txt?gda=l1Q5YkYAAAAZxtxdgPezaYoZ-2CibDFNxvRQADtfWXVf7Wp9jTazNhhIKImChiwUZBkdErcfv6Vx40jamwa1UURqDcgHarKEE-Ea7GxYMt0t6nY0uV5FIQ&part=4) to stan/.git/hooks/pre-push on your local machine. Note that the file must _not_ have any extension and must be _executable_ (do chmod +x stan/.git/hooks/pre-push on anything but Windows). This script will be run whenever you git push but _before_ anything is actually pushed, which gives the script the opportunity to check whether the remote repository is the origin (i.e. the stan repository on GitHub) and whether the branch is among those that you should not push to (master, develop, release-*, and hotfix-*). You can still push to a feature branch on the origin or push anything to a remote repository that is not the origin.
+Third, download the pre-push script from the following link
+
+* [git pre-push script](https://stan-dev.googlegroups.com/attach/255775ffea1a3d08/pre-push.txt?gda=l1Q5YkYAAAAZxtxdgPezaYoZ-2CibDFNxvRQADtfWXVf7Wp9jTazNhhIKImChiwUZBkdErcfv6Vx40jamwa1UURqDcgHarKEE-Ea7GxYMt0t6nY0uV5FIQ&part=4) 
+
+to your local directory
+
+    > stan/.git/hooks/pre-push
+
+Note that the file must _not_ have any extension and must be _executable_.  For anything but Windows, this can be accomplished with the command
+
+    > chmod +x stan/.git/hooks/pre-push 
+
+The pre-push script will be run whenever you git push but _before_ anything is actually pushed.  This gives the script the opportunity to check whether the remote repository is the origin (i.e., the `stan-dev/stan` repository on GitHub) and whether the branch is among those that you should not push to (i.e., master, development, release, or hotfix). You can still push to a feature branch on the origin or push anything to a remote repository that is not the origin.
+
 
 ### Non-Permanent Branches
 
-There are three types of non-permanent branches (1) feature branches, (2) hotfix branches, and (3) release branches.  
+This section describes the three types of non-permanent branches. 
 
 #### `feature/`
 
@@ -70,62 +93,80 @@ Once a release branch is complete, it will be merged into both `master` and `dev
 
 ### How to Contribute with a Clone of the Repository
 
-(Most of us have been using the repository this way. Using this method, we can share feature branches with ease for collaboration.)
+Using this method, we can share feature branches with ease for collaboration.  It involves the following steps.
 
-    Clone the GitHub stan-dev/stan repository. From the command line:
+First, clone the GitHub stan-dev/stan repository. From the command line:
+
     > git clone https://github.com/stan-dev/stan.git
     > cd stan
 
-    The default repository is develop and you can verify you are there by typing
+Second, verify you are in the correct default repository, `develop`, with the command.
+
     > git branch
-    Create a branch. For a feature branch (most common):
+
+Third, create a branch.  To create a feature branch, use the following
+
     > git checkout develop
     > git checkout -b feature/foo
     > git push
 
-    For a hotfix branch (less common):
-    If we're currently at v3.2.1
+For a hotfix branch (less common), suppose we are currently at version v3.2.1.
+
     > git checkout master
     > git checkout -b hotfix/v3.2.2
     > git push
 
-    The last command, git push, is to make the branch public. This is necessary for when a pull request is 
-    created.
-    Do work.
-    Use the regular git commands to work. Collaboration is easy since all the developers have push access 
-    to the branch created.
-    Create a pull request.
-    A pull request indicates that the work is done and should be merged back to the appropriate place. 
-    When the pull request is made, it is expected that the current code passes:
+The last push command is to make the branch public. This will be necessary in order to create a pull request to have the work merged into the development (or master) branch.
+
+Fourth, code and document using the usual git commands.  Collaboration is easy since all the developers have push access to the feature (or hotfix) branch. 
+
+Fifth, when finished, create a pull request. A pull request indicates that the work is done and should be merged back to the appropriate branch.
+
+When a pull request is made, it is expected that the current code passes:
+
     > make manual
     > make doxygen
     > make test-unit
     > make test-distributions
     > make test-models
 
-    If it does not pass on your local machine, it won't be accepted. Passing these tests do not guarantee 
-    acceptance.
+If these tests do not pass on your local machine, the pull request won't be accepted. Passing these tests do not guarantee that the pull request will be merged.  It will first go through code review and then be tested on the integration server. 
 
-    For a feature branch:
-        Merge the current state of "develop" back into the current feature branch:
-        Update "develop", merge "develop" into current branch (deal with any conflicts using git), push so 
-        the changes are available to github.
-        > git pull origin develop
-        > git merge --no-ff develop
-        > git push
-        Create a pull request.
-        Go to https://github.com/stan-dev/stan (refresh page if necessary)
-        Select the feature branch you are working on in the drop-down list. (Below the "Clone in ..." row)
-        A "Pull Request" button should pop up underneath the feature branch drop-down list. Click it.
-        Fill in form and press "Send pull request".
+### Creating a Pull Request for a Feature Branch
 
-        Alternate directions:
-        Go to https://github.com/stan-dev/stan (refresh page if necessary)
-        Click "Pull Request" button. It's towards the top right, on the same row as the repo name 
-        "stan-dev/stan"
-        Select the correct base repo, "stan-dev/stan", and base branch, "develop"
-        Select the correct head repo, "stan-dev/stan", and head branch, "feature/foo"
-        Fill in form and press "Send pull request".
+First, merge the current state of the branch `develop` back into the current feature branch.  Update branch `develop` and merge it into the current branch .  
+
+Second, Deal with any conflicts arising from the merge. 
+
+Third, push the result of the merge so that the changes are available to GitHub.
+
+    > git pull origin develop
+    > git merge --no-ff develop
+    > git push
+
+Fourth, create the pull request through GitHub.  
+
+* Go to https://github.com/stan-dev/stan  (refresh the page if necessary)
+
+* Select the feature branch you are working on in the drop-down list. (Below the "Clone in ..." row) A 
+
+* Click the "Pull Request" button that pops up underneath feature branch drop-down list. 
+
+* Fill in form and press "Send pull request".
+
+Alternative directions to create a pull request:  
+
+* Go to https://github.com/stan-dev/stan (refresh page if necessary). 
+
+* Click `Pull Request` button. It's towards the top right, on the same row as the repository name, `stan-dev/stan`.  
+
+* Select the correct base repo, `stan-dev/stan`, and base branch, `develop`. 
+
+* Select the correct head repository, `stan-dev/stan`, and head branch, `feature/foo`. 
+
+* Fill in form and press "Send pull request".
+
+#### Creating a Pull Request for a Hotfix Branch
 
     For a hotfix branch:
         Create a pull request.
