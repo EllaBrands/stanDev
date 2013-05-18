@@ -89,22 +89,27 @@ Once a release branch is complete, it will be merged into both `master` and `dev
     > git checkout -b hotfix/v3.2.2
     > git push
 
-    The last command, git push, is to make the branch public. This is necessary for when a pull request is created.
+    The last command, git push, is to make the branch public. This is necessary for when a pull request is 
+    created.
     Do work.
-    Use the regular git commands to work. Collaboration is easy since all the developers have push access to the branch created.
+    Use the regular git commands to work. Collaboration is easy since all the developers have push access 
+    to the branch created.
     Create a pull request.
-    A pull request indicates that the work is done and should be merged back to the appropriate place. When the pull request is made, it is expected that the current code passes:
+    A pull request indicates that the work is done and should be merged back to the appropriate place. 
+    When the pull request is made, it is expected that the current code passes:
     > make manual
     > make doxygen
     > make test-unit
     > make test-distributions
     > make test-models
 
-    If it does not pass on your local machine, it won't be accepted. Passing these tests do not guarantee acceptance.
+    If it does not pass on your local machine, it won't be accepted. Passing these tests do not guarantee 
+    acceptance.
 
     For a feature branch:
         Merge the current state of "develop" back into the current feature branch:
-        Update "develop", merge "develop" into current branch (deal with any conflicts using git), push so the changes are available to github.
+        Update "develop", merge "develop" into current branch (deal with any conflicts using git), push so 
+        the changes are available to github.
         > git pull origin develop
         > git merge --no-ff develop
         > git push
@@ -116,7 +121,8 @@ Once a release branch is complete, it will be merged into both `master` and `dev
 
         Alternate directions:
         Go to https://github.com/stan-dev/stan (refresh page if necessary)
-        Click "Pull Request" button. It's towards the top right, on the same row as the repo name "stan-dev/stan"
+        Click "Pull Request" button. It's towards the top right, on the same row as the repo name 
+        "stan-dev/stan"
         Select the correct base repo, "stan-dev/stan", and base branch, "develop"
         Select the correct head repo, "stan-dev/stan", and head branch, "feature/foo"
         Fill in form and press "Send pull request".
@@ -130,12 +136,16 @@ Once a release branch is complete, it will be merged into both `master` and `dev
 
         Alternate directions:
         Go to https://github.com/stan-dev/stan (refresh page if necessary)
-        Click "Pull Request" button. It's towards the top right, on the same row as the repo name "stan-dev/stan"
+        Click "Pull Request" button. It's towards the top right, on the same row as the repo name 
+        "stan-dev/stan"
         Select the correct base repo, "stan-dev/stan", and base branch, "develop"
         Select the correct head repo, "stan-dev/stan", and head branch, "feature/foo"
         Fill in form and press "Send pull request".
     Relax.
-    At this point, one or more of the developers will check the pull request and do an informal code review. At the same time, our Jenkins box will verify that all tests pass on Windows. If both are good, then the pull request will be accepted, the code will get into the correct branch, and the branch will be deleted.
+    At this point, one or more of the developers will check the pull request and do an informal code 
+    review. At the same time, our Jenkins box will verify that all tests pass on Windows. If both are 
+    good, then the pull request will be accepted, the code will get into the correct branch, and the 
+    branch will be deleted.
     If the pull request is not accepted immediately, fix the issues.
         Check out the branch
         > git checkout feature/foo
@@ -165,22 +175,26 @@ How to Contribute with a Fork of the Repository (we should be using a clone)
     > git checkout -b hotfix/v3.2.2
     > git push
 
-    The last command, git push, is to make the branch public. This is necessary for when a pull request is created.
+    The last command, git push, is to make the branch public. This is necessary for when a pull request is 
+    created.
     Do work.
     Use the regular git commands to work. If you want collaborators, let them have access to the branch.
     Create a pull request.
-    A pull request indicates that the work is done and should be merged back to the appropriate place. When the pull request is made, it is expected that the current code passes:
+    A pull request indicates that the work is done and should be merged back to the appropriate place. 
+    When the pull request is made, it is expected that the current code passes:
     > make manual
     > make doxygen
     > make test-unit
     > make test-distributions
     > make test-models
 
-    If it does not pass on your local machine, it won't be accepted. Passing these tests do not guarantee acceptance.
+    If it does not pass on your local machine, it won't be accepted. Passing these tests do not guarantee 
+    acceptance.
 
     For a feature branch:
         Merge the current state of "develop" back into the current feature branch:
-        Update "develop", merge "develop" into current branch (deal with any conflicts using git), push so the changes are available to github.
+        Update "develop", merge "develop" into current branch (deal with any conflicts using git), push so 
+        the changes are available to github.
         > git pull origin develop
         > git merge --no-ff develop
         > git push
@@ -192,7 +206,8 @@ How to Contribute with a Fork of the Repository (we should be using a clone)
 
         Alternate directions:
         Go to https://github.com/stan-dev/stan (refresh page if necessary)
-        Click "Pull Request" button. It's towards the top right, on the same row as the repo name "stan-dev/stan"
+        Click "Pull Request" button. It's towards the top right, on the same row as the repo name 
+        "stan-dev/stan"
         Select the correct base repo, "stan-dev/stan", and base branch, "develop"
         Select the correct head repo, "personal/stan", and head branch, "feature/foo"
         Fill in form and press "Send pull request".
@@ -206,20 +221,25 @@ How to Contribute with a Fork of the Repository (we should be using a clone)
 
         Alternate directions:
         Go to https://github.com/stan-dev/stan (refresh page if necessary)
-        Click "Pull Request" button. It's towards the top right, on the same row as the repo name "stan-dev/stan"
+        Click "Pull Request" button. It's towards the top right, on the same row as the repo name 
+        "stan-dev/stan"
         Select the correct base repo, "stan-dev/stan", and base branch, "master"
         Select the correct head repo, "personal/stan", and head branch, "feature/foo"
         Fill in form and press "Send pull request".
 
     Relax.
-    At this point, one or more of the developers will check the pull request and do an informal code review. At the same time, our Jenkins box will verify that all tests pass on Windows. If both are good, then the pull request will be accepted, the code will get into the correct branch, and the branch will be deleted.
+    At this point, one or more of the developers will check the pull request and do an informal code 
+    review. At the same time, our Jenkins box will verify that all tests pass on Windows. If both are 
+    good, then the pull request will be accepted, the code will get into the correct branch, and the 
+    branch will be deleted.
     If the pull request is not accepted immediately, fix the issues.
         Check out the branch
         > git checkout feature/foo
         > git pull origin feature/foo
         (Or you can set upstream tracking so you can do "git pull feature/foo")
         Do work.
-        Others can help if you've given them access. If this workflow is a problem, follow directions for cloning.
+        Others can help if you've given them access. If this workflow is a problem, follow directions for 
+        cloning.
         The work will update the pull request.
         Go back to "5. Relax"
 
@@ -279,4 +299,4 @@ That should be most of the things we need for developers. If anything is unclear
 
 4. One of the admins can start the tests on [Jenkins](http://d1m1s1b1.stat.columbia.edu:8080) (this may take hours).
 
-5. One of the admins can declare code review done and push the patch to `master`.
+5. One of the admins can declare code review done and push the patch to `develop`.
