@@ -3,7 +3,7 @@
 The Stan developer process is based on the git flow model described by Vincent Driessen in the blog post
 "[A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/ )."  The rest of this document details the steps required from developers.  If you don't read anything else, please remember: 
 
-1. Never push directly into the master or development branches.
+1. Never push directly into the master or development branches, nor the hotfix-* or release-* branches.
 
 2. For working on new features, branch from `develop` into a branch called `feature/<some-descriptive-name>`, and when the work is done (thoroughly tested and documented), create a pull request back into `develop`.
 
@@ -37,12 +37,7 @@ repository (typically origin), as opposed to the default behavior of git pushing
 the specified remote repository. The latter configuration tweak prevents any fast-forward merges, since
 they are inconsistent with the gitflow development model.
 
-Finally, you should download this [file](https://stan-dev.googlegroups.com/attach/89e170133aee4f2/pre-push.txt?gda=tXdt00UAAAATXEfHt1RJiKvBBPoZTWgXiLLvBE7ERokDAZPWpsP4xwO3AUbfXx7OxMdsq7CJG06O3f1cykW9hbJ1ju6H3kglGu1iLHeqhw4ZZRj3RjJ_-A&part=4) to stan/.git/hooks/pre-push on your local machine. Note that the file must _not_ have any extension and must be _executable_ (do chmod +x stan/.git/hooks/pre-push on
-anything but Windows). This script will be run whenever you git push but _before_ anything is actually
-pushed, which gives the script the opportunity to check whether the remote repository is the origin 
-(i.e. the stan repository on GitHub) and whether the branch is among those that you should not push to
-(master, develop, release-*, and hotfix-*). You can still push to a feature branch on the origin or push
-anything to a remote repository that is not the origin.
+Finally, you should download this [file](https://stan-dev.googlegroups.com/attach/255775ffea1a3d08/pre-push.txt?gda=l1Q5YkYAAAAZxtxdgPezaYoZ-2CibDFNxvRQADtfWXVf7Wp9jTazNhhIKImChiwUZBkdErcfv6Vx40jamwa1UURqDcgHarKEE-Ea7GxYMt0t6nY0uV5FIQ&part=4) to stan/.git/hooks/pre-push on your local machine. Note that the file must _not_ have any extension and must be _executable_ (do chmod +x stan/.git/hooks/pre-push on anything but Windows). This script will be run whenever you git push but _before_ anything is actually pushed, which gives the script the opportunity to check whether the remote repository is the origin (i.e. the stan repository on GitHub) and whether the branch is among those that you should not push to (master, develop, release-*, and hotfix-*). You can still push to a feature branch on the origin or push anything to a remote repository that is not the origin.
 
 ### Non-Permanent Branches
 
