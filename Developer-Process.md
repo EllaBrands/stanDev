@@ -1,39 +1,59 @@
 ### Overview
 
-The Stan developer process is based on the git flow model described at:
+The Stan developer process is based on the git flow model described by Vincent Driessen in the blog post
+"[A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/ )."  The rest of this document details the steps required from developers.  If you don't read anything else, please remember: 
 
-> [Nvie:  A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/ )
+1. Never push directly into the master or development branches.
 
-If you don't read anything else, please remember:
+2. For working on new features, branch from `develop` into a branch called `feature/<some-descriptive-name>`, and when the work is done (thoroughly tested and documented), create a pull request back into `develop`.
 
-1. Do not push directly into the `master` or `develop` branches.
-2. For working on code, branch from `develop` into a branch called `feature/<some-descriptive-name>`, then create a pull request back into `develop`.
-
-The rest of this document details the steps required to follow the above process.
 
 
 ### Permanent Branches
 
 The Stan repository has two permanent branches:
 
-* **`master`:**  our most recent, production-ready release.  Only production-ready releases should be pushed to this branch.  Each point on this branch will be tagged with the most recent version number.
+#### `master`
 
-* **`develop`:**  the current working branch for development integration.  We require this branch to pass all unit tests so that all developer branches may branch from it.
+The master branch is always at our most recent, production-ready release.  Only production-ready releases should be pushed to this branch.  Each point on this branch will be tagged with the most recent version number.
 
-To enforce the functional state of the `develop` branch, all pushes to it will be mediated by pull request. The unit tests required to pass in order to merge into the `develop` branch are `test-unit`, `test-distribution` and `test-models`.
+#### `develop`  
 
-**Honor System:** We are working on an honor system. The active developers with push permission on the Stan repository will still have the ability to push to the `develop` and `master` branches.  Developers should take the git configuration steps outlined below to prevent unintentional pushes.
+The development branch is the current working branch for development integration.  We require this branch to pass all unit tests so that all development branches may branch from it.  To enforce the functional state of the development branch, all pushes to it will be mediated by pull request. The unit tests required to pass in order to merge into the development branch are `test-unit`, `test-distribution` and `test-models`.
+
+#### Honor System
+
+We are working on an honor system. The active developers with push permission on the Stan repository will still have the ability to push to the master and development branches.  Developers should take the git configuration steps outlined below to prevent unintentional pushes.
+
 
 
 ### Non-Permanent Branches
 
-There are three types of non-permanent branches:
+There are three types of non-permanent branches (1) feature branches, (2) hotfix branches, and (3) release branches.  
 
-* **`feature`:**  Any type of new feature, fixing of bugs in a feature that hasn't been released, or pretty much any new development will go in a feature branch. These branch from `develop` and are named `feature/<some-descriptive-name>`. After development is complete on a feature, submit a pull request back to `develop`.
+#### `feature/`
 
-* **`hotfix`** Fixes to bugs in the current release go in a hotfix branch. There should be an issue created for the bug in Stan's GitHub issue tracker prior to branching. Hotfix branches branch from `master` and are named `hotfix/<next patch version number>`. Once the patch is complete, submit a pull request back to `master` and the fix will be merged into both `master` and `develop` branches.
+All development work on features that have not been released go in feature branches.
 
-* **`release`**  New releases. These branch from `develop` and are eventually merged into `master`. Most developers won't need to worry about this step.
+Feature branches branch from `develop` and should be named `feature/<some-descriptive-name>`.  
+
+After development is complete on a feature, submit a pull request back to `develop`.
+
+#### `hotfix/`
+
+Patches to the current release go in hotfix branches. 
+
+Hotfix branches branch from `master` and are named `hotfix/<some-issue-number>`.  There should be an issue created for the bug in Stan's GitHub issue tracker prior to branching to provide an issue number.   
+
+Once the patch is complete, submit a pull request back to `master` and it will be merged into both `master` and `develop` branches.
+
+#### `release/`
+
+New releases go in release branches.
+
+Release branches branch from `develop` and are named `release/<some-release-number>`.  
+
+Once a release branch is complete, it will be merged into both `master` and `develop`.
 
 
 ### How to Contribute with a Clone of the Repository
