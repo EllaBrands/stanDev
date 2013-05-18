@@ -22,10 +22,27 @@ The master branch is always at our most recent, production-ready release.  Only 
 The development branch is the current working branch for development integration.  We require this branch to pass all unit tests so that all development branches may branch from it.  To enforce the functional state of the development branch, all pushes to it will be mediated by pull request. The unit tests required to pass in order to merge into the development branch are `test-unit`, `test-distribution` and `test-models`.
 
 #### Honor System
+We are working on an honor system. The active developers with push permission on the Stan repository will still technically have the ability to push to the `develop` and `master` branches, as well as release
+and hotfix branches.  However, developers should take the git configuration steps outlined below to
+prevent unintentional pushes to these branches.
 
-We are working on an honor system. The active developers with push permission on the Stan repository will still have the ability to push to the master and development branches.  Developers should take the git configuration steps outlined below to prevent unintentional pushes.
+To do so, you need to have git version 1.8 or later installed. Then, from the stan directory, do
 
+    > git config push.default simple
+    > git config merge.ff false
 
+In either or both of these cases, you can add the --global flag immediately following git config to have
+these settings take effect for all (not just Stan) projects you work on using git. The former configuration tweak implies that only the _current_ branch is git pushed to the specified remote
+repository (typically origin), as opposed to the default behavior of git pushing _all_ local branches to
+the specified remote repository. The latter configuration tweak prevents any fast-forward merges, since
+they are inconsistent with the gitflow development model.
+
+Finally, you should download this [file](https://stan-dev.googlegroups.com/attach/89e170133aee4f2/pre-push.txt?gda=tXdt00UAAAATXEfHt1RJiKvBBPoZTWgXiLLvBE7ERokDAZPWpsP4xwO3AUbfXx7OxMdsq7CJG06O3f1cykW9hbJ1ju6H3kglGu1iLHeqhw4ZZRj3RjJ_-A&part=4) to stan/.git/hooks/pre-push on your local machine. Note that the file must _not_ have any extension and must be _executable_ (do chmod +x stan/.git/hooks/pre-push on
+anything but Windows). This script will be run whenever you git push but _before_ anything is actually
+pushed, which gives the script the opportunity to check whether the remote repository is the origin 
+(i.e. the stan repository on GitHub) and whether the branch is among those that you should not push to
+(master, develop, release-*, and hotfix-*). You can still push to a feature branch on the origin or push
+anything to a remote repository that is not the origin.
 
 ### Non-Permanent Branches
 
