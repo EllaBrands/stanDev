@@ -67,32 +67,39 @@ The pre-push script will be run whenever you git push but _before_ anything is a
 
 Using this method, we can share feature branches with ease for collaboration.  It involves the following steps.
 
-First, clone the GitHub stan-dev/stan repository. From the command line:
+First, clone the GitHub stan-dev/stan repository.
 
     > git clone https://github.com/stan-dev/stan.git
     > cd stan
 
-Second, verify you are in the correct default repository, `develop`, with the command.
+Second, verify you are in the correct default repository, `develop`.
 
     > git branch
 
-Third, create a branch.  To create a feature branch, use the following
+Third, create a branch.  For a new feature, run the following with your feature name in place of `foo`. 
 
     > git checkout develop
     > git checkout -b feature/foo
     > git push
 
-For a hotfix branch (less common), suppose we are currently at version v3.2.1.
+For a hotfix branch (less common), run the following, where `v3.2.2` is replaced with the apppropriate version number (hotfixes increment the last number, which is available as the latest tag on the master branch).
 
     > git checkout master
     > git checkout -b hotfix/v3.2.2
     > git push
 
-The last push command is to make the branch public. This will be necessary in order to create a pull request to have the work merged into the development (or master) branch.
 
-Fourth, code and document using the usual git commands.  Collaboration is easy since all the developers have push access to the feature (or hotfix) branch. 
+The last push command is to make the branch public. This will be necessary in order to create a pull request to have the work merged back into the branch from which it was checked out.
+
+Fourth, code and document using the usual git commands.  Collaboration is easy since all the developers have push access to the feature or hotfix branch you just created.
 
 Fifth, when finished, create a pull request. A pull request indicates that the work is done and should be merged back to the appropriate branch.
+
+
+
+### 5. Pull Requests
+
+#### 5.1 Preconditions for Pull Requests
 
 When a pull request is made, it is expected that the current code passes:
 
@@ -104,27 +111,29 @@ When a pull request is made, it is expected that the current code passes:
 
 If these tests do not pass on your local machine, the pull request won't be accepted. Passing these tests do not guarantee that the pull request will be merged.  It will first go through code review and then be tested on the integration server. 
 
-### 5. Creating Pull Requests
+#### 5.2  Steps for Pull Requests
 
-First, if the pull request is for a feature branch, update branch `develop` and merge it into the current branch.  If the request is for a hotfix branch, no merge will be necessary.
+First, if the pull request is for a feature branch, update branch `develop` and merge it into the current branch.  If the request is for a hotfix branch, no merge is necessary.
 
 Second, deal with any conflicts arising from the merge. 
 
-Third, push the result of the merge so that the changes are available to GitHub.
+Third, make sure the unit tests pass.  (You might want to skip the model tests and let those get handled by the integration server Jenkins after the pull request is made.)
+
+Fourth, push the result of the merge so that the changes are available to GitHub.
 
     > git pull origin develop
     > git merge --no-ff develop
     > git push
 
-Fourth, create the pull request through GitHub.  Instructions for doing this are in the next section.
+Fifth, create the pull request through GitHub.  Instructions for doing this are in the next section.
 
-Fifth, relax. At this point, you are waiting for two things
+Sixth, relax. At this point, you are waiting for
 
-* one or more developers will carry out an informal code review.  You are encouraged to comment on any pull requests going by, and
+* other developers to carry out an informal code review, and
 
-* Stan's continuous integration server (Jenkins) will verify that all tests pass on Windows. 
+* one of the administrators will kick off Stan's continuous integration server (Jenkins) to verify that all tests pass on Windows.   The full model functional tests currently take around 10 hours.
 
-Sixth, if the code looks acceptable and the tests pass, then 
+At this point, if the code passes code review and unit tests, then
 
 * the pull request will be accepted, 
 
@@ -132,7 +141,7 @@ Sixth, if the code looks acceptable and the tests pass, then
 
 * the branch will be deleted.  
 
-If the code is not accepted by code review or it fails unit tests, fix the issues.  At this point, you can 
+If the code is not accepted by code review or it fails unit tests, you need to fix the issues (by yourself or by enlisting help).  At this point, you can 
 
     > git checkout feature/foo
     > git pull origin feature/foo
