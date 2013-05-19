@@ -7,9 +7,11 @@ If you don't read anything else, please remember the following when working on f
 
 * Never push directly into master or development branches.  
 
-* For working on new features, branch from <tt>develop</tt> into a branch called `feature/<some-descriptive-name>`, and when the work is done (thoroughly tested and documented), create a pull request back into `develop`.  
+* For working on new features, branch from `develop` into a branch called `feature/<some-descriptive-name>`, and when the work is done (thoroughly tested and documented), create a pull request back into `develop`.  
 
 ### 2. Branches
+
+The gitflow process distinguishes between the permanent branches managed by the code administrators and the temporary branches where development is actually carried out.
 
 #### 2.1 Permanent Branches
 
