@@ -125,7 +125,17 @@ Fourth, push the result of the merge so that the changes are available to GitHub
     > git merge --no-ff develop
     > git push
 
-Fifth, create the pull request through GitHub.  Instructions for doing this are in the next section.
+Fifth, create the pull request through GitHub.  This involves
+
+* opening <https://github.com/stan-dev/stan> and refreshing the page,
+
+* selecting the feature branch you are working on from the drop-down list, which can be found below the "Clone in ..." row, 
+
+* clicking the "Pull Request" button that pops up underneath feature branch drop-down list, 
+
+* filling in the form, and
+
+* pressing the "Send pull request" button.
 
 Sixth, relax. At this point, you are waiting for
 
@@ -151,67 +161,6 @@ Or you can set upstream tracking so you can do
     > git pull feature/foo
 
 Fix whatever needs to be fixed.  Others can help at this point because the branch can be pushed to through GitHub.  Pushing to the working branch will update the pull request with the message used for the commits.  At this point, you are back to waiting for another code review and round of integration tests. 
-
-### Creating Pull Requests
-
-#### Pre-Conditions for Pull Requests
-
-When the pull request is made, it is expected that the current code passes the following tests:
-
-    > make manual
-    > make doxygen
-    > make test-unit
-    > make test-distributions
-    > make test-models
-
-If it does not pass on your local machine, it won't be accepted. Passing these tests does not guarantee 
-the pull request will be accepted.
-
-#### Creating Pull Requests for Features
-
-* Go to https://github.com/stan-dev/stan  (refresh the page if necessary)
-
-* Select the feature branch you are working on in the drop-down list. (Below the "Clone in ..." row) A 
-
-* Click the "Pull Request" button that pops up underneath feature branch drop-down list. 
-
-* Fill in form and press "Send pull request".
-
-#### (Alternative) Creating Pull Requests for Features
-
-* Go to https://github.com/stan-dev/stan (refresh page if necessary). 
-
-* Click `Pull Request` button. It's towards the top right, on the same row as the repository name, `stan-dev/stan`.  
-
-* Select the correct base repo, `stan-dev/stan`, and base branch, `develop`. 
-
-* Select the correct head repository, `stan-dev/stan`, and head branch, `feature/foo`. 
-
-* Fill in form and press "Send pull request".
-
-#### Creating a Pull Request for a Hotfix
-
-* Go to <https://github.com/stan-dev/stan>.  Refresh the page if necessary
-
-* Select the hotfix branch you are working on in the drop-down list (the list is below the "Clone in ..." row).  
-
-* Click on the "Pull Request" button that pops up underneat the hotfix branch drop-down list.
-
-* Fourth, fill in form.
-
-* Fifth, press "Send pull request".
-
-#### (Alternative) Creating a Pull Request for a Hotfix
-
-* Go to <https://github.com/stan-dev/stan> and refresh page if necessary.
-
-* Click the "Pull Request" button. It's towards the top right, on the same row as the repository name, `stan-dev/stan`
-
-* Select the correct base repository, `stan-dev/stan`, and base branch, `develop`
-
-* Select the correct head repository, `stan-dev/stan`, and head branch, `feature/foo`
-
-* Fill in form and press "Send pull request".
 
 
 
