@@ -109,7 +109,7 @@ When a pull request is made, it is expected that the current code passes:
     > make test-distributions
     > make test-models
 
-If these tests do not pass on your local machine, the pull request won't be accepted. Passing these tests do not guarantee that the pull request will be merged.  It will first go through code review and then be tested on the integration server. 
+Passing these tests does not guarantee that the pull request will be accepted and merged.  It will first go through code review and then be tested on the integration server. 
 
 #### 5.2  Steps for Pull Requests
 
