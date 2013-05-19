@@ -1,4 +1,4 @@
-### Overview
+### 1. Overview
 
 The Stan developer process is based on the gitflow model described by Vincent Driessen in the blog post
 "[A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/ )."  The rest of this document details the steps required from developers.  If you don't read anything else, please remember: 
@@ -8,15 +8,16 @@ The Stan developer process is based on the gitflow model described by Vincent Dr
 * For working on new features, branch from <tt>develop</tt> into a branch called `feature/<some-descriptive-name>`, and when the work is done (thoroughly tested and documented), create a pull request back into `develop`.
 
 
+### 2. Branches
 
-#### Permanent Branches
+#### 2.1 Permanent Branches
 
 **Master branch:** The `master` branch is always at our most recent, production-ready release.  Only production-ready releases should be pushed to this branch.  Each point on this branch will be tagged with the most recent version number.
 
 **Development branch:** The `develop` branch is the current working branch for development integration.  We require this branch to pass all unit tests so that all development branches may branch from it.  To enforce the functional state of the development branch, all pushes to it will be mediated by pull request.  Before a pull request is merged with the development branch, the unit tests, distribution tests and model tests must pass.
 
 
-#### Non-Permanent Branches
+#### 2.2 Non-Permanent Branches
 
 **Feature branches:** All development work on features that have not been released go in feature branches. Feature branches branch from `develop` and should be named `feature/<some-descriptive-name>`.  After development is complete on a feature, submit a pull request back to `develop`.
 
@@ -24,11 +25,9 @@ The Stan developer process is based on the gitflow model described by Vincent Dr
 
 **Release branches:**  Work to complete a new release go in release branches. Release branches branch from `develop` and are named `release/<some-release-number>`.  Once a release branch is complete, it will be merged into both `master` and `develop`.
 
-#### Honor System
+### 3.  Preventing Inadvertent Pushes
 
 We are working on an honor system. The active developers with push permission on the Stan repository will still technically have the ability to push to the master, development, release, and hotfix branches. 
-
-#### Preventing Mistakes
 
 Developers should take the following steps to configure git to prevent unintentional pushes to the master or development branches.  
 
@@ -62,7 +61,7 @@ The pre-push script will be run whenever you git push but _before_ anything is a
 
 
 
-### How to Contribute with a Clone of the Repository
+### 4.  How to Contribute with a Clone of the Repository
 
 Using this method, we can share feature branches with ease for collaboration.  It involves the following steps.
 
@@ -103,7 +102,9 @@ When a pull request is made, it is expected that the current code passes:
 
 If these tests do not pass on your local machine, the pull request won't be accepted. Passing these tests do not guarantee that the pull request will be merged.  It will first go through code review and then be tested on the integration server. 
 
-### Creating a Pull Request for a Feature Branch
+### 5. Creating Pull Requests
+
+#### 5.1 Creating a Pull Request for a Feature Branch
 
 First, merge the current state of the branch `develop` back into the current feature branch.  Update branch `develop` and merge it into the current branch .  
 
@@ -137,7 +138,7 @@ Alternative directions to create a pull request:
 
 * Fill in form and press "Send pull request".
 
-#### Creating a Pull Request for a Hotfix Branch
+#### 5.2 Creating a Pull Request for a Hotfix Branch
 
     For a hotfix branch:
         Create a pull request.
