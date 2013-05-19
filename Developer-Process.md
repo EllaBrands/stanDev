@@ -47,15 +47,16 @@ To make these commands global to all git projects (not just Stan), use the follo
 The simple push default implies that only the _current_ branch is git pushed to the specified remote
 repository (typically `origin`), as opposed to the default behavior of git pushing _all_ local branches to the specified remote repository. 
 
-The fast-forward merge configuration tweak prevents any fast-forward merges, since
-they are inconsistent with the gitflow development model.
+The fast-forward merge configuration prevents fast-forward merges, which are inconsistent with the gitflow development model.
 
 **Third**, download the [git pre-push script](https://stan-dev.googlegroups.com/attach/255775ffea1a3d08/pre-push.txt?gda=l1Q5YkYAAAAZxtxdgPezaYoZ-2CibDFNxvRQADtfWXVf7Wp9jTazNhhIKImChiwUZBkdErcfv6Vx40jamwa1UURqDcgHarKEE-Ea7GxYMt0t6nY0uV5FIQ&part=4) 
-to your local directory `stan/.git/hooks/pre-push`
+to your local version of the `stan` repository, `stan/.git/hooks/pre-push`
 
-Note that the file must _not_ have any extension and must be _executable_.  For anything but Windows, the file can be made executable with the command
+Note that the file must _not_ have any extension and must be _executable_.  For anything but Windows (or Windows through Cygwin), the file can be made executable with the command
 
     > chmod +x stan/.git/hooks/pre-push 
+
+On Windows without Cygwin, right click on the icon for the file and click on "Properties" or "Security and Sharing".  You may need to login as administrator depending on where the pre-push script file is located.  Then set the permissions to allow the user doing the work to read and execute.
 
 The pre-push script will be run whenever you git push but _before_ anything is actually pushed.  This gives the script the opportunity to check whether the remote repository is the origin (i.e., the `stan-dev/stan` repository on GitHub) and whether the branch is among those that you should not push to (i.e., master, development, release, or hotfix). You can still push to a feature branch on the origin or push anything to a remote repository that is not the origin.
 
