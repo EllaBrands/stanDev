@@ -17,7 +17,7 @@ The gitflow process distinguishes between the permanent branches managed by the 
 
 **Master branch:** The `master` branch is always at our most recent, production-ready release.  Only production-ready releases should be pushed to this branch.  Each point on this branch will be tagged with the most recent version number.
 
-**Development branch:** The `develop` branch is the current working branch for development integration.  We require this branch to pass all unit tests so that all development branches may branch from it.  To enforce the functional state of the development branch, all pushes to it will be mediated by pull request.  Before a pull request is merged with the development branch, the unit tests, distribution tests and model tests must pass.
+**Development branch:** The `develop` branch is the current working branch for development integration.  We require this branch to pass all unit tests (detailed below) so that all development branches may branch from it.  To enforce the functional state of the development branch, all pushes to it will be mediated by pull request.  Before a pull request is merged with the development branch, the unit tests, distribution tests and model tests must pass.
 
 
 #### 2.2 Non-Permanent Branches
@@ -30,9 +30,7 @@ The gitflow process distinguishes between the permanent branches managed by the 
 
 ### 3.  Preventing Inadvertent Pushes
 
-We are working on an honor system. The active developers with push permission on the Stan repository will still technically have the ability to push to the master, development, release, and hotfix branches. 
-
-Developers should take the following steps to configure git to prevent unintentional pushes to the master or development branches.  
+We are working on an honor system. The active developers with push permission on the Stan repository will still technically have the ability to push to the master and development branches, but are asked to take the following steps to prevent inadvertent pushes to the master and development branches.
 
 **First**, install git version 1.8 or later.
 
