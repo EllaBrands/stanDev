@@ -150,10 +150,7 @@ Or you can set upstream tracking so you can do
 
     > git pull feature/foo
 
-Fix whatever needs to be fixed.  Others can help at this point because the branch can be pushed to through GitHub.  Pushing to the working branch will update the pull request with the message used for the commits.  
-
-Go back to step 5, "relax."
-
+Fix whatever needs to be fixed.  Others can help at this point because the branch can be pushed to through GitHub.  Pushing to the working branch will update the pull request with the message used for the commits.  At this point, you are back to waiting for another code review and round of integration tests. 
 
 ### Creating Pull Requests
 
