@@ -5,21 +5,24 @@ The Stan developer process is based on the gitflow model described by Vincent Dr
 
 * Never push directly into the master or development branches, nor the hotfix-* or release-* branches.
 
-* For working on new features, branch from `develop` into a branch called `feature/<some-descriptive-name>`, and when the work is done (thoroughly tested and documented), create a pull request back into `develop`.
+* For working on new features, branch from <tt>develop</tt> into a branch called `feature/<some-descriptive-name>`, and when the work is done (thoroughly tested and documented), create a pull request back into `develop`.
 
 
 
-### Permanent Branches
+#### Permanent Branches
 
-The Stan repository has two permanent branches:
+**Master branch:** The `master` branch is always at our most recent, production-ready release.  Only production-ready releases should be pushed to this branch.  Each point on this branch will be tagged with the most recent version number.
 
-#### `master`
+**Development branch:** The `develop` branch is the current working branch for development integration.  We require this branch to pass all unit tests so that all development branches may branch from it.  To enforce the functional state of the development branch, all pushes to it will be mediated by pull request.  Before a pull request is merged with the development branch, the unit tests, distribution tests and model tests must pass.
 
-The master branch is always at our most recent, production-ready release.  Only production-ready releases should be pushed to this branch.  Each point on this branch will be tagged with the most recent version number.
 
-#### `develop`  
+#### Non-Permanent Branches
 
-The development branch is the current working branch for development integration.  We require this branch to pass all unit tests so that all development branches may branch from it.  To enforce the functional state of the development branch, all pushes to it will be mediated by pull request. The unit tests required to pass in order to merge into the development branch are `test-unit`, `test-distribution` and `test-models`.
+**Feature branches:** All development work on features that have not been released go in feature branches. Feature branches branch from `develop` and should be named `feature/<some-descriptive-name>`.  After development is complete on a feature, submit a pull request back to `develop`.
+
+**Hotfix branches:**  Patches to the current release go in hotfix branches. Hotfix branches branch from `master` and are named `hotfix/<some-issue-number>`.  There should be an issue created for the bug in Stan's GitHub issue tracker prior to branching to provide an issue number.    Once the patch is complete, submit a pull request back to `master` and it will be merged into both `master` and `develop` branches.
+
+**Release branches:**  Work to complete a new release go in release branches. Release branches branch from `develop` and are named `release/<some-release-number>`.  Once a release branch is complete, it will be merged into both `master` and `develop`.
 
 #### Honor System
 
@@ -29,9 +32,9 @@ We are working on an honor system. The active developers with push permission on
 
 Developers should take the following steps to configure git to prevent unintentional pushes to the master or development branches.  
 
-First, install git version 1.8 or later.
+**First**, install git version 1.8 or later.
 
-Second, configure git's push and merge behavior to match the gitflow process requirements.  To configure push and merge behavior just for Stan, change directories to `stan` and execute the following two commands.
+**Second**, configure git's push and merge behavior to match the gitflow process requirements.  To configure push and merge behavior just for Stan, change directories to `stan` and execute the following two commands.
 
     > git config push.default simple
     > git config merge.ff false
@@ -47,48 +50,16 @@ repository (typically `origin`), as opposed to the default behavior of git pushi
 The fast-forward merge configuration tweak prevents any fast-forward merges, since
 they are inconsistent with the gitflow development model.
 
-Third, download the pre-push script from the following link
+**Third**, download the [git pre-push script](https://stan-dev.googlegroups.com/attach/255775ffea1a3d08/pre-push.txt?gda=l1Q5YkYAAAAZxtxdgPezaYoZ-2CibDFNxvRQADtfWXVf7Wp9jTazNhhIKImChiwUZBkdErcfv6Vx40jamwa1UURqDcgHarKEE-Ea7GxYMt0t6nY0uV5FIQ&part=4) 
+to your local directory `stan/.git/hooks/pre-push`
 
-* [git pre-push script](https://stan-dev.googlegroups.com/attach/255775ffea1a3d08/pre-push.txt?gda=l1Q5YkYAAAAZxtxdgPezaYoZ-2CibDFNxvRQADtfWXVf7Wp9jTazNhhIKImChiwUZBkdErcfv6Vx40jamwa1UURqDcgHarKEE-Ea7GxYMt0t6nY0uV5FIQ&part=4) 
-
-to your local directory
-
-    > stan/.git/hooks/pre-push
-
-Note that the file must _not_ have any extension and must be _executable_.  For anything but Windows, this can be accomplished with the command
+Note that the file must _not_ have any extension and must be _executable_.  For anything but Windows, the file can be made executable with the command
 
     > chmod +x stan/.git/hooks/pre-push 
 
 The pre-push script will be run whenever you git push but _before_ anything is actually pushed.  This gives the script the opportunity to check whether the remote repository is the origin (i.e., the `stan-dev/stan` repository on GitHub) and whether the branch is among those that you should not push to (i.e., master, development, release, or hotfix). You can still push to a feature branch on the origin or push anything to a remote repository that is not the origin.
 
 
-### Non-Permanent Branches
-
-This section describes the three types of non-permanent branches. 
-
-#### `feature/`
-
-All development work on features that have not been released go in feature branches.
-
-Feature branches branch from `develop` and should be named `feature/<some-descriptive-name>`.  
-
-After development is complete on a feature, submit a pull request back to `develop`.
-
-#### `hotfix/`
-
-Patches to the current release go in hotfix branches. 
-
-Hotfix branches branch from `master` and are named `hotfix/<some-issue-number>`.  There should be an issue created for the bug in Stan's GitHub issue tracker prior to branching to provide an issue number.   
-
-Once the patch is complete, submit a pull request back to `master` and it will be merged into both `master` and `develop` branches.
-
-#### `release/`
-
-New releases go in release branches.
-
-Release branches branch from `develop` and are named `release/<some-release-number>`.  
-
-Once a release branch is complete, it will be merged into both `master` and `develop`.
 
 
 ### How to Contribute with a Clone of the Repository
