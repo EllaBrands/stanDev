@@ -1,12 +1,13 @@
 ### 1. Overview
 
 The Stan developer process is based on the gitflow model described by Vincent Driessen in the blog post
-"[A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/ )."  The rest of this document details the steps required from developers.  If you don't read anything else, please remember: 
+"[A successful Git branching model](http://nvie.com/posts/a-successful-git-branching-model/ )."  The rest of this document details the steps required from developers.  
 
-* Never push directly into the master or development branches, nor the hotfix-* or release-* branches.
+If you don't read anything else, please remember the following when working on features: 
 
-* For working on new features, branch from <tt>develop</tt> into a branch called `feature/<some-descriptive-name>`, and when the work is done (thoroughly tested and documented), create a pull request back into `develop`.
+* Never push directly into master or development branches.  
 
+* For working on new features, branch from <tt>develop</tt> into a branch called `feature/<some-descriptive-name>`, and when the work is done (thoroughly tested and documented), create a pull request back into `develop`.  
 
 ### 2. Branches
 
