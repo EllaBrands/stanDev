@@ -39,7 +39,7 @@ We are working on an honor system. The active developers with push permission on
     > git config push.default simple
     > git config merge.ff false
 
-To make these commands global to all git projects (not just Stan), use the following.
+To make these configurations apply globally to all git projects, use:
 
     > git config --global push.default simple
     > git config --global merge.ff false
@@ -58,7 +58,7 @@ Note that the file must _not_ have any extension and must be _executable_.  For 
 
 On Windows without Cygwin, right click on the icon for the file and click on "Properties" or "Security and Sharing".  You may need to login as administrator depending on where the pre-push script file is located.  Then set the permissions to allow the user doing the work to read and execute.
 
-The pre-push script will be run whenever you git push but _before_ anything is actually pushed.  This gives the script the opportunity to check whether the remote repository is the origin (i.e., the `stan-dev/stan` repository on GitHub) and whether the branch is among those that you should not push to (i.e., master, development, release, or hotfix). You can still push to a feature branch on the origin or push anything to a remote repository that is not the origin.
+The pre-push script will be run whenever you git push but _before_ anything is actually pushed.  This gives the script the opportunity to check whether the remote repository is the origin (i.e., the `stan-dev/stan` repository on GitHub) and whether the branch is among those that you should not push to (i.e., `master` and `develop`). You can still push to a feature branch on the origin or push anything to a remote repository that is not the origin.
 
 
 
