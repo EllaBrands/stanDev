@@ -145,7 +145,7 @@ Sixth, relax. At this point, you are waiting for
 
 _Warning:_ &nbsp; The full model functional tests currently take around 10 hours.
 
-#### Pull Requests that Pass Review
+#### 5.3 Pull Requests that Pass Review
 
 If the code passes code review and unit tests, 
 
@@ -156,7 +156,7 @@ If the code passes code review and unit tests,
 * the branch will be deleted.  
 
 
-#### Pull Requests that Don't Pass Review
+#### 5.4 Pull Requests that Don't Pass Review
 
 If the code is not accepted by code review or it fails unit tests, you need to fix the issues (by yourself or by enlisting help).  At this point, you want to first make sure your copy of the feature is up to date (one of the code reviewers may have contributed a patch):
 
@@ -174,6 +174,8 @@ Pushing to the working branch will update the pull request with the message used
 At this point, you are back to waiting for another code review and round of integration tests. 
 
 
+
+
 ### How to Contribute with a Fork of the Repository
 
 If you do not have push permission on `stan-dev`, then you have to fork the repository.
@@ -183,113 +185,19 @@ If you want others to help you, you will need to give them permissions to push t
 
 First, fork the GitHub stan-dev/stan repository. Done through either the web or the GitHub application.
 
-Second, create a branch. 
+After that, development follows the same process as for a clone of the repository until a pull request is needed.  The differences are that on a fork for a feature, you need to
 
-For a feature branch (most common):
+* select the correct base repository, `stan-dev/stan`, and base branch, `develop`, and
 
-    > git checkout develop
-    > git checkout -b feature/foo
-    > git push
+* select the correct head repository, `personal-repo/stan`, and head branch, `feature/foo` (where "foo" is replaced with the feature name).
 
-For a hotfix branch (less common), suppose we're current at version v3.2.1.
+In the unlikely case a hotfix branch is created from a fork, you need to
 
-    > git checkout master
-    > git checkout -b hotfix/v3.2.2
-    > git push
+* select the correct base repository, `stan-dev/stan`, and base branch, `master`, and
 
-The last push command makes the branch public. This is necessary in order to create a pull request later.
+* Select the correct head repository, `personal-repo/stan`, and head branch, `hotfix/v3.2.2` (where the version is the appropriate increment).
 
-Work on the feature using regular git commands. 
-
-Create a pull request (see instructions above).
-
-
-
-
-For a feature branch:
-
-Merge the current state of "develop" back into the current feature branch:
-
-Update "develop", merge "develop" into current branch (deal with any conflicts using git), push so the changes are available to GitHub
-
-    > git pull origin develop
-    > git merge --no-ff develop
-    > git push
-
-Create a pull request.
-
-Go to <https://github.com/stan-dev/stan> and refresh page if necessary.
-
-Select the feature branch you are working on in the drop-down list (below the "Clone in ..." row).
-
-A "Pull Request" button should pop up underneath the feature branch drop-down list. Click it.
-
-Fill in form and press "Send pull request".
-
-Alternate directions:
-
-Go to <https://github.com/stan-dev/stan>, refreshing the page if necessary.
-
-Click "Pull Request" button. It's towards the top right, on the same row as the repository name "stan-dev/stan"
-        
-Select the correct base repository, `stan-dev/stan`, and base branch, `develop`
-
-Select the correct head repository, `personal-repo/stan`, and head branch, `feature/foo`.
-
-Fill in form and press "Send pull request".
-
-For a hotfix branch:
-
-Create a pull request.
-
-Go to <https://github.com/stan-dev/stan>, refreshing page if necessary.
-
-Select the hotfix branch you are working on in the drop-down list (below the "Clone in ..." row)
-
-A "Pull Request" button should pop up underneath the hotfix branch drop-down list. Click it.
-
-Fill in form and press "Send pull request".
-
-Alternate directions:
-
-Go to <https://github.com/stan-dev/stan>, refreshing the page if necessary.
-        
-Click "Pull Request" button. It's towards the top right, on the same row as the repository name `stan-dev/stan`
-
-Select the correct base repository, `stan-dev/stan`, and base branch, `master`.
-
-Select the correct head repository, `personal-repo/stan`, and head branch, `feature/foo`.
-
-Fill in form and press "Send pull request".
-
-Relax.
-
-At this point, one or more of the developers will check the pull request and do an informal code review. 
-
-At the same time, our Jenkins box will verify that all tests pass on Windows. 
-
-If both are good, then the pull request will be accepted, the code will get into the correct branch, and the branch will be deleted [ed. how do we do that on `personal-repo`?].
-    
-If the pull request is not accepted immediately, fix the issues.
-
-Check out the branch
-
-    > git checkout feature/foo
-
-    > git pull origin feature/foo
-
-Or you can set upstream tracking so you can do 
-
-    > git pull feature/foo
-
-Do work.
-
-Others can help if you've given them access.  If this workflow is a problem, follow directions for cloning.
-
-The work will update the pull request.
-
-Go back to step 5, relax.
-
+After the pull request is submitted, the steps for a fork are the same as for a clone.
 
 
 ### How to Update Your Current Stan Directory
