@@ -139,30 +139,39 @@ Fifth, create the pull request through GitHub.  This involves
 
 Sixth, relax. At this point, you are waiting for
 
-* other developers to carry out an informal code review, and
+* other developers to carry out an informal code review and
 
-* one of the administrators will kick off Stan's continuous integration server (Jenkins) to verify that all tests pass on Windows.   The full model functional tests currently take around 10 hours.
+* one of the administrators to kick off Stan's continuous integration server (Jenkins) to verify that all tests pass on Windows.   
 
-At this point, if the code passes code review and unit tests, then
+_Warning:_ &nbsp; The full model functional tests currently take around 10 hours.
 
-* the pull request will be accepted, 
+#### Pull Requests that Pass Review
+
+If the code passes code review and unit tests, 
+
+* the pull request will be accepted,
 
 * the pulled code will be merged by one of the administrators into the correct location(s) as defined for the gitflow process above, and
 
 * the branch will be deleted.  
 
-If the code is not accepted by code review or it fails unit tests, you need to fix the issues (by yourself or by enlisting help).  At this point, you can 
+
+#### Pull Requests that Don't Pass Review
+
+If the code is not accepted by code review or it fails unit tests, you need to fix the issues (by yourself or by enlisting help).  At this point, you want to first make sure your copy of the feature is up to date (one of the code reviewers may have contributed a patch):
 
     > git checkout feature/foo
     > git pull origin feature/foo
 
-Or you can set upstream tracking so you can do
+If you set upstream tracking, the above two steps can be simplified to
 
     > git pull feature/foo
 
-Fix whatever needs to be fixed.  Others can help at this point because the branch can be pushed to through GitHub.  Pushing to the working branch will update the pull request with the message used for the commits.  At this point, you are back to waiting for another code review and round of integration tests. 
+Fix whatever needs to be fixed.  Others can help at this point because the branch can be pushed to through GitHub.  
 
+Pushing to the working branch will update the pull request with the message used for the commits.  
 
+At this point, you are back to waiting for another code review and round of integration tests. 
 
 
 ### How to Contribute with a Fork of the Repository
