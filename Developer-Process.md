@@ -80,16 +80,18 @@ Third, create a branch.  For a new feature, run the following with your feature 
 
     > git checkout develop
     > git checkout -b feature/foo
-    > git push
+    > git push -u origin feature/foo
+
+The last push command is to make the branch public;  the `-u` option sets the upstream branch to the origin, so that git pull requests pull from the origin's version of the branch `feature/foo`.
+
+This will be necessary in order to create a pull request to have the work merged back into the branch from which it was checked out.  (The first such push may require verifying the github credentials.)
+
 
 For a hotfix branch (less common), run the following, where `v3.2.2` is replaced with the apppropriate version number (hotfixes increment the last number, which is available as the latest tag on the master branch).
 
     > git checkout master
     > git checkout -b hotfix/v3.2.2
-    > git push
-
-
-The last push command is to make the branch public. This will be necessary in order to create a pull request to have the work merged back into the branch from which it was checked out.
+    > git push -u origin feature/foo
 
 Fourth, code and document using the usual git commands.  Collaboration is easy since all the developers have push access to the feature or hotfix branch you just created.
 
