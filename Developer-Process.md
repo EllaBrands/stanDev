@@ -50,9 +50,9 @@ repository (typically `origin`), as opposed to the default behavior of git pushi
 The fast-forward merge configuration prevents fast-forward merges, which are inconsistent with the gitflow development model.
 
 **Third**, download the [git pre-push script](https://stan-dev.googlegroups.com/attach/255775ffea1a3d08/pre-push.txt?gda=l1Q5YkYAAAAZxtxdgPezaYoZ-2CibDFNxvRQADtfWXVf7Wp9jTazNhhIKImChiwUZBkdErcfv6Vx40jamwa1UURqDcgHarKEE-Ea7GxYMt0t6nY0uV5FIQ&part=4) 
-to your local version of the `stan` repository, `stan/.git/hooks/pre-push`
+to your local version of the `stan` repository, placing it in the file `stan/.git/hooks/pre-push`
 
-Note that the file must _not_ have any extension and must be _executable_.  For anything but Windows (or Windows through Cygwin), the file can be made executable with the command
+Note that the file is named `pre-push` and must _not_ have any extension and must be _executable_.  For anything but Windows (or Windows through Cygwin), the file can be made executable with the command
 
     > chmod +x stan/.git/hooks/pre-push 
 
