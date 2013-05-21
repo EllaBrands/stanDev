@@ -101,6 +101,8 @@ Fifth, when finished, create a pull request. A pull request indicates that the w
 
 #### 5.1 Preconditions for Pull Requests
 
+##### Final State Passes All Tests
+
 When a pull request is made, it is expected that the current code passes:
 
     > make manual
@@ -108,8 +110,16 @@ When a pull request is made, it is expected that the current code passes:
     > make test-unit
     > make test-distributions
     > make test-models
+    > make test-headers
 
 Passing these tests does not guarantee that the pull request will be accepted and merged.  It will first go through code review and then be tested on the integration server. 
+
+##### Commit History is Clean
+
+We strongly urge you to keep your commit history clean in the sense that each commit passes all tests.  This is also on the honor system---we are not going to enforce this by testing each commit in a pull request. 
+
+If you prefer a personal workflow that involves committing changes that do not pass tests, it is possible to clean up your history.  Git provides a number of tools for "rewriting history," as discussed in Chacon's book, <i>Pro Git</i>, in the chapter "[Rewriting History](http://git-scm.com/book/en/Git-Tools-Rewriting-History)." In particular, a process known as rebasing (followed by a fresh commit) allows you to compose a sequence of previous commits into a single commit that is visible from the outside.
+
 
 #### 5.2  Steps for Pull Requests
 
