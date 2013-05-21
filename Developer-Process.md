@@ -112,6 +112,9 @@ When a pull request is made, it is expected that the current code passes:
     > make test-unit
     > make test-distributions
     > make test-models
+
+And as soon as the `test-headers` target is in, it should also pass:
+
     > make test-headers
 
 Passing these tests does not guarantee that the pull request will be accepted and merged.  It will first go through code review and then be tested on the integration server. 
