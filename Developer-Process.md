@@ -130,14 +130,15 @@ If you prefer a personal workflow that involves committing changes that do not p
 
 First, if the pull request is for a feature branch, update branch `develop` and merge it into the current branch.  If the request is for a hotfix branch, no merge is necessary.
 
+    > git pull origin develop
+    > git merge --no-ff develop
+
 Second, deal with any conflicts arising from the merge. 
 
 Third, make sure the unit tests pass.  (You might want to skip the model tests and let those get handled by the integration server Jenkins after the pull request is made.)
 
 Fourth, push the result of the merge so that the changes are available to GitHub.
 
-    > git pull origin develop
-    > git merge --no-ff develop
     > git push
 
 Fifth, create the pull request through GitHub.  This involves
