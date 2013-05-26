@@ -201,7 +201,7 @@ If you want others to help you, you will need to give them permissions to push t
 
 First, fork the GitHub stan-dev/stan repository. Done through either the web or the GitHub application.
 
-Add the stan-dev/stan repo as a remote (typically called `upstream`) to your own fork: 
+Add the stan-dev/stan repo as a remote (typically called `upstream`) to your own fork (more on  [syncing github forks](https://help.github.com/articles/syncing-a-fork) with their upstream repos): 
 
     > git remote add upstream https://github.com/stan-dev/stan.git
 
