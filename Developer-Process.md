@@ -201,6 +201,10 @@ If you want others to help you, you will need to give them permissions to push t
 
 First, fork the GitHub stan-dev/stan repository. Done through either the web or the GitHub application.
 
+Add the stan-dev/stan repo as a remote (typically called `upstream`) to your own fork: 
+
+    > git remote add upstream https://github.com/stan-dev/stan.git
+
 After that, development follows the same process as for a clone of the repository until a pull request is needed.  The differences are that on a fork for a feature, you need to
 
 * select the correct base repository, `stan-dev/stan`, and base branch, `develop`, and
