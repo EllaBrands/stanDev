@@ -718,6 +718,12 @@ Models
 Modeling Language
 ======================================================================
 
+* an extension of the modeling language to handle hierarchical models and data.  Something along the lines of 
+      hierachical(vector y[N])[M]
+  where any operation on y automatically replicates to the M groups.  This would be the first step towards   
+  scaling to more data (accessing each y[N] independently of the others) as well as stochastic VB/HMC.
+
+
 * allow array modifiers on types as well as variables
   -- int[4] x;
   -- int x[4];
