@@ -63,6 +63,14 @@ FOR NEXT RELEASE (1.3.0++)
 - remove warning message on transform OR declare a set of
   function names to ignore
 
+Soon: C++11 compatibility at all optimization levels under clang++ 3.3
+---------------------------------------------------------------------------
+* Errors coming from Boost Spirit Qi parser under clang++ 3.3:
+  -- Multiple nsequenced warnings from assigning to _pass in grammars under clang 3.3
+     [see: Bob's e-mail of 5/31/13]
+  -- Local return on iterators, for which Jeffrey Oldham filed a Boost bug report:
+     https://svn.boost.org/trac/boost/ticket/8489
+
 The to-do list is organized into the following sections:
 
 * next release to-do and change list
