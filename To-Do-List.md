@@ -722,6 +722,20 @@ Models
 Modeling Language
 ======================================================================
 
+* user-defined functions
+  -- add a grammar rule so that any function in the .stan file whose name 
+     ends in __ (or some other magic character combination) is parsed as a literal C++ function call
+-- amend the target in the makefile so if a directory contains both foo.stan 
+   and foo.hpp, then after parsing foo.stan to foo.cpp the make call is like
+       $(CC) -include foo.hpp -c -o foo.o foo.cpp
+   which according to the documentation of g++ and clang++ is equivalent to manually adding
+       #include "foo.hpp"
+   at the very top of foo.cpp. That way a user could declare / define a 
+   function like bar__() in foo.hpp and use bar__() in foo.cpp that is generated from foo.stan.
+-- issue is which namespace; easiest to do with global, but could
+   also allow "::" in variable names iff they had the right markup, but gets clunky
+   for parser and doc
+
 * an extension of the modeling language to handle hierarchical models and data.  Something along the lines of 
       hierachical(vector y[N])[M]
   where any operation on y automatically replicates to the M groups.  This would be the first step towards   
