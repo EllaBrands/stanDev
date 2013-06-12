@@ -12,16 +12,9 @@ FOR NEXT RELEASE (1.3.0++)
      -- look at add/subtract where there's broadcast function
      -- need tests for int in all the relevant positions
 
-- (Daniel/Michael) instrument tests for new algorithms to isolate
-  floating point divergence
-
 - (everyone) remove std::cout from API
 
 - (Daniel) fix bin/print spacing
-
-- sort out low ESS in new diagonal adaptation
-
-- sort out rank, etc. from Marco
 
 - go through include-what-you-use output from Ben to
   mailing list (early May)
@@ -49,9 +42,6 @@ FOR NEXT RELEASE (1.3.0++)
   in new refactor (see Jiqiang's e-mail 4/19/13, 9:20 PM to stan-dev,
   and rest of that thread)
 
-- Get in more contributed code, such as R regression syntax
-  compiler and DIC and ...
-
 - fix error message in Stan when an error is encountered
   during initialization --- currently says "about to be
   Metropolis rejected";  at very least, change the message
@@ -63,13 +53,19 @@ FOR NEXT RELEASE (1.3.0++)
 - remove warning message on transform OR declare a set of
   function names to ignore
 
-Soon: C++11 compatibility at all optimization levels under clang++ 3.3
+
+Soon: 
 ---------------------------------------------------------------------------
-* Errors coming from Boost Spirit Qi parser under clang++ 3.3:
-  -- Multiple nsequenced warnings from assigning to _pass in grammars under clang 3.3
+
+* Get in more contributed code, such as R regression syntax
+  compiler and DIC and ...
+
+* Fix Errors coming from Boost Spirit Qi parser under clang++ 3.3:
+  -- Multiple unsequenced warnings from assigning to _pass in grammars under clang 3.3
      [see: Bob's e-mail of 5/31/13]
   -- Local return on iterators, for which Jeffrey Oldham filed a Boost bug report:
      https://svn.boost.org/trac/boost/ticket/8489
+
 
 The to-do list is organized into the following sections:
 
