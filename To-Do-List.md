@@ -1,4 +1,4 @@
-```text
+```
 STAN TO-DO LIST
 ======================================================================
 
@@ -160,6 +160,11 @@ Doc
 C++ API
 ======================================================================
 [items go here first, then to RStan/cmd]
+
+* B splines (not sure which version) --- on Andrew's request
+
+* For optimization, take curvature at mode to estimate a normal
+  approximation and draw samples from it
 
 * fix log1m bug --- see Sebastian Weber's e-mail 5/10/13 4:55 AM
   : isolated issue to ctor(var) throwing exception; so
