@@ -157,17 +157,17 @@ see: http://cran.r-project.org/web/packages/Rmpfr/vignettes/log1mexp-note.pdf
 y ~ multi_logit(beta,x);
 ```
 behaves as:
-````
+```
 y ~ categorical(softmax(dot_product(beta,x)));
-````
+```
 c.f. MCMCmln in MCMCpack for speed comparison using their data set
 * expose all the groovy special functions Michael/Daniel added for CDFs
 * allow only some inits to be specified in a data file (var_context) and let the rest be randomly generated
 * bound error in inits (and discuss in manual)
 init file:  
-````
+```
     x <- structure(c(1,1,1), .Dim=c(3))
-````
+```
 with model:
 ```
     parameters {
@@ -346,7 +346,7 @@ int signum(real);
     foo_cdf_lub_log(L,U|...) == log(foo_cdf(U|...) - foo_cdf(L|...))
                              == log_sum_exp(foo_cdf_log(U|...),                                 
                                             0, foo_ccdf_log(L|...))
-    ````
+    ```
     * to add:
         * calculation of cdf
         * two functions: 1) with templated policy, 2) with no policy,
