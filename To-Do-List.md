@@ -495,7 +495,7 @@ int signum(real);
     * amend the target in the makefile so if a directory contains both foo.stan and foo.hpp, then after parsing foo.stan to foo.cpp the make call is like
     ```
     $(CC) -include foo.hpp -c -o foo.o foo.cpp
-    ````
+    ```
 which according to the documentation of g++ and clang++ is equivalent to manually adding
     ```
     #include "foo.hpp"
@@ -528,6 +528,7 @@ might be used if ns is an int array of sizes
     int<lower=0> N;          // number of subjects
     int<lower=1> n_obs[N];   // num observations for subject n in 1:N
     cov_matrix[n_obs] c;     // cov matrices for subject n in 1:N
+    ```
     *  The intent of the notation is that c[n] for n in 1:N is an (n_obs[n] x n_obs[n]) covariance matrix.
     * This notation lets us do a single final layer of raggedness and could apply anywhere there's a size.  So
     ```
@@ -556,9 +557,7 @@ is a 2D ragged array structure where y[n] is a n_obs[n]-vector
 * repeat <statement> until <cond>;
 * for (<statement>; <cond>; <statement>) statement;
 * for-each statement
-    ```
-    foreach (<var> : <list-expression>) <statement>;
-    ```  
+    * foreach (<var> : <list-expression>) <statement>;
 * multi-returns and array literals
     * (a,b,c) = foo();  // function returns array
     * (m,n,p) = (1,2,3);   // (1,2,3) is array literal
