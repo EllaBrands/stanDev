@@ -1,17 +1,18 @@
 ### To-Do List Organization
-* Next Release Priorities
-* Other High Priority Items
-* C++ API                       
-* Modeling Language             
-* Build                         
-* Testing                       
-* Command-Line                  
-* C++ API
-* RStan
-* Manual
-* Web Pages
-* Release Mgmt
-* Models 
+* Short-Term
+    * Next Release
+    * Soon
+* Longer-Term Items
+    * C++ API                       
+    * Modeling Language             
+    * Build                         
+    * Testing                       
+    * Command-Line                  
+    * RStan
+    * Manual
+    * Web Pages
+    * Release Management
+    * Models and other Examples
 
 ### For Next Release (1.3.0++)
 * (Bob/Marcus/Daniel) look at add(), etc. operations for instantiation
@@ -485,345 +486,249 @@ int signum(real);
     * just a mode on command to print more out per sample?
     * ideally link runtime errors back to lines of Stan code
 
-```
-Models
-======================================================================
+### Models
 * debug BUGS vol 1 kidney model --- sometimes hangs
 
-* figure out what's going on with TS's model that's causing
-  Eigen to throw an assert failure
-
-* Implementing lasso-like glm and hierarchical glm in stan.
-
-
-Modeling Language
-======================================================================
-
+### Modeling
 * user-defined functions
-  -- add a grammar rule so that any function in the .stan file whose name 
-     ends in __ (or some other magic character combination) is parsed as a literal C++ function call
--- amend the target in the makefile so if a directory contains both foo.stan 
-   and foo.hpp, then after parsing foo.stan to foo.cpp the make call is like
-       $(CC) -include foo.hpp -c -o foo.o foo.cpp
-   which according to the documentation of g++ and clang++ is equivalent to manually adding
-       #include "foo.hpp"
-   at the very top of foo.cpp. That way a user could declare / define a 
-   function like bar__() in foo.hpp and use bar__() in foo.cpp that is generated from foo.stan.
--- issue is which namespace; easiest to do with global, but could
-   also allow "::" in variable names iff they had the right markup, but gets clunky
-   for parser and doc
-
+    * add a grammar rule so that any function in the .stan file whose name ends in __ (or some other magic character combination) is parsed as a literal C++ function call
+    * amend the target in the makefile so if a directory contains both foo.stan and foo.hpp, then after parsing foo.stan to foo.cpp the make call is like
+    ```
+    $(CC) -include foo.hpp -c -o foo.o foo.cpp
+    ````
+which according to the documentation of g++ and clang++ is equivalent to manually adding
+    ```
+    #include "foo.hpp"
+    ```
+at the very top of foo.cpp. That way a user could declare / define a function like bar__() in foo.hpp and use bar__() in foo.cpp that is generated from foo.stan.
+    * issue is which namespace; easiest to do with global, but could also allow "::" in variable names iff they had the right markup, but gets clunky for parser and doc
 * an extension of the modeling language to handle hierarchical models and data.  Something along the lines of 
-      hierachical(vector y[N])[M]
-  where any operation on y automatically replicates to the M groups.  This would be the first step towards   
-  scaling to more data (accessing each y[N] independently of the others) as well as stochastic VB/HMC.
-
-
+    ```        
+    hierachical(vector y[N])[M]
+    ```
+where any operation on y automatically replicates to the M groups.  This would be the first step towards scaling to more data (accessing each y[N] independently of the others) as well as stochastic VB/HMC.
 * allow array modifiers on types as well as variables
-  -- int[4] x;
-  -- int x[4];
-  -- change all the syntax or allow both?
-
+    * int[4] x;
+    * int x[4];
+change all the syntax or allow both?
 * add ragged array types
-  -- data { int x[,]; } 
-     for a possibly ragged array x
-  -- easiest for data
-     ++ buffer values until get postfix dims
-  -- would also work for transformed data because sets
-  -- would need a way to declare raggedness for params
-     in order to read them in from array
-  -- parameters { int x[ns]; }
-     might be used if ns is an int array of sizes
-  -- how to generalize this?
- --  int<lower=0> N;          // number of subjects
-      int<lower=1> n_obs[N];   // num observations for subject n in 1:N
-      cov_matrix[n_obs] c;     // cov matrices for subject n in 1:N
-      *  The intent of the notation is that c[n] for n in 1:N
-         is an (n_obs[n] x n_obs[n]) covariance matrix.
-      * This notation lets us do a single final layer of
-         raggedness and could apply anywhere there's a size.  So
-            real y[n_obs];
-         is a 2D ragged array structure where y[n] is a n_obs[n]-vector
-
+    ```
+    data { int x[,]; } 
+    ```
+for a possibly ragged array x
+    * easiest for data (buffer values until get postfix dims)
+    * would also work for transformed data because of explicit sets
+    * need a way to declare raggedness for params in order to read them in from array
+    ```
+    parameters { int x[ns]; }
+    ```
+might be used if ns is an int array of sizes
+    * how to generalize this?
+    ```
+    int<lower=0> N;          // number of subjects
+    int<lower=1> n_obs[N];   // num observations for subject n in 1:N
+    cov_matrix[n_obs] c;     // cov matrices for subject n in 1:N
+    *  The intent of the notation is that c[n] for n in 1:N is an (n_obs[n] x n_obs[n]) covariance matrix.
+    * This notation lets us do a single final layer of raggedness and could apply anywhere there's a size.  So
+    ```
+    real y[n_obs];
+    ```
+is a 2D ragged array structure where y[n] is a n_obs[n]-vector
 * get line numbers into error messages
-
 * compiler for R's linear model notation
-
 * generalize vector ops to conforming matrices 
-  -- need to work out whether we can do this and
-     still preserve type inference;  e.g., x * x'
-     may still be a matrix even if x is a row vector.
-
+    * need to work out whether we can do this and still preserve type inference;  e.g., x * x' may still be a matrix even if x is a row vector.
 * integer subtypes
-  - non_negative_int = int[1,]
-  - natural = int[0,]
-  - boolean = int[0,1]
-  - categorical(K) = int[1,K]
-
+    * non_negative_int = int[1,]
+    * natural = int[0,]
+    * boolean = int[0,1]
+    * categorical(K) = int[1,K]
 * real subtypes
-  - probability = real[0,1]
-  - correlation = real[-1,1]
-  - non_negative_real = real[0,inf]
-  - non_positive_real = real[-inf,0]
-
+    * probability = real[0,1]
+    * correlation = real[-1,1]
+    * non_negative_real = real[0,inf]
+    * non_positive_real = real[-inf,0]
 * matrix slice and assign
-  - index m
-  - range-indexes: implicit ellision == :, a:, :b, a:b
-  - e.g., matrix[M,N] m; vector(M) v;  m[,1] = v;
-
-* conditional expressions
-  - binary operators on int or double
-    + bool op(int,int);
-    + bool op(double,double); // allows promotion
-    + usual comparisons:  ==,  !=,  <=,  <,  >=,  >
-  - operators on conditions
-    (!cond),  (cond && cond),  (cond || cond),  (cond)
-  - ternary op: cond ? x : y
-
-* conditional statements
-  - if <cond> statement else if <cond> statement ... else statement;
-  - while <cond> statement;
-  - repeat <statement> until <cond>;
-  - for (<statement>; <cond>; <statement>) statement;
-  - Marcus's hack:
-    if (a > b) {...}
-    ==
-    for  (i in 1:int_step(a-b)) {...}
-
+    * index m
+    * range-indexes: implicit ellision == :, a:, :b, a:b
+    * e.g., matrix[M,N] m; vector(M) v;  m[,1] = v;
+* ternary op: cond ? x : y
+* repeat <statement> until <cond>;
+* for (<statement>; <cond>; <statement>) statement;
 * for-each statement
-  - foreach (<var> : <list-expression>) <statement>;
-  
+    ```
+    foreach (<var> : <list-expression>) <statement>;
+    ```  
 * multi-returns and array literals
-  - (a,b,c) = foo();  // function returns array
-  - (m,n,p) = (1,2,3);   // (1,2,3) is array literal
-
-* matrix and array notation:
-- The syntax is pretty simple modulo size conformance
-  checking.  Here's the BNF:
+    * (a,b,c) = foo();  // function returns array
+    * (m,n,p) = (1,2,3);   // (1,2,3) is array literal
+    * ((1,2),(3,4)) // matrix literal
+* matrix and vector literals
+    * The syntax is pretty simple modulo size conformance checking:
+    ```
     matrix_expression ::= '[' matrix_row (';' matrix_row)* ']'
     matrix_row ::= expression*
-  The idea is that the expressions are laid out in a row
-  and a ';' indicates to start a new row.
-  The basic cases are as follows:
-    [1 2 3]    : row_vector[3]
-    [1 2 3; 4 5 6]  : matrix[2,3]
-  Use transpose to create vectors:
-    [1 2 3]'   : vector[3]
-  And allow more complex things in a matrix_row in the BNF, 
-  such as a sequence of vectors:
+    ```
+    * The idea is that the expressions are laid out in a row and a ';' indicates to start a new row. The basic cases are as follows:
+    *  [1 2 3]    : row_vector[3]
+    *  [1 2 3; 4 5 6]  : matrix[2,3]
+    * Use transpose to create vectors:
+        * [1 2 3]'   : vector[3]
+    * And allow more complex things in a matrix_row in the BNF,  such as a sequence of vectors:
+    ```
     [[1 2 3]' [4 5 6]']  : matrix[3,2]
-  In general, we could allow matrices, too:
+    ```
+    * In general, we could allow matrices, too:
+    ```
     [[1 2; 3 4] [5 6; 7 8]] : matrix[4,2]
-  This would keep nesting in the obvious ways.
-- We need some way to call out arrays and allow higher
-  dimensions, so we can't overload the same syntax.
-  I like the following:
-     array ::= 'a' '(' expression* ')'
-  Examples are:
-    a(1,2,3)   :  int[3]
-    a(1.0,2,3)  :  real[3]
-    a(a(1,2,3), a(4,5,6)) : int[2,3]
-    a([1 2 3], [4 5 6]) : row_vector[3][2]
-  But it brings up type inference issues, because
-  a(1,2,3) is int[3], not real[3].   We could 
-  add primitive 1D-array syntax such as:
-           | 'ints' '(' int_expression* ')'
-           | 'reals' '(' real_expression* ')'
-
-
+    ```
+This would keep nesting in the obvious ways.
+* Array literals distinguished from matrices and vectors.  e.g,
+```
+  array ::= 'a' '(' expression* ')'
+```
+Examples are:
+```
+a(1,2,3)   :  int[3]
+a(1.0,2,3)  :  real[3]
+a(a(1,2,3), a(4,5,6)) : int[2,3]
+a([1 2 3], [4 5 6]) : row_vector[3][2]
+```
+But it brings up type inference issues, because a(1,2,3) is int[3], not real[3].   We could  add primitive 1D-array syntax such as:
+```
+'ints' '(' int_expression* ')'
+'reals' '(' real_expression* ')'
+```
 * multiple declarations
-  - e.g., double a, b, c[N];
-
+    * e.g., double a, b, c[N];
 * declare and assign
-  - e.g., double x <- 5.0;
+```
     double b[5];
     double a[5] <- b; // odd, eh?
     simplex(5)[2] c <- ... // wouldn't be obvious to support
-
+```
 * tuple types for multiple returns (U,S,V) <- svd(A)
-  -- different than array literals as may have different typed
-  components
-
-* introduce transforms into the Stan language that have the same
-  effect as the declarations, e.g.
+    * different than array literals as may have different typed components
+* introduce transforms into the Stan language that have the same effect as the declarations, e.g.
+```
     parameters {  real x; }
     transformed_parameters { real(0,1) y; y <- lub(y,0,1,lp__); }
-
-* extensions
-  - declare file paths to #include
-  - declare namespace usings
-  - declare function sigs for parser  
-    ++ if happens up front, in time for body parsing
-
+```
+* user extensions
+    * declare file paths to #include
+    * declare namespace usings
+    * declare function sigs for parser 
+    * if these happen up front, can be used for parsing rest of model
 * ragged arrays
-  - ready to use with vec<...<vec<x>...> pattern
-  - not clear how to declare (follow C?)
-  -- example on p. 8 of 
-     http://www.jstatsoft.org/v36/c01/paper/
-     involving ragged param arays for graded response model
-
+    * ready to use with vec<...<vec<x>...> pattern
+    * not clear how to declare (follow C?)
+    * example on p. 8 of http://www.jstatsoft.org/v36/c01/paper/ involving ragged param arays for graded response model
 * subroutines
-  - user-defined functions in StanGM
-  - user-defined densities (how much to require?)
-  - interpreted conditionally based on block?
-
+    * user-defined functions in StanGM
+    * user-defined densities (how much to require?)
+    * interpreted conditionally based on block?
 * compound op-assigns in StanGM
-  +<-, *<-, etc.  (ugly, ugly, ugly syntax; cf., +=, *=, etc.)
-
+    *   +<-, *<-, etc.  (ugly, ugly, ugly syntax; cf., +=, *=, etc.)
 * warnings
-  - a <- foo(theta) if LHS contains variable: overwrite var
-  - a ~ foo(theta)  if LHS is complex expression: need Jacobian
-  - check each parameter shows up on LHS of ~ at least once
-
+    * a <- foo(theta) if LHS contains variable: overwrite var
+    * a ~ foo(theta)  if LHS is complex expression: need Jacobian
+    * check each parameter shows up on LHS of ~ at least once
 * power operations
-  - matrix power:    A^n
-  - matrix elementwise power:  A.^x
-  - regular old real power: x^y
-
+    * matrix power:    A^n
+    * matrix elementwise power:  A.^x
+    * regular old real power: x^y
 * allow normal_log(y|0,1) as synonym for normal_log(y,0,1)
-
-* Allow normal_log<true> and normal_log<false> to be accessed
-  directly
-
+* Allow normal_log<true> and normal_log<false> to be accessed directly(?)
 * add a parameter initialization block
-  - fill in values not given randomly or report error?
-  - needs randomization
-
-* new types
-  -- lower triangular matrix
-     ++ strict lower triangular matrix
-     ++ covariance matrix cholesky factor matrix
-  -- diagonal matrix
-  -- symmetric matrix
-     [need to treat like others and just test at end]
-  -- point on hypersphere
-     ++ like simplex, but 2-norm is 1, rather than 1-norm
-     ++ trickier for generating last point as the sign
-        remains underdetermined
-
+    * fill in values not given randomly or report error?
+* add randomization around initialization 
+* allow partial initialization
+* lower triangular matrix type
+    * strict lower triangular matrix
+    * covariance matrix cholesky factor matrix
+    * diagonal matrix
+    * symmetric matrix [need to treat like others and just test at end]
 * positive-definiteness-preserving operations
-  -- rescale strictly positive
-      
-
 * unit matrix function unit_matrix(K)
-  -- return var or just double?  
-  -- users shouldn't use this to assign to transformed param
-
+    * return var or just double?  
+    * users shouldn't use this to assign to transformed param
 * constants for integer max and min values
-
 * random generation
-  -- generated quantities block
-     ++ use sampling notation  y ~ normal(0,1);
-        to set y to normal_random(0,1) draw
-  -- transformed data block
-     ++ could also use sampling notation
-     ++ issue of whether to share across chains or not
-  -- transformed parameter block
-     ++ possible, but can't use sampling notation
-  -- need to push RNG through to whatever calls necessary
-  -- if we add to models, etc., should derivatives just
-     be the same as basic so that
-        y[n] <- random_normal(mu,sigma);
-     gets same grad as:
-        y[n] ~ normal(mu,sigma);
-   
+    * generated quantities block
+    * use sampling notation  y ~ normal(0,1); to set y to normal_random(0,1) draw
+    * transformed data block
+    * could also use sampling notation
+    * issue of whether to share across chains or not
+    * transformed parameter block, possible, but can't use sampling notation
+    * need to push RNG through to whatever calls necessary
+    * if we add to models, etc., should derivatives just be the same as basic so that
+    ```
+    y[n] <- random_normal(mu,sigma);
+    ```
+gets same grad as y[n] ~ normal(mu,sigma);
 * truncations need to be vectorized, too!
 
-
-
-Build
-======================================================================
-
+### Build
 * remove writes into Stan directory itself
-
 * set up make to work from directory other than STAN_HOME
-  - pass in arg?  environment var?
+    * pass in arg?  environment var?
 
-
-Testing
-======================================================================
-
-* agrad distribution tests misuse the autodif stack and may result in
-  unexpected behavior now. Need to fix.
-  
-* build unit tests from the BUGS models that just check
-  the gradients are right (this'll also cover parsing and
-  being able to fire up the models)
-
+### Testing
+* agrad distribution tests misuse the autodif stack and may result in unexpected behavior now. Need to fix.
+* build unit tests from the BUGS models that just check the gradients are right (this'll also cover parsing and being able to fire up the models)
 * auto testing of sampler
-  - Cook/Gelman/Rubin-style interval tests
-  - needs effective sample size calc to bound intervals
-  - needs simulated parameters to test estimators
-  - push ESS "measurement error" through the interval tests
-
+    * Cook/Gelman/Rubin-style interval tests
+    * needs effective sample size calc to bound intervals
+    * needs simulated parameters to test estimators
+    * push ESS "measurement error" through the interval tests
 * more matrix tests (for all ops w. gradients)
-
 * benchmarks
-  - agrad vs. RAD/Sacado, CppAD, ... ?
-  - stan vs. MCMCpack, R, BUGS, JAGS, OpenBUGS, ...
-
-* profile running models w. various operations
-
+    * agrad vs. RAD/Sacado, CppAD, ... ?
+    * stan vs. MCMCpack, R, BUGS, JAGS, OpenBUGS, ...
+    * profile running models w. various operations
 * complete math robustness and limits review
-  - want domain boundaries to be right (usually
-    -inf, 0 and inf, etc.)
-
-* more diagnostics during warmup of where epsilon is going
-
+    * want domain boundaries to be right (usually -inf, 0 and inf, etc.)
 * speed measurement
-  - to converge
-  - time per effective sample once converged
-  - time to 4 chains at 25 ESS/chain, rHat < 1.1 for all
-    parameters theta[k] and theta[k]*theta[k]
-  - discarding first half of samples too many if fast to converge
-
+    * to converge
+    * time per effective sample once converged
+    * time to 4 chains at 25 ESS/chain, rHat < 1.1 for all parameters theta[k] and theta[k]*theta[k]
+    * discarding first half of samples too many if fast to converge
 * Speed vs. JAGS
-  -- run JAGS compiled with g++ -O3
-  --  Look at models where Stan performs well
-      e.g.  logistic or linear regression w. Cauchy and Normal prior
-     - varying model shapes (step up exponentially)
-        + number of data items
-        + number of parameters
-        + correlation of parameters (multi-variate Cauchy or Normal)
-        + interaction of params (? need this with correlation ?)
-        + conjugate vs. non-conjugate priors
-           (well and misspecified -- more stats than speed issue)
-  -- Single threaded
-  -- Run 4 chains (each of same length) of each system (Stan and JAGS)
-      - diffuse initializations (hand generate for each)
-      - until convergence by split R-hat (all params under 1.05)
-      - total (across all chains) ESS is > 100 (and < 150 or something?)
-        (e.g., 25/25/25/25, or 15/35/20/30)
-      - report time in effective samples/second for min ESS parameter
-  -- Report multiple runs of each (10? 100?)
-      - histograms/densities or mean/sd of multiple runs
-      - how much will it vary by seed
-  -- Throw away first half of each run?
-      - to start, until split convergence/sample speeds
-  -- Ideally, measure:
-      - time to converge to equilibrium
-      - ESS rate at equilibrium
+    * run JAGS compiled with g++ -O3
+    * Look at models where Stan performs well; e.g.  logistic or linear regression w. Cauchy and Normal prior
+    * varying model shapes (step up exponentially)
+        * number of data items
+        * number of parameters
+        * correlation of parameters (multi-variate Cauchy or Normal)
+        * interaction of params (? need this with correlation ?)
+        * conjugate vs. non-conjugate priors (well and misspecified -- more stats than speed issue)
+    * Single threaded
+    * Run 4 chains (each of same length) of each system (Stan and JAGS)
+        * diffuse initializations (hand generate for each)
+        * until convergence by split R-hat (all params under 1.05)
+        * total (across all chains) ESS is > 100 (and < 150 or something?) (e.g., 25/25/25/25, or 15/35/20/30)
+        * report time in effective samples/second for min ESS parameter
+    * Report multiple runs of each (10? 100?)
+        * histograms/densities or mean/sd of multiple runs
+        * how much will it vary by seed
+    * Throw away first half of each run?
+        * to start, until split convergence/sample speeds
+    * Ideally, measure:
+        * time to converge to equilibrium
+        * ESS rate at equilibrium
 
-
-RStan / PStan / MStan / Command Line
-======================================================================
-
+### R, Python, MATLAB, Julia, etc. Interfaces
 * Doc optimization usage.  Here's Ben's example:
-
-----------------------------------------------------------------
+```
 # example from glm()
 utils::data(anorexia, package = "MASS")
 anorex.1 <- glm(Postwt ~ Prewt + Treat + Prewt,
                 family = gaussian, data = anorexia)
-
 # extract data
 X <- model.matrix(anorex.1)
 y <- anorexia$Postwt
-
 # write a usual stan model
-model_code <-
-"
-data {
+  data {
   int<lower=1> K;
   int<lower=K> N;
   matrix[N,K]  X;
@@ -836,8 +741,6 @@ parameters {
 model {
   y ~ normal(X * beta, sigma);
 }
-"
-
 # compile
 fit <- stan(model_code = model_code, chains = 0,
             data = list(K = ncol(X), N = nrow(X), X = X, y = y))
@@ -850,69 +753,39 @@ gr <- function(par) grad_log_prob(fit, par)
 opt <- optim(c(coef(anorex.1), log_sigma = 2), fn, gr,
              method = "BFGS", control = list(fnscale = -1), hessian = TRUE)
 print(opt)
-----------------------------------------------------------------
-
+```
 * (RStan) install checklist -- especially the no spaces thing!
-
-* (RStan) Run the examples rather than dontrun;  see Ben's e-mail
-  of 2013-03-02 (March 2) titled "[stan-dev] Re: final checklist for
-  1.2 release?" for instructions on caching
-
+* (RStan) Run the examples rather than dontrun;  see Ben's e-mail of 2013-03-02 (March 2) titled "[stan-dev] Re: final checklist for 1.2 release?" for instructions on caching
 * (PStan) Simple JSON-based I/O interface
-
 * (RStan) Add RStan doc to reference manual
-
-
 * (cmd) more RStan like behavior
-  -- add --chains=N argument to command-line to run multiple chains
-     and write into one or more files (already done in RStan)
-  -- new command to read .csv files into chains object and print out
-     summary (related to a single command)
-
+    * add --chains=N argument to command-line to run multiple chains and write into one or more files (already done in RStan)
+    * new command to read .csv files into chains object and print out summary (related to a single command)
 * (PStan) interface to Python
-
 * (MStan) interface to MATLAB
-
 * (R/cmd) Convergence monitoring of higher moments
-  -- at least squared for variance, which being non-linear
-     function, isn't same as convergence of basic param
-
-* (R/cmd) track rejection rate by testing equality of
-  samples; e.g., sum(a[1:(N-1)] == a[2:N])
-
+    * at least squared for variance, which being non-linear function, isn't same as convergence of basic param
+* (R/cmd) track rejection rate by testing equality of samples; e.g., sum(a[1:(N-1)] == a[2:N])
 * (R/cmd) restart from where command left off a la R2jags
-  - this will require writing dump output or a converter
-    for the CSV output to dump output
-  - easiest to save unconstrained params
-  - also need to save adaptation states, etc.
-  - need to save seed and type of randomizer
-
+    * this will require writing dump output or a converter for the CSV output to dump output
+    * easiest to save unconstrained params
+    * also need to save adaptation states, etc.
+    * need to save seed and type of randomizer
 * auto convergence monitoring -- just keep doubling (or other ratio)
-  - doubling reduces total calc to at most double the end
-  - easy to monitor averages and variances online using accumulators
-
+    * doubling reduces total calc to at most double the end
+    * easy to monitor averages and variances online using accumulators
 * (R/cmd) allow configuration of target reject rate in step-size adaptation
-
-* (cmd) write analyze command to read in output and do analysis 
-  a la print in RStan
-
+* (cmd) write analyze command to read in output and do analysis a la print in RStan
 * (R/cmd) write model text into output in a comment
-
 * (R) group dimensions of multivariate params on output plots
-
 * (R/cmd) have output digits depend on se?
+* (R/cmd) check initial vals and gradients for finiteness and return error message if not
 
-* (R/cmd) check initial vals and gradients for finiteness and
-  return error message if not
+### Web Pages
 
-
-Web Pages
-======================================================================
-
-Manuals
-======================================================================
-
+### Manuals
 * Explain how to do BUGS-like cut ops in Stan
+```
   data {
     int<lower=0> N;
     real y[N];
@@ -934,201 +807,107 @@ Manuals
     for (m in 1:M)
       y_cut[m] <- alpha + beta * x_cut[m] * beta;
   }
-
-  With our next release, you can replace the last line with
-  this:
-
-    y_cut[m] <- normal_rng(alpha + beta * x_cut[m], sigma);
-
+```
+With our next release, you can replace the last line with this:
+```
+y_cut[m] <- normal_rng(alpha + beta * x_cut[m], sigma);
+```
 * Talk about index order and read order for matrix[I,J] a[K];
-  -- in section on arrays in language reference
-  -- in section on I/O
-  -- example:
-     real x[I,J,K];
-     matrix[J,K] m[I];
-
+    * in section on arrays in language reference
+    * in section on I/O
+    * example:
+    ```
+    real x[I,J,K];
+    matrix[J,K] m[I];
     for (k in 1:K)
       for (j in 1:J)
         for (i in 1:I)
           x[i,j,k] = next...
-
-* Stan's default is to use uniform inits between [-2,2] 
-  on the unconstrained params.  For bounded params, that amounts
-  to a range of (inv_logit(-2), inv_logit(2)) = (.12,.88), which
-  is the central 80% interval.
-
-  For positive params, that amounts to sampling between
-  (exp(-2),exp(2)).
-
-  For unconstrained params, sampling is between (-2,2).
-
-  Plot these out because they're non-linear.
-
-* transforms a la Matt, at least for all the normal-based cases
-  we know of
-
+    ```
+* Stan's default is to use uniform inits between [-2,2] on the unconstrained params.  For bounded params, that amounts to a range of (inv_logit(-2), inv_logit(2)) = (.12,.88), which is the central 80% interval.  For positive params, that amounts to sampling between (exp(-2),exp(2)).
+* For unconstrained params, sampling is between (-2,2).
+* Plot these out because they're non-linear.
+* transforms a la Matt, at least for all the normal-based cases we know of
 * chapter on change of variables in the user guide
-
 * more explanation of overall output analysis
-  -- more on using generated quantities for posterior
-     + predictive simulation (waiting for RNGs)
-     + event probability calculations
-  -- exp(lp__) propto posterior
-  ?? do we do this in R or what?
-
-* mention that discrete output functions like floor()
-  lose gradient information
-
+    * more on using generated quantities for posterior
+    * predictive simulation (waiting for RNGs)
+    * event probability calculations
+    * exp(lp__) propto posterior
+do we do this in R or what?
+* mention that discrete output functions like floor() lose gradient information
 * copy FAQ into manual appendix (and onto web?)
-
-* mention that even if you aren't interested in all the parameters,
-  you do want to save them to monitor convergence and ESS
-
+* mention that even if you aren't interested in all the parameters, you do want to save them to monitor convergence and ESS
 * provide mathematical definitions of all the special functions
-
 * document version numbering: major.minor.patch
-  - patch: just bug fixes, no behavior change
-  - minor: some new functions, backward compatible
-  - major: big changes, breaking backward compatibility
-
+    * patch: just bug fixes, no behavior change
+    * minor: some new functions, backward compatible
+    * major: big changes, breaking backward compatibility
 * add prior to getting started examples in doc
-
-* use "draw" for a single parameter value and "sample" for
-  multiples, with "sample of size 1000" or "1000 draws".
-
+* use "draw" for a single parameter value and "sample" for multiples, with "sample of size 1000" or "1000 draws".
 * drop Lucida console font section (?) or link Bigelow and Holmes
-
 * break out sampler chapter in doc to describe multiple samplers
-
 * performance tips
-  - compute once and re-use if possible
-  - pull out constants from loops
-  - pull out terms from looped probabilities
-
+    * compute once and re-use if possible
+    * pull out constants from loops
+    * pull out terms from looped probabilities
 * add example calculating log likelihood for DIC
-  - how to specify likelihood terms in model?
-
+    * how to specify likelihood terms in model?
 * add example on individual log likelihoods for WAIC
-  - how to specify individual likelihood terms in model?
-
-   generated quantities {
-    for (i in 1:I) 
-      for (j in 1:J) 
-        ll_y[i,j] <- normal_log(y[i,j]...)
-
-
+    * how to specify individual likelihood terms in model?
+    ```
+    generated quantities {
+      for (i in 1:I) 
+        for (j in 1:J) 
+          ll_y[i,j] <- normal_log(y[i,j]...)
+    ```
 * Doc the generated C++ model class
-
 * Add an Index
-
 * Description of reverse-mode auto-dif or too C++-like?
 
 
-
-
-
-
-
-
-Release Management
-======================================================================
-
-* Jeffrey Arnold (8/13/12 message to list) about syntax highlighting.
-  ? how to integrate
-
-* Branch versions to make it easier to divide-and-conquer debugs
-  and to allow developers to work from latest stable version
-
+### Release Management
+* Jeffrey Arnold (8/13/12 message to list) about syntax highlighting. ? how to integrate
+* Branch versions to make it easier to divide-and-conquer debugs and to allow developers to work from latest stable version
 * appoint a commit manager
 
-
-Models
-======================================================================
-
+### Models
 * convergence diagnostics
-    verboseEvolve:
-      Evolve the current state by one half momentum step, one full
-      position step, and then one half momentum step, displaying H, and
-      ( \Delta H / epsilon^{2} ) at each update.  The idea is that if
-      the leapfrog is working properly then you should see the
-      cancellation of errors (some error in one direction, then lots of
-      error in the other direction, then error in the first direction
-      again to cancel the bulk of the difference).
-  checkIntError: 
-      Evolve the current state by a given number of iterations,
-      displaying H and ( \Delta H / epsilon^{2} ) at each update so
-      that you can see if the error is only slowly increasing or
-      straight up diverging for the given evolution parameters.
-  saveTrajectory:
-      Evolve the current state through a single trajectory, saving each
-      update to a file.  This way you can plot the entire trajectory and
-      check it visually for problems (helpful in diagnosing divergences,
-      bad step-sizes, etc).
-  plotSamples:
-      Save the proposed sample, proposed potential, and acceptance
-      probability in the chain, then display the visual diagnostics
-      we've discussed before, namely histograms of each marginal
-      distribution for samples with p(accept) < 0.1 and p(accept) > 0.9.
-      For NUTS you'd have to play around with this a bit -- Matt had
-      recommended looking at the average acceptance probability across
-      the entire chain, but I'm not sure which sample you'd plot in that
-      case.  You'd do just as well plotting each step along the
-      trajectory along with what its acceptance probability would be,
-      provided the storage of all those samples doesn't cause issues.
-
-* unit K-hyperball complement for stationary AR(K) parameters
-  - what should the prior be?
-
+    * verboseEvolve: Evolve the current state by one half momentum step, one full position step, and then one half momentum step, displaying H, and ( \Delta H / epsilon^{2} ) at each update.  The idea is that if the leapfrog is working properly then you should see the cancellation of errors (some error in one direction, then lots of error in the other direction, then error in the first direction again to cancel the bulk of the difference).
+    * checkIntError: Evolve the current state by a given number of iterations, displaying H and ( \Delta H / epsilon^{2} ) at each update so that you can see if the error is only slowly increasing or straight up diverging for the given evolution parameters.
+    * saveTrajectory: Evolve the current state through a single trajectory, saving each update to a file. This way you can plot the entire trajectory and check it visually for problems (helpful in diagnosing divergences, bad step-sizes, etc).
+    * plotSamples: Save the proposed sample, proposed potential, and acceptance probability in the chain, then display the visual diagnostics we've discussed before, namely histograms of each marginal distribution for samples with p(accept) < 0.1 and p(accept) > 0.9. For NUTS you'd have to play around with this a bit -- Matt had recommended looking at the average acceptance probability across the entire chain, but I'm not sure which sample you'd plot in that case.  You'd do just as well plotting each step along the trajectory along with what its acceptance probability would be, provided the storage of all those samples doesn't cause issues.
+* unit K-hyperball complement for stationary AR(K) parameters;  what should the prior be?
 * user model library
-  - something we don't have to get too involved vetting
-  - ideally things hard to do with other systems
-  - or illustrate the unusual parts of our modeling language
-
+    * something we don't have to get too involved vetting
+    * ideally things hard to do with other systems
+    * or illustrate the unusual parts of our modeling language
 * Online books with models based on BUGS:
-  http://stat-athens.aueb.gr/~jbn/winbugs_book/
-  http://137.227.242.23/pubanalysis/kerybook/
-
-* deal with autocorrelation model params where require
-  all roots of 1 - SUM_i rho[i]**i to be within unit
-  complex circle
-
+    * http://stat-athens.aueb.gr/~jbn/winbugs_book/
+    * http://137.227.242.23/pubanalysis/kerybook/
+* deal with autocorrelation model params where require all roots of 1 - SUM_i rho[i]**i to be within unit complex circle
 * show how to code undirected graphical models in Stan
-
-* BUGS Models
-  All of the vol1 -- vol3 models are implemented except
-  for the following, categorized by issue.
-
-  Sampler too slow
-  - vol2/schools/schools.stan.0
-  - vol3/fire/fire.stan.0
-
-  Sampler hangs
-  - vol3/funshapes/hsquare.stan.0
-  - vol3/funshapes/ring.stan.0
-  - vol3/funshapes/squaremc.stan.0
-
-  Zero Poisson, 0 ~ Poisson(0 * parameters) hangs the following:
-  Isn't this one fixed?
-  - vol1/leuk/leuk.stan.0
-  - vol1/leukfr/leukfr.stan.0
-
-  Cyclic DAGs
-  Can probably do these in Stan (not supported in JAGS).
-  - vol2/ice/pineapple_ice.stan.0
-  - vol2/ice/vanilla_ice.stan.0
-  - vol3/jama/jama.stan.0
-
-  Discrete parameters
-  - vol2/asia/asia.stan.0
-  - vol2/biopsies/biopsies.stan.0
-  - vol2/stagnant/stagnant.stan.0
-  - vol2/t_df/estdof2.stan.0
-
-  Binary parameters
-  Other versions of model working integrating out discretes.
-  - vol2/cervix/cervix.stan.0 
-  - vol2/hearts/hearts.stan.0
-
-  Works, but data structure difficult to deal with
-  - vol1/bones/bones.stan.0
-```
+* BUGS Models:  All of the vol1 -- vol3 models are implemented except for the following, categorized by issue.
+    * Sampler too slow
+        * vol2/schools/schools.stan.0
+        * vol3/fire/fire.stan.0
+    * Sampler hangs
+        * vol3/funshapes/hsquare.stan.0
+        * vol3/funshapes/ring.stan.0
+        * vol3/funshapes/squaremc.stan.0
+    * Zero Poisson, 0 ~ Poisson(0 * parameters) hangs the following:
+        * vol1/leuk/leuk.stan.0
+        * vol1/leukfr/leukfr.stan.0
+    * Cyclic DAGs;  Can probably do these in Stan (not supported in JAGS).
+        * vol2/ice/pineapple_ice.stan.0
+        * vol2/ice/vanilla_ice.stan.0
+        * vol3/jama/jama.stan.0
+    * Discrete parameters
+        * vol2/asia/asia.stan.0
+        * vol2/biopsies/biopsies.stan.0
+        * vol2/t_df/estdof2.stan.0
+    * Binary parameters;  Other versions of model working integrating out discretes.
+        * vol2/cervix/cervix.stan.0 
+        * vol2/hearts/hearts.stan.0
+    * Works, but data structure difficult to deal with
+        * vol1/bones/bones.stan.0
