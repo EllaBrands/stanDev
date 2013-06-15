@@ -1,195 +1,156 @@
+### To-Do List Organization
+
+* Next Release Priorities
+* Other High Priority Items
+* C++ API                       
+* Modeling Language             
+* Build                         
+* Testing                       
+* Command-Line                  
+* C++ API
+* RStan
+* Manual
+* Web Pages
+* Release Mgmt
+* Models 
+
+### For Next Release (1.3.0++)
+
+* (Bob/Marcus/Daniel) look at add(), etc. operations for instantiation
+    * already did multiply/divide in stan/math
+    * now need to worry about agrad / int, etc. to make sure there's no auto promotion to agrad
+    * look at add/subtract where there's broadcast function
+    * need tests for int in all the relevant positions
+
+* (everyone) remove std::cout from API
+
+* (Daniel) fix bin/print spacing
+
+* go through include-what-you-use output from Ben to mailing list (early May)
+
+* sort out why log_prob_poly<>() isn't working for Metropolis with double
+
+* redundant model_header.hpp includes --- why not just include matrix.hpp?
+
+* int vs. size_t and error handling in indexing;  with size_t, get cast of negative int to large positive size_t, which will confuse users in error msgs
+
+* Figure out how to return error messages safely
+e.g., math/matrix/validate_std_vector_index.hpp
 ```
-STAN TO-DO LIST
-======================================================================
-
-FOR NEXT RELEASE (1.3.0++)
--------------------------------------------
-
-- (Bob/Marcus/Daniel) look at add(), etc. operations for instantiation
-     -- already did multiply/divide in stan/math
-     -- now need to worry about agrad / int, etc. to make sure
-        there's no auto promotion to agrad
-     -- look at add/subtract where there's broadcast function
-     -- need tests for int in all the relevant positions
-
-- (everyone) remove std::cout from API
-
-- (Daniel) fix bin/print spacing
-
-- go through include-what-you-use output from Ben to
-  mailing list (early May)
-
-- sort out why log_prob_poly<>() isn't working for Metropolis with double
-
-- redundant model_header.hpp includes --- why not just include matrix.hpp?
-
-- int vs. size_t and error handling in indexing;  with size_t,
-  get cast of negative int to large positive size_t, which will
-  confuse users in error msgs
-
-- Figure out how to return error messages safely
-  - e.g., math/matrix/validate_std_vector_index.hpp
-
       std::stringstream ss;
       ss << "require 0 < index <= vector size" << msg;
       ss << "; found vector size=" << m.cols()
          << "; index j=" << j;
       throw std::domain_error(ss.str());
+```
+cf., [runtime-error copy string? (Stack Overflow)](http://stackoverflow.com/questions/10644910/does-stdruntime-error-copy-the-string-passed-in-the-constructor)
 
-      cf., http://stackoverflow.com/questions/10644910/does-stdruntime-error-copy-the-string-passed-in-the-constructor
+* (Daniel) fix order of include issues for model header, etc.  in new refactor (see Jiqiang's e-mail 4/19/13, 9:20 PM to stan-dev, and rest of that thread)
 
-- (Daniel) fix order of include issues for model header, etc.
-  in new refactor (see Jiqiang's e-mail 4/19/13, 9:20 PM to stan-dev,
-  and rest of that thread)
+* fix error message in Stan when an error is encountered during initialization --- currently says "about to be Metropolis rejected";  at very least, change the message to qualify when rejection happens
 
-- fix error message in Stan when an error is encountered
-  during initialization --- currently says "about to be
-  Metropolis rejected";  at very least, change the message
-  to qualify when rejection happens
+* fix remaining template functions in stan/math to ensure they match int better than var matches int
 
-- fix remaining template functions in stan/math to ensure
-  they match int better than var matches int
+* remove warning message on transform OR declare a set of function names to ignore
 
-- remove warning message on transform OR declare a set of
-  function names to ignore
+### High Priority, Non-Urgent Items
+
+* Get in more contributed code, such as R regression syntax compiler and DIC and ...
 
 
-Soon: 
----------------------------------------------------------------------------
 
-* Get in more contributed code, such as R regression syntax
-  compiler and DIC and ...
+### Priorities
 
-* Fix Errors coming from Boost Spirit Qi parser under clang++ 3.3:
-  -- Multiple unsequenced warnings from assigning to _pass in grammars under clang 3.3
-     [see: Bob's e-mail of 5/31/13]
-  -- Local return on iterators, for which Jeffrey Oldham filed a Boost bug report:
-     https://svn.boost.org/trac/boost/ticket/8489
+#### Contributed Code
+* R compiler for regression syntax
+* DIC, WAIC
 
-
-The to-do list is organized into the following sections:
-
-* next release to-do and change list
-
-* C++ API                       * RStan
-* Modeling Language             * Manual
-* Build                         * Web Pages
-* Testing                       * Release Mgmt
-* Command-Line                  * Models 
-* C++ API
-
-
-PRIORITIES?
-======================================================================
-+ (name): actively assigned
-* (name): likely to be assigned to
-
-Contributed Code
--------------------------------------------
-+ R compiler
-+ emacs modes, etc.
-
-Efficiency/Scalability of Code and Sampling
--------------------------------------------
-+ (Daniel) replace tests with doubles
-+ (Daniel) full multivariate probability function tests
-+ (Daniel) vectorized derivatives for prob functions
-+ (Marcus, Bob, Daniel) vectorization of multivariate prob functions
-+ (Michael) replace std::vector with Eigen constructs in models
+#### Efficiency/Scalability
+* (Daniel) replace tests with doubles
+* (Daniel) full multivariate probability function tests
+* (Daniel) vectorized derivatives for prob functions
+* (Marcus, Bob, Daniel) vectorization of multivariate prob functions
 * special function vectorization
 * multi-threading
-* (Peter, Bob) ensemble samplers: DREAM, differential evolution, 
-  stretch/walk
-* (Peter, Bob, Michael) higher-order auto-diff and RM-HMC
+* (Peter, Bob, Michael) ensemble samplers: 
+    * differential evolution, DREAM and differential evolution, 
+    * Ensemble walk, stretch moves
+* (Peter, Bob, Michael) higher-order auto-diff
+* (Michael) RM-HMC, SoftAbs
 
-Modeling Language
------------------
-+ (Bob) new types: lower triangular (+/- strict), diagonal matrix,
-  symmetric matrix, Cholesky factor of pos-def matrix
-+ (Bob) discrete sampling
-+ (Michael B/Daniel) complementary CDF and log CDF, log CCDF,
-  plus gamma distribution CDF
+#### Modeling Language
+* (Bob) new types: lower triangular (+/- strict), diagonal matrix, symmetric matrix, Cholesky factor of pos-def matrix
+* (Bob) discrete sampling
+* (Peter) complementary CDF and log CDF, log CCDF, plus gamma distribution CDF
 * ragged arrays
 * sparse vectors, matrices, arrays
 * matrix literal-like expressions a la MATLAB
 * subroutines in modeling language
 * initialization block in model w. randomization
-* (Bob) user-specified language extensions (plug in facility to declare,
-  compile, link)
+* (Bob) user-specified language extensions (plug in facility to declare, compile, link)
 * implicit functions with derivatives (for diff eqs?) 
 * user-callable transforms with Jacobian lp__ adjustment
 * unconstrained parameterizations of prob functions
-* (Bob) syntactic improvements in language (e.g., multiple declares,
-  compound declare and assign)
+* (Bob) syntactic improvements in language (e.g., multiple declares, compound declare and assign)
 
-Command and Interfaces
-----------------------
-* Python, MATLAB, Julia, Stata, ??? interfaces
-* (Michael, Daniel) convergence diagnostics
-* I/O from CSV files
-* (contributed OK?) compiler for R's linear model notation
+#### Command and Interfaces
+* Python
+* MATLAB
+* Julia
+* Stata
 
-Cleanup
------------
+#### Cleanup
 * improve special function and prob function behavior at limits
 * (Daniel) simplify error handling by standardizing default policy
-  - remove throw from all files except for 
-    src/stan/math/error_handling/raise_domain_error.hpp
-  - Need unit-tests for error handling:
-    + check_nonnegative
-    + check_positive
-    + matrix/check_corr_matrix
-    + matrix/check_ordered
-    + matrix/check_pos_definite
-  - Move src/stan/math/matrix/check_range.hpp to 
-    src/stan/math/error_handling/matrix/
-  - Change error handling in:
-    + prob/distributions/multivariate/continuous/wishart.hpp
+    * remove throw from all files except for src/stan/math/error_handling/raise_domain_error.hpp
+    * Need unit-tests for error handling:
+    * check_nonnegative
+    * check_positive
+    * matrix/check_corr_matrix
+    * matrix/check_ordered
+    * matrix/check_pos_definite
+* Move src/stan/math/matrix/check_range.hpp to src/stan/math/error_handling/matrix/
+* Update error handling in prob/distributions/multivariate/continuous/wishart.hpp
+* Fix Errors coming from Boost Spirit Qi parser under clang++ 3.3:
+    * Multiple unsequenced warnings from assigning to _pass in grammars under clang 3.3  [see: Bob's e-mail of 5/31/13]
+    * Local return on iterators, for which Jeffrey Oldham filed a [Boost bug report:](https://svn.boost.org/trac/boost/ticket/8489)
 
-Doc
----
+
+#### Documentation
 * intro applied Bayes book with RStan
 * (Bob) C++ manual for API and auto-dif
-* C++ code cleanup (API doc, privates, consts, doc, split files, 
-  long long)
-* more example models, complete/improve BUGS models, 
-  vectorize BUGS models.
-* fancier web site graphics
+* C++ code cleanup (API doc, privates, consts, doc, split files, long long)
+* more example models, complete/improve BUGS models, vectorize BUGS models.
+* more general and dynamic web site graphics
 
-
-C++ API
-======================================================================
-[items go here first, then to RStan/cmd]
-
-* B splines (not sure which version) --- on Andrew's request
-
-* For optimization, take curvature at mode to estimate a normal
-  approximation and draw samples from it
-
-* fix log1m bug --- see Sebastian Weber's e-mail 5/10/13 4:55 AM
-  : isolated issue to ctor(var) throwing exception; so
-  fix remaining places where vari ctors may throw, like lgamma
-    /functions/inverse_softmax.hpp:#include <boost/throw_exception.hpp>
-    /functions/inverse_softmax.hpp:     * @throw std::invalid_argument if size of the input and output vectors differ.
-    /functions/lgamma.hpp:    // throws domain_error if x is at pole
-    /functions/log1p.hpp:#include <boost/throw_exception.hpp>
-    /functions/log1p.hpp:        throw std::runtime_error("foo");
-    /functions/softmax.hpp:#include <boost/throw_exception.hpp>
-    /functions/softmax.hpp:     * @throw std::invalid_argument if size of the input and output vectors differ.
+### C++ API
+* B splines (not sure which version)
+* For optimization, take curvature at mode to estimate a normal approximation and draw samples from it
+* Remove exceptions in ctors for special function vari (no longer a bug)
+    * /functions/inverse_softmax.hpp: #include <boost/throw_exception.hpp>
+    * /functions/inverse_softmax.hpp throws std::invalid_argument if size of the input and output vectors differ.
+    * /functions/lgamma.hpp throws domain_error if x is at pole
+    * /functions/log1p.hpp includes <boost/throw_exception.hpp>
+    * /functions/log1p.hpp throws std::runtime_error("foo");
+    * /functions/softmax.hpp includes <boost/throw_exception.hpp>
+    * /functions/softmax.hpp throws std::invalid_argument if size of the input and output vectors differ.
  
 * log_minus_exp(x,y)
-      = log(exp(x) * (exp(x)/exp(x) - exp(y)/exp(x)))
-      = log(exp(x)) + log(1 - exp(y)/exp(x))
-      = x + log(1 - exp(y - x))
-      = x + log1m(exp(y-x)) 
-  or, following http://snipplr.com/view/12707/,
+= log(exp(x) * (exp(x)/exp(x) - exp(y)/exp(x)))
+= log(exp(x)) + log(1 - exp(y)/exp(x))
+= x + log(1 - exp(y - x))
+= x + log1m(exp(y-x)) 
+or, following http://snipplr.com/view/12707/,
+```
     double diff = x - y;
     diff /= 2.0;
     return (x + y) / 2.0 + log(exp(diff) - exp(-diff)); 
- definitely check x >> y and return x (do this in log_sum_exp, too?)
- see: http://cran.r-project.org/web/packages/Rmpfr/vignettes/log1mexp-note.pdf
+```
+check x >> y and return x (do this in log_sum_exp, too?)
+see: http://cran.r-project.org/web/packages/Rmpfr/vignettes/log1mexp-note.pdf
       for log(1-exp(x))
 
+```
 * Chebyshev polynomials of the first kind
   -- with some kind of regression application example
   -- Boost has very parameterized Chebyshev polynomials, so figure
