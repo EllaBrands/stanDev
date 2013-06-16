@@ -896,9 +896,6 @@ do we do this in R or what?
         * vol3/pigs: http://www.openbugs.info/Examples/Pigweights.html
         * vol3/pines: http://www.openbugs.info/Examples/Pines.html
         * vol3/st_veit: http://www.openbugs.info/Examples/StVeit.html [crazy constraints]
-    * Sampler hangs
-        * vol3/funshapes/ring.stan.0
-        * vol3/funshapes/squaremc.stan.0
     * Zero Poisson, 0 ~ Poisson(0 * parameters) hangs the following:
         * vol1/leuk/leuk.stan.0
         * vol1/leukfr/leukfr.stan.0
