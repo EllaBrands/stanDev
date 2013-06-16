@@ -887,11 +887,16 @@ do we do this in R or what?
 * deal with autocorrelation model params where require all roots of 1 - SUM_i rho[i]**i to be within unit complex circle
 * show how to code undirected graphical models in Stan
 * BUGS Models:  All of the vol1 -- vol3 models are implemented except for the following, categorized by issue.
-    * Sampler too slow
-        * vol2/schools/schools.stan.0
-        * vol3/fire/fire.stan.0
+    * Missing
+        * vol3/eyes: http://www.openbugs.info/Examples/Eye-tracking.html
+        * vol3/hips1: http://www.openbugs.info/Examples/Hips1.html [skip --- not stochastic]
+        * vol3/hips2: http://www.openbugs.info/Examples/Hips2.html
+        * vol3/hips3: http://www.openbugs.info/Examples/Hips3.html
+        * vol3/hips4: http://www.openbugs.info/Examples/Hips4.html
+        * vol3/pigs: http://www.openbugs.info/Examples/Pigweights.html
+        * vol3/pines: http://www.openbugs.info/Examples/Pines.html
+        * vol3/st_veit: http://www.openbugs.info/Examples/StVeit.html [crazy constraints]
     * Sampler hangs
-        * vol3/funshapes/hsquare.stan.0
         * vol3/funshapes/ring.stan.0
         * vol3/funshapes/squaremc.stan.0
     * Zero Poisson, 0 ~ Poisson(0 * parameters) hangs the following:
