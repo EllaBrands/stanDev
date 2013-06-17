@@ -887,7 +887,7 @@ do we do this in R or what?
 * deal with autocorrelation model params where require all roots of 1 - SUM_i rho[i]**i to be within unit complex circle
 * show how to code undirected graphical models in Stan
 * BUGS Models:  All of the vol1 -- vol3 models are implemented except for the following, categorized by issue.
-    * Missing
+    * Missing Volume 3 models
         * vol3/eyes: http://www.openbugs.info/Examples/Eye-tracking.html
         * vol3/hips1: http://www.openbugs.info/Examples/Hips1.html [skip --- not stochastic]
         * vol3/hips2: http://www.openbugs.info/Examples/Hips2.html
@@ -896,9 +896,6 @@ do we do this in R or what?
         * vol3/pigs: http://www.openbugs.info/Examples/Pigweights.html
         * vol3/pines: http://www.openbugs.info/Examples/Pines.html
         * vol3/st_veit: http://www.openbugs.info/Examples/StVeit.html [crazy constraints]
-    * Zero Poisson, 0 ~ Poisson(0 * parameters) hangs the following:
-        * vol1/leuk/leuk.stan.0
-        * vol1/leukfr/leukfr.stan.0
     * Cyclic DAGs;  Can probably do these in Stan (not supported in JAGS).
         * vol2/ice/pineapple_ice.stan.0
         * vol2/ice/vanilla_ice.stan.0
@@ -907,8 +904,3 @@ do we do this in R or what?
         * vol2/asia/asia.stan.0
         * vol2/biopsies/biopsies.stan.0
         * vol2/t_df/estdof2.stan.0
-    * Binary parameters;  Other versions of model working integrating out discretes.
-        * vol2/cervix/cervix.stan.0 
-        * vol2/hearts/hearts.stan.0
-    * Works, but data structure difficult to deal with
-        * vol1/bones/bones.stan.0
