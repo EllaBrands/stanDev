@@ -902,5 +902,8 @@ do we do this in R or what?
         * vol3/jama/jama.stan.0
     * Discrete parameters
         * vol2/asia/asia.stan.0
+* BUGS models: these need to be reimplemented:
+    * vol2/alli/alli2.stan: generated quantities are not lining up.
+ 
         * vol2/biopsies/biopsies.stan.0
         * vol2/t_df/estdof2.stan.0
