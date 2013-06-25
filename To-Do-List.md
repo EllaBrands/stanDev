@@ -1,20 +1,20 @@
 ### To-Do List Organization
 * Short-Term
-    * Next Release
+    * [Next Release](#next-release)
     * Soon
 * Longer-Term Items
-    * C++ API                       
-    * Modeling Language             
-    * Build                         
-    * Testing                       
-    * Command-Line                  
-    * RStan
-    * Manual
-    * Web Pages
-    * Release Management
-    * Models and other Examples
+    * [C++ API](#c++-api)
+    * [Modeling Language](#modeling-language)
+    * [Build](#build)                         
+    * [Testing](#testing)
+    * [Command-Line](#command-line)
+    * [RStan](#rstan)
+    * [Manual](#manual)
+    * [Web Pages](#web-pages)
+    * [Release Management](#release-management)
+    * [Models and other Examples](#models)
 
-### For Next Release (1.3.0++)
+### For Next Release (1.3.0++) <a id="next-release"></a>
 * (Bob/Marcus/Daniel) look at add(), etc. operations for instantiation
     * already did multiply/divide in stan/math
     * now need to worry about agrad / int, etc. to make sure there's no auto promotion to agrad
@@ -60,7 +60,7 @@ cf., [runtime-error copy string? (Stack Overflow)](http://stackoverflow.com/ques
 * (Peter, Bob, Michael) higher-order auto-diff
 * (Michael) RM-HMC, SoftAbs
 
-#### Modeling Language
+#### Modeling Language <a id="modeling-language"></a>
 * (Bob) break and continue control operations
 * (Bob) new types: lower triangular (+/- strict), diagonal matrix, symmetric matrix, Cholesky factor of pos-def matrix
 * (Bob) discrete sampling
@@ -105,7 +105,7 @@ cf., [runtime-error copy string? (Stack Overflow)](http://stackoverflow.com/ques
 * more example models, complete/improve BUGS models, vectorize BUGS models.
 * more general and dynamic web site graphics
 
-### C++ API
+### C++ API <a id="c++-api"></a>
 * B splines (not sure which version)
 * For optimization, take curvature at mode to estimate a normal approximation and draw samples from it
 * Remove exceptions in ctors for special function vari (no longer a bug)
@@ -487,7 +487,7 @@ int signum(real);
     * just a mode on command to print more out per sample?
     * ideally link runtime errors back to lines of Stan code
 
-### Models
+### Models <a id="models"></a>
 * debug BUGS vol 1 kidney model --- sometimes hangs
 
 ### Modeling
@@ -668,12 +668,14 @@ But it brings up type inference issues, because a(1,2,3) is int[3], not real[3].
 gets same grad as y[n] ~ normal(mu,sigma);
 * truncations need to be vectorized, too!
 
-### Build
+### Build <a id="build"></a>
 * remove writes into Stan directory itself
 * set up make to work from directory other than STAN_HOME
     * pass in arg?  environment var?
 
-### Testing
+### Command Line <a id="command-line"></a>
+
+### Testing <a id="testing"></a>
 * agrad distribution tests misuse the autodif stack and may result in unexpected behavior now. Need to fix.
 * build unit tests from the BUGS models that just check the gradients are right (this'll also cover parsing and being able to fire up the models)
 * auto testing of sampler
@@ -717,7 +719,7 @@ gets same grad as y[n] ~ normal(mu,sigma);
         * time to converge to equilibrium
         * ESS rate at equilibrium
 
-### R, Python, MATLAB, Julia, etc. Interfaces
+### R, Python, MATLAB, Julia, etc. Interfaces <a id="rstan"></a>
 * Doc optimization usage.  Here's Ben's example:
 ```
 # example from glm()
@@ -781,9 +783,9 @@ print(opt)
 * (R/cmd) have output digits depend on se?
 * (R/cmd) check initial vals and gradients for finiteness and return error message if not
 
-### Web Pages
+### Web Pages <a id="web-pages"></a>
 
-### Manuals
+### Manuals<a id="manual"></a>
 * Explain how to do BUGS-like cut ops in Stan
 ```
   data {
@@ -866,12 +868,12 @@ do we do this in R or what?
 * Description of reverse-mode auto-dif or too C++-like?
 
 
-### Release Management
+### Release Management <a id="release-management"></a>
 * Jeffrey Arnold (8/13/12 message to list) about syntax highlighting. ? how to integrate
 * Branch versions to make it easier to divide-and-conquer debugs and to allow developers to work from latest stable version
 * appoint a commit manager
 
-### Models
+### Models <a id="models"></a>
 * convergence diagnostics
     * verboseEvolve: Evolve the current state by one half momentum step, one full position step, and then one half momentum step, displaying H, and ( \Delta H / epsilon^{2} ) at each update.  The idea is that if the leapfrog is working properly then you should see the cancellation of errors (some error in one direction, then lots of error in the other direction, then error in the first direction again to cancel the bulk of the difference).
     * checkIntError: Evolve the current state by a given number of iterations, displaying H and ( \Delta H / epsilon^{2} ) at each update so that you can see if the error is only slowly increasing or straight up diverging for the given evolution parameters.
