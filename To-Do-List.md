@@ -673,7 +673,7 @@ gets same grad as y[n] ~ normal(mu,sigma);
 * set up make to work from directory other than STAN_HOME
     * pass in arg?  environment var?
 
-### Command Line <a id="command-line"></a>
+### Command-Line <a id="command-line"></a>
 
 ### Testing <a id="testing"></a>
 * agrad distribution tests misuse the autodif stack and may result in unexpected behavior now. Need to fix.
