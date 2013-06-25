@@ -61,6 +61,7 @@ cf., [runtime-error copy string? (Stack Overflow)](http://stackoverflow.com/ques
 * (Michael) RM-HMC, SoftAbs
 
 #### Modeling Language
+* (Bob) break and continue control operations
 * (Bob) new types: lower triangular (+/- strict), diagonal matrix, symmetric matrix, Cholesky factor of pos-def matrix
 * (Bob) discrete sampling
 * (Peter) complementary CDF and log CDF, log CCDF, plus gamma distribution CDF
