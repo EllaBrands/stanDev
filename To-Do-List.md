@@ -64,6 +64,10 @@ cf., [runtime-error copy string? (Stack Overflow)](http://stackoverflow.com/ques
 * 
 
 #### Modeling Language <a id="modeling-language"></a>
+* (Bob) replace explicit use of lp__ with an increment_log_prob() function
+    * keep a special accumulator vari or just accumulate the var and use sum()
+    * doc and models to change
+    * figure out how to just deprecate lp__
 * (Bob) add exceptional returns with print like print() statements
     * how to interact with sampling, etc. --- is it domain error or what?
     * [from https://github.com/stan-dev/stan/issues/111]
