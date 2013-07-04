@@ -52,6 +52,7 @@ cf., [runtime-error copy string? (Stack Overflow)](http://stackoverflow.com/ques
 * (Daniel) full multivariate probability function tests
 * (Daniel) vectorized derivatives for prob functions
 * (Marcus, Bob, Daniel) vectorization of multivariate prob functions
+* (Bob, Daniel) vectorizing univariate prob functions to matrices
 * special function vectorization
 * multi-threading
 * (Peter, Bob, Michael) ensemble samplers: 
@@ -59,6 +60,7 @@ cf., [runtime-error copy string? (Stack Overflow)](http://stackoverflow.com/ques
     * Ensemble walk, stretch moves
 * (Peter, Bob, Michael) higher-order auto-diff
 * (Michael) RM-HMC, SoftAbs
+* 
 
 #### Modeling Language <a id="modeling-language"></a>
 * (Bob) break and continue control operations
