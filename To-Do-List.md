@@ -53,6 +53,7 @@ cf., [runtime-error copy string? (Stack Overflow)](http://stackoverflow.com/ques
 * (Daniel) vectorized derivatives for prob functions
 * (Marcus, Bob, Daniel) vectorization of multivariate prob functions
 * (Bob, Daniel) vectorizing univariate prob functions to matrices
+    * all arrays/matrices, etc. above base type are of same dimension
 * special function vectorization
 * multi-threading
 * (Peter, Bob, Michael) ensemble samplers: 
