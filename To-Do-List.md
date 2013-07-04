@@ -881,7 +881,7 @@ do we do this in R or what?
           ll_y[i,j] <- normal_log(y[i,j]...)
     ```
 * Doc the generated C++ model class
-* Add an Index
+* Add a separate subject index to manual
 * Description of reverse-mode auto-dif or too C++-like?
 
 
