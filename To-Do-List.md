@@ -147,6 +147,7 @@ see: http://cran.r-project.org/web/packages/Rmpfr/vignettes/log1mexp-note.pdf
     * Boost has very parameterized Chebyshev polynomials, so figure out which ones in which parameterizations we need
     * lm(a ~ poly(x,n)...) 
     * see 9 May 2013 post to stan-dev from dlakelan
+    * also: https://github.com/stan-dev/stan/issues/37
 * matrix normal distribution
     * see: http://en.wikipedia.org/wiki/Matrix_normal_distribution
     * useful for GeoBUGS type models
