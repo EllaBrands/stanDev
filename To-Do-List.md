@@ -64,6 +64,12 @@ cf., [runtime-error copy string? (Stack Overflow)](http://stackoverflow.com/ques
 * 
 
 #### Modeling Language <a id="modeling-language"></a>
+* (Bob) mixing local (and other?) variables into statements instead of requiring them to be at the top of blocks [from https://github.com/stan-dev/stan/issues/5]
+* (Bob) unsized variable declaration that can then be read in
+    * this has also been requested for data so as not to have to specify its size in the data file
+    * could later assign to a local, or if it's an array, even allow push_back(), etc.
+    * this could mess with output if parameters or transformed parameters or generated quantities changed sizes, so probably limit to data and transformed data and locals
+    * [from https://github.com/stan-dev/stan/issues/5]
 * (Bob) break and continue control operations
 * (Bob) new types: lower triangular (+/- strict), diagonal matrix, symmetric matrix, Cholesky factor of pos-def matrix
 * (Bob) discrete sampling
