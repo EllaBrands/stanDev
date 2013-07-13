@@ -72,7 +72,9 @@ public:
 
 ## Utility functions
 
-Replace the eliminated base class functions and some of the generated functions by static model utility functions: 
+Replace the eliminated base class functions and some of the generated functions by static model utility functions.
+
+#### Gradient: Log probability and gradient
 
 ```
 template <class M, bool propto, bool jacobian_adjust_transform>
@@ -81,7 +83,11 @@ log_prob_gradient(const M& model,
                   vector<double>& params_r, vector<int>& params_i,
                   vector<double>& gradient,
                   ostream* msgs = 0);
+```
 
+#### Hessians: Log probability, gradient, and Hessian
+
+```
 template <class M, bool propto, bool jacobian_adjust_transform>
 double 
 log_prob_hessian(const M& model,
@@ -89,13 +95,4 @@ log_prob_hessian(const M& model,
                  vector<double>& gradient,
                  vector<double>& hessian,
                  ostream* msgs = 0);
-```
-
-or, if we want templates with defaults, functor-like class wrappers:
-
-```
-template <class M, bool propto=true, bool jacobian_adjust_transform=true>
-struct log_prob_hessian {
-  static double log_prob_hessian(...);
-};
 ```
