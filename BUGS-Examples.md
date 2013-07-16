@@ -7,10 +7,10 @@ The BUGS examples are ordered by...
 * Model Type
 
 
-### Volume
+## Volume
 
-# Volume 1
+### Volume 1
 
-# Volume 2
+### Volume 2
 
-# Volume 3
+### Volume 3
