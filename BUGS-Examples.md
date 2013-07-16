@@ -50,7 +50,7 @@ The BUGS examples are ordered by...
   * [BUGS Background](http://www.openbugs.info/Examples/Leukfr.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/leukfr)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/leukfr/leukfr.stan)
-* Lsat
+* LSAT
   * [BUGS Background](http://www.openbugs.info/Examples/Lsat.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/lsat)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/lsat/lsat.stan)
