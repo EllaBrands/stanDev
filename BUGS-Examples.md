@@ -92,5 +92,44 @@ The BUGS examples are ordered by...
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/surgical/surgical.stan)
 
 ### Volume 2
+* Air
+  * [BUGS Background](http://www.openbugs.info/Examples/Air.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/air)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/air/air.stan)
+* Alli
+  * [BUGS Background](http://www.openbugs.info/Examples/Alli.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/alli)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/alli/alli.stan)
+* Asia
+  * [BUGS Background](http://www.openbugs.info/Examples/Asia.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/asia)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/asia/asia.stan)
+* Beetles
+  * [BUGS Background](http://www.openbugs.info/Examples/Beetles.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/beetles)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/beetles/beetles.stan)
+* Biopsies
+  * [BUGS Background](http://www.openbugs.info/Examples/Biopsies.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/biopsies)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/biopsies/biopsies.stan)
+* Birats
+  * [BUGS Background](http://www.openbugs.info/Examples/Birats.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/birats)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/birats/birats.stan)
+
+
+
+Cervix
+Dugongs
+Endo
+Eyes
+Hearts
+Ice
+Jaws
+MVN_Orange
+Orange
+Schools
+Stagnant
+t_df
 
 ### Volume 3
