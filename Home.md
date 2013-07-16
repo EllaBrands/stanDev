@@ -13,3 +13,9 @@ The Git and code review process used for developers and some useful tools:
 If you want to contribute a new function to Stan:
 
 * [How to Contribute a New Function to Stan](https://github.com/stan-dev/stan/wiki/Contributing-New-Functions-to-Stan)
+
+Example Models in Stan
+
+* [BUGS Examples](https://github.com/stan-dev/stan/wiki/BUGS-Examples)
+
+* [ARM Models](https://github.com/stan-dev/stan/wiki/ARM-Models)
