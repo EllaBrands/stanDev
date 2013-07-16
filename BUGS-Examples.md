@@ -18,11 +18,28 @@ The BUGS examples are ordered by...
   * [BUGS Background](http://www.openbugs.info/Examples/Bones.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/bones)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/bones/bones.stan)
-Bones
-Dogs
-Dyes
-Epil
-Equiv
+* Dogs 
+  * [BUGS Background](http://www.openbugs.info/Examples/Dogs.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/dogs)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/dogs/dogs.stan)
+* Dyes 
+  * [BUGS Background](http://www.openbugs.info/Examples/Dyes.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/dyes)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/dyes/dyes.stan)
+* Epilepsy
+  * [BUGS Background](http://www.openbugs.info/Examples/Epil.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/epil)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/epil/epil.stan)
+* Equiv
+  * [BUGS Background](http://www.openbugs.info/Examples/Equiv.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/equiv)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/equiv/equiv.stan)
+* Inhalers
+  * [BUGS Background](http://www.openbugs.info/Examples/Inhalers.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/inhalers)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/inhalers/inhalers.stan)
+
+
 Inhalers
 Kidney
 Luek
