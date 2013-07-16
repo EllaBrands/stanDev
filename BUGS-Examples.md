@@ -1,0 +1,1 @@
+Links to BUGS examples will be provided soon.
