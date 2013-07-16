@@ -5,3 +5,12 @@ The BUGS examples are ordered by...
 * Name
 
 * Model Type
+
+
+### Volume
+
+# Volume 1
+
+# Volume 2
+
+# Volume 3
