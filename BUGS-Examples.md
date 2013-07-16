@@ -116,20 +116,53 @@ The BUGS examples are ordered by...
   * [BUGS Background](http://www.openbugs.info/Examples/Birats.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/birats)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/birats/birats.stan)
-
-
-
-Cervix
-Dugongs
-Endo
-Eyes
-Hearts
-Ice
-Jaws
-MVN_Orange
-Orange
-Schools
-Stagnant
-t_df
+* Cervix
+  * [BUGS Background](http://www.openbugs.info/Examples/Cervix.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/cervix)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/cervix/cervix.stan)
+* Dugongs
+  * [BUGS Background](http://www.openbugs.info/Examples/Dugongs.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/dugongs)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/dugongs/dugongs.stan)
+* Endo
+  * [BUGS Background](http://www.openbugs.info/Examples/Endo.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/endo)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/endo/endo.stan)
+* Eyes
+  * [BUGS Background](http://www.openbugs.info/Examples/Eyes.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/eyes)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/eyes/eyes.stan)
+* Hearts
+  * [BUGS Background](http://www.openbugs.info/Examples/Hearts.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/hearts)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/hearts/hearts.stan)
+* Ice
+  * [BUGS Background](http://www.openbugs.info/Examples/Ice.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/ice)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/ice/ice.stan)
+* Jaws
+  * [BUGS Background](http://www.openbugs.info/Examples/Jaws.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/jaws)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/jaws/jaws.stan)
+* Multivariate Normal Orange Trees
+  * [BUGS Background](http://www.openbugs.info/Examples/OtreesMVN.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/mvn_orange)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/mvn_orange/mvn_orange.stan)
+* Orange Trees
+  * [BUGS Background](http://www.openbugs.info/Examples/Otrees.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/orange)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/orange/orange.stan)
+* Schools
+  * [BUGS Background](http://www.openbugs.info/Examples/Schools.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/schools)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/schools/schools.stan)
+* Stagnant
+  * [BUGS Background](http://www.openbugs.info/Examples/Stagnant.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/stagnant)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/stagnant/stagnant.stan)
+* Simulating Data
+  * [BUGS Background](http://www.openbugs.info/Examples/t-df.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/t_df)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/t_df/t_df.stan)
 
 ### Volume 3
