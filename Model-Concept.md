@@ -61,12 +61,15 @@ public:
 
   // from superclass
 
-  virtual size_t num_params_r();
-  virtual size_t num_params_i();
-  inline pair<int,int> param_range_i(size_t idx);
+  // return the number of unconstrained real parameters
+  size_t num_params_r() const;
 
-  inline int param_range_i_lower(size_t idx);
-  inline int param_range_i_upper(size_t idx) {
+  // return the number of integer parameters
+  size_t num_params_i() const;
+
+  // return ranges of integer parameter with specified index
+  const pair<int,int>& param_range_i(size_t idx) const;
+
 }
 ```
 
