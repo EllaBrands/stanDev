@@ -97,25 +97,70 @@ public:
 
 Replace the eliminated base class functions and some of the generated functions by static model utility functions.
 
-#### Gradient: Log probability and gradient
+#### Gradient: Log probability and gradient via auto-diff
+
+Gradient via auto-diff.
 
 ```
 template <class M, bool propto, bool jacobian_adjust_transform>
 double 
-log_prob_gradient(const M& model,
-                  vector<double>& params_r, vector<int>& params_i,
-                  vector<double>& gradient,
-                  ostream* msgs = 0);
+log_prob_grad(const M& model,
+              vector<double>& params_r, vector<int>& params_i,
+              vector<double>& gradient,
+              ostream* msgs = 0);
 ```
+
 
 #### Hessians: Log probability, gradient, and Hessian
 
+Gradients with automatic differentiation, Hessians via finite differences
+
 ```
 template <class M, bool propto, bool jacobian_adjust_transform>
 double 
-log_prob_hessian(const M& model,
-                 vector<double>& params_r, vector<int>& params_i,
-                 vector<double>& gradient,
-                 vector<double>& hessian,
-                 ostream* msgs = 0);
+grad_hess_log_prob(const M& model,
+                   vector<double>& params_r, vector<int>& params_i,
+                   vector<double>& gradient,
+                   vector<double>& hessian,
+                   ostream* msgs = 0);
+```
+
+#### Propto for double-precision floating point
+
+This allows calculation of log prob with propto=true in a way that works for double inputs.  It calls the auto-diff version by converting parameters to var, so it'll be relatively slow.  But just setting propto=true in the regular log_prob function returns 0.
+
+```
+    template <bool jacobian_adjust_transform, class M>
+    double log_prob_propto(const M& model,
+                           std::vector<double>& params_r,
+                           std::vector<int>& params_i,
+                           std::ostream* msgs = 0);
+```
+
+
+#### Gradients
+
+Gradient via finite differences.
+
+```
+template <bool propto, bool jacobian_adjust_transform, class M>
+void finite_diff_grad(const M& model,
+                      std::vector<double>& params_r,
+                      std::vector<int>& params_i,
+                      std::vector<double>& grad,
+                      double epsilon = 1e-6,
+                      std::ostream* msgs = 0); 
+```
+
+Gradient testing.
+
+```
+template <bool propto, bool jacobian_adjust_transform, class M>
+int test_gradients(const M& model,
+                   std::vector<double>& params_r,
+                   std::vector<int>& params_i,
+                   double epsilon = 1e-6,
+                   double error = 1e-6,
+                   std::ostream& o = std::cout,
+                   std::ostream* msgs = 0);
 ```
