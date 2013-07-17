@@ -110,6 +110,7 @@ When a pull request is made, it is expected that the current code passes:
     > make manual
     > make doxygen
     > make test-unit
+    > make test-headers
     > make test-distributions
     > make test-models
 
