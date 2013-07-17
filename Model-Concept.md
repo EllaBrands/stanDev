@@ -17,7 +17,8 @@ For a model class ```M```, the following public constructors, destructors, and m
 Returns name of model.  
 
 ```
-static std::string 
+static 
+std::string 
 model_name();
 ```
 
@@ -267,6 +268,3 @@ Log probability with propto=true for double-valued parameters.  It calls the aut
                            std::vector<int>& params_i,
                            std::ostream* msgs = 0);
 ```
-
-
-#### Gradients
