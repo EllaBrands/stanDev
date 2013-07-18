@@ -109,38 +109,40 @@ Given unconstrained parameters, write their constrained versions into the specif
 
 ```
 template <typename RNG>
-void write_array(RNG& base_rng__,
-                 std::vector<double>& params_r,
-                 std::vector<int>& params_i,
-                 std::vector<double>& vars,
-                 bool include_transformed_param = true,
-                 bool include_generated_quantities = true,
-                 std::ostream* out = 0) 
+void 
+write_array(RNG& base_rng__,
+            std::vector<double>& params_r,
+            std::vector<int>& params_i,
+            std::vector<double>& vars,
+            bool include_transformed_param = true,
+            bool include_generated_quantities = true,
+            std::ostream* msgs = 0) 
 const;
 ```
 
 #### Comma-Separated Value Output
 
-**Move to Static?** 
+May eventually move these to static helper functions.
+
 Write CSV output header with encoded parameter, trans param, gen quants.
 
 ```
 void 
-write_csv_header(std::ostream& o__) 
+write_csv_header(std::ostream& out) 
 const;
 ```
 
-**Move to Static?** 
 Write values in a line of CSV format using specified RNG, 
-includes params, transformed params, and gen quants.
+includes params, transformed parameters, and generated quantities.
 
 ```
 template <typename RNG>
-void write_csv(RNG& base_rng__,
-               std::vector<double>& params_r__,
-               std::vector<int>& params_i__,
-               std::ostream& o__,
-               std::ostream* pstream__ = 0) const;
+void 
+write_csv(RNG& base_rng,
+          std::vector<double>& params_r,
+          std::vector<int>& params_i,
+          std::ostream& o,
+          std::ostream* msgs = 0) const;
 ```
 
 
@@ -167,8 +169,8 @@ const;
 Return ranges of integer parameter with specified index
 
 ```
-const 
-pair<int,int>& param_range_i(size_t idx) 
+const pair<int,int>& 
+param_range_i(size_t idx) 
 const;
 ```
 
@@ -196,25 +198,27 @@ Gradient via finite differences.
 
 ```
 template <bool propto, bool jacobian_adjust_transform, class M>
-void finite_diff_grad(const M& model,
-                      std::vector<double>& params_r,
-                      std::vector<int>& params_i,
-                      std::vector<double>& grad,
-                      double epsilon = 1e-6,
-                      std::ostream* msgs = 0); 
+void 
+finite_diff_grad(const M& model,
+                 std::vector<double>& params_r,
+                 std::vector<int>& params_i,
+                 std::vector<double>& grad,
+                 double epsilon = 1e-6,
+                 std::ostream* msgs = 0); 
 ```
 
 Gradient testing.
 
 ```
 template <bool propto, bool jacobian_adjust_transform, class M>
-int test_gradients(const M& model,
-                   std::vector<double>& params_r,
-                   std::vector<int>& params_i,
-                   double epsilon = 1e-6,
-                   double error = 1e-6,
-                   std::ostream& o = std::cout,
-                   std::ostream* msgs = 0);
+int 
+test_gradients(const M& model,
+               std::vector<double>& params_r,
+               std::vector<int>& params_i,
+               double epsilon = 1e-6,
+               double error = 1e-6,
+               std::ostream& o = std::cout,
+               std::ostream* msgs = 0);
 ```
 
 #### Hessians
@@ -236,9 +240,10 @@ grad_hess_log_prob(const M& model,
 Log probability with propto=true for double-valued parameters.  It calls the auto-diff version by converting parameters to var, so it'll be relatively slow, but it'll give answers that match those computed using log_prob with var inputs. 
 
 ```
-    template <bool jacobian_adjust_transform, class M>
-    double log_prob_propto(const M& model,
-                           std::vector<double>& params_r,
-                           std::vector<int>& params_i,
-                           std::ostream* msgs = 0);
+template <bool jacobian_adjust_transform, class M>
+double 
+log_prob_propto(const M& model,
+                std::vector<double>& params_r,
+                std::vector<int>& params_i,
+                std::ostream* msgs = 0);
 ```
