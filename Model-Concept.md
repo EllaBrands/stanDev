@@ -119,29 +119,6 @@ void write_array(RNG& base_rng__,
 const;
 ```
 
-**Move to Static?** 
-Utility method writes just the parameters (not the transformed parameters or generated quantities) into the specified variable array, using a dummy random-number generator.  
-
-```
-void 
-write_array_params(std::vector<double>& params_r,
-                   std::vector<int>& params_i,
-                   std::vector<double>& vars,
-                   std::ostream* out = 0) 
-const;
-```
-
-**Move to Static?** 
-Writes parameters, transformed params, generated quants into the specified variable array, using dummy random-number generator.
-
-```
-void write_array_params_all(std::vector<double>& params_r,
-                            std::vector<int>& params_i,
-                            std::vector<double>& vars,
-                            std::ostream* out = 0) 
-const;
-```
-
 #### Comma-Separated Value Output
 
 **Move to Static?** 
