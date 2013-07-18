@@ -67,7 +67,7 @@ const;
 
 #### Parameter Names and Dimensions
 
-Write constrained param names, just as names w/o dimensions
+Copy constrained param names into vector (just variable names, once per variable, no dimensions)
 
 ```
 void 
@@ -75,7 +75,7 @@ get_param_names(std::vector<std::string>& names)
 const;
 ```
 
-Write out dimensions of params corresponding to get_param_names
+Write out dimensions of params corresponding to get_param_names (in constrained space)
 
 ```
 void 
@@ -83,8 +83,7 @@ get_dims(std::vector<std::vector<size_t> >& dimss)
 const;
 ```
 
-**Implement write to array, move this to static?** 
-Write constrained params with dimensions encoded, optionally included transformed params, gen quants.
+Copy constrained params with dimensions encoded into specified string vector, optionally included transformed parameters, generated quantities.
 
 ```
 void 
@@ -94,8 +93,7 @@ constrained_param_names(std::vector<std::string>& param_names,
 const;
 ```
 
-**Implement write to array, move this to static?** 
-Write unconstrained params with dimensions encoded; indexing based on transform.
+Copy unconstrained params with dimensions encoded; indexing based on transform.
 
 ```
 void 
@@ -107,7 +105,6 @@ const;
 
 #### Transform Parameters, Calculate Transformed Parameters, Execute Generated Quantities
 
-**Move to Static?** 
 Given unconstrained parameters, write their constrained versions into the specified output variable vector.  Transformed parameters and generated quantities may be optionally included.  If the generated quantities are included, the random-number generator is used to execute the generated quantities block.  
 
 ```
@@ -123,7 +120,7 @@ const;
 ```
 
 **Move to Static?** 
-Utility method writes just the parameters into the specified variable array, using a dummy random-number generator.  
+Utility method writes just the parameters (not the transformed parameters or generated quantities) into the specified variable array, using a dummy random-number generator.  
 
 ```
 void 
