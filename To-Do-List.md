@@ -15,6 +15,29 @@
     * [Models and other Examples](#models)
 
 ### For Next Release (1.3.0++) <a id="next-release"></a>
+* (Bob/Daniel) fix error messages to clarify size mismatches and also hint that they may be the cause of rejection. 
+```
+Informational Message: The parameter state is about to be Metropolis
+rejected due to the following underlying, non-fatal (really) issue 
+...
+```
+for which I suggest adding
+```
+  check that all functions and distributions have consistently sized,
+  in-support arguments 
+```
+and
+```
+Error in function stan::prob::normal_log(m): Location parameter (max size)
+is 256, but must be consistent, 1 or max=768 
+```
+which could be changed to
+```
+a vectorized function was called with arguments of different scalar, array, vector,
+or matrix types, and they were not consistently sized;  all arguments
+must be scalars or multidimensional values of the same shape;  found dimensions=
+<list of argument shapes passed in> 
+```
 * (Bob/Marcus/Daniel) look at add(), etc. operations for instantiation
     * already did multiply/divide in stan/math
     * now need to worry about agrad / int, etc. to make sure there's no auto promotion to agrad
