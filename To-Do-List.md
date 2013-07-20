@@ -15,6 +15,15 @@
     * [Models and other Examples](#models)
 
 ### For Next Release (1.3.0++) <a id="next-release"></a>
+* (Bob) upgrade to Boost 1.54 and fix errors:
+```
+goodrich@CYBERPOWERPC:/opt/stan$ grep -F "error:" /tmp/boost1.54.txt | sort | uniq
+src/stan/agrad/fwd/round.hpp:15:26: error: no member named 'round' in namespace 'boost::math'
+src/stan/agrad/fwd/trunc.hpp:15:26: error: no member named 'trunc' in namespace 'boost::math'
+src/stan/agrad/rev/matrix/log_determinant_spd.hpp:65:18: error: no member named 'cerr' in namespace 'std'
+src/stan/agrad/rev/matrix/log_determinant_spd.hpp:75:18: error: no member named 'cerr' in namespace 'std'
+src/stan/agrad/rev/matrix/log_determinant_spd.hpp:81:18: error: no member named 'cerr' in namespace 'std'
+```
 * (Bob/Daniel) fix error messages to clarify size mismatches and also hint that they may be the cause of rejection. 
 ```
 Informational Message: The parameter state is about to be Metropolis
