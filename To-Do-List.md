@@ -15,6 +15,7 @@
     * [Models and other Examples](#models)
 
 ### For Next Release (1.3.0++) <a id="next-release"></a>
+* (Bob) fix parser issue diagnosed by Robert J. Goedman (and thank him in the manual);  this involves some more unsequenced fixes
 * (Bob) upgrade to Boost 1.54 and fix errors:
 ```
 goodrich@CYBERPOWERPC:/opt/stan$ grep -F "error:" /tmp/boost1.54.txt | sort | uniq
