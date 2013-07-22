@@ -2,16 +2,16 @@ The Stan Wiki here on GitHub is primarily intended for developers.
 
 In addition to in GitHub's issue tracker, there is a longer, more structured work plan:
 
-* [Stan To-Do List](https://github.com/stan-dev/stan/wiki/To-Do-List)
+* [Stan To-Do List](To-Do-List)
 
 The Git and code review process used for developers and some useful tools:
 
-* [Developer Process](https://github.com/stan-dev/stan/wiki/Developer-Process)
+* [Developer Process](Developer-Process)
 
-* [Developer Tools and Tricks](https://github.com/stan-dev/stan/wiki/Developer-Tricks)
+* [Developer Tools and Tricks](Developer-Tricks)
 
-* [Continuous Integration](https://github.com/stan-dev/stan/wiki/Continuous-Integration)
+* [Continuous Integration](Continuous-Integration)
 
 If you want to contribute a new function to Stan:
 
-* [How to Contribute a New Function to Stan](https://github.com/stan-dev/stan/wiki/Contributing-New-Functions-to-Stan)
+* [How to Contribute a New Function to Stan](Contributing-New-Functions-to-Stan)
