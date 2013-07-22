@@ -10,6 +10,8 @@ The Git and code review process used for developers and some useful tools:
 
 * [Developer Tools and Tricks](https://github.com/stan-dev/stan/wiki/Developer-Tricks)
 
+* [Continuous Integration](https://github.com/stan-dev/stan/wiki/Continuous-Integration)
+
 If you want to contribute a new function to Stan:
 
 * [How to Contribute a New Function to Stan](https://github.com/stan-dev/stan/wiki/Contributing-New-Functions-to-Stan)
