@@ -118,7 +118,7 @@ And as soon as the `test-headers` target is in, it should also pass:
 
     > make test-headers
 
-Passing these tests does not guarantee that the pull request will be accepted and merged.  It will first go through code review and then be tested on the [integration server](wiki/Continuous-Integration). 
+Passing these tests does not guarantee that the pull request will be accepted and merged.  It will first go through code review and then be tested on the [integration server](Continuous-Integration). 
 
 ##### Commit History is Clean
 
