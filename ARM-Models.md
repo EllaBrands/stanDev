@@ -10,18 +10,18 @@ Links to the ARM models will be posted when they are available.
   * 3.2 Multiple Predictors
   * 3.3 Interactions
   * 3.4 Stat Inference
-  * 3.5 Graph Displays - posterior simulation issue
+  * 3.5 Graph Displays
   * 3.6 Diagnostics
   * 3.7 Prediction
 * Chapter 4
-  * 4.1 Linear Transformations - posterior simulation issue
+  * 4.1 Linear Transformations
   * 4.2 Centering & Standardizing
-  * 4.4 Log Transformations - posterior simulation issue
+  * 4.4 Log Transformations
   * 4.5 Other Transformations
   * 4.6 Regression Models for Prediction
   * 4.7 Fitting a Series of Regressions - not attempted yet
 * Chapter 5
-  * 5.1 Logistic Regression with One Predictor - posterior simulation issue
+  * 5.1 Logistic Regression with One Predictor
   * 5.2 Interpreting Logistic Regression Coeficients
   * 5.4 Logistic Regression Wells in Bangladesh
   * 5.5 Logistic Regression with Interactions
@@ -36,14 +36,14 @@ Links to the ARM models will be posted when they are available.
   * 6.7 Constructive Choice Models
 * Chapter 7
   * 7.1 Simulation of Probability Models
-  * 7.2 Summarizing Linear Regression Using Simulation - predict? & sim issue
+  * 7.2 Summarizing Linear Regression Using Simulation - predict?
   * 7.3 Simulation for NonLinear Predictions
-  * 7.4 Predictive Simulation for GLM - sim issue
+  * 7.4 Predictive Simulation for GLM
 * Chapter 8
   * 8.1 Fake Data Simulation
   * 8.2 Fake Data Simulation to Understand Residual Plots
   * 8.3 Simulating from the Fitted Model - facet models
-  * 8.4 Predictive Simulation to Check Fit of Time Series Model - fixme
+  * 8.4 Predictive Simulation to Check Fit of Time Series Model - fixme & roach models
 * Chapter 9
   * 9.3 Randomized Experiments - convert regression.2tables
   * 9.4 Treatment Interactions & Post Stratification - fix sim at bottom
