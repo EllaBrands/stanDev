@@ -46,8 +46,8 @@ Links to the ARM models will be posted when they are available.
   * 8.4 Predictive Simulation to Check Fit of Time Series Model - fixme
 * Chapter 9
   * 9.3 Randomized Experiments - convert regression.2tables
-  * 9.4 Treatment Interactions & Post Stratification - check it works
-  * 9.5 Observational Studies - convert regression.2tables and multiplot
+  * 9.4 Treatment Interactions & Post Stratification - fix sim at bottom
+  * 9.5 Observational Studies - havent started
 * Chapter 10
   * 10.3 Matching - missing data
   * 10.4 Lack of Overlap when Treat Assignments is Unknown
