@@ -19,6 +19,7 @@ For additional information on continuous integration, see the [Wikipedia entry](
 
 Here are the current Jenkins projects:
 
+
 **[Stan Develop Branch.](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/)** These projects test the current state of the `develop` branch.
 
 * [Doxygen](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Doxygen/):
@@ -81,6 +82,7 @@ Here are the current Jenkins projects:
     | Frequency     | daily
     | Artifacts     | time to execute each model is recorded. The files can be found here: [timing files](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Model%20Tests/ws/)
 
+
 **[Stan Pull Requests.](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Pull%20Requests/)** These projects test incoming pull requests before they are merged into `develop`.
 
 * [Stan GitHub Pull Requests Project](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Pull%20Requests/job/Stan%20Github%20Pull%20Requests/):
@@ -92,6 +94,7 @@ Here are the current Jenkins projects:
     | Build target  | `make manual doxygen && make test-unit test-headers test-distributions test-models -j2 O=3`
     | Frequency     | [see Testing Pull Requests through Jenkins]()
     | Artifacts     | none
+
 
 **[rstan.](http://d1m1s1b1.stat.columbia.edu:8080/view/rstan/)** These projects test the current state of the `rstan` repository.
 
@@ -105,11 +108,12 @@ Here are the current Jenkins projects:
     | Frequency     | daily
     | Artifacts     | none
 
+
 **[Miscellaneous projects.](http://d1m1s1b1.stat.columbia.edu:8080/view/Miscellaneous/)** These are utility projects.
 
 * [Stan Push Website](http://d1m1s1b1.stat.columbia.edu:8080/view/Miscellaneous/job/Stan%20Push%20Website/):
 
-    This project pushes the website to http://mc-stan.org
+    This project pushes the website from branch `master` to http://mc-stan.org
 
     |               |               |
     |---------------|---------------|
