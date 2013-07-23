@@ -27,12 +27,12 @@ Links to the ARM models will be posted when they are available.
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kid_iq_all.stan): linear model with two predictors (ppvt ~ hs + afqt)
 
 #### [Chapter 4](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.4)
-  * 4.1 Linear Transformations
-  * 4.2 Centering & Standardizing
-  * 4.4 Log Transformations
-  * 4.5 Other Transformations
-  * 4.6 Regression Models for Prediction
-  * 4.7 Fitting a Series of Regressions - not attempted yet
+  * [4.1 Linear Transformations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.1_LinearTransformations.R)
+  * [4.2 Centering & Standardizing](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.2_Centering%26Standardizing.R)
+  * [4.4 Log Transformations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.4_LogTransformations.R)
+  * [4.5 Other Transformations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.5_OtherTransformations.R)
+  * [4.6 Regression Models for Prediction](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.6_RegressionModelsForPrediction.R)
+  * [4.7 Fitting a Series of Regressions - not attempted yet](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.7_FittingASeriesofRegressions.R)
 
 #### [Chapter 5](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.5)
   * 5.1 Logistic Regression with One Predictor
