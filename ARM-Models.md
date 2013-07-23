@@ -2,9 +2,9 @@ Links to the ARM models will be posted when they are available.
 
 ### Organized by Chapter
 #### Chapter 2
- * 2.3 CI
- * 2.4 Hypothesis Testing - Missing Data
- * 2.6 55,000 Residents - Missing Data
+ * [2.3 CI](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.2/2.3_CI.R)
+ * [2.4 Hypothesis Testing - Missing Data](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.2/2.4_HypothesisTesting.R)
+ * [2.6 55,000 Residents - Missing Data](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.2/2.6_55%2C000Residents.R)
 
 #### Chapter 3
  * 3.1 One Predictor
