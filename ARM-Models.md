@@ -45,7 +45,7 @@ Links to the ARM models will be posted when they are available.
   * 8.3 Simulating from the Fitted Model - facet models
   * 8.4 Predictive Simulation to Check Fit of Time Series Model - fixme
 * Chapter 9
-  * 9.3 Randomized Experiments - add loop
+  * 9.3 Randomized Experiments - convert regression.2tables
   * 9.4 Treatment Interactions & Post Stratification - check it works
   * 9.5 Observational Studies - convert regression.2tables and multiplot
 * Chapter 10
