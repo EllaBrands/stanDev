@@ -19,14 +19,14 @@ For additional information on continuous integration, see the [Wikipedia entry](
 
 Here are the current Jenkins projects:
 * **[Stan Develop Branch.](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/)** These projects test the current state of the `develop` branch.
-    * [Doxygen](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Doxygen/):
-        - Build target: `make doxygen`
-        - Frequency: once a day, when changes are made to the `develop` branch.
-        - Artifacts: [API doc](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Doxygen/ws/doc/api/html/index.html)
-        - Notes: This project verifies that the C++ API documentation can be built and tracks doxygen warnings.
+  * [Doxygen](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Doxygen/):
+    - Build target: `make doxygen`
+    - Frequency: once a day, when changes are made to the `develop` branch.
+    - Artifacts: [API doc](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Doxygen/ws/doc/api/html/index.html)
+    - Notes: This project verifies that the C++ API documentation can be built and tracks doxygen warnings.
 
   * [Manual](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Manual/)
-
+ 
         `make manual` is run once a day when changes to the branch have been made.
   * Unit Tests
   * Header Tests
