@@ -1,11 +1,12 @@
 Links to the ARM models will be posted when they are available.
 
 ## Organized by Chapter
-* Chapter 2
+### Chapter 2
  * 2.3 CI
  * 2.4 Hypothesis Testing - Missing Data
  * 2.6 55,000 Residents - Missing Data
-* Chapter 3
+
+### Chapter 3
  * 3.1 One Predictor
    * kid_iq: linear model with one predictor (kid_score ~ mom_hs)
    * kid_iq: linear model with one predictor (kid_score ~ mom_iq)
@@ -24,7 +25,8 @@ Links to the ARM models will be posted when they are available.
  * 3.7 Prediction
    * kid_iq: linear model with two predictors (kid_score ~ mom_hs + mom_iq)
    * kid_iq: linear model with two predictors (ppvt ~ hs + afqt)
-* Chapter 4
+
+### Chapter 4
   * 4.1 Linear Transformations
   * 4.2 Centering & Standardizing
   * 4.4 Log Transformations
