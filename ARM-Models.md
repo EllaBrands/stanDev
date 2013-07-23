@@ -43,7 +43,7 @@ Links to the ARM models will be posted when they are available.
   * 8.1 Fake Data Simulation
   * 8.2 Fake Data Simulation to Understand Residual Plots
   * 8.3 Simulating from the Fitted Model - add roach models
-  * 8.4 Predictive Simulation to Check Fit of Time Series Model - roach models
+  * 8.4 Predictive Simulation to Check Fit of Time Series Model
 * Chapter 9
   * 9.3 Randomized Experiments - convert regression.2tables
   * 9.4 Treatment Interactions & Post Stratification
