@@ -1,6 +1,6 @@
 Links to the ARM models will be posted when they are available.
 
-# Organized by Chapter
+## Organized by Chapter
 * Chapter 2
   * 2.3 CI
   * 2.4 Hypothesis Testing - Missing Data
@@ -20,3 +20,11 @@ Links to the ARM models will be posted when they are available.
   * 4.5 Other Transformations
   * 4.6 Regression Models for Prediction
   * 4.7 Fitting a Series of Regressions - not attempted yet
+* Chapter 5
+  * 5.1 Logistic Regression with One Predictor - posterior simulation issue & graph loop
+  * 5.2 Interpreting Logistic Regression Coeficients
+  * 5.4 Logistic Regression Wells in Bangladesh
+  * 5.5 Logistic Regression with Interactions
+  * 5.6 Evaluating, Checking, & Comparing
+  * 5.7 Average Predictive Comparisons
+  * 5.8 Identifiability and Separating
