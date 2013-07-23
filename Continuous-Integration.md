@@ -101,16 +101,7 @@ Here are the current Jenkins projects:
 
     |               |               |
     |---------------|---------------|
-    | Build target  | ```git submodule update 
-cd stan
-git fetch
-git checkout origin/develop
-cd .. 
-git submodule status
-R -q -e "library(Rcpp); sessionInfo()"
-cd rstan
-make clean
-make check && (cd tests & R -q -f runRunitTests.R --args ../rstan.Rcheck)```
+    | Build target  | `git submodule update` <br> `cd stan` <br> `git fetch` <br> `git checkout origin/develop` <br> `cd ..` <br> `git submodule status` <br> `R -q -e "library(Rcpp); sessionInfo()"` <br> `cd rstan` <br> `make clean` <br> `make check && (cd tests & R -q -f runRunitTests.R --args ../rstan.Rcheck)`
     | Frequency     | daily
     | Artifacts     | none
 
