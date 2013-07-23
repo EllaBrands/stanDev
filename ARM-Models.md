@@ -10,4 +10,6 @@ Links to the ARM models will be posted when they are available.
   * 3.2 Multiple Predictors
   * 3.3 Interactions
   * 3.4 Stat Inference
-  *  
+  * 3.5 Graph Displays - sim() issue
+  * 3.6 Diagnostics
+  * 3.7 Prediction
