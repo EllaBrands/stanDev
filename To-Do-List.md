@@ -414,6 +414,8 @@ int signum(real);
     d/dx det(A) = det(A) inv(A)' = det(A) / A'
     ```
 * sorting and interpolation
+    * sort(v) that returns indices of sort, as in sort_asc_indices([5 -1 2 9]) returning [3 1 2 4].
+Richard Alexander requested on stan-dev, " use sorted predicted values (and associated index) to help model heteroscedasticity in a variance term. ..."
     * rank(v,s): number of components of v less than v[s]
     * ranked(v,s): s-th smallest component of v
     * interp_ln(e,v1,v2) from BUGS (whatever for?)
