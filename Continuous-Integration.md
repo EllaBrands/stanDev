@@ -18,22 +18,60 @@ For additional information on continuous integration, see the [Wikipedia entry](
 ### 3. Jenkins Projects
 
 Here are the current Jenkins projects:
-* **[Stan Develop Branch.](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/)** These projects test the current state of the `develop` branch.
-  * [Doxygen](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Doxygen/):
-    - Build target: `make doxygen`
-    - Frequency: once a day, when changes are made to the `develop` branch.
-    - Artifacts: [API doc](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Doxygen/ws/doc/api/html/index.html)
-    - Notes: This project verifies that the C++ API documentation can be built and tracks doxygen warnings.
+**[Stan Develop Branch.](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/)** These projects test the current state of the `develop` branch.
 
-  * [Manual](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Manual/)
+* [Doxygen](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Doxygen/):
+This project verifies that the C++ API documentation can be built and tracks Doxygen warnings.
+
+  |               |               |
+  |---------------|---------------|
+  | Build target  | `make doxygen`
+  | Frequency     | daily, when changes are made to the `develop` branch
+  | Artifacts     | [current API doc](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Doxygen/ws/doc/api/html/index.html)
+
+* [Manual](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Manual/): 
+This project verifies that the manual can be built.
+
+  |               |               |
+  |---------------|---------------|
+  | Build target  | `make manual`
+  | Frequency     | daily, when changes are made to the `develop` branch
+  | Artifacts     | [draft version of the manual](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Manual/ws/doc/)
+
+* [Unit Tests](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Unit%20Tests/): This project executes and tracks the unit tests and tracks compiler warnings. On success, calls the Header Tests.
+
+  |               |               |
+  |---------------|---------------|
+  | Build target  | `make test-unit O=0 -j4`
+  | Frequency     | every push to `develop` and daily
+  | Artifacts     | none
+
+* [Header Tests](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Header%20Tests/)
+This project executes the header tests and tracks compiler warnings. On success, calls the Distribution Tests.
+
+  |               |               |
+  |---------------|---------------|
+  | Build target  | `make test-headers -j4 O=0`
+  | Frequency     | called when Unit Tests reports success
+  | Artifacts     | none
+
+* [Distribution Tests](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan Develop Branch/job/Stan Distribution Tests)
+This project executes and tracks the distribution tests and tracks compiler warnings.
+
+  |               |               |
+  |---------------|---------------|
+  | Build target  | `make test-distributions -j4 O=0`
+  | Frequency     | called when Header Tests reports success
+  | Artifacts     | none
+
+* [Model Tests](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Model%20Tests/)
+This project executes and tracks the model tests and tracks compiler warnings. These tests are currently used as an integration test that will indicate whether Stan is completely broken.
  
-        `make manual` is run once a day when changes to the branch have been made.
-  * Unit Tests
-  * Header Tests
-  * Distribution Tests
-  * Model Tests
-  
-TODO: Write this section
+  |               |               |
+  |---------------|---------------|
+  | Build target  | `make test-models`
+  | Frequency     | daily
+  | Artifacts     | time to execute each model is recorded. The files can be found here: [timing files](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Model%20Tests/ws/)
 
 ### 4. Testing Pull Requests through Jenkins
 TODO: Write this section
