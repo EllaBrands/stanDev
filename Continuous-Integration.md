@@ -18,11 +18,11 @@ For additional information on continuous integration, see the [Wikipedia entry](
 ### 3. Jenkins Projects
 
 Here are the current Jenkins projects:
-* These test the current state of the `develop` branch: [Stan Develop Branch view](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/)
-  * [Doxygen](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Doxygen/)
-    `make doxygen` is run once a day when changes to the branch have been made. 
-     This project verifies that the C++ API documentation can be built and tracks doxygen warnings. The daily build of the doxygen documentation can be found here: [API doc](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Doxygen/ws/doc/api/html/index.html)
+* **[Stan Develop Branch.](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/)** These projects test the current state of the `develop` branch.
+    * [Doxygen](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Doxygen/):
 
+        `make doxygen` is run once a day when changes to the branch have been made. 
+        This project verifies that the C++ API documentation can be built and tracks doxygen warnings. The daily build of the doxygen documentation can be found here: [API doc](http://d1m1s1b1.stat.columbia.edu:8080/view/Stan%20Develop%20Branch/job/Stan%20Doxygen/ws/doc/api/html/index.html)
   * Manual
   * Unit Tests
   * Header Tests
