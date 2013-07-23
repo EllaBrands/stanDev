@@ -44,3 +44,12 @@ Links to the ARM models will be posted when they are available.
   * 8.2 Fake Data Simulation to Understand Residual Plots
   * 8.3 Simulating from the Fitted Model - facet models
   * 8.4 Predictive Simulation to Check Fit of Time Series Model - fixme
+* Chapter 9
+  * 9.3 Randomized Experiments - add loop and multi graph
+  * 9.4 Treatment Interactions & Post Stratification - check it works
+  * 9.5 Observational Studies - convert regression.2tables and multiplot
+* Chapter 10
+  * 10.3 Matching - missing data
+  * 10.4 Lack of Overlap when Treat Assignments is Unknown
+  * 10.5 Casual Effects Using IV
+  * 10.6 IV in a Regression Framework - misisng stuff at bottom
