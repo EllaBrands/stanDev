@@ -166,3 +166,28 @@ The BUGS examples are ordered by...
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/t_df/t_df.stan)
 
 ### Volume 3
+* Camel: "multivariate normal with structured missing data"
+  * [BUGS Background](http://www.openbugs.info/Examples/Camel.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol3/camel)
+  * [Stan Code1](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol3/camel/camel.stan)
+  * [Stan Code2](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol3/camel/camel2.stan)
+* Data Cloning: "Using Data Cloning to Calculate MLEs for the Seeds Model"
+  * [BUGS Background](http://www.openbugs.info/Examples/DataCloning.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol3/data_cloning)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol3/data_cloning/seeds.stan)
+* Fire Insurance Claims: "data distribution using dloglik"
+  * [BUGS Background](http://www.openbugs.info/Examples/Fire.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol3/fire)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol3/fire/fire.stan)
+* Fun Shapes: "general constraints"
+  * [BUGS Background](http://www.openbugs.info/Examples/Funshapes.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol3/funshapes)
+  * [Circle Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol3/funshapes/circle.stan)
+  * [Hollow Square Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol3/funshapes/hsquare.stan.0)
+  * [Parallelagram Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol3/funshapes/parallelagram.stan)
+  * [Ring Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol3/funshapes/ring.stan)
+* Hepatitis: "random effects model with measurement error"
+  * [BUGS Background](http://www.openbugs.info/Examples/Hepatitis.html) 
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol3/hepatitis)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol3/hepatitis/hepatitis.stan)
+  * [Measurement Error Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol3/hepatitis/hepatitisME.stan)
