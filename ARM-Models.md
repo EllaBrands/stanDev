@@ -7,22 +7,22 @@ Links to the ARM models will be posted when they are available.
  * [2.6 55,000 Residents - Missing Data](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.2/2.6_55%2C000Residents.R)
 
 #### Chapter 3
- * 3.1 One Predictor
+ * [3.1 One Predictor](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.1_OnePredictor.R)
    * kid_iq: linear model with one predictor (kid_score ~ mom_hs)
    * kid_iq: linear model with one predictor (kid_score ~ mom_iq)
- * 3.2 Multiple Predictors
+ * [3.2 Multiple Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.2_MultiplePredictors.R)
    * kid_iq: linear model with two predictors (kid_score ~ mom_hs + mom_iq)
- * 3.3 Interactions
+ * [3.3 Interactions](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.3_Interactions.R)
    * kid_iq: linear model with two predictors and interaction (kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq)
- * 3.4 Stat Inference
+ * [3.4 Stat Inference](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.4_StatInference.R)
    * kid_iq: linear model with two predictors (kid_score ~ mom_hs + mom_iq)
- * 3.5 Graph Displays
+ * [3.5 Graph Displays](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.5_GraphDisplays.R)
    * kid_iq: linear model with one predictor (kid_score ~ mom_iq)
    * kid_iq: linear model with two predictors (kid_score ~ mom_hs + mom_iq)
    * kid_iq: linear model with two predictors and interaction (kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq)
- * 3.6 Diagnostics
+ * [3.6 Diagnostics](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.6_Diagnostics.R)
    * kid_iq: linear model with one predictor (kid_score ~ mom_iq)
- * 3.7 Prediction
+ * [3.7 Prediction](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.7_Prediction.R)
    * kid_iq: linear model with two predictors (kid_score ~ mom_hs + mom_iq)
    * kid_iq: linear model with two predictors (ppvt ~ hs + afqt)
 
