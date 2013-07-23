@@ -10,83 +10,83 @@ The BUGS examples are ordered by...
 ## Volume
 
 ### Volume 1
-* Blocker 
+* Blocker: "random effects meta-analysis of clinical trials"
   * [BUGS Background](http://www.openbugs.info/Examples/Blockers.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/blocker)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/blocker/blocker.stan)
-* Bones 
+* Bones: "latent trait model for multiple ordered categorical responses"
   * [BUGS Background](http://www.openbugs.info/Examples/Bones.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/bones)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/bones/bones.stan)
-* Dogs 
+* Dogs: "loglinear model for binary data" 
   * [BUGS Background](http://www.openbugs.info/Examples/Dogs.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/dogs)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/dogs/dogs.stan)
-* Dyes 
+* Dyes: "variance components model"
   * [BUGS Background](http://www.openbugs.info/Examples/Dyes.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/dyes)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/dyes/dyes.stan)
-* Epilepsy
+* Epilepsy: "repeated measures on Poisson counts"
   * [BUGS Background](http://www.openbugs.info/Examples/Epil.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/epil)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/epil/epil.stan)
-* Equiv
+* Equiv: "bioequivalence in a cross-over trial"
   * [BUGS Background](http://www.openbugs.info/Examples/Equiv.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/equiv)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/equiv/equiv.stan)
-* Inhalers
+* Inhalers: "ordered catagorical data"
   * [BUGS Background](http://www.openbugs.info/Examples/Inhalers.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/inhalers)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/inhalers/inhalers.stan)
-* Kidney
+* Kidney: "Weibull regression with random efects"
   * [BUGS Background](http://www.openbugs.info/Examples/Kidney.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/kidney)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/kidney/kidney.stan)
-* Leuk
+* Leuk: "Cox regression"
   * [BUGS Background](http://www.openbugs.info/Examples/Leuk.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/leuk)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/leuk/leuk.stan)
-* LeukFr
+* LeukFr: "Cox regression with random effects"
   * [BUGS Background](http://www.openbugs.info/Examples/Leukfr.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/leukfr)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/leukfr/leukfr.stan)
-* LSAT
+* LSAT: "item response"
   * [BUGS Background](http://www.openbugs.info/Examples/Lsat.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/lsat)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/lsat/lsat.stan)
-* Magnesium
+* Magnesium: "Sensitivity to prior distributions"
   * [BUGS Background](http://www.openbugs.info/Examples/Magnesium.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/magnesium)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/magnesium/magnesium.stan)
-* Mice
+* Mice: "Weibull regression"
   * [BUGS Background](http://www.openbugs.info/Examples/Mice.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/mice)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/mice/mice.stan)
-* Oxford
+* Oxford: "smooth fit to log-odds ratios"
   * [BUGS Background](http://www.openbugs.info/Examples/Oxford.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/oxford)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/oxford/oxford.stan)
-* Pump
-  * [BUGS Background](http://www.openbugs.info/Examples/Pump.html) 
+* Pumps: "conjugate gamma-Poisson hierarchical model"
+  * [BUGS Background](http://www.openbugs.info/Examples/Pumps.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/pump)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/pump/pump.stan)
-* Rats
+* Rats: "a normal hierarchical model"
   * [BUGS Background](http://www.openbugs.info/Examples/Rats.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/rats)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/rats/rats.stan)
-* Salm
+* Salm: "extra - Poisson variation in dose - response study "
   * [BUGS Background](http://www.openbugs.info/Examples/Salm.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/salm)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/salm/salm.stan)
-* Seeds
+* Seeds: "Random effect logistic regression"
   * [BUGS Background](http://www.openbugs.info/Examples/Seeds.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/seeds)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/seeds/seeds.stan)
-* Stacks
+* Stacks: "robust regression"
   * [BUGS Background](http://www.openbugs.info/Examples/Stacks.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/stacks)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/stacks/stacks.stan)
-* Surgical
+* Surgical: "Institutional ranking"
   * [BUGS Background](http://www.openbugs.info/Examples/Surgical.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/surgical)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/surgical/surgical.stan)
