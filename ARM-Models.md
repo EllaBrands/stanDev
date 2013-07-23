@@ -53,3 +53,5 @@ Links to the ARM models will be posted when they are available.
   * 10.4 Lack of Overlap when Treat Assignments is Unknown
   * 10.5 Casual Effects Using IV
   * 10.6 IV in a Regression Framework - misisng stuff at bottom
+* Chapter 11
+  * 11.3 Repeated Measurements, Time-Series, Cross Sections & Others - missing data
