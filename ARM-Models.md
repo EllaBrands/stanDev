@@ -46,7 +46,7 @@ Links to the ARM models will be posted when they are available.
   * 8.4 Predictive Simulation to Check Fit of Time Series Model - fixme & roach models
 * Chapter 9
   * 9.3 Randomized Experiments - convert regression.2tables
-  * 9.4 Treatment Interactions & Post Stratification - fix sim at bottom
+  * 9.4 Treatment Interactions & Post Stratification
   * 9.5 Observational Studies - havent started
 * Chapter 10
   * 10.3 Matching - missing data
