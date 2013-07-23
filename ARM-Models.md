@@ -1,6 +1,6 @@
 Links to the ARM models will be posted when they are available.
 
-## Organized by Chapter
+### Organized by Chapter
 #### Chapter 2
  * 2.3 CI
  * 2.4 Hypothesis Testing - Missing Data
