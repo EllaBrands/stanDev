@@ -92,75 +92,75 @@ The BUGS examples are ordered by...
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/surgical/surgical.stan)
 
 ### Volume 2
-* Air
+* Air: "Berkson measurement error"
   * [BUGS Background](http://www.openbugs.info/Examples/Air.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/air)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/air/air.stan)
-* Alli
-  * [BUGS Background](http://www.openbugs.info/Examples/Alli.html) 
+* Alligators: "multinomial logistic model"
+  * [BUGS Background](http://www.openbugs.info/Examples/Aligators.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/alli)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/alli/alli.stan)
-* Asia
+* Asia: "expert system"
   * [BUGS Background](http://www.openbugs.info/Examples/Asia.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/asia)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/asia/asia.stan)
-* Beetles
+* Beetles: "choice of link function"
   * [BUGS Background](http://www.openbugs.info/Examples/Beetles.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/beetles)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/beetles/beetles.stan)
-* Biopsies
+* Biopsies: "discrete variable latent class model"
   * [BUGS Background](http://www.openbugs.info/Examples/Biopsies.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/biopsies)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/biopsies/biopsies.stan)
-* Birats
-  * [BUGS Background](http://www.openbugs.info/Examples/Birats.html) 
+* Birats: "a bivariate normal hierarchical model"
+  * [BUGS Background](http://www.openbugs.info/Examples/BiRats.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/birats)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/birats/birats.stan)
-* Cervix
+* Cervix: "case - control study with errors in covariates"
   * [BUGS Background](http://www.openbugs.info/Examples/Cervix.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/cervix)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/cervix/cervix.stan)
-* Dugongs
+* Dugongs: "nonlinear growth curve"
   * [BUGS Background](http://www.openbugs.info/Examples/Dugongs.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/dugongs)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/dugongs/dugongs.stan)
-* Endo
+* Endo: "conditional inference in case-control studies"
   * [BUGS Background](http://www.openbugs.info/Examples/Endo.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/endo)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/endo/endo.stan)
-* Eyes
+* Eyes: "Normal Mixture Model"
   * [BUGS Background](http://www.openbugs.info/Examples/Eyes.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/eyes)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/eyes/eyes.stan)
-* Hearts
+* Hearts: "a mixture model for count data"
   * [BUGS Background](http://www.openbugs.info/Examples/Hearts.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/hearts)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/hearts/hearts.stan)
-* Ice
+* Ice: "non-parametric smoothing in an age-cohort model"
   * [BUGS Background](http://www.openbugs.info/Examples/Ice.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/ice)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/ice/ice.stan)
-* Jaws
+* Jaws: "repeated measures analysis of variance"
   * [BUGS Background](http://www.openbugs.info/Examples/Jaws.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/jaws)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/jaws/jaws.stan)
-* Multivariate Normal Orange Trees
+* Multivariate Normal Orange Trees: "Non-linear growth curve"
   * [BUGS Background](http://www.openbugs.info/Examples/OtreesMVN.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/mvn_orange)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/mvn_orange/mvn_orange.stan)
-* Orange Trees
+* Orange Trees: "Non-linear growth curve"
   * [BUGS Background](http://www.openbugs.info/Examples/Otrees.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/orange)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/orange/orange.stan)
-* Schools
+* Schools: "ranking school examination results using multivariate hierarchical models"
   * [BUGS Background](http://www.openbugs.info/Examples/Schools.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/schools)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/schools/schools.stan)
-* Stagnant
+* Stagnant: "a changepoint problem and an illustration of how NOT to do MCMC!"
   * [BUGS Background](http://www.openbugs.info/Examples/Stagnant.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/stagnant)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/stagnant/stagnant.stan)
-* Simulating Data
+* Simulating Data: "learning about the degrees of freedom of a t-distribution "
   * [BUGS Background](http://www.openbugs.info/Examples/t-df.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/t_df)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/t_df/t_df.stan)
