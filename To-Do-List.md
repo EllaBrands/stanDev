@@ -15,6 +15,16 @@
     * [Models and other Examples](#models)
 
 ### For Next Release (1.3.0++) <a id="next-release"></a>
+* Reorganize agrad to match other code trees and remove cruft:
+    * remove: agrad/hessian.hpp
+    * move: matrix.hpp to rev/matrix.hpp
+    * move: fvar_matrix.hpp to fwd/matrix.hpp
+    * move: fvar.hpp to fwd.hpp
+    * move: var.hpp to rev.hpp
+    * move: partials_vari.hpp to operands_and_partials.hpp
+    * longer term:  break out operands_and_partials into fwd and rev and double components
+    * ???: rename stan/agrad and stan::agrad to stan/diff?  
+    * ???: introduce stan::diff::fwd and stan::diff:rev namespaces?
 * (Bob) fix parser issue diagnosed by Robert J. Goedman (and thank him in the manual);  this involves some more unsequenced fixes
 * (Bob) upgrade to Boost 1.54 and fix errors:
 ```
