@@ -7,23 +7,23 @@ Links to the ARM models will be posted when they are available.
  * 2.6 55,000 Residents - Missing Data
 * Chapter 3
  * 3.1 One Predictor
-  * kid_iq: linear model with one predictor (kid_score ~ mom_hs)
-  * kid_iq: linear model with one predictor (kid_score ~ mom_iq)
+   * kid_iq: linear model with one predictor (kid_score ~ mom_hs)
+   * kid_iq: linear model with one predictor (kid_score ~ mom_iq)
  * 3.2 Multiple Predictors
-  * kid_iq: linear model with two predictors (kid_score ~ mom_hs + mom_iq)
+   * kid_iq: linear model with two predictors (kid_score ~ mom_hs + mom_iq)
  * 3.3 Interactions
-  * kid_iq: linear model with two predictors and interaction (kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq)
+   * kid_iq: linear model with two predictors and interaction (kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq)
  * 3.4 Stat Inference
-  * kid_iq: linear model with two predictors (kid_score ~ mom_hs + mom_iq)
+   * kid_iq: linear model with two predictors (kid_score ~ mom_hs + mom_iq)
  * 3.5 Graph Displays
-  * kid_iq: linear model with one predictor (kid_score ~ mom_iq)
-  * kid_iq: linear model with two predictors (kid_score ~ mom_hs + mom_iq)
-  * kid_iq: linear model with two predictors and interaction (kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq)
+   * kid_iq: linear model with one predictor (kid_score ~ mom_iq)
+   * kid_iq: linear model with two predictors (kid_score ~ mom_hs + mom_iq)
+   * kid_iq: linear model with two predictors and interaction (kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq)
  * 3.6 Diagnostics
-  * kid_iq: linear model with one predictor (kid_score ~ mom_iq)
+   * kid_iq: linear model with one predictor (kid_score ~ mom_iq)
  * 3.7 Prediction
-  * kid_iq: linear model with two predictors (kid_score ~ mom_hs + mom_iq)
-  * kid_iq: linear model with two predictors (ppvt ~ hs + afqt)
+   * kid_iq: linear model with two predictors (kid_score ~ mom_hs + mom_iq)
+   * kid_iq: linear model with two predictors (ppvt ~ hs + afqt)
 * Chapter 4
   * 4.1 Linear Transformations
   * 4.2 Centering & Standardizing
