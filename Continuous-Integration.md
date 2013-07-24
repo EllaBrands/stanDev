@@ -164,17 +164,17 @@ Jenkins is now waiting for an admin to approve the pull request for testing. An 
 Jenkins will then place the pull request in the queue for testing.
 
 
-##### `stan-buildbot` posts the statust of the build as a comment.
+##### `stan-buildbot` posts the status of the build as a comment.
 
 Jenkins will merge the pull request into a clean `develop` branch. The pull request needs to be able to be merged automatically.
 
 After running the tests, `stan-buildbot` will comment on the pull request with either:
-> Test PASSed.
+> Test PASSed. <br>
 > Refer to this link for build results: http://d1m1s1b1.stat.columbia.edu:8080/job/Stan%20Github%20Pull%20Requests/###/
 
 or 
 
-> Test FAILed.
+> Test FAILed. <br>
 > Refer to this link for build results: http://d1m1s1b1.stat.columbia.edu:8080/job/Stan%20Github%20Pull%20Requests/###/
 
 If the tests pass and the pull request passes a code review, one of the developers should merge the pull request. After the pull request is merged, this will kick off another round of tests.
