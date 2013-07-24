@@ -124,9 +124,17 @@ Links to the ARM models will be posted when they are available.
 #### [Chapter 6](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.6)
   * [6.2 Poisson, Exposure, & Overdispersion - Missing data](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.2_Poisson%2CExposure%26Overdispersion.R)
   * [6.4 Probit Regression](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.4_ProbitRegression.R)
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/wells_probit.stan): generalized linear model with probit link function and one predictor  
+    ``switch ~ dist100``
   * [6.5 Ordered & Unordered Categorical Regression - Missing Data](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.5_Ordered%26UnorderedCategoricalRegression.R)
   * [6.7 More Complex GLM](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.7_MoreComplexGLM.R)
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/earnings1.stan): generalized linear model with logit link function and two predictors  
+    ``log_earn ~ height + male``
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/earnings2.stan): generalized linear model with logit link function and two predictors  
+    ``earn_pos ~ height + male``
   * [6.8 Constructive Choice Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.8_ConstructiveChoiceModels.R)
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/wells_logit.stan): generalized linear model with logit link function and one predictor  
+    ``switch ~ dist100``
 
 #### [Chapter 7](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.7)
   * [7.1 Simulation of Probability Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/7.1_SimulationOfProbabilityModels.R)
