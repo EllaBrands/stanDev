@@ -206,5 +206,6 @@ Links to the ARM models will be posted when they are available.
     ``watched ~ encouraged + pretest + as.factor(site) + setting``
    * [sesame](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/sesame_multi_preds_3b.stan): linear model with three predictors and one factor  
     ``y ~ watched_hat + pretest + as.factor(site) + setting``
+
 #### [Chapter 11](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.11)
   * [11.3 Repeated Measurements, Time-Series, Cross Sections & Others - missing data](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.11/11.3_RepeatedMeasurements%2CTimeSeries%20CrossSections%26Others.R)
