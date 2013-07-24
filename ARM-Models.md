@@ -51,17 +51,17 @@ Links to the ARM models will be posted when they are available.
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/kid_iq_center_z.stan): linear model with two predictors and interaction centered using z-score  
     ``kid_score ~ z_mom_hs + z_mom_iq + z_mom_hs:z_mom_iq``
   * [4.4 Log Transformations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.4_LogTransformations.R)
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earnings_log.stan): linear model with one predictor with natural log transformation  
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earnings_log.stan): linear model with one predictor and natural log transformation  
     ``log_earnings ~ height``
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earnings_log10.stan): linear model with one predictor with log10 transformation  
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earnings_log10.stan): linear model with one predictor and log10 transformation  
     ``log10_earnings ~ height``
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earnings_multi_preds.stan): linear model with two predictors with natural log transformation  
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earnings_multi_preds.stan): linear model with two predictors and natural log transformation  
     ``log_earnings ~ height + male``
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earnings_interactions.stan): linear model with two predictors and interaction with natural log transformation  
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earnings_interactions.stan): linear model with two predictors and interaction and natural log transformation  
     ``log_earnings ~ height + male + height:male``
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earnings_interactions_z.stan): linear model with two predictors and interaction with natural log transformation and centered using z-score  
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earnings_interactions_z.stan): linear model with two predictors and interaction and natural log transformation centered using z-score  
     ``log_earnings ~ z_height + male + z_height:male``
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earnings_log_log.stan): linear model with two predictors with log log transformation  
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earnings_log_log.stan): linear model with two predictors and log log transformation  
     ``log_earnings ~ log_height + male``
   * [4.5 Other Transformations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.5_OtherTransformations.R)
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/kid_iq_factor.stan): linear model with one factor   
@@ -69,15 +69,15 @@ Links to the ARM models will be posted when they are available.
   * [4.6 Regression Models for Prediction](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.6_RegressionModelsForPrediction.R)
    * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite.stan): linear model with six predictors  
     ``weight~ diam1 + diam2 + canopy_height + total_height + density + group``
-   * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_log.stan): linear model with six predictors using log transformation  
+   * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_log.stan): linear model with six predictors and log transformation  
     ``log_weight~ log_diam1 + log_diam2 + log_canopy_height + log_total_height + log_density + group``
-   * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_canopy_volume.stan): linear model with one transformed predictor using log transformation  
+   * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_canopy_volume.stan): linear model with one transformed predictor and log transformation  
     ``log_weight ~ log_canopy_volume``
-   * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_volume_shape_area.stan): linear model with three predictors and three transformed predictors using log transformation           
+   * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_volume_shape_area.stan): linear model with three predictors and three transformed predictors and log transformation           
     ``log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_total_height + log_density + group``
-   * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_volume_area.stan): linear model with one predictor and two transformed predictors using log transformation   
+   * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_volume_area.stan): linear model with one predictor and two transformed predictors and log transformation   
     ``log_weight ~ log_canopy_volume + log_canopy_area + group``
-   * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_all.stan): linear model with two predictors and three transformed predictors using log transformation  
+   * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_all.stan): linear model with two predictors and three transformed predictors and log transformation  
     `` log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_total_height + group`` 
   * [4.7 Fitting a Series of Regressions - not attempted yet](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.7_FittingASeriesofRegressions.R)
    * ????
