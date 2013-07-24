@@ -28,28 +28,46 @@ Links to the ARM models will be posted when they are available.
 
 #### [Chapter 4](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.4)
   * [4.1 Linear Transformations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.1_LinearTransformations.R)
-   * earnings: linear model with one predictor (earnings ~ height)
+   * earnings: linear model with one predictor  
+    ``earnings ~ height``
   * [4.2 Centering & Standardizing](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.2_Centering%26Standardizing.R)
-   * kid_iq: linear model with two predictors and interaction (kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq)
-   * kid_iq: linear model with two predictors and interaction centered using mean (kid_score ~ c_mom_hs + c_mom_iq + c_mom_hs:c_mom_iq)
-   * kid_iq: linear model with two predictors and interaction centered using convention (kid_score ~ c2_mom_hs + c2_mom_iq + c2_mom_hs:c2_mom_iq)
-   * kid_iq: linear model with two predictors and interaction centered using z-score (kid_score ~ z_mom_hs + z_mom_iq + z_mom_hs:z_mom_iq)
+   * kid_iq: linear model with two predictors and interaction  
+    ``kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq``
+   * kid_iq: linear model with two predictors and interaction centered using mean  
+    ``kid_score ~ c_mom_hs + c_mom_iq + c_mom_hs:c_mom_iq``
+   * kid_iq: linear model with two predictors and interaction centered using convention  
+    ``kid_score ~ c2_mom_hs + c2_mom_iq + c2_mom_hs:c2_mom_iq``
+   * kid_iq: linear model with two predictors and interaction centered using z-score  
+    ``kid_score ~ z_mom_hs + z_mom_iq + z_mom_hs:z_mom_iq``
   * [4.4 Log Transformations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.4_LogTransformations.R)
-   * earnings: linear model with one predictor with natural log transformation (log_earnings ~ height)
-   * earnings: linear model with one predictor with log10 transformation (log10_earnings ~ height)
-   * earnings: linear model with two predictors with natural log transformation (log_earnings ~ height + male)
-   * earnings: linear model with two predictors and interaction with natural log transformation (log_earnings ~ height + male + height:male)
-   * earnings: linear model with two predictors and interaction with natural log transformation and centered using z-score (log_earnings ~ z_height + male + z_height:male)
-   * earnings: linear model with two predictors with log log transformation (log_earnings ~ log_height + male)
+   * earnings: linear model with one predictor with natural log transformation  
+    ``log_earnings ~ height``
+   * earnings: linear model with one predictor with log10 transformation  
+    ``log10_earnings ~ height``
+   * earnings: linear model with two predictors with natural log transformation  
+    ``log_earnings ~ height + male``
+   * earnings: linear model with two predictors and interaction with natural log transformation  
+    ``log_earnings ~ height + male + height:male``
+   * earnings: linear model with two predictors and interaction with natural log transformation and centered using z-score  
+    ``log_earnings ~ z_height + male + z_height:male``
+   * earnings: linear model with two predictors with log log transformation  
+    ``log_earnings ~ log_height + male``
   * [4.5 Other Transformations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.5_OtherTransformations.R)
-   * kid_iq: linear model with one factor (kid_score ~ as.factor(mom_work))
+   * kid_iq: linear model with one factor   
+    ``kid_score ~ as.factor(mom_work)``
   * [4.6 Regression Models for Prediction](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.6_RegressionModelsForPrediction.R)
-   * mesquite: linear model with six predictors (weight~ diam1 + diam2 + canopy_height + total_height + density + group)
-   * mesquite: linear model with six predictors using log transformation (log_weight~ log_diam1 + log_diam2 + log_canopy_height + log_total_height + log_density + group)
-   * mesquite: linear model with one transformed predictor using log transformation (log_weight ~ log_canopy_volume)
-   * mesquite: linear model with three predictors and three transformed predictors using log transformation (log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_total_height + log_density + group)
-   * mesquite: linear model with one predictor and two transformed predictors using log transformation (log_weight ~ log_canopy_volume + log_canopy_area + group)
-   * mesquite: linear model with two predictors and three transformed predictors using log transformation (log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_total_height + group)
+   * mesquite: linear model with six predictors  
+    ``weight~ diam1 + diam2 + canopy_height + total_height + density + group``
+   * mesquite: linear model with six predictors using log transformation  
+    ``log_weight~ log_diam1 + log_diam2 + log_canopy_height + log_total_height + log_density + group``
+   * mesquite: linear model with one transformed predictor using log transformation  
+    ``log_weight ~ log_canopy_volume``
+   * mesquite: linear model with three predictors and three transformed predictors using log transformation           
+    ``log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_total_height + log_density + group``
+   * mesquite: linear model with one predictor and two transformed predictors using log transformation   
+    ``log_weight ~ log_canopy_volume + log_canopy_area + group``
+   * mesquite: linear model with two predictors and three transformed predictors using log transformation  
+    `` log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_total_height + group`` 
   * [4.7 Fitting a Series of Regressions - not attempted yet](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.7_FittingASeriesofRegressions.R)
    * ????
 
