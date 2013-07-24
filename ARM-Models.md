@@ -119,7 +119,7 @@ Links to the ARM models will be posted when they are available.
      ``switch ~ dist100 + arsenic + educ4 + dist100:arsenic``
   * [5.8 Identifiability and Separating](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.8_IdentifiabilityAndSeparation.R)
    * [simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/y_x.stan): generalized linear model with logit link function and one predictor  
-     ``y ~ x``  
+     ``y ~ x``
 
 #### [Chapter 6](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.6)
   * [6.2 Poisson, Exposure, & Overdispersion - MISSING DATA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.2_Poisson%2CExposure%26Overdispersion.R)
