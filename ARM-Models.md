@@ -75,9 +75,9 @@ Links to the ARM models will be posted when they are available.
     ``log_weight ~ log_canopy_volume``
    * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_volume_shape_area.stan): linear model with three predictors and three transformed predictors using log transformation           
     ``log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_total_height + log_density + group``
-   * mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_volume_area.stan): linear model with one predictor and two transformed predictors using log transformation   
+   * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_volume_area.stan): linear model with one predictor and two transformed predictors using log transformation   
     ``log_weight ~ log_canopy_volume + log_canopy_area + group``
-   * mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_all.stan): linear model with two predictors and three transformed predictors using log transformation  
+   * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_all.stan): linear model with two predictors and three transformed predictors using log transformation  
     `` log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_total_height + group`` 
   * [4.7 Fitting a Series of Regressions - not attempted yet](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.7_FittingASeriesofRegressions.R)
    * ????
