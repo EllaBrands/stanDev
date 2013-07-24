@@ -168,7 +168,17 @@ Links to the ARM models will be posted when they are available.
 
 #### [Chapter 9](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.9)
   * [9.3 Randomized Experiments - convert regression.2tables](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/9.3_RandomizedExperiments.R)
+   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_one_pred.stan): linear model with one predictor  
+     ``post_test ~ treatment``  
+   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_multi_preds.stan): linear model with two predictors  
+     ``post_test ~ pre_test + treatment``  
   * [9.4 Treatment Interactions & Post Stratification](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/9.4_TreatmentInteractions%26Poststratification.R)
+   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_one_pred.stan): linear model with one predictor    
+     ``post_test ~ treatment``  
+   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_multi_preds.stan): linear model with two predictors  
+     ``post_test ~ pre_test + treatment``  
+   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_interactions.stan): linear model with two predictors and interaction  
+     ``post_test ~ pre_test + treatment + pre_test:treatment``  
   * [9.5 Observational Studies - havent started](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/9.5_ObservationalStudies.R)
 
 #### [Chapter 10](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.10)
