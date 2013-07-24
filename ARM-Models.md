@@ -84,41 +84,41 @@ Links to the ARM models will be posted when they are available.
 
 #### [Chapter 5](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.5)
   * [5.1 Logistic Regression with One Predictor](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.1_LogisticRegressionWithOnePredictor.R)
-   * [nes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/nes.stan): generalized linear model with  logistic link function  
+   * [nes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/nes.stan): generalized linear model with  logistic link function and one predictor  
      ``vote ~ income``
   * [5.2 Interpreting Logistic Regression Coeficients](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.2_InterpretingLogisticRegressionCoef.R)
-   * [nes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/nes.stan): generalized linear model with logistic link function  
+   * [nes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/nes.stan): generalized linear model with logistic link function and one predictor  
      ``vote ~ income``
   * [5.4 Logistic Regression Wells in Bangladesh](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.4_LogisticRegressionWellsinBangladesh.R)
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_one_pred.stan): generalized linear model with logistic link function  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_one_pred.stan): generalized linear model with logistic link function and one predictor  
     ``switch ~ dist``
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_one_pred_scale.stan): generalized linear model with logistic link function  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_one_pred_scale.stan): generalized linear model with logistic link function and one predictor  
      ``switch ~ dist100``
   * [5.5 Logistic Regression with Interactions](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.5_LogisticRegressionWithInteractions.R)
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions.stan): generalized linear model with logistic link function  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions.stan): generalized linear model with logistic link function and two predictors and interaction  
      ``switch ~ dist100 + arsenic + dist100:arsenic``
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions_center.stan): generalized linear model with logistic link function  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions_center.stan): generalized linear model with logistic link function with two predictors and interaction centered using mean   
      ``switch ~ c_dist100 + c_arsenic + c_dist100:c_arsenic``
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_community.stan): generalized linear model with logistic link function  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_community.stan): generalized linear model with logistic link function and four predictors and interaction centered using mean  
      ``switch ~ c_dist100 + c_arsenic + c_dist100:c_arsenic + assoc + educ4``
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_social.stan): generalized linear model with logistic link function  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_social.stan): generalized linear model with logistic link function and three predictors and interaction centered using mean  
      ``switch ~ c_dist100 + c_arsenic + c_dist100:c_arsenic + educ4``
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions_center_educ.stan): generalized linear model with logistic link function  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions_center_educ.stan): generalized linear model with logistic link function and three predictors and interaction centered using mean  
      ``switch ~ c_dist100 + c_arsenic + c_educ4 + c_dist100:c_arsenic + c_dist100:c_educ4 + c_arsenic:c_educ4``
   * [5.6 Evaluating, Checking, & Comparing](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.6_Evaluating%2CChecking%2C%26Comparing.R)
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions_center_educ.stan): generalized linear model with logistic link function  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions_center_educ.stan): generalized linear model with logistic link function with three predictors and interaction centered using mean  
      ``switch ~ c_dist100 + c_arsenic + c_educ4 + c_dist100:c_arsenic + c_dist100:c_educ4 + c_arsenic:c_educ4``
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_log_transform.stan): generalized linear model with logistic link function  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_log_transform.stan): generalized linear model with logistic link function with three predictors and interaction with log transform and centered using mean   
      ``switch ~ c_dist100 + c_log_arsenic + c_educ4 + c_dist100:c_log_arsenic + c_dist100:c_educ4 + c_log_arsenic:c_educ4``
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_log_transform2.stan): generalized linear model with logistic link function  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_log_transform2.stan): generalized linear model with logistic link function with three predictors and interaction with log transform and centered using mean  
      ``switch ~ dist100 + log_arsenic + educ4 + dist100:log_arsenic + dist100:educ4 + log_arsenic:educ4``
   * [5.7 Average Predictive Comparisons](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.7_AveragePredictiveComparisons.R)
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_edu.stan): generalized linear model with logistic link function  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_edu.stan): generalized linear model with logistic link function and three predictors  
      ``switch ~ dist100 + arsenic + educ4``
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_all.stan): generalized linear model with logistic link function  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_all.stan): generalized linear model with logistic link function and three predictors with interaction  
      ``switch ~ dist100 + arsenic + educ4 + dist100:arsenic``
   * [5.8 Identifiability and Separating](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.8_IdentifiabilityAndSeparation.R)
-   * [generated](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/y_x.stan): generalized linear model with logistic link function  
+   * [generated](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/y_x.stan): generalized linear model with logistic link function with one predictor  
      ``y ~ x``
 #### [Chapter 6](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.6)
   * [6.2 Poisson, Exposure, & Overdispersion - Missing data](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.2_Poisson%2CExposure%26Overdispersion.R)
