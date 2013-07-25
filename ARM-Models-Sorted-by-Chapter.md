@@ -83,15 +83,15 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
 
 #### [Chapter 5](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.5)
   * [5.1 Logistic Regression with One Predictor](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.1_LogisticRegressionWithOnePredictor.R)
-   * [nes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/nes.stan): generalized linear model with  logit link function and one predictor  
+   * *[nes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/nes.stan): generalized linear model with  logit link function and one predictor  
      ``vote ~ income``
   * [5.2 Interpreting Logistic Regression Coeficients](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.2_InterpretingLogisticRegressionCoef.R)
-   * [nes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/nes.stan): generalized linear model with logit link function and one predictor  
+   * *[nes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/nes.stan): generalized linear model with logit link function and one predictor  
      ``vote ~ income``
   * [5.4 Logistic Regression Wells in Bangladesh](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.4_LogisticRegressionWellsinBangladesh.R)
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_one_pred.stan): generalized linear model with logit link function and one predictor  
+   * *[wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_one_pred.stan): generalized linear model with logit link function and one predictor  
     ``switch ~ dist``
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_one_pred_scale.stan): generalized linear model with logit link function and one predictor  
+   * *[wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_one_pred_scale.stan): generalized linear model with logit link function and one predictor  
      ``switch ~ dist100``
   * [5.5 Logistic Regression with Interactions](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.5_LogisticRegressionWithInteractions.R)
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions.stan): generalized linear model with logit link function and two predictors and interaction  
@@ -117,7 +117,7 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_all.stan): generalized linear model with logit link function and three predictors with interaction  
      ``switch ~ dist100 + arsenic + educ4 + dist100:arsenic``
   * [5.8 Identifiability and Separating](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.8_IdentifiabilityAndSeparation.R)
-   * [simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/y_x.stan): generalized linear model with logit link function and one predictor  
+   * *[simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/y_x.stan): generalized linear model with logit link function and one predictor  
      ``y ~ x``
 
 #### [Chapter 6](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.6)
