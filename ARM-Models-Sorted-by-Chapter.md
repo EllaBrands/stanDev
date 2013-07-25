@@ -38,7 +38,7 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
 
 #### [Chapter 4](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.4)
   * [4.1 Linear Transformations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.1_LinearTransformations.R)
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earnings_one_pred.stan): linear model with one predictor  
+   * *[earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earnings_one_pred.stan): linear model with one predictor  
     ``earnings ~ height``
   * [4.2 Centering & Standardizing](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.2_Centering%26Standardizing.R)
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/kid_iq_interaction.stan): linear model with two predictors and interaction  
