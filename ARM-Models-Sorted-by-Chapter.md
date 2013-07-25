@@ -50,9 +50,9 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/kid_iq_center_z.stan): linear model with two predictors and interaction centered using z-score  
     ``kid_score ~ z_mom_hs + z_mom_iq + z_mom_hs:z_mom_iq``
   * [4.4 Log Transformations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.4_LogTransformations.R)
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earnings_log.stan): linear model with one predictor and natural log transformation  
+   * *[earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earnings_log.stan): linear model with one predictor and natural log transformation  
     ``log_earnings ~ height``
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earnings_log10.stan): linear model with one predictor and log10 transformation  
+   * *[earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earnings_log10.stan): linear model with one predictor and log10 transformation  
     ``log10_earnings ~ height``
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earnings_multi_preds.stan): linear model with two predictors and natural log transformation  
     ``log_earnings ~ height + male``
