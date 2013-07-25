@@ -70,7 +70,7 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
     ``weight~ diam1 + diam2 + canopy_height + total_height + density + group``
    * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_log.stan): linear model with six predictors and log transformation  
     ``log_weight~ log_diam1 + log_diam2 + log_canopy_height + log_total_height + log_density + group``
-   * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_canopy_volume.stan): linear model with one transformed predictor and log transformation  
+   * *[mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_canopy_volume.stan): linear model with one transformed predictor and log transformation  
     ``log_weight ~ log_canopy_volume``
    * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_volume_shape_area.stan): linear model with three predictors and three transformed predictors and log transformation           
     ``log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_total_height + log_density + group``
