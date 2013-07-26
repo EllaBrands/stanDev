@@ -107,6 +107,7 @@ cf., [runtime-error copy string? (Stack Overflow)](http://stackoverflow.com/ques
 * 
 
 #### Modeling Language <a id="modeling-language"></a>
+* (Bob) add diagnostic to catch the use of uninitialized variable;  won't be able to catch everything, but can find uses where the variable never showed up on the LHS of an assignment or is not a parameter or data;  just add a new boolean field to variables to indicate if they've been initialized (defined) or not
 * (Bob) replace explicit use of lp__ with an increment_log_prob() function
     * keep a special accumulator vari or just accumulate the var and use sum()
     * doc and models to change
