@@ -23,18 +23,34 @@
     * move: var.hpp to rev.hpp
     * move: partials_vari.hpp to operands_and_partials.hpp
     * longer term:  break out operands_and_partials into fwd and rev and double components
-    * ???: rename stan/agrad and stan::agrad to stan/diff?  
-    * ???: introduce stan::diff::fwd and stan::diff:rev namespaces?
+    * ???: rename stan/agrad and stan::agrad to stan/diff and stan::diff?  
+    * ???: introduce stan::diff::fwd and stan::diff:rev namespaces?  (or stan::agrad::fwd and stan::agrad::rev)
 * (Bob) fix parser issue diagnosed by Robert J. Goedman (and thank him in the manual);  this involves some more unsequenced fixes
-* (Bob) upgrade to Boost 1.54 and fix errors:
+* (Bob) Sergio Polini reports: fix manual typo, Page 135: in the generated quantities block,
 ```
-goodrich@CYBERPOWERPC:/opt/stan$ grep -F "error:" /tmp/boost1.54.txt | sort | uniq
-src/stan/agrad/fwd/round.hpp:15:26: error: no member named 'round' in namespace 'boost::math'
-src/stan/agrad/fwd/trunc.hpp:15:26: error: no member named 'trunc' in namespace 'boost::math'
-src/stan/agrad/rev/matrix/log_determinant_spd.hpp:65:18: error: no member named 'cerr' in namespace 'std'
-src/stan/agrad/rev/matrix/log_determinant_spd.hpp:75:18: error: no member named 'cerr' in namespace 'std'
-src/stan/agrad/rev/matrix/log_determinant_spd.hpp:81:18: error: no member named 'cerr' in namespace 'std'
+alpha <- sd(y) * (alpha_std + beta_std * mean(x) / sd(x)) + mean(y);
 ```
+should read:
+```
+alpha <- sd(y) * (alpha_std - beta_std * mean(x) / sd(x)) + mean(y);
+```
+* (Bob) Asim wrote On Page 40 of the manual, we have the following:
+```
+transformed data {
+...
+  real<lower=0> max_cov; real<lower=0> min_cov;
+```
+fix to be ```upper=0``` for ```min_cov```.
+
+>     max_cov <- sqrt(var1 * var2);
+>
+>     min_cov <- -max_cov;
+>
+>     }
+>
+Can the min_cov have a lower bound of zero, when it is being reassigned to be the negative of max_cov in the last lineof the transformed data block?
+>
+> Asim 
 * (Bob/Daniel) fix error messages to clarify size mismatches and also hint that they may be the cause of rejection. 
 ```
 Informational Message: The parameter state is about to be Metropolis
@@ -81,7 +97,7 @@ e.g., math/matrix/validate_std_vector_index.hpp
 cf., [runtime-error copy string? (Stack Overflow)](http://stackoverflow.com/questions/10644910/does-stdruntime-error-copy-the-string-passed-in-the-constructor)
 * (Daniel) fix order of include issues for model header, etc.  in new refactor (see Jiqiang's e-mail 4/19/13, 9:20 PM to stan-dev, and rest of that thread)
 * fix error message in Stan when an error is encountered during initialization --- currently says "about to be Metropolis rejected";  at very least, change the message to qualify when rejection happens
-* fix remaining template functions in stan/math to ensure they match int better than var matches int
+* test template functions in stan/math to ensure they match int better than var matches int
 * remove warning message on transform OR declare a set of function names to ignore
 
 ### Priorities
