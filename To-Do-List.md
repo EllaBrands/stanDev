@@ -42,15 +42,7 @@ transformed data {
 ```
 fix to be ```upper=0``` for ```min_cov```.
 
->     max_cov <- sqrt(var1 * var2);
->
->     min_cov <- -max_cov;
->
->     }
->
 Can the min_cov have a lower bound of zero, when it is being reassigned to be the negative of max_cov in the last lineof the transformed data block?
->
-> Asim 
 * (Bob/Daniel) fix error messages to clarify size mismatches and also hint that they may be the cause of rejection. 
 ```
 Informational Message: The parameter state is about to be Metropolis
