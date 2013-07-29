@@ -1,4 +1,4 @@
-Each chapter has a README file on github that you can view by clicking on the chapter link and scrolling down (past the files).
+Each chapter has a README file on github that you can view by clicking on the chapter link and scrolling down (past the files). THe README file contains information about the data contained in the chapter (particularly, what each variable represents) and sorts the models in the chapter by type.
 
 If there is a * next to a model name, then the model DOES NOT currently work with RStanARM.
 
