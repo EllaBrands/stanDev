@@ -2,6 +2,16 @@ Each chapter has a README file on github that you can view by clicking on the ch
 
 If there is a * next to a model name, then the model DOES NOT currently work with RStanARM.
 
+* [Chapter 2](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Chapter#chapter-2)
+* [Chapter 3](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Chapter#chapter-3)
+* [Chapter 4](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Chapter#chapter-4)
+* [Chapter 5](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Chapter#chapter-5)
+* [Chapter 6](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Chapter#chapter-6)
+* [Chapter 7](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Chapter#chapter-7)
+* [Chapter 8](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Chapter#chapter-8)
+* [Chapter 9](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Chapter#chapter-9)
+
+
 #### [Chapter 2](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.2)
  * [2.3 CI](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.2/2.3_CI.R)
  * [2.4 Hypothesis Testing - MISSING DATA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.2/2.4_HypothesisTesting.R)
