@@ -219,3 +219,27 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
 
 
 #### [Chapter 13](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.13)
+
+#### [Chapter 14](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.14)
+
+#### [Chapter 15](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.15)
+
+#### [Chapter 16](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.16)
+
+#### [Chapter 17](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.17)
+
+#### [Chapter 18](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.18)
+
+#### [Chapter 19](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.19)
+
+#### [Chapter 20](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.20)
+
+#### [Chapter 21](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.21)
+
+#### [Chapter 22](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.22)
+
+#### [Chapter 23](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.23)
+
+#### [Chapter 24](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.24)
+
+#### [Chapter 25](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.25)
