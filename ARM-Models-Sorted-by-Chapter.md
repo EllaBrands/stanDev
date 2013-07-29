@@ -217,7 +217,7 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
   * [12.6 Group-Level Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.6_Group-LevelPredictors.R)
   * [12.8 Prediction - FIXME](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.8_Prediction.R)
 
-
+THE BELOW CHAPTERS HAVE NOT BEEN ADDED YET.
 #### [Chapter 13](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.13)
 
 #### [Chapter 14](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.14)
