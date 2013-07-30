@@ -37,6 +37,8 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
  * [2.4 Hypothesis Testing - MISSING DATA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.2/2.4_HypothesisTesting.R)
  * [2.6 55,000 Residents - MISSING DATA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.2/2.6_55%2C000Residents.R)
 
+***
+
 #### [Chapter 3](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.3)
  * [3.1 One Predictor](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.1_OnePredictor.R)
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidscore_momhs.stan): linear model with one predictor  
@@ -67,6 +69,8 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
     ``kid_score ~ mom_hs + mom_iq``
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidiq_validation.stan): linear model with two predictors  
     ``ppvt ~ hs + afqt``
+
+***
 
 #### [Chapter 4](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.4)
   * [4.1 Linear Transformations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.1_LinearTransformations.R)
@@ -114,6 +118,8 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
    * [nes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/nes.stan): linear model with eight predictors    
     ``partyid7 ~ real_ideo + race_adj + age30_44 + age45_64 + age65up + educ1 + gender + income``
 
+***
+
 #### [Chapter 5](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.5)
   * [5.1 Logistic Regression with One Predictor](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.1_LogisticRegressionWithOnePredictor.R)
    * [nes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/nes.stan): generalized linear model with  logit link function and one predictor  
@@ -153,6 +159,8 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
    * [simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/y_x.stan): generalized linear model with logit link function and one predictor  
      ``y ~ x``
 
+***
+
 #### [Chapter 6](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.6)
   * [6.2 Poisson, Exposure, & Overdispersion - MISSING DATA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.2_Poisson%2CExposure%26Overdispersion.R)
   * [6.4 Probit Regression](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.4_ProbitRegression.R)
@@ -167,6 +175,8 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
   * [6.8 Constructive Choice Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.8_ConstructiveChoiceModels.R)
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/wells_logit.stan): generalized linear model with logit link function and one predictor  
     ``switch ~ dist100``
+
+***
 
 #### [Chapter 7](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.7)
   * [7.1 Simulation of Probability Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/7.1_SimulationOfProbabilityModels.R)
@@ -184,6 +194,8 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/earnings2.stan): linear model with two predictors and log transformation 
     ``log_earn ~ height + male, subset=earn>0``
 
+***
+
 #### [Chapter 8](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.8)
   * [8.1 Fake Data Simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/8.1_FakeDataSimulation.R)
    * [simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/y_x.stan): linear model with one predictor  
@@ -197,6 +209,8 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
   * [8.4 Predictive Simulation to Check Fit of Time Series Model](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/8.4_PredictiveSimulationToCheckFitOfTimeSeriesModels.R)
    * [unemployment](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/unemployment.stan): linear model with one predictor  
      ``y ~ y_lag``  
+
+***
 
 #### [Chapter 9](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.9)
   * [9.3 Randomized Experiments - convert regression.2tables](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/9.3_RandomizedExperiments.R)
@@ -212,6 +226,8 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
    * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_interactions.stan): linear model with two predictors and interaction  
      ``post_test ~ pre_test + treatment + pre_test:treatment``  
   * [9.5 Observational Studies - havent started](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/9.5_ObservationalStudies.R)
+
+***
 
 #### [Chapter 10](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.10)
   * [10.3 Matching - MISSING DATA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/10.3_Matching.R)
@@ -239,8 +255,12 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
    * [sesame](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/sesame_multi_preds_3b.stan): linear model with three predictors and one factor  
     ``y ~ watched_hat + pretest + as.factor(site) + setting``
 
+***
+
 #### [Chapter 11](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.11)
   * [11.3 Repeated Measurements, Time-Series, Cross Sections & Others - missing data](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.11/11.3_RepeatedMeasurements%2CTimeSeries%20CrossSections%26Others.R)
+
+***
 
 #### [Chapter 12](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.12)
   * [12.2 Partial Pooling with No Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.2_PartialPoolingWithNoPredictors.R)
@@ -249,8 +269,12 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
   * [12.6 Group-Level Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.6_Group-LevelPredictors.R)
   * [12.8 Prediction](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.8_Prediction.R)
 
-THE BELOW CHAPTERS HAVE NOT BEEN ADDED YET.
+***
+
 #### [Chapter 13](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.13)
+
+
+THE BELOW CHAPTERS HAVE NOT BEEN ADDED YET.
 
 #### [Chapter 14](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.14)
 
