@@ -28,6 +28,10 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
 * [Chapter 25](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Chapter#chapter-25)
 
 
+***
+
+***
+
 #### [Chapter 2](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.2)
  * [2.3 CI](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.2/2.3_CI.R)
  * [2.4 Hypothesis Testing - MISSING DATA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.2/2.4_HypothesisTesting.R)
