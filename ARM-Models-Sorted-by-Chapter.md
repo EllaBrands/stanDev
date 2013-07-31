@@ -264,25 +264,25 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
 
 #### [Chapter 12](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.12)
   * [12.2 Partial Pooling with No Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.2_PartialPoolingWithNoPredictors.R)
-    * [radon_intercept](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_intercept.stan): multi-level linear model with varying intercept       
+    * [radon_intercept](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_intercept.stan): multi-level linear model with varying intercept        
       ``lmer(y ~ 1 + (1 | county))``
   * [12.3 Partial Pooling with Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.3_PartialPoolingWithPredictors.R) 
-    * [radon_complete_pool](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_complete_pool.stan): multi-level linear model with complete pooling
+    * [radon_complete_pool](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_complete_pool.stan): multi-level linear model with complete pooling          
       ``lm(y ~ x)``
-    * [radon_no_pool](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_no_pool.stan): multi-level linear model with no pooling
+    * [radon_no_pool](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_no_pool.stan): multi-level linear model with no pooling        
       ``lmer(y ~ x + (1 | county))``
   * [12.4 Fitting MLM in R](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.4_FittingMLMinR.R)
-    * [radon_intercept](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_intercept.stan): multi-level linear model with varying intercept       
+    * [radon_intercept](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_intercept.stan): multi-level linear model with varying intercept         
       ``lmer(y ~ 1 + (1 | county))``
-    * [radon_no_pool](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_no_pool.stan): multi-level linear model with no pooling
-      ``lmer(y ~ x + (1 | county))``
+    * [radon_no_pool](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_no_pool.stan): multi-level linear model with no pooling          
+      ``lmer(y ~ x + (1 | county))``        
   * [12.6 Group-Level Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.6_Group-LevelPredictors.R)
-    * [radon_group](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_group.stan): multi-level linear model with group level predictor and individual level predictors
+    * [radon_group](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_group.stan): multi-level linear model with group level predictor and individual level predictors              
       ``lmer(y ~ x + u + (1 | county))``
-    * [radon_no_pool](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_no_pool.stan): multi-level linear model with no pooling
+    * [radon_no_pool](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_no_pool.stan): multi-level linear model with no pooling                
       ``lmer(y ~ x + (1 | county))``
   * [12.8 Prediction](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.8_Prediction.R)
-    * [radon_group](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_group.stan): multi-level linear model with group level predictor and individual level predictors
+    * [radon_group](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_group.stan): multi-level linear model with group level predictor and individual level predictors         
       ``lmer(y ~ x + u + (1 | county))``
 
 ***
