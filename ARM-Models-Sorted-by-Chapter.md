@@ -265,53 +265,54 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
 #### [Chapter 12](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.12)
   * [12.2 Partial Pooling with No Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.2_PartialPoolingWithNoPredictors.R)
     * [radon_intercept](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_intercept.stan): multi-level linear model with varying intercept        
-      ``lmer(y ~ 1 + (1 | county))``
+      ``lmer (y ~ 1 + (1 | county))``
   * [12.3 Partial Pooling with Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.3_PartialPoolingWithPredictors.R) 
     * [radon_complete_pool](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_complete_pool.stan): multi-level linear model with complete pooling          
-      ``lm(y ~ x)``
+      ``lm (y ~ x)``
     * [radon_no_pool](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_no_pool.stan): multi-level linear model with no pooling        
-      ``lmer(y ~ x + (1 | county))``
+      ``lmer (y ~ x + (1 | county))``
   * [12.4 Fitting MLM in R](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.4_FittingMLMinR.R)
     * [radon_intercept](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_intercept.stan): multi-level linear model with varying intercept         
-      ``lmer(y ~ 1 + (1 | county))``
+      ``lmer (y ~ 1 + (1 | county))``
     * [radon_no_pool](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_no_pool.stan): multi-level linear model with no pooling          
-      ``lmer(y ~ x + (1 | county))``        
+      ``lmer (y ~ x + (1 | county))``        
   * [12.6 Group-Level Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.6_Group-LevelPredictors.R)
     * [radon_group](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_group.stan): multi-level linear model with group level predictor and individual level predictors              
-      ``lmer(y ~ x + u + (1 | county))``
+      ``lmer (y ~ x + u + (1 | county))``
     * [radon_no_pool](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_no_pool.stan): multi-level linear model with no pooling                
-      ``lmer(y ~ x + (1 | county))``
+      ``lmer (y ~ x + (1 | county))``
   * [12.8 Prediction](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.8_Prediction.R)
     * [radon_group](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_group.stan): multi-level linear model with group level predictor and individual level predictors         
-      ``lmer(y ~ x + u + (1 | county))``
+      ``lmer (y ~ x + u + (1 | county))``
 
 ***
 
 #### [Chapter 13](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.13)
   * [13.1 Varying Intercepts & Slopes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/13.1_VaryingIntercepts%26Slopes.R)
     * [radon_vary_si](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/radon_vary_si.stan): multi-level linear model with group level predictors         
-      ``lmer(y ~ x (1 + x | county))``
+      ``lmer (y ~ x (1 + x | county))``
    * [y_x](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/y_x.stan): linear model with one predictor       
-      ``lm(y ~ x)``
+      ``lm (y ~ x)``
     * [radon_inter_vary](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/radon_inter_vary.stan): multi-level linear model with group level predictors         
-      ``lmer(y ~ x + u.full + x:u.full + (1 + x | county))``
+      ``lmer (y ~ x + u.full + x:u.full + (1 + x | county))``
   * [13.4 Understanding Correlations Between Intercepts & Slopes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/13.4_UnderstandingCorrelationsBetweenIntercepts%26Slopes.R)
     * [earnings_vary_si](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/earnings_vary_si.stan): multi-level linear model with group level predictors         
-      ``lmer(y ~ x (1 + x | ethn))``
+      ``lmer (y ~ x (1 + x | ethn))``
   * [13.5 Non-Nested Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/13.5_Non-NestedModels.R)
     * [pilots](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/pilots.stan): non-nested multi-level linear model with group level predictors         
-      ``lmer(y ~ 1 + (1 | group.id) (1 | scenario.id))``
+      ``lmer (y ~ 1 + (1 | group.id) (1 | scenario.id))``
     * [earnings_latin_square](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/earnings_latin_square.stan): non-nested multi-level linear model with group level predictors         
-      ``lmer(y ~ x.centered + (1 + x.centered | eth) + (1 + x.centered | age) + (1 + x.centered | eth:age))``
+      ``lmer (y ~ x.centered + (1 + x.centered | eth) + (1 + x.centered | age) + (1 + x.centered | eth:age))``
 
 ***
 
 #### [Chapter 14](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.14)
   * [14.1 State-Level Opinions From National Polls](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.14/14.1_State-LevelOpinionsFromNationalPolls.R)
     * [elections88](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.14/elections88.stan): multi-level logistic regression model with group level predictors         
-      ``lmer(y ~ black + female + (1 | state), family=binomial(link="logit"))``
+      ``lmer (y ~ black + female + (1 | state), family=binomial(link="logit"))``
     * [elections88_full](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.14/elections88_full.stan): multi-level logistic regression model with group level predictors         
-      ``lmer (y ~ black + female + black:female + v.prev.full + (1 | age) + (1 | edu) + (1 | age.edu) + (1 | state) + (1 | region.full), family=binomial(link="logit"))``
+      ``lmer (y ~ black + female + black:female + v.prev.full + (1 | age) + (1 | edu) + (1 | age.edu) 
+                  + (1 | state) + (1 | region.full), family=binomial(link="logit"))``
 
 ***
 
