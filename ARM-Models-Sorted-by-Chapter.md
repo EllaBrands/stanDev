@@ -212,10 +212,10 @@ log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_total_
 log_weight ~ log_canopy_volume + log_canopy_area + group
 ```
 
-   * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_vash.stan): linear model with two predictors and three transformed predictors and log transformation  
-``` 
+   * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_vash.stan): linear model with two predictors and three transformed predictors and log transformation
+```
 log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_total_height + group
-``` 
+```
 
   * [4.7 Fitting a Series of Regressions - graph partially works](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.7_FittingASeriesofRegressions.R)
 
