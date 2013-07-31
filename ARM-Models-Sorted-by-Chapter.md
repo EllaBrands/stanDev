@@ -302,12 +302,16 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
     * [pilots](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/pilots.stan): non-nested multi-level linear model with group level predictors         
       ``lmer(y ~ 1 + (1 | group.id) (1 | scenario.id))``
     * [earnings_latin_square](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/earnings_latin_square.stan): non-nested multi-level linear model with group level predictors         
-      ``lmer (y ~ x.centered + (1 + x.centered | eth) + (1 + x.centered | age) + (1 + x.centered | eth:age))``
+      ``lmer(y ~ x.centered + (1 + x.centered | eth) + (1 + x.centered | age) + (1 + x.centered | eth:age))``
 
 ***
 
 #### [Chapter 14](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.14)
   * [14.1 State-Level Opinions From National Polls](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.14/14.1_State-LevelOpinionsFromNationalPolls.R)
+    * [elections88](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.14/elections88.stan): multi-level logistic regression model with group level predictors         
+      ``lmer(y ~ black + female + (1 | state), family=binomial(link="logit"))``
+    * [elections88_full](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.14/elections88_full.stan): multi-level logistic regression model with group level predictors         
+      ``lmer (y ~ black + female + black:female + v.prev.full + (1 | age) + (1 | edu) + (1 | age.edu) + (1 | state) + (1 | region.full), family=binomial(link="logit"))``
 
 ***
 
