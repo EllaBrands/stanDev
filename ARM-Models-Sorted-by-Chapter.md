@@ -273,12 +273,17 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
 
 #### [Chapter 13](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.13)
 
-
-THE BELOW CHAPTERS HAVE NOT BEEN ADDED YET.
+***
 
 #### [Chapter 14](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.14)
 
+***
+
 #### [Chapter 15](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.15)
+
+***
+
+THE BELOW CHAPTERS HAVE NOT BEEN ADDED YET.
 
 #### [Chapter 16](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.16)
 
