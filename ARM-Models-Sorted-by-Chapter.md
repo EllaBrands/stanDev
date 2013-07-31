@@ -320,128 +320,262 @@ y ~ x
 ***
 
 #### [Chapter 6](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.6)
+
   * [6.2 Poisson, Exposure, & Overdispersion - MISSING DATA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.2_Poisson%2CExposure%26Overdispersion.R)
+
   * [6.4 Probit Regression](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.4_ProbitRegression.R)
+
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/wells_probit.stan): generalized linear model with probit link function and one predictor  
-    ``switc ~ dist100``
+```
+switc ~ dist100
+```
+
   * [6.5 Ordered & Unordered Categorical Regression - MISSING DATA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.5_Ordered%26UnorderedCategoricalRegression.R)
+
   * [6.7 More Complex GLM](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.7_MoreComplexGLM.R)
+
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/earnings1.stan): generalized linear model with logit link function and two predictors  
-     ``earn_pos ~ height + male`` 
+```
+earn_pos ~ height + male
+``` 
+
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/earnings2.stan): linear model with two predictors and log transformation 
-    ``log_earn ~ height + male, subset=earn>0``
+```
+log_earn ~ height + male, subset=earn>0
+```
+
   * [6.8 Constructive Choice Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.8_ConstructiveChoiceModels.R)
+
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/wells_logit.stan): generalized linear model with logit link function and one predictor  
-    ``switc ~ dist100``
+```
+switc ~ dist100
+```
 
 ***
 
 #### [Chapter 7](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.7)
+
   * [7.1 Simulation of Probability Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/7.1_SimulationOfProbabilityModels.R)
+
   * [7.2 Summarizing Linear Regression Using Simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/7.2_SummarizingLinearRegressionUsingSimulation.R)
+
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/earnings_interactions.stan): linear model with two predictors and interaction and log transformation   
-    ``log_earn ~ height + male + height:male``
+```
+log_earn ~ height + male + height:male
+```
+
   * [7.3 Simulation for NonLinear Predictions](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/7.3_SimulationForNonLinearPredictions.R)
+
    * [congress](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/congress.stan): linear model with two predictors  
-    ``vote_88 ~ vote_86 + incumbency_88``
+```
+vote_88 ~ vote_86 + incumbency_88
+```
+
   * [7.4 Predictive Simulation for GLM](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/7.4_PredictiveSimulationForGLM.R)
+
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/wells.stan): generalized linear model with logit link function and one predictor   
-    ``switc ~ dist``
+```
+switc ~ dist
+```
+
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/earnings1.stan): generalized linear model with logit link function and two predictors   
-    ``earn_pos ~ height + male``
+```
+earn_pos ~ height + male
+```
+ 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/earnings2.stan): linear model with two predictors and log transformation 
-    ``log_earn ~ height + male, subset=earn>0``
+```
+log_earn ~ height + male, subset=earn>0
+```
 
 ***
 
 #### [Chapter 8](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.8)
+
   * [8.1 Fake Data Simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/8.1_FakeDataSimulation.R)
+
    * [simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/y_x.stan): linear model with one predictor  
-     ``y ~ x``  
+```
+y ~ x
+```  
+
   * [8.2 Fake Data Simulation to Understand Residual Plots](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/8.2_FakeDataSimulationToUnderstandResidualPlots.R)
+
    * [grades](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/grades.stan): linear model with one predictor  
-     ``final ~ midterm``  
+```
+final ~ midterm
+```  
+
   * [8.3 Simulating from the Fitted Model - ADD ROACH MODELS STILL](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/8.3_SimulatingFromTheFittedModel.R)
+
    * [lightspeed](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/lightspeed.stan): linear model with no predictors  
-     ``y ~ 1``  
+```
+y ~ 1
+```  
+
   * [8.4 Predictive Simulation to Check Fit of Time Series Model](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/8.4_PredictiveSimulationToCheckFitOfTimeSeriesModels.R)
+
    * [unemployment](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/unemployment.stan): linear model with one predictor  
-     ``y ~ y_lag``  
+```
+y ~ y_lag
+```  
 
 ***
 
 #### [Chapter 9](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.9)
+
   * [9.3 Randomized Experiments - convert regression.2tables](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/9.3_RandomizedExperiments.R)
+
    * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_one_pred.stan): linear model with one predictor  
-     ``post_test ~ treatment``  
+```
+post_test ~ treatment
+```  
+
    * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_multi_preds.stan): linear model with two predictors  
-     ``post_test ~ pre_test + treatment``  
+```
+post_test ~ pre_test + treatment
+```  
+
   * [9.4 Treatment Interactions & Post Stratification](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/9.4_TreatmentInteractions%26Poststratification.R)
+
    * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_one_pred.stan): linear model with one predictor    
-     ``post_test ~ treatment``  
+```
+post_test ~ treatment
+```  
+
    * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_multi_preds.stan): linear model with two predictors  
-     ``post_test ~ pre_test + treatment``  
+```
+post_test ~ pre_test + treatment
+```  
+
    * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_interactions.stan): linear model with two predictors and interaction  
-     ``post_test ~ pre_test + treatment + pre_test:treatment``  
+```
+post_test ~ pre_test + treatment + pre_test:treatment
+```  
+
   * [9.5 Observational Studies - havent started](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/9.5_ObservationalStudies.R)
 
 ***
 
 #### [Chapter 10](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.10)
+
   * [10.3 Matching - MISSING DATA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/10.3_Matching.R)
+
   * [10.4 Lack of Overlap when Treat Assignments is Unknown](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/10.4_LackOfOverlapWhenTreat.AssignmentIsUnknown.R)
+
    * [ideo](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/ideo_two_pred.stan): linear model with two predictors  
-    ``score1 ~ party + x, subset=overlap``
+```
+score1 ~ party + x, subset=overlap
+```
+
    * [ideo](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/ideo_two_pred.stan): linear model with two predictors  
-    ``score1 ~ party + x, subset=incs``
+```
+score1 ~ party + x, subset=incs
+```
+
    * [ideo](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/ideo_interactions.stan): linear model with two predictors and reparamaterization  
-    ``score1 ~ party + I(z*(party==0)) + I(z*(party==1)), subset=incs``
+```
+score1 ~ party + I(z*(party==0)) + I(z*(party==1)), subset=incs
+```
+ 
    * [ideo](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/ideo_reparam.stan): linear model with two predictors and interaction  
-    ``score1 ~ party + x + party:x, subset=incs``
+```
+score1 ~ party + x + party:x, subset=incs
+```
+
   * [10.5 Casual Effects Using IV](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/10.5_CasualEffectsUsingIV.R)
+
    * [sesame](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/sesame_one_pred_a.stan): linear model with one predictor  
-    ``watched ~ encouraged``
+```
+watched ~ encouraged
+```
+
    * [sesame](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/sesame_one_pred_b.stan): linear model with one predictor  
-    ``y ~ encouraged``
+```
+y ~ encouraged
+```
+
   * [10.6 IV in a Regression Framework - misisng stuff at bottom](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/10.6_IVinaRegressionFramework.R)
+
    * [sesame](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/sesame_one_pred_a.stan): linear model with one predictor  
-    ``watched ~ encouraged``
+```
+watched ~ encouraged
+```
+
    * [sesame](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/sesame_one_pred_2b.stan): linear model with one predictor  
-    ``y ~ watched_hat``
+```
+y ~ watched_hat
+```
+
    * [sesame](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/sesame_multi_preds_3a.stan): linear model with three predictors and one factor  
-    ``watched ~ encouraged + pretest + as.factor(site) + setting``
+```
+watched ~ encouraged + pretest + as.factor(site) + setting
+```
+
    * [sesame](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/sesame_multi_preds_3b.stan): linear model with three predictors and one factor  
-    ``y ~ watched_hat + pretest + as.factor(site) + setting``
+```
+y ~ watched_hat + pretest + as.factor(site) + setting
+```
 
 ***
 
 #### [Chapter 11](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.11)
+ 
   * [11.3 Repeated Measurements, Time-Series, Cross Sections & Others - missing data](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.11/11.3_RepeatedMeasurements%2CTimeSeries%20CrossSections%26Others.R)
 
 ***
 
 #### [Chapter 12](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.12)
+
   * [12.2 Partial Pooling with No Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.2_PartialPoolingWithNoPredictors.R)
+
     * [radon_intercept](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_intercept.stan): multi-level linear model with varying intercept        
-      ``lmer (y ~ 1 + (1 | county))``
+```
+lmer (y ~ 1 + (1 | county))
+```
+
   * [12.3 Partial Pooling with Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.3_PartialPoolingWithPredictors.R) 
+
     * [radon_complete_pool](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_complete_pool.stan): multi-level linear model with complete pooling          
-      ``lm (y ~ x)``
+```
+lm (y ~ x)
+```
+
     * [radon_no_pool](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_no_pool.stan): multi-level linear model with no pooling        
-      ``lmer (y ~ x + (1 | county))``
+```
+lmer (y ~ x + (1 | county))
+```
+
   * [12.4 Fitting MLM in R](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.4_FittingMLMinR.R)
+
     * [radon_intercept](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_intercept.stan): multi-level linear model with varying intercept         
-      ``lmer (y ~ 1 + (1 | county))``
+```
+lmer (y ~ 1 + (1 | county))
+```
+
     * [radon_no_pool](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_no_pool.stan): multi-level linear model with no pooling          
-      ``lmer (y ~ x + (1 | county))``        
+```
+lmer (y ~ x + (1 | county))
+```        
+
   * [12.6 Group-Level Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.6_Group-LevelPredictors.R)
+
     * [radon_group](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_group.stan): multi-level linear model with group level predictor and individual level predictors              
-      ``lmer (y ~ x + u + (1 | county))``
+```
+lmer (y ~ x + u + (1 | county))
+```
+
     * [radon_no_pool](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_no_pool.stan): multi-level linear model with no pooling                
-      ``lmer (y ~ x + (1 | county))``
+```
+lmer (y ~ x + (1 | county))
+```
+
   * [12.8 Prediction](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.8_Prediction.R)
+
     * [radon_group](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_group.stan): multi-level linear model with group level predictor and individual level predictors         
-      ``lmer (y ~ x + u + (1 | county))``
+```
+lmer (y ~ x + u + (1 | county))
+```
 
 ***
 
