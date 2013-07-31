@@ -288,10 +288,14 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
 ***
 
 #### [Chapter 13](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.13)
+  * [13.1 Varying Intercepts & Slopes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/13.1_VaryingIntercepts%26Slopes.R)
+  * [13.4 Understanding Correlations Between Intercepts & Slopes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/13.4_UnderstandingCorrelationsBetweenIntercepts%26Slopes.R)
+  * [13.5 Non-Nested Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/13.5_Non-NestedModels.R)
 
 ***
 
 #### [Chapter 14](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.14)
+  * [14.1 State-Level Opinions From National Polls](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.14/14.1_State-LevelOpinionsFromNationalPolls.R)
 
 ***
 
