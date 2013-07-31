@@ -33,42 +33,85 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
 ***
 
 #### [Chapter 2](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.2)
+
  * [2.3 CI](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.2/2.3_CI.R)
+
  * [2.4 Hypothesis Testing - MISSING DATA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.2/2.4_HypothesisTesting.R)
+
  * [2.6 55,000 Residents - MISSING DATA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.2/2.6_55%2C000Residents.R)
 
 ***
 
 #### [Chapter 3](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.3)
+
  * [3.1 One Predictor](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.1_OnePredictor.R)
+
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidscore_momhs.stan): linear model with one predictor  
-    ``kid_score ~ mom_hs``
+```
+kid_score ~ mom_hs
+```
+
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidscore_momiq.stan): linear model with one predictor  
-    ``kid_score ~ mom_iq``
+```
+kid_score ~ mom_iq
+```
+
  * [3.2 Multiple Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.2_MultiplePredictors.R)
+
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidiq_multi_preds.stan): linear model with two predictors  
-    ``kid_score ~ mom_hs + mom_iq``
+```
+kid_score ~ mom_hs + mom_iq
+```
+
  * [3.3 Interactions](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.3_Interactions.R)
+
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidiq_interaction.stan): linear model with two predictors and interaction  
-    ``kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq``
+```
+kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq
+```
+
  * [3.4 Stat Inference](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.4_StatInference.R)
+
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidiq_multi_preds.stan): linear model with two predictors  
-    ``kid_score ~ mom_hs + mom_iq``
+```
+kid_score ~ mom_hs + mom_iq
+```
+
  * [3.5 Graph Displays](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.5_GraphDisplays.R)
+
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidscore_momiq.stan): linear model with one predictor  
-    ``kid_score ~ mom_iq``
+```
+kid_score ~ mom_iq
+```
+
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidiq_multi_preds.stan): linear model with two predictors  
-    ``kid_score ~ mom_hs + mom_iq``
+```
+kid_score ~ mom_hs + mom_iq
+```
+
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidiq_interaction.stan): linear model with two predictors and interaction  
-    ``kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq``
+```
+kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq
+```
+
  * [3.6 Diagnostics](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.6_Diagnostics.R)
+
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidscore_momiq.stan): linear model with one predictor  
-    ``kid_score ~ mom_iq``
+```
+kid_score ~ mom_iq
+```
+
  * [3.7 Prediction](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.7_Prediction.R)
+
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidiq_multi_preds.stan): linear model with two predictors  
-    ``kid_score ~ mom_hs + mom_iq``
+```
+kid_score ~ mom_hs + mom_iq
+```
+
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidiq_validation.stan): linear model with two predictors  
-    ``ppvt ~ hs + afqt``
+```
+ppvt ~ hs + afqt
+```
 
 ***
 
