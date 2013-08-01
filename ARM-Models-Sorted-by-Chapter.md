@@ -640,15 +640,38 @@ lmer (y ~ black + female + black:female + v.prev.full + (1 | age) + (1 | edu) + 
 
 ***
 
-#### [Chapter 19](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.19)
+#### [Chapter 20](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.20)
 
-    * [19.2 General Methods for Reducing Computational Requirements] (https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/19.2_GeneralMethodsForReducingComputationalRequirements.R)
+    * [20.5 Multilevel Power Calculation Using Fake-Data Simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.20/20.5_MultilevelPowerCalculationUsingFake-DataSimulation.R)
 
-    * [19.3 Simple Linear Transformations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/19.3_SimpleLinearTransformations.R)
+***
 
-    * [19.4 Redundant Parameters & Intentionally Non-identifiable Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/19.4_RedundantParameters%26IntentionallyNonidentifiableModels.R)
+#### [Chapter 21](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.21)
 
-    * [19.5 Parameter Expansion](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/19.5_ParameterExpansion.R)
+    * [21.2 Superpopulation & Finite-Population Variances](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/21.2_Superpopulation%26Finite-PopulationVariances.R)
 
-    * [19.6 Using Redundant Parameters for Modeling](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/19.6_UsingRedundantParametersForModeling.R)
+    * [21.3 Contrasts & Comparisons of Multilevel Coefficients](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/21.3_Contrasts%26ComparisonsOfMultilevelCoefficients.R)
 
+    * [21.5 R^2 & Explained Variance](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/21.5_R%5E2%26ExplainedVariance.R)
+
+    * [21.6 Summarizing the Amount of Partial Pooling](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/21.6_SummarizingtheAmmountofPartialPooling.R)
+
+    * [21.7 Adding a Predictor can Increase Residual Variance](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/21.7_AddingAPredictorCanIncreaseResidualVariance.R)
+
+***
+
+THE BELOW CHAPTERS HAVE NOT BEEN ADDED YET.
+
+#### [Chapter 16](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.16)
+
+#### [Chapter 17](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.17)
+
+#### [Chapter 18](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.18)
+
+#### [Chapter 22](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.22)
+
+#### [Chapter 23](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.23)
+
+#### [Chapter 24](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.24)
+
+#### [Chapter 25](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.25)
