@@ -640,6 +640,15 @@ lmer (y ~ black + female + black:female + v.prev.full + (1 | age) + (1 | edu) + 
 
 ***
 
+#### [Chapter 19](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.19)
+
+***
+
+#### [Chapter 20](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.20)
+
+***
+
+
 THE BELOW CHAPTERS HAVE NOT BEEN ADDED YET.
 
 #### [Chapter 16](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.16)
@@ -647,10 +656,6 @@ THE BELOW CHAPTERS HAVE NOT BEEN ADDED YET.
 #### [Chapter 17](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.17)
 
 #### [Chapter 18](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.18)
-
-#### [Chapter 19](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.19)
-
-#### [Chapter 20](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.20)
 
 #### [Chapter 21](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.21)
 
