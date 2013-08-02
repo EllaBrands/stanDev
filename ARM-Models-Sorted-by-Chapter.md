@@ -648,9 +648,46 @@ lmer (y ~ black + female + black:female + v.prev.full + (1 | age) + (1 | edu) + 
 
   * [19.4 Redundant Parameters & Intentionally Non-identifiable Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/19.4_RedundantParameters%26IntentionallyNonidentifiableModels.R)
 
+    * [radon](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/radon.stan): multi-level liner model with varying intercept
+```
+lmer (y ~ 1 + (1 | county))
+```
+
+    * [radon_redundant](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/radon_redundant.stan): multi-level liner model with varying intercept and redundant parameterization
+```
+lmer (y ~ 1 + (1 | county))
+```
+
+    * [pilots](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/pilots.stan): multi-level linear model with varying intercept and redundant parameterization
+```
+lmer (y ~ 1 + (1 | treatment) + (1 | airport))
+```
+
+    * [election88](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/election88.stan): multi-level logistic regression model with redundant parameterization
+```
+lmer (y ~ female + black + female:black + (1 | age) + (1 | edu) + (1 | age_edu) + (1 | state))
+```
+
   * [19.5 Parameter Expansion](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/19.5_ParameterExpansion.R)
 
+    * [pilots_expansion](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/pilots_expansion.stan): multi-level linear model with varying intercept and parameter expansion
+```
+lmer (y ~ 1 + (1 | treatment) + (1 | airport))
+```
+
+    * [election88_expansion](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/election88_expansion.stan): multi-level logistic regression model with parameter expansion
+```
+lmer (y ~ female + black + female:black + (1 | age) + (1 | edu) + (1 | age_edu) + (1 | state))
+```
+
+    * [item_response](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/item_response.stan): multi-level logistic regression model with parameter expansion
+```
+lmer (y ~ a:g + (a:g | k,j) + (g:b | k))
+```
+
   * [19.6 Using Redundant Parameters for Modeling](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/19.6_UsingRedundantParametersForModeling.R)
+
+    * [8_schools](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/schools.stan): multi-level linear model with redundant parameterization
 
 ***
 
