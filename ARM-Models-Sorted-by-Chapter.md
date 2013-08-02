@@ -773,6 +773,12 @@ lmer (y ~ theta (theta | j))
   * [22.1 Classical ANOVA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.22/22.1_ClassicalANOVA.R)
 
   * [22.4 Doing ANOVA Using MLM](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.22/22.4_DoingANOVUsingMLM.R)
+
+    * [anova_radon_nopred](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.22/anova_radon_nopred.stan): multi-level linear model with varying intercept and set up for ANOVA
+```
+lmer (y ~ 1 + (1 | county))
+```
+
 ***
 
 #### [Chapter 23](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.23)
