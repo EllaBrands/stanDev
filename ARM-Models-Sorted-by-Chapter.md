@@ -676,13 +676,24 @@ lmer (y ~ black + female + black:female + v.prev.full + (1 | age) + (1 | edu) + 
 
 #### [Chapter 22](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.22)
 
+  * [22.1 Classical ANOVA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.22/22.1_ClassicalANOVA.R)
+
+  * [22.4 Doing ANOVA Using MLM](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.22/22.4_DoingANOVUsingMLM.R)
 ***
 
 #### [Chapter 23](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.23)
 
+  * [23.1 Multilevel Aspects of Data Collection](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/23.1_MultilevelAspectsofDataCollection.R)
+
+  * 23.3 Treatments Applied at Different Levels
+
+  * [23.4 Instrumental Variables & Multilevel Modeling](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/23.4_InstrumentalVariables%26MultilevelModeling.R)
+
 ***
 
 #### [Chapter 24](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.24)
+
+  * [24.2 Behavioral Learning Experiments](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/24.2_BehavioralLearningExperiment.R)
 
 ***
 
