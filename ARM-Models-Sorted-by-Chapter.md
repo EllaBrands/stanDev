@@ -48,69 +48,69 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
 
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidscore_momhs.stan): linear model with one predictor  
 ```
-kid_score ~ mom_hs
+lm (kid_score ~ mom_hs)
 ```
 
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidscore_momiq.stan): linear model with one predictor  
 ```
-kid_score ~ mom_iq
+lm (kid_score ~ mom_iq)
 ```
 
  * [3.2 Multiple Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.2_MultiplePredictors.R)
 
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidiq_multi_preds.stan): linear model with two predictors  
 ```
-kid_score ~ mom_hs + mom_iq
+lm (kid_score ~ mom_hs + mom_iq)
 ```
 
  * [3.3 Interactions](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.3_Interactions.R)
 
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidiq_interaction.stan): linear model with two predictors and interaction  
 ```
-kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq
+lm (kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq)
 ```
 
  * [3.4 Stat Inference](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.4_StatInference.R)
 
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidiq_multi_preds.stan): linear model with two predictors  
 ```
-kid_score ~ mom_hs + mom_iq
+lm (kid_score ~ mom_hs + mom_iq)
 ```
 
  * [3.5 Graph Displays](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.5_GraphDisplays.R)
 
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidscore_momiq.stan): linear model with one predictor  
 ```
-kid_score ~ mom_iq
+lm (kid_score ~ mom_iq)
 ```
 
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidiq_multi_preds.stan): linear model with two predictors  
 ```
-kid_score ~ mom_hs + mom_iq
+lm (kid_score ~ mom_hs + mom_iq)
 ```
 
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidiq_interaction.stan): linear model with two predictors and interaction  
 ```
-kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq
+lm (kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq)
 ```
 
  * [3.6 Diagnostics](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.6_Diagnostics.R)
 
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidscore_momiq.stan): linear model with one predictor  
 ```
-kid_score ~ mom_iq
+lm (kid_score ~ mom_iq)
 ```
 
  * [3.7 Prediction](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.7_Prediction.R)
 
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidiq_multi_preds.stan): linear model with two predictors  
 ```
-kid_score ~ mom_hs + mom_iq
+lm (kid_score ~ mom_hs + mom_iq)
 ```
 
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidiq_validation.stan): linear model with two predictors  
 ```
-ppvt ~ hs + afqt
+lm (ppvt ~ hs + afqt)
 ```
 
 ***
@@ -121,107 +121,107 @@ ppvt ~ hs + afqt
 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earn_height.stan): linear model with one predictor  
 ```
-earnings ~ height
+lm (earnings ~ height)
 ```
 
   * [4.2 Centering & Standardizing](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.2_Centering%26Standardizing.R)
 
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/kidiq_interaction.stan): linear model with two predictors and interaction  
 ```
-kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq
+lm (kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq)
 ```
 
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/kidiq_interaction_c.stan): linear model with two predictors and interaction centered using mean  
 ```
-kid_score ~ c_mom_hs + c_mom_iq + c_mom_hs:c_mom_iq
+lm (kid_score ~ c_mom_hs + c_mom_iq + c_mom_hs:c_mom_iq)
 ```
 
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/kidiq_interaction_c2.stan): linear model with two predictors and interaction centered using conventional points  
 ```
-kid_score ~ c2_mom_hs + c2_mom_iq + c2_mom_hs:c2_mom_iq
+lm (kid_score ~ c2_mom_hs + c2_mom_iq + c2_mom_hs:c2_mom_iq)
 ```
 
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/kidiq_interaction_z.stan): linear model with two predictors and interaction centered using z-score  
 ```
-kid_score ~ z_mom_hs + z_mom_iq + z_mom_hs:z_mom_iq
+lm (kid_score ~ z_mom_hs + z_mom_iq + z_mom_hs:z_mom_iq)
 ```
 
   * [4.4 Log Transformations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.4_LogTransformations.R)
 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_height.stan): linear model with one predictor and natural log transformation  
 ```
-log_earnings ~ height
+lm (log_earnings ~ height)
 ```
 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/log10earn_height.stan): linear model with one predictor and log10 transformation  
 ```
-log10_earnings ~ height
+lm (log10_earnings ~ height)
 ```
 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_height_male.stan): linear model with two predictors and natural log transformation  
 ```
-log_earnings ~ height + male
+lm (log_earnings ~ height + male)
 ```
 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_interaction.stan): linear model with two predictors and interaction and natural log transformation  
 ```
-log_earnings ~ height + male + height:male
+lm (log_earnings ~ height + male + height:male)
 ```
 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_interaction_z.stan): linear model with two predictors and interaction and natural log transformation centered using z-score  
 ```
-log_earnings ~ z_height + male + z_height:male
+lm (log_earnings ~ z_height + male + z_height:male)
 ```
 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_logheight.stan): linear model with two predictors and log log transformation  
 ```
-log_earnings ~ log_height + male
+lm (log_earnings ~ log_height + male)
 ```
 
   * [4.5 Other Transformations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.5_OtherTransformations.R)
 
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/kidscore_momwork.stan): linear model with one factor   
 ```
-kid_score ~ as.factor(mom_work)
+lm (kid_score ~ as.factor(mom_work))
 ```
 
   * [4.6 Regression Models for Prediction](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.6_RegressionModelsForPrediction.R)
 
    * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite.stan): linear model with six predictors  
 ```
-weight~ diam1 + diam2 + canopy_height + total_height + density + group
+lm (weight~ diam1 + diam2 + canopy_height + total_height + density + group)
 ```
 
    * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_log.stan): linear model with six predictors and log transformation  
 ```
-log_weight~ log_diam1 + log_diam2 + log_canopy_height + log_total_height + log_density + group
+lm (log_weight~ log_diam1 + log_diam2 + log_canopy_height + log_total_height + log_density + group)
 ```
 
    * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_volume.stan): linear model with one transformed predictor and log transformation  
 ```
-log_weight ~ log_canopy_volume
+lm (log_weight ~ log_canopy_volume)
 ```
 
    * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_vas.stan): linear model with three predictors and three transformed predictors and log transformation           
 ```
-log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_total_height + log_density + group
+lm (log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_total_height + log_density + group)
 ```
 
    * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_va.stan): linear model with one predictor and two transformed predictors and log transformation   
 ```
-log_weight ~ log_canopy_volume + log_canopy_area + group
+lm (log_weight ~ log_canopy_volume + log_canopy_area + group)
 ```
 
    * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_vash.stan): linear model with two predictors and three transformed predictors and log transformation
 ```
-log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_total_height + group
+lm (log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_total_height + group)
 ```
 
   * [4.7 Fitting a Series of Regressions - graph partially works](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.7_FittingASeriesofRegressions.R)
 
    * [nes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/nes.stan): linear model with eight predictors    
 ```
-partyid7 ~ real_ideo + race_adj + age30_44 + age45_64 + age65up + educ1 + gender + income
+lm (partyid7 ~ real_ideo + race_adj + age30_44 + age45_64 + age65up + educ1 + gender + income)
 ```
 
 ***
