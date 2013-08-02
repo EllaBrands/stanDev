@@ -711,13 +711,60 @@ lmer (y ~ time:treatment + (1 + time | person)
 
   * [21.2 Superpopulation & Finite-Population Variances](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/21.2_Superpopulation%26Finite-PopulationVariances.R)
 
+    * [finite_populations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/finite_populations.stan): linear model with appropriate calculations for calculating the standard deviation of a finite population
+```
+lm (g ~ u_1 + u)
+```
+
   * [21.3 Contrasts & Comparisons of Multilevel Coefficients](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/21.3_Contrasts%26ComparisonsOfMultilevelCoefficients.R)
 
   * [21.5 R^2 & Explained Variance](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/21.5_R%5E2%26ExplainedVariance.R)
 
+    * [r_sqr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/r_sqr.stan): multi-level linear model with appropriate calculations for R^2
+```
+lmer (y ~ 1 + (1 + x | county))
+```
+
   * [21.6 Summarizing the Amount of Partial Pooling](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/21.6_SummarizingtheAmmountofPartialPooling.R)
 
+    * [radon_vary_intercept_a](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_a.stan): multi-level linear model with varying intercept set up to calculate pooling factors
+```
+lmer (y ~ x + (1 | county))
+```
+
+    * [radon_vary_intercept_b](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_b.stan): multi-level linear model with varying intercept set up to calculate pooling factors
+```
+lmer (y ~ x + (1 | county))
+```
+
+    * [radon_vary_intercept_c](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_c.stan): multi-level linear model with varying intercept
+```
+lmer (y ~ x + u + (1 | county))
+```
+
   * [21.7 Adding a Predictor can Increase Residual Variance](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/21.7_AddingAPredictorCanIncreaseResidualVariance.R)
+
+    * [radon_vary_intercept_floor](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_floor.stan): multi-level linear model with varying intercept
+```
+lmer (y ~ u + x + (1 | county))
+```
+
+    * [radon_vary_intercept_floor2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_floor2.stan): multi-level linear model with varying intercept
+```
+lmer (y ~ u + x + x_mean + (1 | county))
+```
+
+    * [radon_vary_intercept_nofloor](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_nofloor.stan): multi-level linear model with varying intercept
+```
+lmer (y ~ u + (1 | county))
+```
+
+  * 21.8 Multiple Comparisons and Statistical Significance
+
+    * [multiple_comparisons](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/multiple_comparison.stan): multi-level linear model that serves as a multiple comparisons example
+```
+lmer (y ~ theta (theta | j))
+```
 
 ***
 
