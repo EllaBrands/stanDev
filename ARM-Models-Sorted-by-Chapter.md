@@ -665,7 +665,8 @@ lmer (y ~ 1 + (1 | treatment) + (1 | airport))
 
     * [election88](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/election88.stan): multi-level logistic regression model with redundant parameterization
 ```
-lmer (y ~ female + black + female:black + (1 | age) + (1 | edu) + (1 | age_edu) + (1 | state), family=binomial(link="logit"))
+lmer (y ~ female + black + female:black + (1 | age) + (1 | edu) + (1 | age_edu) + (1 | state), 
+      family=binomial(link="logit"))
 ```
 
   * [19.5 Parameter Expansion](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/19.5_ParameterExpansion.R)
@@ -677,7 +678,8 @@ lmer (y ~ 1 + (1 | treatment) + (1 | airport))
 
     * [election88_expansion](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/election88_expansion.stan): multi-level logistic regression model with parameter expansion
 ```
-lmer (y ~ female + black + female:black + (1 | age) + (1 | edu) + (1 | age_edu) + (1 | state), family=binomial(link="logit"))
+lmer (y ~ female + black + female:black + (1 | age) + (1 | edu) + (1 | age_edu) + (1 | state), 
+      family=binomial(link="logit"))
 ```
 
     * [item_response](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/item_response.stan): multi-level logistic regression model with parameter expansion
