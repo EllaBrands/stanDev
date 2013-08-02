@@ -232,89 +232,94 @@ lm (partyid7 ~ real_ideo + race_adj + age30_44 + age45_64 + age65up + educ1 + ge
 
    * [nes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/nes.stan): generalized linear model with  logit link function and one predictor  
 ```
-vote ~ income
+glm (vote ~ income, family=binomial(link="logit"))
 ```
 
   * [5.2 Interpreting Logistic Regression Coeficients](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.2_InterpretingLogisticRegressionCoef.R)
 
    * [nes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/nes.stan): generalized linear model with logit link function and one predictor  
 ```
-vote ~ income
+glm (vote ~ income, family=binomial(link="logit"))
 ```
 
   * [5.4 Logistic Regression Wells in Bangladesh](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.4_LogisticRegressionWellsinBangladesh.R)
 
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_one_pred.stan): generalized linear model with logit link function and one predictor  
 ```
-switc ~ dist
+glm (switc ~ dist, family=binomial(link="logit"))
 ```
 
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_one_pred_scale.stan): generalized linear model with logit link function and one predictor  
 ```
-switc ~ dist100
+glm (switc ~ dist100, family=binomial(link="logit"))
 ```
 
   * [5.5 Logistic Regression with Interactions](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.5_LogisticRegressionWithInteractions.R)
 
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions.stan): generalized linear model with logit link function and two predictors and interaction  
 ```
-switc ~ dist100 + arsenic + dist100:arsenic
+glm (switc ~ dist100 + arsenic + dist100:arsenic, family=binomial(link="logit"))
 ```
 
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions_center.stan): generalized linear model with logit link function with two predictors and interaction centered using mean   
 ```
-switc ~ c_dist100 + c_arsenic + c_dist100:c_arsenic
+glm (switc ~ c_dist100 + c_arsenic + c_dist100:c_arsenic, family=binomial(link="logit"))
 ```
 
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_community.stan): generalized linear model with logit link function and four predictors and interaction centered using mean  
 ```
-switc ~ c_dist100 + c_arsenic + c_dist100:c_arsenic + assoc + educ4
+glm (switc ~ c_dist100 + c_arsenic + c_dist100:c_arsenic + assoc + educ4, family=binomial(link="logit"))
 ```
 
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_social.stan): generalized linear model with logit link function and three predictors and interaction centered using mean  
 ```
-switc ~ c_dist100 + c_arsenic + c_dist100:c_arsenic + educ4
+glm (switc ~ c_dist100 + c_arsenic + c_dist100:c_arsenic + educ4, family=binomial(link="logit"))
 ```
 
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions_center_educ.stan): generalized linear model with logit link function and three predictors and interaction centered using mean  
 ```
-switc ~ c_dist100 + c_arsenic + c_educ4 + c_dist100:c_arsenic + c_dist100:c_educ4 + c_arsenic:c_educ4
+glm (switc ~ c_dist100 + c_arsenic + c_educ4 + c_dist100:c_arsenic + c_dist100:c_educ4 + c_arsenic:c_educ4, 
+     family=binomial(link="logit"))
 ```
 
   * [5.6 Evaluating, Checking, & Comparing](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.6_Evaluating%2CChecking%2C%26Comparing.R)
 
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions_center_educ.stan): generalized linear model with logit link function with three predictors and interaction centered using mean  
 ```
-switc ~ c_dist100 + c_arsenic + c_educ4 + c_dist100:c_arsenic + c_dist100:c_educ4 + c_arsenic:c_educ4
+glm (switc ~ c_dist100 + c_arsenic + c_educ4 + c_dist100:c_arsenic + c_dist100:c_educ4 + c_arsenic:c_educ4, 
+     family=binomial(link="logit"))
 ```
 
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_log_transform.stan): generalized linear model with logit link function with three predictors and interaction with log transform and centered using mean   
 ```
-switc ~ c_dist100 + c_log_arsenic + c_educ4 + c_dist100:c_log_arsenic + c_dist100:c_educ4 + c_log_arsenic:c_educ4
+glm (switc ~ c_dist100 + c_log_arsenic + c_educ4 + c_dist100:c_log_arsenic + c_dist100:c_educ4     
+             + c_log_arsenic:c_educ4, 
+     family=binomial(link="logit"))
 ```
 
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_log_transform2.stan): generalized linear model with logit link function with three predictors and interaction with log transform and centered using mean  
 ```
-switc ~ dist100 + log_arsenic + educ4 + dist100:log_arsenic + dist100:educ4 + log_arsenic:educ4
+glm (switc ~ dist100 + log_arsenic + educ4 + dist100:log_arsenic + dist100:educ4 + log_arsenic:educ4, 
+     family=binomial(link="logit"))
 ```
 
   * [5.7 Average Predictive Comparisons](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.7_AveragePredictiveComparisons.R)
 
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_edu.stan): generalized linear model with logit link function and three predictors  
 ```
-switc ~ dist100 + arsenic + educ4
+glm (switc ~ dist100 + arsenic + educ4, family=binomial(link="logit"))
 ```
 
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_all.stan): generalized linear model with logit link function and three predictors with interaction  
 ```
-switc ~ dist100 + arsenic + educ4 + dist100:arsenic
+glm (switc ~ dist100 + arsenic + educ4 + dist100:arsenic, family=binomial(link="logit"))
 ```
 
   * [5.8 Identifiability and Separating](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.8_IdentifiabilityAndSeparation.R)
 
    * [simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/y_x.stan): generalized linear model with logit link function and one predictor  
 ```
-y ~ x
+glm (y ~ x, family=binomial(link="logit"))
 ```
 
 ***
@@ -327,7 +332,7 @@ y ~ x
 
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/wells_probit.stan): generalized linear model with probit link function and one predictor  
 ```
-switc ~ dist100
+glm (switc ~ dist100, family=binomial(link="probit"))
 ```
 
   * [6.5 Ordered & Unordered Categorical Regression - MISSING DATA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.5_Ordered%26UnorderedCategoricalRegression.R)
@@ -336,19 +341,19 @@ switc ~ dist100
 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/earnings1.stan): generalized linear model with logit link function and two predictors  
 ```
-earn_pos ~ height + male
+glm (earn_pos ~ height + male, family=binomial(link="logit"))
 ```
 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/earnings2.stan): linear model with two predictors and log transformation 
 ```
-log_earn ~ height + male, subset=earn>0
+lm (log_earn ~ height + male, subset=earn>0)
 ```
 
   * [6.8 Constructive Choice Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.8_ConstructiveChoiceModels.R)
 
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/wells_logit.stan): generalized linear model with logit link function and one predictor  
 ```
-switc ~ dist100
+glm (switc ~ dist100, family=binomial(link="logit"))
 ```
 
 ***
@@ -361,31 +366,31 @@ switc ~ dist100
 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/earnings_interactions.stan): linear model with two predictors and interaction and log transformation   
 ```
-log_earn ~ height + male + height:male
+lm (log_earn ~ height + male + height:male)
 ```
 
   * [7.3 Simulation for NonLinear Predictions](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/7.3_SimulationForNonLinearPredictions.R)
 
    * [congress](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/congress.stan): linear model with two predictors  
 ```
-vote_88 ~ vote_86 + incumbency_88
+lm (vote_88 ~ vote_86 + incumbency_88)
 ```
 
   * [7.4 Predictive Simulation for GLM](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/7.4_PredictiveSimulationForGLM.R)
 
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/wells.stan): generalized linear model with logit link function and one predictor   
 ```
-switc ~ dist
+glm (switc ~ dist, family=binomial(link="logit"))
 ```
 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/earnings1.stan): generalized linear model with logit link function and two predictors   
 ```
-earn_pos ~ height + male
+glm (earn_pos ~ height + male, family=binomial(link="logit"))
 ```
  
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/earnings2.stan): linear model with two predictors and log transformation 
 ```
-log_earn ~ height + male, subset=earn>0
+lm (log_earn ~ height + male, subset=earn>0)
 ```
 
 ***
@@ -396,28 +401,28 @@ log_earn ~ height + male, subset=earn>0
 
    * [simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/y_x.stan): linear model with one predictor
 ```
-y ~ x
+lm (y ~ x)
 ```
 
   * [8.2 Fake Data Simulation to Understand Residual Plots](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/8.2_FakeDataSimulationToUnderstandResidualPlots.R)
 
    * [grades](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/grades.stan): linear model with one predictor
 ```
-final ~ midterm
+lm (final ~ midterm)
 ```
 
   * [8.3 Simulating from the Fitted Model - ADD ROACH MODELS STILL](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/8.3_SimulatingFromTheFittedModel.R)
 
    * [lightspeed](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/lightspeed.stan): linear model with no predictors
 ```
-y ~ 1
+lm (y ~ 1)
 ```
 
   * [8.4 Predictive Simulation to Check Fit of Time Series Model](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/8.4_PredictiveSimulationToCheckFitOfTimeSeriesModels.R)
 
    * [unemployment](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/unemployment.stan): linear model with one predictor  
 ```
-y ~ y_lag
+lm (y ~ y_lag)
 ```
 
 ***
@@ -428,29 +433,29 @@ y ~ y_lag
 
    * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_one_pred.stan): linear model with one predictor
 ```
-post_test ~ treatment
+lm (post_test ~ treatment)
 ```
 
    * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_multi_preds.stan): linear model with two predictors  
 ```
-post_test ~ pre_test + treatment
+lm (post_test ~ pre_test + treatment)
 ```
 
   * [9.4 Treatment Interactions & Post Stratification](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/9.4_TreatmentInteractions%26Poststratification.R)
 
    * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_one_pred.stan): linear model with one predictor    
 ```
-post_test ~ treatment
+lm (post_test ~ treatment)
 ```
 
    * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_multi_preds.stan): linear model with two predictors  
 ```
-post_test ~ pre_test + treatment
+lm (post_test ~ pre_test + treatment)
 ```
 
    * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_interactions.stan): linear model with two predictors and interaction  
 ```
-post_test ~ pre_test + treatment + pre_test:treatment
+lm (post_test ~ pre_test + treatment + pre_test:treatment)
 ```
 
   * [9.5 Observational Studies - havent started](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/9.5_ObservationalStudies.R)
@@ -465,56 +470,56 @@ post_test ~ pre_test + treatment + pre_test:treatment
 
    * [ideo](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/ideo_two_pred.stan): linear model with two predictors  
 ```
-score1 ~ party + x, subset=overlap
+lm (score1 ~ party + x, subset=overlap)
 ```
 
    * [ideo](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/ideo_two_pred.stan): linear model with two predictors  
 ```
-score1 ~ party + x, subset=incs
+lm (score1 ~ party + x, subset=incs)
 ```
 
    * [ideo](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/ideo_interactions.stan): linear model with two predictors and reparamaterization  
 ```
-score1 ~ party + I(z*(party==0)) + I(z*(party==1)), subset=incs
+lm (score1 ~ party + I(z*(party==0)) + I(z*(party==1)), subset=incs)
 ```
  
    * [ideo](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/ideo_reparam.stan): linear model with two predictors and interaction  
 ```
-score1 ~ party + x + party:x, subset=incs
+lm (score1 ~ party + x + party:x, subset=incs)
 ```
 
   * [10.5 Casual Effects Using IV](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/10.5_CasualEffectsUsingIV.R)
 
    * [sesame](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/sesame_one_pred_a.stan): linear model with one predictor  
 ```
-watched ~ encouraged
+lm (watched ~ encouraged)
 ```
 
    * [sesame](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/sesame_one_pred_b.stan): linear model with one predictor  
 ```
-y ~ encouraged
+lm (y ~ encouraged)
 ```
 
   * [10.6 IV in a Regression Framework - misisng stuff at bottom](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/10.6_IVinaRegressionFramework.R)
 
    * [sesame](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/sesame_one_pred_a.stan): linear model with one predictor  
 ```
-watched ~ encouraged
+lm (watched ~ encouraged)
 ```
 
    * [sesame](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/sesame_one_pred_2b.stan): linear model with one predictor  
 ```
-y ~ watched_hat
+lm (y ~ watched_hat)
 ```
 
    * [sesame](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/sesame_multi_preds_3a.stan): linear model with three predictors and one factor  
 ```
-watched ~ encouraged + pretest + as.factor(site) + setting
+lm (watched ~ encouraged + pretest + as.factor(site) + setting)
 ```
 
    * [sesame](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/sesame_multi_preds_3b.stan): linear model with three predictors and one factor  
 ```
-y ~ watched_hat + pretest + as.factor(site) + setting
+lm (y ~ watched_hat + pretest + as.factor(site) + setting)
 ```
 
 ***
