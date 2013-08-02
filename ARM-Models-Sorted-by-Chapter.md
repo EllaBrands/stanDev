@@ -32,7 +32,7 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
 
 ***
 
-#### [Chapter 2](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.2)
+#### [Chapter 2 - Concepts and Methods from Basic Probability and Statistics](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.2)
 
  * [2.3 CI](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.2/2.3_CI.R)
 
@@ -42,7 +42,7 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
 
 ***
 
-#### [Chapter 3](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.3)
+#### [Chapter 3 - Linear Regression: the Basics](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.3)
 
  * [3.1 One Predictor](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/3.1_OnePredictor.R)
 
@@ -115,7 +115,7 @@ lm (ppvt ~ hs + afqt)
 
 ***
 
-#### [Chapter 4](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.4)
+#### [Chapter 4 - Linear Regression: Before and After Fitting the Model](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.4)
 
   * [4.1 Linear Transformations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/4.1_LinearTransformations.R)
 
@@ -226,7 +226,7 @@ lm (partyid7 ~ real_ideo + race_adj + age30_44 + age45_64 + age65up + educ1 + ge
 
 ***
 
-#### [Chapter 5](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.5)
+#### [Chapter 5 - Logistic Regression](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.5)
 
   * [5.1 Logistic Regression with One Predictor](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.1_LogisticRegressionWithOnePredictor.R)
 
@@ -319,7 +319,7 @@ y ~ x
 
 ***
 
-#### [Chapter 6](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.6)
+#### [Chapter 6 - Generalized Linear Models](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.6)
 
   * [6.2 Poisson, Exposure, & Overdispersion - MISSING DATA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.2_Poisson%2CExposure%26Overdispersion.R)
 
@@ -353,7 +353,7 @@ switc ~ dist100
 
 ***
 
-#### [Chapter 7](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.7)
+#### [Chapter 7 - Simulation of Probability Models and Statistical Inferences](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.7)
 
   * [7.1 Simulation of Probability Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/7.1_SimulationOfProbabilityModels.R)
 
@@ -390,7 +390,7 @@ log_earn ~ height + male, subset=earn>0
 
 ***
 
-#### [Chapter 8](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.8)
+#### [Chapter 8 - Simulation for Checking Statistical Procedures and Model Fits](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.8)
 
   * [8.1 Fake Data Simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/8.1_FakeDataSimulation.R)
 
@@ -422,7 +422,7 @@ y ~ y_lag
 
 ***
 
-#### [Chapter 9](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.9)
+#### [Chapter 9 - Casual Inference Using Regression on the Treatment Variable](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.9)
 
   * [9.3 Randomized Experiments - convert regression.2tables](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/9.3_RandomizedExperiments.R)
 
@@ -457,7 +457,7 @@ post_test ~ pre_test + treatment + pre_test:treatment
 
 ***
 
-#### [Chapter 10](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.10)
+#### [Chapter 10 - Casual Inference Using More Advanced Models](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.10)
 
   * [10.3 Matching - MISSING DATA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/10.3_Matching.R)
 
@@ -519,13 +519,13 @@ y ~ watched_hat + pretest + as.factor(site) + setting
 
 ***
 
-#### [Chapter 11](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.11)
+#### [Chapter 11 - Multilevel Structures](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.11)
  
   * [11.3 Repeated Measurements, Time-Series, Cross Sections & Others - missing data](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.11/11.3_RepeatedMeasurements%2CTimeSeries%20CrossSections%26Others.R)
 
 ***
 
-#### [Chapter 12](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.12)
+#### [Chapter 12 - Multilevel Linear Models: the Basics](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.12)
 
   * [12.2 Partial Pooling with No Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.2_PartialPoolingWithNoPredictors.R)
 
@@ -579,7 +579,7 @@ lmer (y ~ x + u + (1 | county))
 
 ***
 
-#### [Chapter 13](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.13)
+#### [Chapter 13 - Multilevel Linear Models: Varying Slopes, Non-Nested Models, and Other Complexities](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.13)
 
   * [13.1 Varying Intercepts & Slopes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/13.1_VaryingIntercepts%26Slopes.R)
 
@@ -619,7 +619,7 @@ lmer (y ~ x.centered + (1 + x.centered | eth) + (1 + x.centered | age) + (1 + x.
 
 ***
 
-#### [Chapter 14](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.14)
+#### [Chapter 14 - Multilevel Logistic Regression](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.14)
  
   * [14.1 State-Level Opinions From National Polls](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.14/14.1_State-LevelOpinionsFromNationalPolls.R)
 
@@ -636,11 +636,11 @@ lmer (y ~ black + female + black:female + v.prev.full + (1 | age) + (1 | edu) + 
 
 ***
 
-#### [Chapter 15](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.15)
+#### [Chapter 15 - Multilevel Generalized Linear Models](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.15)
 
 ***
 
-#### [Chapter 19](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.19)
+#### [Chapter 19 - Debugging and Speeding Convergence](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.19)
 
   * [19.2 General Methods for Reducing Computational Requirements] (https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/19.2_GeneralMethodsForReducingComputationalRequirements.R)
   
@@ -693,7 +693,7 @@ lmer (y ~ a:g + (a:g | k,j) + (g:b | k), family=binomial(link="logit"))
 
 ***
 
-#### [Chapter 20](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.20)
+#### [Chapter 20 - Sample Size and Power Calculations](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.20)
 
   * [20.5 Multilevel Power Calculation Using Fake-Data Simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.20/20.5_MultilevelPowerCalculationUsingFake-DataSimulation.R)
 
@@ -709,7 +709,7 @@ lmer (y ~ time:treatment + (1 + time | person)
 
 ***
 
-#### [Chapter 21](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.21)
+#### [Chapter 21 - Understanding and Summarizing the Fitted Models](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.21)
 
   * [21.2 Superpopulation & Finite-Population Variances](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/21.2_Superpopulation%26Finite-PopulationVariances.R)
 
@@ -770,7 +770,7 @@ lmer (y ~ theta (theta | j))
 
 ***
 
-#### [Chapter 22](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.22)
+#### [Chapter 22 - Analysis of Variance](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.22)
 
   * [22.1 Classical ANOVA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.22/22.1_ClassicalANOVA.R)
 
@@ -783,7 +783,7 @@ lmer (y ~ 1 + (1 | county))
 
 ***
 
-#### [Chapter 23](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.23)
+#### [Chapter 23 - Casual Inference Using Multilevel Models](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.23)
 
   * [23.1 Multilevel Aspects of Data Collection](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/23.1_MultilevelAspectsofDataCollection.R)
 
@@ -793,7 +793,7 @@ lmer (y ~ 1 + (1 | county))
 
 ***
 
-#### [Chapter 24](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.24)
+#### [Chapter 24 - Model Checking and Comparison](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.24)
 
   * [24.2 Behavioral Learning Experiments](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/24.2_BehavioralLearningExperiment.R)
 
@@ -801,11 +801,11 @@ lmer (y ~ 1 + (1 | county))
 
 THE BELOW CHAPTERS HAVE NOT BEEN ADDED YET.
 
-#### [Chapter 16](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.16)
+#### [Chapter 16 - Multilevel Modeling in Bugs and R: the Basics](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.16)
 
-#### [Chapter 17](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.17)
+#### [Chapter 17 - Fitting Multilevel Linear and Generalized Linear Models in Bugs and R](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.17)
 
-#### [Chapter 18](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.18)
+#### [Chapter 18 - Likelihood and Bayesian Inference and Computation](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.18)
 
-#### [Chapter 25](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.25)
+#### [Chapter 25 - Missing-Data Imuptation](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.25)
  
