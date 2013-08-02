@@ -695,14 +695,14 @@ lmer (y ~ a:g + (a:g | k,j) + (g:b | k))
 
   * [20.5 Multilevel Power Calculation Using Fake-Data Simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.20/20.5_MultilevelPowerCalculationUsingFake-DataSimulation.R)
 
-    * [hiv](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.20/hiv.stan): multi-level linear model with interaction and varying slope and intercept
-```
-lmer (y ~ time:treatment + (1 + time | person)
-```
-
-    * [hiv_inter](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.20/hiv_inter.stan): multi-level linear model with varying slope and intercept
+    * [hiv](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.20/hiv.stan): multi-level linear model with varying slope and intercept
 ```
 lmer (y ~ time + (1 + time | person)
+```
+
+    * [hiv_inter](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.20/hiv_inter.stan): multi-level linear model with interaction and varying slope and intercept
+```
+lmer (y ~ time:treatment + (1 + time | person)
 ```
 
 ***
