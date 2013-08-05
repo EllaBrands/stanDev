@@ -804,6 +804,16 @@ lmer (y ~ 1 + (1 | county))
 
 ***
 
+#### [Chapter 25 - Missing-Data Imuptation](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.25)
+
+  * [25.0 Missing Data in R and Bugs](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/25.0_MissingDataInRandBugs.R)
+
+  * [25.4 Random Imputation of a Single Variable](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/25.4_RadomImputationofaSingleVariable.R)
+
+  * [25.5 Imputation of Several Missing variables](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/25.5_ImputationofSeveralMissingVariables.R)
+
+***
+
 THE BELOW CHAPTERS HAVE NOT BEEN ADDED YET.
 
 #### [Chapter 16 - Multilevel Modeling in Bugs and R: the Basics](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.16)
@@ -811,6 +821,4 @@ THE BELOW CHAPTERS HAVE NOT BEEN ADDED YET.
 #### [Chapter 17 - Fitting Multilevel Linear and Generalized Linear Models in Bugs and R](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.17)
 
 #### [Chapter 18 - Likelihood and Bayesian Inference and Computation](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.18)
-
-#### [Chapter 25 - Missing-Data Imuptation](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.25)
  
