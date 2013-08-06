@@ -836,6 +836,12 @@ lmer (y ~ treatment + (1 | pair))
 
   * [24.2 Behavioral Learning Experiments](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/24.2_BehavioralLearningExperiment.R)
 
+    * [dogs](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/dogs.stan): multi-level logit regression model
+
+    * [dogs_log](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/dogs_log.stan): multi-level model using binomial distribution
+
+    * [dogs_check](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/dogs_check.stan): multi-level model using binomial distribution
+
 ***
 
 #### [Chapter 25 - Missing-Data Imuptation](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.25)
@@ -844,7 +850,30 @@ lmer (y ~ treatment + (1 | pair))
 
   * [25.4 Random Imputation of a Single Variable](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/25.4_RadomImputationofaSingleVariable.R)
 
+    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings.stan): linear model with ten predictors
+```
+lm (earnings ~ male + over65 + white + immig + educ_r + workmos + workhrs_top + any_ssi + any_welfare 
+               + any_charity)
+```
+
+    * [earnings_pt1](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings.stan): logistic regression model with eight predictors
+```
+glm (earnings ~ male + over65 + white + immig + educ_r + any_ssi + any_welfare + any_charity,
+     family=binomial(link="logit"))
+```
+
+    * [earnings_pt2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings.stan): linear model with eight predictors
+```
+lm (earnings ~ male + over65 + white + immig + educ_r + any_ssi + any_welfare + any_charity)
+```
+
   * [25.5 Imputation of Several Missing variables](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/25.5_ImputationofSeveralMissingVariables.R)
+
+    * [earnings2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings2.stan): mlinear model with eleven predictors
+```
+lm (earnings ~ interest + male + over65 + white + immig + educ_r + workmos + workhrs_top + any_ssi 
+               + any_welfare + any_charity)
+```
 
 ***
 
