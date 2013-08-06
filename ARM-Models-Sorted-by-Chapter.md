@@ -411,11 +411,21 @@ lm (y ~ x)
 lm (final ~ midterm)
 ```
 
-  * [8.3 Simulating from the Fitted Model - ADD ROACH MODELS STILL](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/8.3_SimulatingFromTheFittedModel.R)
+  * [8.3 Simulating from the Fitted Model](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/8.3_SimulatingFromTheFittedModel.R)
 
    * [lightspeed](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/lightspeed.stan): linear model with no predictors
 ```
 lm (y ~ 1)
+```
+
+   * [roaches](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/roaches.stan): poisson regression model with exposure and three predictors
+```
+glm (y ~ roach1 + treatment + senior, family=poisson, offset=log(exposure2))
+```
+
+   * [roaches_overdispersion](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/roaches_overdispersion.stan): poisson overdispersion regression model with exposure and three predictors
+```
+glm(y ~ roach1 + treatment + senior, family = quasipoisson, offset = log(exposure2))
 ```
 
   * [8.4 Predictive Simulation to Check Fit of Time Series Model](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/8.4_PredictiveSimulationToCheckFitOfTimeSeriesModels.R)
