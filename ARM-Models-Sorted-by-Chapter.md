@@ -425,7 +425,7 @@ glm (y ~ roach1 + treatment + senior, family=poisson, offset=log(exposure2))
 
    * [roaches_overdispersion](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/roaches_overdispersion.stan): poisson overdispersion regression model with exposure and three predictors
 ```
-glm(y ~ roach1 + treatment + senior, family = quasipoisson, offset = log(exposure2))
+glm(y ~ roach1 + treatment + senior, family=quasipoisson, offset=log(exposure2))
 ```
 
   * [8.4 Predictive Simulation to Check Fit of Time Series Model](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/8.4_PredictiveSimulationToCheckFitOfTimeSeriesModels.R)
