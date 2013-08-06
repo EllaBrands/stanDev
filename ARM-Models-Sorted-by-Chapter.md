@@ -792,9 +792,43 @@ lmer (y ~ 1 + (1 | county))
 
   * [23.1 Multilevel Aspects of Data Collection](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/23.1_MultilevelAspectsofDataCollection.R)
 
+    * [electric_1a](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_1a.stan): multi-level linear model with varying intercept and slope
+```
+lmer (y ~ 1 + (1 | pair) + (treatment | grade))
+```
+
+    * [electric_1b](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_1b.stan): multi-level linear model with varying intercept and slope
+```
+lmer (y ~ treatment + pre_test + (1 | pair))
+```
+
+    * [electric_1c](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_1c.stan): multi-level linear model with group level factors
+```
+lmer (y ~ 1 + (1 | pair) + (treatment | grade) + (pre_test | grade))
+```
+
+    * [electric_one_pred](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_one_pred.stan): linear model with one predictor
+```
+lm (post_test ~ treatment)
+```
+
+    * [electric_multi_preds](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_multi_preds.stan): linear model with two predictors
+```
+lm (post_test ~ treatment + pre_test)
+```
+
   * 23.3 Treatments Applied at Different Levels
 
+    * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric.stan): multi-level linear model with varying intercept
+```
+lmer (y ~ treatment + (1 | pair))
+```
+
   * [23.4 Instrumental Variables & Multilevel Modeling](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/23.4_InstrumentalVariables%26MultilevelModeling.R)
+
+    * [sesame_street1](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/sesame_street1.stan): multi-level linear model using multivariate normal
+
+    * [sesame_street2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/sesame_street2.stan): multi-level linear model using multivariate normal
 
 ***
 
