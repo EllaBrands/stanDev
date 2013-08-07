@@ -1,6 +1,6 @@
 Below are the types of regression models that have been categorized and coded in Stan from ARM:
 
-[Single Level Models](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#single-level-models):
+[Single Level Models](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#single-level-models)
 * [Linear Models](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#linear-models)
   * [No Predictors](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#no-predictors)
   * [One Predictor](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#one-predictor)
@@ -10,10 +10,13 @@ Below are the types of regression models that have been categorized and coded in
   * [One Predictor](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#one-predictor-1)
   * [Multiple Predictors with No Interaction](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#multiple-predictors-with-no-interaction-1) 
   * [Multiple Predictors with Interaction](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#multiple-predictors-with-interaction-1)
-[Other Generalized Linear Regression Models](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#other-generalized-linear-regression-models)
-* [Poisson](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#poisson)
-* [Probit](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#probit)
-* [Quasipoisson](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#quasipoisson)
+* [Other Generalized Linear Regression Models](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#other-generalized-linear-regression-models)
+  * [Poisson](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#poisson)
+  * [Probit](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#probit)
+  * [Quasipoisson](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#quasipoisson)
+
+***
+
 [Multi-Level Models](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#multi-level-models)
 * [Linear Models](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#linear-models-1)
   * [Varying Intercept](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#varying-intercept)
@@ -22,9 +25,13 @@ Below are the types of regression models that have been categorized and coded in
 * [Logistic Regression Models](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#logistic-regression-models)
   * [Varying Intercept](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#varying-intercept-1)
   * [Multiple Group-Level Factors](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#multiple-group-level-factors-1)
-[Other Generalized Linear Regression Models](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#other-generalized-linear-regression-models-1)
-* [Other Binomial](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#other-binomial)
-* [Multivariate Normal](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#multivariate-normal)
+* [Other Generalized Linear Regression Models](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#other-generalized-linear-regression-models-1)
+  * [Other Binomial](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#other-binomial)
+  * [Multivariate Normal](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#multivariate-normal)
+
+***
+
+***
 
 ## Single-Level Models
 
