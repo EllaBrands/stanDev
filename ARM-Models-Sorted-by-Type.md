@@ -221,22 +221,54 @@ glm (earnings ~ male + over65 + white + immig + educ_r + any_ssi + any_welfare +
 #### Multiple Predictors with Interaction
 
 
+## Multi-Level Models
+
+### Linear Models
+
+#### Varying Intercept
+
+   * [8_schools](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/schools.stan): multi-level linear model with redundant parameterization
+
+#### Varying Intercept and Slope
+
+   * [earnings_vary_si](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/earnings_vary_si.stan): multi-level linear model with group level predictors         
+```
+lmer (y ~ x (1 + x | ethn))
+```
+
+#### Multiple Group-Level Factors
+
+   * [earnings_latin_square](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/earnings_latin_square.stan): non-nested multi-level linear model with group level predictors
+```
+lmer (y ~ x.centered + (1 + x.centered | eth) + (1 + x.centered | age) + (1 + x.centered | eth:age))
+```
+
+### Logistic Regression Models
+
+#### Varying Intercept
+
+   * [elections88](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.14/elections88.stan): multi-level logistic regression model with group level predictors
+```
+glmer (y ~ black + female + (1 | state), family=binomial(link="logit"))
+```
 
 
+#### Multiple Group-Level Factors
 
-
-
-
-***
-***
-***
-
-#### One Predictor
-
-#### Multiple Predictors with No Interaction
-
-#### Multiple Predictors with Interaction
-
-
-
+   * [elections88_full](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.14/elections88_full.stan): multi-level logistic regression model with group level predictors
+```
+glmer (y ~ black + female + black:female + v.prev.full + (1 | age) + (1 | edu) + (1 | age.edu) 
+          + (1 | state) + (1 | region.full), family=binomial(link="logit"))
+```
  
+   * [election88](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/election88.stan): multi-level logistic regression model with redundant parameterization
+```
+glmer (y ~ female + black + female:black + (1 | age) + (1 | edu) + (1 | age_edu) + (1 | state), 
+      family=binomial(link="logit"))
+```
+
+   * [election88_expansion](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/election88_expansion.stan): multi-level logistic regression model with parameter expansion
+```
+glmer (y ~ female + black + female:black + (1 | age) + (1 | edu) + (1 | age_edu) + (1 | state), 
+      family=binomial(link="logit"))
+```
