@@ -1,24 +1,3 @@
-* [8 Schools](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#8-schools)
-* [Congress](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#congress)
-* [Dogs](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#dogs)
-* [Earnings](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#earnings)
-* [Elections88](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#elections88)
-* [Electric](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#electric)
-* [Grades](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#grades)
-* [HIV](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#hiv)
-* [Ideo](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#ideo)
-* [Item Response](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#item-response)
-* [Kid IQ](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#kid-iq)
-* [Lightspeed](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#lightspeed)
-* [Mesquite](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#mesquite)
-* [NES](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#nes)
-* [Pilots](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#pilots)
-* [Radon](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#radon)
-* [Roaches](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#roaches)
-* [Sesame](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#sesame)
-* [Statistical Calculations](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#statistical-calculations)
-* [Unemployment](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#unemployment)
-* [Wells](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#wells)
 
 ***
 
@@ -40,6 +19,11 @@ lm (earnings ~ height)
 lm (log_earnings ~ height)
 ```
 
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/log10earn_height.stan): linear model with one predictor and log10 transformation  
+```
+lm (log10_earnings ~ height)
+```
+
 #### Multiple Predictors with No Interaction
 
    * [congress](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/congress.stan): linear model with two predictors  
@@ -47,10 +31,32 @@ lm (log_earnings ~ height)
 lm (vote_88 ~ vote_86 + incumbency_88)
 ```
 
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_height_male.stan): linear model with two predictors and natural log transformation  
+```
+lm (log_earnings ~ height + male)
+```
+
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_logheight.stan): linear model with two predictors and log log transformation  
+```
+lm (log_earnings ~ log_height + male)
+```
+
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/earnings2.stan): linear model with two predictors and log transformation 
+```
+lm (log_earn ~ height + male, subset=earn>0)
+```
+
 #### Multiple Predictors with Interaction
 
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_interaction.stan): linear model with two predictors and interaction and natural log transformation  
+```
+lm (log_earnings ~ height + male + height:male)
+```
 
-
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_interaction_z.stan): linear model with two predictors and interaction and natural log transformation centered using z-score  
+```
+lm (log_earnings ~ z_height + male + z_height:male)
+```
 
 
 
@@ -78,48 +84,13 @@ lm (vote_88 ~ vote_86 + incumbency_88)
 
    * [dogs_check](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/dogs_check.stan): multi-level model using binomial distribution
 
-***
-
-#### Earnings
-
-
-
-
-
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/log10earn_height.stan): linear model with one predictor and log10 transformation  
-```
-lm (log10_earnings ~ height)
-```
-
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_height_male.stan): linear model with two predictors and natural log transformation  
-```
-lm (log_earnings ~ height + male)
-```
-
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_interaction.stan): linear model with two predictors and interaction and natural log transformation  
-```
-lm (log_earnings ~ height + male + height:male)
-```
-
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_interaction_z.stan): linear model with two predictors and interaction and natural log transformation centered using z-score  
-```
-lm (log_earnings ~ z_height + male + z_height:male)
-```
-
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_logheight.stan): linear model with two predictors and log log transformation  
-```
-lm (log_earnings ~ log_height + male)
-```
 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/earnings1.stan): generalized linear model with logit link function and two predictors  
 ```
 glm (earn_pos ~ height + male, family=binomial(link="logit"))
 ```
 
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/earnings2.stan): linear model with two predictors and log transformation 
-```
-lm (log_earn ~ height + male, subset=earn>0)
-```
+
 
    * [earnings_vary_si](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/earnings_vary_si.stan): multi-level linear model with group level predictors         
 ```
