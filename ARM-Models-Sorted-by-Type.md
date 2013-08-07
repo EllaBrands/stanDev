@@ -28,6 +28,11 @@ lm (log10_earnings ~ height)
 lm (post_test ~ treatment)
 ```
 
+   * [grades](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/grades.stan): linear model with one predictor
+```
+lm (final ~ midterm)
+```
+
 #### Multiple Predictors with No Interaction
 
    * [congress](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/congress.stan): linear model with two predictors  
@@ -72,6 +77,21 @@ lm (earnings ~ male + over65 + white + immig + educ_r + any_ssi + any_welfare + 
 lm (post_test ~ pre_test + treatment)
 ```
 
+   * [ideo](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/ideo_two_pred.stan): linear model with two predictors  
+```
+lm (score1 ~ party + x, subset=overlap)
+```
+
+   * [ideo](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/ideo_two_pred.stan): linear model with two predictors  
+```
+lm (score1 ~ party + x, subset=incs)
+```
+
+   * [ideo](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/ideo_interactions.stan): linear model with two predictors and reparamaterization  
+```
+lm (score1 ~ party + I(z*(party==0)) + I(z*(party==1)), subset=incs)
+```
+
 #### Multiple Predictors with Interaction
 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_interaction.stan): linear model with two predictors and interaction and natural log transformation  
@@ -87,6 +107,11 @@ lm (log_earnings ~ z_height + male + z_height:male)
    * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_interactions.stan): linear model with two predictors and interaction  
 ```
 lm (post_test ~ pre_test + treatment + pre_test:treatment)
+```
+
+   * [ideo](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/ideo_reparam.stan): linear model with two predictors and interaction  
+```
+lm (score1 ~ party + x + party:x, subset=incs)
 ```
 
 ### Logit Regression Models
@@ -201,17 +226,6 @@ lmer (y ~ 1 + (1 | pair) + (treatment | grade) + (pre_test | grade))
 lmer (y ~ treatment + (1 | pair))
 ```
 
-***
-
-#### Grades
-
-   * [grades](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/grades.stan): linear model with one predictor
-```
-lm (final ~ midterm)
-```
-
-***
-
 #### HIV
 
    * [hiv](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.20/hiv.stan): multi-level linear model with varying slope and intercept
@@ -224,31 +238,6 @@ lmer (y ~ time + (1 + time | person)
 lmer (y ~ time:treatment + (1 + time | person)
 ```
 
-#### Ideo
-
-   * [ideo](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/ideo_two_pred.stan): linear model with two predictors  
-```
-lm (score1 ~ party + x, subset=overlap)
-```
-
-   * [ideo](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/ideo_two_pred.stan): linear model with two predictors  
-```
-lm (score1 ~ party + x, subset=incs)
-```
-
-   * [ideo](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/ideo_interactions.stan): linear model with two predictors and reparamaterization  
-```
-lm (score1 ~ party + I(z*(party==0)) + I(z*(party==1)), subset=incs)
-```
- 
-   * [ideo](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/ideo_reparam.stan): linear model with two predictors and interaction  
-```
-lm (score1 ~ party + x + party:x, subset=incs)
-```
-
-***
-
-#### Item Response
 
    * [item_response](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/item_response.stan): multi-level logistic regression model with parameter expansion
 ```
