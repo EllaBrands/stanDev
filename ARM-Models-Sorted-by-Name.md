@@ -2,7 +2,28 @@ Each chapter has a README file on github that you can view by clicking on the ch
 
 If there is a * next to a model name, then the model DOES NOT currently work with [RStanARM](https://github.com/stan-dev/rstanarm). Furthermore, multilevel models are not currently supported by RStanARM, but all other models below (without a *) are supported.
 
-#### kid iq
+[Kid IQ](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#Kid-IQ)
+[Earnings](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#Earnings)
+[Mesquite](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#Mesquite)
+[NES](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#NES)
+[Wells](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#Wells)
+[Congress](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#Congress)
+[Grades](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#Grades)
+[Lightspeed](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#Lightspeed)
+[Roaches](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#Roaches)
+[Unemployment](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#Unemployment)
+[Electric](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#Electric)
+[Ideo](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#Ideo)
+[Sesame](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#Sesame)
+[Radon](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#Radon)
+[Pilots](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#Pilots)
+[Elections88](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#Elections88)
+[HIV](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#HIV)
+[Dogs](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#Dogs)
+[8 Schools](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#Earnings)
+[Item Response](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#Earnings)
+[Statistical Calculations](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#Earnings)
+#### Kid IQ
 
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidscore_momhs.stan): linear model with one predictor  
 ```
@@ -50,7 +71,7 @@ lm (kid_score ~ as.factor(mom_work))
 
 ***
 
-#### earnings
+#### Earnings
 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earn_height.stan): linear model with one predictor  
 ```
@@ -132,7 +153,7 @@ lm (earnings ~ interest + male + over65 + white + immig + educ_r + workmos + wor
 
 ***
 
-#### mesquite
+#### Mesquite
 
    * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite.stan): linear model with six predictors  
 ```
@@ -166,7 +187,7 @@ lm (log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_to
 
 ***
 
-#### nes
+#### NES
 
    * [nes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/nes.stan): linear model with eight predictors    
 ```
@@ -180,7 +201,7 @@ glm (vote ~ income, family=binomial(link="logit"))
 
 ***
 
-#### wells
+#### Wells
 
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_one_pred.stan): generalized linear model with logit link function and one predictor  
 ```
@@ -248,7 +269,7 @@ glm (switc ~ dist100, family=binomial(link="probit"))
 
 ***
 
-#### congress
+#### Congress
 
    * [congress](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/congress.stan): linear model with two predictors  
 ```
@@ -257,7 +278,7 @@ lm (vote_88 ~ vote_86 + incumbency_88)
  
 *** 
 
-####grades
+#### Grades
 
    * [grades](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/grades.stan): linear model with one predictor
 ```
@@ -266,7 +287,7 @@ lm (final ~ midterm)
 
 ***
 
-#### lightspeed
+#### Lightspeed
 
    * [lightspeed](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/lightspeed.stan): linear model with no predictors
 ```
@@ -275,7 +296,7 @@ lm (y ~ 1)
 
 ***
 
-#### roaches
+#### Roaches
 
    * [roaches](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/roaches.stan): poisson regression model with exposure and three predictors
 ```
@@ -289,7 +310,7 @@ glm(y ~ roach1 + treatment + senior, family=quasipoisson, offset=log(exposure2))
 
 *** 
 
-#### unemployment
+#### Unemployment
 
    * [unemployment](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/unemployment.stan): linear model with one predictor  
 ```
@@ -298,7 +319,7 @@ lm (y ~ y_lag)
 
 ***
 
-#### electric
+#### Electric
 
    * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_one_pred.stan): linear model with one predictor
 ```
@@ -337,7 +358,7 @@ lmer (y ~ treatment + (1 | pair))
 
 ***
 
-#### ideo
+#### Ideo
 
    * [ideo](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/ideo_two_pred.stan): linear model with two predictors  
 ```
@@ -361,7 +382,7 @@ lm (score1 ~ party + x + party:x, subset=incs)
 
 ***
 
-#### sesame
+#### Sesame
 
    * [sesame](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/sesame_one_pred_a.stan): linear model with one predictor  
 ```
@@ -395,7 +416,7 @@ lm (y ~ watched_hat + pretest + as.factor(site) + setting)
 
 ***
 
-#### radon
+#### Radon
 
    * [radon_intercept](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_intercept.stan): multi-level linear model with varying intercept        
 ```
@@ -469,7 +490,7 @@ lmer (y ~ u + (1 | county))
 
 ***
 
-#### pilots
+#### Pilots
  
    * [pilots](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/pilots.stan): non-nested multi-level linear model with group level predictors         
 ```
@@ -488,7 +509,7 @@ lmer (y ~ 1 + (1 | treatment) + (1 | airport))
 
 ***
 
-#### elections88
+#### Elections88
 
    * [elections88](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.14/elections88.stan): multi-level logistic regression model with group level predictors
 ```
@@ -516,6 +537,8 @@ lmer (y ~ female + black + female:black + (1 | age) + (1 | edu) + (1 | age_edu) 
 
 ***
 
+#### Statistical Calculations
+
    * [multiple_comparisons](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/multiple_comparison.stan): multi-level linear model that serves as a multiple comparisons example
 ```
 lmer (y ~ theta (theta | j))
@@ -531,16 +554,24 @@ lmer (y ~ 1 + (1 + x | county))
 lm (g ~ u_1 + u)
 ```
 
+***
+
+#### Item Response
+
    * [item_response](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/item_response.stan): multi-level logistic regression model with parameter expansion
 ```
 lmer (y ~ a:g + (a:g | k,j) + (g:b | k), family=binomial(link="logit"))
 ```
 
+***
+
+#### 8 Schools
+
    * [8_schools](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/schools.stan): multi-level linear model with redundant parameterization
 
 ***
 
-#### hiv
+#### HIV
 
    * [hiv](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.20/hiv.stan): multi-level linear model with varying slope and intercept
 ```
@@ -554,7 +585,7 @@ lmer (y ~ time:treatment + (1 + time | person)
 
 ***
 
-#### dogs
+#### Dogs
 
    * [dogs](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/dogs.stan): multi-level logit regression model
 
