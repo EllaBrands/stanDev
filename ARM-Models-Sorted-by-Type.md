@@ -498,6 +498,8 @@ glmer (y ~ black + female + (1 | state), family=binomial(link="logit"))
 
 #### Multiple Group-Level Factors
 
+   * [dogs](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/dogs.stan): multi-level logit regression model
+
    * [elections88_full](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.14/elections88_full.stan): multi-level logistic regression model with group level predictors
 ```
 glmer (y ~ black + female + black:female + v.prev.full + (1 | age) + (1 | edu) + (1 | age.edu) 
@@ -520,3 +522,17 @@ glmer (y ~ female + black + female:black + (1 | age) + (1 | edu) + (1 | age_edu)
 ```
 glmer (y ~ a:g + (a:g | k,j) + (g:b | k), family=binomial(link="logit"))
 ```
+
+### Other Generalized Linear Regression Models
+
+#### Other Binomial
+
+   * [dogs_log](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/dogs_log.stan): multi-level model using binomial distribution
+
+   * [dogs_check](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/dogs_check.stan): multi-level model using binomial distribution
+
+#### Multivariate Normal
+
+   * [sesame_street1](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/sesame_street1.stan): multi-level linear model using multivariate normal
+
+   * [sesame_street2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/sesame_street2.stan): multi-level linear model using multivariate normal
