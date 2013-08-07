@@ -1,6 +1,3 @@
-Each chapter has a README file on github that you can view by clicking on the chapter link and scrolling down (past the files). THe README file contains information about the data contained in the chapter (particularly, what each variable represents) and sorts the models in the chapter by type.
-
-If there is a * next to a model name, then the model DOES NOT currently work with [RStanARM](https://github.com/stan-dev/rstanarm). Furthermore, multilevel models are not currently supported by RStanARM, but all other models below (without a *) are supported.
 
 * [8 Schools](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#8-schools)
 * [Congress](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#congress)
@@ -24,6 +21,9 @@ If there is a * next to a model name, then the model DOES NOT currently work wit
 * [Unemployment](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#unemployment)
 * [Wells](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#wells)
 
+***
+
+***
 
 #### 8 Schools
 
