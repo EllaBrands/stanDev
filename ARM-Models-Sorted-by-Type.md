@@ -1,11 +1,10 @@
-
 ***
 
 ***
 
 ## Single-Level Models
 
-### Linear Model
+### Linear Models
 
 #### One Predictor
 
@@ -22,6 +21,11 @@ lm (log_earnings ~ height)
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/log10earn_height.stan): linear model with one predictor and log10 transformation  
 ```
 lm (log10_earnings ~ height)
+```
+
+   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_one_pred.stan): linear model with one predictor
+```
+lm (post_test ~ treatment)
 ```
 
 #### Multiple Predictors with No Interaction
@@ -46,6 +50,28 @@ lm (log_earnings ~ log_height + male)
 lm (log_earn ~ height + male, subset=earn>0)
 ```
 
+  * [earnings2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings2.stan): mlinear model with eleven predictors
+```
+lm (earnings ~ interest + male + over65 + white + immig + educ_r + workmos + workhrs_top + any_ssi 
+               + any_welfare + any_charity)
+```
+
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings.stan): linear model with ten predictors
+```
+lm (earnings ~ male + over65 + white + immig + educ_r + workmos + workhrs_top + any_ssi + any_welfare 
+               + any_charity)
+```
+
+   * [earnings_pt2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings.stan): linear model with eight predictors
+```
+lm (earnings ~ male + over65 + white + immig + educ_r + any_ssi + any_welfare + any_charity)
+```
+
+   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_multi_preds.stan): linear model with two predictors  
+```
+lm (post_test ~ pre_test + treatment)
+```
+
 #### Multiple Predictors with Interaction
 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_interaction.stan): linear model with two predictors and interaction and natural log transformation  
@@ -58,6 +84,29 @@ lm (log_earnings ~ height + male + height:male)
 lm (log_earnings ~ z_height + male + z_height:male)
 ```
 
+   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_interactions.stan): linear model with two predictors and interaction  
+```
+lm (post_test ~ pre_test + treatment + pre_test:treatment)
+```
+
+### Logit Regression Models
+
+#### One Predictor
+
+#### Multiple Predictors with No Interaction
+
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/earnings1.stan): generalized linear model with logit link function and two predictors  
+```
+glm (earn_pos ~ height + male, family=binomial(link="logit"))
+```
+
+   * [earnings_pt1](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings.stan): logistic regression model with eight predictors
+```
+glm (earnings ~ male + over65 + white + immig + educ_r + any_ssi + any_welfare + any_charity,
+     family=binomial(link="logit"))
+```
+
+#### Multiple Predictors with Interaction
 
 
 
@@ -68,15 +117,15 @@ lm (log_earnings ~ z_height + male + z_height:male)
 
 
 
+#### One Predictor
 
-#### 8 Schools
+#### Multiple Predictors with No Interaction
+
+#### Multiple Predictors with Interaction
+
+
 
    * [8_schools](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/schools.stan): multi-level linear model with redundant parameterization
-
-***
-
-
-#### Dogs
 
    * [dogs](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/dogs.stan): multi-level logit regression model
 
@@ -85,10 +134,7 @@ lm (log_earnings ~ z_height + male + z_height:male)
    * [dogs_check](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/dogs_check.stan): multi-level model using binomial distribution
 
 
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/earnings1.stan): generalized linear model with logit link function and two predictors  
-```
-glm (earn_pos ~ height + male, family=binomial(link="logit"))
-```
+
 
 
 
@@ -101,33 +147,6 @@ lmer (y ~ x (1 + x | ethn))
 ```
 lmer (y ~ x.centered + (1 + x.centered | eth) + (1 + x.centered | age) + (1 + x.centered | eth:age))
 ```
-
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings.stan): linear model with ten predictors
-```
-lm (earnings ~ male + over65 + white + immig + educ_r + workmos + workhrs_top + any_ssi + any_welfare 
-               + any_charity)
-```
-
-   * [earnings_pt1](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings.stan): logistic regression model with eight predictors
-```
-glm (earnings ~ male + over65 + white + immig + educ_r + any_ssi + any_welfare + any_charity,
-     family=binomial(link="logit"))
-```
-
-   * [earnings_pt2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings.stan): linear model with eight predictors
-```
-lm (earnings ~ male + over65 + white + immig + educ_r + any_ssi + any_welfare + any_charity)
-```
-
-   * [earnings2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings2.stan): mlinear model with eleven predictors
-```
-lm (earnings ~ interest + male + over65 + white + immig + educ_r + workmos + workhrs_top + any_ssi 
-               + any_welfare + any_charity)
-```
-
-***
-
-#### Elections88
 
    * [elections88](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.14/elections88.stan): multi-level logistic regression model with group level predictors
 ```
@@ -156,20 +175,9 @@ lmer (y ~ female + black + female:black + (1 | age) + (1 | edu) + (1 | age_edu) 
 
 #### Electric
 
-   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_one_pred.stan): linear model with one predictor
-```
-lm (post_test ~ treatment)
-```
 
-   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_multi_preds.stan): linear model with two predictors  
-```
-lm (post_test ~ pre_test + treatment)
-```
 
-   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_interactions.stan): linear model with two predictors and interaction  
-```
-lm (post_test ~ pre_test + treatment + pre_test:treatment)
-```
+
 
    * [electric_1a](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_1a.stan): multi-level linear model with varying intercept and slope
 ```
