@@ -24,7 +24,42 @@
 
 ***
 
-### Single-Level Models
+## Single-Level Models
+
+### Linear Model
+
+#### One Predictor
+
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earn_height.stan): linear model with one predictor  
+```
+lm (earnings ~ height)
+```
+
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_height.stan): linear model with one predictor and natural log transformation  
+```
+lm (log_earnings ~ height)
+```
+
+#### Multiple Predictors with No Interaction
+
+   * [congress](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/congress.stan): linear model with two predictors  
+```
+lm (vote_88 ~ vote_86 + incumbency_88)
+```
+
+#### Multiple Predictors with Interaction
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -34,14 +69,6 @@
 
 ***
 
-#### Congress
-
-   * [congress](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/congress.stan): linear model with two predictors  
-```
-lm (vote_88 ~ vote_86 + incumbency_88)
-```
- 
-*** 
 
 #### Dogs
 
@@ -55,15 +82,9 @@ lm (vote_88 ~ vote_86 + incumbency_88)
 
 #### Earnings
 
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/earn_height.stan): linear model with one predictor  
-```
-lm (earnings ~ height)
-```
 
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_height.stan): linear model with one predictor and natural log transformation  
-```
-lm (log_earnings ~ height)
-```
+
+
 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/log10earn_height.stan): linear model with one predictor and log10 transformation  
 ```
