@@ -3,26 +3,32 @@ Each chapter has a README file on github that you can view by clicking on the ch
 If there is a * next to a model name, then the model DOES NOT currently work with [RStanARM](https://github.com/stan-dev/rstanarm). Furthermore, multilevel models are not currently supported by RStanARM, but all other models below (without a *) are supported.
 
 #### kid iq
+
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidscore_momhs.stan): linear model with one predictor  
 ```
 lm (kid_score ~ mom_hs)
 ```
+
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidscore_momiq.stan): linear model with one predictor  
 ```
 lm (kid_score ~ mom_iq)
 ```
+
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidiq_multi_preds.stan): linear model with two predictors  
 ```
 lm (kid_score ~ mom_hs + mom_iq)
 ```
+
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidiq_interaction.stan): linear model with two predictors and interaction  
 ```
 lm (kid_score ~ mom_hs + mom_iq + mom_hs:mom_iq)
 ```
+
    * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.3/kidiq_validation.stan): linear model with two predictors  
 ```
 lm (ppvt ~ hs + afqt)
 ```
+
   * [kid_iq](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/kidiq_interaction_c.stan): linear model with two predictors and interaction centered using mean  
 ```
 lm (kid_score ~ c_mom_hs + c_mom_iq + c_mom_hs:c_mom_iq)
@@ -50,29 +56,45 @@ lm (kid_score ~ as.factor(mom_work))
 ```
 lm (earnings ~ height)
 ```
+
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_height.stan): linear model with one predictor and natural log transformation  
 ```
 lm (log_earnings ~ height)
 ```
+
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/log10earn_height.stan): linear model with one predictor and log10 transformation  
 ```
 lm (log10_earnings ~ height)
 ```
+
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_height_male.stan): linear model with two predictors and natural log transformation  
 ```
 lm (log_earnings ~ height + male)
 ```
+
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_interaction.stan): linear model with two predictors and interaction and natural log transformation  
 ```
 lm (log_earnings ~ height + male + height:male)
 ```
+
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_interaction_z.stan): linear model with two predictors and interaction and natural log transformation centered using z-score  
 ```
 lm (log_earnings ~ z_height + male + z_height:male)
 ```
+
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_logheight.stan): linear model with two predictors and log log transformation  
 ```
 lm (log_earnings ~ log_height + male)
+```
+
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/earnings1.stan): generalized linear model with logit link function and two predictors  
+```
+glm (earn_pos ~ height + male, family=binomial(link="logit"))
+```
+
+   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/earnings2.stan): linear model with two predictors and log transformation 
+```
+lm (log_earn ~ height + male, subset=earn>0)
 ```
 
 ***
@@ -83,28 +105,31 @@ lm (log_earnings ~ log_height + male)
 ```
 lm (weight~ diam1 + diam2 + canopy_height + total_height + density + group)
 ```
+
    * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_log.stan): linear model with six predictors and log transformation  
 ```
 lm (log_weight~ log_diam1 + log_diam2 + log_canopy_height + log_total_height + log_density + group)
 ```
+
    * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_volume.stan): linear model with one transformed predictor and log transformation  
 ```
 lm (log_weight ~ log_canopy_volume)
 ```
+
    * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_vas.stan): linear model with three predictors and three transformed predictors and log transformation           
 ```
 lm (log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_total_height + log_density + group)
 ```
+
    * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_va.stan): linear model with one predictor and two transformed predictors and log transformation   
 ```
 lm (log_weight ~ log_canopy_volume + log_canopy_area + group)
 ```
+
    * [mesquite](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/mesquite_vash.stan): linear model with two predictors and three transformed predictors and log transformation
 ```
 lm (log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_total_height + group)
 ```
-
-
 
 ***
 
@@ -115,27 +140,14 @@ lm (log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_to
 lm (partyid7 ~ real_ideo + race_adj + age30_44 + age45_64 + age65up + educ1 + gender + income)
 ```
 
-
-
-
-
-#### [Chapter 5 - Logistic Regression](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.5)
-
-  * [5.1 Logistic Regression with One Predictor](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.1_LogisticRegressionWithOnePredictor.R)
-
    * [nes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/nes.stan): generalized linear model with  logit link function and one predictor  
 ```
 glm (vote ~ income, family=binomial(link="logit"))
 ```
 
-  * [5.2 Interpreting Logistic Regression Coeficients](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.2_InterpretingLogisticRegressionCoef.R)
+***
 
-   * [nes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/nes.stan): generalized linear model with logit link function and one predictor  
-```
-glm (vote ~ income, family=binomial(link="logit"))
-```
-
-  * [5.4 Logistic Regression Wells in Bangladesh](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.4_LogisticRegressionWellsinBangladesh.R)
+#### wells
 
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_one_pred.stan): generalized linear model with logit link function and one predictor  
 ```
@@ -146,8 +158,6 @@ glm (switc ~ dist, family=binomial(link="logit"))
 ```
 glm (switc ~ dist100, family=binomial(link="logit"))
 ```
-
-  * [5.5 Logistic Regression with Interactions](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.5_LogisticRegressionWithInteractions.R)
 
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions.stan): generalized linear model with logit link function and two predictors and interaction  
 ```
@@ -175,14 +185,6 @@ glm (switc ~ c_dist100 + c_arsenic + c_educ4 + c_dist100:c_arsenic + c_dist100:c
      family=binomial(link="logit"))
 ```
 
-  * [5.6 Evaluating, Checking, & Comparing](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.6_Evaluating%2CChecking%2C%26Comparing.R)
-
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions_center_educ.stan): generalized linear model with logit link function with three predictors and interaction centered using mean  
-```
-glm (switc ~ c_dist100 + c_arsenic + c_educ4 + c_dist100:c_arsenic + c_dist100:c_educ4 + c_arsenic:c_educ4, 
-     family=binomial(link="logit"))
-```
-
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_log_transform.stan): generalized linear model with logit link function with three predictors and interaction with log transform and centered using mean   
 ```
 glm (switc ~ c_dist100 + c_log_arsenic + c_educ4 + c_dist100:c_log_arsenic + c_dist100:c_educ4     
@@ -196,8 +198,6 @@ glm (switc ~ dist100 + log_arsenic + educ4 + dist100:log_arsenic + dist100:educ4
      family=binomial(link="logit"))
 ```
 
-  * [5.7 Average Predictive Comparisons](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.7_AveragePredictiveComparisons.R)
-
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_edu.stan): generalized linear model with logit link function and three predictors  
 ```
 glm (switc ~ dist100 + arsenic + educ4, family=binomial(link="logit"))
@@ -208,54 +208,16 @@ glm (switc ~ dist100 + arsenic + educ4, family=binomial(link="logit"))
 glm (switc ~ dist100 + arsenic + educ4 + dist100:arsenic, family=binomial(link="logit"))
 ```
 
-  * [5.8 Identifiability and Separating](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/5.8_IdentifiabilityAndSeparation.R)
-
-   * [simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/y_x.stan): generalized linear model with logit link function and one predictor  
-```
-glm (y ~ x, family=binomial(link="logit"))
-```
-
-***
-
-#### [Chapter 6 - Generalized Linear Models](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.6)
-
-  * [6.2 Poisson, Exposure, & Overdispersion - MISSING DATA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.2_Poisson%2CExposure%26Overdispersion.R)
-
-  * [6.4 Probit Regression](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.4_ProbitRegression.R)
-
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/wells_probit.stan): generalized linear model with probit link function and one predictor  
 ```
 glm (switc ~ dist100, family=binomial(link="probit"))
 ```
 
-  * [6.5 Ordered & Unordered Categorical Regression - MISSING DATA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.5_Ordered%26UnorderedCategoricalRegression.R)
-
-  * [6.7 More Complex GLM](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.7_MoreComplexGLM.R)
-
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/earnings1.stan): generalized linear model with logit link function and two predictors  
-```
-glm (earn_pos ~ height + male, family=binomial(link="logit"))
-```
-
-   * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/earnings2.stan): linear model with two predictors and log transformation 
-```
-lm (log_earn ~ height + male, subset=earn>0)
-```
-
-  * [6.8 Constructive Choice Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/6.8_ConstructiveChoiceModels.R)
-
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/wells_logit.stan): generalized linear model with logit link function and one predictor  
-```
-glm (switc ~ dist100, family=binomial(link="logit"))
-```
-
 ***
 
-#### [Chapter 7 - Simulation of Probability Models and Statistical Inferences](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.7)
 
-  * [7.1 Simulation of Probability Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/7.1_SimulationOfProbabilityModels.R)
 
-  * [7.2 Summarizing Linear Regression Using Simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/7.2_SummarizingLinearRegressionUsingSimulation.R)
+
 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/earnings_interactions.stan): linear model with two predictors and interaction and log transformation   
 ```
