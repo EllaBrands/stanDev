@@ -70,6 +70,11 @@ lm (y ~ encouraged)
 lm (y ~ watched_hat)
 ```
 
+   * [unemployment](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/unemployment.stan): linear model with one predictor  
+```
+lm (y ~ y_lag)
+```
+
 #### Multiple Predictors with No Interaction
 
    * [congress](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.7/congress.stan): linear model with two predictors  
@@ -159,6 +164,21 @@ lm (log_weight~ log_diam1 + log_diam2 + log_canopy_height + log_total_height + l
 lm (partyid7 ~ real_ideo + race_adj + age30_44 + age45_64 + age65up + educ1 + gender + income)
 ```
 
+   * [sesame](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/sesame_multi_preds_3a.stan): linear model with three predictors and one factor  
+```
+lm (watched ~ encouraged + pretest + as.factor(site) + setting)
+```
+
+   * [sesame](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.10/sesame_multi_preds_3b.stan): linear model with three predictors and one factor  
+```
+lm (y ~ watched_hat + pretest + as.factor(site) + setting)
+```
+
+   * [finite_populations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/finite_populations.stan): linear model with appropriate calculations for calculating the standard deviation of a finite population
+```
+lm (g ~ u_1 + u)
+```
+
 #### Multiple Predictors with Interaction
 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.4/logearn_interaction.stan): linear model with two predictors and interaction and natural log transformation  
@@ -230,6 +250,16 @@ lm (log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_to
 glm (vote ~ income, family=binomial(link="logit"))
 ```
 
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_one_pred.stan): generalized linear model with logit link function and one predictor  
+```
+glm (switc ~ dist, family=binomial(link="logit"))
+```
+
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_one_pred_scale.stan): generalized linear model with logit link function and one predictor  
+```
+glm (switc ~ dist100, family=binomial(link="logit"))
+```
+
 #### Multiple Predictors with No Interaction
 
    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/earnings1.stan): generalized linear model with logit link function and two predictors  
@@ -243,20 +273,80 @@ glm (earnings ~ male + over65 + white + immig + educ_r + any_ssi + any_welfare +
      family=binomial(link="logit"))
 ```
 
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_edu.stan): generalized linear model with logit link function and three predictors  
+```
+glm (switc ~ dist100 + arsenic + educ4, family=binomial(link="logit"))
+```
+
+#### Multiple Predictors with Interaction
+
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions.stan): generalized linear model with logit link function and two predictors and interaction  
+```
+glm (switc ~ dist100 + arsenic + dist100:arsenic, family=binomial(link="logit"))
+```
+
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions_center.stan): generalized linear model with logit link function with two predictors and interaction centered using mean   
+```
+glm (switc ~ c_dist100 + c_arsenic + c_dist100:c_arsenic, family=binomial(link="logit"))
+```
+
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_community.stan): generalized linear model with logit link function and four predictors and interaction centered using mean  
+```
+glm (switc ~ c_dist100 + c_arsenic + c_dist100:c_arsenic + assoc + educ4, family=binomial(link="logit"))
+```
+
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_social.stan): generalized linear model with logit link function and three predictors and interaction centered using mean  
+```
+glm (switc ~ c_dist100 + c_arsenic + c_dist100:c_arsenic + educ4, family=binomial(link="logit"))
+```
+
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions_center_educ.stan): generalized linear model with logit link function and three predictors and interaction centered using mean  
+```
+glm (switc ~ c_dist100 + c_arsenic + c_educ4 + c_dist100:c_arsenic + c_dist100:c_educ4 + c_arsenic:c_educ4, 
+     family=binomial(link="logit"))
+```
+
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_log_transform.stan): generalized linear model with logit link function with three predictors and interaction with log transform and centered using mean   
+```
+glm (switc ~ c_dist100 + c_log_arsenic + c_educ4 + c_dist100:c_log_arsenic + c_dist100:c_educ4     
+             + c_log_arsenic:c_educ4, 
+     family=binomial(link="logit"))
+```
+
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_log_transform2.stan): generalized linear model with logit link function with three predictors and interaction with log transform and centered using mean  
+```
+glm (switc ~ dist100 + log_arsenic + educ4 + dist100:log_arsenic + dist100:educ4 + log_arsenic:educ4, 
+     family=binomial(link="logit"))
+```
+
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_all.stan): generalized linear model with logit link function and three predictors with interaction  
+```
+glm (switc ~ dist100 + arsenic + educ4 + dist100:arsenic, family=binomial(link="logit"))
+```
+
+
 ### Other Generalized Linear Regression Models
+
+#### Poisson 
 
    * [roaches](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/roaches.stan): poisson regression model with exposure and three predictors
 ```
 glm (y ~ roach1 + treatment + senior, family=poisson, offset=log(exposure2))
 ```
 
+#### Probit
+
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.6/wells_probit.stan): generalized linear model with probit link function and one predictor  
+```
+glm (switc ~ dist100, family=binomial(link="probit"))
+```
+
+#### Quasipoisson
+
    * [roaches_overdispersion](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.8/roaches_overdispersion.stan): poisson overdispersion regression model with exposure and three predictors
 ```
 glm(y ~ roach1 + treatment + senior, family=quasipoisson, offset=log(exposure2))
 ```
-
-#### Multiple Predictors with Interaction
-
 
 ## Multi-Level Models
 
@@ -331,6 +421,11 @@ lmer (y ~ u + x + x_mean + (1 | county))
 lmer (y ~ u + (1 | county))
 ```
 
+   * [multiple_comparisons](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/multiple_comparison.stan): multi-level linear model that serves as a multiple comparisons example
+```
+lmer (y ~ theta + (theta | j))
+```
+
 #### Varying Intercept and Slope
 
    * [earnings_vary_si](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/earnings_vary_si.stan): multi-level linear model with group level predictors         
@@ -362,6 +457,12 @@ lmer (y ~ 1 + (1 + x | county))
 ```
 lmer (y ~ x + u.full + x:u.full + (1 + x | county))
 ```
+
+   * [r_sqr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/r_sqr.stan): multi-level linear model with appropriate calculations for R^2
+```
+lmer (y ~ 1 + (1 + x | county))
+```
+
 
 #### Multiple Group-Level Factors
 
