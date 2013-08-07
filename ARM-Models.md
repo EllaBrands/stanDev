@@ -4,4 +4,4 @@ The models in [Data Analysis Using Regression Analysis and Multilevel/Hierarchic
 
 * [Name](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name)
 
-* Model Type
+* [Model Type](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type)
