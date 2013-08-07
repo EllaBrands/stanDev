@@ -102,6 +102,34 @@ lm (log_earn ~ height + male, subset=earn>0)
 lmer (y ~ x (1 + x | ethn))
 ```
 
+   * [earnings_latin_square](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/earnings_latin_square.stan): non-nested multi-level linear model with group level predictors
+```
+lmer (y ~ x.centered + (1 + x.centered | eth) + (1 + x.centered | age) + (1 + x.centered | eth:age))
+```
+
+    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings.stan): linear model with ten predictors
+```
+lm (earnings ~ male + over65 + white + immig + educ_r + workmos + workhrs_top + any_ssi + any_welfare 
+               + any_charity)
+```
+
+    * [earnings_pt1](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings.stan): logistic regression model with eight predictors
+```
+glm (earnings ~ male + over65 + white + immig + educ_r + any_ssi + any_welfare + any_charity,
+     family=binomial(link="logit"))
+```
+
+    * [earnings_pt2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings.stan): linear model with eight predictors
+```
+lm (earnings ~ male + over65 + white + immig + educ_r + any_ssi + any_welfare + any_charity)
+```
+
+    * [earnings2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings2.stan): mlinear model with eleven predictors
+```
+lm (earnings ~ interest + male + over65 + white + immig + educ_r + workmos + workhrs_top + any_ssi 
+               + any_welfare + any_charity)
+```
+
 ***
 
 #### mesquite
@@ -287,6 +315,26 @@ lm (post_test ~ pre_test + treatment)
 lm (post_test ~ pre_test + treatment + pre_test:treatment)
 ```
 
+    * [electric_1a](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_1a.stan): multi-level linear model with varying intercept and slope
+```
+lmer (y ~ 1 + (1 | pair) + (treatment | grade))
+```
+
+    * [electric_1b](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_1b.stan): multi-level linear model with varying intercept and slope
+```
+lmer (y ~ treatment + pre_test + (1 | pair))
+```
+
+    * [electric_1c](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_1c.stan): multi-level linear model with group level factors
+```
+lmer (y ~ 1 + (1 | pair) + (treatment | grade) + (pre_test | grade))
+```
+
+    * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric.stan): multi-level linear model with varying intercept
+```
+lmer (y ~ treatment + (1 | pair))
+```
+
 ***
 
 #### ideo
@@ -340,6 +388,11 @@ lm (watched ~ encouraged + pretest + as.factor(site) + setting)
 lm (y ~ watched_hat + pretest + as.factor(site) + setting)
 ```
 
+   * [sesame_street1](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/sesame_street1.stan): multi-level linear model using multivariate normal
+
+   * [sesame_street2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/sesame_street2.stan): multi-level linear model using multivariate normal
+
+
 ***
 
 #### radon
@@ -374,100 +427,123 @@ lmer (y ~ x (1 + x | county))
 lmer (y ~ x + u.full + x:u.full + (1 + x | county))
 ```
 
-  
+   * [radon_redundant](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/radon_redundant.stan): multi-level liner model with varying intercept and redundant parameterization
+```
+lmer (y ~ 1 + (1 | county))
+```
 
+   * [radon_vary_intercept_a](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_a.stan): multi-level linear model with varying intercept set up to calculate pooling factors
+```
+lmer (y ~ x + (1 | county))
+```
 
-  * [13.5 Non-Nested Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/13.5_Non-NestedModels.R)
+   * [radon_vary_intercept_b](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_b.stan): multi-level linear model with varying intercept set up to calculate pooling factors
+```
+lmer (y ~ x + (1 | county))
+```
+
+   * [radon_vary_intercept_c](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_c.stan): multi-level linear model with varying intercept
+```
+lmer (y ~ x + u + (1 | county))
+```
+
+   * [anova_radon_nopred](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.22/anova_radon_nopred.stan): multi-level linear model with varying intercept and set up for ANOVA
+```
+lmer (y ~ 1 + (1 | county))
+```
+
+   * [radon_vary_intercept_floor](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_floor.stan): multi-level linear model with varying intercept
+```
+lmer (y ~ u + x + (1 | county))
+```
+
+   * [radon_vary_intercept_floor2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_floor2.stan): multi-level linear model with varying intercept
+```
+lmer (y ~ u + x + x_mean + (1 | county))
+```
+
+   * [radon_vary_intercept_nofloor](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_nofloor.stan): multi-level linear model with varying intercept
+```
+lmer (y ~ u + (1 | county))
+```
+
+***
+
+#### pilots
  
    * [pilots](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/pilots.stan): non-nested multi-level linear model with group level predictors         
 ```
 lmer (y ~ 1 + (1 | group.id) (1 | scenario.id))
 ```
  
-   * [earnings_latin_square](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/earnings_latin_square.stan): non-nested multi-level linear model with group level predictors
+   * [pilots](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/pilots.stan): multi-level linear model with varying intercept and redundant parameterization
 ```
-lmer (y ~ x.centered + (1 + x.centered | eth) + (1 + x.centered | age) + (1 + x.centered | eth:age))
+lmer (y ~ 1 + (1 | treatment) + (1 | airport))
+```
+
+   * [pilots_expansion](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/pilots_expansion.stan): multi-level linear model with varying intercept and parameter expansion
+```
+lmer (y ~ 1 + (1 | treatment) + (1 | airport))
 ```
 
 ***
 
-#### [Chapter 14 - Multilevel Logistic Regression](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.14)
- 
-  * [14.1 State-Level Opinions From National Polls](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.14/14.1_State-LevelOpinionsFromNationalPolls.R)
+#### elections88
 
-    * [elections88](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.14/elections88.stan): multi-level logistic regression model with group level predictors
+   * [elections88](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.14/elections88.stan): multi-level logistic regression model with group level predictors
 ```
 lmer (y ~ black + female + (1 | state), family=binomial(link="logit"))
 ```
  
-    * [elections88_full](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.14/elections88_full.stan): multi-level logistic regression model with group level predictors
+   * [elections88_full](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.14/elections88_full.stan): multi-level logistic regression model with group level predictors
 ```
 lmer (y ~ black + female + black:female + v.prev.full + (1 | age) + (1 | edu) + (1 | age.edu) 
           + (1 | state) + (1 | region.full), family=binomial(link="logit"))
 ```
 
-***
-
-#### [Chapter 15 - Multilevel Generalized Linear Models](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.15)
-
-***
-
-#### [Chapter 19 - Debugging and Speeding Convergence](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.19)
-
-  * [19.2 General Methods for Reducing Computational Requirements] (https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/19.2_GeneralMethodsForReducingComputationalRequirements.R)
-  
-  * [19.3 Simple Linear Transformations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/19.3_SimpleLinearTransformations.R)
-
-  * [19.4 Redundant Parameters & Intentionally Non-identifiable Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/19.4_RedundantParameters%26IntentionallyNonidentifiableModels.R)
-
-    * [radon](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/radon.stan): multi-level liner model with varying intercept
-```
-lmer (y ~ 1 + (1 | county))
-```
-
-    * [radon_redundant](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/radon_redundant.stan): multi-level liner model with varying intercept and redundant parameterization
-```
-lmer (y ~ 1 + (1 | county))
-```
-
-    * [pilots](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/pilots.stan): multi-level linear model with varying intercept and redundant parameterization
-```
-lmer (y ~ 1 + (1 | treatment) + (1 | airport))
-```
-
-    * [election88](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/election88.stan): multi-level logistic regression model with redundant parameterization
+   * [election88](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/election88.stan): multi-level logistic regression model with redundant parameterization
 ```
 lmer (y ~ female + black + female:black + (1 | age) + (1 | edu) + (1 | age_edu) + (1 | state), 
       family=binomial(link="logit"))
 ```
 
-  * [19.5 Parameter Expansion](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/19.5_ParameterExpansion.R)
 
-    * [pilots_expansion](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/pilots_expansion.stan): multi-level linear model with varying intercept and parameter expansion
-```
-lmer (y ~ 1 + (1 | treatment) + (1 | airport))
-```
-
-    * [election88_expansion](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/election88_expansion.stan): multi-level logistic regression model with parameter expansion
+   * [election88_expansion](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/election88_expansion.stan): multi-level logistic regression model with parameter expansion
 ```
 lmer (y ~ female + black + female:black + (1 | age) + (1 | edu) + (1 | age_edu) + (1 | state), 
       family=binomial(link="logit"))
 ```
+
+***
+
+    * [multiple_comparisons](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/multiple_comparison.stan): multi-level linear model that serves as a multiple comparisons example
+```
+lmer (y ~ theta (theta | j))
+```
+
+   * [r_sqr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/r_sqr.stan): multi-level linear model with appropriate calculations for R^2
+```
+lmer (y ~ 1 + (1 + x | county))
+```
+
+
+
+   * [finite_populations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/finite_populations.stan): linear model with appropriate calculations for calculating the standard deviation of a finite population
+```
+lm (g ~ u_1 + u)
+```
+
 
     * [item_response](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/item_response.stan): multi-level logistic regression model with parameter expansion
 ```
 lmer (y ~ a:g + (a:g | k,j) + (g:b | k), family=binomial(link="logit"))
 ```
 
-  * [19.6 Using Redundant Parameters for Modeling](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/19.6_UsingRedundantParametersForModeling.R)
-
     * [8_schools](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/schools.stan): multi-level linear model with redundant parameterization
 
 ***
 
-#### [Chapter 20 - Sample Size and Power Calculations](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.20)
-
-  * [20.5 Multilevel Power Calculation Using Fake-Data Simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.20/20.5_MultilevelPowerCalculationUsingFake-DataSimulation.R)
+#### hiv
 
     * [hiv](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.20/hiv.stan): multi-level linear model with varying slope and intercept
 ```
@@ -481,174 +557,10 @@ lmer (y ~ time:treatment + (1 + time | person)
 
 ***
 
-#### [Chapter 21 - Understanding and Summarizing the Fitted Models](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.21)
-
-  * [21.2 Superpopulation & Finite-Population Variances](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/21.2_Superpopulation%26Finite-PopulationVariances.R)
-
-    * [finite_populations](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/finite_populations.stan): linear model with appropriate calculations for calculating the standard deviation of a finite population
-```
-lm (g ~ u_1 + u)
-```
-
-  * [21.3 Contrasts & Comparisons of Multilevel Coefficients](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/21.3_Contrasts%26ComparisonsOfMultilevelCoefficients.R)
-
-  * [21.5 R^2 & Explained Variance](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/21.5_R%5E2%26ExplainedVariance.R)
-
-    * [r_sqr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/r_sqr.stan): multi-level linear model with appropriate calculations for R^2
-```
-lmer (y ~ 1 + (1 + x | county))
-```
-
-  * [21.6 Summarizing the Amount of Partial Pooling](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/21.6_SummarizingtheAmmountofPartialPooling.R)
-
-    * [radon_vary_intercept_a](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_a.stan): multi-level linear model with varying intercept set up to calculate pooling factors
-```
-lmer (y ~ x + (1 | county))
-```
-
-    * [radon_vary_intercept_b](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_b.stan): multi-level linear model with varying intercept set up to calculate pooling factors
-```
-lmer (y ~ x + (1 | county))
-```
-
-    * [radon_vary_intercept_c](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_c.stan): multi-level linear model with varying intercept
-```
-lmer (y ~ x + u + (1 | county))
-```
-
-  * [21.7 Adding a Predictor can Increase Residual Variance](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/21.7_AddingAPredictorCanIncreaseResidualVariance.R)
-
-    * [radon_vary_intercept_floor](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_floor.stan): multi-level linear model with varying intercept
-```
-lmer (y ~ u + x + (1 | county))
-```
-
-    * [radon_vary_intercept_floor2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_floor2.stan): multi-level linear model with varying intercept
-```
-lmer (y ~ u + x + x_mean + (1 | county))
-```
-
-    * [radon_vary_intercept_nofloor](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_nofloor.stan): multi-level linear model with varying intercept
-```
-lmer (y ~ u + (1 | county))
-```
-
-  * 21.8 Multiple Comparisons and Statistical Significance
-
-    * [multiple_comparisons](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/multiple_comparison.stan): multi-level linear model that serves as a multiple comparisons example
-```
-lmer (y ~ theta (theta | j))
-```
-
-***
-
-#### [Chapter 22 - Analysis of Variance](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.22)
-
-  * [22.1 Classical ANOVA](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.22/22.1_ClassicalANOVA.R)
-
-  * [22.4 Doing ANOVA Using MLM](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.22/22.4_DoingANOVUsingMLM.R)
-
-    * [anova_radon_nopred](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.22/anova_radon_nopred.stan): multi-level linear model with varying intercept and set up for ANOVA
-```
-lmer (y ~ 1 + (1 | county))
-```
-
-***
-
-#### [Chapter 23 - Casual Inference Using Multilevel Models](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.23)
-
-  * [23.1 Multilevel Aspects of Data Collection](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/23.1_MultilevelAspectsofDataCollection.R)
-
-    * [electric_1a](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_1a.stan): multi-level linear model with varying intercept and slope
-```
-lmer (y ~ 1 + (1 | pair) + (treatment | grade))
-```
-
-    * [electric_1b](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_1b.stan): multi-level linear model with varying intercept and slope
-```
-lmer (y ~ treatment + pre_test + (1 | pair))
-```
-
-    * [electric_1c](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_1c.stan): multi-level linear model with group level factors
-```
-lmer (y ~ 1 + (1 | pair) + (treatment | grade) + (pre_test | grade))
-```
-
-    * [electric_one_pred](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_one_pred.stan): linear model with one predictor
-```
-lm (post_test ~ treatment)
-```
-
-    * [electric_multi_preds](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_multi_preds.stan): linear model with two predictors
-```
-lm (post_test ~ treatment + pre_test)
-```
-
-  * 23.3 Treatments Applied at Different Levels
-
-    * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric.stan): multi-level linear model with varying intercept
-```
-lmer (y ~ treatment + (1 | pair))
-```
-
-  * [23.4 Instrumental Variables & Multilevel Modeling](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/23.4_InstrumentalVariables%26MultilevelModeling.R)
-
-    * [sesame_street1](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/sesame_street1.stan): multi-level linear model using multivariate normal
-
-    * [sesame_street2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/sesame_street2.stan): multi-level linear model using multivariate normal
-
-***
-
-#### [Chapter 24 - Model Checking and Comparison](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.24)
-
-  * [24.2 Behavioral Learning Experiments](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/24.2_BehavioralLearningExperiment.R)
+#### dogs
 
     * [dogs](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/dogs.stan): multi-level logit regression model
 
     * [dogs_log](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/dogs_log.stan): multi-level model using binomial distribution
 
     * [dogs_check](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/dogs_check.stan): multi-level model using binomial distribution
-
-***
-
-#### [Chapter 25 - Missing-Data Imuptation](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.25)
-
-  * [25.0 Missing Data in R and Bugs](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/25.0_MissingDataInRandBugs.R)
-
-  * [25.4 Random Imputation of a Single Variable](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/25.4_RadomImputationofaSingleVariable.R)
-
-    * [earnings](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings.stan): linear model with ten predictors
-```
-lm (earnings ~ male + over65 + white + immig + educ_r + workmos + workhrs_top + any_ssi + any_welfare 
-               + any_charity)
-```
-
-    * [earnings_pt1](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings.stan): logistic regression model with eight predictors
-```
-glm (earnings ~ male + over65 + white + immig + educ_r + any_ssi + any_welfare + any_charity,
-     family=binomial(link="logit"))
-```
-
-    * [earnings_pt2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings.stan): linear model with eight predictors
-```
-lm (earnings ~ male + over65 + white + immig + educ_r + any_ssi + any_welfare + any_charity)
-```
-
-  * [25.5 Imputation of Several Missing variables](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/25.5_ImputationofSeveralMissingVariables.R)
-
-    * [earnings2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings2.stan): mlinear model with eleven predictors
-```
-lm (earnings ~ interest + male + over65 + white + immig + educ_r + workmos + workhrs_top + any_ssi 
-               + any_welfare + any_charity)
-```
-
-***
-
-THE BELOW CHAPTERS HAVE NOT BEEN ADDED YET.
-
-#### [Chapter 16 - Multilevel Modeling in Bugs and R: the Basics](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.16)
-
-#### [Chapter 17 - Fitting Multilevel Linear and Generalized Linear Models in Bugs and R](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.17)
-
-#### [Chapter 18 - Likelihood and Bayesian Inference and Computation](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.18)
- 
