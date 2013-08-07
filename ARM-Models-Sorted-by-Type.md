@@ -50,7 +50,7 @@ lm (log_earnings ~ log_height + male)
 lm (log_earn ~ height + male, subset=earn>0)
 ```
 
-  * [earnings2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings2.stan): mlinear model with eleven predictors
+   * [earnings2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.25/earnings2.stan): mlinear model with eleven predictors
 ```
 lm (earnings ~ interest + male + over65 + white + immig + educ_r + workmos + workhrs_top + any_ssi 
                + any_welfare + any_charity)
@@ -115,7 +115,9 @@ glm (earnings ~ male + over65 + white + immig + educ_r + any_ssi + any_welfare +
 
 
 
-
+***
+***
+***
 
 #### One Predictor
 
