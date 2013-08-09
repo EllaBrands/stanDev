@@ -92,6 +92,8 @@ cf., [runtime-error copy string? (Stack Overflow)](http://stackoverflow.com/ques
 * test template functions in stan/math to ensure they match int better than var matches int
 * remove warning message on transform OR declare a set of function names to ignore
 
+* add ```mdivide_left_spd``` support --- needs manual doc, exposed fun sigs, unit tests, and test models.  And probably a matching ``mdividd_right_spd```, which can be defined with transpose.
+
 ### Priorities
 
 #### Contributed Code
