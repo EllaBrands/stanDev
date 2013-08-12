@@ -179,7 +179,16 @@ cf., [runtime-error copy string? (Stack Overflow)](http://stackoverflow.com/ques
 * more general and dynamic web site graphics
 
 ### C++ API <a id="c++-api"></a>
-* B splines (not sure which version)
+* cubic B splines
+* Multivariate normal cdfs (and ccdfs?).  Notes from noahmotion (GitHub ID) to github:
+For what it's worth, Alan Genz has (from what I can tell) good Fortran code for calculating multivariate normal integrals (I don't know how easy it would be to adapt Fortran code for use in Stan, but I thought I'd at least attempt to be as helpful as I could when asking for a feature like this):
+    * http://www.math.wsu.edu/faculty/genz/software/fort77/mvndstpack.f
+    * http://www.math.wsu.edu/faculty/genz/software/fort77/mvnpack.f
+The numerical method he developed to calculate multivariate normal and t integrals is described in these papers:
+    * http://www.math.wsu.edu/faculty/genz/papers/mvn.pdf
+    * http://www.math.wsu.edu/faculty/genz/papers/bvnt.pdf
+He also has an R package called mvtnorm.  Tom Wickens' gives the partial derivatives for the bivariate Gaussian CDF in his 1992 J. of Math. Psych. paper (the broader point of which is to describe the Newton-Raphson algorithm for maximum likelihood estimation of the parameters in a multidimensional signal detection/probit model):
+    * http://www.sciencedirect.com/science/article/pii/0022249692900378
 * For optimization, take curvature at mode to estimate a normal approximation and draw samples from it
 * Remove exceptions in ctors for special function vari (no longer a bug)
     * /functions/inverse_softmax.hpp: #include <boost/throw_exception.hpp>
