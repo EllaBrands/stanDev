@@ -803,6 +803,9 @@ gets same grad as y[n] ~ normal(mu,sigma);
         * ESS rate at equilibrium
 
 ### R, Python, MATLAB, Julia, etc. Interfaces <a id="rstan"></a>
+* Parameter to trim initial part of traceplot to keep scale more reasonable  (not sure if this is a good idea, but it was requested in e-mail to Andrew)
+* Plot running average of parameter 
+    * n vs. mean(theta[1:chain,1:n]) where chain is number of chains
 * Doc optimization usage.  Here's Ben's example:
 ```
 # example from glm()
