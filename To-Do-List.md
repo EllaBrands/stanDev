@@ -15,7 +15,7 @@
     * [Models and other Examples](#models)
 
 ### For Next Release (1.3.0++) <a id="next-release"></a>
-* Reorganize agrad to match other code trees and remove cruft:
+* (Daniel) Reorganize agrad to match other code trees and remove cruft:
     * remove: agrad/hessian.hpp
     * move: matrix.hpp to rev/matrix.hpp
     * move: fvar_matrix.hpp to fwd/matrix.hpp
