@@ -555,6 +555,11 @@ lm (y ~ watched_hat + pretest + as.factor(site) + setting)
 lmer (y ~ 1 + (1 | county))
 ```
 
+    * [radon_intercept_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_intercept_chr.stan): multi-level linear model with varying intercept using the Choo-Hoffman Parametrization        
+```
+lmer (y ~ 1 + (1 | county))
+```
+
   * [12.3 Partial Pooling with Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.3_PartialPoolingWithPredictors.R) 
 
     * [radon_complete_pool](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_complete_pool.stan): multi-level linear model with complete pooling          
@@ -563,6 +568,11 @@ lm (y ~ x)
 ```
 
     * [radon_no_pool](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_no_pool.stan): multi-level linear model with no pooling        
+```
+lmer (y ~ x + (1 | county))
+```
+
+    * [radon_no_pool_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_no_pool_chr.stan): multi-level linear model with no pooling using the Choo-Hoffman Parametrization       
 ```
 lmer (y ~ x + (1 | county))
 ```
@@ -582,6 +592,11 @@ lmer (y ~ x + (1 | county))
   * [12.6 Group-Level Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/12.6_Group-LevelPredictors.R)
 
     * [radon_group](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_group.stan): multi-level linear model with group level predictor and individual level predictors              
+```
+lmer (y ~ x + u + (1 | county))
+```
+
+    * [radon_group_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.12/radon_group_chr.stan): multi-level linear model with group level predictor and individual level predictors using the Choo-Hoffman Parametrization             
 ```
 lmer (y ~ x + u + (1 | county))
 ```
@@ -609,6 +624,11 @@ lmer (y ~ x + u + (1 | county))
 lmer (y ~ x (1 + x | county))
 ```
 
+    * [radon_vary_si_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/radon_vary_si_chr.stan): multi-level linear model with group level predictors using the Choo-Hoffman Parametrization        
+```
+lmer (y ~ x (1 + x | county))
+```
+
    * [y_x](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/y_x.stan): linear model with one predictor       
 ```
 lm (y ~ x)
@@ -619,9 +639,19 @@ lm (y ~ x)
 lmer (y ~ x + u.full + x:u.full + (1 + x | county))
 ```
 
+    * [radon_inter_vary_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/radon_inter_vary_chr.stan): multi-level linear model with group level predictors using the Choo-Hoffman Parametrization        
+```
+lmer (y ~ x + u.full + x:u.full + (1 + x | county))
+```
+
   * [13.4 Understanding Correlations Between Intercepts & Slopes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/13.4_UnderstandingCorrelationsBetweenIntercepts%26Slopes.R)
  
    * [earnings_vary_si](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/earnings_vary_si.stan): multi-level linear model with group level predictors         
+```
+lmer (y ~ x (1 + x | ethn))
+```
+ 
+   * [earnings_vary_si_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/earnings_vary_si_chr.stan): multi-level linear model with group level predictors using the Choo-Hoffman Parametrization        
 ```
 lmer (y ~ x (1 + x | ethn))
 ```
@@ -632,8 +662,18 @@ lmer (y ~ x (1 + x | ethn))
 ```
 lmer (y ~ 1 + (1 | group.id) (1 | scenario.id))
 ```
- 
+  
+   * [pilots_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/pilots_chr.stan): non-nested multi-level linear model with group level predictors using the Choo-Hoffman Parametrization        
+```
+lmer (y ~ 1 + (1 | group.id) (1 | scenario.id))
+```
+
    * [earnings_latin_square](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/earnings_latin_square.stan): non-nested multi-level linear model with group level predictors
+```
+lmer (y ~ x.centered + (1 + x.centered | eth) + (1 + x.centered | age) + (1 + x.centered | eth:age))
+```
+
+   * [earnings_latin_square_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/earnings_latin_square_chr.stan): non-nested multi-level linear model with group level predictors using the Choo-Hoffman Parametrization
 ```
 lmer (y ~ x.centered + (1 + x.centered | eth) + (1 + x.centered | age) + (1 + x.centered | eth:age))
 ```
@@ -674,7 +714,17 @@ lmer (y ~ black + female + black:female + v.prev.full + (1 | age) + (1 | edu) + 
 lmer (y ~ 1 + (1 | county))
 ```
 
+    * [radon_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/radon_chr.stan): multi-level liner model with varying intercept using the Choo-Hoffman Parametrization
+```
+lmer (y ~ 1 + (1 | county))
+```
+
     * [radon_redundant](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/radon_redundant.stan): multi-level liner model with varying intercept and redundant parameterization
+```
+lmer (y ~ 1 + (1 | county))
+```
+
+    * [radon_redundant_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/radon_redundant_chr.stan): multi-level liner model with varying intercept and redundant parameterization and the Choo-Hoffman Parametrization
 ```
 lmer (y ~ 1 + (1 | county))
 ```
@@ -723,7 +773,17 @@ lmer (y ~ a:g + (a:g | k,j) + (g:b | k), family=binomial(link="logit"))
 lmer (y ~ time + (1 + time | person)
 ```
 
+    * [hiv_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.20/hiv_chr.stan): multi-level linear model with varying slope and intercept using the Choo-Hoffman Parametrization
+```
+lmer (y ~ time + (1 + time | person)
+```
+
     * [hiv_inter](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.20/hiv_inter.stan): multi-level linear model with interaction and varying slope and intercept
+```
+lmer (y ~ time:treatment + (1 + time | person)
+```
+
+    * [hiv_inter_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.20/hiv_inter_chr.stan): multi-level linear model with interaction and varying slope and intercept using the Choo-Hoffman Parametrization
 ```
 lmer (y ~ time:treatment + (1 + time | person)
 ```
@@ -772,12 +832,27 @@ lmer (y ~ x + u + (1 | county))
 lmer (y ~ u + x + (1 | county))
 ```
 
+    * [radon_vary_intercept_floor_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_floor_chr.stan): multi-level linear model with varying intercept using the Choo-Hoffman Parametrization
+```
+lmer (y ~ u + x + (1 | county))
+```
+
     * [radon_vary_intercept_floor2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_floor2.stan): multi-level linear model with varying intercept
 ```
 lmer (y ~ u + x + x_mean + (1 | county))
 ```
 
+    * [radon_vary_intercept_floor2_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_floor2_chr.stan): multi-level linear model with varying intercept using the Choo-Hoffman Parametrization
+```
+lmer (y ~ u + x + x_mean + (1 | county))
+```
+
     * [radon_vary_intercept_nofloor](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_nofloor.stan): multi-level linear model with varying intercept
+```
+lmer (y ~ u + (1 | county))
+```
+
+    * [radon_vary_intercept_nofloor_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_nofloor_chr.stan): multi-level linear model with varying intercept using the Choo-Hoffman Parametrization
 ```
 lmer (y ~ u + (1 | county))
 ```
@@ -802,6 +877,11 @@ lmer (y ~ theta (theta | j))
 lmer (y ~ 1 + (1 | county))
 ```
 
+    * [anova_radon_nopred_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.22/anova_radon_nopred_chr.stan): multi-level linear model with varying intercept and set up for ANOVA using the Choo-Hoffman Parametrization
+```
+lmer (y ~ 1 + (1 | county))
+```
+
 ***
 
 #### [Chapter 23 - Casual Inference Using Multilevel Models](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.23)
@@ -813,12 +893,27 @@ lmer (y ~ 1 + (1 | county))
 lmer (y ~ 1 + (1 | pair) + (treatment | grade))
 ```
 
+    * [electric_1a_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_1a_chr.stan): multi-level linear model with varying intercept and slope using the Choo-Hoffman Parametrization
+```
+lmer (y ~ 1 + (1 | pair) + (treatment | grade))
+```
+
     * [electric_1b](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_1b.stan): multi-level linear model with varying intercept and slope
 ```
 lmer (y ~ treatment + pre_test + (1 | pair))
 ```
 
+    * [electric_1b_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_1b_chr.stan): multi-level linear model with varying intercept and slope using the Choo-Hoffman Parametrization
+```
+lmer (y ~ treatment + pre_test + (1 | pair))
+```
+
     * [electric_1c](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_1c.stan): multi-level linear model with group level factors
+```
+lmer (y ~ 1 + (1 | pair) + (treatment | grade) + (pre_test | grade))
+```
+
+    * [electric_1c_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_1c_chr.stan): multi-level linear model with group level factors using the Choo-Hoffman Parametrization
 ```
 lmer (y ~ 1 + (1 | pair) + (treatment | grade) + (pre_test | grade))
 ```
@@ -836,6 +931,11 @@ lm (post_test ~ treatment + pre_test)
   * 23.3 Treatments Applied at Different Levels
 
     * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric.stan): multi-level linear model with varying intercept
+```
+lmer (y ~ treatment + (1 | pair))
+```
+
+    * [electric_chr](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/electric_chr.stan): multi-level linear model with varying intercept using the Choo-Hoffman Parametrization
 ```
 lmer (y ~ treatment + (1 | pair))
 ```
