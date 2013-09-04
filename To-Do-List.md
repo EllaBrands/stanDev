@@ -114,7 +114,6 @@ cf., [runtime-error copy string? (Stack Overflow)](http://stackoverflow.com/ques
     * Ensemble walk, stretch moves
 * (Peter, Bob, Michael) higher-order auto-diff
 * (Michael) RM-HMC, SoftAbs
-* 
 
 #### Modeling Language <a id="modeling-language"></a>
 * (Bob) add a reject() statement
@@ -172,6 +171,7 @@ cf., [runtime-error copy string? (Stack Overflow)](http://stackoverflow.com/ques
     * Local return on iterators, for which Jeffrey Oldham filed a [Boost bug report:](https://svn.boost.org/trac/boost/ticket/8489)
 
 #### Documentation
+* (Bob) update examples for Gaussian processes w.r.t. Aki's comments (e-mail forward from Andrew, 9/2/13)
 * intro applied Bayes book with RStan
 * (Bob) C++ manual for API and auto-dif
 * C++ code cleanup (API doc, privates, consts, doc, split files, long long)
