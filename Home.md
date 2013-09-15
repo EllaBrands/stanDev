@@ -1,8 +1,20 @@
 The Stan Wiki here on GitHub is primarily intended for developers.
 
-In addition to in GitHub's issue tracker, there is a longer, more structured work plan:
+### To-Do List
+
+In addition to in GitHub's issue tracker, which has bugs and some imminent features, there is a longer, less well-defined work plan:
 
 * [Stan To-Do List](wiki/To-Do-List)
+
+This is a good Wiki to read if you're looking for a coding project related to Stan.
+
+### Design Documents
+
+Some in-process designs for new Stan features:
+
+* [ODE Design](wiki/ODE-Integrator-Support)
+
+### General Notes for Developers
 
 The Git and code review process used for developers and some useful tools:
 
@@ -12,9 +24,13 @@ The Git and code review process used for developers and some useful tools:
 
 * [Continuous Integration](wiki/Continuous-Integration)
 
+#### How to Contribute a Function to Stan
+
 If you want to contribute a new function to Stan:
 
 * [How to Contribute a New Function to Stan](wiki/Contributing-New-Functions-to-Stan)
+
+### Suites of Model Examples
 
 BUGS example models and models from ARM have been coded in Stan:
 
