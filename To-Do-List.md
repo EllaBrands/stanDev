@@ -1,71 +1,8 @@
-### To-Do List Organization
-* Short-Term
-    * [Next Release](#next-release)
-    * Soon
-* Longer-Term Items
-    * [C++ API](#c++-api)
-    * [Modeling Language](#modeling-language)
-    * [Build](#build)                         
-    * [Testing](#testing)
-    * [Command-Line](#command-line)
-    * [RStan](#rstan)
-    * [Manual](#manual)
-    * [Web Pages](#web-pages)
-    * [Release Management](#release-management)
-    * [Models and other Examples](#models)
+
 
 ### For Next Release (1.3.0++) <a id="next-release"></a>
-* (Daniel) Reorganize agrad to match other code trees and remove cruft:
-    * remove: agrad/hessian.hpp
-    * move: matrix.hpp to rev/matrix.hpp
-    * move: fvar_matrix.hpp to fwd/matrix.hpp
-    * move: fvar.hpp to fwd.hpp
-    * move: var.hpp to rev.hpp
-    * move: partials_vari.hpp to operands_and_partials.hpp
-    * longer term:  break out operands_and_partials into fwd and rev and double components
-    * ???: rename stan/agrad and stan::agrad to stan/diff and stan::diff?  
-    * ???: introduce stan::diff::fwd and stan::diff:rev namespaces?  (or stan::agrad::fwd and stan::agrad::rev)
-* (Bob) fix parser issue diagnosed by Robert J. Goedman (and thank him in the manual);  this involves some more unsequenced fixes
-* (Bob) Sergio Polini reports: fix manual typo, Page 135: in the generated quantities block,
-```
-alpha <- sd(y) * (alpha_std + beta_std * mean(x) / sd(x)) + mean(y);
-```
-should read:
-```
-alpha <- sd(y) * (alpha_std - beta_std * mean(x) / sd(x)) + mean(y);
-```
-* (Bob) Asim wrote On Page 40 of the manual, we have the following:
-```
-transformed data {
-...
-  real<lower=0> max_cov; real<lower=0> min_cov;
-```
-fix to be ```upper=0``` for ```min_cov```.
 
-Can the min_cov have a lower bound of zero, when it is being reassigned to be the negative of max_cov in the last lineof the transformed data block?
-* (Bob/Daniel) fix error messages to clarify size mismatches and also hint that they may be the cause of rejection. 
-```
-Informational Message: The parameter state is about to be Metropolis
-rejected due to the following underlying, non-fatal (really) issue 
-...
-```
-for which I suggest adding
-```
-  check that all functions and distributions have consistently sized,
-  in-support arguments 
-```
-and
-```
-Error in function stan::prob::normal_log(m): Location parameter (max size)
-is 256, but must be consistent, 1 or max=768 
-```
-which could be changed to
-```
-a vectorized function was called with arguments of different scalar, array, vector,
-or matrix types, and they were not consistently sized;  all arguments
-must be scalars or multidimensional values of the same shape;  found dimensions=
-<list of argument shapes passed in> 
-```
+
 * (Bob/Marcus/Daniel) look at add(), etc. operations for instantiation
     * already did multiply/divide in stan/math
     * now need to worry about agrad / int, etc. to make sure there's no auto promotion to agrad
