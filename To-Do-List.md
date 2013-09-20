@@ -1,3 +1,5 @@
+__**Warning:**  This page is going away in favor of the issue tracker with lots of tags.  Please don't add anything here, but feel free to move things from here to issues (and delete what was here).__
+
 ### Priorities
 
 #### Contributed Code
