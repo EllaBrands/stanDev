@@ -1,36 +1,3 @@
-
-
-### For Next Release (1.3.0++) <a id="next-release"></a>
-
-
-* (Bob/Marcus/Daniel) look at add(), etc. operations for instantiation
-    * already did multiply/divide in stan/math
-    * now need to worry about agrad / int, etc. to make sure there's no auto promotion to agrad
-    * look at add/subtract where there's broadcast function
-    * need tests for int in all the relevant positions
-* (everyone) remove std::cout from API
-* (Daniel) fix bin/print spacing
-* go through include-what-you-use output from Ben to mailing list (early May)
-* sort out why log_prob_poly<>() isn't working for Metropolis with double
-* redundant model_header.hpp includes --- why not just include matrix.hpp?
-* int vs. size_t and error handling in indexing;  with size_t, get cast of negative int to large positive size_t, which will confuse users in error msgs
-* Figure out how to return error messages safely
-e.g., math/matrix/validate_std_vector_index.hpp
-```
-      std::stringstream ss;
-      ss << "require 0 < index <= vector size" << msg;
-      ss << "; found vector size=" << m.cols()
-         << "; index j=" << j;
-      throw std::domain_error(ss.str());
-```
-cf., [runtime-error copy string? (Stack Overflow)](http://stackoverflow.com/questions/10644910/does-stdruntime-error-copy-the-string-passed-in-the-constructor)
-* (Daniel) fix order of include issues for model header, etc.  in new refactor (see Jiqiang's e-mail 4/19/13, 9:20 PM to stan-dev, and rest of that thread)
-* fix error message in Stan when an error is encountered during initialization --- currently says "about to be Metropolis rejected";  at very least, change the message to qualify when rejection happens
-* test template functions in stan/math to ensure they match int better than var matches int
-* remove warning message on transform OR declare a set of function names to ignore
-
-* add ```mdivide_left_spd``` support --- needs manual doc, exposed fun sigs, unit tests, and test models.  And probably a matching ``mdividd_right_spd```, which can be defined with transpose.
-
 ### Priorities
 
 #### Contributed Code
@@ -38,19 +5,20 @@ cf., [runtime-error copy string? (Stack Overflow)](http://stackoverflow.com/ques
 * DIC, WAIC
 
 #### Efficiency/Scalability
-* (Daniel) replace tests with doubles
 * (Daniel) full multivariate probability function tests
-* (Daniel) vectorized derivatives for prob functions
 * (Marcus, Bob, Daniel) vectorization of multivariate prob functions
 * (Bob, Daniel) vectorizing univariate prob functions to matrices
     * all arrays/matrices, etc. above base type are of same dimension
 * special function vectorization
 * multi-threading
+
+#### Samplers
 * (Peter, Bob, Michael) ensemble samplers: 
     * differential evolution, DREAM and differential evolution, 
     * Ensemble walk, stretch moves
-* (Peter, Bob, Michael) higher-order auto-diff
 * (Michael) RM-HMC, SoftAbs
+* (Peter) Metropolis
+
 
 #### Modeling Language <a id="modeling-language"></a>
 * (Bob) add a reject() statement
@@ -116,7 +84,8 @@ cf., [runtime-error copy string? (Stack Overflow)](http://stackoverflow.com/ques
 * more general and dynamic web site graphics
 
 ### C++ API <a id="c++-api"></a>
-* cubic B splines
+* (Peter, Bob, Michael) higher-order auto-diff
+* cubic B splines (need to understand what Andrew wants first)
 * Multivariate normal cdfs (and ccdfs?).  Notes from noahmotion (GitHub ID) to github:
 For what it's worth, Alan Genz has (from what I can tell) good Fortran code for calculating multivariate normal integrals (I don't know how easy it would be to adapt Fortran code for use in Stan, but I thought I'd at least attempt to be as helpful as I could when asking for a feature like this).  He also has an R package called mvtnorm.  Tom Wickens' gives the partial derivatives for the bivariate Gaussian CDF in his 1992 J. of Math. Psych. paper (the broader point of which is to describe the Newton-Raphson algorithm for maximum likelihood estimation of the parameters in a multidimensional signal detection/probit model).  Citations:
     * http://www.math.wsu.edu/faculty/genz/software/fort77/mvndstpack.f
