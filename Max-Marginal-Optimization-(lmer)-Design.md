@@ -26,3 +26,5 @@ The outer loop goes as follows:
 * (4) Keep iterating steps 2 and 3 so that p(phi | y) (or, more precisely, the approximation computed in step 2d) increases.  Stop at the (approximate) mode.
 
 The only trouble here is that it doesn't look to me that step 3 can be done using gradients.  It looks like the outer loop has to be done as a crude, non-gradient optimizer.  But I think that's what lmer/glmer does, and that works ok.  So, if I'm not confused here, the above algorithm would be a "lmer emulator" that, I hope, would be faster and more stable than lmer/glmer, as it would not require least-squares solutions in the inner loop.
+
+Betancourt added via e-mail:   Actually, using tricks like those used in the SoftAbs calculations, you should be able to get the gradient of p(phi, alpha | y), too, to assist in 3 if we _really_ wanted to push lmer but I think our efforts are better served in VB and such.
