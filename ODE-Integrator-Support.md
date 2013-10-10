@@ -99,6 +99,16 @@ There are four basic approaches:
 
 We have 1. working for the Harmonic oscillator model shown above already.
 
+## Dosing
+
+In pharmacokinetic models, it's typical to have discontinous inputs to the differential equation in the form of "dosing".  For example, a drug is injected into a tissue, and complete diffusion is assumed, so it looks like a discontinuous jump.  
+
+The only robust solution is to integrate between dosings.
+
+The question then arises as to whether we build dosing into the diff-eq model specifically in the form of state delta functions at specified times, or whether we force users to write in Stan.  We're leaning toward supporting dosing, but want to always allow users to bypass it and write everything in Stan itself.
+
+We have some basic simulated PK/PD data that we've managed to fit using dosing.  Still in non-stiff setting, and so far.  And we've only evaluated with the slower auto-diff the integrator approach.
+
 ## References
 
 I've found these very useful so far.
