@@ -16,7 +16,7 @@ Some in-process designs for new Stan features:
 
 * [Max-Marginal Design](wiki/Max-Marginal-Optimization-%28lmer%29-Design)
 
-### General Notes for Developers
+### General Notes for Developer Process
 
 The Git and code review process used for developers and some useful tools:
 
@@ -26,7 +26,11 @@ The Git and code review process used for developers and some useful tools:
 
 * [Continuous Integration](wiki/Continuous-Integration)
 
-#### How to Contribute a Function to Stan
+### Stan Models
+
+* [Stan Model Concept](wiki/Model-Concept) Explanation of the code generated for a model.
+
+### How to Contribute a Function to Stan
 
 If you want to contribute a new function to Stan:
 
