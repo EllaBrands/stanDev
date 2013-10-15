@@ -34,8 +34,4 @@ If you want to contribute a new function to Stan:
 
 ### Suites of Model Examples
 
-BUGS example models and models from ARM have been coded in Stan:
-
-* [ARM Models](https://github.com/stan-dev/stan/wiki/ARM-Models)
-
-* [BUGS Examples](https://github.com/stan-dev/stan/wiki/BUGS-Examples)
+* [Examples from BUGS and ARM](wiki/Example-Stan-Models)
