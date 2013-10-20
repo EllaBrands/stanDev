@@ -1,11 +1,17 @@
 ### Previous releases of Command-line Stan
 
 All releases of Stan are available from
-
 <ul>
 <li>
 <a href="https://github.com/stan-dev/stan/releases">Stan Releases</a>
 </li>
+</ul>
+
+Two versions of the Stan source can coexist peacefully in separate directories.  Nothing in the Stan build affects anything outside of its own directory structure.  
+
+Full instructions are part of the guide to
+<ul>
+<li><a href="http://mc-stan.org/start-command-line.html">Getting Started with Command-Line Stan</a>
 </ul>
 
 ### Previous releases of RStan
@@ -16,7 +22,13 @@ All releases of RStan back to 1.3 are available from
 <li><a href="https://github.com/stan-dev/rstan/releases">All RStan Releases</a></li>
 </ul>
 
-To reinstall RStan, you **MUST**:
+#### Running Multiple Versions of RStan
+
+#### Updating, Downdating, or Reinstalling
+
+This approach will work to (a) update the version of Stan to a newer version, (b) downdate the version of Stan to an older version, or (c) reinstall the same version.
+
+To update, downdate, or reinstall RStan, you **MUST**:
 
 1.   uninstall current version of RStan
 2.   quit R
@@ -24,3 +36,8 @@ To reinstall RStan, you **MUST**:
 4.   install new version of RStan
 5.   quit R
 6.   restart R
+
+Full instructions are part of the guide to
+<ul>
+<li><a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started">Getting Started with RStan</a></li>
+</ul>
