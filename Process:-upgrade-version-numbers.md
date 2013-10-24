@@ -1,8 +1,11 @@
 ### Checklist
-* [ ] update src/stan/version.hpp
-* [ ] update RELEASE-NOTES.txt
+* update src/stan/version.hpp
+* update RELEASE-NOTES.txt
   - Walk through closed issues
-* [ ] update src/docs/stan-reference/title.tex
-* [ ] update src/docs/stan-models/build.xml
-* [ ] update src/docs/stan-models/models.sty
-* [ ] update src/docs/stan-models/src/MakeModelTex.java
+* update reference manual 
+  - src/docs/stan-reference/title.tex
+* update website
+* update stan models build
+  - src/docs/stan-models/build.xml
+  - src/docs/stan-models/models.sty
+  - src/docs/stan-models/src/MakeModelTex.java
