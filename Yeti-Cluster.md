@@ -9,12 +9,11 @@ address: hpc-support@columbia.edu.  As we are now supporting both
 Hotfoot and Yeti, it will make things easier for us if you mention
 which of the two clusters your question involves.
 
-3. Yeti can be accessed by making an ssh connection to
-```yetisubmit.cc.columbia.edu```.
+3. Yeti can be accessed by making an ssh connection to ```yetisubmit.cc.columbia.edu```
 
-4. Your Yeti group for submitting jobs is ```yetistats```.
+4. Your Yeti group for submitting jobs is ```yetistats```
 
-5. Scratch storage is located at ```/vega/stats```.
+5. Scratch storage is located at ```/vega/stats```
 
 6. In order to make transition easier, Hotfoot scratch directories
 have been mounted on ```/hotfoot``` on the Yeti head nodes.  This means, for
