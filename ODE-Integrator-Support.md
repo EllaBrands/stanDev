@@ -22,6 +22,8 @@ This is based on the <a href="http://www.boost.org/doc/libs/1_53_0/libs/numeric/
 
 ### Defining the System of Equations
 
+A natural Stan-like way of defining a system of differentiation equations would be to allow the state variables to be anything.  For a simple vector state, this would look like:
+
 ```
 differential equations {
   harmonic_oscillator {
@@ -32,11 +34,32 @@ differential equations {
         real<lower=0> gamma;
     }
     dynamics {
-        d(x)[1] <- x[2];
-        d(x)[2] <- -x[1] - gamma * x[2];
+        d.x[1] <- x[2];
+        d.x[2] <- -x[1] - gamma * x[2];
     }
 }
 ```
+
+The ```dynamics``` block would allow arbitrary code.  
+
+PKBugs and OpenBUGS take a very different approach, requiring the system to be defined as a function with signature:
+
+```
+vector[] harmonic_oscillator(vector[] state);
+```
+
+and taking the other parameters to be implicit.  It's not clear (to me, Bob) how to define such a function in BUGS.  We've also been thinking of adding functions to Stan, which would define the above as
+
+```
+vector[] harmonic_oscillator(vector[] x) {
+  vector[2] d_x;
+  d_x[1] <- x[2];
+  d_x[2] <- -x[1] - gamma * x[2];
+  return d_x;
+}
+```
+
+Note that ```gamma``` is not bound in the function scope.  We haven't sorted through scoping options for functions yet, but I (Bob) don't like this kind of R-like function design --- I'd much rather see ```gamma``` passed in as an argument.                  
 
 ### Calling the Integrator in Stan
 
@@ -103,11 +126,11 @@ We have 1. working for the Harmonic oscillator model shown above already.
 
 In pharmacokinetic models, it's typical to have discontinous inputs to the differential equation in the form of "dosing".  For example, a drug is injected into a tissue, and complete diffusion is assumed, so it looks like a discontinuous jump.  
 
-The only robust solution is to integrate between dosings.
+The only robust solution is to integrate between dosings.  This would, of course, require a more complicated input, with dose times and a delta for the state for each dose time.  (And the usual interpretation seems to be that if there is a dose and measurement at the same reported time, the measurement comes first.)
 
 The question then arises as to whether we build dosing into the diff-eq model specifically in the form of state delta functions at specified times, or whether we force users to write in Stan.  We're leaning toward supporting dosing, but want to always allow users to bypass it and write everything in Stan itself.
 
-We have some basic simulated PK/PD data that we've managed to fit using dosing.  Still in non-stiff setting, and so far.  And we've only evaluated with the slower auto-diff the integrator approach.
+We have some basic simulated PK/PD data that we've managed to fit using dosing.  Still in non-stiff setting, and so far we've only evaluated the PD model with the slower auto-diff the integrator approach.
 
 ## References
 
@@ -119,3 +142,4 @@ I've found these very useful so far.
 
 3.  Frederic Bois.  <a href="http://www.gnu.org/software/mcsim/">MCSim</a>.  GNU Software.  (MCSim uses Metropolis, but otherwise does pretty much what we're looking for.  Frederic works with Andrew on pharmacokinetic models and is also helping on this Stan feature --- we wouldn't have gotten this far without him.)
 
+4.  <i>The BUGS book</i>.
