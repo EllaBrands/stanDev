@@ -142,4 +142,10 @@ I've found these very useful so far.
 
 3.  Frederic Bois.  <a href="http://www.gnu.org/software/mcsim/">MCSim</a>.  GNU Software.  (MCSim uses Metropolis, but otherwise does pretty much what we're looking for.  Frederic works with Andrew on pharmacokinetic models and is also helping on this Stan feature --- we wouldn't have gotten this far without him.)
 
-4.  <i>The BUGS book</i>.
+4.  Lunn et al.  <i>The BUGS Book</i>.
+
+And I believe this collection of models will be useful:
+
+5.  https://code.google.com/p/bugsmodellibrary/
+
+We'd love to hear about other library collections.
