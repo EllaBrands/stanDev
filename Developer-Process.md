@@ -72,24 +72,29 @@ First, clone the GitHub stan-dev/stan repository.
     > git clone https://github.com/stan-dev/stan.git
     > cd stan
 
-Second, verify you are in the correct default repository, `develop`.
+Second, create a branch on which to work.  How this is done differs if you're developing a feature or a bug fix. 
 
-    > git branch
-
-Third, create a branch.  For a new feature, run the following with your feature name in place of `foo`. 
+For a *new feature*, checkout develop and get up to date.
 
     > git checkout develop
     > git pull
     > git checkout -b feature/foo
     > git push -u origin feature/foo
 
+For a *bug fix*, checkout the latest hotfix branch and get up to date.
+
+    > git checkout hotfix/v2.0.2
+    > git pull
+    > git checkout -b bugfix/foo
+    > git push -u origin bugfix/foo
+
 The last push command is to make the branch public;  the `-u` option sets the upstream branch to the origin, so that git pull requests pull from the origin's version of the branch `feature/foo`.
 
 This will be necessary in order to create a pull request to have the work merged back into the branch from which it was checked out.  (The first such push may require verifying the github credentials.)
 
-Fourth, code and document using the usual git commands.  Collaboration is easy since all the developers have push access to the feature or hotfix branch you just created.
+Third, code and document using the usual git commands.  Collaboration is easy since all the developers have push access to the feature or hotfix branch you just created.
 
-Fifth, when finished, create a pull request. A pull request indicates that the work is done and should be merged back to the appropriate branch.
+Fourth, when finished, create a pull request. A pull request indicates that the work is done and should be merged back to the appropriate branch.  Instructions on pull requests are in the next section.
 
 
 
@@ -213,3 +218,16 @@ In the unlikely case a hotfix branch is created from a fork, you need to
 * Select the correct head repository, `personal-repo/stan`, and head branch, `hotfix/v3.2.2` (where the version is the appropriate increment).
 
 After the pull request is submitted, the steps for a fork are the same as for a clone.
+
+## 6.  How to create a hotfix branch for the next release
+
+This should be done immediately after we release and then all bug fixes should go into the hotfix branch.  The develop branch is just for *new* features.
+
+Suppose we have just released v2.0.1 so that v2.0.1 is the last tag on master.  The next patch branch will be hotfix/v2.0.2
+
+```
+> git checkout master
+> git pull
+> git checkout -b hotfix/v2.0.2
+> git push -u origin hotfix/v2.0.2
+```
