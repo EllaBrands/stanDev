@@ -22,9 +22,11 @@ The gitflow process distinguishes between the permanent branches managed by the 
 
 #### 2.2 Non-Permanent Branches
 
-**Feature branches:** All development work on features that have not been released go in feature branches. Feature branches branch from `develop` and should be named `feature/<some-descriptive-name>`.  After development is complete on a feature, submit a pull request back to `develop`.
+**Feature branches:** All development work on *new* features that have not been released go in feature branches. Feature branches branch from `develop` and should be named `feature/issue-<number>-desc`.  After development is complete on a feature, submit a pull request back to `develop`.
 
-**Hotfix branches:**  Patches to the current release go in hotfix branches. Hotfix branches branch from `master` and are named `hotfix/<some-issue-number>`.  There should be an issue created for the bug in Stan's GitHub issue tracker prior to branching to provide an issue number.    Once the patch is complete, submit a pull request back to `master` and it will be merged into both `master` and `develop` branches.
+**Hotfix branches:**  Patches to the current release go in hotfix branches. Hotfix branches branch from `master` and are named `hotfix/v<major>.<minor>.<patch>`.  There should be an issue created for the bug in Stan's GitHub issue tracker prior to branching to provide an issue number.    Once the patch is complete, submit a pull request back to `master` and it will be merged into both `master` and `develop` branches.
+
+**Bugfix branches:** All development work to *fix bugs* should branch from the latest hotfix branch (see above) and should be named `bugfix/issue-<number>-desc`
 
 **Release branches:**  Work to complete a new release go in release branches. Release branches branch from `develop` and are named `release/<some-release-number>`.  Once a release branch is complete, it will be merged into both `master` and `develop`.
 
@@ -61,18 +63,18 @@ On Windows without Cygwin, right click on the icon for the file and click on "Pr
 The pre-push script will be run whenever you git push but _before_ anything is actually pushed.  This gives the script the opportunity to check whether the remote repository is the origin (i.e., the `stan-dev/stan` repository on GitHub) and whether the branch is among those that you should not push to (i.e., `master` and `develop`). You can still push to a feature branch on the origin or push anything to a remote repository that is not the origin.
 
 
-
-
 ### 4.  How to Contribute with a Clone of the Repository
 
 Using this method, we can share feature branches with ease for collaboration.  It involves the following steps.
 
-First, clone the GitHub stan-dev/stan repository.
+*First*, clone the GitHub stan-dev/stan repository.
 
     > git clone https://github.com/stan-dev/stan.git
     > cd stan
 
-Second, create a branch on which to work.  How this is done differs if you're developing a feature or a bug fix. 
+*Second*, create a branch on which to work.  How this is done differs if you're developing a feature or a bug fix. 
+
+The typical naming of a branch will call out the issue number from the issue tracker and include a short description, for example, ```feature/issue-12-sd-vectorize``` for a new feature specified in issue 12 that's about vectorizing the standard deviation function (this one's hypothetical).
 
 For a *new feature*, checkout develop and get up to date.
 
@@ -92,10 +94,9 @@ The last push command is to make the branch public;  the `-u` option sets the up
 
 This will be necessary in order to create a pull request to have the work merged back into the branch from which it was checked out.  (The first such push may require verifying the github credentials.)
 
-Third, code and document using the usual git commands.  Collaboration is easy since all the developers have push access to the feature or hotfix branch you just created.
+*Third*, code and document using the usual git commands.  Collaboration is easy since all the developers have push access to the feature or hotfix branch you just created.
 
-Fourth, when finished, create a pull request. A pull request indicates that the work is done and should be merged back to the appropriate branch.  Instructions on pull requests are in the next section.
-
+*Fourth*, when finished, create a pull request. A pull request indicates that the work is done and should be merged back to the appropriate branch.  Instructions on pull requests are in the next section.
 
 
 ### 5. Pull Requests
