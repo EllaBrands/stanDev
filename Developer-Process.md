@@ -129,6 +129,33 @@ We strongly urge you to keep your commit history clean in the sense that each co
 If you prefer a personal workflow that involves committing changes that do not pass tests, it is possible to clean up your history.  Git provides a number of tools for "rewriting history," as discussed in Chacon's book, <i>Pro Git</i>, in the chapter "[Rewriting History](http://git-scm.com/book/en/Git-Tools-Rewriting-History)." In particular, a process known as rebasing (followed by a fresh commit) allows you to compose a sequence of previous commits into a single commit that is visible from the outside.
 
 
+#### Information to Inlcude in Pull Request
+
+Pull requests should all include answers to all of the following questions or indicate why they're not relevant:
+
+* Summary:  What does this pull request do in general terms?
+
+Example:  Improve adaptation for NUTS.
+
+* Intended Effect: What is the expected effect of the pull request?  Specifically, indicate how the behavior will be different than before the pull request.
+
+Example:  Adaptation is broken down from one window into three, one for step-size adjustment and basic convergence, one for covariance matrix esimtation, and a final step-size adjustment.
+
+* How to Verify: How can revieweres verify the request has the intended effect?  This should include descriptions of any new tests that are added or old tests that are updated.  It should also indicate how the code was tested.  
+
+Example:  a new unit test was added for underlying behavior and two sample models which should converge now and didn't converge before. 
+
+* Side Effects:  Does the pull request contain any side effects?  This should list non-obvious things that have changed in the request.
+
+Example: fixed an existing bug in previous NUTS code that was needed for the new behavior;
+non-obvious things that had to change to accomodate the request)
+
+* Documentation:  If the pull request is user facing, how is it documented?  Are there examples of how to use the new behavior that users need to know about?  
+
+Example:  added documentation for three new parameters in command, explained behavior in sampler description.  
+
+* Reviewer Suggestions:  Who should look at the pull request for code review?  Barring a need for a specific reviewer, we'll try a round-robin assignment and attempt to balance the quantity of contributed code with the quantity of other code reviewed.
+
 #### 5.2  Steps for Pull Requests
 
 First, if the pull request is for a feature branch, update branch `develop` and merge it into the current branch.  If the request is for a hotfix branch, no merge is necessary.
