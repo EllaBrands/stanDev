@@ -129,7 +129,7 @@ We strongly urge you to keep your commit history clean in the sense that each co
 If you prefer a personal workflow that involves committing changes that do not pass tests, it is possible to clean up your history.  Git provides a number of tools for "rewriting history," as discussed in Chacon's book, <i>Pro Git</i>, in the chapter "[Rewriting History](http://git-scm.com/book/en/Git-Tools-Rewriting-History)." In particular, a process known as rebasing (followed by a fresh commit) allows you to compose a sequence of previous commits into a single commit that is visible from the outside.
 
 
-#### Information to Inlcude in Pull Request
+#### Information to Include in Pull Request
 
 Pull requests should all include answers to all of the following questions or indicate why they're not relevant:
 
