@@ -156,6 +156,8 @@ Example:  added documentation for three new parameters in command, explained beh
 
 * Reviewer Suggestions:  Who should look at the pull request for code review?  Barring a need for a specific reviewer, we'll try a round-robin assignment and attempt to balance the quantity of contributed code with the quantity of other code reviewed.
 
+And finally, here's a <a href="https://github.com/stan-dev/stan/pull/430">complete example of a pull request</a> that follows these guidelines.
+
 #### 5.2  Steps for Pull Requests
 
 First, if the pull request is for a feature branch, update branch `develop` and merge it into the current branch.  If the request is for a hotfix branch, no merge is necessary.
