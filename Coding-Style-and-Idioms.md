@@ -10,10 +10,7 @@ For container indexes, use:
 
 * `T::size_type` for template params `T` that might be instantiated as either a `std::vector<S>` or `Eigen::Matrix<S,R,C>`.
 
-One could argue we should always use Eigen::Matrix<S,R,C>::size_type` for Eigen constructs just in case we ever decide that we want to change
-their default indexing from int to size_t.  But I don't see us
-doing that, so I wouldn't worry about it.  
-
+One could argue we should always use `Eigen::Matrix<S,R,C>::size_type` for Eigen constructs just in case we ever decide that we want to change their default indexing from `int` to something else.  But `int` should be OK for now because if we change the index type for some reason, the compiler will let us find instances.
 
 ### Style
 
