@@ -30,6 +30,10 @@ The Git and code review process used for developers and some useful tools:
 
 * [Stan Model Concept](wiki/Model-Concept) Explanation of the code generated for a model.
 
+### Code Style and Idioms
+
+* [Coding Style and Idioms](wiki/Coding-Style-and-Idioms)
+
 ### How to Contribute a Function to Stan
 
 If you want to contribute a new function to Stan:
