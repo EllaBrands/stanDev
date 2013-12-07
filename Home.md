@@ -28,7 +28,9 @@ The Git and code review process used for developers and some useful tools:
 
 ### Stan Models
 
-* [Stan Model Concept](wiki/Model-Concept) Explanation of the code generated for a model.
+Explanation of the code generated for a model:
+
+* [Stan Model Concept](wiki/Model-Concept) 
 
 ### Code Style and Idioms
 
