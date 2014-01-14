@@ -105,22 +105,33 @@ This will be necessary in order to create a pull request to have the work merged
 
 #### 5.1 Preconditions for Pull Requests
 
+##### New and Altered Code is Tested
+
+All new and altered code should be tested.
+
+For new code, the developer should provide at least one unit test instantiating the code in a test harness. The developer should probably do more testing, but we are concerned saving time in the future if a bug appears in the new code.
+
+For existing code, the developer should provide at least one test showing how the code changes. If the change is a refactoring, the test showing that behavior doesn't change might already exist.
+
+
 ##### Final State Passes All Tests
 
 When a pull request is made, it is expected that the current code passes:
 
     > make manual
     > make doxygen
-    > make test-unit
+    > make src/test/unit
+    > make src/test/unit-agrad-rev
+    > make src/test/unit-agrad-fwd
+    > make src/test/unit-distribution
     > make test-headers
-    > make test-distributions
-    > make test-models
+    > make src/test/integration
+    > make src/test/models
+    > make src/test/CmdStan
 
-And as soon as the `test-headers` target is in, it should also pass:
+We don't always expect every developer to run all tests on their machine, but we do expect the developer to run a minimal number of tests before creating a pull request. If you've worked on src/stan/foo/bar.hpp, there should be a test in src/test/unit/foo/bar_test.cpp that passes. We also expect the developer to run `make src/test/unit/foo` prior to submitting.
 
-    > make test-headers
-
-Passing these tests does not guarantee that the pull request will be accepted and merged.  It will first go through code review and then be tested on the [integration server](Continuous-Integration). 
+Passing all tests does not guarantee that the pull request will be accepted and merged.  It will first go through code review and tested on the [integration server](Continuous-Integration). 
 
 ##### Commit History is Clean
 
