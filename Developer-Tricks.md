@@ -2,6 +2,8 @@ Note: this is a page of useful tricks for developers.
 
 Quick links:
 * [Mac](Developer-Tricks#mac)
+* [Aquamacs](Developer-Tricks#aquamacs)
+* [Emacs](Developer-Tricks#emacs)
 
 ## Mac 
 
