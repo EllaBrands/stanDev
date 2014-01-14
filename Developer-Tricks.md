@@ -1,4 +1,8 @@
 Note: this is a page of useful tricks for developers. 
+
+Quick links:
+* [Mac](#mac)
+
 ## Mac 
 
 ### Git completion
