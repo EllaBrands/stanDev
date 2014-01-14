@@ -2,7 +2,7 @@ Note: this is a page of useful tricks for developers.
 
 Quick links:
 * [Mac](Developer-Tricks#mac)
-* [Aquamacs](Developer-Tricks#aquamacs)
+* [Fixing Line Feeds and Tabs](Developer-Tricks#fixing-line-feeds-and-tabs)
 * [Emacs](Developer-Tricks#emacs)
 
 ## Mac 
