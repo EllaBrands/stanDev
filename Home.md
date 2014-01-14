@@ -24,6 +24,8 @@ The Git and code review process used for developers and some useful tools:
 
 * [Developer Tools and Tricks](wiki/Developer-Tricks)
 
+* [CmdStan developers under Windows: additional dependency](CmdStan-developers-under-Windows:-additional-dependency)
+
 * [Continuous Integration](wiki/Continuous-Integration)
 
 ### Stan Models
