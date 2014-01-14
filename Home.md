@@ -20,6 +20,8 @@ Some in-process designs for new Stan features:
 
 The Git and code review process used for developers and some useful tools:
 
+* [Pull Request Template](wiki/Pull-Request-Template)
+
 * [Developer Process](wiki/Developer-Process)
 
 * [Developer Tools and Tricks](wiki/Developer-Tricks)
