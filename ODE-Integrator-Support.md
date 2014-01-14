@@ -10,11 +10,27 @@ This is going to be a rather big feature, so I hope an issue will work to consol
 feature/ode_experiment
 ```
 
-It currently contains a fully working example of Stan fitting a model using an ode.  The ode is a simple harmonic oscillator.  We built a special function in Stan using Boost's odeint package.  We use auto-diff on the integrator (with error control and interpolation).   And it works for simulated data (R package to do simulation included). 
+It currently contains a fully working example of Stan fitting a model using an ode.  The ode is a simple harmonic oscillator.
+
+
+
+We built a special function in Stan using Boost's odeint package.  We use auto-diff on the integrator (with error control and interpolation).   And it works for simulated data (R package to do simulation included). 
 
 Next, we're going to try the alternative method of autodiff-ing the system of differential equations (manually, to start), to give us error control on the gradients and make sure they don't suffer any unexpected behavior from autodiff-ing through the integrator (I still don't understand why adaptation should be a problem).
 
+The simple auto-diff of the integrator approach is in:
 
+```
+src/stan/math/functions/ho.hpp
+```
+
+The integration of the coupled system including the derivatives is in:
+
+```
+src/stan/math/functions/ho2.hpp
+```
+
+The latter approach, `ho2.hpp`, is about 5 times as efficient, and also provides error control.  The issue we have now is that we can't define this coupled system by reverse-mode auto-diff because we only have a single auto-diff stack.
 
 ## Example: Harmonic Oscillator
 
