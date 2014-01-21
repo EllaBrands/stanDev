@@ -33,7 +33,7 @@ Bob said in an email:
 
 ### Julia Interface (mentor: TBD)
 ### Stata Interface (mentor: TBD)
-### Matlab Interface (mentor: TBD)
+### Matlab Interface (mentor: Marcus Brubaker)
 A simple version is already in-progress. It may be worthwhile for a GSOC project to implement a more complicated in-memory interface. Doing so would require at least intermediate skill with Matlab and C++ programming.
 
 ## Input / Output
@@ -57,13 +57,13 @@ These projects enable users to estimate new models with Stan or to estimate exis
 ### Initialization block (mentor: TBD)
 A Stan model requires starting values for all the unknown parameters. These starting values can be input from a file on the hard disk, but many users find doing so inconvenient. A better alternative would be to add an initialization block to the Stan modeling language that could be parsed into C++ code, which would allow users to specify particular starting values for (a subset of) the parameters or to specify a statistical distribution to randomly draw the corresponding starting values. Stan already has the capability to draw randomly from many statistical distributions but lacks the capability to utilize them for starting values.
 
-### Limited memory BFGS optimization (mentor: TBD)
+### Limited memory BFGS optimization (mentor: Marcus Brubaker)
 Stan already has two optimization algorithms, an Newton-based approach and a quasi-Newton approach. Both require that a (approximation to the) Hessian matrix of the unknown parameters be allocated, which limits the applicability to optimization problems with many parameters. An alternative is to use some "limited memory" variant of the BFGS algorithm. These limited memory alternatives are already available in a variety of software, but Stan is somewhat unique in that it does not require the user to implement a function to calculate the gradient since the gradient can be calculated via auto-differentiation. Thus, having a limited memory optimization algorithm would be quite useful for Stan. See the [mentions](http://books.google.com/books?id=VbHYoSyelFcC&lpg=PP1&dq=Nocedal%20Wright&pg=PP1#v=onepage&q=%22L-BFGS%22&f=false) of "L-BFGS" in Nocedal and Wright's book _Numerical Optimization_.
 
 ### Conditionally independent contributions to the log-posterior (mentor: TBD)
 The Stan modeling language currently supports statements such as `vector ~ distribution(parameters);` which (when appropriate) indicates the the elements of the `vector` are conditionally independent given the `parameters` (which are often scalars) to the `distribution` and thus contribute additively to the log-posterior that is essential to the Markov Chain Monte Carlo (MCMC) schemes used by Stan. However, many users find this syntax is still too limiting and Stan would benefit from a GSOC project to support `array ~ distribution(parameters);` where `array` is a multidimensional object such as a matrix-like two-dimensional object. This syntax would indicate the user's intention that all elements of the `array` are conditionally independent given the `parameters` to the `distribution`. Permitting this syntax is relatively easy, but the harder part is implementing the desired behavior for as many `distributions` as possible that are already supported by Stan.
 
-### Improvement of multivariate distributions (mentor: Ben Goodrich)
+### Improvement of multivariate distributions (mentors: Ben Goodrich or Marcus Brubaker)
 
-### Additional statistical distributions (mentor: TBD)
+### Additional statistical distributions (mentor: Marcus Brubaker)
 Stan already makes it possible for users to use dozens of statistical distributions in their models, but perhaps the most common request is for additional ones. We would be especially interested in a GSOC project that implemented more general statistical distributions that include many well-known distributions as special cases. Or if the student would be more comfortable implementing a few well-known statistical distributions, that would be great as well.
