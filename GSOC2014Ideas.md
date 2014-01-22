@@ -13,6 +13,9 @@ The Portable Native Client (PNaCL) compiler takes C++ source code and compiles i
 ### HTML5 Interface using emscripten (mentor: Ben Goodrich)
 The emscripten compiler takes C++ source code and translates it into javascript that can be run on a variety of platforms via many web browsers. The development version of emscripten uses a fork of the PNaCL compiler to create the intermediate representation and generates the resulting javascript. We would benefit from a GSOC project to write an HTML5 interface that would pass a data file and various options to the executable and pass results to the executable that prints a summary. This project would require no C++ but would require intermediate web design skill, including javascript and HTML5. See the [emscripten](https://github.com/kripken/emscripten/wiki) website for more details on this process.
 
+### Custom Stan extensions (mentor: Marcus Brubaker)
+Stan currently has a large number of functions available but users often have their own functions that they'd like to be able to plug in to Stan.  Currently, short of explicitly modifying and recompiling Stan, users can't do this.  This project would require developing a mechanism by which a user could write a function (with a suitable interface) in C++ and then make use of that function in their Stan model.  Additionally, some users might want to implement custom gradients for these functions instead of using Stan's autodiff implementation.  Ideally the extension mechanism should be able to support this.
+
 ### Java Interface (mentor: TBD)
 Bob said in an email:
 > Having just said this, it occurs to me that having a Java
@@ -70,3 +73,4 @@ Stan already makes it possible for users to use dozens of statistical distributi
 
 ### Explicit parallel sampling framework (mentor: Marcus Brubaker)
 Stan users should always run multiple Markov chains in order to accurately determine convergence. Given the proliferation of multi-core systems and clusters these should be run simultaneous.  Unfortunately, Stan requires users to explicitly launch multiple processes and these processes are unable to interact.  An excellent GSOC project would be one which implemented a framework to allow parallelization of sampling.  Initially the chains would interact only minimally if at all but the framework should be targeted to allow more complex interactions (for algorithms like parallel tempering, DE, etc).  The ideal student should have a strong C/C++ background and experience with or strong desire to learn task-level parallel programming APIs like MPI.
+
