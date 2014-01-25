@@ -38,6 +38,8 @@ This is based on the <a href="http://www.boost.org/doc/libs/1_53_0/libs/numeric/
 
 ### Defining the System of Equations
 
+#### Proposal 1
+
 A natural Stan-like way of defining a system of differentiation equations would be to allow the state variables to be anything.  For a simple vector state, this would look like:
 
 ```
@@ -56,7 +58,7 @@ differential equations {
 }
 ```
 
-The ```dynamics``` block would allow arbitrary code.  
+The ```dynamics``` block would allow arbitrary code.  There would also need to be a data block to define constants.  
 
 PKBugs and OpenBUGS take a very different approach, requiring the system to be defined as a function with signature:
 
@@ -64,7 +66,12 @@ PKBugs and OpenBUGS take a very different approach, requiring the system to be d
 vector[] harmonic_oscillator(vector[] state);
 ```
 
-and taking the other parameters to be implicit.  It's not clear (to me, Bob) how to define such a function in BUGS.  We've also been thinking of adding functions to Stan, which would define the above as
+and taking the other parameters to be implicit.  Then there's an explicit call to a function `integrate` that takes the system name, an initial state and sequence of times, and returns a vector of solutions at those times:  
+
+```
+vals <- integrate(harmonic_oscillator, initial_state, eval_times);
+
+We've also been thinking of adding functions to Stan, which would define the above as
 
 ```
 vector[] harmonic_oscillator(vector[] x) {
