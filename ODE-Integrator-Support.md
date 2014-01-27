@@ -149,6 +149,8 @@ We have 1. working for the Harmonic oscillator model shown above already.
 
 In pharmacokinetic models, it's typical to have discontinous inputs to the differential equation in the form of "dosing".  For example, a drug is injected into a tissue, and complete diffusion is assumed, so it looks like a discontinuous jump.  
 
+Another typical use case is to set a compartment's concentration to a fixed value rather than increment with a delta function.  (There may also be other operations --- NONMEM seems pretty flexible in how it handles this kind of thing.)
+
 The only robust solution is to integrate between dosings.  This would, of course, require a more complicated input, with dose times and a delta for the state for each dose time.  (And the usual interpretation seems to be that if there is a dose and measurement at the same reported time, the measurement comes first.)
 
 The question then arises as to whether we build dosing into the diff-eq model specifically in the form of state delta functions at specified times, or whether we force users to write in Stan.  We're leaning toward supporting dosing, but want to always allow users to bypass it and write everything in Stan itself.
