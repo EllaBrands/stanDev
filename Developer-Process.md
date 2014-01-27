@@ -78,13 +78,12 @@ The typical naming of a branch will call out the issue number from the issue tra
 
 For a *new feature*, checkout develop and get up to date.
 
-    > git pull
     > git checkout develop
     > git pull
     > git checkout -b feature/foo
     > git push -u origin feature/foo
 
-For a *bug fix*, checkout the latest hotfix branch and get up to date.
+For a *bug fix*, checkout the latest hotfix branch and get up to date;  the first pull is there in case the hotfix version hasn't been pulled to the local Git.
 
     > git pull
     > git checkout hotfix/v2.0.2
