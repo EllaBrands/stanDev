@@ -178,4 +178,8 @@ And I believe this collection of models will be useful:
 
 5.  https://code.google.com/p/bugsmodellibrary/
 
-We'd love to hear about other library collections.
+And here's a reference from Sebastian Weber about models used in Pharma:
+
+6. http://www.lixoft.eu/wp-content/resources/docs/PKPDlibrary.pdf
+
+We'd love to hear about other library collections. 
