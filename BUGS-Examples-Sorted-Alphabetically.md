@@ -8,8 +8,8 @@
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/alli/alli.stan)
 * Asia: "expert system"
   * [BUGS Background](http://www.openbugs.net/Examples/Asia.html) 
-  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/asia)
-  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol2/asia/asia.stan)
+  * [Stan Files] n/a, requires marginalizing 5 binary categorical values; see <a href="https://github.com/stan-dev/stan/issues/517">issue 517</a> if you'd like to do it
+  * [Stan Code] n/a
 * Beetles: "choice of link function"
   * [BUGS Background](http://www.openbugs.net/Examples/Beetles.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol2/beetles)
