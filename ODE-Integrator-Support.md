@@ -92,6 +92,8 @@ This section lists a few possible ways in which differential equations could be 
 
 ### Proposal 1: Stan-like System Syntax
 
+#### Defining the System
+
 A natural Stan-like way of defining a system of differentiation equations would be to allow the state variables to be anything.  For a simple vector state, this would look like:
 
 ```
@@ -114,13 +116,60 @@ The `state` block defines the state, the `parameters` block the parameters, and 
 
 The `dynamics` block is required to define derivatives with respect to a time variable `t` for each state variable.  The special variables `d.x[1]` would be implicitly defined with the same basic types and dimensions as the state variables.  The special variable `t` for time would also be implicitly defined in the `dynamics` block.  
 
-### Proposal 2: BUGS-like Function Syntax
+#### Calling the Integrator
 
-PKBugs and OpenBUGS take a very different approach, requiring the system to be defined as a function with signature:
+Given initial values for the state variables (the coupled system's initial values can be calculated automatically), and given a set of time points, we need a function that returns the states that form solutions.  
+
+This is tricky for this formulation because it's not clear what the return type should be.  One approach would be to allow mutable references.  For example,
 
 ```
-vector[] harmonic_oscillator(vector[] state);
+ode_solve(harmonic_oscillator,       // system
+          vector[2] x_0,             // initial state at t=0
+          real times[K],             // times for solutions
+          real g,                    // parameter
+          vector[2] solutions[K]);   // solutions returned
+
+Given the specified system, an initial state, times at which solutions are desired, and values for the parameters, the function would instantiate the solution array with states at all K time points.  In generla, the `ode_solve` function would be highly polymorphic, requiring perhaps multiple arguments for initial states, multiple parameters, and multiple arguments for the returned solutions.  Arguments would also be required for data.  
+
+This approach is perhaps the cleanest way to specify the system.  But the call to the solver would require all of the arguments in the appropriate order.  It would also be tricky to implement because of the polymorphism of the solver function and the need to convert the specification into a function that could be passed to the solver.
+
+### Proposal 2: BUGS-like Function Syntax (Version A)
+
+PKBugs and OpenBUGS take a very different approach, requiring the system to be defined as a function with a fixed signature.  
+
+Version A would explicitly take in vectors for the state, parameters, data, and time:
+
 ```
+vector[] harmonic_oscillator(vector[] state, 
+                             vector[] parameters, 
+                             vector[] data, 
+                             real t) {
+  vector[2] d_state;
+  d_state[1] <- state[2];
+  d_state[2] <- -state[1] - parameters[1] * state[2];
+  return d_state;
+}
+```
+
+The solver could then be called with a fixed signature 
+
+```
+vector[0] data;           // no constants involved in this system
+vector[1] parameters;     // one parameter
+vector[2] initial_state;  // 2D initial state
+vector[K] solution_times; // K solution times
+vector[2] solutions[K];   // K-array of 2D states for solutions
+...
+solutions <- ode_solve(harmonic_oscillator, 
+                       data,
+                       parameters,
+                       intial_state,
+                       solution_times);
+```
+    
+### Proposal 3: BUGS-like Function Syntax (Version A)
+
+
 
 and taking the other parameters to be implicit.  Then there's an explicit call to a function `integrate` that takes the system name, an initial state and sequence of times, and returns a vector of solutions at those times:  
 
