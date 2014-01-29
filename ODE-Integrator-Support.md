@@ -85,6 +85,29 @@ The latter approach, `ho2.hpp`, is about 5 times as efficient, and also provides
 
 The issue we have now is that we can't define this coupled system by reverse-mode auto-diff because we only have a single auto-diff stack.  This problem can be overcome by just using the top of the auto-diff stack, but that will require us to enhance the derivative propagation algorithm to take in a stack position at which to stop the propagation.
 
+The system definition in the example creates a function `harmonic_oscillator` that is available just like any other function in a Stan model.  The model we use assumes measurements of a system with normal noise with scale `sigma`:
+
+```
+data {
+  int<lower=0> N;
+  int<lower=1> M;
+  real t[N];
+  matrix[N,M] x_obs;
+  vector[M] x0;
+}
+parameters {
+  real<lower=-10,upper=10> g;
+  real<lower=0, upper=1> sigma[2];
+}
+model {
+  matrix[N,M] x_hat;
+  x_hat <- harmonic_oscillator(t, x0, g);
+  for (n in 1:N)
+    x_obs[n] ~ normal(x_hat[n], sigma);
+}
+```
+
+The ODE defines a function ```harmonic_oscillator``` that takes an array of times and returns an array `x_hat` of values at those times.  The values in the array are of the same type as the state and the array has the same size (number of entries) as the time argument ```t```.  The value ```x0``` is the initial state for the ODE.  The argument `g` is for the parameter;  in general, there may be more than one parameter.  Note also that the parameter ```g``` here is also a parameter to the Stan model, meaning it's something we need to differentiate with respect to.  This is all handled in the definition of the function in the files `ho.hpp` or `ho2.hpp`.
 
 ## Stan Language for Defining Systems of Differential Equations
 
@@ -168,89 +191,39 @@ solutions <- ode_solve(harmonic_oscillator,
                        solution_times);
 ```
     
-### Proposal 3: BUGS-like Function Syntax (Version A)
+### Proposal 3: BUGS-like Function Syntax (Version B)
 
+BUGS's function syntax allows nodes (the equivalent of Stan variables) from the graph specification to be used in the function definition without being bound.  
 
-
-and taking the other parameters to be implicit.  Then there's an explicit call to a function `integrate` that takes the system name, an initial state and sequence of times, and returns a vector of solutions at those times:  
-
-```
-vals <- integrate(harmonic_oscillator, initial_state, eval_times);
-```
-
-We've also been thinking of adding functions to Stan, which would define the above as
+So another way to define the system would be to not declare parameters or vectors, but to just use this:
 
 ```
-vector[] harmonic_oscillator(vector[] x) {
+vector[] harmonic_oscillator(vector[] x, real t) {
   vector[2] d_x;
   d_x[1] <- x[2];
-  d_x[2] <- -x[1] - gamma * x[2];
+  d_x[2] <- -x[1] - g * x[2];
   return d_x;
 }
 ```
 
-Note that ```gamma``` is not bound in the function scope.  We haven't sorted through scoping options for functions yet, but I (Bob) don't like this kind of R-like function design --- I'd much rather see ```gamma``` passed in as an argument.                  
-
-### Calling the Integrator in Stan
-
-This would then be available as a function to be called in a Stan model, such as our working example:
+The same would be done for data. Calling the function could then skip the data and parameters, as in
 
 ```
-data {
-  int<lower=0> N;
-  int<lower=1> M;
-  real t[N];
-  matrix[N,M] x_obs;
-  vector[M] x0;
-}
-parameters {
-  real<lower=-10,upper=10> gamma;
-  real<lower=0, upper=1> sigma[2];
-}
-model {
-  matrix[N,M] x_hat;
-  x_hat <- harmonic_oscillator(t, x0, gamma);
-  for (n in 1:N)
-    x_obs[n] ~ normal(x_hat[n], sigma);
-}
+vector[2] initial_state;  // 2D initial state
+vector[K] solution_times; // K solution times
+vector[2] solutions[K];   // K-array of 2D states for solutions
+...
+solutions <- ode_solve(harmonic_oscillator, 
+                       intial_state,
+                       solution_times);
 ```
 
-The basic idea is that the ODE defines a function ```harmonic_oscillator``` that takes an array of times for which solutions to the ODE should be returned.  Note that the ODE function returns ```x_hat```, which is an array of values, where the values in the array are of the same type as the state and the array has the same size (number of entries) as the time argument ```t```.  The value ```x0``` is the initial state for the ODE.  The argument gamma is for the parameter to the ode;  in general, there may be more than one parameter.  Note also that the parameter ```gamma``` here is also a parameter to the Stan model, meaning it's something we need to differentiate with respect to if we are going to run Hamiltonian Monte Carlo samplers or gradient-based optimizers or variational Bayes posterior approximators.
+Each of these variables, `initial_state`, `solution_times`, and `solutions`, would be a local variable, where `g` would be bound to a variable declared in the data or parameters block.
 
-#### More General States?
+This is in some way the most natural approach from a user perspective because it does not require wrangling data and parameters out of vectors in the system definition or into vectors in the function call.  
 
-I don't see how to allow the state to be anything other than a single value because Stan doesn't have functions that return sequences.  What I'd like to be able to do in Stan is this:
+The downside is that it'll be trickier to implement than proposal 2.
 
-```
-state {
-   real x;
-   real y;
-}
-```
-
-and then
-
-```
-(x_hat,y_hat) <- ode_fun(t,x0,y0,...);
-```
-
-It's been in the back of my mind to add something like this to Stan's assignment language, but it'll take some more design and then probably a fair bit of coding.
-
-## Methods for Gradients
-
-All of our applications require integrators with error control and interpolation (like the Dopri integrator from Boost).  To handle stiff systems, we will need an integrator that handles Jacobians (like the Rosenbrock integrator from Boost).
-
-There are four basic approaches:
-
-1.  auto-diff the integrator  (+gradient error control, -stiff)
-
-2.  auto-diff the gradient, then integrate (+gradient error control, -stiff)
-
-3.  auto-diff system Jacobian, then auto-diff the stiff integrator (-gradient error control, +stiff)
-
-4.  auto-diff the gradient, then auto-diff the coupled system's Jacobian, then integrate (+gradient error control, +stiff).
-
-We have 1. working for the Harmonic oscillator model shown above already.
 
 ## Dosing
 
