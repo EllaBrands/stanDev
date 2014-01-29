@@ -80,12 +80,11 @@ The latter approach, `ho2.hpp`, is about 5 times as efficient, and also provides
 The issue we have now is that we can't define this coupled system by reverse-mode auto-diff because we only have a single auto-diff stack.  This problem can be overcome by just using the top of the auto-diff stack, but that will require us to enhance the derivative propagation algorithm to take in a stack position at which to stop the propagation.
 
 
-## Example: Harmonic Oscillator
+## Stan Language for Defining Systems of Differential Equations
 
+This section lists a few possible ways in which differential equations could be expressed in Stan's modeling language.  We were inspired by Frederic Bois's GNU package <a href="http://en.wikipedia.org/wiki/MCSim">MCSim</a>.
 
-### Defining the System of Equations
-
-#### Proposal 1
+### Proposal 1: Stan-like System Syntax
 
 A natural Stan-like way of defining a system of differentiation equations would be to allow the state variables to be anything.  For a simple vector state, this would look like:
 
@@ -93,19 +92,23 @@ A natural Stan-like way of defining a system of differentiation equations would 
 differential equations {
   harmonic_oscillator {
     state {
-        vector[2] x;
+      vector[2] x;
     }
     parameters {
-        real<lower=0> gamma;
+      real<lower=0> gamma;
     }
     dynamics {
-        d.x[1] <- x[2];
-        d.x[2] <- -x[1] - gamma * x[2];
+      d.x[1] <- x[2];
+      d.x[2] <- -x[1] - gamma * x[2];
     }
 }
 ```
 
-The ```dynamics``` block would allow arbitrary code.  There would also need to be a data block to define constants.  
+The `state` block defines the state, the `parameters` block the parameters, and there would also need to be a `data` block to define constants.  
+
+The `dynamics` block is required to define derivatives with respect to a time variable `t` for each state variable.  The special variables `d.x[1]` would be implicitly defined with the same basic types and dimensions as the state variables.  The special variable `t` for time would also be implicitly defined in the `dynamics` block.  
+
+### Proposal 2: BUGS-like Function Syntax
 
 PKBugs and OpenBUGS take a very different approach, requiring the system to be defined as a function with signature:
 
