@@ -128,6 +128,7 @@ ode_solve(harmonic_oscillator,       // system
           real times[K],             // times for solutions
           real g,                    // parameter
           vector[2] solutions[K]);   // solutions returned
+```
 
 Given the specified system, an initial state, times at which solutions are desired, and values for the parameters, the function would instantiate the solution array with states at all K time points.  In generla, the `ode_solve` function would be highly polymorphic, requiring perhaps multiple arguments for initial states, multiple parameters, and multiple arguments for the returned solutions.  Arguments would also be required for data.  
 
@@ -175,6 +176,7 @@ and taking the other parameters to be implicit.  Then there's an explicit call t
 
 ```
 vals <- integrate(harmonic_oscillator, initial_state, eval_times);
+```
 
 We've also been thinking of adding functions to Stan, which would define the above as
 
