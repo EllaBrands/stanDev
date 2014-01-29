@@ -154,7 +154,8 @@ In pharmacokinetic models, it's typical to have various external effects (thanks
 * Setting: Another typical use case is to set a compartment's concentration to a fixed value rather than increment with a delta function.  (There may also be other operations --- NONMEM seems pretty flexible in how it handles this kind of thing.)
 
 * Infusing:  A third typical use is an infusion.  This means that one starts the infusion at a certain time point and stops it at a later time-point. In between drug is administered at a constant rate into one compartement. So instead of adding a delta peak to a compartement, one needs to increase the amount of drug in a compartement linearly with time. 
-</blockquote>
+
+* Dosing Convenience Methods: steady-state dosing (i.e. dosing at a fixed time interval) and multiple dosing specifications (i.e. one only states "I want 50 dosing events with a between-dose time of 8h and a certain amount"). Both situations frequently arise in PK modeling and can be handled analytically very efficiently.
 
 The only robust solution to dosing is to integrate between dosings.  This would, of course, require a more complicated input, with dose times and a delta for the state for each dose time.  (And the usual interpretation seems to be that if there is a dose and measurement at the same reported time, the measurement comes first.)
 
