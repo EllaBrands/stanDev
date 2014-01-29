@@ -1,8 +1,8 @@
 ## Overview
 
-We are going to add support for ordinary differential equation (ODE) solvers (i.e., integrators) to Stan.  The language will be extended to allow ODEs to be defined in Stan and then used for solution.  We want to support both easy and stiff ODEs and would like to provide error control on both the ODE solutions and their gradients with respect to system parameters.
+We are going to add support for ordinary differential equation (ODE) solvers (i.e., integrators) to Stan for stiff and non-stiff systems.  The language will be extended to allow ODEs to be defined in Stan and then used for solution.  We want to support both easy and stiff ODEs and would like to provide error control on both the ODE solutions and their gradients with respect to system parameters.
 
-## Autodiff the Integration vs. Integrate a Coupled System
+### Auto-diff the System Integrator vs. Integrate the System Auto-diff
 
 If there are parameters involved in the definition of the differential equation, Stan needs the derivatives of the solutions to the system with respect to the parameters.  There are two approaches to doing this.  
 
@@ -10,7 +10,13 @@ If there are parameters involved in the definition of the differential equation,
 
 2.   Differentiate a coupled system consisting of the original state variables coupled with derivatives of the state variables with respect to the parameters. 
 
-## Harmonic Oscillator Example
+The derivatives required for the coupled system could themselves be evaluated by 
+
+### Handling Stiff ODEs
+
+In order to handle stiff differential equations, the Jacobian of the system of differential equations is required.  This can be done for either of the two approaches discussed in the previous section.  In the coupled case, the Jacobian of the coupled system could be calculated by a higher-order automatic differentiation.
+
+## Example: Harmonic Oscillator
 
 The harmonic oscillator is a two-variable system of differential equations, for which we'll include a single parameter `g`.  The system involves a two-dimensional state vector `x` and is defined by the following pair of ordinary differential equations.
 
