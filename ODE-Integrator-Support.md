@@ -2,21 +2,66 @@
 
 We are going to add support for ordinary differential equation (ODE) solvers (i.e., integrators) to Stan.  The language will be extended to allow ODEs to be defined in Stan and then used for solution.  We want to support both easy and stiff ODEs and would like to provide error control on both the ODE solutions and their gradients with respect to system parameters.
 
+## Autodiff the Integration vs. Integrate a Coupled System
+
+If there are parameters involved in the definition of the differential equation, Stan needs the derivatives of the solutions to the system with respect to the parameters.  There are two approaches to doing this.  
+
+1.  Automatically differentiate the integrator. 
+
+2.   Differentiate a coupled system consisting of the original state variables coupled with derivatives of the state variables with respect to the parameters. 
+
+## Harmonic Oscillator Example
+
+The harmonic oscillator is a two-variable system of differential equations, for which we'll include a single parameter `g`.  The system involves a two-dimensional state vector `x` and is defined by the following pair of ordinary differential equations.
+
+```
+d/dt x[0] = x[1]
+d/dt x[1] = -x[0] - g * x[1]
+```
+
+The coupled system adds two additional state variables `x[2]` and `x[3]` defined as the derivatives of the original state variables `x[0]` and `x[1]` with respect to the parameter `g`:
+
+```
+x[2] = d/dg x[0]
+x[3] = d/dg x[1]
+```
+
+To complete the coupled systems, we need the derivatives with respect to time,
+
+```
+d/dt x[2] = d/dt d/dg x[0]
+          = d/dg d/dt x[0]
+          = d/dg x[1] 
+          = x[3]
+
+d/dt x[3] = d/dt d/dg x[1]
+          = d/dg d/dt x[1]
+          = -d/dg x[0] - d/dg (g * x[1])
+          = -x[2] - ( (d/dg g) * x[1] + g * d/dg x[1] )
+          = -x[2] - x[1] - g * x[3]
+```
+
+By integrating the coupled system, the solutions for `x[0], x[1]` are the original solutions and the solutiosn for `x[2], x[3]` provide derivatives of the solutions with respect to the parameter `g`.  This allows the integrator to be run using only `double` types and also provides tolerance control for the derivatives.
+
+
 ## Working Code Branch
 
-This is going to be a rather big feature, so I hope an issue will work to consolidate discussion.  There's a branch Daniel and I started for this project:
+There's a Stan GitHub branch Daniel and I started for experimentation with integrators:
 
 ```
 feature/ode_experiment
 ```
 
-It currently contains a fully working example of Stan fitting a model using an ode.  The ode is a simple harmonic oscillator.
+It currently contains a fully working example of Stan fitting the parameter for a harmonic oscillator given noisy measurements.  
 
+The code is based on Boost's odeint package:
 
+* <a href="http://headmyshoulder.github.io/odeint-v2/">odeint home page</a>
+* <a href="http://www.boost.org/doc/libs/1_55_0/libs/numeric/odeint/doc/html/index.html">Boost's odeint documentation</a>
 
-We built a special function in Stan using Boost's odeint package.  We use auto-diff on the integrator (with error control and interpolation).   And it works for simulated data (R package to do simulation included). 
+The harmonic oscillator is based on the
 
-Next, we're going to try the alternative method of autodiff-ing the system of differential equations (manually, to start), to give us error control on the gradients and make sure they don't suffer any unexpected behavior from autodiff-ing through the integrator (I still don't understand why adaptation should be a problem).
+* <a href="http://www.boost.org/doc/libs/1_55_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/tutorial/harmonic_oscillator.html">Boost harmonic oscillator example</a>
 
 The simple auto-diff of the integrator approach is in:
 
@@ -30,11 +75,13 @@ The integration of the coupled system including the derivatives is in:
 src/stan/math/functions/ho2.hpp
 ```
 
-The latter approach, `ho2.hpp`, is about 5 times as efficient, and also provides error control.  The issue we have now is that we can't define this coupled system by reverse-mode auto-diff because we only have a single auto-diff stack.
+The latter approach, `ho2.hpp`, is about 5 times as efficient, and also provides error control.  
+
+The issue we have now is that we can't define this coupled system by reverse-mode auto-diff because we only have a single auto-diff stack.  This problem can be overcome by just using the top of the auto-diff stack, but that will require us to enhance the derivative propagation algorithm to take in a stack position at which to stop the propagation.
+
 
 ## Example: Harmonic Oscillator
 
-This is based on the <a href="http://www.boost.org/doc/libs/1_53_0/libs/numeric/odeint/doc/html/boost_numeric_odeint/tutorial/harmonic_oscillator.html">harmonic oscillator example</a> from <a href="http://www.boost.org/doc/libs/1_53_0/libs/numeric/odeint/doc/html/index.html">Boost's odeint package</a>.
 
 ### Defining the System of Equations
 
