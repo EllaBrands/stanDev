@@ -16,7 +16,7 @@ Some in-process designs for new Stan features:
 
 * [ODE Design](wiki/ODE-Integrator-Support)
 
-* [MLE and MML Design](wiki/MLE-and-MML-Designn)
+* [MLE and MML Design](wiki/MLE-and-MML-Design)
 
 ### General Notes for Developer Process
 
