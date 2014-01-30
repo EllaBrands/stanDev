@@ -16,6 +16,8 @@ Some in-process designs for new Stan features:
 
 * [ODE Design](wiki/ODE-Integrator-Support)
 
+* [MLE and MML Design](wiki/MLE-and-MML-Designn)
+
 ### General Notes for Developer Process
 
 The Git and code review process used for developers and some useful tools:
