@@ -12,6 +12,8 @@ This is a good Wiki to read if you're looking for a coding project related to St
 
 Some in-process designs for new Stan features:
 
+* [Functions Design](wiki/Function-Syntax-and-Semantics-Design)
+
 * [ODE Design](wiki/ODE-Integrator-Support)
 
 * [Max-Marginal Design](wiki/Max-Marginal-Optimization-%28lmer%29-Design)
