@@ -239,6 +239,43 @@ dy/dx = y * (mu - x) / (a + b * x + c * x^2)
 
 where `y` is the density, `x` is the variate, and `mu, a, b, c` are parameters.  This one has an explicit solution, but section 3.1 describes an algorithm for the GS distribution which doesn't have an explicit solution. 
 
+## Systems Dynamics
+
+Bill Harris sends these notes about systems dynamics models to stan-dev:
+
+* http://www.metasd.com/models/ 
+
+is a collection of system dynamics models.  Some of the Vensim models are just text, so you can examine those.  Others may require the Vensim model reader from 
+
+* http://www.vensim.com/ 
+
+or the iThink model player from 
+
+* http://www.iseesystems.com/, 
+
+both of which are free.  Follow the direction on Tom Fiddaman's page.
+
+A system dynamics simulator pretty much requires the ability to specify a tabular nonlinear function with some sort of interpolation between defined points.  I know Stan is not compatible with the GPL, but I use GSL Akima interpolation routines in MCSim.  I'm confident Boost has something similar.
+
+Finally, you might be interested in XMILE 
+
+* http://xmile.systemdynamics.org/ 
+
+and the XML Interchange Language for System Dynamics
+
+* https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=xmile
+
+If you're not sure what system dynamics is, see 
+
+* http://www.systemdynamics.org/what-is-s/ 
+
+Despite them using DE notation, too, most system dynamics models are written as integral equations, something like 
+
+```
+state = integrate(netflow, initialconditions)
+```
+
+
 ## Pharmacokinetics and Toxicology Applications
 
 In pharmacokinetic models, it's typical to have various external effects (thanks to Sebastian Weber for pointing these out and providing the text for the infusing):
@@ -269,7 +306,9 @@ I've found these very useful so far.
 
 4.  Lunn et al.  <i>The BUGS Book</i>.
 
-And I believe this collection of models will be useful:
+### Collections of models
+
+There are several collections of models that are useful.  Here are the BUGS models:
 
 5.  https://code.google.com/p/bugsmodellibrary/
 
@@ -277,4 +316,4 @@ And here's a reference from Sebastian Weber about models used in Pharma:
 
 6. http://www.lixoft.eu/wp-content/resources/docs/PKPDlibrary.pdf
 
-We'd love to hear about other library collections. 
+
