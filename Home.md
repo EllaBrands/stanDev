@@ -16,8 +16,6 @@ Some in-process designs for new Stan features:
 
 * [ODE Design](wiki/ODE-Integrator-Support)
 
-* [Max-Marginal Design](wiki/Max-Marginal-Optimization-%28lmer%29-Design)
-
 ### General Notes for Developer Process
 
 The Git and code review process used for developers and some useful tools:
