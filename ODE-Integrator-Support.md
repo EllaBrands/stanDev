@@ -225,7 +225,14 @@ This is in some way the most natural approach from a user perspective because it
 The downside is that it'll be trickier to implement than proposal 2.
 
 
-## Dosing
+## Defining Densities with ODEs
+
+Ben points out the following paper, which defines a density with an ODE:
+
+* http://web.udl.es/Biomath/Group/Treballs/2006CSDA.pdf
+
+
+## Pharmacokinetics and Toxicology Applications
 
 In pharmacokinetic models, it's typical to have various external effects (thanks to Sebastian Weber for pointing these out and providing the text for the infusing):
 
