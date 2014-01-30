@@ -231,6 +231,13 @@ Ben points out the following paper, which defines a density with an ODE:
 
 * http://web.udl.es/Biomath/Group/Treballs/2006CSDA.pdf
 
+The first example is the Pearson family, which is defined by the diff eq
+
+```
+dy/dx = y * (mu - x) / (a + b * x + c * x^2) 
+```
+
+where `y` is the density, `x` is the variate, and `mu, a, b, c` are parameters.  This one has an explicit solution, but section 3.1 describes an algorithm for the GS distribution which doesn't have an explicit solution. 
 
 ## Pharmacokinetics and Toxicology Applications
 
