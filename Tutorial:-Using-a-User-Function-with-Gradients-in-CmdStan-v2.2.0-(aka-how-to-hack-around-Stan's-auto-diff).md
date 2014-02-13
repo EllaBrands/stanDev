@@ -266,6 +266,9 @@ Check `output.csv`. The posterior mean of mu should be 4.5.
 That's it. You've successfully hacked your own function into a Stan model.
 
 If you want to see the final files:
-[src/user_functions.hpp](https://gist.github.com/syclik/8970060#file-user_functions-hpp)
-[src/test/user_functions_test.cpp](https://gist.github.com/syclik/8970060#file-user_functions_test-cpp)
-[normal-example/normal.cpp (edited)](https://gist.github.com/syclik/8970060#file-normal-cpp)
+- [(all files)](https://gist.github.com/syclik/8970060)
+- [src/user_functions.hpp](https://gist.github.com/syclik/8970060#file-user_functions-hpp)
+- [src/test/user_functions_test.cpp](https://gist.github.com/syclik/8970060#file-user_functions_test-cpp)
+- [normal-example/normal.stan (skeleton)](https://gist.github.com/syclik/8970060#file-normal-stan)
+- [normal-example/normal.data.R](https://gist.github.com/syclik/8970060#file-normal-data-r)
+- [normal-example/normal.cpp (edited)](https://gist.github.com/syclik/8970060#file-normal-cpp)
