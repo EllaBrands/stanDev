@@ -60,31 +60,32 @@ then you haven't installed CmdStan properly. You can't really move on until you 
 #### Step 1. Create a skeleton Stan model.
 
 To stay organized, let's put this example in a folder called `normal-example`. 
+
 1. Create the `normal-example` folder. (Run: `mkdir normal-example`.)
 2. Create a data file in the folder. For example, put this inside `normal-example/normal.data.R`:
-```
-N <- 10
-y <- c(0,1,2,3,4,5,6,7,8,9)
-```
+  ```
+  N <- 10
+  y <- c(0,1,2,3,4,5,6,7,8,9)
+  ```
 3. Create a skeleton Stan model. Put this inside `normal-example/normal.stan`:
-```
-data {
-  int N;
-  real y[N];
-}
-parameters {
-  real mu;
-}
-model {
-}
-```
+  ```
+  data {
+    int N;
+    real y[N];
+  }
+  parameters {
+    real mu;
+  }
+  model {
+  }
+  ```
 4. Compile the model. In linux / mac, it looks like: `make normal-example/normal`. In Windows, add `.exe` at the end.
 5. Verify that the model can process the data. 
-On linux/mac:
-`> ./normal-example/normal sample algorithm=fixed_param data file=normal-example/normal.data.R`
-On Windows:
-`> normal-example\normal sample algorithm=fixed_param data file=normal-example/normal.data.R`
-That will create an `output.csv` file with a random draw for the parameter `mu`.
+  On linux/mac:
+  `> ./normal-example/normal sample algorithm=fixed_param data file=normal-example/normal.data.R`
+  On Windows:
+  `> normal-example\normal sample algorithm=fixed_param data file=normal-example/normal.data.R`
+  That will create an `output.csv` file with a random draw for the parameter `mu`.
 
 If you can't verify step 5, do not continue.
 
