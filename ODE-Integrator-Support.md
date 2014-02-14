@@ -276,6 +276,20 @@ state = integrate(netflow, initialconditions)
 ```
 
 
+## Differential Algebraic Equations (DAE)
+
+From Linas Mockus on stan-users:  
+
+Request to handle DAEs because of their popularity in pharmacokinetic models:
+
+ http://en.wikipedia.org/wiki/Differential_algebraic_equation
+
+I think these are related to what Ben was calling "implicit definitions".
+
+Linas also suggested looking at orthogonal collocation as a solution technique:
+
+  http://en.wikipedia.org/wiki/Orthogonal_collocation
+
 ## Pharmacokinetics and Toxicology Applications
 
 In pharmacokinetic models, it's typical to have various external effects (thanks to Sebastian Weber for pointing these out and providing the text for the infusing):
@@ -315,5 +329,4 @@ There are several collections of models that are useful.  Here are the BUGS mode
 And here's a reference from Sebastian Weber about models used in Pharma:
 
 6. http://www.lixoft.eu/wp-content/resources/docs/PKPDlibrary.pdf
-
 
