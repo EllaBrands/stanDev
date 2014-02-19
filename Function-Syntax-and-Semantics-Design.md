@@ -184,6 +184,23 @@ and then it would get called as
     }
     ```
 
+* The C++ type can be a structure with numbered fields, as in
+
+    ```
+    (real, real, real[])
+    ```
+picking out
+
+    ```
+    template <typename T1, typename T2, typename T3>
+    struct list_type_1 {
+      T1 one;
+      T2 two;
+      std::vector<T3> three;
+    };
+    ```
+and then translating ```a[2]``` in Stan syntax as ```a.two```, etc.
+
 * If we have a general list type, then we can use a literal syntax like `(x,y,z)` to create a list.
     * While we're at it, a syntax to create vectors, such as `[x y z]`, would also be nice;  it would create a column vector and a row vector would be called out as `[x y z]'`.
     * And while we're at that, might as well do matrices, too, as `[[a b c] [d e f]]` for a 2 x 3 matrix.
