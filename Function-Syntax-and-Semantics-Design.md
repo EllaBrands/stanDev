@@ -1,30 +1,80 @@
-### Global Variables?
-
-Let's just say "no" to global variables being used in function definitions.  It's how R works and how BUGS defines functions, but I don't think it's a good idea.
-
 ### Function Block
 
-Assuming that functions are self-contained and don't allow global variables (we all seem to be agreed on that), then they can occur first in  a Stan file or even be separate and be imported.
+* A block for function definitions will be optional before the data declaration block:
 
-```
-functions {
-   ... function definitions ...
-}
-```
+    ```
+    functions {
+       ... function definitions ...
+    }
+    data {
+    ...
+    ```
 
-Then they could be called from anywhere.
+* Any number of functions (including zero) may be defined in the function-definition block.
 
-### Function Syntax
+* Mutual recursion will be allowable with (forward) declarations
+    * have to wait until end of the function-definition block in order to guarantee all functions will be defined
 
-I would like to follow a C-like function syntax with type definitions for inputs and outputs.  In a simple case, that means something like this:
+* Given a function name and argument type sequence (i.e., the function signature), the return type must be unique
+    * validate this uniqueness through the symbol table of functions, which must be updated as functions are declared
 
-  real foo(real x, real y) {
-    return x * y + 2;
-  }
+
+### Function Declarations and Definition Syntax
+
+* Functions may be declared with a C-like declaration syntax for their signatures, e.g.,
+
+    ```
+    real foo(real, real);
+    ````
+
+* Functions will be defined with a C-like function syntax, e.g.,
+
+    ```    
+    real foo(real x, real y) {
+      return x * y + 2;
+    }
+    ```
+If a function has not been declared, the definition will also constitute its declaration.
+
+* There are three ways that make sense to define container arguments, but only one of them should be allowable.
+    1. Containers are declared with sizes as in Stan, e.g.,
+
+        ```
+        vector[K] foo(int<lower=0> K, vector[K] v);
+        ```
+Note that the return type is logically after the argument types in order to allow sizing to be specified.  Otherwise, size variables must appear before the elements which they size, just as in the rest of Stan.
+    2. Sizes of array, vector, and matrix types are not included, but all of the brackets that would otherwise be used in other Stan blocks will be required, e.g., 
+
+        ```
+        vector[] bar(vector[] a[], matrix[,] b[,]);
+        ```
+    3. The most minimal approach is like the previous approach, but without the brackets on the tpes themselves, e.g., 
+
+        ```
+        vector bar(vector a[], matrix b[,]);
+        ```
+This is somehow the simplest, but the least like the rest of Stan and therefore a bit more complicated to document.
+
+### Variable Scope and Local Variables
+
+* Local variables may be declared in a function definition's body as in any other block, e.g.,
+
+    ```
+    real foo(real a, int K) {
+      vector[K] v;
+      matrix[K,K] m;
+      ...
+    }
+    ```
+Local block declaration is as for all other Stan variables, so that it requires a size.
+
+### Return Statements
+
+
 
 ### Void Type for Returns
 
-If we want "functions" that don't return a value, we'll need to add a `void` type.
+* There is no reason to include a void return type for functions, because they have no side effects.  
 
 ### Log Probability Accessible?
 
@@ -151,4 +201,11 @@ void eigendecompose(matrix x, vector eigenvals, matrix eigenvecs) {
 }
 ```
 
-We could also use a `const` syntax, but then that's starting to get complicated for users
+We could also use a `const` syntax, but then that's starting to get complicated for users.
+
+
+
+
+### Global Variables?
+
+Let's just say "no" to global variables being used in function definitions.  It's how R works and how BUGS defines functions, but I don't think it's a good idea.
