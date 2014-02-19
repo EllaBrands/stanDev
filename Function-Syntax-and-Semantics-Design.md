@@ -36,27 +36,34 @@
     ```
 If a function has not been declared, the definition will also constitute its declaration.
 
-* Like other Stan functions, arguments do not have syntactic type constraints;  if there are type constraints, they should be validated as part of the function.
-    * this will require something like exceptions to raise errors;  no types, just plain old exception, which will get wrapped in a Stan exception
+* Like other Stan functions, arguments and return types will not have syntactic type constraints;  if there are type constraints, they should be validated as part of the function.
+    * In order to validate, we will need to add a raise-exception statement, which in C++ will raise a Stan-language-specific exception and will be caught, reported, and cause a sample rejection just like other math exceptions
+    * The syntax can be something like
+        ```
+        exception("N must be positive, but found N=",N);
+        ```
+following the print statement, which means it can take any number of arguments, the values of which will be concatenated together
 
-* There are three ways that make sense to define container arguments, but only one of them should be allowable.
-    1. Containers are declared with sizes as in Stan, e.g.,
+### Container Sizing in Argument and Return Types
 
-        ```
-        vector[K] foo(int K, vector[K] v);
-        ```
-Note that the return type is logically after the argument types in order to allow sizing to be specified.  Otherwise, size variables must appear before the elements which they size, just as in the rest of Stan.
-    2. Sizes of array, vector, and matrix types are not included, but all of the brackets that would otherwise be used in other Stan blocks will be required, e.g., 
+* Containers will be declared with their sizes, as in Stan's modeling language, e.g.,
 
-        ```
-        vector[] bar(vector[] a[], matrix[,] b[,]);
-        ```
-    3. The most minimal approach is like the previous approach, but without the brackets on the tpes themselves, e.g., 
+    ```
+    vector[K] foo(int K, vector[K] v);
+    ```
+* All constants used for sizing must be declared as arguments before the types in which they appear;  so it would not be legal to reverse the order of `K` and `v` above.
 
-        ```
-        vector bar(vector a[], matrix b[,]);
-        ```
-This is somehow the simplest, but the least like the rest of Stan and therefore a bit more complicated to document.
+* The return type logically follows the argument types in order for its size to be specified.
+
+* An alternative that will be harder to implement and not provide a such error checking would be to allow containers such as vectors and arrays to be declared without sizes, e.g.,
+    ```
+    vector[] bar(vector[] a[], matrix[,] b[,]);
+    ```
+An even more minimial approach would also remove the brackets, e.g.,
+    ```
+    vector bar(vector a[], matrix b[,]);
+    ```
+This last approach is cleanest, but most unlike Stan and most difficult to implement.
 
 ### Variable Scope and Local Variables
 
@@ -69,15 +76,17 @@ This is somehow the simplest, but the least like the rest of Stan and therefore 
       ...
     }
     ```
-Local block declarations work as usual in Stan, and thus require a size to be specified.
+Local block declarations work as usual in Stan, requiring sizes to be specified with variables that exist in scope. 
 
-* The log probability accumulator, `lp__`, is not in scope for functions (see below for subroutines).
+* The log probability accumulator, `lp__`, is not in scope for functions (see below for subroutines)
+
+* The log probability increment statement, `increment_log_prob(lp)`, is not allowed in functions (though see the section on subroutines below).
 
 ### Return Statements
 
 * Return statements are allowed anywhere in functions
 
-* Need to test that there is a valid return from every branch of execution.  This is more subtle than just requiring one at the end, because of cases like
+* In order to satisfy the C++ compiler, we will need to test that every execution branch has a return statement;  Need to test that there is a valid return from every branch of execution.  This is more subtle than just requiring one at the end, because of cases like
 
     ```
     real bar(real x) {
