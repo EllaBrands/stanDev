@@ -147,41 +147,30 @@ and optionally a void return
       sigma ~ cauchy(0, 2.5);
       alpha ~ cauchy(0, 2.5);
       beta ~ cauchy(0,2.5);
-      for (n in 1:size(x))
-        y[n] ~ normal(alpha + beta * x, sigma);
+      y ~ normal(alpha + beta * x, sigma);
     }
     ```
-Of course, the better definition is vectorized, but this is just an example.
 
 
 ### Defining New Probability Functions
 
-* We could follow existing practice of taking any function ending in `_log` to define a new probability density.  So if we redefined the linear regression function above to be named `linear_regression_log`, it could be called as
+* We could follow existing practice of taking any function ending in `_log` to define a new probability density.  So if we want to define y in terms of regression coefficient and noise scale, it'd be
+    ```
+    void linear_regression_log(real y, vector x, real alpha, real beta, real sigma) {
+      y ~ normal(alpha + x * beta, sigma);
+    }
+    ```
+and then it would get called as
 
     ```
     y ~ linear_regression(x, alpha, beta, sigma);
     ```
-but this is actually wrong in this case, as it actually defines a joint density `p(y,alpha,beta,sigma|x)` and there's no syntax to call that out.  
 
-* If we want to define joint densities, we need some kind of list-like syntax, say
+* If we define a new probability function, it should also be available as a function returning its log prob
+    * Most natural is to have it define a log prob that just gets incremented in the sampling statement call and returned in the usual call --- can just follow existing pattern here
 
-    ```
-    probability function
-    linear_regression_log(vector y, real alpha, real beta, real<lower=0> sigma | vector x) {
-      sigma ~ cauchy(0, 2.5);
-      alpha ~ cauchy(0, 2.5);
-      beta ~ cauchy(0,2.5);
-      y ~ normal(alpha + beta * x, sigma);
-    }
-    ```
-and then it would need to be called using a list-like syntax such as
 
-    ```
-    (y,alpha,beta,sigma) ~ linear_regression(x);
-    ```
-which certainly seems odd.
-
-###  Multiple Return Values
+### Multiple Return Values
 
 * It's both awkward and inefficient that we now have two functions for eigendecompisitions, eigenvectors and eigenvalues.  It'd be nice to have a way to do something like Python does and return lists.
 
@@ -206,7 +195,31 @@ which certainly seems odd.
     ```
 and then allow access to the vector as `eigendecomposition[1]` and `eigendecomposition[2]`.
 
+* If we want to define joint densities, we can then just use the built-in type declaration syntax and literal syntax, e.g.,
+
+    ```
+    void linear_regression_log((vector, real, real,real) z, vector x) {
+      vector y;
+      real alpha;
+      real beta;
+      real sigma;           
+      y <- z[1];
+      alpha <- z[2];
+      beta <- z[3];
+      sigma <- z[4]
+      y ~ normal(alpha + beta * x, sigma);
+      alpha ~ cauchy(0, 2.5);
+      beta ~ cauchy(0,2.5);
+      sigma ~ cauchy(0, 2.5);
+    }
+    ```
+and
+
+    ```
+    (y,alpha,beta,sigma) ~ linear_regression(x);
+    ```
+
+
 ### Call by Constant Reference
 
 * Functions and statements will be called by constant reference, i.e., declared in C++ as `const T&` for whatever type `T` is used
-
