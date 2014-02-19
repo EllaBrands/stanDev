@@ -19,7 +19,7 @@
     * validate this uniqueness through the symbol table of functions, which must be updated as functions are declared
 
 
-### Function Declarations and Definition Syntax
+### Syntax of Function Declarations and Definitions
 
 * Functions may be declared with a C-like declaration syntax for their signatures, e.g.,
 
@@ -36,11 +36,14 @@
     ```
 If a function has not been declared, the definition will also constitute its declaration.
 
+* Like other Stan functions, arguments do not have syntactic type constraints;  if there are type constraints, they should be validated as part of the function.
+    * this will require something like exceptions to raise errors;  no types, just plain old exception, which will get wrapped in a Stan exception
+
 * There are three ways that make sense to define container arguments, but only one of them should be allowable.
     1. Containers are declared with sizes as in Stan, e.g.,
 
         ```
-        vector[K] foo(int<lower=0> K, vector[K] v);
+        vector[K] foo(int K, vector[K] v);
         ```
 Note that the return type is logically after the argument types in order to allow sizing to be specified.  Otherwise, size variables must appear before the elements which they size, just as in the rest of Stan.
     2. Sizes of array, vector, and matrix types are not included, but all of the brackets that would otherwise be used in other Stan blocks will be required, e.g., 
@@ -66,146 +69,144 @@ This is somehow the simplest, but the least like the rest of Stan and therefore 
       ...
     }
     ```
-Local block declaration is as for all other Stan variables, so that it requires a size.
+Local block declarations work as usual in Stan, and thus require a size to be specified.
+
+* The log probability accumulator, `lp__`, is not in scope for functions (see below for subroutines).
 
 ### Return Statements
 
+* Return statements are allowed anywhere in functions
 
+* Need to test that there is a valid return from every branch of execution.  This is more subtle than just requiring one at the end, because of cases like
+
+    ```
+    real bar(real x) {
+      if (x < 1e-28)
+        return x;
+      else
+        return x * x;
+    }
+    ```
+where both branches of a conditional have a return.  If there is a final statement outside of a conditional, it must be a return.  
+
+* It's even trickier for a loop
+
+    ```
+    for (n in 1:N)
+      if (n > 100) return x;
+    ```
+which isn't guaranteed to have a return unless N > 100.  While statements present similar issues.  
+
+* We could simplify by just returning a default value of the return type if the program exits without a return.  This could be coded in C++ after a return with something like:
+
+    ```
+    if (true) return default_simplex();
+    ```
+where it's the minimal size meeting all the constraints (treat like zero-inits).
+
+
+### Input and Output Validation
+
+* If we allow declarations of arguments and return values as simplex, cov_matrix, etc., then
+    * inputs should be validated on input
+    * outputs should be validated on return
+
+* If an illegal input or output is encountered, an exception should be raised
 
 ### Void Type for Returns
 
 * There is no reason to include a void return type for functions, because they have no side effects.  
 
-### Log Probability Accessible?
+### Function application is an expression
 
-I think we need to make an exception to the rule of "no global variables" for the implicit log probability accumulator.  I think it makes sense to allow functions to take that in as an argument.  
+* User-defined functions act just like other functions in that their application to arguments is an expression.
 
-```
-void linear_regression(vector y, vector x, real alpha, real beta, real<lower=0> sigma) {
-  sigma ~ cauchy(0, 2.5);
-  alpha ~ cauchy(0, 2.5);
-  beta ~ cauchy(0,2.5);
-  for (n in 1:size(x))
-    y[n] ~ normal(alpha + beta * x, sigma);
-}
-```
+* Argument types need to be validated syntactically
 
-Or maybe there would be a different syntax for defining new distributions?  I'm not sure how to call them out.  Maybe new blocks?  I'm thinking something along the lines of
+### Subroutines
 
-```
-probability functions {
-  linear_regression(vector y | vector x, real alpha, real beta, real<lower=0> sigma) {
-    for (n in 1:size(x))
-      y[n] ~ normal(alpha + beta * x, sigma);   
-  }
-}
-```
+* Subroutines act as statements, not as expressionss;  functions act 
 
-Then it would be called in code using something like
+* Should be declared with a void type, or just no return type at all
 
-```
-y ~ linear_regression(x,alpha,beta,sigma);
-```
-  
-Note the use of a vertical bar and no prior for the parameters `alpha`, `beta`, and `sigma`.  If we want to have it be a joint probability function, we'd need something like
+* Should allow return statements with no values, e.g.,
 
-```
-probability functions {
-  linear_regression(vector y, real alpha, real beta, real<lower=0> sigma | vector x) {
-    sigma ~ cauchy(0, 2.5);
-    alpha ~ cauchy(0, 2.5);
-    beta ~ cauchy(0,2.5);
-    for (n in 1:size(x))
-      y[n] ~ normal(alpha + beta * x, sigma);
-}
-```
+    ```
+    return;
+    ```
+and optionally a void return 
+    ```
+    return void;
 
-and then it would need to be called using a list-like syntax
+* The log probability increment statement, `increment_log_prob()`, should be legal in subroutines but not in functions.  Functions with an increment log prob need to get expanded at compile time to take the `lp__` variable as their first or last argument and then to be passed that value automatically when called.
 
-```
-(y,alpha,beta,sigma) ~ linear_regression(x);
-```
+* Here's an example of how a subroutine would be declared (the scale should get a lower bound if constraints are allowed)
 
-In order to do any of this, we need to have the log probability function accessible.
+    ```
+    void linear_regression(vector y, vector x, real alpha, real beta, real sigma, vector x) {
+      sigma ~ cauchy(0, 2.5);
+      alpha ~ cauchy(0, 2.5);
+      beta ~ cauchy(0,2.5);
+      for (n in 1:size(x))
+        y[n] ~ normal(alpha + beta * x, sigma);
+    }
+    ```
+Of course, the better definition is vectorized, but this is just an example.
 
-### Local Variables
 
-Is it OK to have them just at the top of blocks as we have now?  It was the lazy thing to do when I implemented blocks the first time, but I sort of regret it because I like to declare variables near where I use them.  I suppose this issue's really independent if we just treat a function body like any other block.
+### Defining New Probability Functions
 
-### Array Sizing
+* We could follow existing practice of taking any function ending in `_log` to define a new probability density.  So if we redefined the linear regression function above to be named `linear_regression_log`, it could be called as
 
-Two possibilities seem obvious, the first of which is to
-declare with no sizes, as in:
+    ```
+    y ~ linear_regression(x, alpha, beta, sigma);
+    ```
+but this is actually wrong in this case, as it actually defines a joint density `p(y,alpha,beta,sigma|x)` and there's no syntax to call that out.  
 
-```
-real foo(vector x) {
-  real sum;
-  for (i in 1:size(x))
-    sum <- sum + x[i];
-    return sum;
-  }
-}
-```
+* If we want to define joint densities, we need some kind of list-like syntax, say
 
-The other would be to require sizes, so we'd have:
+    ```
+    probability function
+    linear_regression_log(vector y, real alpha, real beta, real<lower=0> sigma | vector x) {
+      sigma ~ cauchy(0, 2.5);
+      alpha ~ cauchy(0, 2.5);
+      beta ~ cauchy(0,2.5);
+      y ~ normal(alpha + beta * x, sigma);
+    }
+    ```
+and then it would need to be called using a list-like syntax such as
 
-```
-real foo(int<lower=0> N, vector[N] x) {
-  real sum;
-  for (i in 1:N)
-    sum <- sum + x[i];
-  return sum;
-}
-```
-
-The latter seems like a real pain and wouldn't give us the generality to define all the built-in functions within Stan (which seems like a drawback in principle).  The upside is that it automatically gives us size error checking.  
-
-And for the second option, it'd be easier to require sizes to appear in the argument list before the vectors they size.
+    ```
+    (y,alpha,beta,sigma) ~ linear_regression(x);
+    ```
+which certainly seems odd.
 
 ###  Multiple Return Values
 
-It's both awkward and inefficient that we now have two functions for eigendecompisitions, eigenvectors and eigenvalues.  It'd be nice to have a way to do something like Python does and return lists.
+* It's both awkward and inefficient that we now have two functions for eigendecompisitions, eigenvectors and eigenvalues.  It'd be nice to have a way to do something like Python does and return lists.
 
-```
-list[vector,matrix] eigendecompose(matrix x) {
-  vector eigenval;
-   matrix eigenvecs;
-   eigenvals <- eigenvalues(x);
-   eigenvecs <- eigenvectors(x);
-   return (eigenvals,eigenvecs);
-}
-```
+    ```
+    (vector,matrix) eigendecompose(matrix x) {
+      vector eigenval;
+      matrix eigenvecs;
+      eigenvals <- eigenvalues(x);
+      eigenvecs <- eigenvectors(x);
+      return (eigenvals,eigenvecs);
+    }
+    ```
 
-This is another issue that's probably independent.  
+* If we have a general list type, then we can use a literal syntax like `(x,y,z)` to create a list.
+    * While we're at it, a syntax to create vectors, such as `[x y z]`, would also be nice;  it would create a column vector and a row vector would be called out as `[x y z]'`.
+    * And while we're at that, might as well do matrices, too, as `[[a b c] [d e f]]` for a 2 x 3 matrix.
 
-If we have a general list type, then we can use `(x,y,z)` syntax to create a list.  (As an aside, it'd be nice to have a syntax like this to create vectors, maybe something like `[x y z]`.)
+* We'd want to define a syntax for declaring lists, say
 
-Another option would be to require lists to be declared and then use setters.
+    ```
+    (vector[K], matrix[K,K]) eigendecomposition;
+    ```
+and then allow access to the vector as `eigendecomposition[1]` and `eigendecomposition[2]`.
 
-```
-list[ vector[K], matrix[K,K] ] eigendecomp;
-eigendecomp[1] <- eigenvals;
-eigendecomp[2] <- eigenvecs;
-```
+### Call by Constant Reference
 
-### Call-by-Reference vs. Call-by-Const-Reference
+* Functions and statements will be called by constant reference, i.e., declared in C++ as `const T&` for whatever type `T` is used
 
-I was thinking functions would translate into C++ as call by constant reference.  
-
-An alternative that would allow multiple returns would be to drop the implicit const-ness, and allow
-
-```
-void eigendecompose(matrix x, vector eigenvals, matrix eigenvecs) {
-  eigenvals <- eigenvalues(x);
-  eigenvecs <- eigenvectors(x);
-}
-```
-
-We could also use a `const` syntax, but then that's starting to get complicated for users.
-
-
-
-
-### Global Variables?
-
-Let's just say "no" to global variables being used in function definitions.  It's how R works and how BUGS defines functions, but I don't think it's a good idea.
