@@ -34,9 +34,12 @@ To use JSON notation instead, instead of assignment statements, a data definitio
 
 ### Stan data types
 
-From section "Stan Data Types" in the Stan manual:
-* The primitive Stan data types are real for continuous scalar quantities and int for integer values.  A real may be an integer or a real value or it may be one of three special values: positive infinity, negative infinity, and "not a number" which represents error conditions. Integer or real types may be constrained with lower bounds, upper bounds, or both.
-* The compound data types include vector (of real values), row_vector (of real values), and matrix (of real values).  Stan supports arrays of arbitrary order of any of the basic data types or constrained basic data types.  There are four constrained vector data types, simplex for unit simplexes, unit_vector for unit-length vectors, ordered for ordered vectors of scalars and positive_ordered for vectors of positive ordered scalars. There are specialized matrix data types corr_matrix and cov_matrix for correlation and covariance matrices.
+To summarize: (taken from section "Stan Data Types" in the Stan manual)
+* The primitive Stan data types are real for continuous scalar quantities and int for integer values.  A real may be an integer or a real value or it may be one of three special values: positive infinity, negative infinity, and "not a number" which represents error conditions. 
+* In order to represent the real values  "NaN" and positive an negative infinity in JSON, we'd need to use strings, e.g., "NaN", "+inf", "-inf"
+* Integer or real types may be constrained with lower bounds, upper bounds, or both.
+* The compound data types include vector (of real values), row_vector (of real values), and matrix (of real values).
+* Stan supports arrays of arbitrary order of any of the basic data types or constrained basic data types.  * There are four constrained vector data types, simplex for unit simplexes, unit_vector for unit-length vectors, ordered for ordered vectors of scalars and positive_ordered for vectors of positive ordered scalars. There are specialized matrix data types corr_matrix and cov_matrix for correlation and covariance matrices.
 * Stan supports arrays of arbitrary order of any of the basic data types or constrained basic data types.
 
 ### Variable declarations
@@ -57,7 +60,7 @@ Stan data and parameters are declaired in the model file.  See Stan reference ma
 Data declarations, corresponding JSON data definitions:
 * primitive int: `int i;`  JSON `"i" : 17`
 * primitive real: `real a;` JSON `"a" : 17` `"a" : 17.2` <br>
-* to represent the real values  "NaN" and positive an negative infinity, we could use strings "NaN", "+inf", "-inf"
+
 * 1-dimensional array of reals:  `real a[5];`  JSON `"a" : [ 1, 2, 3.3, 4.0, 5 ]`
 * 1-dimensional vector:  `real a[5];`  JSON  `"a" : [ 1, 2, 3.3, 4.0, 5 ]`
 * 1-dimensional row_vector: `row_vector[5] a;` JSON  `"a" : [ 1, 2, 3.3, 4.0, 5 ]`
