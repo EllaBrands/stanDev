@@ -1,6 +1,15 @@
-## Goal
+## Proposal
 
 Use JSON instead of S dump format for data input files to Stan.
+
+The model file contains the data declarations.
+Data definitions can be suppled in a separate data file. 
+Data input files are used for both model data and parameters.
+Model data is read in by the model constructor.
+Model parameters are used to initialize the sampler and optimizer.
+
+The current data file format is a series of R dump statments which assign values to variables.
+To use JSON notation instead, instead of assignment statements, a data definition would be expressed as a name value pair consisting of the variable name and a value of the proper type.
 
 ##  JSON
 
@@ -22,15 +31,6 @@ JSON examples:
 * arrays: `[]` `[ 1 ]` `[ "a" , "b", true ]`
 
 ##  Stan data
-
-The model file contains the data declarations.
-Data definitions can be suppled in a separate data file. 
-Data input files are used for both model data and parameters.
-Model data is read in by the model constructor.
-Model parameters are used to initialize the sampler and optimizer.
-
-The current data file format is a series of R dump statments which assign values to variables.
-To use JSON notation instead, instead of assignment statements, a data definition would be expressed as a name value pair consisting of the variable name and a value of the proper type.
 
 ### Stan data types
 
