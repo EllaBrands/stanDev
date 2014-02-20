@@ -21,16 +21,20 @@ JSON examples:
 * objects: `{}` ` "foo": null }` `{ "bar" : 17, "baz" : [ 14, 15, 16.6]  }`
 * arrays: `[]` `[ 1 ]` `[ "a" , "b", true ]`
 
-
-
 ##  Stan data
 
-Data input files are used to hold model data and parameters.
+The model file contains the data declarations.
+Data definitions can be suppled in a separate data file. 
+Data input files are used for both model data and parameters.
 Model data is read in by the model constructor.
 Model parameters are used to initialize the sampler and optimizer.
 
-### Stan data types (section 2.2 of the Stan manual):
+The current data file format is a series of R dump statments which assign values to variables.
+To use JSON notation instead, instead of assignment statements, a data definition would be expressed as a name value pair consisting of the variable name and a value of the proper type.
 
+### Stan data types
+
+From section "Stan Data Types" in the Stan manual:
 * The primitive Stan data types are real for continuous scalar quantities and int for integer values.  A real may be an integer or a real value or it may be one of three special values: positive infinity, negative infinity, and "not a number" which represents error conditions. Integer or real types may be constrained with lower bounds, upper bounds, or both.
 * The compound data types include vector (of real values), row_vector (of real values), and matrix (of real values).  Stan supports arrays of arbitrary order of any of the basic data types or constrained basic data types.  There are four constrained vector data types, simplex for unit simplexes, unit_vector for unit-length vectors, ordered for ordered vectors of scalars and positive_ordered for vectors of positive ordered scalars. There are specialized matrix data types corr_matrix and cov_matrix for correlation and covariance matrices.
 * Stan supports arrays of arbitrary order of any of the basic data types or constrained basic data types.
@@ -48,7 +52,9 @@ Stan data and parameters are declaired in the model file.  See Stan reference ma
 * array of vectors: `vector[7] b[6];`
 * array of row vetor: `row_vector[7] b[6];`
 
-### Variable definitions in data file.
+### Variable definitions
 
-The data file holds variable definitions for both data and parameters.
+Data definitions can be suppled in a separate data file.  The current data file format is a series of R dump statments which assign values to variables.
+To use JSON notation instead, instead of assignment statements, a data definition would be expressed as a name value pair consisting of the variable name and a value of the proper type.
 
+The data file holds variable definitions for both data and parameters in the form of a series of assignments of values to variables.  Stan reads in the definitions of declared variables.
