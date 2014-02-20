@@ -52,9 +52,5 @@ Stan data and parameters are declaired in the model file.  See Stan reference ma
 * array of vectors: `vector[7] b[6];`
 * array of row vetor: `row_vector[7] b[6];`
 
-### Variable definitions
+### Stan variable definitions as JSON name : value pairs
 
-Data definitions can be suppled in a separate data file.  The current data file format is a series of R dump statments which assign values to variables.
-To use JSON notation instead, instead of assignment statements, a data definition would be expressed as a name value pair consisting of the variable name and a value of the proper type.
-
-The data file holds variable definitions for both data and parameters in the form of a series of assignments of values to variables.  Stan reads in the definitions of declared variables.
