@@ -63,7 +63,7 @@ Data declarations, corresponding JSON data definitions:
 * 1-dimensional row_vector: `row_vector[5] a;` JSON  `"a" : [ 1, 2, 3.3, 4.0, 5 ]`
 * 2-dimensional matrix: `matrix[2,3] b;` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`<br>
 (even though Stan matrices are stored in column order).
-* 2-dimensional array of reals: ``real b[2,3];` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`
+* 2-dimensional array of reals: `real b[2,3];` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`
 * array of vectors: `vector[3] b[2];` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`
 * array of vectors: `vector[3] b[2];` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`
 * array of row vetor: `row_vector[2] b[3];` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`
