@@ -8,10 +8,20 @@ JSON is a data interchange notation, defined by an [ECMA standard](http://www.ec
 * Structural tokens are the left and right curly bracket, left and right square bracket, the semicolon, and the comma.  `{}{}:,`
 * Literal tokens must always be in lowercase.  There are three literal tokens: `true false null`
 * A primitive value is a single token which is either a literal, a string, or a number.
+* All numbers are decimal numbers.  Scientific notation is allowed.  The concepts of positive and negative infinity as well as "not a number" cannot be expressed as numbers in JSON.  
 * A string consists of zero or more Unicode characters or control sequences enclosed in double quotes.  A backslash is used to escape the double quote character as well as the backslash itself.
 * A name-value pair consists of a string followed by a colon followed by a value, either primitive or compound.
 * A JSON object is a comma-separated series of zero or more name-value pairs enclosed in curly brackets.  Each name-value pair is a member of the object.  Membership is unordered.  Member names are not required to be unique.
 * A JSON array is an ordered, comma-separated list of zero or more JSON values enclosed in square brackets.  The elements of an array can be of any type.   
+
+JSON examples:
+* literals:  `true` `false` `null`
+* numbers: `17` `17.2`  `-17.2` `-17.2e8` `17.2e-8`
+* strings: `"foo"`
+* objects: `{}` ` "foo": null }` `{ "bar" : 17, "baz" : [ 14, 15, 16.6]  }`
+* arrays: `[]` `[ 1 ]` `[ "a" , "b", true ]`
+
+
 
 ##  Stan data
 
