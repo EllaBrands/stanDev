@@ -34,7 +34,8 @@
       return x * y + 2;
     }
     ```
-If a function has not been declared, the definition will also constitute its declaration.
+
+* If a function has not been declared, its definition will also constitute its declaration.
 
 * Like other Stan functions, arguments and return types will not have syntactic type constraints;  if there are type constraints, they should be validated as part of the function.
     * In order to validate, we will need to add a raise-exception statement, which in C++ will raise a Stan-language-specific exception and will be caught, reported, and cause a sample rejection just like other math exceptions
@@ -42,7 +43,7 @@ If a function has not been declared, the definition will also constitute its dec
         ```
         exception("N must be positive, but found N=",N);
         ```
-following the print statement, which means it can take any number of arguments, the values of which will be concatenated together
+following the syntax of the print statement, which means it can take any number of arguments, the values of which will be concatenated together inot a string.
 
 ### Container Sizing in Argument and Return Types
 
@@ -55,15 +56,16 @@ following the print statement, which means it can take any number of arguments, 
 
 * The return type logically follows the argument types in order for its size to be specified.
 
-* An alternative that will be harder to implement and not provide a such error checking would be to allow containers such as vectors and arrays to be declared without sizes, e.g.,
+* ALTERNATIVE:  An option that differs from other Stan variable declarations would be to allow containers such as vectors and arrays to be declared without sizes, e.g.,
     ```
     vector[] bar(vector[] a[], matrix[,] b[,]);
     ```
-An even more minimial approach would also remove the brackets, e.g.,
+An even more minimal approach would also remove the brackets, e.g.,
     ```
     vector bar(vector a[], matrix b[,]);
     ```
-This last approach is cleanest, but most unlike Stan and most difficult to implement.
+This last approach is cleanest, but most unlike Stan's existing variable declaration syntax.
+    * A related alternative would be to allow Stan variables to be declared without sizes in the data block, so that they could be read in that way.  Users have asked for this before.
 
 ### Variable Scope and Local Variables
 
@@ -86,68 +88,74 @@ Local block declarations work as usual in Stan, requiring sizes to be specified 
 
 * Return statements are allowed anywhere in functions
 
-* In order to satisfy the C++ compiler, we will need to test that every execution branch has a return statement;  Need to test that there is a valid return from every branch of execution.  This is more subtle than just requiring one at the end, because of cases like
+* In order to pass the C++ compiler without warnings and provide warnings ourselves, we should try to pick up programs that have executions ending in something other than a return.  This can only be heuristic due to undecidability.  
+
+* Syntactically, we can check that the final statement in a program (including all of its conditional branches) end in a return statement.  This is stricter than C++.  It is defined recursively by
+    * a return statement ends in a return statement
+    * an exception ends in a return statement
+    * a block ends in a return statement if its final statement ends in a return statement
+    * a conditional ends in a return statement if each of its conditional blocks ends in a return statement
+    * a while loop ends in a return statement if its body block ends in a return statement
+
+* C++ only issues warnings, not errors if there is not a return.  But it does provide a bogus return value without griping (no idea how it's defined).  I tried this
 
     ```
-    real bar(real x) {
-      if (x < 1e-28)
-        return x;
-      else
-        return x * x;
+    #include <iostream>
+    int foo() {
+      for (int i = 0; i < 10; ++i)
+        if (i > 20) return i;
+    }
+    int main() {
+      std::cout << "foo()=" << foo() << std::endl;
     }
     ```
-where both branches of a conditional have a return.  If there is a final statement outside of a conditional, it must be a return.  
-
-* It's even trickier for a loop
-
-    ```
-    for (n in 1:N)
-      if (n > 100) return x;
-    ```
-which isn't guaranteed to have a return unless N > 100.  While statements present similar issues.  
+and it printed `foo()=-1` in clang++ and g++ at optimization 0 and `foo()=7` at optimization 3 in g++.  So it looks like more unspecified behavior.
 
 * We could simplify by just returning a default value of the return type if the program exits without a return.  This could be coded in C++ after a return with something like:
 
     ```
     if (true) return default_simplex();
     ```
-where it's the minimal size meeting all the constraints (treat like zero-inits).
+where it's the minimal size meeting all the constraints (treat like zero-inits).  This doesn't cause g++ to gripe, even with `-Wall` option.
 
 
 ### Input and Output Validation
 
-* If we allow declarations of arguments and return values as simplex, cov_matrix, etc., then
+* The proposed implementation will not allow constrained inputs or outputs, which follows Stan's existing functions, none of which are intrinsically constrained.
+
+* This requires the program itself to validate it's output.
+
+* ALTERNATIVE:  If we allow declarations of arguments and return values as simplex, cov_matrix, etc., then
     * inputs should be validated on input
     * outputs should be validated on return
-
-* If an illegal input or output is encountered, an exception should be raised
-
-### Void Type for Returns
-
-* There is no reason to include a void return type for functions, because they have no side effects.  
+    * if an illegal input or output is encountered, an exception should be raised
 
 ### Function application is an expression
 
-* User-defined functions act just like other functions in that their application to arguments is an expression.
+* User-defined functions act just like other functions in that their application to arguments is an expression syntactically.
 
-* Argument types need to be validated syntactically
+* Argument types will be validated syntactically by the parser for user-defined functions just like any other function
+
+* Functions will not be usable as expressions;  see the section on subroutines below
 
 ### Subroutines
 
-* Subroutines act as statements, not as expressionss;  functions act 
+* Stan will allow subroutines that will be declared like functions with a `void` return type
 
-* Should be declared with a void type, or just no return type at all
-
-* Should allow return statements with no values, e.g.,
+* Subroutines will allow return statements without a value. 
 
     ```
     return;
     ```
-and optionally a void return 
+or optionally a void return 
     ```
     return void;
 
-* The log probability increment statement, `increment_log_prob()`, should be legal in subroutines but not in functions.  Functions with an increment log prob need to get expanded at compile time to take the `lp__` variable as their first or last argument and then to be passed that value automatically when called.
+* Subroutines do not require a return;  a final return of void is implicit
+
+* The log probability increment statement, `increment_log_prob()`, should be legal in subroutines but not in functions.  
+    * subroutines with that increment the log prob accumulator need to get expanded at compile time to take the `lp__` variable as their first or last argument and then to be passed that value automatically when called.
+    * subroutines that involve log probabilities will not be allowed in blocks where `lp__` is not defined.
 
 * Here's an example of how a subroutine would be declared (the scale should get a lower bound if constraints are allowed)
 
@@ -160,8 +168,11 @@ and optionally a void return
     }
     ```
 
+### Call by Constant Reference
 
-### Defining New Probability Functions
+* Functions and subroutines will be called by constant reference, i.e., declared in C++ as `const T&` for whatever type `T` is used for the arguments
+
+### FUTURE:  Defining New Probability Functions
 
 * We could follow existing practice of taking any function ending in `_log` to define a new probability density.  So if we want to define y in terms of regression coefficient and noise scale, it'd be
     ```
@@ -179,7 +190,7 @@ and then it would get called as
     * Most natural is to have it define a log prob that just gets incremented in the sampling statement call and returned in the usual call --- can just follow existing pattern here
 
 
-### Multiple Return Values
+### FUTURE: Multiple Return Values
 
 * It's both awkward and inefficient that we now have two functions for eigendecompisitions, eigenvectors and eigenvalues.  It'd be nice to have a way to do something like Python does and return lists.
 
@@ -246,6 +257,3 @@ and
     ```
 
 
-### Call by Constant Reference
-
-* Functions and statements will be called by constant reference, i.e., declared in C++ as `const T&` for whatever type `T` is used
