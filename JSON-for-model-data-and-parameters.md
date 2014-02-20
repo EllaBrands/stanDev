@@ -47,10 +47,26 @@ Stan data and parameters are declaired in the model file.  See Stan reference ma
 * 1-dimensional array of reals:  `real a[5];`
 * 1-dimensional vector:  `real a[5];`  (all vectors are vectors of reals).
 * 1-dimensional row_vector: `row_vector[5] a;`
-* 2-dimensional matrix: `matrix[6,7] b;` (all matrices are matrices of reals).
-* 2-dimensional array of reals: ``real b[6,7];``
-* array of vectors: `vector[7] b[6];`
-* array of row vetor: `row_vector[7] b[6];`
+* 2-dimensional matrix: `matrix[2,3] b;` (all matrices are matrices of reals).
+* 2-dimensional array of reals: `real b[2,3];`
+* array of vectors: `vector[3] b[2];`
+* array of row vetor: `row_vector[2] b[3];`
 
 ### Stan variable definitions as JSON name : value pairs
 
+Data declarations, corresponding JSON data definitions:
+* primitive int: `int i;`  JSON `"i" : 17`
+* primitive real: `real a;` JSON `"a" : 17` `"a" : 17.2` <br>
+* to represent the real values  "NaN" and positive an negative infinity, we could use strings "NaN", "+inf", "-inf"
+* 1-dimensional array of reals:  `real a[5];`  JSON `"a" : [ 1, 2, 3.3, 4.0, 5 ]`
+* 1-dimensional vector:  `real a[5];`  JSON  `"a" : [ 1, 2, 3.3, 4.0, 5 ]`
+* 1-dimensional row_vector: `row_vector[5] a;` JSON  `"a" : [ 1, 2, 3.3, 4.0, 5 ]`
+* 2-dimensional matrix: `matrix[2,3] b;` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`<br>
+(even though Stan matrices are stored in column order).
+* 2-dimensional array of reals: ``real b[2,3];` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`
+* array of vectors: `vector[3] b[2];` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`
+* array of vectors: `vector[3] b[2];` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`
+* array of row vetor: `row_vector[2] b[3];` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`
+
+A data file would be a single object consisting of multiple name-value pairs.
+`{ "a" : 17, "b" : [ 1, 1.1, -9e5 ] }`
