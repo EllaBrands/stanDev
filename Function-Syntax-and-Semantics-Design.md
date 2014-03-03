@@ -95,34 +95,28 @@ Local block declarations work as usual in Stan, requiring sizes to be specified 
 
 * In order to pass the C++ compiler without warnings and provide warnings ourselves, we should try to pick up programs that have executions ending in something other than a return.  This can only be heuristic due to undecidability.  
 
-* Syntactically, we can check that the final statement in a program (including all of its conditional branches) end in a return statement.  This is stricter than C++.  It is defined recursively by
+* Syntactically, we will check that the final statement in a program (including all of its conditional branches) end in a return statement.  This is stricter than C++, which issues a warning and then has unspecified behavior. Ending in a return statement is defined recursively by
     * a return statement ends in a return statement
     * an exception ends in a return statement
     * a block ends in a return statement if its final statement ends in a return statement
-    * a conditional ends in a return statement if each of its conditional blocks ends in a return statement
+    * a conditional ends in a return statement if each of its conditional blocks ends in a return statement and there is a default block that also ends in a return statement
     * a while loop ends in a return statement if its body block ends in a return statement
+    * a function call ends in a return statement
 
-* C++ only issues warnings, not errors if there is not a return.  But it does provide a bogus return value without griping (no idea how it's defined).  I tried this
-
+* ALTERNATIVE: (suggested by Daniel) Just add a final statement that throws an exception, which can be done syntactically without warnings by adding
     ```
-    #include <iostream>
-    int foo() {
-      for (int i = 0; i < 10; ++i)
-        if (i > 20) return i;
-    }
-    int main() {
-      std::cout << "foo()=" << foo() << std::endl;
-    }
+    if (true) throw_no_return(function_name);
     ```
-and it printed `foo()=-1` in clang++ and g++ at optimization 0 and `foo()=7` at optimization 3 in g++.  So it looks like more unspecified behavior.
+where the support function is defined by
 
-* We could simplify by just returning a default value of the return type if the program exits without a return.  This could be coded in C++ after a return with something like:
-
+   ```
+    void throw_no_return(const std::string& function_name) {
+      std::string msg("reached end of function '");
+      msg += function_name;
+      msg += "' without returning";
+      throw std::logic_error(msg);
+    } 
     ```
-    if (true) return default_simplex();
-    ```
-where it's the minimal size meeting all the constraints (treat like zero-inits).  This doesn't cause g++ to gripe, even with `-Wall` option.
-
 
 ### Input and Output Validation
 
@@ -273,6 +267,5 @@ allow a call like
 ####  QUESTIONS
 
 * (from Ben) Can we allow PRNGs so that we can implement a D.I.Y. Gibbs sampler?  (Probably not.)
-
 
 
