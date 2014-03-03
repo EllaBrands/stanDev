@@ -54,18 +54,7 @@ following the syntax of the print statement, which means it can take any number 
     ```
 * All constants used for sizing must be declared as arguments before the types in which they appear;  so it would not be legal to reverse the order of `K` and `v` above.
 
-* The return type logically follows the argument types in order for its size to be specified.
-
-* ALTERNATIVE:  An option that differs from other Stan variable declarations would be to allow containers such as vectors and arrays to be declared without sizes, e.g.,
-    ```
-    vector[] bar(vector[] a[], matrix[,] b[,]);
-    ```
-An even more minimal approach would also remove the brackets, e.g.,
-    ```
-    vector bar(vector a[], matrix b[,]);
-    ```
-This last approach is cleanest, but most unlike Stan's existing variable declaration syntax.
-    * A related alternative would be to allow Stan variables to be declared without sizes in the data block, so that they could be read in that way.  Users have asked for this before.
+* The return type logically follows the argument types in order for its size to be specified.r
 
 ### Variable Scope and Local Variables
 
