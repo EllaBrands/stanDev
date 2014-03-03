@@ -84,6 +84,11 @@ Local block declarations work as usual in Stan, requiring sizes to be specified 
 
 * The log probability increment statement, `increment_log_prob(lp)`, is not allowed in functions (though see the section on submodels below).
 
+* The PRNG seed will only be available in functions declared with names ending in `-rng`, like in our existing functions
+    * in such functions, the existing PRNG functions will be callable
+    * PRNG functions won't be callable elsewhere
+    * submodels will not allow calling of PRNGs
+
 ### Return Statements
 
 * Return statements are allowed anywhere in functions
