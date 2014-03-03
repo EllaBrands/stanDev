@@ -147,9 +147,7 @@ where it's the minimal size meeting all the constraints (treat like zero-inits).
     ```
     return;
     ```
-or optionally a void return 
-    ```
-    return void;
+
 
 * Subroutines do not require a return;  a final return of void is implicit
 
