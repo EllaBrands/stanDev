@@ -265,6 +265,11 @@ allow a call like
     theta <- minimize(theta, loss, x, y, z);
     ```
 
+#### FUTURE: Unit testing framework
+
+* (from Daniel) We want to have a unit-testing framework that can access functions in a standalone way
+    * this should be possible because they will all be declared in the model namespace as staticsa
+
 ####  QUESTIONS
 
 * (from Ben) Can we allow PRNGs so that we can implement a D.I.Y. Gibbs sampler?  (Probably not.)
