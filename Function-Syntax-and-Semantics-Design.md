@@ -170,6 +170,8 @@ where it's the minimal size meeting all the constraints (treat like zero-inits).
 
 * Functions and subroutines will be called by constant reference, i.e., declared in C++ as `const T&` for whatever type `T` is used for the arguments
 
+* ALTERNATIVE:  Marcus suggested calling by non-constant reference in order to more easily support multiple returns without additional data types.  I'm afraid that this will confuse users in the declarations, but maybe not.  If we start with only constant references, then we'd have to mark the non-constant ones later, which is the reverse of the C/C++ convention.
+
 ### FUTURE:  Defining New Probability Functions
 
 * We could follow existing practice of taking any function ending in `_log` to define a new probability density.  So if we want to define y in terms of regression coefficient and noise scale, it'd be
