@@ -248,3 +248,16 @@ and
     (y,alpha,beta,sigma) ~ linear_regression(x);
     ```
 
+#### FUTURE:  Solvers for Functions
+
+* Along the lines of diffeq solvers, add a solver for functions, e.g. (from Ben) with a function
+    ```
+    real loss(real theta, real x, real y, real z);
+    ```
+allow a call like 
+
+    ```
+    theta <- minimize(theta, loss, x, y, z);
+    ```
+
+
