@@ -80,9 +80,9 @@ This last approach is cleanest, but most unlike Stan's existing variable declara
     ```
 Local block declarations work as usual in Stan, requiring sizes to be specified with variables that exist in scope. 
 
-* The log probability accumulator, `lp__`, is not in scope for functions (see below for subroutines)
+* The log probability accumulator, `lp__`, is not in scope for functions (see below for submodels)
 
-* The log probability increment statement, `increment_log_prob(lp)`, is not allowed in functions (though see the section on subroutines below).
+* The log probability increment statement, `increment_log_prob(lp)`, is not allowed in functions (though see the section on submodels below).
 
 ### Return Statements
 
@@ -136,29 +136,36 @@ where it's the minimal size meeting all the constraints (treat like zero-inits).
 
 * Argument types will be validated syntactically by the parser for user-defined functions just like any other function
 
-* Functions will not be usable as expressions;  see the section on subroutines below
+* Functions will not be usable as expressions;  see the section on submodels below
 
-### Subroutines
+### Submodels
 
-* Stan will allow subroutines that will be declared like functions with a `void` return type
+* Stan will allow submodels that will be declared like functions but with no return type
 
-* Subroutines will allow return statements without a value. 
+* Submodels will be declared in their own block after the functions block and before the data block, e.g.,
+
+    ```
+    submodels {
+      normal(...) { ... }
+    }
+
+* Submodels will allow return statements without a value. 
 
     ```
     return;
     ```
 
 
-* Subroutines do not require a return;  a final return of void is implicit
+* Submodels do not require a return;  a final return is implicit
 
-* The log probability increment statement, `increment_log_prob()`, should be legal in subroutines but not in functions.  
-    * subroutines with that increment the log prob accumulator need to get expanded at compile time to take the `lp__` variable as their first or last argument and then to be passed that value automatically when called.
-    * subroutines that involve log probabilities will not be allowed in blocks where `lp__` is not defined.
+* The log probability increment statement, `increment_log_prob()`, is legal in submodels but not in functions.  
+    * submodels with that increment the log prob accumulator need to get expanded at compile time to take the `lp__` variable as their first or last argument and then to be passed that value automatically when called.
+    * submodels that involve log probabilities will not be allowed in blocks where `lp__` is not defined.
 
-* Here's an example of how a subroutine would be declared (the scale should get a lower bound if constraints are allowed)
+* Here's an example of how a submodel would be declared (the scale should get a lower bound if constraints are allowed)
 
     ```
-    void linear_regression(vector y, vector x, real alpha, real beta, real sigma, vector x) {
+    linear_regression(vector y, vector x, real alpha, real beta, real sigma, vector x) {
       sigma ~ cauchy(0, 2.5);
       alpha ~ cauchy(0, 2.5);
       beta ~ cauchy(0,2.5);
@@ -168,7 +175,7 @@ where it's the minimal size meeting all the constraints (treat like zero-inits).
 
 ### Call by Constant Reference
 
-* Functions and subroutines will be called by constant reference, i.e., declared in C++ as `const T&` for whatever type `T` is used for the arguments
+* Functions and submodels will be called by constant reference, i.e., declared in C++ as `const T&` for whatever type `T` is used for the arguments
 
 * ALTERNATIVE:  Marcus suggested calling by non-constant reference in order to more easily support multiple returns without additional data types.  I'm afraid that this will confuse users in the declarations, but maybe not.  If we start with only constant references, then we'd have to mark the non-constant ones later, which is the reverse of the C/C++ convention.
 
