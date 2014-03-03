@@ -120,7 +120,10 @@ where the support function is defined by
 
 ### Input and Output Validation
 
-* The proposed implementation will not allow constrained inputs or outputs, which follows Stan's existing functions, none of which are intrinsically constrained.
+* The proposed implementation will allow constrained input or output types
+    * constrained input types allow any conforming expression, not just variables
+    * inputs will be checked on function calls, raising `std::illegal_argument` exception if violated
+    * ouptuts will be checked on return, also raising `std::illegal_argument` exception if violated
 
 * This requires the program itself to validate it's output.
 
