@@ -106,6 +106,7 @@ where the support function is defined by
       throw std::logic_error(msg);
     } 
     ```
+This will only be used if the above is too tricky to implement.
 
 ### Input and Output Validation
 
@@ -115,11 +116,6 @@ where the support function is defined by
     * ouptuts will be checked on return, also raising `std::illegal_argument` exception if violated
 
 * This requires the program itself to validate it's output.
-
-* ALTERNATIVE:  If we allow declarations of arguments and return values as simplex, cov_matrix, etc., then
-    * inputs should be validated on input
-    * outputs should be validated on return
-    * if an illegal input or output is encountered, an exception should be raised
 
 ### Function application is an expression
 
@@ -174,7 +170,7 @@ where the support function is defined by
 
 * Functions and submodels will be called by constant reference, i.e., declared in C++ as `const T&` for whatever type `T` is used for the arguments
 
-* ALTERNATIVE:  Marcus suggested calling by non-constant reference in order to more easily support multiple returns without additional data types.  I'm afraid that this will confuse users in the declarations, but maybe not.  If we start with only constant references, then we'd have to mark the non-constant ones later, which is the reverse of the C/C++ convention.
+* FUTURE:  Marcus suggested calling by non-constant reference in order to more easily support multiple returns without additional data types.  I'm afraid that this will confuse users in the declarations, but maybe not.  If we start with only constant references, then we'd have to mark the non-constant ones later, which is the reverse of the C/C++ convention.
 
 ### FUTURE:  Defining New Probability Functions
 
