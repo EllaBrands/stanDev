@@ -142,21 +142,27 @@ where the support function is defined by
 
 ### Submodels
 
-* Stan will allow submodels that will be declared like functions but with no return type
+* Stan will allow submodels that will be declared like functions but with no return type, e.g.,
+    ```
+    foo(real y, real mu, real sigma) {
+      y ~ normal(mu,sigma);
+      mu ~ cauchy(0,2.5);
+      sigma ~ cauchy(0,5.0);
+    }
+    ```
 
 * Submodels will be declared in their own block after the functions block and before the data block, e.g.,
 
     ```
-    submodels {
-      normal(...) { ... }
-    }
+    functions { ... } 
+    submodels { ... }
+    data { ...}
 
 * Submodels will allow return statements without a value. 
 
     ```
     return;
     ```
-
 
 * Submodels do not require a return;  a final return is implicit
 
