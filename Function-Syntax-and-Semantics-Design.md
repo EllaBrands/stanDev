@@ -260,4 +260,9 @@ allow a call like
     theta <- minimize(theta, loss, x, y, z);
     ```
 
+####  QUESTIONS
+
+* (from Ben) Can we allow PRNGs so that we can implement a D.I.Y. Gibbs sampler?  (Probably not.)
+
+
 
