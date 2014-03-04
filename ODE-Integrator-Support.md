@@ -308,6 +308,14 @@ The question then arises as to whether we build dosing into the diff-eq model sp
 
 We have some basic simulated PK/PD data that we've managed to fit using dosing.  Still in non-stiff setting, and so far we've only evaluated the PD model with the slower auto-diff the integrator approach.
 
+## Other Systems
+
+* [Monolix](http://tutorial.lixoft.net)
+
+* [NONMEM](http://www.iconplc.com/nonmem)
+
+* [GNU MCSim](http://www.gnu.org/software/mcsim/)
+
 ## References
 
 I've found these very useful so far.
@@ -329,4 +337,3 @@ There are several collections of models that are useful.  Here are the BUGS mode
 And here's a reference from Sebastian Weber about models used in Pharma:
 
 6. http://www.lixoft.eu/wp-content/resources/docs/PKPDlibrary.pdf
-
