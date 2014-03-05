@@ -9,7 +9,7 @@ Model data is read in by the model constructor.
 Model parameters are used to initialize the sampler and optimizer.
 
 The current data file format is a series of R dump statments which assign values to variables.
-To use JSON notation instead, instead of assignment statements, a data definition would be expressed as a name value pair consisting of the variable name and a value of the proper type.
+To use JSON notation instead, instead of assignment statements, a data definition would be expressed as a name value pair consisting of the variable name and a value of the proper type.  To make the data file a well formed JSON object, the data defitions are separated by commas and the entire set of definitions are enclosed by curly braces.
 
 ##  JSON
 
@@ -59,8 +59,8 @@ Stan data and parameters are declaired in the model file.  See Stan reference ma
 
 Data declarations, corresponding JSON data definitions:
 * primitive int: `int i;`  JSON `"i" : 17`
-* primitive real: `real a;` JSON `"a" : 17` `"a" : 17.2` <br>
-
+* primitive real: `real a;` JSON `"a" : 17` `"a" : 17.2`<br>
+for NaN, +inf, -inf:  JSON `"a" : "NaN"` `"a" : "+inf"`
 * 1-dimensional array of reals:  `real a[5];`  JSON `"a" : [ 1, 2, 3.3, 4.0, 5 ]`
 * 1-dimensional vector:  `real a[5];`  JSON  `"a" : [ 1, 2, 3.3, 4.0, 5 ]`
 * 1-dimensional row_vector: `row_vector[5] a;` JSON  `"a" : [ 1, 2, 3.3, 4.0, 5 ]`
@@ -71,5 +71,7 @@ Data declarations, corresponding JSON data definitions:
 * array of vectors: `vector[3] b[2];` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`
 * array of row vetor: `row_vector[2] b[3];` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`
 
-A data file would be a single object consisting of multiple name-value pairs.
-`{ "a" : 17, "b" : [ 1, 1.1, -9e5 ] }`
+A data file would be a single object consisting of multiple name-value pairs.<br>
+`{ "a" : 17, "b" : [ 1, 1.1, -9e5 ] }`<br>
+`{ "N" : 10, "y" : [ 0, 1, 0, 0, 0, 0, 0, 0, 0, 1] }`
+
