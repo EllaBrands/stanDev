@@ -61,7 +61,8 @@ Data declarations, corresponding JSON data definitions:
 * primitive int: `int i;`  JSON `"i" : 17`
 * primitive real: `real a;` JSON `"a" : 17` `"a" : 17.2`<br>
 for NaN, +inf, -inf:  JSON `"a" : "NaN"` `"a" : "+inf"`
-* 1-dimensional array of reals:  `real a[5];`  JSON `"a" : [ 1, 2, 3.3, 4.0, 5 ]`
+* 1-dimensional array of reals:  `real a[5];`  JSON `"a" : [ 1, 2, 3.3, 4.0, 5 ]`<br>
+because JSON doesn't require array elements to all be of the same type, the string representations for NaN and the infinities are also syntactically valid.
 * 1-dimensional vector:  `real a[5];`  JSON  `"a" : [ 1, 2, 3.3, 4.0, 5 ]`
 * 1-dimensional row_vector: `row_vector[5] a;` JSON  `"a" : [ 1, 2, 3.3, 4.0, 5 ]`
 * 2-dimensional matrix: `matrix[2,3] b;` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`<br>
