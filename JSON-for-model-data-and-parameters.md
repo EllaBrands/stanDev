@@ -48,12 +48,12 @@ Stan data and parameters are declaired in the model file.  See Stan reference ma
 * primitive int: `int i;`
 * primitive real: `real a;`
 * 1-dimensional array of reals:  `real a[5];`
-* 1-dimensional vector:  `real a[5];`  (all vectors are vectors of reals).
+* 1-dimensional vector:  `vector[5] a;`  (all vectors are vectors of reals).
 * 1-dimensional row_vector: `row_vector[5] a;`
 * 2-dimensional matrix: `matrix[2,3] b;` (all matrices are matrices of reals).
 * 2-dimensional array of reals: `real b[2,3];`
 * array of vectors: `vector[3] b[2];`
-* array of row vetor: `row_vector[2] b[3];`
+* array of row vector: `row_vector[2] b[3];`
 
 ### Stan variable definitions as JSON name : value pairs
 
@@ -69,8 +69,7 @@ because JSON doesn't require array elements to all be of the same type, the stri
 (even though Stan matrices are stored in column order).
 * 2-dimensional array of reals: `real b[2,3];` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`
 * array of vectors: `vector[3] b[2];` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`
-* array of vectors: `vector[3] b[2];` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`
-* array of row vetor: `row_vector[2] b[3];` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`
+* array of row vector: `row_vector[2] b[3];` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`
 
 A data file would be a single object consisting of multiple name-value pairs.<br>
 `{ "a" : 17, "b" : [ 1, 1.1, -9e5 ] }`<br>
