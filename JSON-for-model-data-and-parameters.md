@@ -65,13 +65,15 @@ for NaN, +inf, -inf:  JSON `"a" : "NaN"` `"a" : "+inf"`
 because JSON doesn't require array elements to all be of the same type, the string representations for NaN and the infinities are also syntactically valid.
 * 1-dimensional vector:  `real a[5];`  JSON  `"a" : [ 1, 2, 3.3, 4.0, 5 ]`
 * 1-dimensional row_vector: `row_vector[5] a;` JSON  `"a" : [ 1, 2, 3.3, 4.0, 5 ]`
-* 2-dimensional matrix: `matrix[2,3] b;` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`<br>
+* 2-dimensional matrix: `matrix[2,3] b;` JSON `"b" : [ [ 1, 2, 3 ] , [ 4, 5, 6 ] ]`<br>
 (even though Stan matrices are stored in column order).
-* 2-dimensional array of reals: `real b[2,3];` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`
-* array of vectors: `vector[3] b[2];` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`
-* array of row vector: `row_vector[2] b[3];` JSON `"b" : [ [ 1, 2, 3] , [4, 5, 6] ]`
+* 2-dimensional array of reals: `real b[2,3];` JSON `"b" : [ [ 1, 2, 3] , [ 4, 5, 6 ] ]`
+* higher dimensional arrays are possible, where dimensions are ordered first to last, which generalizes the row-major order for the above example.  E.g., `real c[2,3,2]` (two rows, three columns, 2 shelves) would be declared in JSON as `"c" : [ [ [ 1, 2 ] , [ 3, 4 ] , [ 5, 6 ] ] , [ [ 7, 8 ] , [ 9 , 10 ] , [ 11, 12 ] ] ]`
+* array of vectors: `vector[3] b[2];` JSON `"b" : [ [ 1, 2, 3 ] , [ 4, 5, 6 ] ]`
+* array of row vector: `row_vector[2] b[3];` JSON `"b" : [ [ 1, 2 ], [ 3, 4 ], [ 5, 6 ] ]`
 
 A data file would be a single object consisting of multiple name-value pairs.<br>
 `{ "a" : 17, "b" : [ 1, 1.1, -9e5 ] }`<br>
-`{ "N" : 10, "y" : [ 0, 1, 0, 0, 0, 0, 0, 0, 0, 1] }`
+`{ "N" : 10, "y" : [ 0, 1, 0, 0, 0, 0, 0, 0, 0, 1 ] }`
+
 
