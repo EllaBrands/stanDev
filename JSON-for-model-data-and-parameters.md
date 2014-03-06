@@ -71,6 +71,8 @@ because JSON doesn't require array elements to all be of the same type, the stri
 * higher dimensional arrays are possible, where dimensions are ordered first to last, which generalizes the row-major order for the above example.  E.g., `real c[2,3,2]` (two rows, three columns, 2 shelves) would be declared in JSON as `"c" : [ [ [ 1, 2 ] , [ 3, 4 ] , [ 5, 6 ] ] , [ [ 7, 8 ] , [ 9 , 10 ] , [ 11, 12 ] ] ]`
 * array of vectors: `vector[3] b[2];` JSON `"b" : [ [ 1, 2, 3 ] , [ 4, 5, 6 ] ]`
 * array of row vector: `row_vector[2] b[3];` JSON `"b" : [ [ 1, 2 ], [ 3, 4 ], [ 5, 6 ] ]`
+* array of matrices: `matrix[2,3] c[4];` JSON `"c" : [ [ [ 1, 2, 3 ] , [ 4, 5, 6 ] ] , [ [ 7, 8, 9 ] , [ 10 , 11, 12 ] ] , [ [ 13, 14, 15 ] , [ 16, 17, 18 ] ] , [ [ 19, 20, 21 ] , [ 22, 23, 24 ] ] ]`
+* 2D array of vectors of length 4: `vector[4] c[2,3];` JSON `"c" : [ [ [ 1, 2, 3, 4], [ 5, 6, 7, 8] , [ 9, 10, 11, 12] ], [ [ 13, 14, 15, 16 ] , [ 17, 18, 19, 20 ] , [ 21, 22, 23, 24 ] ] ]`
 
 A data file would be a single object consisting of multiple name-value pairs.<br>
 `{ "a" : 17, "b" : [ 1, 1.1, -9e5 ] }`<br>
