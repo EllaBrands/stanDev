@@ -17,6 +17,7 @@
 
 * Given a function name and argument type sequence (i.e., the function signature), the return type must be unique
     * validate this uniqueness through the symbol table of functions, which must be updated as functions are declared
+    
 
 
 ### Syntax of Function Declarations and Definitions
@@ -43,7 +44,11 @@
         ```
         exception("N must be positive, but found N=",N);
         ```
-following the syntax of the print statement, which means it can take any number of arguments, the values of which will be concatenated together inot a string.
+following the syntax of the print statement, which means it can take any number of arguments, the values of which will be concatenated together into a string.
+
+### Return Type
+
+* The underlying scalar for the return type, which may itself be a container, will be calculated through a traits-based metaprogram
 
 ### Container Sizing in Argument and Return Types
 
