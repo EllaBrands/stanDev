@@ -74,11 +74,11 @@ following the syntax of the print statement, which means it can take any number 
     ```
 Local block declarations work as usual in Stan, requiring sizes to be specified with variables that exist in scope. 
 
-* The log probability accumulator, `lp__`, is not in scope for functions (see below for submodels)
+* The log probability accumulator, `lp__`, is added as an extra argument to functions whose names end in `_lp`.  
+    * such functions will not be callable from transformed data or generated quantities blocks
+    * the log probability increment statement, `increment_log_prob(lp)`, is only allowed in functions with names ending in `lp__`
 
-* The log probability increment statement, `increment_log_prob(lp)`, is not allowed in functions (though see the section on submodels below).
-
-* The PRNG seed will only be available in functions declared with names ending in `-rng`, like in our existing functions
+* The PRNG seed will only be available in functions declared with names ending in `_rng`, like in our existing functions
     * in such functions, the existing PRNG functions will be callable
     * PRNG functions won't be callable elsewhere
     * submodels will not allow calling of PRNGs
