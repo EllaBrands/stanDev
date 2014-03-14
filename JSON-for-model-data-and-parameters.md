@@ -14,7 +14,7 @@ To use JSON notation instead, instead of assignment statements, a data definitio
 ##  JSON
 
 JSON is a data interchange notation, defined by an [ECMA standard](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).  JSON data must in a Unicode format.  JSON data is a series of structural tokens, literal tokens, and values.
-* Structural tokens are the left and right curly bracket, left and right square bracket, the semicolon, and the comma.  `{}{}:,`
+* Structural tokens are the left and right curly bracket, left and right square bracket, the semicolon, and the comma.  `{}[]:,`
 * Literal tokens must always be in lowercase.  There are three literal tokens: `true false null`
 * A primitive value is a single token which is either a literal, a string, or a number.
 * All numbers are decimal numbers.  Scientific notation is allowed.  The concepts of positive and negative infinity as well as "not a number" cannot be expressed as numbers in JSON.  
