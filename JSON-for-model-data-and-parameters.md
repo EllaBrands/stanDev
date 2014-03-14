@@ -39,7 +39,8 @@ To summarize: (taken from section "Stan Data Types" in the Stan manual)
 * In order to represent the real values  "NaN" and positive an negative infinity in JSON, we'd need to use strings, e.g., "NaN", "+inf", "-inf"
 * Integer or real types may be constrained with lower bounds, upper bounds, or both.
 * The compound data types include vector (of real values), row_vector (of real values), and matrix (of real values).
-* Stan supports arrays of arbitrary order of any of the basic data types or constrained basic data types.  * There are four constrained vector data types, simplex for unit simplexes, unit_vector for unit-length vectors, ordered for ordered vectors of scalars and positive_ordered for vectors of positive ordered scalars. There are specialized matrix data types corr_matrix and cov_matrix for correlation and covariance matrices.
+* Stan supports arrays of arbitrary order of any of the basic data types or constrained basic data types.
+* There are four constrained vector data types, simplex for unit simplexes, unit_vector for unit-length vectors, ordered for ordered vectors of scalars and positive_ordered for vectors of positive ordered scalars. There are specialized matrix data types corr_matrix and cov_matrix for correlation and covariance matrices.
 * Stan supports arrays of arbitrary order of any of the basic data types or constrained basic data types.
 
 ### Variable declarations
