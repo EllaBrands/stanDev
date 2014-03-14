@@ -18,7 +18,7 @@ JSON is a data interchange notation, defined by an [ECMA standard](http://www.ec
 * Literal tokens must always be in lowercase.  There are three literal tokens: `true false null`
 * A primitive value is a single token which is either a literal, a string, or a number.
 * All numbers are decimal numbers.  Scientific notation is allowed.  The concepts of positive and negative infinity as well as "not a number" cannot be expressed as numbers in JSON.  
-* A string consists of zero or more Unicode characters or control sequences enclosed in double quotes.  A backslash is used to escape the double quote character as well as the backslash itself.
+* A string consists of zero or more Unicode characters enclosed in double quotes.  A backslash is used to escape the double quote character as well as the backslash itself. JSON allows the use of Unicode character escapes, e.g. `\uHHHH` where HHHH is the Unicode code point in hex. 
 * A name-value pair consists of a string followed by a colon followed by a value, either primitive or compound.
 * A JSON object is a comma-separated series of zero or more name-value pairs enclosed in curly brackets.  Each name-value pair is a member of the object.  Membership is unordered.  Member names are not required to be unique.
 * A JSON array is an ordered, comma-separated list of zero or more JSON values enclosed in square brackets.  The elements of an array can be of any type.   
