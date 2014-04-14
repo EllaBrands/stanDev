@@ -10,7 +10,7 @@ If there are parameters involved in the definition of the differential equation,
 
 2.   Differentiate a coupled system consisting of the original state variables coupled with derivatives of the state variables with respect to the parameters. 
 
-The derivatives required for the coupled system could themselves be evaluated by 
+The derivatives required for the coupled system could themselves be evaluated by auto-diff.
 
 ### Handling Stiff ODEs
 
