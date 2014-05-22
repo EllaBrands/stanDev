@@ -1,13 +1,5 @@
 The Stan Wiki here on GitHub is primarily intended for developers.
 
-### To-Do List
-
-In addition to in GitHub's issue tracker, which has bugs and some imminent features, there is a longer, less well-defined work plan:
-
-* [Stan To-Do List](wiki/To-Do-List)
-
-This is a good Wiki to read if you're looking for a coding project related to Stan.
-
 ### Design Documents
 
 Some in-process designs for new Stan features:
@@ -51,3 +43,9 @@ If you want to contribute a new function to Stan:
 ### Suites of Model Examples
 
 * [Examples from BUGS and ARM](wiki/Example-Stan-Models)
+
+### Out-of-Date To-Do List
+
+GitHub's issue tracker is more up to date and contains a `project` tag if you're looking for projects. An older list of to-do items, with some more ambitious projects, is here:
+
+* [Stan To-Do List](wiki/To-Do-List)
