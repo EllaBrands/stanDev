@@ -31,6 +31,9 @@
   * [BUGS Background](http://www.openbugs.net/Examples/Kidney.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/kidney)
   * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/kidney/kidney.stan)
+* Litter
+  * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/litter)
+  * [Stan Code](https://github.com/stan-dev/stan/blob/master/src/models/bugs_examples/vol1/litter/litter.stan)
 * Leuk: "Cox regression"
   * [BUGS Background](http://www.openbugs.net/Examples/Leuk.html) 
   * [Stan Files](https://github.com/stan-dev/stan/tree/master/src/models/bugs_examples/vol1/leuk)
