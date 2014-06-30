@@ -160,17 +160,17 @@ lmer (y ~ female + black + female:black + (1 | age) + (1 | edu) + (1 | age_edu) 
 
 #### Electric
 
-   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_one_pred.stan): linear model with one predictor
+   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_tr.stan): linear model with one predictor
 ```
 lm (post_test ~ treatment)
 ```
 
-   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_multi_preds.stan): linear model with two predictors  
+   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_trpre.stan): linear model with two predictors  
 ```
 lm (post_test ~ pre_test + treatment)
 ```
 
-   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_interactions.stan): linear model with two predictors and interaction  
+   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_inter.stan): linear model with two predictors and interaction  
 ```
 lm (post_test ~ pre_test + treatment + pre_test:treatment)
 ```
