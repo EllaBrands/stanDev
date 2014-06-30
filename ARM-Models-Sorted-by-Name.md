@@ -349,7 +349,7 @@ lm (log_weight ~ log_canopy_volume + log_canopy_area + log_canopy_shape + log_to
 lm (partyid7 ~ real_ideo + race_adj + age30_44 + age45_64 + age65up + educ1 + gender + income)
 ```
 
-   * [nes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/nes.stan): generalized linear model with  logit link function and one predictor  
+   * [nes](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/nes_logit.stan): generalized linear model with  logit link function and one predictor  
 ```
 glm (vote ~ income, family=binomial(link="logit"))
 ```
