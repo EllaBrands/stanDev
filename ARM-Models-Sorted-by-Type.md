@@ -25,9 +25,13 @@ Below are the types of regression models that have been categorized and coded in
 * [Logistic Regression Models](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#logistic-regression-models)
   * [Varying Intercept](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#varying-intercept-1)
   * [Multiple Group-Level Factors](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#multiple-group-level-factors-1)
+  * [Other](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#other)
 * [Other Generalized Linear Regression Models](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#other-generalized-linear-regression-models-1)
-  * [Other Binomial](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#other-binomial)
+  * [Bernoulli](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#bernoulli)
+  * [Categorical](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#categorical)
   * [Multivariate Normal](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#multivariate-normal)
+  * [Poisson](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#poisson)
+  * [Robit](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Type#robit)
 
 ***
 
