@@ -790,7 +790,7 @@ lmer (y ~ x + (1 + u | county))
 
   * [17.3 Non-nested Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.3_non-nested_models.R)
 
-    * [17.3_flight_simulator](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.3_flight_simulator.stan): varying intercept model
+    * [17.3_flight_simulator](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.3_flight_simulator.stan): varying intercept model      
 `
 lmer(y ~ 1 + (1 | treatment) + (1 | airport))
 `
