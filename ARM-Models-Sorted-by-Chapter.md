@@ -693,6 +693,48 @@ lmer (y ~ black + female + black:female + v.prev.full + (1 | age) + (1 | edu) + 
 
 ***
 
+#### [Chapter 16 - Multilevel Modeling in Bugs and R: the Basics](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.16)
+
+  * [16.3 Fitting and Understanding a Varying Intercept Multilevel Model Using RStan](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/16.3_FittingAndUnderstangingAVaryingInterceptMultilevelModelUsingRStan.R)
+
+  * [16.4 Step by Step through a Stan Model](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/16.4_StepByStepThroughAStanModel.R)
+
+  * [16.5 Adding Individual and Group Level Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/16.5_AddingIndividualAndGroupLevelPredictors.R)
+
+  * [16.6 Predictions](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/16.6_Predictions.R)
+
+  * [16.7 Fake Data Simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/16.7_Fake-dataSimulation.R)
+
+  * [16.8 Principles of Modeling in Stan](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/16.8_PrinciplesOfModelingInStan.R)
+
+***
+
+#### [Chapter 17 - Fitting Multilevel Linear and Generalized Linear Models in Bugs and R](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.17)
+
+  * [17.1 Varying Intercepts and Varying Slope Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_Varying-intercepts%2C%20varying-slopes%20models.R)
+
+  * [17.2 Varying Intercept and Slope Models with Group Level Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.2_varying_intercept_slope_with_group_level_predictors.R)
+
+  * [17.3 Non-nested Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.3_non-nested_models.R)
+
+  * [17.4 Multilevel Logistic Regression]
+
+  * [17.5 Multilevel Poisson Regression]
+
+  * [17.6 Multilevel Ordered Categorical Regression]
+
+  * [17.7 Latent-data Parameterizations of GLM]
+
+***
+
+#### [Chapter 18 - Likelihood and Bayesian Inference and Computation](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.18)
+
+  * [18.3 Bayes for Classical and Multilevel Regression](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.18/18.3_BayesForClassicalAndMultilevelRegression.R)
+
+  * [18.5 Censored Data](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.18/18.5_CensoredData.R)
+
+***
+
 #### [Chapter 19 - Debugging and Speeding Convergence](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.19)
 
   * [19.2 General Methods for Reducing Computational Requirements] (https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.19/19.2_GeneralMethodsForReducingComputationalRequirements.R)
@@ -977,14 +1019,4 @@ lm (earnings ~ male + over65 + white + immig + educ_r + any_ssi + any_welfare + 
 lm (earnings ~ interest + male + over65 + white + immig + educ_r + workmos + workhrs_top + any_ssi 
                + any_welfare + any_charity)
 `
-
-***
-
-THE BELOW CHAPTERS HAVE NOT BEEN ADDED YET.
-
-#### [Chapter 16 - Multilevel Modeling in Bugs and R: the Basics](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.16)
-
-#### [Chapter 17 - Fitting Multilevel Linear and Generalized Linear Models in Bugs and R](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.17)
-
-#### [Chapter 18 - Likelihood and Bayesian Inference and Computation](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.18)
  
