@@ -105,6 +105,13 @@ lm (y ~ watched_hat)
 ```
 lm (y ~ y_lag)
 ```
+   * [weight](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.18/weight.stan): centered linear model
+``` 
+lm (y ~ c_height + 1)
+```
+   
+   * [weight_censored](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.18/weight_censored.stan): censored weight model
+
 
 #### Multiple Predictors with No Interaction
 
