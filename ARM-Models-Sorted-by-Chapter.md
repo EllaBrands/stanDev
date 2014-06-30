@@ -768,6 +768,16 @@ lmer (y ~ x + (1 + u | county))
 
   * [17.1 Varying Intercepts and Varying Slope Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_Varying-intercepts%2C%20varying-slopes%20models.R)
 
+    * [17.1_radon_multi_varying_coef](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_radon_multi_varying_coef.stan): multiply varying coefficients model
+
+    * [17.1_radon_vary_inter_slope](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_radon_vary_inter_slope.stan): varying intercept and slope model
+
+    * [17.1_radon_correlation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_radon_correlation.stan): varying intercept and slope model with correlation between slopes and intercepts
+
+    * [17.1_wishart](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_wishart.stan): scaled inverse wishart model
+
+    * [17.1_wishart2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_wishart.stan): two varying coefficients model with unmodeled individual-level coefficients
+
   * [17.2 Varying Intercept and Slope Models with Group Level Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.2_varying_intercept_slope_with_group_level_predictors.R)
 
   * [17.3 Non-nested Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.3_non-nested_models.R)
