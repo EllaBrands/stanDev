@@ -532,12 +532,12 @@ glm (switc ~ dist, family=binomial(link="logit"))
 glm (switc ~ dist100, family=binomial(link="logit"))
 ```
 
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions.stan): generalized linear model with logit link function and two predictors and interaction  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interaction.stan): generalized linear model with logit link function and two predictors and interaction  
 ```
 glm (switc ~ dist100 + arsenic + dist100:arsenic, family=binomial(link="logit"))
 ```
 
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions_c.stan): generalized linear model with logit link function with two predictors and interaction centered using mean   
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interaction_c.stan): generalized linear model with logit link function with two predictors and interaction centered using mean   
 ```
 glm (switc ~ c_dist100 + c_arsenic + c_dist100:c_arsenic, family=binomial(link="logit"))
 ```
