@@ -805,7 +805,7 @@ lmer(y ~ 1 + (1 | treatment) + (1 | airport))
 
   * 17.6 Multilevel Ordered Categorical Regression
 
-    * [17.6_multilevel_categorical](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.6_multilevel_categorical.stan): multilevel ordered categorical regression model
+    * [17.6_multilevel_ordered_categorical](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.6_multilevel_ordered_categorical.stan): multilevel ordered categorical regression model
 
   * 17.7 Latent-data Parameterizations of GLM
 
