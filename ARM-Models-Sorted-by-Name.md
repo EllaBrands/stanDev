@@ -422,11 +422,6 @@ lmer (y ~ x + (1 | county))
 lmer (y ~ x + (1 | county))
 ```
 
-   * [radon_vary_intercept_c](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.21/radon_vary_intercept_c.stan): multi-level linear model with varying intercept
-```
-lmer (y ~ x + u + (1 | county))
-```
-
    * [anova_radon_nopred](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.22/anova_radon_nopred.stan): multi-level linear model with varying intercept and set up for ANOVA
 ```
 lmer (y ~ 1 + (1 | county))
