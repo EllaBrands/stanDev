@@ -520,6 +520,17 @@ lm (y ~ y_lag)
 
 ***
 
+#### Weight
+
+   * [weight](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.18/weight.stan): centered linear model
+```
+lm (y ~ c_height + 1)
+```
+
+   * [weight_censored](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.18/weight_censored.stan): censored weight model
+
+***
+
 #### Wells
 
    * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_dist.stan): generalized linear model with logit link function and one predictor  
