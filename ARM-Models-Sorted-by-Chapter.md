@@ -695,17 +695,72 @@ lmer (y ~ black + female + black:female + v.prev.full + (1 | age) + (1 | edu) + 
 
 #### [Chapter 16 - Multilevel Modeling in Bugs and R: the Basics](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.16)
 
-  * [16.3 Fitting and Understanding a Varying Intercept Multilevel Model Using RStan](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/16.3_FittingAndUnderstangingAVaryingInterceptMultilevelModelUsingRStan.R)
+  * [16.3 Fitting and Understanding a Varying Intercept Multilevel Model Using RStan](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/16.3_FittingAndUnderstangingAVaryingInterceptMultilevelModelUsingRStan.R)   
+
+    * [radon.1](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/radon.1.stan): varying intercept model  
+` 
+lmer (y ~ x + (1 | county))
+`
+
+    * [radon.2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/radon.2.stan): varying intercept and slope model  
+` 
+lmer (y ~ x + (1 + x | county))
+`
 
   * [16.4 Step by Step through a Stan Model](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/16.4_StepByStepThroughAStanModel.R)
 
+    * [radon.1](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/radon.1.stan): varying intercept model  
+` 
+lmer (y ~ x + (1 | county))
+`
+
   * [16.5 Adding Individual and Group Level Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/16.5_AddingIndividualAndGroupLevelPredictors.R)
+
+    * [radon.pooling](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/radon.pooling.stan): pooled model  
+` 
+lm (y ~ x + 1)
+`
+
+    * [radon.nopooling](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/radon.pooling.stan): varying intercept model  
+` 
+lmer (y ~ x + (1 | county))
+`
 
   * [16.6 Predictions](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/16.6_Predictions.R)
 
+    * [radon.2a](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/radon.2a.stan): varying intercept and slope model with generated quantities   
+` 
+lmer (y ~ x + (1 + x | county))
+`
+
+    * [radon.2b](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/radon.2b.stan): varying intercept and slope model with generated quantities      
+` 
+lmer (y ~ x + (1 + x | county))
+`
+
+    * [radon.2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/radon.2.stan): varying intercept and slope model     
+` 
+lmer (y ~ x + (1 + x | county))
+`
+
   * [16.7 Fake Data Simulation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/16.7_Fake-dataSimulation.R)
 
+    * [radon.2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/radon.2.stan): varying intercept and slope model  
+` 
+lmer (y ~ x + (1 + x | county))
+`
+
   * [16.8 Principles of Modeling in Stan](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/16.8_PrinciplesOfModelingInStan.R)
+
+    * [radon.2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/radon.2.stan): varying intercept and slope model  
+` 
+lmer (y ~ x + (1 + x | county))
+`
+
+    * [radon.3](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.16/radon.3.stan): varying intercept and slope model  
+` 
+lmer (y ~ x + (1 + u | county))
+`
 
 ***
 
@@ -717,13 +772,13 @@ lmer (y ~ black + female + black:female + v.prev.full + (1 | age) + (1 | edu) + 
 
   * [17.3 Non-nested Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.3_non-nested_models.R)
 
-  * [17.4 Multilevel Logistic Regression]
+  * 17.4 Multilevel Logistic Regression
 
-  * [17.5 Multilevel Poisson Regression]
+  * 17.5 Multilevel Poisson Regression
 
-  * [17.6 Multilevel Ordered Categorical Regression]
+  * 17.6 Multilevel Ordered Categorical Regression
 
-  * [17.7 Latent-data Parameterizations of GLM]
+  * 17.7 Latent-data Parameterizations of GLM
 
 ***
 
