@@ -157,11 +157,11 @@ lmer (y ~ female + black + female:black + (1 | age) + (1 | edu) + (1 | age_edu) 
       family=binomial(link="logit"))
 ```
 
-    * [17.4_multilevel_logistic](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.4_multilevel_logistic.stan): multilevel logistic regression model
+   * [17.4_multilevel_logistic](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.4_multilevel_logistic.stan): multilevel logistic regression model
 
-    * [17.7_latent_glm](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.7_latent_glm.stan): latent-data parameterization of multilevel logistic regression model
+   * [17.7_latent_glm](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.7_latent_glm.stan): latent-data parameterization of multilevel logistic regression model
 
-    * [17.7_robit](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.7_robit.stan): robit regression model
+   * [17.7_robit](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.7_robit.stan): robit regression model
 
 ***
 
@@ -454,23 +454,23 @@ lmer (y ~ u + x + x_mean + (1 | county))
 lmer (y ~ u + (1 | county))
 ```
 
-    * [17.1_radon_multi_varying_coef](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_radon_multi_varying_coef.stan): multiply varying coefficients model
+   * [17.1_radon_multi_varying_coef](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_radon_multi_varying_coef.stan): multiply varying coefficients model
 
-    * [17.1_radon_vary_inter_slope](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_radon_vary_inter_slope.stan): varying intercept and slope model
+   * [17.1_radon_vary_inter_slope](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_radon_vary_inter_slope.stan): varying intercept and slope model
 
-    * [17.1_radon_correlation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_radon_correlation.stan): varying intercept and slope model with correlation between slopes and intercepts
+   * [17.1_radon_correlation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_radon_correlation.stan): varying intercept and slope model with correlation between slopes and intercepts
 
-    * [17.1_radon_wishart](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_radon_wishart.stan): scaled inverse wishart model
+   * [17.1_radon_wishart](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_radon_wishart.stan): scaled inverse wishart model
 
-    * [17.1_radon_wishart2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_radon_wishart2.stan): two varying coefficients model with unmodeled individual-level coefficients
+   * [17.1_radon_wishart2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_radon_wishart2.stan): two varying coefficients model with unmodeled individual-level coefficients
 
-    * [17.2_radon_multi_varying_coef](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.2_radon_multi_varying_coef.stan): multiply varying coefficients model with group level predictors
+   * [17.2_radon_multi_varying_coef](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.2_radon_multi_varying_coef.stan): multiply varying coefficients model with group level predictors
 
-    * [17.2_radon_vary_inter_slope](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.2_radon_vary_inter_slope.stan): varying intercept and slope model with group level predictors
+   * [17.2_radon_vary_inter_slope](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.2_radon_vary_inter_slope.stan): varying intercept and slope model with group level predictors
 
-    * [17.2_radon_correlation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.2_radon_correlation.stan): varying intercept and slope model with correlation between slopes and intercepts and group level predictors
+   * [17.2_radon_correlation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.2_radon_correlation.stan): varying intercept and slope model with correlation between slopes and intercepts and group level predictors
 
-    * [17.2_radon_wishart](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.2_radon_wishart.stan): scaled inverse wishart model with group level predictors
+   * [17.2_radon_wishart](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.2_radon_wishart.stan): scaled inverse wishart model with group level predictors
 
 ***
 
