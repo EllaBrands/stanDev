@@ -786,6 +786,26 @@ lmer (y ~ x + (1 + u | county))
 
   * [18.3 Bayes for Classical and Multilevel Regression](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.18/18.3_BayesForClassicalAndMultilevelRegression.R)
 
+    * [radon.1](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.18/radon.1.stan): varying intercept model  
+` 
+lmer (y ~ x + (1 | county))
+`
+
+    * [radon.2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.18/radon.2.stan): varying intercept and slope model  
+` 
+lmer (y ~ x + (1 + u | county))
+`
+
+    * [radon.pool](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.18/radon.pooling.stan): pooled model  
+` 
+lm (y ~ x + 1)
+`
+
+    * [radon.nopooling](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.18/radon.nopooling.stan): varying intercept model  
+` 
+lmer (y ~ x + (1 | county))
+`
+
   * [18.5 Censored Data](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.18/18.5_CensoredData.R)
 
 ***
