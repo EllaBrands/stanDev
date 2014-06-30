@@ -61,7 +61,7 @@ lm (log_earnings ~ height)
 lm (log10_earnings ~ height)
 ```
 
-   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_one_pred.stan): linear model with one predictor
+   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_tr.stan): linear model with one predictor
 ```
 lm (post_test ~ treatment)
 ```
