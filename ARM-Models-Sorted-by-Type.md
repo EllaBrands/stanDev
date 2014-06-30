@@ -461,6 +461,14 @@ lmer (y ~ theta + (theta | j))
 
 #### Varying Intercept and Slope
 
+   * [17.1_radon_vary_inter_slope](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_radon_vary_inter_slope.stan): varying intercept and slope model
+
+   * [17.1_radon_correlation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_radon_correlation.stan): varying intercept and slope model with correlation between slopes and intercepts
+
+   * [17.2_radon_vary_inter_slope](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.2_radon_vary_inter_slope.stan): varying intercept and slope model with group level predictors
+
+   * [17.2_radon_correlation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.2_radon_correlation.stan): varying intercept and slope model with correlation between slopes and intercepts and group level predictors
+
    * [earnings_vary_si](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.13/earnings_vary_si.stan): multi-level linear model with group level predictors         
 ```
 lmer (y ~ x (1 + x | ethn))
@@ -524,6 +532,14 @@ lmer (y ~ 1 + (1 | treatment) + (1 | airport))
 lmer (y ~ 1 + (1 | treatment) + (1 | airport))
 ```
 
+#### Other
+
+   * [17.1_radon_wishart](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_radon_wishart.stan): scaled inverse wishart model
+
+   * [17.1_radon_wishart2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_radon_wishart2.stan): two varying coefficients model with unmodeled individual-level coefficients
+
+   * [17.2_radon_wishart](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.2_radon_wishart.stan): scaled inverse wishart model with group level predictors
+
 ### Logistic Regression Models
 
 #### Varying Intercept
@@ -534,6 +550,10 @@ glmer (y ~ black + female + (1 | state), family=binomial(link="logit"))
 ```
 
 #### Multiple Group-Level Factors
+
+   * [17.4_multilevel_logistic](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.4_multilevel_logistic.stan): multilevel logistic regression model
+
+   * [17.7_latent_glm](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.7_latent_glm.stan): latent-data parameterization of multilevel logistic regression model
 
    * [dogs](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/dogs.stan): multi-level logit regression model
 
@@ -562,14 +582,31 @@ glmer (y ~ a:g + (a:g | k,j) + (g:b | k), family=binomial(link="logit"))
 
 ### Other Generalized Linear Regression Models
 
-#### Other Binomial
+#### Bernoulli
 
    * [dogs_log](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/dogs_log.stan): multi-level model using binomial distribution
 
    * [dogs_check](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.24/dogs_check.stan): multi-level model using binomial distribution
+
+#### Categorical
+ 
+   * [17.6_multilevel_ordered_categorical](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.6_multilevel_ordered_categorical.stan): multilevel ordered categorical regression model
+
 
 #### Multivariate Normal
 
    * [sesame_street1](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/sesame_street1.stan): multi-level linear model using multivariate normal
 
    * [sesame_street2](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.23/sesame_street2.stan): multi-level linear model using multivariate normal
+
+   * [17.1_radon_multi_varying_coef](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.1_radon_multi_varying_coef.stan): multiply varying coefficients model
+
+   * [17.2_radon_multi_varying_coef](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.2_radon_multi_varying_coef.stan): multiply varying coefficients model with group level predictors
+
+#### Poisson
+
+   * [17.5_multilevel_poisson](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.5_multilevel_poisson.stan): multilevel poisson regression model
+
+#### Robit
+
+   * [17.7_robit](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.7_robit.stan): robit regression model
