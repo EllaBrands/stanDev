@@ -222,7 +222,7 @@ lm (log_earnings ~ height + male + height:male)
 lm (log_earnings ~ z_height + male + z_height:male)
 ```
 
-   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_interactions.stan): linear model with two predictors and interaction  
+   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_inter.stan): linear model with two predictors and interaction  
 ```
 lm (post_test ~ pre_test + treatment + pre_test:treatment)
 ```
