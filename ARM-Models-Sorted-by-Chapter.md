@@ -780,6 +780,14 @@ lmer (y ~ x + (1 + u | county))
 
   * [17.2 Varying Intercept and Slope Models with Group Level Predictors](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.2_varying_intercept_slope_with_group_level_predictors.R)
 
+    * [17.2_radon_multi_varying_coef](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.2_radon_multi_varying_coef.stan): multiply varying coefficients model with group level predictors
+
+    * [17.2_radon_vary_inter_slope](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.2_radon_vary_inter_slope.stan): varying intercept and slope model with group level predictors
+
+    * [17.2_radon_correlation](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.2_radon_correlation.stan): varying intercept and slope model with correlation between slopes and intercepts and group level predictors
+
+    * [17.2_wishart](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.2_radon_wishart.stan): scaled inverse wishart model with group level predictors
+
   * [17.3 Non-nested Models](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.3_non-nested_models.R)
 
   * 17.4 Multilevel Logistic Regression
