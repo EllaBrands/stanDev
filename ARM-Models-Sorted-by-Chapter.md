@@ -797,11 +797,21 @@ lmer(y ~ 1 + (1 | treatment) + (1 | airport))
 
   * 17.4 Multilevel Logistic Regression
 
+    * [17.4_multilevel_logistic](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.4_multilevel_logistic.stan): multilevel logistic regression model
+  
   * 17.5 Multilevel Poisson Regression
+
+    * [17.5_multilevel_poisson](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.4_multilevel_poisson.stan): multilevel poisson regression model
 
   * 17.6 Multilevel Ordered Categorical Regression
 
+    * [17.6_multilevel_categorical](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.4_multilevel_categorical.stan): multilevel ordered categorical regression model
+
   * 17.7 Latent-data Parameterizations of GLM
+
+    * [17.7_latent_glm](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.7_latent_glm.stan): latent-data parameterization of multilevel logistic regression model
+
+    * [17.7_robit](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.17/17.7_robit.stan): robit regression model
 
 ***
 
