@@ -18,6 +18,7 @@
 * [Sesame](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#sesame)
 * [Statistical Calculations](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#statistical-calculations)
 * [Unemployment](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#unemployment)
+* [Weight](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#weight)
 * [Wells](https://github.com/stan-dev/stan/wiki/ARM-Models-Sorted-by-Name#wells)
 
 ***
