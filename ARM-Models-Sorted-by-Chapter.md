@@ -808,6 +808,13 @@ lmer (y ~ x + (1 | county))
 
   * [18.5 Censored Data](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.18/18.5_CensoredData.R)
 
+    * [weight](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.18/weight.stan): centered linear model
+` 
+lm (y ~ c_height + 1)
+`
+
+    * [weight_censored](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.18/weight_censored.stan): censored weight model
+
 ***
 
 #### [Chapter 19 - Debugging and Speeding Convergence](https://github.com/stan-dev/stan/tree/feature/ARM/src/models/ARM/Ch.19)
