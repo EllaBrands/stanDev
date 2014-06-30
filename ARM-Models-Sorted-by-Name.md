@@ -522,12 +522,12 @@ lm (y ~ y_lag)
 
 #### Wells
 
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_one_pred.stan): generalized linear model with logit link function and one predictor  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_dist.stan): generalized linear model with logit link function and one predictor  
 ```
 glm (switc ~ dist, family=binomial(link="logit"))
 ```
 
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_one_pred_scale.stan): generalized linear model with logit link function and one predictor  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_dist100.stan): generalized linear model with logit link function and one predictor  
 ```
 glm (switc ~ dist100, family=binomial(link="logit"))
 ```
@@ -537,46 +537,46 @@ glm (switc ~ dist100, family=binomial(link="logit"))
 glm (switc ~ dist100 + arsenic + dist100:arsenic, family=binomial(link="logit"))
 ```
 
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions_center.stan): generalized linear model with logit link function with two predictors and interaction centered using mean   
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions_c.stan): generalized linear model with logit link function with two predictors and interaction centered using mean   
 ```
 glm (switc ~ c_dist100 + c_arsenic + c_dist100:c_arsenic, family=binomial(link="logit"))
 ```
 
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_community.stan): generalized linear model with logit link function and four predictors and interaction centered using mean  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_daae_c.stan): generalized linear model with logit link function and four predictors and interaction centered using mean  
 ```
 glm (switc ~ c_dist100 + c_arsenic + c_dist100:c_arsenic + assoc + educ4, family=binomial(link="logit"))
 ```
 
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_social.stan): generalized linear model with logit link function and three predictors and interaction centered using mean  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_dae_c.stan): generalized linear model with logit link function and three predictors and interaction centered using mean  
 ```
 glm (switc ~ c_dist100 + c_arsenic + c_dist100:c_arsenic + educ4, family=binomial(link="logit"))
 ```
 
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_interactions_center_educ.stan): generalized linear model with logit link function and three predictors and interaction centered using mean  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_dae_inter_c.stan): generalized linear model with logit link function and three predictors and interaction centered using mean  
 ```
 glm (switc ~ c_dist100 + c_arsenic + c_educ4 + c_dist100:c_arsenic + c_dist100:c_educ4 + c_arsenic:c_educ4, 
      family=binomial(link="logit"))
 ```
 
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_log_transform.stan): generalized linear model with logit link function with three predictors and interaction with log transform and centered using mean   
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_predicted.stan): generalized linear model with logit link function with three predictors and interaction with log transform and centered using mean   
 ```
 glm (switc ~ c_dist100 + c_log_arsenic + c_educ4 + c_dist100:c_log_arsenic + c_dist100:c_educ4     
              + c_log_arsenic:c_educ4, 
      family=binomial(link="logit"))
 ```
 
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_log_transform2.stan): generalized linear model with logit link function with three predictors and interaction with log transform and centered using mean  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_predicted_log.stan): generalized linear model with logit link function with three predictors and interaction with log transform and centered using mean  
 ```
 glm (switc ~ dist100 + log_arsenic + educ4 + dist100:log_arsenic + dist100:educ4 + log_arsenic:educ4, 
      family=binomial(link="logit"))
 ```
 
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_edu.stan): generalized linear model with logit link function and three predictors  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_dae.stan): generalized linear model with logit link function and three predictors  
 ```
 glm (switc ~ dist100 + arsenic + educ4, family=binomial(link="logit"))
 ```
 
-   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_all.stan): generalized linear model with logit link function and three predictors with interaction  
+   * [wells](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.5/wells_dae_inter.stan): generalized linear model with logit link function and three predictors with interaction  
 ```
 glm (switc ~ dist100 + arsenic + educ4 + dist100:arsenic, family=binomial(link="logit"))
 ```
