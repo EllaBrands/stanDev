@@ -145,7 +145,7 @@ lm (earnings ~ male + over65 + white + immig + educ_r + workmos + workhrs_top + 
 lm (earnings ~ male + over65 + white + immig + educ_r + any_ssi + any_welfare + any_charity)
 ```
 
-   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_multi_preds.stan): linear model with two predictors  
+   * [electric](https://github.com/stan-dev/stan/blob/feature/ARM/src/models/ARM/Ch.9/electric_trpre.stan): linear model with two predictors  
 ```
 lm (post_test ~ pre_test + treatment)
 ```
