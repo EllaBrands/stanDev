@@ -109,6 +109,50 @@ model {
 
 The ODE defines a function ```harmonic_oscillator``` that takes an array of times and returns an array `x_hat` of values at those times.  The values in the array are of the same type as the state and the array has the same size (number of entries) as the time argument ```t```.  The value ```x0``` is the initial state for the ODE.  The argument `g` is for the parameter;  in general, there may be more than one parameter.  Note also that the parameter ```g``` here is also a parameter to the Stan model, meaning it's something we need to differentiate with respect to.  This is all handled in the definition of the function in the files `ho.hpp` or `ho2.hpp`.
 
+## Stan Language Decision
+
+For the first version, we're going to do the following;  the whole design discussion is below.
+
+#### System function 
+
+The parameterized, data-dependent system of diff eqs is defined by a Stan function with the following signature
+
+```
+vector f(real t,        // time            (double)
+         vector y,      // state           (double)
+         vector theta,  // parameters      (var or double)
+         vector x,      // real data       (double)
+         int[] xi);     // integer data    (int)
+```
+
+The return value is the vector of derivatives of
+
+```
+d/dt g(y)
+```
+
+where 
+
+```
+g(y) = f(t,y,theta,x,xi);
+```
+
+#### Integrator Call
+
+There will be a new expression type in Stan (not a new function in the usual sense because of the function argument), that looks like what would happen if we did have higher-order functions:
+
+```
+vector[] ode_solve(F f,
+                   vector y0,
+                   vector ts,
+                   vector theta,
+                   vector x,
+                   int[] xi,
+                   real t0);
+```
+
+This integration function will be built into Stan so it behaves like a function, using Michael's solution for the ODEs to figure out the derivative of the coupled system (see example above).
+
 ## Stan Language for Defining Systems of Differential Equations
 
 This section lists a few possible ways in which differential equations could be expressed in Stan's modeling language.  We were inspired by Frederic Bois's GNU package <a href="http://en.wikipedia.org/wiki/MCSim">MCSim</a>.
