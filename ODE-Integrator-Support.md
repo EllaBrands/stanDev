@@ -137,12 +137,12 @@ There will be a new expression type in Stan (not a new function in the usual sen
 
 ```
 vector[] ode_solve(F f,
+                   real t0,
                    vector y0,
                    vector ts,
                    vector theta,
                    vector x,
-                   int[] xi,
-                   real t0);
+                   int[] xi);
 ```
 
 This integration function will be built into Stan so it behaves like a function, using Michael's solution for the ODEs to figure out the derivative of the coupled system (see example above).
