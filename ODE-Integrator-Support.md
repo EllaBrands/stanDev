@@ -125,16 +125,10 @@ vector f(real t,        // time            (double)
          int[] xi);     // integer data    (int)
 ```
 
-The return value is the vector of derivatives of
+The return value is the vector of derivatives with respect to `y`:
 
 ```
-d/dt g(y)
-```
-
-where 
-
-```
-g(y) = f(t,y,theta,x,xi);
+d/dt f(t,y,theta,x,xi);
 ```
 
 #### Integrator Call
