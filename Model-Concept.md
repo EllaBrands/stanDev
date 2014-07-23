@@ -57,7 +57,7 @@ Log prob function for unconstrained parameters, with or without Jacobian
 and computed with or without proportionality;  error msgs written to msgs, may also throw exceptions
 
 ```
-template <typename T, bool propto, bool jacobian_adjust_transforms>
+template <bool propto, bool jacobian_adjust_transforms, typename T>
 T 
 log_prob(std::vector<T>& params_r,
          std::vector<int>& params_i,
