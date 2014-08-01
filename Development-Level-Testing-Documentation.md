@@ -1,3 +1,20 @@
+> [note: Daniel is writing this and may not represent the Stan team until this is removed]
+
+***
+
+# Overview
+1. Why test? What are we testing?
+2. How to invoke tests.
+3. Technical details. (Google test; our distribution testing framework)
+4. If providing a new feature, what's the minimum level of testing required?
+5. The old text.
+
+***
+## 1. Why test? What are we testing?
+## 2. How to invoke tests.
+## 3. Technical details. (Google test; our distribution testing framework)
+## 4. If providing a new feature, what's the minimum level of testing required?
+## 5. The old text.
 We'll try to describe some of the implementation details of the tests for Stan.
 
 - Test naming convention
