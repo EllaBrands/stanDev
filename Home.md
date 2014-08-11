@@ -42,7 +42,7 @@ If you want to contribute a new function to Stan:
 
 ### Suites of Model Examples
 
-* [Examples from BUGS and ARM](wiki/Example-Stan-Models)
+* [Examples from BUGS and ARM](https://github.com/stan-dev/example-models/wiki)
 
 ### Out-of-Date To-Do List
 
