@@ -1,22 +1,12 @@
 The Stan Wiki here on GitHub is primarily intended for developers.
 
-### Design Documents
-
-Some in-process designs for new Stan features:
-
-* [Functions Design](wiki/Function-Syntax-and-Semantics-Design)
-
-* [ODE Design](wiki/ODE-Integrator-Support)
-
-* [MLE and MML Design](wiki/MLE-and-MML-Design)
-
 ### General Notes for Developer Process
 
 The Git and code review process used for developers and some useful tools:
 
-* [Pull Request Template](wiki/Pull-Request-Template)
-
 * [Developer Process](wiki/Developer-Process)
+
+* [Pull Request Template](wiki/Pull-Request-Template)
 
 * [Developer Tools and Tricks](wiki/Developer-Tricks)
 
@@ -24,7 +14,13 @@ The Git and code review process used for developers and some useful tools:
 
 * [Continuous Integration](wiki/Continuous-Integration)
 
-### Stan Models
+### Automatic Differentiation
+
+A preliminary stab at some doc on using automatic differentiation, aimed at both Stan developers and those who want to use just Stan's automatic differentiation in some other context. 
+
+* [Automatic Differentiation](wiki/Automatic-Differentiation-API)
+
+### Model Concept
 
 Explanation of the code generated for a model:
 
@@ -43,6 +39,17 @@ If you want to contribute a new function to Stan:
 ### Suites of Model Examples
 
 * [Examples from BUGS and ARM](https://github.com/stan-dev/example-models/wiki)
+
+
+### Old Design Docs
+
+Some old design docs for Stan features:
+
+* [Functions Design](wiki/Function-Syntax-and-Semantics-Design)
+
+* [ODE Design](wiki/ODE-Integrator-Support)
+
+* [MLE and MML Design](wiki/MLE-and-MML-Design)
 
 ### Out-of-Date To-Do List
 
