@@ -8,6 +8,8 @@ The Git and code review process used for developers and some useful tools:
 
 * [Pull Request Template](wiki/Pull-Request-Template)
 
+* [Code Quality Requirements](wiki/Code-Quality)
+
 * [Developer Tools and Tricks](wiki/Developer-Tricks)
 
 * [CmdStan developers under Windows: additional dependency](wiki/CmdStan-developers-under-Windows:-additional-dependency)
