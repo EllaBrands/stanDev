@@ -1,15 +1,15 @@
-This document describes how to run tests within the Stan repository.
+This document describes how to run tests within the Stan repository `src/test`.
 
 1. Prerequisites.
-2. The Python script, runTests.py.
+2. The Python script, `runTests.py`.
 
 
 ### 1. Prerequisites
 
 1. Required programs:
   - C++ compiler: g++ or clang++
-  - Python: 2.7, 2.8, or 3.0
-  - Make, find, grep
+  - Python:  versions 2.7 and up
+  - Unix utils: make, find, grep
 
 2. Download Stan. (This can be within an interface like CmdStan.) Change directory to the Stan directory.
 
