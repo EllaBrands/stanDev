@@ -24,7 +24,7 @@ Implement a unit test for the function which covers both the value (i.e., that i
 
 You should check all the ways in which it can be called --- that is all permutations of scalars/vectors and double and autodiff variables.
 
-An individual unit test, e.g., src/test/agrad/rev/log_test.cpp, can be run with `make test/agrad/rev/log`
+An individual unit test, e.g., src/test/unit-agrad-rev/functions/log_test.cpp, can be run with `make test/unit-agrad-rev/functions/log`
 
 After the individual test passes, make sure that `make test-unit` and `make test-headers` both pass.
 
