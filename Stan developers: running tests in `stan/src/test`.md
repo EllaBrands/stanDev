@@ -1,56 +1,42 @@
-This document describes how to run tests within the Stan repository `src/test`.
+The Stan repository contains functional and unit tests under the directory `stan/src/test`.  There is a makefile for Gnu make that runs these targets, `stan/makefile` and a helper Python script `stan/runTests.py` which calls this makefile to build and run the targets.
 
-1. Prerequisites.
-2. The Python script, `runTests.py`.
+1. Prerequisite tools and settings.
+2. How to run tests via script `runTests.py`.
 
+### 1. Prerequisite tools and settings.
 
-### 1. Prerequisites
+The following programs and tools are required:
+ - a C++ compiler, either g++ or clang++
+ - Gnu make, version 3.8 ([http://www.gnu.org/software/make/])
+ - Python:  versions 2.7 and up
+ - Unix utilities `find` and `grep`
 
-1. Required programs:
-  - C++ compiler: g++ or clang++
-  - Python:  versions 2.7 and up
-  - Unix utils: make, find, grep
+The Stan `makefile` uses helper files in the directory `stan/make`.   The helper file `stan/make/local` is used to customize makefile options.  Typical customizations are setting the compiler option flags:
+  - `CC` specifies the name of the C++ compiler. Example: `CC=clang++`
+  - `O` specifies the optimization level. `0` for least code optimization, `3` for greatest amount of code optimization. Example: `O=0`
 
-2. Download Stan. (This can be within an interface like CmdStan.) Change directory to the Stan directory.
-
-3. Add makefile customizations to the file `make/local`. Things that you may want to include:
-  - `CC` is the C++ compiler flag. Example: `CC=clang++`
-  - `O` is the optimization flag. Example: `O=0`
-  
-  **Shortcut** If you want to add `CC=clang++` and `O=0` to `make/local` type:
+The `stan/make/local` file in the Stan repository is empty. To add `CC=clang++` and `O=0` to `make/local` type:
 ```
 > echo "CC=clang++" >> make/local
 > echo "O=0" >> make/local
 > cat make/local
 ```
-
-4. Change access permissions to the Python script `runTests.py`. From the command line type:
-   
-   `> chmod +x runTests.Py`
-
-   This only needs to be done once.
-
-
-#### Git users
-
-**Note:** This only needs to be done once.
-
-If your Stan directory was cloned, either stand-alone or through an interface, we will force git to ignore changes made to `make/local`. From the command line type:
+**Git users** If your Stan directory was cloned, either stand-alone or through an interface, you should tell git to ignore changes made to `make/local`. From the command line type:
 ```
 > git update-index --assume-unchanged make/local
 ```
-  
 Without the above change, git will show `make/local` as changed when running `git status`.
 
+This only needs to be done once.
 
-### 2. The Python script, runTests.py
 
-The `runTests.py` Python script is responsible for
+### 2. The Python script, `runTests.py`
 
-1. building the test executables specified using make
-2. running the tests specified
+The `runTests.py` Python script is responsible for:
+ 1. building the test executables using Gnu make
+ 2. running the test executables
 
-Tests executables will be rebuilt if any changes are made to dependencies of the executable.
+Test executables will be rebuilt if any changes are made to dependencies of the executable.
 
 Running the script without any arguments brings up some help. This is the current help message:
 ```
@@ -80,6 +66,10 @@ These can also take the `-j` flag for parallel builds. For example:
 ```
 > ./runTests.py -j4 src/test/unit/math/functions/abs_test.cpp
 ```
+
+**Note:** On some systems it may be necessary to change the access permissions to make `runTests.py` executable:   
+   `> chmod +x runTests.Py`
+This only needs to be done once.
 
 #### Example: running a directory of tests.
 
