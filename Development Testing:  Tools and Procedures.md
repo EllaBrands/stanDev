@@ -3,15 +3,28 @@
 ***
 
 # Overview
-1. Why test? What are we testing?
+1. Tests and test requirements.
 2. How to invoke tests.
 3. Technical details. (Google test; our distribution testing framework)
 4. If providing a new feature, what's the minimum level of testing required?
 5. The old text.
 
 ***
-## 1. Why test? What are we testing?
+
+## 1. Tests and test requirements.
+
+The [Stan developer process](https://github.com/stan-dev/stan/wiki/Developer-Process#new-and-altered-code-is-tested) specifies that all new and altered code should be tested.  We believe that good test coverage is necessary given the size and complexity of the Stan code base (or any code base consisting of more than a Perl 1-liner, and quite frankly, we don't trust that Perl 1-liner). 
+
+We know that there are many bugs in our code.  With good test coverage, when a bug is found, these tests allow us to demonstrate:
+ - that the bug exists, by writing a test which tickles the bug and causes failure
+ - that the bug has been fixed, by showing that the new test no longer fails
+ - that the change has not introduced new bugs, by re-running all other existing tests. 
+
+
+
 ## 2. How to invoke tests.
+
+
 ## 3. Technical details. (Google test; our distribution testing framework)
 ## 4. If providing a new feature, what's the minimum level of testing required?
 ## 5. The old text.
@@ -37,3 +50,5 @@ We'll try to describe some of the implementation details of the tests for Stan.
 - What tests to add for a new file?
 - To what extent should methods be tested?
 - Examples
+
+
