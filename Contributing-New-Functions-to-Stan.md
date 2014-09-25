@@ -12,11 +12,11 @@ It is important to implement the function in such a way that it is templated suc
 
 #### Expose Function Signature to Stan Models
 
-Expose the function to the parser by adding the appropriate code to src/stan/gm/function_signatures.hpp and implement function signature tests by adding models to src/test/gm/model_specs/compiled/.
+Expose the function to the parser by adding the appropriate code to `src/stan/gm/function_signatures.hpp` and implement function signature tests by adding models to `src/test/gm/model_specs/compiled/`.
 
 #### Add to Relevant Header File
 
-Depending on where you put the function, you'll need to include its definition file in the appropriate header include to make sure it's visible to models.  For instance, if the function is going into `stan/math/functions/...` then it should be included into `stan/math/functions.hpp`
+Depending on where you put the function, you'll need to include its definition file in the appropriate header include to make sure it's visible to models.  For instance, if the function is going into `stan/math/functions/...` then it should be included into `stan/math/functions.hpp`.
 
 #### Unit Testing
 
@@ -24,7 +24,7 @@ Implement a unit test for the function which covers both the value (i.e., that i
 
 You should check all the ways in which it can be called --- that is all permutations of scalars/vectors and double and autodiff variables.
 
-An individual unit test, e.g., src/test/unit-agrad-rev/functions/log_test.cpp, can be run with `make test/unit-agrad-rev/functions/log`
+An individual unit test, e.g., `src/test/unit-agrad-rev/functions/log_test.cpp`, can be run with `make test/unit-agrad-rev/functions/log`.
 
 After the individual test passes, make sure that `make test-unit` and `make test-headers` both pass.
 
