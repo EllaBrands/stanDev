@@ -33,6 +33,14 @@ Verify that the fix hasn't broken existing code.  To do this, we re-run existing
 
 ## 2. How to invoke tests.
 
+Stan currently uses the Unix `make` utility, specifically Gnu Make 3.8, to build and test Stan.  See [Running Tests](https://github.com/stan-dev/stan/wiki/Stan-developers:-running-tests) for details.
+
+We plan to migrate to the [Cmake metabuild system](https://github.com/stan-dev/stan/wiki/Building-Stan-with-CMake).
+
+
+
+  
+
 
 ## 3. Technical details. (Google test; our distribution testing framework)
 ## 4. If providing a new feature, what's the minimum level of testing required?
