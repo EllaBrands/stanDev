@@ -16,9 +16,17 @@
 The [Stan developer process](https://github.com/stan-dev/stan/wiki/Developer-Process#new-and-altered-code-is-tested) specifies that all new and altered code should be tested.  We believe that good test coverage is necessary given the size and complexity of the Stan code base (or any code base consisting of more than a Perl 1-liner, and quite frankly, we don't trust that Perl 1-liner). 
 
 We know that there are many bugs in our code.  With good test coverage, when a bug is found, these tests allow us to demonstrate:
- - that the bug exists, by writing a test which tickles the bug and causes failure
- - that the bug has been fixed, by showing that the new test no longer fails
- - that the change has not introduced new bugs, by re-running all other existing tests. 
+ - that the bug exists
+ - that the bug has been fixed
+ - that the fix has won't break something else
+We can't prove that the fix hasn't introduced new, unknown bugs, but we can prove that this fix won't cause something else to break.
+
+To show that the bug exists, write a test that tickles the bug.  Before going on to fix the bug, run the test, verify that it causes failure, and add and commit the test to the Stan repo.
+
+Now fix the bug.  To verify that the bug has been fixed, re-run the test and verify that it no longer fails.
+
+Verify that the fix hasn't broken existing code.  To do this, we re-run existing tests.  Before submitting a pull request, we expect the developer to run those tests which directly excercise the code.  At a minimum, you are fixing a bug in `stan/foo/bar.hpp`, then you should run all tests for `src/stan/foo`.  When a pull request is submitted, all tests will be run on the test server.
+
 
 
 
