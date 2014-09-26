@@ -26,7 +26,9 @@ To show that the bug exists, write a test that tickles the bug.  Before going on
 
 Now fix the bug.  To verify that the bug has been fixed, re-run the test and verify that it no longer fails.
 
-Verify that the fix hasn't broken existing code.  To do this, we re-run existing tests.  Before submitting a pull request, we expect the developer to run those tests which directly excercise the code.  At a minimum, if you fix a bug in `stan/foo/bar.hpp`, then you should run all tests for `src/stan/foo`.  When a pull request is submitted, the entire Stan test suite will be run on our [Continuous Integration](https://github.com/stan-dev/stan/wiki/Continuous-Integration) server.
+Verify that the fix hasn't broken existing code.  To do this, we re-run existing tests.  Before submitting a pull request, we expect the developer to run those tests which directly excercise the code.  At a minimum, if you fix a bug in `stan/foo/bar.hpp`, then you should run all tests for `src/stan/foo`.
+
+When a pull request is submitted, the entire Stan test suite will be run on our [Continuous Integration](https://github.com/stan-dev/stan/wiki/Continuous-Integration) server.
 
 
 
