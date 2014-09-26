@@ -9,7 +9,7 @@
 4. If providing a new feature, what's the minimum level of testing required?
 5. The old text.
 
-The [Stan developer process](https://github.com/stan-dev/stan/wiki/Developer-Process#new-and-altered-code-is-tested) specifies that all new and altered code should be tested.  We believe that good test coverage is necessary given the size and complexity of the Stan code base (or any code base consisting of more than a Perl 1-liner, and quite frankly, we don't trust that Perl 1-liner). 
+The [Stan developer process](https://github.com/stan-dev/stan/wiki/Developer-Process#new-and-altered-code-is-tested) specifies that all new and altered code should be tested.  We believe that good test coverage is necessary given the size and complexity of the Stan code base (or any code base consisting of more than a Perl 1-liner, and quite frankly, we don't trust that Perl 1-liner).   For more on how and why to test, see this [wikipedia article](http://en.wikipedia.org/wiki/Software_testing).
 
 We know that there are many bugs in our code.  With good test coverage, when a bug is found, these tests allow us to demonstrate:
  - that the bug exists
@@ -31,9 +31,10 @@ When a pull request is submitted, the entire Stan test suite will be run on our 
 
 ***
 
-## 1. Tests and test requirements.
+## 1. Kinds of tests
 
-Prior to release, we test Stan in the following ways:
+
+
 
 ### Unit tests
 
@@ -46,6 +47,8 @@ Prior to release, we test Stan in the following ways:
 
 
 ## 2. How to invoke tests.
+
+Stan test code live in the directory `src/test` in the Stan repository.
 
 Stan currently uses the Unix `make` utility, specifically Gnu Make 3.8, to build and test Stan.  See [Testing Stan using Gnu Make and Python](https://github.com/stan-dev/stan/wiki/Testing-Stan-using-Gnu-Make-and-Python) for details.
 
