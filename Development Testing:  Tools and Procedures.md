@@ -19,6 +19,7 @@ We know that there are many bugs in our code.  With good test coverage, when a b
  - that the bug exists
  - that the bug has been fixed
  - that the fix has won't break something else
+   
 We can't prove that the fix hasn't introduced new, unknown bugs, but we can prove that this fix won't cause something else to break.
 
 To show that the bug exists, write a test that tickles the bug.  Before going on to fix the bug, run the test, verify that it causes failure, and add and commit the test to the Stan repo.
