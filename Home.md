@@ -8,6 +8,8 @@ The Git and code review process used for developers and some useful tools:
 
 * [Pull Request Template](wiki/Pull-Request-Template)
 
+* [Unit Testing with Python](wiki/Testing-Stan-using-Gnu-Make-and-Python)
+
 * [Code Quality Requirements](wiki/Code-Quality)
 
 * [Developer Tools and Tricks](wiki/Developer-Tricks)
