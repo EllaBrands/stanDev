@@ -1,11 +1,21 @@
 Note: this is a page of useful tricks for developers. 
 
 Quick links:
+* [Git](Developer-Tricks#git)
 * [Mac](Developer-Tricks#mac)
 * [Fixing Line Feeds and Tabs](Developer-Tricks#fixing-line-feeds-and-tabs)
 * [Emacs](Developer-Tricks#emacs)
 
-## Mac 
+## Git
+
+### Ignore `make/local`
+Although `make/local` is in the `.gitignore` file, since it is a tracked file, local changes will result in git thinking it has changed. To force git to ignore this file, type:
+```
+> git update-index --assume-unchanged make/local
+```
+
+You will only need to do this once (per clone of Stan).
+
 
 ### Git completion
 https://github.com/git/git/tree/master/contrib/completion
@@ -17,6 +27,8 @@ The prompt will look like:
 where "~/stan" is the current directory, "(master)" indicates the current branch is the master branch.
 
 * git-completition.*sh. Install this for auto-completion from the command line. It auto-completes git commands and git branches. For example, type `git checkout ` then hit tab twice. It should show the available branches.
+
+## Mac 
 
 ### Aquamacs: single kill buffer
 By default, aquamacs will has multiple kill buffers. This means that there is a copy and paste buffer by using command-c/x/v and there is a separate copy and paste buffer by using ctrl-w, alt-w, ctrl-y. This gets really confusing. Here's how to have a single kill buffer so copying from any Mac program will paste into emacs using ctrl-y or command-v.
