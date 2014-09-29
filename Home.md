@@ -1,16 +1,8 @@
-The Stan Wiki here on GitHub is primarily intended for developers.
+TThe Stan Wiki here on GitHub is primarily intended for developers.
 
-Quick links:
-* [Developer Process](Home#Developer-Process)
-* [Automatic Differentiation](Home#Automatic Differentiation)
-* [Model Concept](Home#Model Concept)
-* [Feature Design Docs](Home#Feature Design Docs)
-* [Suites of Model Examples](Home#Suites of Model Examples)
+### General Notes for Developer Process
 
-
-## Developer Process
-
-The Git and code review process used for developers, tips, tools, and best practices:
+The Git and code review process used for developers and some useful tools:
 
 * [Developer Process](wiki/Developer-Process)
 
@@ -26,28 +18,36 @@ The Git and code review process used for developers, tips, tools, and best pract
 
 * [Continuous Integration](wiki/Continuous-Integration)
 
-* [Coding Style and Idioms](wiki/Coding-Style-and-Idioms)
-
-* [How to Contribute a New Function to Stan](wiki/Contributing-New-Functions-to-Stan)
-
-
-## Automatic Differentiation
+### Automatic Differentiation
 
 A preliminary stab at some doc on using automatic differentiation, aimed at both Stan developers and those who want to use just Stan's automatic differentiation in some other context. 
 
 * [Automatic Differentiation](wiki/Automatic-Differentiation-API)
 
-
-## Model Concept
+### Model Concept
 
 Explanation of the code generated for a model:
 
 * [Stan Model Concept](wiki/Model-Concept) 
 
+### Code Style and Idioms
 
-## Feature Design Docs
+* [Coding Style and Idioms](wiki/Coding-Style-and-Idioms)
 
-Some design docs for Stan features:
+### How to Contribute a Function to Stan
+
+If you want to contribute a new function to Stan:
+
+* [How to Contribute a New Function to Stan](wiki/Contributing-New-Functions-to-Stan)
+
+### Suites of Model Examples
+
+* [Examples from BUGS and ARM](https://github.com/stan-dev/example-models/wiki)
+
+
+### Old Design Docs
+
+Some old design docs for Stan features:
 
 * [Functions Design](wiki/Function-Syntax-and-Semantics-Design)
 
@@ -55,13 +55,7 @@ Some design docs for Stan features:
 
 * [MLE and MML Design](wiki/MLE-and-MML-Design)
 
-
-## Suites of Model Examples
-
-* [Examples from BUGS and ARM](https://github.com/stan-dev/example-models/wiki)
-
-
-##  To-Do List
+### Out-of-Date To-Do List
 
 GitHub's issue tracker is more up to date and contains a `project` tag if you're looking for projects. An older list of to-do items, with some more ambitious projects, is here:
 
