@@ -1,4 +1,10 @@
-TThe Stan Wiki here on GitHub is primarily intended for developers.
+The Stan Wiki here on GitHub is primarily intended for developers.
+
+### Contents
+* [General Notes for Developers](https://github.com/stan-dev/stan/wiki#general-notes-for-developer-process)
+* [Automatic Differentiation](https://github.com/stan-dev/stan/wiki#automatic-differentiation)
+* [Model Concept](https://github.com/stan-dev/stan/wiki#model-concept)
+* [Model Examples](https://github.com/stan-dev/stan/wiki#suites-of-model-examples)
 
 ### General Notes for Developer Process
 
@@ -10,13 +16,18 @@ The Git and code review process used for developers and some useful tools:
 
 * [Unit Testing with Python](wiki/Testing-Stan-using-Gnu-Make-and-Python)
 
+* [Continuous Integration Testing](wiki/Continuous-Integration)
+
 * [Code Quality Requirements](wiki/Code-Quality)
+
+* [Coding Style and Idioms](wiki/Coding-Style-and-Idioms)
+
+* [How to Contribute a New Function to Stan](wiki/Contributing-New-Functions-to-Stan)
 
 * [Developer Tools and Tricks](wiki/Developer-Tricks)
 
 * [CmdStan developers under Windows: additional dependency](wiki/CmdStan-developers-under-Windows:-additional-dependency)
 
-* [Continuous Integration](wiki/Continuous-Integration)
 
 ### Automatic Differentiation
 
@@ -30,15 +41,6 @@ Explanation of the code generated for a model:
 
 * [Stan Model Concept](wiki/Model-Concept) 
 
-### Code Style and Idioms
-
-* [Coding Style and Idioms](wiki/Coding-Style-and-Idioms)
-
-### How to Contribute a Function to Stan
-
-If you want to contribute a new function to Stan:
-
-* [How to Contribute a New Function to Stan](wiki/Contributing-New-Functions-to-Stan)
 
 ### Suites of Model Examples
 
