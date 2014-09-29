@@ -115,7 +115,7 @@ For existing code, the developer should provide at least one test showing how th
 
 ##### Final State Passes All Tests
 
-When a pull request is made, it is expected that the current code passes:
+When a pull request is made, it is expected that the current code allows for all top-level targets in the makefile will build without error.  These targets include:
 
     > make manual
     > make doxygen
@@ -125,10 +125,9 @@ When a pull request is made, it is expected that the current code passes:
     > make src/test/unit-distribution
     > make test-headers
     > make src/test/integration
-    > make src/test/models
-    > make src/test/CmdStan
-
-We don't always expect every developer to run all tests on their machine, but we do expect the developer to run a minimal number of tests before creating a pull request. If you've worked on src/stan/foo/bar.hpp, there should be a test in src/test/unit/foo/bar_test.cpp that passes. We also expect the developer to run `make src/test/unit/foo` prior to submitting.
+    
+   
+We don't always expect every developer to run all tests on their machine, but we do expect the developer to run a minimal number of tests before creating a pull request. If you've worked on `src/stan/foo/bar.hpp`, there should be a test in `src/test/unit/foo/bar_test.cpp` that passes. We also expect the developer to run `make src/test/unit/foo` prior to submitting.  The script [runTests.py](https://github.com/stan-dev/stan/wiki/Testing-Stan-using-Gnu-Make-and-Python) can be used to run the tests under `src/test`.
 
 Passing all tests does not guarantee that the pull request will be accepted and merged.  It will first go through code review and tested on the [integration server](Continuous-Integration). 
 
