@@ -47,9 +47,9 @@ Explanation of the code generated for a model:
 * [Examples from BUGS and ARM](https://github.com/stan-dev/example-models/wiki)
 
 
-### Old Design Docs
+### Stan Feature Specs and Design Docs
 
-Some old design docs for Stan features:
+Specs and design docs and for Stan features, as originally proposed.  See Stan developer group mailing list for more discussion around specific features.
 
 * [Functions Design](wiki/Function-Syntax-and-Semantics-Design)
 
