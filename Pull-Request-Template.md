@@ -1,3 +1,22 @@
+### Short
+
+\#\#\#\# Summary: 
+
+\#\#\#\# Intended Effect: 
+
+\#\#\#\# How to Verify: 
+
+\#\#\#\# Side Effects:  
+
+\#\#\#\# Documentation:   
+
+\#\#\#\# Reviewer Suggestions:  
+
+
+***
+
+### Long
+
 \#\#\#\# Summary:  
 
 What does this pull request do in general terms?
