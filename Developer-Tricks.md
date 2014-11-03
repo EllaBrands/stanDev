@@ -8,15 +8,6 @@ Quick links:
 
 ## Git
 
-### Ignore `make/local`
-Although `make/local` is in the `.gitignore` file, since it is a tracked file, local changes will result in git thinking it has changed. To force git to ignore this file, type:
-```
-> git update-index --assume-unchanged make/local
-```
-
-You will only need to do this once (per clone of Stan).
-
-
 ### Git completion
 https://github.com/git/git/tree/master/contrib/completion
 
