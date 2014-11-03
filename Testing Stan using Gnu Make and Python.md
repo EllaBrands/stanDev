@@ -22,14 +22,6 @@ The `stan/make/local` file in the Stan repository is empty. To add `CC=clang++` 
 > echo "O=0" >> make/local
 > cat make/local
 ```
-**Git users** If your Stan directory was cloned, either stand-alone or through an interface, you should tell git to ignore changes made to `make/local`. From the command line type:
-```
-> git update-index --assume-unchanged make/local
-```
-Without the above change, git will show `make/local` as changed when running `git status`.
-
-This only needs to be done once.
-
 
 ### 2. The Python script, `runTests.py`
 
