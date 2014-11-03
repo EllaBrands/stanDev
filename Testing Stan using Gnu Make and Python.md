@@ -14,6 +14,7 @@ The following programs and tools are required:
 The Stan `makefile` uses helper files in the directory `stan/make`.   The helper file `stan/make/local` is used to customize makefile options.  Typical customizations are setting the compiler option flags:
   - `CC` specifies the name of the C++ compiler. Example: `CC=clang++`
   - `O` specifies the optimization level. `0` for least code optimization, `3` for greatest amount of code optimization. Example: `O=0`
+  - `MAKEFLAGS` specifies the number of cores used by <code>make</code>, ranging from 1 to min(total cores, 16).  Example: `MAKEFLAGS = -j2`
 
 The `stan/make/local` file in the Stan repository is empty. To add `CC=clang++` and `O=0` to `make/local` type:
 ```
@@ -47,7 +48,7 @@ or
 ```
 
 Arguments:
-- the first optional argument is `-j<#cores>` for building the test in parallel. (This cannot be specified within `make/local`)
+- the first optional argument is `-j<#cores>` for building the test in parallel.  If this argument is present, it will be passed along to the <code>make</code> command and will override system defaults and `MAKEFLAGS` set in <code>make/local</code>.
 - the rest of the arguments should either specify a single test file (`*_test.cpp`) or a test directory. 
 
 #### Example: running a single unit test.
