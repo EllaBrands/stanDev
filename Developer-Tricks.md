@@ -8,6 +8,17 @@ Quick links:
 
 ## Git
 
+
+### Remove Untracked Files
+
+There are a lot of files that are in our `.gitignore` file that stack up and don't gt cleaned.  In order to remove every untracked file, including hidden ones, do this:
+
+```
+git clean -d -x -f
+```
+
+<b>Warning:</b> this will kill everything that's not currently being tracked.  You probablya want to run `git status` first.
+
 ### Git completion
 https://github.com/git/git/tree/master/contrib/completion
 
