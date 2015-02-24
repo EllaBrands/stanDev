@@ -7,6 +7,7 @@ The Stan Wiki here on GitHub is primarily intended for developers.
 * [Model Examples](https://github.com/stan-dev/stan/wiki#suites-of-model-examples)
 * [Feature Design Docs](https://github.com/stan-dev/stan/wiki#stan-feature-specs-and-design-docs)
 
+
 ### General Notes for Developer Process
 
 The Git and code review process used for developers and some useful tools:
@@ -28,6 +29,11 @@ The Git and code review process used for developers and some useful tools:
 * [Developer Tools and Tricks](wiki/Developer-Tricks)
 
 * [CmdStan developers under Windows: additional dependency](wiki/CmdStan-developers-under-Windows:-additional-dependency)
+
+### C++11 Migration Plan
+
+* [C++11 Migration Plan](wiki/Cpp11-Upgrade)
+
 
 
 ### Automatic Differentiation
