@@ -32,7 +32,7 @@ and for template parameter lists:
 
 ```
 template<typename T1, typename T2>
-struct {
+struct foo {
 ...
 };
 ```
