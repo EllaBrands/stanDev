@@ -24,7 +24,11 @@ Whenever possible, keep lines to 80 characters or less.  It makes it much easier
 
 #### Templates
 
-For both template parameter lists and template argument lists, use spaces between parameters and arguments. As above for template argument lists: `Eigen::Matrix<S, R, C>::size_type` and for template parameter lists: 
+For both template parameter lists and template argument lists, use spaces between parameters and arguments. As above for template argument lists: 
+
+`Eigen::Matrix<S, R, C>::size_type` 
+
+and for template parameter lists: 
 
 ```
 template<typename T1, typename T2>
