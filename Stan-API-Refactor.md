@@ -58,7 +58,7 @@ construct the actual `var_context` objects, or should the interfaces
 just create a few `var_context` objects externally and then pass those
 into `command`?
 
-Another option to consider is a more general purpose approach to the problem `var_context` is intended to solve be viable? Protocol Buffers, for example, offer a binary serialization format and there is good R and Python support for Protocol Buffers. Not having to wrap a C++ class like `var_context` in the first place seems like a very good outcome.
+Another option to consider is a more general purpose approach to the problem `var_context` is intended to solve. Protocol Buffers, for example, offer a binary serialization format for structured data precisely like `var_context` (repeated doubles/ints and strings). Not having to wrap a C++ class like `var_context` in the first place seems like a very good outcome from the perspective of someone developing an interface.
 
 ## Spec the Configuration Objects
 
