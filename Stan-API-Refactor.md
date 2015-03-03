@@ -65,3 +65,5 @@ how the interfaces will configure `command`.  A string?  A C++ class shared
 by all interferes, or do we just specify a policy and go with another interface 
 element here?
 
+One example of a challenging configuration to setup is when a user provides a vector or matrix
+of values that should serve as initial values for the sampler. Serializing and deserializing these data structures into strings may be an option. Protocol Buffers or JSON or XML also seem like viable candidates.
