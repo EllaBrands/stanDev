@@ -22,7 +22,7 @@ to the interface as desired, for example writing to a file or outputting
 to a screen.
 
 - var_context_factory: This element is responsible for storing input
-values, such as data and initialization.  
+values, such as data and initialization. (Could initial values and data be part of the config object? (@ariddell))
 
 The signature of command might then look like
 
