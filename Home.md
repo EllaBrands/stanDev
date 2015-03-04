@@ -6,6 +6,7 @@ The Stan Wiki here on GitHub is primarily intended for developers.
 * [Model Concept](https://github.com/stan-dev/stan/wiki#model-concept)
 * [Model Examples](https://github.com/stan-dev/stan/wiki#suites-of-model-examples)
 * [Feature Design Docs](https://github.com/stan-dev/stan/wiki#stan-feature-specs-and-design-docs)
+* [Windows Compiler Flags](https://github.com/stan-dev/stan/wiki/Windows-specific-Compiler-Flags)
 
 
 ### General Notes for Developer Process
