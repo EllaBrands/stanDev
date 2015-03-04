@@ -13,23 +13,14 @@ The Stan Wiki here on GitHub is primarily intended for developers.
 The Git and code review process used for developers and some useful tools:
 
 * [Developer Process](wiki/Developer-Process)
-
 * [Pull Request Template](wiki/Pull-Request-Template)
-
 * [Unit Testing with Python](wiki/Testing-Stan-using-Gnu-Make-and-Python)
-
 * [Continuous Integration Testing](wiki/Continuous-Integration)
-
 * [Code Quality Requirements](wiki/Code-Quality)
-
 * [Coding Style and Idioms](wiki/Coding-Style-and-Idioms)
-
 * [How to Contribute a New Function to Stan](wiki/Contributing-New-Functions-to-Stan)
-
 * [Developer Tools and Tricks](wiki/Developer-Tricks)
-
 * [CmdStan developers under Windows: additional dependency](wiki/CmdStan-developers-under-Windows:-additional-dependency)
-
 * [Windows Compiler Flags](wiki/Windows-specific-Compiler-Flags)
 
 
