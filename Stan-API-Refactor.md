@@ -11,6 +11,8 @@ that external interfaces define and pass into services.  These are
 mostly responsible for translating I/O between an interface and
 Stan.
 
+(Another service the Stan API could provide is rhat and ess calculations.)
+
 As of this moment the goal is to create a single `command` service
 in the API that requires three interface elements
 
@@ -67,5 +69,5 @@ how the interfaces will configure `command`.  A string?  A C++ class shared
 by all interferes, or do we just specify a policy and go with another interface 
 element here?
 
-One example of a challenging configuration to setup is when a user provides a vector or matrix
-of values that should serve as initial values for the sampler. Serializing and deserializing these data structures into strings may be an option. Protocol Buffers or JSON or XML also seem like viable candidates.
+(One example of a challenging configuration to setup is when a user provides a vector or matrix
+of values that should serve as initial values for the sampler. Serializing and deserializing these data structures into strings may be an option. Protocol Buffers or JSON or XML also seem like viable candidates. This assumes one wants to merge initialization data into the configuration object.)
