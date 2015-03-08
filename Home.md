@@ -16,6 +16,7 @@ The Git and code review process used for developers and some useful tools:
 * [Pull Request Template](wiki/Pull-Request-Template)
 * [Unit Testing with Python](wiki/Testing-Stan-using-Gnu-Make-and-Python)
 * [Continuous Integration Testing](wiki/Continuous-Integration)
+* [How to Write Unit Tests](wiki/How-to-Write-Unit-Tests-with-GoogleTest)
 * [Code Quality Requirements](wiki/Code-Quality)
 * [Coding Style and Idioms](wiki/Coding-Style-and-Idioms)
 * [How to Contribute a New Function to Stan](wiki/Contributing-New-Functions-to-Stan)
