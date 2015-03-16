@@ -62,6 +62,8 @@ Specs and design docs and for Stan features, as originally proposed.  See Stan d
 
 * [Command Refactor Spec](wiki/Stan-API-Refactor)
 
+* [Testing framework](wiki/Testing-framework)
+
 ### Out-of-Date To-Do List
 
 GitHub's issue tracker is more up to date and contains a `project` tag if you're looking for projects. An older list of to-do items, with some more ambitious projects, is here:
