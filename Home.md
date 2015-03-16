@@ -7,6 +7,7 @@ The Stan Wiki here on GitHub is primarily intended for developers.
 * [Model Examples](https://github.com/stan-dev/stan/wiki#suites-of-model-examples)
 * [Feature Design Docs](https://github.com/stan-dev/stan/wiki#stan-feature-specs-and-design-docs)
 
+---
 
 ### General Notes for Developer Process
 
