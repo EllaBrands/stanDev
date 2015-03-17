@@ -22,7 +22,20 @@ Generalize the current probability function testing framework so it can be used 
 
 #### Implementation details
 
-Bob's first cut at a recursive template metaprogramming approach to automatically expanding the type combinations:
+Bob's first cut at a recursive template metaprogramming approach to automatically expanding the type combinations is pasted below in sections. The idea is that we'll move to a more general version of Nomad's functor-based testing suite. Instead of requiring explicitly written functors for each combination of types and test, we'll require a more generally written functor like so:
+
+```
+struct multiply_f {
+  template <typename T1, typename T2>
+  typename promote_args<T1,T2>::type
+  operator()(const cons<T1, cons<T2,nil> >& x) const {
+    return multiply_base(x.h_, x.t_.h_);
+  }
+};
+```
+
+The supporting code is below, along with the TEST construction.
+
 
 Supporting cons struct required for implementation:
 
