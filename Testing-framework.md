@@ -24,6 +24,8 @@ Generalize the current probability function testing framework so it can be used 
 
 Bob's first cut at a recursive template metaprogramming approach to automatically expanding the type combinations:
 
+Supporting cons struct required for implementation:
+
 ```
 #include <gtest/gtest.h>
 #include <stan/agrad/rev.hpp>
@@ -149,6 +151,9 @@ namespace stan {
 }
 
 ```
+
+Examples of a value test:
+
 ```
 
 using std::vector;
@@ -218,6 +223,12 @@ void test_funct(const V& fx,
   test_eq_rev(fx, f, x);
 }
 
+```
+
+Example of how a developer would implement tests using the code above.
+
+```
+
 
 // ACTUAL TESTS START HERE
 #include <typeinfo>
@@ -244,4 +255,22 @@ TEST(Foo, Bar) {
 }
 ```
 
-We have a few options for the interaction with the test framework.
+We have a few options for the interaction with the test framework. One option is to have the developer explicitly call each test, like so:
+
+```
+
+TEST(foo, bar1) {
+  test_funct(6.0, multiply_f(), (3.0, 2.0));
+  test_funct(-6.0, multiply_f(), (3.0, -2.0));
+  test_funct(6.0, multiply_f(), (3.0, -2.0));
+  test_funct(6.0, multiply_f(), (3.0, 2.0));
+  test_funct(6.0, multiply_f(), (3.0, 2.0));
+}
+
+TEST(foo, invalid) {
+  test_funct_invalid();
+}
+
+```
+
+The other is to have a single call to the test framework but require subclass definitions, as in src/test/unit/prtest_fixture_distr.hpp. 
