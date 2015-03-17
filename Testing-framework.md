@@ -148,6 +148,9 @@ namespace stan {
 }
 }
 
+```
+```
+
 using std::vector;
 
 using boost::math::tools::promote_args;
@@ -240,3 +243,5 @@ TEST(Foo, Bar) {
   test_funct(6.0, multiply_f(), cf(3.0,cf(2.0)));
 }
 ```
+
+We have a few options for the interaction with the test framework.
