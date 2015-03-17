@@ -30,7 +30,7 @@ The Git and code review process used for developers and some useful tools:
 
 * [C++11 Migration Plan](wiki/Cpp11-Upgrade)
 
-
+---
 
 ### Automatic Differentiation
 
@@ -38,17 +38,21 @@ A preliminary stab at some doc on using automatic differentiation, aimed at both
 
 * [Automatic Differentiation](wiki/Automatic-Differentiation-API)
 
+---
+
 ### Model Concept
 
 Explanation of the code generated for a model:
 
 * [Stan Model Concept](wiki/Model-Concept) 
 
+---
 
 ### Suites of Model Examples
 
 * [Examples from BUGS and ARM](https://github.com/stan-dev/example-models/wiki)
 
+---
 
 ### Stan Feature Specs and Design Docs
 
