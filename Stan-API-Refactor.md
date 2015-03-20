@@ -66,14 +66,14 @@ An alternative to callbacks is to replace one or more of the above elements with
 Protocol buffers seem more evolved (and more heavyweight in terms of interface) than JSON in that they allow data type schemas and provide a binary format (which would reduce memory consumption while removing human readability).  They also have more mature and faster implementations than JSON.
 
 
-# Intermediate Steps from where (Cmd)Stan is at Now
+## Intermediate Steps from where (Cmd)Stan is at Now
 
-## Refactor Command
+#### Refactor Command
 
 Command needs lots of work to pull out functionality into separate services to ease testing and improve organization.  This has already begun with the initialization and some of the sampling steps, but needs to continue to  diagnostics, optimization, and sampler configuration.
 
 The posterior analysis code needs similar work.
 
-## Concrete Specificationss
+#### Concrete Specificationss
 
 We need concrete specifications for all of the configuration objects if we go with callbacks or for the protocol buffer or JSON schemas if we choose that route.
