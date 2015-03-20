@@ -77,3 +77,186 @@ The posterior analysis code needs similar work.
 #### Concrete Specificationss
 
 We need concrete specifications for all of the configuration objects if we go with callbacks or for the protocol buffer or JSON schemas if we choose that route.
+
+## Existing CmdStan Configurations
+
+### Monolith vs. Modules?
+
+The big question here is whether we want the interfaces to provide a single function, such as `stan()`, that takes a monolithic configuration (aka <a href="http://en.wikipedia.org/wiki/God_object">god object</a>, a notorious anti-pattern), or whether to make them modular (the source of all that's good in software engineering), such as nuts(), ehmc(), lbfgs(), diagnose(), ... [Bob's editorializing].  
+
+A further advantage to breaking these down is that there's less high-level spec in the calls (e.g., `sample algorithm=hmc engine=nuts`) because it's implied by the top-level command.  Also, the consistency checking is simpler because the arguments can all be flattened out rather than being hierarchical.  
+
+Yet another advantage is that when we introduce new methods or algorithms or engines, the change will be localized to that function call and won't impact other commands.  
+
+The major disadvantage is that it provides more ways to introduce inconsistencies on the interface side than a monolothic command.
+
+### Commands
+
+The following shows the CmdStan configurations, which are implemented monolithically in Stan 2, but are documented in the following sub-pieces because I (Bob) found it easier to understand.  The parameters with the same name across the "different" commands are all the same and could use the same validation.
+
+#### Euclidean NUTS
+
+```
+sample 
+  algorithm=hmc
+    engine=nuts
+      [max_depth=<int>]
+    [metric={unit_e,diag_e,dense_e}]
+    [stepsize=<double>]
+    [stepsize_jitter=<double>]
+  [num_samples=<int>]
+  [num_warmup=<int>]
+  [save_warmup=<boolean>]
+  [thin=<int>]
+  [adapt
+    [engaged=<boolean>]
+    [gamma=<double>]
+    [delta=<double>]
+    [kappa=<double>]
+    [t0=<double>] ]
+  [data file=<string>]
+  [init=<string>]
+  [random seed=<int>]
+  [output
+    [file=<string>] 
+    [diagnostic_file=<string>]
+    [refresh=<int>] ]
+```
+
+#### Euclidean HMC without NUTS
+
+This only differs from NUTS in the engine argument and sub-argument, so if any two are going to be combined, it'd be these two.
+
+```
+sample 
+  algorithm=hmc
+    engine=static
+      [int_time=<double>]
+    [metric={unit_e,diag_e,dense_e}]
+    [stepsize=<double>]
+    [stepsize_jitter=<double>]
+  [num_samples=<int>]
+  [num_warmup=<int>]
+  [save_warmup=<boolean>]
+  [thin=<int>]
+  [adapt
+    [engaged=<boolean>]
+    [gamma=<double>]
+    [delta=<double>]
+    [kappa=<double>]
+    [t0=<double>] ]
+  [data file=<string>]
+  [init=<string>]
+  [random seed=<int>]
+  [output
+    [file=<string>] 
+    [diagnostic_file=<string>]
+    [refresh=<int>] ]
+```
+
+#### L-BFGS Optimization
+
+```
+optimize
+  algorithm=lbfgs
+    [init_alpha=<double>]
+    [tol_obj=<double>]
+    [tol_rel_obj=<double>]
+    [tol_grad=<double>]
+    [tol_rel_grad=<double>]
+    [tol_param=<double>]
+    [history_size=<int>]
+  [iter=<int>]
+  [save_iterations=<boolean>]
+  [data file=<string>]
+  [init=<string>]
+  [random seed=<int>]
+  [output
+    [file=<string>]
+    [diagnostic_file=<string>]
+    [refresh=<int>] ]
+```
+
+#### BFGS Optimization
+
+Just like L-BFGS other than algorithm and history config.
+
+```
+optimize
+  algorithm=bfgs
+    [init_alpha=<double>]
+    [tol_obj=<double>]
+    [tol_rel_obj=<double>]
+    [tol_grad=<double>]
+    [tol_rel_grad=<double>]
+    [tol_param=<double>]
+  [iter=<int>]
+  [save_iterations=<boolean>]
+  [data file=<string>]
+  [init=<string>]
+  [random seed=<int>]
+  [output
+    [file=<string>]
+    [diagnostic_file=<string>]
+    [refresh=<int>] ]
+```
+
+#### Newtonian Optimization
+
+Like BFGS and L-BFGS, but with different algorithm and no algorithm-specific parameters.
+
+```
+optimize
+  algorithm=newton
+  [iter=<int>]
+  [save_iterations=<boolean>]
+  [data file=<string>]
+  [init=<string>]
+  [random seed=<int>]
+  [output
+    [file=<string>]
+    [diagnostic_file=<string>]
+    [refresh=<int>] ]
+```
+
+#### Diagnostics
+
+So far, this only provides tests of the gradient.  
+
+```
+diagnose 
+  [test=gradient]
+    [epsilon=<real>]
+    [error=<real>]
+  [data file=<string>]
+  [init=<string>]
+  [random seed=<int>]    
+```
+
+## Other Interface Functions
+
+#### Compiling (and Linking) Stan Programs
+
+CmdStan uses `make` directly to compile models from files.  
+
+RStan provides a function to compile (and dynamically link) a Stan model.  The `stan()` command for sampling allows the model to be specified as a compiled object, a text string, or a file, with the latter two being compiled as part of the `stan()` command.  RStan 2.6.3 is moving to building make-like behavior into the compilation with `stan()` (and maybe within compilation).  RStan requires optimization to use a precompiled model.  I don't know if models can be serialized to disk explicitly now or if that will only happen as part of make-like `stan()` function.
+
+#### Fit Object
+
+RStan produces a `stanfit` object as a result of the `stan()` command that is very much like the output of `glm()` in R --- it encapsulates a whole bunch of what went into the command, including the compiled model and the output.
+
+#### Extracting Output
+
+RStan provides a means of extracting the draws from a fit object so that they can be manipulated within R.
+
+#### Posterior Analysis
+
+The interfaces RStan and PyStan implement their own versions of ESS and R-hat.  These should be provided as services by Stan C++ in the future.  Should the print formats be the same?  Should they be minimal in the way Andrew likes them or complete as everyone else seems to prefer?  Should we use scientific notation or let R (or Python) do its print "magic"?
+
+#### Graphical Display
+
+RStan provides graphical displays of various things like traceplots.  This functionality may all be moving over to shinyStan.
+
+#### Log Prob and Constrained/Unconstrained Transformations
+
+RStan and PyStan provide a means of accessing the compiled model's log prob and gradient functions, as well as a means of translating from constrained to unconstrained parameters and back again.
