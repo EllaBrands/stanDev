@@ -1,4 +1,4 @@
-The Stan repository contains functional and unit tests under the directory `stan/src/test`.  There is a makefile for Gnu make that runs these targets, `stan/makefile` and a helper Python script `stan/runTests.py` which calls this makefile to build and run the targets.
+The Stan repository contains functional and unit tests under the directory `src/test`.  There is a makefile for Gnu make that runs these targets, `makefile` and a helper Python script `runTests.py` which calls this makefile to build and run the targets.
 
 1. Prerequisite tools and settings.
 2. How to run tests via script `runTests.py`.
@@ -11,12 +11,12 @@ The following programs and tools are required:
  - Python:  versions 2.7 and up
  - Unix utilities `find` and `grep`
 
-The Stan `makefile` uses helper files in the directory `stan/make`.   The helper file `~/.config/stan/make.local` or `make/local` is used to customize makefile options.  Typical customizations are setting the compiler option flags:
+The Stan `makefile` uses helper files in the directory `make/`.   The helper file `~/.config/stan/make.local` or `make/local` is used to customize makefile options.  Typical customizations are setting the compiler option flags:
   - `CC` specifies the name of the C++ compiler. Example: `CC=clang++`
   - `O` specifies the optimization level. `0` for least code optimization, `3` for greatest amount of code optimization. Example: `O=0`
   - `MAKEFLAGS` specifies the number of cores used by <code>make</code>, ranging from 1 to min(total cores, 16).  Example: `MAKEFLAGS = -j2`
 
-The `stan/make/local` file in the Stan repository is empty. To add `CC=clang++` and `O=0` to `make/local` type:
+The `make/local` file in the Stan repository is empty. To add `CC=clang++` and `O=0` to `make/local` type:
 ```
 > echo "CC=clang++" >> make/local
 > echo "O=0" >> make/local
