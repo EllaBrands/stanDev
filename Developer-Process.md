@@ -24,7 +24,9 @@ The gitflow process distinguishes between the permanent branches managed by the 
 
 **Feature branches:** All development work on *new* features that have not been released go in feature branches. Feature branches branch from `develop` and should be named `feature/issue-<number>-desc`.  After development is complete on a feature, submit a pull request back to `develop`.
 
+<!-- DL: we haven't really used hotfix branches
 **Hotfix branches:**  Patches to the current release go in hotfix branches. Hotfix branches branch from `master` and are named `hotfix/v<major>.<minor>.<patch>`.  There should be an issue created for the bug in Stan's GitHub issue tracker prior to branching to provide an issue number.    Once the patch is complete, submit a pull request back to `master` and it will be merged into both `master` and `develop` branches.
+-->
 
 **Bugfix branches:** All development work to *fix bugs* should branch from the latest hotfix branch (see above) and should be named `bugfix/issue-<number>-desc`
 
