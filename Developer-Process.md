@@ -34,7 +34,7 @@ The gitflow process distinguishes between the permanent branches managed by the 
 
 ### 3.  Preventing Inadvertent Pushes
 
-We are working on an honor system. The active developers with push permission on the Stan repository will still technically have the ability to push to the master and development branches, but are asked to take the following steps to prevent inadvertent pushes to the master and development branches.
+We are working on an honor system. The active developers with push permission on the Stan repository technically have the ability to push to the master and development branches, but are asked to take the following steps to prevent inadvertent pushes to the master and development branches.
 
 **First**, install git version 1.8 or later.
 
@@ -121,12 +121,10 @@ When a pull request is made, it is expected that the current code allows for all
 
     > make manual
     > make doxygen
-    > make src/test/unit
-    > make src/test/unit-agrad-rev
-    > make src/test/unit-agrad-fwd
-    > make src/test/unit-distribution
     > make test-headers
-    > make src/test/integration
+    > ./runTests.py src/test/unit
+    > ./runTests.py src/test/integration
+    > ./runTests.py src/test/prob
     
    
 We don't always expect every developer to run all tests on their machine, but we do expect the developer to run a minimal number of tests before creating a pull request. If you've worked on `src/stan/foo/bar.hpp`, there should be a test in `src/test/unit/foo/bar_test.cpp` that passes. We also expect the developer to run `make src/test/unit/foo` prior to submitting.  The script [runTests.py](https://github.com/stan-dev/stan/wiki/Testing-Stan-using-Gnu-Make-and-Python) can be used to run the tests under `src/test`.
