@@ -7,7 +7,7 @@ If you don't read anything else, please remember the following when working on f
 
 * Never push directly into `develop` or `master` branches.  
 
-* For working on new features, branch from `develop` into a branch called `feature/<some-descriptive-name>`, and when the work is done (thoroughly tested and documented), create a pull request back into `develop`.  
+* For working on new features, create a new issue, branch from `develop` into a branch called `feature/issue-<number>-<some-descriptive-name>`, and when the work is done (thoroughly tested and documented), create a pull request back into `develop`.  
 
 ### 2. Branches
 
