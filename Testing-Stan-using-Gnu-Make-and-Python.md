@@ -47,7 +47,7 @@ Arguments:
 
 To run a single unit test, specify the path of the test as an argument. Example:
 ```
-> ./runTests.py src/test/unit/math/functions/abs_test.cpp
+> ./runTests.py src/test/unit/math/prim/scal/fun/abs_test.cpp
 ```
 
 To run multiple unit tests at once, specify the paths of the tests separated by a space. Example:
