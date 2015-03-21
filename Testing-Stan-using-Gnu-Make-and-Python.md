@@ -20,7 +20,6 @@ The `make/local` file in the Stan repository is empty. To add `CC=clang++` and `
 ```
 > echo "CC=clang++" >> make/local
 > echo "O=0" >> make/local
-> cat make/local
 ```
 
 ### 2. The Python script, `runTests.py`
