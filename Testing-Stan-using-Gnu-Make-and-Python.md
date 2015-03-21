@@ -52,12 +52,12 @@ To run a single unit test, specify the path of the test as an argument. Example:
 
 To run multiple unit tests at once, specify the paths of the tests separated by a space. Example:
 ```
-> ./runTests.py src/test/unit/math/functions/abs_test.cpp src/test/unit/math/functions/Phi_test.cpp 
+> ./runTests.py src/test/unit/math/prim/scal/fun/abs_test.cpp  src/test/unit/math/prim/scal/fun/Phi_test.cpp 
 ```
 
 These can also take the `-j` flag for parallel builds. For example:
 ```
-> ./runTests.py -j4 src/test/unit/math/functions/abs_test.cpp
+> ./runTests.py -j4 src/test/unit/math/prim/scal/fun/abs_test.cpp
 ```
 
 **Note:** On some systems it may be necessary to change the access permissions to make `runTests.py` executable:   
@@ -68,12 +68,12 @@ This only needs to be done once.
 
 To run a directory of tests (recursive), specify the directory as an argument. Note: there is no trailing slash (`/`). Example:
 ```
-> ./runTests.py src/test/unit/math/functions
+> ./runTests.py src/test/unit/math/prim
 ```
 
 To run multiple directories, separate the directories by a space. Example:
 ```
-> ./runTests.py src/test/unit/math/functions src/test/unit/math/matrix
+> ./runTests.py src/test/unit/math/prim src/test/unit/math/rev
 ```
 
 To build in parallel, provide the `-j` flag with the number of cores. Example:
