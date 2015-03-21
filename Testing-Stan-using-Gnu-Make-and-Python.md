@@ -11,7 +11,7 @@ The following programs and tools are required:
  - Python:  versions 2.7 and up
  - Unix utilities `find` and `grep`
 
-The Stan `makefile` uses helper files in the directory `stan/make`.   The helper file `stan/make/local` is used to customize makefile options.  Typical customizations are setting the compiler option flags:
+The Stan `makefile` uses helper files in the directory `stan/make`.   The helper file `~/.config/stan/make.local` or `make/local` is used to customize makefile options.  Typical customizations are setting the compiler option flags:
   - `CC` specifies the name of the C++ compiler. Example: `CC=clang++`
   - `O` specifies the optimization level. `0` for least code optimization, `3` for greatest amount of code optimization. Example: `O=0`
   - `MAKEFLAGS` specifies the number of cores used by <code>make</code>, ranging from 1 to min(total cores, 16).  Example: `MAKEFLAGS = -j2`
