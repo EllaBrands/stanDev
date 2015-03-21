@@ -5,7 +5,7 @@ The Stan developer process is based on the gitflow model described by Vincent Dr
 
 If you don't read anything else, please remember the following when working on features: 
 
-* Never push directly into master or development branches.  
+* Never push directly into `develop` or `master` branches.  
 
 * For working on new features, branch from `develop` into a branch called `feature/<some-descriptive-name>`, and when the work is done (thoroughly tested and documented), create a pull request back into `develop`.  
 
