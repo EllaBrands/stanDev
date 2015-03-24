@@ -64,16 +64,6 @@
 
 #### Cleanup
 * improve special function and prob function behavior at limits
-* (Daniel) simplify error handling by standardizing default policy
-    * remove throw from all files except for src/stan/math/error_handling/raise_domain_error.hpp
-    * Need unit-tests for error handling:
-    * check_nonnegative
-    * check_positive
-    * matrix/check_corr_matrix
-    * matrix/check_ordered
-    * matrix/check_pos_definite
-* Move src/stan/math/matrix/check_range.hpp to src/stan/math/error_handling/matrix/
-* Update error handling in prob/distributions/multivariate/continuous/wishart.hpp
 * Fix Errors coming from Boost Spirit Qi parser under clang++ 3.3:
     * Multiple unsequenced warnings from assigning to _pass in grammars under clang 3.3  [see: Bob's e-mail of 5/31/13]
     * Local return on iterators, for which Jeffrey Oldham filed a [Boost bug report:](https://svn.boost.org/trac/boost/ticket/8489)
@@ -145,14 +135,14 @@ see: http://cran.r-project.org/web/packages/Rmpfr/vignettes/log1mexp-note.pdf
     * void constrained_values(vector<double>& v, const vector<double>& r, const vector<int>& i)
     * void unconstrained_param_names(vector<string>& v)
 * add "multi_logit_log(int|vec,vec)" with derivs so that
-```
-y ~ multi_logit(beta,x);
-```
-behaves as:
-```
-y ~ categorical(softmax(dot_product(beta,x)));
-```
-c.f. MCMCmln in MCMCpack for speed comparison using their data set
+    ```
+    y ~ multi_logit(beta,x);
+    ```
+    behaves as:
+    ```
+    y ~ categorical(softmax(dot_product(beta,x)));
+    ```
+    c.f. MCMCmln in MCMCpack for speed comparison using their data set
 * expose all the groovy special functions Michael/Daniel added for CDFs
 * allow only some inits to be specified in a data file (var_context) and let the rest be randomly generated
 * bound error in inits (and discuss in manual)
@@ -436,10 +426,6 @@ Richard Alexander requested on stan-dev, " use sorted predicted values (and asso
     * templatize std::vector/Eigen functions where possible
     * reduce code dup in gm/generator
 * revise API doc for doxygen
-* error handling for special functions
-    * math and agrad
-    * matrix sizes
-    * how to configure std::log(), etc.?
 * Watanabe's WAIC: Widely applicable information criterion
 * implicit functions with derivatives (iterative solver)
 * refactor finite diff derivative calcs to functor
@@ -528,7 +514,6 @@ might be used if ns is an int array of sizes
     real y[n_obs];
     ```
 is a 2D ragged array structure where y[n] is a n_obs[n]-vector
-* get line numbers into error messages
 * compiler for R's linear model notation
 * generalize vector ops to conforming matrices 
     * need to work out whether we can do this and still preserve type inference;  e.g., x * x' may still be a matrix even if x is a row vector.
@@ -615,10 +600,6 @@ But it brings up type inference issues, because a(1,2,3) is int[3], not real[3].
     * ready to use with vec<...<vec<x>...> pattern
     * not clear how to declare (follow C?)
     * example on p. 8 of http://www.jstatsoft.org/v36/c01/paper/ involving ragged param arays for graded response model
-* subroutines
-    * user-defined functions in StanGM
-    * user-defined densities (how much to require?)
-    * interpreted conditionally based on block?
 * compound op-assigns in StanGM
     *   +<-, *<-, etc.  (ugly, ugly, ugly syntax; cf., +=, *=, etc.)
 * warnings
@@ -659,11 +640,6 @@ But it brings up type inference issues, because a(1,2,3) is int[3], not real[3].
     ```
 gets same grad as y[n] ~ normal(mu,sigma);
 * truncations need to be vectorized, too!
-
-### Build <a id="build"></a>
-* remove writes into Stan directory itself
-* set up make to work from directory other than STAN_HOME
-    * pass in arg?  environment var?
 
 ### Command-Line <a id="command-line"></a>
 
@@ -861,12 +837,6 @@ do we do this in R or what?
 * Doc the generated C++ model class
 * Add a separate subject index to manual
 * Description of reverse-mode auto-dif or too C++-like?
-
-
-### Release Management <a id="release-management"></a>
-* Jeffrey Arnold (8/13/12 message to list) about syntax highlighting. ? how to integrate
-* Branch versions to make it easier to divide-and-conquer debugs and to allow developers to work from latest stable version
-* appoint a commit manager
 
 ### Models <a id="models"></a>
 * convergence diagnostics
