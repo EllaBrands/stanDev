@@ -1,10 +1,18 @@
+# Overview
+
 Stan C++ will provide an API to the interfaces, offering services for optimization, sampling, and the like.  Our current goal takes this even further, encapsulating a full Stan process into a single function callable from any external interfaces.
 
 - _Services_ will refer to C++ functions that the Stan API provides.  These might include small tasks like initialization, larger tasks like warmup and sampling, and the monolithic command function. 
  
 -  _Interface elements_ are manipulated by the external interfaces to read and write data and configuration information.  
 
-An unrelated service the Stan C++ API will provide is Rhat and ESS calculations.  The plan is to spec out the basic commands for running first and worry about posterior analysis later, as it is an independent problem.  
+# Current state of the refactor
+
+- Considerable work has been done on the branch `issue-1361-writer_callback`: https://github.com/stan-dev/stan/tree/feature/issue-1361-writer_callback
+- Issue #1361 records considerable discussion.
+# ``command`` with Callbacks
+
+An unrelated service the Stan C++ API will provide is Rhat and ESS calculations.  The plan is to spec out the basic commands for running first and worry about posterior analysis later, as it is an independent problem.
 
 The overarching goal is to create a single `command` service in the API that requires at least the following interface elements, all of which are provided as part of the call to the service or returned by the service.  The following definitions assumes they will all be callbacks (i.e., C++ objects defined by the interfaces that provide methods that the services can call):
 
