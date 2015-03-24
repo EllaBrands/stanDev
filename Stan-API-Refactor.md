@@ -65,6 +65,89 @@ An alternative to callbacks is to replace one or more of the above elements with
 
 Protocol buffers seem more evolved (and more heavyweight in terms of interface) than JSON in that they allow data type schemas and provide a binary format (which would reduce memory consumption while removing human readability).  They also have more mature and faster implementations than JSON.
 
+### `command` with Protocol Buffers
+
+I'll just try to describe how one could accomplish the function of the IterationWriter from Bob's
+example above with Protocol Buffers. I think this will be enough to get across the idea.
+
+So, just focusing on replacing IterationWriter, the command would now look like:
+
+```cpp
+template <class Program, class VarReader, class Interrupt, class AdaptationWriter>
+void
+command(Program& program,
+        const VarReader& data,
+        const VarReader& inits,
+        Interrupt& interrupter,
+        AdaptationWriter& adapt_writer,
+        std::ostream& iteration_stream,
+        std::ostream& output_stream,
+        std::ostream& error_stream,
+        const stan::command::config& config);
+```
+
+Whenever Stan has per-iteration information (model parameters and
+algorithm/sampler parameters) it would serialize the information and pass it,
+one iteration at a time, via Protocol Buffers SerializeToOstream(ostream*
+output).
+
+What would this information sent down the wire look like before serialization? We know exactly
+what it looks like since we can look at the C++ structure where it gets stored
+in PyStan and RStan.
+
+Here's the relevant C++ class in PyStan that holds the
+per-iteration information (simplified a bit). (It's very similar to RStan.)
+
+```cpp
+class StanHolder {
+
+    public:
+        int num_failed;
+        std::vector<std::vector<double> > chains;
+        std::vector<std::string> chain_names;
+        std::vector<std::vector<double> > sampler_params;
+        std::vector<std::string> sampler_param_names;
+};
+```
+
+If we wanted to pass per-iteration information down the wire as a C++ class (assuming such a thing were possible), we'd have to make a "per-iteration" version of StanHolder above, something like
+this:
+
+```cpp
+class StanIteration {
+
+    public:
+        int chain_num;
+        int iter_num;
+        bool failed;
+        std::vector<double> > params;
+        std::vector<std::string> param_names;
+        std::vector<std::vector<double> > sampler_params;
+        std::vector<std::string> sampler_param_names;
+};
+```
+
+So this is something we can write in Protocol Buffers:
+
+```cpp
+message StanIteration {
+  int32 chain_num = 1;
+  int32 iter_num = 2;
+  bool failed = 3;
+  repeated double params = 4;
+  repeated string param_names = 5;
+  repeated double sampler_params = 6;
+  repeated string sampler_param_names = 7;
+}
+```
+
+And that's pretty much the idea.
+
+As an aside, apparently Google (which I always think of as a C++ shop) runs on
+Protocol Buffers: "Protocol buffers are now Google's lingua franca for data –
+at time of writing, there are 48,162 different message types defined in the
+Google code tree across 12,183 .proto files."
+(https://developers.google.com/protocol-buffers/docs/overview)
 
 ## Intermediate Steps from where (Cmd)Stan is at Now
 
