@@ -2,6 +2,7 @@ The Stan Wiki here on GitHub is primarily intended for developers.
 
 ### Contents
 * [General Notes for Developers](https://github.com/stan-dev/stan/wiki#general-notes-for-developer-process)
+* [Long Term To-Do List](https://github.com/stan-dev/stan/wiki#long-term-to-do-list)
 * [Automatic Differentiation](https://github.com/stan-dev/stan/wiki#automatic-differentiation)
 * [Model Concept](https://github.com/stan-dev/stan/wiki#model-concept)
 * [Model Examples](https://github.com/stan-dev/stan/wiki#suites-of-model-examples)
@@ -25,6 +26,11 @@ The Git and code review process used for developers and some useful tools:
 * [CmdStan developers under Windows: additional dependency](wiki/CmdStan-developers-under-Windows:-additional-dependency)
 * [OS and Platform Detection Macros for C++](wiki/Compiler-and-OS-Detection-Macros-for-Cpp)
 
+### Long Term To-Do List
+
+This is complementary to the issue tracker of smaller tidbits:
+
+* [Longer-Term To-Do List](wiki/Longer-Term-To-Do-List)
 
 ### C++11 Migration Plan
 
