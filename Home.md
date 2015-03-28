@@ -1,4 +1,4 @@
-The Stan Wiki here is primarily intended for developers, both active and new to Stan.
+Welcome to the Stan wiki. This page is primarly inteded for developers, both active and new to Stan.
 
 ### Contents
 * [General Notes for Developers](#general-notes-for-developer-process)
@@ -10,6 +10,11 @@ The Stan Wiki here is primarily intended for developers, both active and new to 
 ---
 
 ### General Notes for Developer Process
+
+[//]: # (DL: Rearrange. I think it makes sense to split this section into)
+[//]: # (DL:   two parts: common information to be accessed by current)
+[//]: # (DL:   developers, a second part for process that's useful for )
+[//]: # (DL:   new developers)
 
 The Git and code review process used for developers and some useful tools:
 
