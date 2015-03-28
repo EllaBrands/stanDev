@@ -274,7 +274,7 @@ if (this_one_thing > this_other_thing &&
 
 ##### Class Format
 
-This is unconventional for C++, but I'm OK with it, though don't like the one space. 
+This is unconventional for C++, but I'm OK with it, though don't like the one space. **DL: I don't like one space.**
 
 <blockquote>
 Sections in public, protected and private order, each indented one space.
