@@ -1,3 +1,7 @@
+** THIS IS NOW OUT-OF-DATE WITH RESPECT TO THE develop BRANCH AS OF THE MATH LIB REFACTOR **
+
+PLEASE CHECK BACK LATER --- WE HOPE TO GET IT UPDATED.
+
 Stan's forward- and reverse-mode automatic differentiation API has been written so that it can be used by itself outside of the context of Stan's programming language and built-in inference systems. 
 
 ### Source Distribution
