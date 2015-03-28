@@ -1,12 +1,12 @@
 The Stan Wiki here on GitHub is primarily intended for developers.
 
 ### Contents
-* [General Notes for Developers](https://github.com/stan-dev/stan/wiki#general-notes-for-developer-process)
-* [Long Term To-Do List](https://github.com/stan-dev/stan/wiki#long-term-to-do-list)
-* [Automatic Differentiation](https://github.com/stan-dev/stan/wiki#automatic-differentiation)
-* [Model Concept](https://github.com/stan-dev/stan/wiki#model-concept)
-* [Model Examples](https://github.com/stan-dev/stan/wiki#suites-of-model-examples)
-* [Feature Design Docs](https://github.com/stan-dev/stan/wiki#stan-feature-specs-and-design-docs)
+* [General Notes for Developers](#general-notes-for-developer-process)
+* [Long Term To-Do List](#long-term-to-do-list)
+* [Automatic Differentiation](#automatic-differentiation)
+* [Model Concept](#model-concept)
+* [Model Examples](#suites-of-model-examples)
+* [Feature Design Docs](#stan-feature-specs-and-design-docs)
 
 ---
 
