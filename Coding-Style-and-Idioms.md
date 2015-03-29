@@ -147,7 +147,7 @@ We will allow exceptions.
 
 We have to violate this for the existing exception hierarchy in throwing exceptions with line numbers from Stan programs (otherwise I agree).
 
-<blockqote>
+<blockquote>
 Avoid using Run Time Type Information (RTTI).
 </blockquote>
 
