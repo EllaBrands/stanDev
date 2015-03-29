@@ -28,7 +28,7 @@ The overarching goal is to create a single `command` service in the API that req
     - initialization: providing initial values to an algorithm
     - algorithm config: providing things like mass matrices and step sizes for algorithms
 
-- _Output Streams_:  These can play the role of `std::cout` and `std::cerr` (if necessary).  These may not be necessary if the interfaces do all of their output (such as refreshing the iteration number) themselves using the callbacks.
+- _Output Streams_:  These can play the role of `std::cout` and `std::cerr` (if necessary).  These may not be necessary if the interfaces do all of their output (such as refreshing the iteration number) themselves using the callbacks. (An additional reason to get rid of them and use callbacks exclusively: dealing with C++ streams is difficult for Python.)
 
 - _Config_ :  This element will provide values for configuration, such as choice of method (sampling, optimizing, diagnosing), algorithm (dependent on method, such as HMC or L-BFGS), engine (NUTS vs. basic HMC), and finer-grained config such as random number seed, etc.  As things stand now, elements of config will determine which of the other elements are actually used (e.g., optimization will not accept a mass matrix argument)
 
