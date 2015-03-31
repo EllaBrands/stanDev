@@ -117,6 +117,9 @@ model {
   std_re ~ normal(0,std_std);
   obs_std ~ normal(0,1);
   std_std ~ normal(0,1);
+  beta_1 ~ normal(0,1);
+  ...
+  beta_K ~ normal(0,1);
 }
 ```
 w ragged arrays:
@@ -152,8 +155,10 @@ model {
     unit_level_mean[n] <- alpha + sum(accum);
   }  
   y ~ normal(unit_level_mean, obs_std);
-  for(k in 1:K)
+  for(k in 1:K){
     re_group[k] ~ normal(X[k] * beta[k],std_re[k]);
+    beta[k] ~ normal(0,1);
+  }
   std_re ~ normal(0,std_std);
   obs_std ~ normal(0,1);
   std_std ~ normal(0,1);
