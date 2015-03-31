@@ -72,6 +72,7 @@ int size;
 vector<int> rows;
 vector<int> cols;
 vector<Matrix<T, -1, -1>> ragged_matrix;
+ragged_matrix.reserve(size);
 for (size_t i = 0; i < size; ++i)
   ragged_matrix.push_back(Matrix<T,-1,-1>(rows[i],cols[i]));
 ```
