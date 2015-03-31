@@ -1,5 +1,67 @@
 ## Ragged array spec
 
+
+### Language spec
+
+#### Data, parameters and transformed parameters block declaration
+
+```
+data {
+
+  // number of ragged matrices
+  int<lower=1> K;
+  // number of rows for matrix k
+  int<lower=1> rows[K];
+  // number of columns for matrix k
+  int<lower=1> cols[K];
+  // array of matrices, where matrix k has dim: rows[k] X cols[k]
+  ragged_matrix[rows,cols] mat[K];
+}
+parameters {
+  ragged_matrix[rows,cols] mat[K];
+}
+transformed parameters {
+  ragged_matrix[rows,cols] mat[K];
+}
+```
+
+Access
+```
+data {
+  // number of observations
+  int<lower=1> N;
+  // number of ragged matrices
+  int<lower=1> K;
+  // number of rows for matrix k
+  int<lower=1> rows[K];
+  // number of columns for matrix k
+  int<lower=1> cols[K];
+  // array of matrices, where matrix k has dim: rows[k] X cols[k]
+  ragged_matrix[rows,cols] mat[K];
+  int<lower=1> unit_level_category_id[K,N]
+}
+parameters {
+  ragged_matrix[cols,rep_array(1,K)] beta[K];
+  ragged_matrix[rows,rep_array(1,K)] re[K];
+}
+model {
+  vector[N] unit_mean;
+  // mat[1] would return the first matrix in the array mat
+  // with dim rows[1] X cols[1]
+  // beta[1] would return the first matrix in the array beta
+  // with dim cols[1] X 1
+  for(k in 1:K)
+    re[k] <- mat[k] * beta[k]
+  // re[1,1,1] would return the element 1, 1 in the first matrix
+  // in re
+  for(n in 1:N)
+    unit_mean[n] <- re[1,unit_level_category_id[1,n],1] + 
+                    re[2,unit_level_category_id[2,n],1] + 
+                    ...
+                    re[K,unit_level_category_id[K,n],1];
+}
+```
+
 ### Use cases
 
 #### Use case 1: Varying intercept model
@@ -146,7 +208,7 @@ parameters {
   real alpha;
   real<lower=0> std_std;
   ragged_matrix[levels_per_category,rep_array(1,K)] re_group[K];
-  ragged_matrix[X_col_by_category,rep_array(1,K)] beta;
+  ragged_matrix[X_col_by_category,rep_array(1,K)] beta[K];
 }
 model {
   vector[N] unit_level_mean;
