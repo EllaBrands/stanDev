@@ -62,6 +62,21 @@ model {
 }
 ```
 
+### C++ spec
+
+My first cut is as Ben suggested, something like:
+```
+using std::vector;
+using Eigen::Matrix;
+int size;
+vector<int> rows;
+vector<int> cols;
+vector<Matrix<T, -1, -1>> ragged_matrix;
+for (int i = 0; i < size; ++i)
+  ragged_matrix.push_back(Matrix<T,-1,-1>(rows[i],cols[i]));
+```
+
+
 ### Use cases
 
 #### Use case 1: Varying intercept model
