@@ -76,6 +76,38 @@ for (size_t i = 0; i < size; ++i)
   ragged_matrix.push_back(Matrix<T,-1,-1>(rows[i],cols[i]));
 ```
 
+P.S. this little program compiles and runs correctly:
+
+```
+#include <iostream>
+#include <Eigen/Dense>
+#include <vector>
+
+int main(){
+  using Eigen::Matrix;
+  using std::vector;
+
+  vector<Matrix<double, -1, -1> > a;
+  vector<int> rows;
+  vector<int> cols;
+  int dim_vec = 5;
+
+  for (int i = 0; i < dim_vec; ++i) {
+    rows.push_back(i + 1);
+    cols.push_back(i + 1);
+  }
+
+  for (size_t i = 0; i < dim_vec; ++i) {
+    a.push_back(Matrix<double, -1, -1>(rows[i],cols[i]));
+  }
+
+  for (size_t i = 0; i < dim_vec; ++i)
+    std::cout << "Matrix " << i << " size " << a[i].size() << std::endl << a[i] << std::endl;
+
+  return 0;
+}
+```
+
 
 ### Use cases
 
