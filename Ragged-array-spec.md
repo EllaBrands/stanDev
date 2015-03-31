@@ -1,4 +1,6 @@
-### Ragged array spec
+## Ragged array spec
+
+### Use cases
 
 #### Use case 1: Varying intercept model
 
