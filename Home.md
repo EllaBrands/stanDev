@@ -72,6 +72,8 @@ Specs and design docs and for Stan features, as originally proposed.  See Stan d
 
 * [Testing framework](wiki/Testing-framework)
 
+* [Ragged array spec](wiki/Ragged-array-spec)
+
 ### Out-of-Date To-Do List
 
 GitHub's issue tracker is more up to date and contains a `project` tag if you're looking for projects. An older list of to-do items, with some more ambitious projects, is here:
