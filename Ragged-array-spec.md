@@ -163,12 +163,16 @@ data {
   int<lower=1> cols[K];
   // array of matrices, where matrix k has dim: rows[k] X cols[k]
   matrix[rows,cols] mat;
+  // array of vectors, where vector k has dim: rows[k] X 1
+  vector[rows] vec;
 }
 parameters {
   matrix[rows,cols] mat;
+  vector[rows] vec;
 }
 transformed parameters {
   matrix[rows,cols] mat;
+  vector[rows] vec;
 }
 ```
 
@@ -300,6 +304,7 @@ model {
   std_re ~ normal(0,std_std);
   obs_std ~ normal(0,1);
   std_std ~ normal(0,1);
+  alpha ~ normal(0,1);
 }
 ```
 
@@ -327,6 +332,7 @@ model {
   std_re ~ normal(0,std_std);
   obs_std ~ normal(0,1);
   std_std ~ normal(0,1);
+  alpha ~ normal(0,1);
 }
 ```
 
@@ -351,7 +357,6 @@ data {
 parameters {
   vector<lower=0>[K] std_re;
   real<lower=0> obs_std;
-  real alpha;
   real<lower=0> std_std;
   vector[levels_per_category[1]] re_group_1;
   vector[levels_per_category[2]] re_group_2;
@@ -400,7 +405,6 @@ data {
 parameters {
   vector<lower=0>[K] std_re;
   real<lower=0> obs_std;
-  real alpha;
   real<lower=0> std_std;
   vector[levels_per_category] re_group;
   vector[X_col_by_category] beta;
@@ -411,7 +415,7 @@ model {
   for(n in 1:N){
     for(k in 1:K) 
       accum[k] <- re_group[k,group_id[k,n]]
-    unit_level_mean[n] <- alpha + sum(accum);
+    unit_level_mean[n] <- sum(accum);
   }  
   y ~ normal(unit_level_mean, obs_std);
   for(k in 1:K){
