@@ -2,11 +2,7 @@
 
 The goal is to allow ragged arrays, and arrays of differently sized matrices and vectors.
 
-### Language spec
-
-No new keywords will be introduced.  The existing array and matrix declarations will be generalized.  New I/O will be needed within the Stan dump parser, var_context base class, and for all the interfaces.  This will probably interact with the command refactoring that Michael's undertaking.
-
-#### What is a Ragged Array?
+### What is a Ragged Array?
 
 This specification will use the C++ notation for arrays.  For example, `{ a, b c }` will denote a size-3 array with elements `a`, `b`, and `c`.
 
@@ -19,6 +15,9 @@ x = { { a }, { b, c, d } }
 The ragged array `x` is two dimensional and has size 2, with with elements that are 1D arrays of sizes 1 and 3 respectively.  The valid indexes and values are:
 
 ```
+x[1] = { a }
+x[2] = { b, c, d }
+
 x[1,1] = a
 x[2,1] = b
 x[2,2] = c
@@ -29,10 +28,93 @@ and sizes are
 
 ```
 size(x) = 2
+
 size(x[1]) = 1
 size(x[2]) = 3
 ```
 
+This concept (and notation) generalizes to any dimensionality of nested arrays, and to arrays of vectors and matrices of different sizes.
+
+### Declaring and Accessing Ragged Arrays
+
+Rather than introducing new keywords, the existing array and matrix declarations will be generalized.  New I/O will be needed within the Stan dump parser, var_context base class, and for all the interfaces.  This will probably interact with the command refactoring that Michael's undertaking.
+
+Currently, arrays are of fixed rectangular sizes and declared giving the size of each dimension.  For example,
+
+```
+int a[3, 2];
+real b[I, J, K];
+```
+
+delcares `a` as a (3 x 2) array of integers and `b` as a (I x J x K) array of continuous values, where `I`, `J`, and `K` are expressions denoting single integer values
+
+The proposed generalizing will allow arrays to be declared using (ragged) arrays of integers.  For example, suppose the declarations are
+
+```
+int<lower=1> K;
+int<lower=1> dims[K];
+real x[dims];
+```
+with `K = 2` and `dims = { 1, 3 }`.  Then
+```
+x = { 
+      { a }, 
+      { b, c, d }
+    }
+```
+with sizes
+```
+size(x) = 2
+size(x[1]) = 1
+size(x[2]) = 3
+```
+and elements indexing
+```
+x[1,1] = a
+x[2,1] = b
+x[2,2] = c
+x[2,3] = d
+```
+
+A three-dimensional ragged array would be
+```
+y =  { 
+       { 
+         { a }, 
+         { b, c} 
+       },
+       { 
+         { d, e, f}
+       }
+    }
+```
+with sizes
+```
+size(y)= 2
+size(y[1]) = 2
+size(y[2]) = 3
+size(y[1,1]) = 1
+size(y[1,2]) = 2
+size(y[2,1]) = 3
+```
+and elements indexed by
+```
+y[1,1,1] = a
+y[1,2,1] = b
+y[1,2,2] = c
+y[2,1,1] = d
+y[2,1,2] = e
+y[2,1,3] = f
+```
+
+In general, we can declare a ragged array of dimensionality D using a ragged array of integers of dimensionality (D - 1).  For example, the 3D ragged array `y` above is declared with a 2D dimensions array 
+```
+dims = { { 1, 2 }, { 3 } }
+```
+as
+```
+real y[dims];
+```
 
 #### Data, parameters and transformed parameters block declaration
 
