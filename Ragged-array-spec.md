@@ -107,13 +107,47 @@ y[2,1,2] = e
 y[2,1,3] = f
 ```
 
-In general, we can declare a ragged array of dimensionality D using a ragged array of integers of dimensionality (D - 1).  For example, the 3D ragged array `y` above is declared with a 2D dimensions array 
+In general, we can declare a ragged array of dimensionality D using a ragged array of integers of dimensionality (D - 1).  For example, the 3D ragged array `y` above is declared with a 2D array 
 ```
 dims = { { 1, 2 }, { 3 } }
 ```
 as
 ```
 real y[dims];
+```
+
+
+### Dump Format for Ragged Arrays
+
+The goal of using the dump format is to allow checking of sizes during I/O in Stan.  This is possible using the R list structure recursively, which produces dumps that look like this:
+```
+a <-
+list(1, 2)
+d <-
+list(list(1, 2), list(3, 4, 5))
+f <-
+list(list(list(1, 2), list(3, 4, 5)), list(list(6)))
+```
+This is very very verbose.  It's only slightly less verbose to use the `c()` operator at the lowest level:
+```
+a <-
+c(1, 2)
+d <-
+list(c(1, 2), c(3, 4, 5))
+```
+Alternative, we could abandon the general dump structure and instead use something that declares the dimensions as a ragged array and then the elements all as a simple list.  That'd be something like this for the shorter case
+```
+d.dims
+<- list(2,3)
+d.elts
+<- c(1,2,3,4,5)
+```
+and this for the longer case
+```
+d.dims
+<- list(list(2,3),list(1))
+d.elts
+<- c(1,2,3,4,5,6)
 ```
 
 #### Data, parameters and transformed parameters block declaration
