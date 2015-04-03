@@ -17,18 +17,14 @@ The ragged array `x` is two dimensional and has size 2, with with elements that 
 ```
 x[1] = { a }
 x[2] = { b, c, d }
-
 x[1,1] = a
 x[2,1] = b
 x[2,2] = c
 x[2,3] = d
 ```
-
 and sizes are
-
 ```
 size(x) = 2
-
 size(x[1]) = 1
 size(x[2]) = 3
 ```
@@ -40,16 +36,13 @@ This concept (and notation) generalizes to any dimensionality of nested arrays, 
 Rather than introducing new keywords, the existing array and matrix declarations will be generalized.  New I/O will be needed within the Stan dump parser, var_context base class, and for all the interfaces.  This will probably interact with the command refactoring that Michael's undertaking.
 
 Currently, arrays are of fixed rectangular sizes and declared giving the size of each dimension.  For example,
-
 ```
 int a[3, 2];
 real b[I, J, K];
 ```
-
 delcares `a` as a (3 x 2) array of integers and `b` as a (I x J x K) array of continuous values, where `I`, `J`, and `K` are expressions denoting single integer values
 
 The proposed generalizing will allow arrays to be declared using (ragged) arrays of integers.  For example, suppose the declarations are
-
 ```
 int<lower=1> K;
 int<lower=1> dims[K];
@@ -70,6 +63,8 @@ size(x[2]) = 3
 ```
 and elements indexing
 ```
+x[1] = { a }
+x[2] = { b, c, d }
 x[1,1] = a
 x[2,1] = b
 x[2,2] = c
@@ -99,6 +94,11 @@ size(y[2,1]) = 3
 ```
 and elements indexed by
 ```
+y[1] = { { a }, { b, c } }
+y[2] = { { d, e, f } }
+y[1,1] = { a }
+y[1,2] = { b, c }
+y[2,1] = { d, e, f }
 y[1,1,1] = a
 y[1,2,1] = b
 y[1,2,2] = c
@@ -117,8 +117,6 @@ real y[dims];
 ```
 
 #### Data, parameters and transformed parameters block declaration
-
-We are _not_ going to introduce new variable types for ragged arrays and arrays
 
 ```
 data {
