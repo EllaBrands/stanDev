@@ -162,13 +162,13 @@ data {
   // number of columns for matrix k
   int<lower=1> cols[K];
   // array of matrices, where matrix k has dim: rows[k] X cols[k]
-  ragged_matrix[rows,cols] mat[K];
+  matrix[rows,cols] mat;
 }
 parameters {
-  ragged_matrix[rows,cols] mat[K];
+  matrix[rows,cols] mat;
 }
 transformed parameters {
-  ragged_matrix[rows,cols] mat[K];
+  matrix[rows,cols] mat;
 }
 ```
 
@@ -184,12 +184,12 @@ data {
   // number of columns for matrix k
   int<lower=1> cols[K];
   // array of matrices, where matrix k has dim: rows[k] X cols[k]
-  ragged_matrix[rows,cols] mat[K];
+  matrix[rows,cols] mat;
   int<lower=1> unit_level_category_id[K,N]
 }
 parameters {
-  ragged_matrix[cols,rep_array(1,K)] beta[K];
-  ragged_matrix[rows,rep_array(1,K)] re[K];
+  vector[cols] beta;
+  vector[rows] re;
 }
 model {
   vector[N] unit_mean;
@@ -199,13 +199,13 @@ model {
   // with dim cols[1] X 1
   for(k in 1:K)
     re[k] <- mat[k] * beta[k]
-  // re[1,1,1] would return the element 1, 1 in the first matrix
-  // in re
+  // mat[1,1,1] would return the element 1, 1 in the first matrix
+  // in mat
   for(n in 1:N)
-    unit_mean[n] <- re[1,unit_level_category_id[1,n],1] + 
-                    re[2,unit_level_category_id[2,n],1] + 
+    unit_mean[n] <- re[1,unit_level_category_id[1,n]] + 
+                    re[2,unit_level_category_id[2,n]] + 
                     ...
-                    re[K,unit_level_category_id[K,n],1];
+                    re[K,unit_level_category_id[K,n]];
 }
 ```
 
@@ -218,10 +218,10 @@ using Eigen::Matrix;
 int size;
 vector<int> rows;
 vector<int> cols;
-vector<Matrix<T, -1, -1>> ragged_matrix;
-ragged_matrix.reserve(size);
+vector<Matrix<T, -1, -1>> matrix;
+matrix.reserve(size);
 for (size_t i = 0; i < size; ++i)
-  ragged_matrix.push_back(Matrix<T,-1,-1>(rows[i],cols[i]));
+  matrix.push_back(Matrix<T,-1,-1>(rows[i],cols[i]));
 ```
 
 P.S. this little program compiles and runs correctly:
@@ -311,7 +311,7 @@ parameters {
   real<lower=0> obs_std;
   real alpha;
   real<lower=0> std_std;
-  ragged_matrix[levels_per_category,rep_array(1,K)] re_group[K];
+  vector[levels_per_category] re_group;
 }
 model {
   vector[N] unit_level_mean;
@@ -395,15 +395,15 @@ data {
   // row_k (levels_per_category[k]) 
   // and col_k, X_col_by_category[k] = col_k
   int<lower=1> X_col_by_category[K];
-  ragged_matrix[levels_per_category,X_col_by_category] X[K];
+  matrix[levels_per_category,X_col_by_category] X;
 }
 parameters {
   vector<lower=0>[K] std_re;
   real<lower=0> obs_std;
   real alpha;
   real<lower=0> std_std;
-  ragged_matrix[levels_per_category,rep_array(1,K)] re_group[K];
-  ragged_matrix[X_col_by_category,rep_array(1,K)] beta[K];
+  vector[levels_per_category] re_group;
+  vector[X_col_by_category] beta;
 }
 model {
   vector[N] unit_level_mean;
