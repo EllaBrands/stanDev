@@ -1,9 +1,42 @@
-## Ragged array spec
+## Ragged Arrays
 
+The goal is to allow ragged arrays, and arrays of differently sized matrices and vectors.
 
 ### Language spec
 
+No new keywords will be introduced.  The existing array and matrix declarations will be generalized.  New I/O will be needed within the Stan dump parser, var_context base class, and for all the interfaces.  This will probably interact with the command refactoring that Michael's undertaking.
+
+#### What is a Ragged Array?
+
+This specification will use the C++ notation for arrays.  For example, `{ a, b c }` will denote a size-3 array with elements `a`, `b`, and `c`.
+
+A simple example of a ragged array is
+
+```
+x = { { a }, { b, c, d } }  
+```
+
+The ragged array `x` is two dimensional and has size 2, with with elements that are 1D arrays of sizes 1 and 3 respectively.  The valid indexes and values are:
+
+```
+x[1,1] = a
+x[2,1] = b
+x[2,2] = c
+x[2,3] = d
+```
+
+and sizes are
+
+```
+size(x) = 2
+size(x[1]) = 1
+size(x[2]) = 3
+```
+
+
 #### Data, parameters and transformed parameters block declaration
+
+We are _not_ going to introduce new variable types for ragged arrays and arrays
 
 ```
 data {
