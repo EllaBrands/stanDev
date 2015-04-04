@@ -16,11 +16,15 @@ One could argue we should always use `Eigen::Matrix<S, R, C>::size_type` for Eig
 
 We will follow the [Google Style Guide](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html) except for the exceptions listed in the following sections.
 
-`cpplint.py` is a Python (2.7) script that checks for these guidelines. Rhere is a make target that will check the source code for any instances that do not conform to this standard:
+`cpplint.py` is a Python (2.7) script that checks for these guidelines. Here is a make target that will check the source code for any instances that do not conform to this standard:
 
 ```
 > make cpplint
 ```
+
+If your default python version is python 3, the cpplint.py script fails silently.  In that case if you also have python 2.x installed you can modify the first line of stan/make/cpplint to say `python2 stan/lib/cpplint_4.45/cpplint.py`---or whatever name python 2.x has on your path.    
+
+The make target includes Stan-specific options and limits the tests to the src/stan directory.
 
 ## Emacs mode for Google Style
 
