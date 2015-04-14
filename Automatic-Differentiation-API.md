@@ -54,7 +54,7 @@ CXXFLAGS += -isystem STAN_HOME/lib/eigen_3.2.4
 Note: this will only work if you're using the standard makefile conventions to build your executable. It doesn't matter where in the makefile this goes -- makefiles aren't imperative.
 
 
-### Explaination
+### Explanation
 
 All we need to do to use Stan is tell the C++ compiler where to find the Stan header files and the library files.
 
@@ -127,7 +127,7 @@ By this point, you should have followed all the [installation instructions](#ins
 
 ## `stan::agrad::var`
 
-Stan's autodiff type is `stan::agrad::var`. Use `stan::agrad::var` for any of the independent variables (i.e. the variables you want to ake derivatives with respect to) and the dependent variable (i.e. the final expression).
+Stan's autodiff type is `stan::agrad::var`. Use `stan::agrad::var` for any of the independent variables (i.e. the variables you want to take derivatives with respect to) and the dependent variable (i.e. the final expression).
 
 Stan's autodiff is implemented by overloading operators. Practically, this means that you can use a `stan::agrad::var` in place of `double` for the operators (e.g. `+`, `-`, `*`, `/`, etc.). There is automatic promotion to a `stan::agrad::var` from a primitive, but there is no automatic demotion.
 
@@ -289,7 +289,7 @@ We need to do 3 things:
 
 1. Create a `std::vector<stan::agrad::var>` that contains the independent variables.
 2. Compute the gradients of the dependent variable with respect to the independent variables.
-3. Recover the memory used. (Memory is managed by Stan; recovery doesn't actually "free" the memory, but allows it to be resused.)
+3. Recover the memory used. (Memory is managed by Stan; recovery doesn't actually "free" the memory, but allows it to be reused.)
 
 This example, based on the first autodiff example above, shows how to do the three steps.
 
@@ -635,4 +635,3 @@ This single templated function will handle all combinations of `double` and `sta
 # Troubleshooting
 
 We'll populate this section with common problems. For the time being, please join the [stan-users](https://groups.google.com/forum/?fromgroups#!forum/stan-users) email list.
-
