@@ -410,16 +410,6 @@ double foo(double y, double mu, double sigma) {
 }
 
 
-double foo(double y, double mu, double sigma) {
-  using std::log;
-  using stan::math::square;
-  using stan::math::pi;
-  
-  return -0.5 * square((y - mu) / sigma) - log(sigma)
-    - 0.5 * log(2 * pi());
-}
-
-
 int main() {
   double y1(0), mu1(0), sigma1(1);
   double lp1 = foo(y1, mu1, sigma1);
