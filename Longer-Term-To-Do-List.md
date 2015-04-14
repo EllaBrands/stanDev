@@ -113,6 +113,6 @@ We can add this, but we never figured out any decent adaptation.
 
 Right now, we only create them via adaptation.  Requires working out a data format for them, though we should probably use whatever we use for inits and data.
 
+#### Log CDFs, CCDFs, truncation
 
-
- 
+We need to fix all of the CDFs and CCDFs so they have specialized code for the log scale.  It's probably not a high priority, because they will underflow or overflow derivatives in most cases.  We also need specialized code for `log(foo_cdf(H, theta) - foo_cdf(L, theta))` that removes redundant calculations and is more robust for `[L,H]` truncation. 
