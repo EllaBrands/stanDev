@@ -116,3 +116,7 @@ Right now, we only create them via adaptation.  Requires working out a data form
 #### Log CDFs, CCDFs, truncation
 
 We need to fix all of the CDFs and CCDFs so they have specialized code for the log scale.  It's probably not a high priority, because they will underflow or overflow derivatives in most cases.  We also need specialized code for `log(foo_cdf(H, theta) - foo_cdf(L, theta))` that removes redundant calculations and is more robust for `[L,H]` truncation. 
+
+#### Direct Multivariate Prior on Unconstrained Parameters
+
+Specify a mean and covariance (precision, or their Cholesky factors, maybe just diagonal) and apply it to unconstrained parameters, then use the usual parameter transform, but turn off Jacobians.  Now can't use parameters on the LHS of sampling without manual Jacobian adjustment.
