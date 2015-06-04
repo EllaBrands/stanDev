@@ -1,0 +1,1 @@
+This page describes how users will use RStan 3.0 to compile and fit models. This page is intended for RStan developers and developers of other user interfaces to Stan.
