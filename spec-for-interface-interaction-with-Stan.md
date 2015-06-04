@@ -1,3 +1,8 @@
+**DEPRECATED**
+
+New page: [User Interface Guidelines for Developers](https://github.com/stan-dev/stan/wiki/User-Interface-Guidelines-for-Developers)
+
+
 This is where the spec for the interaction with Stan should go.
 
 I believe the interfaces, {*}Stan, should provide a single instantiated concept that has:
