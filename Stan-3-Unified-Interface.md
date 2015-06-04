@@ -1,3 +1,9 @@
+**DEPRECATED**
+
+New page: [User Interface Guidelines for Developers](https://github.com/stan-dev/stan/wiki/User-Interface-Guidelines-for-Developers)
+
+--------
+
 I'd very much like to unify the look and feel of PyStan, CmdStan, and RStan to the extent possible.  Some related Wiki pages:
 
 * [Services refactor in Stan C++](https://github.com/stan-dev/stan/wiki/Stan-API-Refactor)  [stan wiki]
