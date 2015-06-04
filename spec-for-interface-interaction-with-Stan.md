@@ -2,6 +2,8 @@
 
 New page: [User Interface Guidelines for Developers](https://github.com/stan-dev/stan/wiki/User-Interface-Guidelines-for-Developers)
 
+--------
+
 
 This is where the spec for the interaction with Stan should go.
 
