@@ -48,18 +48,19 @@ See the R documentation for [ReferenceClasses](http://stat.ethz.ch/R-manual/R-de
 - dso: <S4 cxxdso> (from inline)
 - cxx_flags
 
+## StanProgramWithData class specification
 **instance (reference class) methods**
 - double log_prob(unconstrained_params)
-- log_prob_grad(unconstrained_params)
-- hessian(unconstrained_params)
-- laplace_approx(unconstrained_params)
+- vector grad(unconstrained_params)
+- list log_prob_grad(unconstrained_params)
+- matrix hessian(unconstrained_params)
+- list log_prob_grad_hessian(unconstrained_params)
+- double laplace_approx(unconstrained_params)
 - vector constrain_params(unconstrained_params = <vector>)
 - vector unconstrain_params(constrained_params = <vector>)
-
 - stan_fit hmc(hmc_params)
 - stan_fit vb(vb_params)
 - stan_fit sample # alias for default sampler
-
 - optimize_result lbfgs(lbfgs_params)
 - optimize_result newton(newton_params)
 - stan_fit optimize # alias for default optimizer
