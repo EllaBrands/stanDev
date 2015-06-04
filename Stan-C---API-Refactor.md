@@ -1,3 +1,6 @@
+
+NB: This page has not yet been updated to reflect discussions that took place surrounding the [[User Interface Guidelines for Developers]]
+
 # Overview
 
 Stan C++ will provide an API to the interfaces, offering services for optimization, sampling, and the like.  Our current goal takes this even further, encapsulating a full Stan process into a single function callable from any external interfaces.
