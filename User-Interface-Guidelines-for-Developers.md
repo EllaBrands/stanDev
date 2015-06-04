@@ -1,22 +1,24 @@
-This page describes how users will use RStan 3.0 to compile and fit models. This page is intended for RStan developers and developers of other user interfaces to Stan.
+This page describes how users will use RStan 3.0 to compile and fit programs. This page is intended for RStan developers and developers of other user interfaces to Stan.
 
 NB: These changes will take place in concert with the [[Stan C++ API Refactor|Stan Cpp API Refactor]].
 
 ## Overview / Example User Session
 ### Typical R  session
 ```R
-> StanModelClass <- stan_compile({model_as_string, filename})  # if the .stan file does not parse this will fail quick. if not, this will be the "long" compile.
-> model_instance <- StanModelClass$instantiate(data)  # this will be fast
-> fit_object <- model_instance$hmc(hmc_specific_parameters)
-# alternatively: fit_object <- model_instance$vb(rel_tol = 1e-4, abs_tol = 1e10)
-# alternatively: optimize_result <- model_instance$lbfgs(lbfgs_specific_parameters)
-# alternatively: optimize_result <- model_instance$optimize() # alias for $lbfgs() with only defaults
+# stan_compile returns a (reference) class of type StanProgram
+> StanProgram <- stan_compile({program_as_string, filename})  # if the .stan file does not parse this will fail quick. if not, this will be the "long" compile.
+# StanProgram$instantiate(data) returns an instance of StanProgramWithData (due to R reference classes lacking static/class methods)
+> stan_program_with_data_instance <- StanProgram$instantiate(data)  # this will be fast
+> fit_object <- stan_program_with_data_instance$hmc(hmc_specific_parameters)
+# alternatively: fit_object <- program_with_data_instance$vb(rel_tol = 1e-4, abs_tol = 1e10)
+# alternatively: optimize_result <- program_with_data_instance$lbfgs(lbfgs_specific_parameters)
+# alternatively: optimize_result <- program_with_data_instance$optimize() # alias for $lbfgs() with only defaults
 ```
-### Using the model instance
+### Using the ProgramWithData instance
 ```R
-> model_instance$log_prob(params)
+> program_instance$log_prob(params)
 ```
-### Using the fit instance
+### Using the Fit instance
 ```R
 > fit_object$plot()
 > fit_object$posterior_mean()
@@ -39,7 +41,7 @@ See the R documentation for [ReferenceClasses](http://stat.ethz.ch/R-manual/R-de
 - summary (exhaustive)
 - posterior_mean (was: get_posterior_mean)
 
-## Model class specification
+## StanProgram class specification
 **instance fields**
 - stan_code
 - cpp_code
@@ -75,7 +77,7 @@ note: computation of the hessian is optional
 ## Recommendations and style guidelines
 - consistent variable names (either ``num_warmup`` and ``num_iter`` or use ``warmup`` and ``iter``, not a mix)
 - at the start of sampling, the (default) config for the chosen sampling algorithm should be displayed with helpful tips for adjustments (perhaps using color? follow clang's color strategy)
-- cache models if possible
+- cache programs if possible
 
 ## Previous discussion
 - [Stan-3-Unified-Interface](https://github.com/stan-dev/stan/wiki/Stan-3-Unified-Interface)
