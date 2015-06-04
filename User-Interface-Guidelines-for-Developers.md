@@ -2,7 +2,7 @@ This page describes how users will use RStan 3.0 to compile and fit models. This
 
 NB: These changes will take place in concert with the [Stan API refactor](https://github.com/stan-dev/stan/wiki/Stan-API-Refactor).
 
-## Overview / Example User Sessions
+## Overview / Example User Session
 ### Typical R  session
 ```R
 > StanModelClass <- stan_compile({model_as_string, filename})  # if the .stan file does not parse this will fail quick. if not, this will be the "long" compile.
