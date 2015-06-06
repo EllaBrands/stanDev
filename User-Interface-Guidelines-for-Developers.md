@@ -43,10 +43,12 @@ See the R documentation for [ReferenceClasses](http://stat.ethz.ch/R-manual/R-de
 
 ## StanProgram class specification
 **instance fields**
-- stan_code
-- cpp_code
-- dso: <S4 cxxdso> (from inline)
-- cxx_flags
+- file: character
+- stan_code: character
+- cpp_code: character
+- dso: S4 cxxdso (from inline) which includes cxx_flags as a slot
+
+The ``file`` slot is somewhat redundant because ``stan_code`` and ``cpp_code`` could be inferred from it. However, ``file`` is necessary for the ``save`` method because we want to save the serialized version in the same directory by default. But if the user initializes with a string defining the Stan program rather than a string defining the path to a Stan program, then the string is first written to a file in the temporary directory. In that case, if the serialized object is loaded in a new session, then the temporary file will not exist, in which case we need to have serialized the object with the ``stan_code`` and ``cpp_code``.
 
 ## StanProgramWithData class specification
 **instance (reference class) methods**
