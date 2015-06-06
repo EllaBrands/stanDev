@@ -24,17 +24,52 @@ NB: These changes will take place in concert with the [[Stan C++ API Refactor|St
 > fit_object$posterior_mean()
 > fit_object$summary()
 ```
+## StanParameter class specification
+This would be a new (S4) class that is basically an array to hold MCMC output for a particular parameter. Thus, the C++ library needs to be able to indicate
+- whether an unknown is a parameter, transformed parameter, generated quantity, or diagnostic (e.g. ``accept_stat__``)
+- what the dimensions of each unknown are (or if it is a scalar)
+- what output corresponds to what unknown
+
+On the interface side, the (array slot of a) StanParameter has dimensions equal to the original dimensions plus two additional trailing dimensions, namely chains and iterations. Thus,
+- if the parameter is originally a scalar, on the interface side it acts like a 3D array that is 1 x chains x iterations
+- if the parameter is originally a (row) K-vector, on the interface side it acts like a 3D array that is K  x chains x iterations
+- if the parameter is originally a matrix, on the interface side it acts like like a 4D array that is rows x cols x chains x iterations
+- if the parameter is originally a ``std::vector`` of type ``foo``, on the interface side it acts like a multidimensional array with dimensions equal to the union of the ``std::vector`` dimensions, the ``foo`` dimensions, chains, and iterations
+
+The advantages of having such a class hierarchy are
+- can do customized summaries; i.e. a ``StanCovMatrix`` would not have its upper triangle summarized because that is redundant with the lower triangle and we can separate the variances from the covariances and a ``StanCholeskyFactorCov`` would not have its upper triangle summarized because its elements are fixed zeros
+- can easily call unconstrain methods (in C++) for one unknown rather than having to do it for all unknowns
+- can implement functional programming; i.e. if ``beta`` is a ``StanVector`` then ``mu <- X %*% beta`` is a ``StanVector`` but whose dimensions are N x chains x iterations and if ``variance`` is a ``StanReal`` then ``sigma <- sqrt(variance)`` is a ``StanReal``, which can be summarized (including n_eff, etc.)
+
+The class tree looks like
+- StanParameter: a virtual class with slots for name (character), theta (array), and type (character among {unconstrained parameter, constrained parameter, transformed parameter, generated quantity, diagnostic})
+    - StanReal
+        - StanInteger which can only be a generated quantity or diagnostic
+            - StanFactor which has a levels slot to indicate the categories corresponding to the integer draws
+    - StanMatrix
+        - StanCovMatrix
+            - StanCorrMatrix
+        - StanCholeskyFactorCov
+            - StanCholeskyFactorCorr
+        - StanVector
+            - StanRowVector
+            - StanSimplex
+            - StanUnit
+
+In R, there is not much distinction between a vector and a one-column matrix or between a vector and a row vector, so the inheritance is R-based rather than Stan-based. PyStan might implement it a bit differently.
+
+
 ## Fit class specification
 See the R documentation for [ReferenceClasses](http://stat.ethz.ch/R-manual/R-devel/library/methods/html/refClass.html)
 
 **instance fields**
-- param_draws [ params x chains x iterations ] : double
-- param_names  params : string
+- param_draws : named list (R) or dict (Python) where each element is a ``StanParameter``
+- param_names  params : string (Ben thinks this is unnecessary given the names of param_draws)
 - num_warmup 1 : long
 - timestamps: timestamp (long) for each iteration (possibly roll into param_draws)
 - mass matrix : NULL | params | params x params : double
-- diagnostic draws: diagnostic params x chains x iterations
-- diagnostic names: diagnostic params : string
+- diagnostic draws: diagnostic params x chains x iterations (Ben thinks this is unnnecessary given the type of each ``StanParameter`` in param_draws)
+- diagnostic names: diagnostic params : string (Ben thinks this is unnecessary given the above)
 
 **instance (reference class) methods**
 - show (minimal)
