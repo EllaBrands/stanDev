@@ -63,7 +63,7 @@ In R, there is not much distinction between a vector and a one-column matrix or 
 See the R documentation for [ReferenceClasses](http://stat.ethz.ch/R-manual/R-devel/library/methods/html/refClass.html)
 
 **instance fields**
-- param_draws : named list (R) or dict (Python) where each element is a ``StanParameter``
+- param_draws : named list (R) or dict (Python) where each element is a ``StanParameter`` (AR: I think this needs to be [ params x chains x iterations ] : double in contiguous memory or similar if the C++ API for split_rhat is going to be called directly and fast. Could users access the draws indirectly -- e.g., via a layer of indirection a la the extract method?)
 - param_names  params : string (Ben thinks this is unnecessary given the names of param_draws)
 - num_warmup 1 : long
 - timestamps: timestamp (long) for each iteration (possibly roll into param_draws)
