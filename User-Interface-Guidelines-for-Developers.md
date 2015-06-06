@@ -5,14 +5,14 @@ NB: These changes will take place in concert with the [[Stan C++ API Refactor|St
 ## Overview / Example User Session
 ### Typical R  session
 ```R
-# stan_compile returns a (reference) class of type StanProgram
-> StanProgram <- stan_compile({program_as_string, filename})  # if the .stan file does not parse this will fail quick. if not, this will be the "long" compile.
-# StanProgram$instantiate(data) returns an instance of StanProgramWithData (due to R reference classes lacking static/class methods)
-> stan_program_with_data_instance <- StanProgram$instantiate(data)  # this will be fast
+# StanProgram() returns an instance of (reference) class StanProgram
+> Program <- StanProgram({filename,program_as_string})  # if the .stan file does not parse this will fail quick. if not, this will be the "long" compile.
+# Program$instantiate(data) returns an instance of StanProgramWithData (due to R reference classes lacking static/class methods)
+> stan_program_with_data_instance <- Program$instantiate(data)  # this will be fast
 > fit_object <- stan_program_with_data_instance$hmc(hmc_specific_parameters)
-# alternatively: fit_object <- program_with_data_instance$vb(rel_tol = 1e-4, abs_tol = 1e10)
-# alternatively: optimize_result <- program_with_data_instance$lbfgs(lbfgs_specific_parameters)
-# alternatively: optimize_result <- program_with_data_instance$optimize() # alias for $lbfgs() with only defaults
+# alternatively: fit_object <- stan_program_with_data_instance$vb(rel_tol = 1e-4, abs_tol = 1e10)
+# alternatively: optimize_result <- stan_program_with_data_instance$lbfgs(lbfgs_specific_parameters)
+# alternatively: optimize_result <- stan_program_with_data_instance$optimize() # alias for $lbfgs() with only defaults
 ```
 ### Using the ProgramWithData instance
 ```R
