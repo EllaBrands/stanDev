@@ -5,8 +5,8 @@ NB: These changes will take place in concert with the [[Stan C++ API Refactor|St
 ## Overview / Example User Session
 ### Typical R  session
 ```R
-# StanProgram() returns an instance of (reference) class StanProgram
-> Program <- StanProgram({filename,program_as_string})  # if the .stan file does not parse this will fail quick. if not, this will be the "long" compile.
+# StanProgram() returns an instance of (reference) class StanProgram (AR: I'm confused, isn't StanProgram *the* reference class)?
+> Program <- StanProgram({filename,program_as_string})  # if the .stan file does not parse this will fail quick. if not, this will be the "long" compile. (AR: I would be expecting StanProgram$instantiate({filename, program_as_string}) given the subsequent API)
 # Program$instantiate(data) returns an instance of StanProgramWithData (due to R reference classes lacking static/class methods)
 > stan_program_with_data_instance <- Program$instantiate(data)  # this will be fast
 > fit_object <- stan_program_with_data_instance$hmc(hmc_specific_parameters)
