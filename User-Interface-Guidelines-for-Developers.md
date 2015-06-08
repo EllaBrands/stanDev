@@ -1,6 +1,6 @@
 This page describes how users will use RStan 3.0 to compile and fit programs. This page is intended for RStan developers and developers of other user interfaces to Stan.
 
-NB: These changes will take place in concert with the [[Stan C++ API Refactor|Stan Cpp API Refactor]].
+NB: These changes will take place in concert with the [[Stan C++ API Refactor|Stan Cpp API Refactor]]. Also, the [R implementation](https://github.com/stan-dev/rstan/blob/develop/rstan3/R/AllClass.R) has tentatively started.
 
 ## Overview / Example User Session
 ### Typical R  session
