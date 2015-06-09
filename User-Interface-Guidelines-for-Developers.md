@@ -38,7 +38,7 @@ On the interface side, the (array slot of a) StanParameter has dimensions equal 
 The advantages of having such a class hierarchy are
 - can do customized summaries; i.e. a ``StanCovMatrix`` would not have its upper triangle summarized because that is redundant with the lower triangle and we can separate the variances from the covariances and a ``StanCholeskyFactorCov`` would not have its upper triangle summarized because its elements are fixed zeros
 - can easily call unconstrain methods (in C++) for one unknown rather than having to do it for all unknowns
-- can implement functional programming; i.e. if ``beta`` is a ``StanVector`` then ``mu <- X %*% beta`` is a ``StanVector`` but whose dimensions are N x chains x iterations and if ``variance`` is a ``StanReal`` then ``sigma <- sqrt(variance)`` is a ``StanReal``, which can be summarized (including n_eff, etc.)
+- can implement probabalistic programming; i.e. if ``beta`` is a ``StanVector`` then ``mu <- X %*% beta`` is a ``StanVector`` but whose dimensions are N x chains x iterations and if ``variance`` is a ``StanReal`` then ``sigma <- sqrt(variance)`` is a ``StanReal``, which can be summarized (including n_eff, etc.)
 
 The class tree looks like
 - StanParameter: a virtual class with slots for name (character), theta (array), and type (character among {unconstrained parameter, constrained parameter, transformed parameter, generated quantity, diagnostic})
