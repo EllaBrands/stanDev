@@ -1,35 +1,112 @@
-This page describes how users will use RStan 3.0 to compile and fit programs. This page is intended for RStan developers and developers of other user interfaces to Stan.
+This page describes how users will use Stan 3.0 to compile and fit programs. This page is intended for developers of any user interfaces to Stan.
 
-NB: These changes will take place in concert with the [[Stan C++ API Refactor|Stan Cpp API Refactor]]. Also, the [R implementation](https://github.com/stan-dev/rstan/blob/develop/rstan3/R/AllClass.R) has tentatively started.
+These changes will take place in concert with the [[Stan C++ API Refactor|Stan Cpp API Refactor]]. Also, the [R implementation](https://github.com/stan-dev/rstan/blob/develop/rstan3/R/AllClass.R) has tentatively started.
+
+Previous discussion
+- [Stan-3-Unified-Interface](https://github.com/stan-dev/stan/wiki/Stan-3-Unified-Interface)
+- [Interfaces-3.0-Spec](https://github.com/stan-dev/rstan/wiki/Interfaces-3.0-Spec)
+
 
 ## Overview / Example User Session
-### Typical R  session
-```R
-# StanProgram() returns an instance of (reference) class StanProgram
-> program <- StanProgram({filename,program_as_string})  # compilation step, time-consuming
-> program_with_data <- program$instantiate(data)  # fast, returns instance of StanProgramWithData
-> fit_object <- program_with_data_instance$hmc(hmc_specific_parameters)
-# alternatively: fit_object <- program_with_data_instance$vb(rel_tol = 1e-4, abs_tol = 1e10)
-# alternatively: optimize_result <- program_with_data_instance$lbfgs(lbfgs_specific_parameters)
-# alternatively: optimize_result <- program_with_data_instance$optimize() # alias for $lbfgs() with only defaults
-```
-### Using the ProgramWithData instance
-```R
-> program_with_data$log_prob(params)
-```
-### Using the Fit instance
-```R
-> fit_object$plot()
-> fit_object$posterior_mean()
-> fit_object$summary()
-```
-## StanParameter class specification
-This would be a new (S4) class that is basically an array to hold MCMC output for a particular parameter. Thus, the C++ library needs to be able to indicate
-- whether an unknown is a parameter, transformed parameter, generated quantity, or diagnostic (e.g. ``accept_stat__``)
-- what the dimensions of each unknown are (or if it is a scalar)
-- what output corresponds to what unknown
+In general, the basic steps are:
 
-On the interface side, the (array slot of a) StanParameter has dimensions equal to the original dimensions plus two additional trailing dimensions, namely chains and iterations. Thus,
+1. Instantiate the templates, which will become more demanding once we start using algorithms that rely on fvars
+2. Construct an instance of the model by passing the data to it. Bob thinks that we need to have an abstract base class for models to inherit from, rather than templating the model. It is not yet clear what all the public methods of the abstract base class will be.
+3. Call one of the algorithms Stan supports to estimate the model. The output is to be handled by a VarWriter that can be implemented and passed in by the interface.
+
+### Typical R session
+We plan to use [ReferenceClasses](http://stat.ethz.ch/R-manual/R-devel/library/methods/html/refClass.html) throughout. See the bottom of [this](https://github.com/stan-dev/rstan/blob/develop/rstan3/R/rstan.R#L255) for the canonical example
+```R
+# Step 1 --- Create an object of StanProgram-class
+program <- StanProgram(code = mc)     # preferable to specify a file
+                                           
+# Step 2 --- Create a StanProgramWithData-class object
+dprogram <- program$instantiate()
+ 
+# Step 3 --- Estimate the parameters
+estimates <- dprogram$optimize()       # maximum a posteriori estimator
+estimates <- dprogram$ehmc(delta = .9) # MCMC from the posterior distribution
+ 
+# Step 4 --- Diagnose any problems
+```
+
+### Typical PyStan session
+
+TBD
+
+### Typical CmdStan session
+
+TBD but Julia and MATLAB just call CmdStan and thus would be similar.
+
+### Typical StataStan session
+
+TBD but StataStan also calls CmdStan but would probably have some quirks
+
+## StanProgram
+
+### RStan
+
+**instance fields**
+- file: character
+- stan_code: character
+- cpp_code: character
+- dso: S4 cxxdso (from inline) which includes cxx_flags as a slot
+
+The ``file`` slot is somewhat redundant because ``stan_code`` and ``cpp_code`` could be inferred from it. However, ``file`` is necessary for the ``save`` method because we want to save the serialized version in the same directory by default. But if the user initializes with a string defining the Stan program rather than a string defining the path to a Stan program, then the string is first written to a file in the temporary directory. In that case, if the serialized object is loaded in a new session, then the temporary file will not exist, in which case we need to have serialized the object with the ``stan_code`` and ``cpp_code``.
+
+### PyStan
+
+TBD
+
+## StanModelWithData
+
+### Methods provided by the Stan library to all interfaces
+
+The model class would expose the following methods from the abstract base class:
+
+- scalar log_prob(unconstrained_params)
+- vector grad(unconstrained_params)
+- tuple  log_prob_grad(unconstrained_params)
+- matrix hessian(unconstrained_params)
+- tuple  log_prob_grad_hessian(unconstrained_params)
+- scalar laplace_approx(unconstrained_params)
+- vector constrain_params(unconstrained_params = <vector>)
+- vector unconstrain_params(constrained_params = <vector>)
+
+The model class would expose the following additional methods
+- tuple  params_info() would return
+    - parameter names
+    - lower and upper bounds, if any
+    - parameter dimensions
+    - declared type (cov_matrix, etc.)
+    - which were declared in the parameters, transformed parameters, and generated quantities blocks
+ 
+It is not clear if the following algorithms would be methods or stand-alone functions that input a model and configuration options:
+
+- tuple [a-z]+hmc()
+- tuple lbfgs()
+- tuple bfgs()
+- tuple newton()
+- tuple vb()
+
+### R methods for the StanProgramWithData instance
+Hopefully, we can use [exposeClass()](http://www.inside-r.org/packages/cran/rcpp/docs/exposeClass) with [setRcppClass()](http://www.inside-r.org/packages/cran/rcpp/docs/setRcppClass) to expose Stan's abstract base class for models as an (internal) ReferenceClass in RStan at build time and then inherit a (public) ReferenceClass from that when the data are passed in at run time. For example,
+```R
+> dprogram$log_prob(params)
+> dprogram$ehmc(chains = 8)
+> dprogram$optimize() # alias for default, no arguments allowed
+> dprogram$sample()   # alias for default, no arguments allowed
+```
+
+### PyStan methods for the StanProgramWithData instance
+
+TBD
+
+## MCMC output containers
+
+### RStan
+
+The VarWriter would fill an Rcpp::NumericVector with appropriate dimensions. Then there would be a new (S4) class that is basically an array to hold MCMC output for a particular parameter, which hinges on the params_info() method. The (array slot of a) StanParameter has dimensions equal to the original dimensions plus two additional trailing dimensions, namely chains and iterations. Thus,
 - if the parameter is originally a scalar, on the interface side it acts like a 3D array that is 1 x chains x iterations
 - if the parameter is originally a (row) K-vector, on the interface side it acts like a 3D array that is K  x chains x iterations
 - if the parameter is originally a matrix, on the interface side it acts like like a 4D array that is rows x cols x chains x iterations
@@ -55,54 +132,49 @@ The class tree looks like
             - StanSimplex
             - StanUnit
 
-In R, there is not much distinction between a vector and a one-column matrix or between a vector and a row vector, so the inheritance is R-based rather than Stan-based. PyStan might implement it a bit differently.
+In R, there is not much distinction between a vector and a one-column matrix or between a vector and a row vector, so the inheritance is R-based rather than Stan-based.
 
+### PyStan
 
-## Fit class specification
-See the R documentation for [ReferenceClasses](http://stat.ethz.ch/R-manual/R-devel/library/methods/html/refClass.html)
+TBD. Allen is ambivalent about doing something like a StanParameter class hierarchy
+
+### CmdStan
+
+Everything gets written to a flat CSV file
+
+## MCMC output bundle
+
+### StanFitMCMC class in R
 
 **instance fields**
-- param_draws : named list (R) or dict (Python) where each element is a ``StanParameter`` (AR: I think this needs to be [ params x chains x iterations ] : double in contiguous memory or similar if the C++ API for split_rhat is going to be called directly and fast. Could users access the draws indirectly -- e.g., via a layer of indirection a la the extract method?)
-- param_names  params : string (Ben thinks this is unnecessary given the names of param_draws)
+- warmup_draws:  named list where each element is a ``StanParameter``
+- sample_draws : named list where each element is a ``StanParameter``
+- timestamps: timestamp (long) for each iteration (possibly roll into param_draws)
+- mass matrix : NULL | params | params x params : double
+
+```R
+> estimates$plot()     # or $pairs(), $traceplot(), etc.
+> estimates$posterior_means() # possibly accumulate posterior_variances too
+> estimates$show()     # minimal
+> estimates$summary()  # exhaustive 
+```
+
+### StanFitMCMC class in PyStan
+
+**instance fields**
+- param_draws : This needs to be [ params x chains x iterations ] : double in contiguous memory or similar if the C++ API for split_rhat is going to be called directly and fast.
+- param_names  params : string
 - num_warmup 1 : long
 - timestamps: timestamp (long) for each iteration (possibly roll into param_draws)
 - mass matrix : NULL | params | params x params : double
-- diagnostic draws: diagnostic params x chains x iterations (Ben thinks this is unnnecessary given the type of each ``StanParameter`` in param_draws)
-- diagnostic names: diagnostic params : string (Ben thinks this is unnecessary given the above)
+- diagnostic draws: diagnostic params x chains x iterations 
+- diagnostic names: diagnostic params : string
 
-**instance (reference class) methods**
-- show (minimal)
-- summary (exhaustive)
-- posterior_mean (was: get_posterior_mean)
 
-## StanProgram class specification
-**instance fields**
-- file: character
-- stan_code: character
-- cpp_code: character
-- dso: S4 cxxdso (from inline) which includes cxx_flags as a slot
+## Optimize output bundle
 
-The ``file`` slot is somewhat redundant because ``stan_code`` and ``cpp_code`` could be inferred from it. However, ``file`` is necessary for the ``save`` method because we want to save the serialized version in the same directory by default. But if the user initializes with a string defining the Stan program rather than a string defining the path to a Stan program, then the string is first written to a file in the temporary directory. In that case, if the serialized object is loaded in a new session, then the temporary file will not exist, in which case we need to have serialized the object with the ``stan_code`` and ``cpp_code``.
-
-## StanProgramWithData class specification
-**instance (reference class) methods**
-- double log_prob(unconstrained_params)
-- vector grad(unconstrained_params)
-- list log_prob_grad(unconstrained_params)
-- matrix hessian(unconstrained_params)
-- list log_prob_grad_hessian(unconstrained_params)
-- double laplace_approx(unconstrained_params)
-- vector constrain_params(unconstrained_params = <vector>)
-- vector unconstrain_params(constrained_params = <vector>)
-- stan_fit hmc(hmc_params)
-- stan_fit vb(vb_params)
-- stan_fit sample # alias for default sampler
-- optimize_result lbfgs(lbfgs_params)
-- optimize_result newton(newton_params)
-- stan_fit optimize # alias for default optimizer
-
-## Optimize class specification
-note: computation of the hessian is optional
+### StanFitOptimize
+note: computation of the hessian is optional at optimization time
 **instance fields**
 - param values
 - param names
@@ -116,6 +188,3 @@ note: computation of the hessian is optional
 - at the start of sampling, the (default) config for the chosen sampling algorithm should be displayed with helpful tips for adjustments (perhaps using color? follow clang's color strategy)
 - cache programs if possible
 
-## Previous discussion
-- [Stan-3-Unified-Interface](https://github.com/stan-dev/stan/wiki/Stan-3-Unified-Interface)
-- [Interfaces-3.0-Spec](https://github.com/stan-dev/rstan/wiki/Interfaces-3.0-Spec)
