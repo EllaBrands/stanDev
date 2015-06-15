@@ -1,6 +1,6 @@
 ### How to Update Your Current Stan Directory
 
-If you have no changes, just follow the directions in [Developer Process](../Developer-Process) on cloning. If that doesn't work, do:
+If you have no changes, just follow the directions in [Developer Process](Developer-Process) on cloning. If that doesn't work, do:
 
     > git pull
 
