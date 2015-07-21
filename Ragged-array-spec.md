@@ -427,3 +427,5 @@ model {
   std_std ~ normal(0,1);
 }
 ```
+
+Someone suggested looking at the CRAN package rlist, which extends R's built-ins to ragged arrays, etc.
