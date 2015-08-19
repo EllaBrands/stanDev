@@ -32,8 +32,9 @@ estimates <- dprogram$ehmc(delta = .9) # MCMC from the posterior distribution
 
 ### Typical PyStan session
 WIP
-```
+```python
 # Step 1 --- Create a StanProgram *class*
+import pystan
 MyStanProgram = pystan.compile(code)
 
 # Step 2 --- Create an instance of StanProgram (with data, equivalent to StanProgramWithData-class object)
