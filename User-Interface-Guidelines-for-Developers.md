@@ -31,8 +31,20 @@ estimates <- dprogram$ehmc(delta = .9) # MCMC from the posterior distribution
 ```
 
 ### Typical PyStan session
+WIP
+```
+# Step 1 --- Create a StanProgram *class*
+MyStanProgram = compile_stan_program(code)
 
-TBD
+# Step 2 --- Create an instance of StanProgram (with data, equivalent to StanProgramWithData-class object)
+dprogram = MyStanProgram(data)
+
+# Step 3 --- Estimate the parameters
+estimates = dprogram.optimize()       # maximum a posteriori estimator
+estimates = dprogram.ehmc(delta=.9) # MCMC from the posterior distribution
+ 
+# Step 4 --- Diagnose any problems
+```
 
 ### Typical CmdStan session
 
