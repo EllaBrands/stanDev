@@ -34,7 +34,7 @@ estimates <- dprogram$ehmc(delta = .9) # MCMC from the posterior distribution
 WIP
 ```
 # Step 1 --- Create a StanProgram *class*
-MyStanProgram = compile_stan_program(code)
+MyStanProgram = pystan.compile(code)
 
 # Step 2 --- Create an instance of StanProgram (with data, equivalent to StanProgramWithData-class object)
 dprogram = MyStanProgram(data)
