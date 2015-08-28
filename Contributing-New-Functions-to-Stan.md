@@ -6,13 +6,13 @@ Before doing anything, please read the Developer Process document, setup your gi
 
 #### Implementing the Function
 
-Implement the new function in the appropriate location and include it in the appropriate header files.The best way to figure out where this is and how to implement the function is to find a similar function already in the API and use it as a model.  You can grep to see where it's included.  
+Implement the new function in the appropriate location, most likely in the [https://github.com/stan-dev/math](stan/math) repository and include it in the appropriate header files.  The best way to figure out where this is and how to implement the function is to find a similar function already in the API and use it as a model.  You can grep to see where it's included.  
 
 It is important to implement the function in such a way that it is templated such that it can be called with auto-diff variables for parameters and double values for data.  Again, see the existing functions for examples.
 
 #### Expose Function Signature to Stan Models
 
-Expose the function to the parser by adding the appropriate code to `src/stan/gm/function_signatures.hpp` and implement function signature tests by adding models to `src/test/gm/model_specs/compiled/`.
+Expose the function to the parser by adding the appropriate code to [https://github.com/stan-dev/stan/blob/develop/src/stan/lang/function_signatures.h](`src/stan/lang/function_signatures.hpp`) and implement function signature tests by adding models to `src/test/gm/model_specs/compiled/`.
 
 #### Add to Relevant Header File
 
