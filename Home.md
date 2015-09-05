@@ -2,9 +2,9 @@ Welcome to the Stan wiki. This page is primarly inteded for developers, both act
 
 ### Contents
 * [General Notes for Developers](#general-notes-for-developer-process)
-* [Long Term To-Do List](#long-term-to-do-list)
 * [Model Concept](#model-concept)
 * [Feature Design Docs](#stan-feature-specs-and-design-docs)
+* [Long Term To-Do List](#long-term-to-do-list)
 
 ---
 
@@ -27,16 +27,6 @@ The Git and code review process used for developers and some useful tools:
 * [How to Contribute a New Function to Stan](wiki/Contributing-New-Functions-to-Stan)
 * [Developer Tools and Tricks](wiki/Developer-Tricks)
 * [OS and Platform Detection Macros for C++](wiki/Compiler-and-OS-Detection-Macros-for-Cpp)
-
-### Long Term To-Do List
-
-This is complementary to the issue tracker of smaller tidbits:
-
-* [Longer-Term To-Do List](wiki/Longer-Term-To-Do-List)
-
-### C++11 Migration Plan
-
-* [C++11 Migration Plan](wiki/Cpp11-Upgrade)
 
 ---
 
@@ -63,6 +53,19 @@ Specs and design docs and for Stan features, as originally proposed.  See Stan d
 * [Testing framework](wiki/Testing-framework)
 
 * [Ragged array spec](wiki/Ragged-array-spec)
+
+
+---
+
+### Long Term To-Do List
+
+This is complementary to the issue tracker of smaller tidbits:
+
+* [Longer-Term To-Do List](wiki/Longer-Term-To-Do-List)
+
+### C++11 Migration Plan
+
+* [C++11 Migration Plan](wiki/Cpp11-Upgrade)
 
 ### Out-of-Date To-Do List
 
