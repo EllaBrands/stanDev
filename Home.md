@@ -26,7 +26,6 @@ The Git and code review process used for developers and some useful tools:
 * [Coding Style and Idioms](wiki/Coding-Style-and-Idioms)
 * [How to Contribute a New Function to Stan](wiki/Contributing-New-Functions-to-Stan)
 * [Developer Tools and Tricks](wiki/Developer-Tricks)
-* [CmdStan developers under Windows: additional dependency](wiki/CmdStan-developers-under-Windows:-additional-dependency)
 * [OS and Platform Detection Macros for C++](wiki/Compiler-and-OS-Detection-Macros-for-Cpp)
 
 ### Long Term To-Do List

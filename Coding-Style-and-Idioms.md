@@ -22,13 +22,12 @@ We will follow the [Google Style Guide](https://google-styleguide.googlecode.com
 > make cpplint
 ```
 
-If your default python version is python 3, the cpplint.py script fails silently.  In that case if you also have python 2.x installed you can modify the first line of stan/make/cpplint to say `python2 stan/lib/cpplint_4.45/cpplint.py`---or whatever name python 2.x has on your path.    
+If your default python version is python 3, the cpplint.py script fails silently. Once you install python 2.x, you can add this to your `make/local` file to use python 2.x to run the python script:
+```
+RUN_CPPLINT = python2 stan/lib/cpplint_4.45/cpplint.py
+```
 
 The make target includes Stan-specific options and limits the tests to the src/stan directory.
-
-## Emacs mode for Google Style
-
-http://google-styleguide.googlecode.com/svn/trunk/google-c-style.el
 
 
 ## Exceptions to the Google Style Guide
