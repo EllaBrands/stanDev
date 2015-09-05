@@ -1,6 +1,6 @@
 Welcome to the Stan wiki. This page is primarly inteded for developers, both active and new to Stan.
 
-### Contents
+## Contents
 * [General Notes for Developers](#general-notes-for-developer-process)
 * [Model Concept](#model-concept)
 * [Feature Design Docs](#stan-feature-specs-and-design-docs)
@@ -8,7 +8,7 @@ Welcome to the Stan wiki. This page is primarly inteded for developers, both act
 
 ---
 
-### General Notes for Developer Process
+## General Notes for Developer Process
 
 [//]: # (DL: Rearrange. I think it makes sense to split this section into)
 [//]: # (DL:   two parts: common information to be accessed by current)
@@ -30,7 +30,7 @@ The Git and code review process used for developers and some useful tools:
 
 ---
 
-### Model Concept
+## Model Concept
 
 Explanation of the code generated for a model:
 
@@ -38,7 +38,7 @@ Explanation of the code generated for a model:
 
 ---
 
-### Stan Feature Specs and Design Docs
+## Stan Feature Specs and Design Docs
 
 Specs and design docs and for Stan features, as originally proposed.  See Stan developer group mailing list for more discussion around specific features.
 
@@ -57,7 +57,7 @@ Specs and design docs and for Stan features, as originally proposed.  See Stan d
 
 ---
 
-### Long Term To-Do List
+## Long Term To-Do List
 
 This is complementary to the issue tracker of smaller tidbits:
 
