@@ -3,7 +3,6 @@ Welcome to the Stan wiki. This page is primarly inteded for developers, both act
 ### Contents
 * [General Notes for Developers](#general-notes-for-developer-process)
 * [Long Term To-Do List](#long-term-to-do-list)
-* [Automatic Differentiation](#automatic-differentiation)
 * [Model Concept](#model-concept)
 * [Feature Design Docs](#stan-feature-specs-and-design-docs)
 
@@ -39,14 +38,6 @@ This is complementary to the issue tracker of smaller tidbits:
 ### C++11 Migration Plan
 
 * [C++11 Migration Plan](wiki/Cpp11-Upgrade)
-
----
-
-### Automatic Differentiation
-
-A preliminary stab at some doc on using automatic differentiation, aimed at both Stan developers and those who want to use just Stan's automatic differentiation in some other context. 
-
-* [Automatic Differentiation](wiki/Automatic-Differentiation-API)
 
 ---
 
