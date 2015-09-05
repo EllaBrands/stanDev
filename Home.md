@@ -1,29 +1,34 @@
 Welcome to the Stan wiki. This page is primarly inteded for developers, both active and new to Stan.
 
 ## Contents
-* [General Notes for Developers](#general-notes-for-developer-process)
+* [Developer Process](#developer-process)
 * [Model Concept](#model-concept)
 * [Feature Design Docs](#stan-feature-specs-and-design-docs)
 * [Long Term To-Do List](#long-term-to-do-list)
-
----
-
-## General Notes for Developer Process
 
 [//]: # (DL: Rearrange. I think it makes sense to split this section into)
 [//]: # (DL:   two parts: common information to be accessed by current)
 [//]: # (DL:   developers, a second part for process that's useful for )
 [//]: # (DL:   new developers)
 
-The Git and code review process used for developers and some useful tools:
+## Developer Process
 
-* [Developer Process](wiki/Developer-Process)
 * [Pull Request Template](wiki/Pull-Request-Template)
+* [Developer Process](wiki/Developer-Process)
+
+### Testing
+
 * [Unit Testing with Python](wiki/Testing-Stan-using-Gnu-Make-and-Python)
 * [Continuous Integration Testing](wiki/Continuous-Integration)
 * [How to Write Unit Tests](wiki/How-to-Write-Unit-Tests-with-GoogleTest)
 * [Code Quality Requirements](wiki/Code-Quality)
 * [Coding Style and Idioms](wiki/Coding-Style-and-Idioms)
+
+
+### General Notes for Developer Process
+
+The Git and code review process used for developers and some useful tools:
+
 * [How to Contribute a New Function to Stan](wiki/Contributing-New-Functions-to-Stan)
 * [Developer Tools and Tricks](wiki/Developer-Tricks)
 * [OS and Platform Detection Macros for C++](wiki/Compiler-and-OS-Detection-Macros-for-Cpp)
