@@ -76,6 +76,7 @@ The next section describes the process, then we'll describe testing.
 
   1. Testing
       - New / changed code must be tested. There should be new tests.
+      - All header tests must pass: `> make test-headers` (this ensures each file has enough includes)
       - All unit tests must pass: `> runTests.py src/test/unit`
       - All integration tests must pass: `> runTests.py src/test/integration`
       - We have some performance tests in `src/test/performance`. These need to compile, but they may not pass locally: there's some configuration dependent, fragile test in there now.
@@ -90,6 +91,7 @@ The next section describes the process, then we'll describe testing.
 
   Summary. In short, these things must pass in order for the pull request to go in. We would prefer if you checked before you submitted your pull request.
   
+  - `> make test-headers`
   - `> runTests.py src/test/unit`
   - `> runTests.py src/test/integration`
   - `> make doxygen`
