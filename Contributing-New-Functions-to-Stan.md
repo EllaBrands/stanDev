@@ -6,6 +6,8 @@ Before doing anything, please read the Developer Process document, setup your gi
 
 #### Implementing the Function
 
+Functions should be implemented in the GitHub repo stan-dev/math, not in this repo, stan-dev/stan.  That means you need a new issue for the math repo and unit tests there.  When that's all done and tested, you can come back to do the Stan pieces of the puzzle, which are straightforward.
+
 Implement the new function in the appropriate location, most likely in the [stan/math](https://github.com/stan-dev/math) repository and include it in the appropriate header files.  The best way to figure out where this is and how to implement the function is to find a similar function already in the API and use it as a model.  You can grep to see where it's included.  
 
 It is important to implement the function in such a way that it is templated such that it can be called with auto-diff variables for parameters and double values for data.  Again, see the existing functions for examples.
@@ -29,6 +31,10 @@ An individual unit test, e.g., `src/test/unit-agrad-rev/functions/log_test.cpp`,
 After the individual test passes, make sure that `make test-unit` and `make test-headers` both pass.
 
 Add a test with all signatures in the form of a model in `test/gm` to make sure it's compilable from within a Stan model.
+
+#### Model Tests
+
+We need models in test_models instantiating all the possible ways the function can be instantiated.  Examples are in `src/test/test-models/good` for ones that pass and in `src/test/test-models/bad` for ones that don't.  Specifically, the function signature tests should go in `src/test/test-models/good/function-signatures`.  Then there are drivers for these tests in `src/test/unit/lang/parser` --- look at the ones that are there to see how to test that models don't parse or throw the right warnings when trying to parse them.
 
 #### Documentation
 
