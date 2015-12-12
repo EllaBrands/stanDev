@@ -1,4 +1,4 @@
-Welcome to the Stan wiki. This page is primarly inteded for developers, both active and new to Stan.
+Welcome to the Stan wiki. This page is primarily intended for developers, both active and new to Stan.
 
 ## Useful Links
 
@@ -28,7 +28,7 @@ We have multiple goals for our process:
 - ensure the proposed changes are maintainable:
     - designed properly
     - uses consistent coding style
-    - uess idiomatic C++ conventions (so other people can understand the code)
+    - uses idiomatic C++ conventions (so other people can understand the code)
     - documented
 - keep the `develop` branch in a working state
 - "good enough" for the next person to be able to:
@@ -43,15 +43,15 @@ The next section describes the process, then we'll describe testing.
 
 1. **Create an issue on GitHub.**
 
-  Issues should be focused and have limited scope. Each issue should conceputally be one thing. It is common for a project to spawn multiple issues. It is also common to have to start work on one issue and then generate multiple issues. Use your best judgement, but in most cases, smaller issues are better than bigger issues.
+  Issues should be focused and have limited scope. Each issue should conceptually be one thing. It is common for a project to spawn multiple issues. It is also common to have to start work on one issue and then generate multiple issues. Use your best judgement, but in most cases, smaller issues are better than bigger issues.
 
   If you need help, these links for [Stan bug report](https://github.com/stan-dev/stan/issues/new?body=%23%23%20Bug%20Report%0A%0A__Version__%0A%0A__Description__%0A%0A__Steps__%0A%0A__Output__%0A%0A__Expected%20Output__%0A%0A__Additional%20Information__%0A%0A) and [Stan feature request](https://github.com/stan-dev/stan/issues/new?body=%23%23%20Feature%20Request%0A%0A__Version__%0A%0A__Category__%0A%0A__Description__%0A%0A__Example__%0A%0A__Additional%20Information__%0A%0A) prepopulate the issue with a template.
   
-  Did I mention we prefer more smaller issues than fewer large issues?
+  Did I mention we prefer more smaller issues than fewer large issues? 
   
 2. **Create a branch for the issue.**
 
-  In your local clone / fork of the Stan repo, create a branch from `develop`. (Branching from `develop` is the right move most of the time, but there are occassions where you might want to use another branch as the base branch.) Replace the `#` below with the issue number from above.
+  In your local clone / fork of the Stan repo, create a branch from `develop`. (Branching from `develop` is the right move most of the time, but there are occasions where you might want to use another branch as the base branch.) Replace the `#` below with the issue number from above.
   - If the issue is a bug, then name the branch: `bugfix/issue-#-short-description`.
   - If the issue is a feature, then name the branch: `feature/issue-#-short-description`.
 
@@ -64,7 +64,7 @@ The next section describes the process, then we'll describe testing.
 
   Fix the issue on the branch that was created. This branch will be used to create a pull request.
   
-  Note: limit the fixes on the branch to the issue. If you find yourself fixing other things on the branch: stop, create a new issue, and follow the process to fix that separate issue. Multiple conceputal fixes together on one branch will slow down the time it takes for it to get into the code base and may not get in as-is. 
+  Note: limit the fixes on the branch to the issue. If you find yourself fixing other things on the branch: stop, create a new issue, and follow the process to fix that separate issue. Multiple conceptual fixes together on one branch will slow down the time it takes for it to get into the code base and may not get in as-is. 
   
   If you're fixing a bug, first create a (unit) test that demonstrates the bug. This should fail on the branch without applying fix to code. Commit that test (`git commit` so it gets added to the history). Then fix the issue. The test failure should go away. **This test is a necessary condition for getting the patch in.**
 
