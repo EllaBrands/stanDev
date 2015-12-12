@@ -17,7 +17,7 @@ There are a lot of files that are in our `.gitignore` file that stack up and don
 git clean -d -x -f
 ```
 
-<b>Warning:</b> this will kill everything that's not currently being tracked.  You probablya want to run `git status` first.
+**Warning:** this will kill everything that's not currently being tracked.  You probably want to run `git status` first.
 
 ### Git completion
 https://github.com/git/git/tree/master/contrib/completion
@@ -28,7 +28,7 @@ The prompt will look like:
 `~/stan (master)> `
 where "~/stan" is the current directory, "(master)" indicates the current branch is the master branch.
 
-* git-completition.*sh. Install this for auto-completion from the command line. It auto-completes git commands and git branches. For example, type `git checkout ` then hit tab twice. It should show the available branches.
+* git-completion.*sh. Install this for auto-completion from the command line. It auto-completes git commands and git branches. For example, type `git checkout ` then hit tab twice. It should show the available branches.
 
 ## Mac 
 
@@ -40,7 +40,7 @@ By default, aquamacs will has multiple kill buffers. This means that there is a 
 
 ## Fixing Line Feeds and Tabs
 
-Ant includes a handy task called <a href="http://ant.apache.org/manual/Tasks/fixcrlf.html">FixCRLF</a> that "Adjusts a text file to local conventions."  So you can set it to replace tabs with spaces and Windows line ends with unix ones.
+Ant includes a handy task called  [FixCRLF](http://ant.apache.org/manual/Tasks/fixcrlf.html) that "Adjusts a text file to local conventions."  So you can set it to replace tabs with spaces and Windows line ends with unix ones.
 
 ## Emacs
 
