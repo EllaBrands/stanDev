@@ -1,5 +1,3 @@
-# Parameter Labeling Specification
-
 Not all parameters are created equal. 
 
 **Goal:** Provide labeling functionality for parameters. We can then treat parameters with special labels differently in our inference algorithms.
