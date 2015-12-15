@@ -44,3 +44,20 @@ model {
 ```
 
 It makes sense to use a full-rank approximation for the hierarchical parameters `alpha`, but use a mean-field approximation for the low-level parameters `w`. 
+
+## Proposal
+
+Consider the following labeling scheme.
+
+```C++
+parameters {
+  vector<lower=0,#fullrank>[D] alpha; // hierarchical latent variables
+  real<lower=0,#fullrank> sigma;      // standard deviation
+  vector<#meanfield>[D] w;            // weights (coefficients) vector
+}
+```
+
+All parameters labeled with `#fullrank` will get assigned to a full-rank variational approximation. In this case, that's a `D+1` dimensional multivariate Gaussian with `bigO( (D+1)^2 )` variational parameters.
+
+All parameters labeled with `#meanfield` (or left unlabeled) will get assigned to a mean-field variational approximation. In this case, that's a `D` dimensional diagonal Gaussian with `bigO( D )` variational parameters.
+
