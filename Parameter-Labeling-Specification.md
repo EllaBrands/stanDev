@@ -45,6 +45,8 @@ It makes sense to use a full-rank approximation for the hierarchical parameters 
 
 ## Proposal
 
+### Stan file labeling
+
 Consider the following labeling scheme.
 
 ```C++
@@ -58,4 +60,20 @@ parameters {
 All parameters labeled with `#fullrank` will get assigned to a full-rank variational approximation. In this case, that's a `D+1` dimensional multivariate Gaussian with `bigO( (D+1)^2 )` variational parameters.
 
 All parameters labeled with `#meanfield` (or left unlabeled) will get assigned to a mean-field variational approximation. In this case, that's a `D` dimensional diagonal Gaussian with `bigO( D )` variational parameters.
+
+### Model implementation
+
+We would want a function similar to `get_param_names` that writes the label names out.
+
+```C++
+void get_label_names(std::vector<std::string>& labels) const;
+```
+
+On the ADVI side, we would build a hybrid variational family
+```C++
+src/stan/variational/families/normal_hybrid.hpp
+```
+that would use these labels in a meaningful way.
+
+**NOTE** We don't need to touch how `cont_params_` work. Nor do we need to play with the gradients at all. We would still only need `model_.template log_prob<false, true>` and `stan::model::gradient` for ADVI.
 
