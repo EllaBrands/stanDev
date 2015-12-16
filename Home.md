@@ -164,8 +164,6 @@ Explanation of the code generated for a model:
 
 Specs and design docs and for Stan features, as originally proposed.  See Stan developer group mailing list for more discussion around specific features.
 
-* [Functions Design](wiki/Function-Syntax-and-Semantics-Design)
-
 * [ODE Design](wiki/ODE-Integrator-Support)
 
 * [MLE and MML Design](wiki/MLE-and-MML-Design)
