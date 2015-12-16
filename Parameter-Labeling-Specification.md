@@ -100,6 +100,8 @@ All parameters labeled with `#fullrank` will get assigned to a full-rank variati
 
 All parameters labeled with `#meanfield` (or left unlabeled) will get assigned to a mean-field variational approximation. In this case, that's a `D` dimensional diagonal Gaussian with `bigO( D )` variational parameters.
 
+Any algorithm that is not ADVI will ignore the labels and perform inference as usual (or with its own particular labels).
+
 ### Model implementation
 
 We would want a function similar to `get_param_names` that writes the label names out.
