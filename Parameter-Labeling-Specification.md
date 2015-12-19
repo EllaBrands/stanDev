@@ -86,6 +86,28 @@ We want to estimate the hyperparameters `phi`, integrated over the local paramet
 
 ### Stan file labeling
 
+We would like to specify the labels at runtime, based on arguments depending on each inference algorithm. We do this similar to how we specify inits.
+
+For ADVI, consider the following:
+
+```bash
+./foo advi meanfield=“w” fullrank=“alpha, sigma”
+```
+
+All parameters labeled with `fullrank` will get assigned to a full-rank variational approximation. In this case, that's a `D+1` dimensional multivariate Gaussian with `bigO( (D+1)^2 )` variational parameters.
+
+All parameters labeled with `meanfield` (or left unlabeled) will get assigned to a mean-field variational approximation. In this case, that's a `D` dimensional diagonal Gaussian with `bigO( D )` variational parameters.
+
+A similar interface applies to maximum marginal likelihood.
+```bash
+./foo mml hyperparameters=“phi" local="alpha"
+```
+
+### Model implementation
+
+See however init does it.
+
+### (archives)
 Consider the following labeling scheme.
 
 ```C++
@@ -95,15 +117,6 @@ parameters {
   vector<#meanfield>[D] w;            // weights (coefficients) vector
 }
 ```
-
-All parameters labeled with `#fullrank` will get assigned to a full-rank variational approximation. In this case, that's a `D+1` dimensional multivariate Gaussian with `bigO( (D+1)^2 )` variational parameters.
-
-All parameters labeled with `#meanfield` (or left unlabeled) will get assigned to a mean-field variational approximation. In this case, that's a `D` dimensional diagonal Gaussian with `bigO( D )` variational parameters.
-
-Any algorithm that is not ADVI will ignore the labels and perform inference as usual (or with its own particular labels).
-
-### Model implementation
-
 We would want a function similar to `get_param_names` that writes the label names out.
 
 ```C++
