@@ -110,6 +110,7 @@ But it's arguably confusing, and the following alternative will be available.
 ld << normal_lpdf(mu | 0, 1);
 ld << normal_lpdf(beta | mu, sigma);
 ld << cauchy_lpdf(sigma | 0, 2.5);
+```
 
 
 ### User-Defined Functions
