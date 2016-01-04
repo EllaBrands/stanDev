@@ -1,4 +1,4 @@
-Each probability distribution, such as Bernoulli or normal, has functions for its probability density function (PDF), cumulative distribution function (CDF), complementary cumulative distribution function (CCDF), and pseudo random number generator (PRNG)
+Each probability distribution, such as Bernoulli or normal, has functions for its probability density function (PDF), cumulative distribution function (CDF), complementary cumulative distribution function (CCDF), inverse CDFs, and pseudo random number generator (PRNG)
 
 ### Function Suffixes
 
@@ -6,21 +6,33 @@ To distinguish which function for a distribution is being used and which scale.
 
 #### Current Suffixes
 
-Scale | PDF   | CDF     | CCDF     | PRNG
-------|-------|---------|----------|-----
-Linear| n/a   | cdf     | ccdf     |rng
-Log   | log   | cdf_log | ccdf_log |n/a
+Scale | PDF   | CDF     | CCDF     | inverse CDF | PRNG 
+------|-------|---------|----------|-------------|------
+Linear| n/a   | cdf     | ccdf     |    n/a      | rng   
+Log   | log   | cdf_log | ccdf_log |    n/a      | n/a
 
 #### Proposed Suffixes
 
-Scale | PDF   | CDF  | CCDF | PRNG
-------|-------|------|------|-----
-Linear| pdf   | cdf  | ccdf | rng
-Log   | lpdf  | lcdf | lccdf | n/a
+Scale | PDF   | CDF  | CCDF  | inv CDF    | PRNG
+------|-------|------|-------|------------|-------
+Linear| pdf   | cdf  | ccdf  | inv_cdf    | rng
+Log   | lpdf  | lcdf | lccdf | n/a        | n/a
 
 e.g., normal_pdf, normal_lpdf, normal_cdf, normal_lcdf, normal_ccdf, normal_lccdf
 
 Deprecate (not eliminate) existing functions.
+
+Andrew suggests we only supply the log functions (RNG is a bit differnet here) and not use the "l" suffix., so that'd be: 
+
+Scale | PDF   | CDF  | CCDF  |
+------|-------|------|-------|
+Log   |  pdf  |  cdf |  ccdf |
+
+and then
+
+Scale  | RNG | inv CDF
+-------|-----|--------
+linear | rng | inv_cdf
 
 ##### Discussion
 
