@@ -16,7 +16,7 @@ Log   | log   | cdf_log | ccdf_log |n/a
 Scale | PDF   | CDF  | CCDF | PRNG
 ------|-------|------|------|-----
 Linear| pdf   | cdf  | ccdf | rng
-Log   | lpdf  | lcdf | lcdf | n/a
+Log   | lpdf  | lcdf | lccdf | n/a
 
 e.g., normal_pdf, normal_lpdf, normal_cdf, normal_lcdf, normal_ccdf, normal_lccdf
 
