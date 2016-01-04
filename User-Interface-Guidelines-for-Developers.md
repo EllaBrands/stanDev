@@ -11,7 +11,7 @@ Previous discussion
 In general, the basic steps are:
 
 1. Instantiate the templates, which will become more demanding once we start using algorithms that rely on fvars
-2. Construct an instance of the model by passing the data to it. Bob thinks that we need to have an abstract base class for models to inherit from, rather than templating the model. It is not yet clear what all the public methods of the abstract base class will be.
+2. Construct an instance of the program by passing the data to it. Bob thinks that we need to have an abstract base class for programs to inherit from, rather than templating the program. It is not yet clear what all the public methods of the abstract base class will be.
 3. Call one of the algorithms Stan supports to estimate the model. The output is to be handled by a VarWriter that can be implemented and passed in by the interface.
 
 ### Typical R session
@@ -35,7 +35,7 @@ WIP
 ```python
 # Step 1 --- Create a StanProgram *class*
 import pystan
-MyStanProgram = pystan.compile(code)
+MyStanProgram = pystan.compile(code=code, name=name)
 
 # Step 2 --- Create an instance of StanProgram (with data, equivalent to StanProgramWithData-class object)
 dprogram = MyStanProgram(data)
@@ -68,11 +68,11 @@ TBD but StataStan also calls CmdStan but would probably have some quirks
 
 TBD
 
-## StanModelWithData
+## StanProgramWithData
 
 ### Methods provided by the Stan library to all interfaces
 
-The model class would expose the following methods from the abstract base class:
+The program class would expose the following methods from the abstract base class:
 
 - scalar log_prob(unconstrained_params)
 - vector grad(unconstrained_params)
@@ -83,7 +83,7 @@ The model class would expose the following methods from the abstract base class:
 - vector constrain_params(unconstrained_params = <vector>)
 - vector unconstrain_params(constrained_params = <vector>)
 
-The model class would expose the following additional methods
+The program class would expose the following additional methods
 - tuple  params_info() would return
     - parameter names
     - lower and upper bounds, if any
@@ -91,7 +91,7 @@ The model class would expose the following additional methods
     - declared type (cov_matrix, etc.)
     - which were declared in the parameters, transformed parameters, and generated quantities blocks
  
-It is not clear if the following algorithms would be methods or stand-alone functions that input a model and configuration options:
+It is not clear if the following algorithms would be methods or stand-alone functions that input a program and configuration options:
 
 - tuple [a-z]+hmc()
 - tuple lbfgs()
@@ -100,7 +100,7 @@ It is not clear if the following algorithms would be methods or stand-alone func
 - tuple vb()
 
 ### R methods for the StanProgramWithData instance
-Hopefully, we can use [exposeClass()](http://www.inside-r.org/packages/cran/rcpp/docs/exposeClass) with [setRcppClass()](http://www.inside-r.org/packages/cran/rcpp/docs/setRcppClass) to expose Stan's abstract base class for models as an (internal) ReferenceClass in RStan at build time and then inherit a (public) ReferenceClass from that when the data are passed in at run time. For example,
+Hopefully, we can use [exposeClass()](http://www.inside-r.org/packages/cran/rcpp/docs/exposeClass) with [setRcppClass()](http://www.inside-r.org/packages/cran/rcpp/docs/setRcppClass) to expose Stan's abstract base class for programs as an (internal) ReferenceClass in RStan at build time and then inherit a (public) ReferenceClass from that when the data are passed in at run time. For example,
 ```R
 > dprogram$log_prob(params)
 > dprogram$ehmc(chains = 8)
