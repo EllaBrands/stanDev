@@ -18,7 +18,7 @@ In general, the basic steps are:
 We plan to use [ReferenceClasses](http://stat.ethz.ch/R-manual/R-devel/library/methods/html/refClass.html) throughout. See the bottom of [this](https://github.com/stan-dev/rstan/blob/develop/rstan3/R/rstan.R#L255) for the canonical example
 ```R
 # Step 1 --- Create an object of StanProgram-class
-program <- StanProgram(code = mc)     # preferable to specify a file
+program <- StanProgram(program_code = mc, program_name = name)     # preferable to specify a file
                                            
 # Step 2 --- Create a StanProgramWithData-class object
 dprogram <- program$instantiate()
@@ -35,7 +35,7 @@ WIP
 ```python
 # Step 1 --- Create a StanProgram *class*
 import pystan
-MyStanProgram = pystan.compile(code=code, name=name)
+MyStanProgram = pystan.compile(program_code=code, program_name=name)
 
 # Step 2 --- Create an instance of StanProgram (with data, equivalent to StanProgramWithData-class object)
 dprogram = MyStanProgram(data)
