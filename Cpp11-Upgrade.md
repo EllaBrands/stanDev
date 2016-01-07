@@ -11,7 +11,7 @@ R is moving to GCC 4.9.2:
 
 http://developer.r-project.org/blosxom.cgi/R-devel/NEWS/2015/02/20#n2015-02-20
 
-Avraham Adlerreported:  [This thread](https://stat.ethz.ch/pipermail/r-devel/2015-March/070785.html) on r-devel is a bit long but the latest Rtools is based on GCC 4.9.2, and R builds properly, so when 3.2 is released in April, you can probably start taking advantage of cool C++11 stuffs.
+Avraham Adler reported:  [This thread](https://stat.ethz.ch/pipermail/r-devel/2015-March/070785.html) on r-devel is a bit long but the latest Rtools is based on GCC 4.9.2, and R builds properly, so when 3.2 is released in April, you can probably start taking advantage of cool C++11 stuffs.
 
 I doubt that the default binary of R will be built with std=c++11 or gnu++11, but most people running stan should be able to compile R as they need to for stand anyway, no?
 
