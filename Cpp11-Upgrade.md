@@ -30,6 +30,8 @@ The known problems are as follows:
 * There are some subtle differences in arithmetic that result in tests failing.  These may be due to bugs in MinGW-w64 code, or may be unavoidable.
 </blockquote>
 
+##Note:
+As of Rtools 3.3, the GCC is based on version 4.9.3, but there are seperate toolchains for 32-bit and 64-bit.
 #### PyStan
 
 Newer versions of Python will not have a problem (e.g., Python 3.x) with C++11 extensions. The entire scientific computing "stack" in Python (numpy, etc) is on Python 3 these days so as long as there's a deprecation plan with nice visible, public warnings, I think Stan should go ahead and use C++11.
