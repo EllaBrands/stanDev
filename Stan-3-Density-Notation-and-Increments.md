@@ -100,16 +100,16 @@ for (n in 1:N)
 
 #### Proposed
 
-PDF has special arguments for vector output, defaulting to `false`:
+To be able to use vectorized form in generated quantities (and maybe sometimes elsewhere?) PDF has special arguments for vector output, defaulting to `false`:
 
 ```
-log_lik <- normal_lpdf<norm=true,vector=true>(y | mu, tau);   // normalized and vector output
+log_lik <- normal_lpdf<norm=true,vector=true>(y | mu, tau);
 ```
 
 or PDF has special arguments for summing, defaulting to `true`:
 
 ```
-log_lik <- normal_lpdf<norm=true,sum=false>(y | mu, tau);   // normalized and not summing
+log_lik <- normal_lpdf<norm=true,sum=false>(y | mu, tau);
 ```
 
 
