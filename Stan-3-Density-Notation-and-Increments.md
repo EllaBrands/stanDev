@@ -15,14 +15,14 @@ Log   | log   | cdf_log | ccdf_log |    n/a      | n/a
 
 Scale | PDF   | CDF  | CCDF  | inv CDF    | PRNG
 ------|-------|------|-------|------------|-------
-Linear| pdf   | cdf  | ccdf  | inv_cdf    | rng
+Linear| pdf   | cdf  | ccdf  | icdf       | rng
 Log   | lpdf  | lcdf | lccdf | n/a        | n/a
 
 e.g., normal_pdf, normal_lpdf, normal_cdf, normal_lcdf, normal_ccdf, normal_lccdf
 
 Deprecate (not eliminate) existing functions.
 
-Andrew suggests we only supply the log functions (RNG is a bit differnet here) and not use the "l" suffix., so that'd be: 
+Andrew suggests we only supply the log functions (RNG is a bit different here) and not use the "l" suffix., so that'd be: 
 
 Scale | PDF   | CDF  | CCDF  |
 ------|-------|------|-------|
@@ -32,13 +32,13 @@ and then
 
 Scale  | RNG | inv CDF
 -------|-----|--------
-linear | rng | inv_cdf
+linear | rng | icdf
 
 ##### Discussion
 
 We should think of PMFs as PDFs.
 
-We may eventually want differences of cdfs.  
+We eventually want differences of cdfs (dcdf).  
 
 
 ### Vertical Bar Notation
@@ -80,6 +80,36 @@ PDF has special arguments for normalization, defaulting to `false`:
 cauchy_lpdf<norm=true>(y | mu, tau);   // normalized
 cauchy_lpdf<norm=false>(y | mu, tau);  // unnormalized
 cauchy_lpdf(y | mu, tau);              // unnormalized
+```
+
+### Scalar/vector Output Control
+
+#### Current 
+
+If y is vector (or array) sampling statement and function call compute sum of log densities
+```
+y ~ normal(mu, sigma);
+sum_log_lik <- normal_log(y, mu, sigma)
+```
+
+In generative quantities it is common to have:
+```
+for (n in 1:N)
+ log_lik[n] <- normal_log(y[n], mu, sigma)
+```
+
+#### Proposed
+
+PDF has special arguments for vector output, defaulting to `false`:
+
+```
+log_lik <- normal_lpdf<norm=true,vector=true>(y | mu, tau);   // normalized and vector output
+```
+
+or PDF has special arguments for summing, defaulting to `true`:
+
+```
+log_lik <- normal_lpdf<norm=true,sum=false>(y | mu, tau);   // normalized and not summing
 ```
 
 
