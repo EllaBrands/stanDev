@@ -6,7 +6,7 @@ We need to gather up all the backward-compatiblity breaking interface changes an
 
 #### C++11 Migration
 
-We really want to move to using C++11 for both code cleanliness and efficiency, but we're held up by CRAN and I believe by Python 2.x.  
+We really want to move to using C++11 for both code cleanliness and efficiency, but we're held up by CRAN.
 
 #### Command Refactor
 
