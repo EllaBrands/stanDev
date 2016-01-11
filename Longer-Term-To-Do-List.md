@@ -29,13 +29,10 @@ Something to run models in the cloud.
 * user-defined models
 * pre-existing models with user data
 
-#### Higher-Order Autodiff
-
-Finishing Stan's existing <code>fvar</code> implementation.  Many projects depend on this, including MLE, RHMC, MML, VB, EP, 
 
 #### Maximum Marginal Likelihood
 
-Including both the fitting and the 
+Including both the fitting and the evaluation of how well the variance approxmations work.  Andrew wants to use his "GMO" algorithm.
 
 #### Stiff ODE Solver
 
@@ -52,14 +49,10 @@ Then
 
 Ben's been asking for the first for years.  The deSolve package in R does both, I think.
 
-#### Black-Box Variational Inference (BBVI)
-
-Get the basic BBVI from Alp tested and integrated into Stan's commands
-
 #### Stochastic Black-Box Variational Inference (SBBVI)
 
 Extend BBVI to stochastic updates
-    - requires updates
+    - this should be doable by modifying the data in an appropriate Stan program
 
 #### Black-Box Expectation Propagation (BBEP)
 
@@ -124,5 +117,15 @@ All of them that we can implement.  We need them for copulas and other construct
 #### Complex Number Support
 
 Make sure that constructors for `std::vector<stan::math::var>` do the right thing and programs using them in Eigen, etc., do the right thing.
+
+#### User-Defined Transforms with Jacobians
+
+Allow users to write a transform 
+
+```
+vector my_transform(vector theta, vector x, int[] x_int);
+```
+
+for which we use higher-order autodiff to compute Jacobian determinant and add to the log density.  It'd compile to a function that takes an accumulator or variable to update or something that returns a struct with the value and the Jacobian.  Ideally, we should allow all these data arguments to be empty --- they're easily inferrable by default (here and in ODEs).
 
 
