@@ -128,4 +128,8 @@ vector my_transform(vector theta, vector x, int[] x_int);
 
 for which we use higher-order autodiff to compute Jacobian determinant and add to the log density.  It'd compile to a function that takes an accumulator or variable to update or something that returns a struct with the value and the Jacobian.  Ideally, we should allow all these data arguments to be empty --- they're easily inferrable by default (here and in ODEs).
 
+#### Way to Turn off Warnings
+
+Sometimes a user knows they don't need a Jacobian or have supplied one.  Sometimes they want integer arithmetic.  We should have a way within a Stan program to turn off warnings.  The issue is that false positives mask true positives for warnings.
+
 
