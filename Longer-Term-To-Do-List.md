@@ -132,4 +132,8 @@ for which we use higher-order autodiff to compute Jacobian determinant and add t
 
 Sometimes a user knows they don't need a Jacobian or have supplied one.  Sometimes they want integer arithmetic.  We should have a way within a Stan program to turn off warnings.  The issue is that false positives mask true positives for warnings.
 
+#### Parallel Model Evaluation
+
+In many models, such as PK/PD random-effects models, the density comes in natural blocks that could be evaluated in parallel.  The trick is going to be figuring out how to factor the density definition so that components of it can be tackled in parallel.
+
 
