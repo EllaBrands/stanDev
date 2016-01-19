@@ -73,6 +73,10 @@ To distinguish conditional densities from joint densities in the notation.
 
 `normal_lpdf(y | mu, sigma)`
 
+and for multivariate outcomes, we could even write
+
+`foo_lpdf(y1, y2 | alpha, beta)`         
+
 #### Discussion
 
 * Unconventional
