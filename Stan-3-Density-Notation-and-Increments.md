@@ -83,6 +83,8 @@ To distinguish conditional densities from joint densities in the notation.
 
 ## Normalization Control
 
+The current difference between sampling notation and functions is confusing to everyone and it would be nice to be able to control it.
+
 #### Current 
 
 Sampling statement does not normalize:
@@ -102,8 +104,19 @@ PDF has special arguments for normalization, defaulting to `false`:
 ```
 cauchy_lpdf<norm=true>(y | mu, tau);   // normalized
 cauchy_lpdf<norm=false>(y | mu, tau);  // unnormalized
-cauchy_lpdf(y | mu, tau);              // unnormalized
+cauchy_lpdf(y | mu, tau);              // normalized
 ```
+
+#### Discussion
+
+* The default is *normalized*
+    * this is going to lead to a lot of inefficiency with users
+    * it's going to lead to confusion for users about where it's needed
+    * what users will expect of a function
+
+* It would be great to only compute normalizing constants once on outside and use all normalized inside, but
+    * won't work if there is branching on parameters
+    * need the values on the inside for mixture models
 
 ## Scalar/Vector Output Control
 
@@ -117,10 +130,11 @@ y ~ normal(mu, sigma);
 sum_log_lik <- normal_log(y, mu, sigma)
 ```
 
-In generative quantities it is common to have:
+In generative quantities, only the unvectorized form is alllowed.  
 ```
 for (n in 1:N)
  log_lik[n] <- normal_log(y[n], mu, sigma)
+sum_log_lik <- sum(log_lik);
 ```
 
 #### Proposed
@@ -137,6 +151,9 @@ or PDF has special arguments for summing, defaulting to `true`:
 log_lik <- normal_lpdf<norm=true,sum=false>(y | mu, tau);
 ```
 
+#### Discussion
+
+Current form is difficult because use vectorized sampling statements, but not in generated quantities with RNGs or evaluation for WAIC, etc.
 
 ## Increment Log Density Statement
 
