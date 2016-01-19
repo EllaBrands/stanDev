@@ -106,21 +106,20 @@ increment_log_prob(normal_log(y, mu, sigma));
 PDF has special arguments for normalization, defaulting to `false`:
 
 ```
-cauchy_lpdf<norm=true>(y | mu, tau);   // normalized
-cauchy_lpdf<norm=false>(y | mu, tau);  // unnormalized
-cauchy_lpdf(y | mu, tau);              // normalized
+cauchy_lpdf<norm>(y | mu, tau);   // normalized
+cauchy_lpdf(y | mu, tau);         // unnormalized
 ```
 
 #### Discussion
 
-* Daniel's alternative proposal:
-    * `cauchy_lpdf<norm>(y | mu, tau)` : normalized
-    * `cauchy_lpdf(y | mu, tau)` : unnormalized
+* The original proposal was for
+    * `cauchy_lpdf<norm=true>(y | mu, tau)` : normalized
+    * `cauchy_lpdf<norm=false>(y | mu, tau)` : unnormalized
+    * `cauchy_lpdf(y | mu, tau)` : undecided
 
-* The default is *normalized*
-    * this is going to lead to a lot of inefficiency with users
-    * it's going to lead to confusion for users about where it's needed
-    * what users will expect of a function
+* The default is *unnormalized*
+    * this is going to lead to a lot of confusion from users who expect normalization as the default
+    * it's going to lead to confusion for users about where normalization is needed
 
 * It would be great to only compute normalizing constants once on outside and use all normalized inside, but
     * won't work if there is branching on parameters
@@ -182,48 +181,36 @@ Make it clear that we're incrementing an underlying accumulator rather than forw
 
 Replace both of these with a single version:
 
-1.  `ld << normal_lpdf(y | mu, sigma);`
+1.  `target += normal_lpdf(y | mu, sigma);`
 
-The `ld` is for "log density".
+where `target` is the target log density.
 
 #### Discussion
 
-* Streaming operator `<<` unfamiliar outside of C++
+* `target` is sufficiently neutral that nobody's going to analyze it
 
-* Alternative: `+=` 
-    * familiar from C/C++/Java/Python (but not in R or BUGS or JAGS).
-    * for consistency, allow `+=` for other variables
-    * disallow other operations on `ld`
-    * for consistency, replace `<-` with `=`, too
+* need to make `target` a reserved word
 
-* `ld` is abstract here, at least until there are more
-    * could allow just `<<` without any `ld` on left-hand side
+* First consideration was to using streaming operator
+    * `target << normal_lpdf(y | mu, sigma);`
+    * too confusing because `<<` is unfamiliar and it's not really streaming
 
-* reserve `ld` (not strictly necessary)
+* Another consideration was to using streaming with nothing on left side
+    * really confusing
 
-* later, we might allow comma-separated values on right-hand side as in Eigen matrix assignment, e.g.,
-```
-ld << normal_lpdf(mu | 0, 1), 
-      normal_lpdf(beta | mu, sigma), 
-      cauchy_lpdf(sigma | 0, 2.5);
-```
-But it's arguably confusing, and the following alternative will be available.
-```
-ld << normal_lpdf(mu | 0, 1);
-ld << normal_lpdf(beta | mu, sigma);
-ld << cauchy_lpdf(sigma | 0, 2.5);
-```
+* For consistency, we should 
+    * allow `+=` for other variables
+    * fallow `=` in place of `<-` and deprecate `<-`
 
-* Could avoid streaming altogether and use a random prefix like:
+* Do we allow users to access value of `target` even if they can't assign it?
+
+* Could avoid streaming altogether and use a new symbol for the prefix like:
 ```
 @normal_lpdf(mu | 0, 1);
 @normal_lpdf(beta | mu, sigma);
 @cauchy_lpdf(sigma | 0, 2.5);
 ```
-
-* Michael suggests something even longer than `ld`, like `target_lpdf` or `t_lpdf`
-
-* Do we allow vectors or other containers under the assumption we'll add them, as we do for `increment_log_prob()` now?
+* Do we allow vectors or other containers on the right-hand side, as we do for `increment_log_prob()` now?
 
 ## Link Functions in Density Names
 
@@ -259,6 +246,10 @@ Use current versions of function names, with `_log` allowing sampling statement 
 
 Use proposed versions of suffixes, with `_pdf` supporting vertical bar notation.
 
-Use "_ld" instead of "_lp" in user-defined functions with access to increment-log-density streaming.
+Use "??" instead of "_l" in user-defined functions with access to increment-log-density streaming.
 
 Deprecate (not eliminate) use of `_log` in sampling statements.
+
+#### Discussion
+
+* What do we use in place of `_lp` for functions that have access to `target`?  I don't think `_target` makes sense!
