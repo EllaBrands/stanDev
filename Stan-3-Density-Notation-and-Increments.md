@@ -246,6 +246,9 @@ poisson<link=log>(alpha)
 
 * Verbose.  What if there are two arguments, `link1` and `link2`?
 
+* User's may overgeneralize from the general syntax to assume arguments that don't exist
+    * so just use `bernoulli_logit` instead of `bernoulli<link=logit>`
+
 ## User-Defined Functions
 
 #### Current
