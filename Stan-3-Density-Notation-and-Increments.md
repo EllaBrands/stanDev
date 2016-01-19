@@ -16,7 +16,7 @@ scale      | PDF   | PMF     |  CDF     | CCDF     | inverse CDF | PRNG
 scale    | PDF   | PMF  |  CDF  | CCDF  | diff of CDFs | inv CDF  | PRNG
 ---------|-------|------|-------|-------|--------------|----------|-----
 *linear* | pdf   | pmf  | cdf   | ccdf  | diff_cdf     | inv_cdf  | rng
-*log*    | lpdf  | lpdf | lccdf |       | ldiff_cdf    | n/a      | n/a     
+*log*    | lpdf  | lpmf | lccdf |       | ldiff_cdf    | n/a      | n/a     
 
 e.g., normal_pdf, normal_lpdf, normal_cdf, normal_lcdf, normal_ccdf, normal_lccdf
 
@@ -30,9 +30,9 @@ Deprecate (not eliminate) existing functions.
 
 * Andrew suggests we should only supply the log functions where relevant and drop the "l" suffix, so that's
 
-scale   | PDF   | CDF  | CCDF  | diff of CDFs
---------|-------|------|-------|-------------
-*log*   |  pdf  |  cdf |  ccdf | diff_cdf
+scale   | PDF   | PMF  |  CDF  | CCDF  | diff of CDFs
+--------|-------|------|-------|-------|--------------
+*log*   |  pdf  | pdf  |   cdf |  ccdf | diff_cdf
 
 and then
 
