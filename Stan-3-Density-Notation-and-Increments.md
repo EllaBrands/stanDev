@@ -22,12 +22,13 @@ e.g., normal_pdf, normal_lpdf, normal_cdf, normal_lcdf, normal_ccdf, normal_lccd
 
 Deprecate (not eliminate) existing functions.
 
-
 ##### Discussion
 
-We should think of PMFs as PDFs.
+* We should think of PMFs as PDFs.
 
-Andrew suggests we should only supply the log functions where relevant and drop the "l" suffix, so that's
+* For inverse CDF, is the argument in (0, 1), or is it log odds or log prob?
+
+* Andrew suggests we should only supply the log functions where relevant and drop the "l" suffix, so that's
 
 scale   | PDF   | CDF  | CCDF  | diff of CDFs
 --------|-------|------|-------|-------------
@@ -39,6 +40,26 @@ scale    | RNG | inv CDF
 ---------|-----|--------
 *linear* | rng | icdf
 
+
+## Distribution Name Defaults to Log Density
+
+#### Proposal
+
+Writing `normal(y | mu, sigma)` would produce the same value as `normal_lpdf(y | mu, sigma)`
+
+#### Discussion 
+
+* Not good to have two ways to write the same thing
+
+* Removing `normal_lpdf` then removes the symmetry, so it's
+
+```
+normal(y | mu, sigma)
+normal_cdf(y | mu, sigma)
+normal_ccdf(y | mu, sigma)
+normal_diff_cdf(y_l, y_h | mu, sigma)
+normal_inv_cdf(p, mu, sigma)
+```
 
 ## Vertical Bar Notation
 
@@ -54,8 +75,11 @@ To distinguish conditional densities from joint densities in the notation.
 
 #### Discussion
 
-May be confusing because it's unconventional in programming languages.
+* Unconventional
+    * not found in any other programming language
+    * users may infer some kind of sampling rather than evaluation
 
+* Adds one more horizontal space over `,`
 
 ## Normalization Control
 
@@ -133,7 +157,12 @@ The `ld` is for "log density".
 #### Discussion
 
 * Streaming operator `<<` unfamiliar outside of C++
-    * `+=` is familiar from C/C++/Java/Python (but not in R or BUGS or JAGS).
+
+* Alternative: `+=` 
+    * familiar from C/C++/Java/Python (but not in R or BUGS or JAGS).
+    * for consistency, allow `+=` for other variables
+    * disallow other operations on `ld`
+    * for consistency, replace `<-` with `=`, too
 
 * `ld` is abstract here, at least until there are more
     * could allow just `<<` without any `ld` on left-hand side
@@ -153,6 +182,33 @@ ld << normal_lpdf(beta | mu, sigma);
 ld << cauchy_lpdf(sigma | 0, 2.5);
 ```
 
+* Could avoid streaming altogether and use a random prefix like:
+```
+@normal_lpdf(mu | 0, 1);
+@normal_lpdf(beta | mu, sigma);
+@cauchy_lpdf(sigma | 0, 2.5);
+```
+
+## Link Functions in Density Names
+
+Current approach doesn't scale.
+
+#### Current
+
+```
+poisson_log(alpha) == poisson(exp(alpha))
+bernoulli_logit(alpha) == bernoulli(inv_logit(alpha))
+```
+
+#### Proposed
+
+```
+poisson<link=log>(alpha)
+```
+
+#### Discussion
+
+* Verbose.  What if there are two arguments, `link1` and `link2`?
 
 ## User-Defined Functions
 
