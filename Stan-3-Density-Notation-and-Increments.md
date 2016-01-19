@@ -13,30 +13,31 @@ Log   | log   | cdf_log | ccdf_log |    n/a      | n/a
 
 #### Proposed Suffixes
 
-Scale | PDF   | CDF  | CCDF  | inv CDF    | PRNG
-------|-------|------|-------|------------|-------
-Linear| pdf   | cdf  | ccdf  | icdf       | rng
-Log   | lpdf  | lcdf | lccdf | n/a        | n/a
+Scale | PDF   | CDF  | CCDF  | diff of CDFs | inv CDF  | PRNG
+------|-------|------|-------|--------------|----------|-----
+Linear| pdf   | cdf  | ccdf  | diff_cdf     | inv_cdf  | rng
+Log   | lpdf  | lcdf | lccdf | ldiff_cdf    | n/a      | n/a     
 
 e.g., normal_pdf, normal_lpdf, normal_cdf, normal_lcdf, normal_ccdf, normal_lccdf
 
 Deprecate (not eliminate) existing functions.
 
-Andrew suggests we only supply the log functions (RNG is a bit different here) and not use the "l" suffix., so that'd be: 
 
-Scale | PDF   | CDF  | CCDF  |
-------|-------|------|-------|
-Log   |  pdf  |  cdf |  ccdf |
+##### Discussion
+
+We should think of PMFs as PDFs.
+
+Andrew suggests we should only supply the log functions where relevant and drop the "l" suffix, so that's
+
+Scale | PDF   | CDF  | CCDF  | diff of CDFs
+------|-------|------|-------|-------------
+Log   |  pdf  |  cdf |  ccdf | diff_cdf
 
 and then
 
 Scale  | RNG | inv CDF
 -------|-----|--------
 linear | rng | icdf
-
-##### Discussion
-
-We should think of PMFs as PDFs.
 
 We eventually want differences of cdfs (dcdf).  
 
