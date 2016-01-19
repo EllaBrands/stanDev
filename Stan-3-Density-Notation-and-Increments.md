@@ -16,7 +16,7 @@ scale      | PDF   | PMF     |  CDF     | CCDF     | inverse CDF | PRNG
 scale    | PDF   | PMF  |  CDF  | CCDF  | diff of CDFs | inv CDF  | PRNG
 ---------|-------|------|-------|-------|--------------|----------|-----
 *linear* | pdf   | pmf  | cdf   | ccdf  | diff_cdf     | inv_cdf  | rng
-*log*    | lpdf  | lpmf | lccdf |       | ldiff_cdf    | n/a      | n/a     
+*log*    | lpdf  | lpmf | lcdf  | lccdf | ldiff_cdf    | n/a      | n/a     
 
 e.g., normal_pdf, normal_lpdf, normal_cdf, normal_lcdf, normal_ccdf, normal_lccdf
 
