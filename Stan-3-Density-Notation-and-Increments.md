@@ -217,6 +217,8 @@ ld << cauchy_lpdf(sigma | 0, 2.5);
 @cauchy_lpdf(sigma | 0, 2.5);
 ```
 
+* Michael suggests something even longer than `ld`, like `target_lpdf` or `t_lpdf`
+
 ## Link Functions in Density Names
 
 Current approach doesn't scale.
