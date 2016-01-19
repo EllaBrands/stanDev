@@ -22,6 +22,8 @@ e.g., normal_pdf, normal_lpdf, normal_cdf, normal_lcdf, normal_ccdf, normal_lccd
 
 Deprecate (not eliminate) existing functions.
 
+Don't bother implementing the linear alternatives for ones with sensible log scales, at least for now.
+
 ##### Discussion
 
 * We should think of PMFs as PDFs.
