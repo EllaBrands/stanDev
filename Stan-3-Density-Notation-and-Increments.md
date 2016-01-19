@@ -113,6 +113,10 @@ cauchy_lpdf(y | mu, tau);              // normalized
 
 #### Discussion
 
+* Daniel's alternative proposal:
+    * `cauchy_lpdf<norm>(y | mu, tau)` : normalized
+    * `cauchy_lpdf(y | mu, tau)` : unnormalized
+
 * The default is *normalized*
     * this is going to lead to a lot of inefficiency with users
     * it's going to lead to confusion for users about where it's needed
