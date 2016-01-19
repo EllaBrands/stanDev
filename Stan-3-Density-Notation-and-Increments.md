@@ -1,22 +1,22 @@
 Each probability distribution, such as Bernoulli or normal, has functions for its probability density function (PDF), cumulative distribution function (CDF), complementary cumulative distribution function (CCDF), inverse CDFs (ICDF), and pseudo random number generator (RNG)
 
-### Function Suffixes
+## Function Suffixes
 
 To distinguish which function for a distribution is being used and which scale.
 
 #### Current Suffixes
 
-Scale | PDF   | CDF     | CCDF     | inverse CDF | PRNG 
-------|-------|---------|----------|-------------|------
-Linear| n/a   | cdf     | ccdf     |    n/a      | rng   
-Log   | log   | cdf_log | ccdf_log |    n/a      | n/a
+scale      | PDF   | CDF     | CCDF     | inverse CDF | PRNG 
+-----------|-------|---------|----------|-------------|------
+*linear*   | n/a   | cdf     | ccdf     |    n/a      | rng   
+*log*      | log   | cdf_log | ccdf_log |    n/a      | n/a
 
 #### Proposed Suffixes
 
-Scale | PDF   | CDF  | CCDF  | diff of CDFs | inv CDF  | PRNG
-------|-------|------|-------|--------------|----------|-----
-Linear| pdf   | cdf  | ccdf  | diff_cdf     | inv_cdf  | rng
-Log   | lpdf  | lcdf | lccdf | ldiff_cdf    | n/a      | n/a     
+scale    | PDF   | CDF  | CCDF  | diff of CDFs | inv CDF  | PRNG
+---------|-------|------|-------|--------------|----------|-----
+*linear* | pdf   | cdf  | ccdf  | diff_cdf     | inv_cdf  | rng
+*log*    | lpdf  | lcdf | lccdf | ldiff_cdf    | n/a      | n/a     
 
 e.g., normal_pdf, normal_lpdf, normal_cdf, normal_lcdf, normal_ccdf, normal_lccdf
 
@@ -29,20 +29,18 @@ We should think of PMFs as PDFs.
 
 Andrew suggests we should only supply the log functions where relevant and drop the "l" suffix, so that's
 
-Scale | PDF   | CDF  | CCDF  | diff of CDFs
-------|-------|------|-------|-------------
-Log   |  pdf  |  cdf |  ccdf | diff_cdf
+scale   | PDF   | CDF  | CCDF  | diff of CDFs
+--------|-------|------|-------|-------------
+*log*   |  pdf  |  cdf |  ccdf | diff_cdf
 
 and then
 
-Scale  | RNG | inv CDF
--------|-----|--------
-linear | rng | icdf
-
-We eventually want differences of cdfs (dcdf).  
+scale    | RNG | inv CDF
+---------|-----|--------
+*linear* | rng | icdf
 
 
-### Vertical Bar Notation
+## Vertical Bar Notation
 
 To distinguish conditional densities from joint densities in the notation.
 
@@ -54,12 +52,12 @@ To distinguish conditional densities from joint densities in the notation.
 
 `normal_lpdf(y | mu, sigma)`
 
-##### Discussion
+#### Discussion
 
 May be confusing because it's unconventional in programming languages.
 
 
-### Normalization Control
+## Normalization Control
 
 #### Current 
 
@@ -83,7 +81,7 @@ cauchy_lpdf<norm=false>(y | mu, tau);  // unnormalized
 cauchy_lpdf(y | mu, tau);              // unnormalized
 ```
 
-### Scalar/vector Output Control
+## Scalar/Vector Output Control
 
 #### Current 
 
@@ -114,7 +112,7 @@ log_lik <- normal_lpdf<norm=true,sum=false>(y | mu, tau);
 ```
 
 
-### Increment Log Density Statement
+## Increment Log Density Statement
 
 Make it clear that we're incrementing an underlying accumulator rather than forward sampling or defining a directed graph.
 
@@ -132,7 +130,7 @@ Replace both of these with a single version:
 
 The `ld` is for "log density".
 
-##### Discussion
+#### Discussion
 
 * Streaming operator `<<` unfamiliar outside of C++
     * `+=` is familiar from C/C++/Java/Python (but not in R or BUGS or JAGS).
@@ -156,7 +154,7 @@ ld << cauchy_lpdf(sigma | 0, 2.5);
 ```
 
 
-### User-Defined Functions
+## User-Defined Functions
 
 #### Current
 
