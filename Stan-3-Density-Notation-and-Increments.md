@@ -219,6 +219,8 @@ ld << cauchy_lpdf(sigma | 0, 2.5);
 
 * Michael suggests something even longer than `ld`, like `target_lpdf` or `t_lpdf`
 
+* Do we allow vectors or other containers under the assumption we'll add them, as we do for `increment_log_prob()` now?
+
 ## Link Functions in Density Names
 
 Current approach doesn't scale.
