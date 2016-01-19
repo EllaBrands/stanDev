@@ -107,6 +107,8 @@ cauchy_lpdf(y | mu, tau);              // unnormalized
 
 ## Scalar/Vector Output Control
 
+See:  https://github.com/stan-dev/stan/issues/1697
+
 #### Current 
 
 If y is vector (or array) sampling statement and function call compute sum of log densities
