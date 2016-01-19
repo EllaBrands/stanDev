@@ -14,7 +14,7 @@ scale      | PDF   | PMF     |  CDF     | CCDF     | inverse CDF | PRNG
 #### Proposed Suffixes
 
 scale    | PDF   | PMF  |  CDF  | CCDF  | diff of CDFs | inv CDF  | PRNG
----------|-------|------|-------|----------------------|----------|-----
+---------|-------|------|-------|-------|--------------|----------|-----
 *linear* | pdf   | pmf  | cdf   | ccdf  | diff_cdf     | inv_cdf  | rng
 *log*    | lpdf  | lpdf | lccdf |       | ldiff_cdf    | n/a      | n/a     
 
