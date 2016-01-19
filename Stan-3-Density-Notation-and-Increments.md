@@ -6,17 +6,17 @@ To distinguish which function for a distribution is being used and which scale.
 
 #### Current Suffixes
 
-scale      | PDF   | CDF     | CCDF     | inverse CDF | PRNG 
------------|-------|---------|----------|-------------|------
-*linear*   | n/a   | cdf     | ccdf     |    n/a      | rng   
-*log*      | log   | cdf_log | ccdf_log |    n/a      | n/a
+scale      | PDF   | PMF     |  CDF     | CCDF     | inverse CDF | PRNG 
+-----------|-------|---------|----------|----------|-------------|---------
+*linear*   | n/a   |  n/a    | cdf      | ccdf     |    n/a      | rng   
+*log*      | log   |  log    | cdf_log  | ccdf_log |    n/a      | n/a
 
 #### Proposed Suffixes
 
-scale    | PDF   | CDF  | CCDF  | diff of CDFs | inv CDF  | PRNG
----------|-------|------|-------|--------------|----------|-----
-*linear* | pdf   | cdf  | ccdf  | diff_cdf     | inv_cdf  | rng
-*log*    | lpdf  | lcdf | lccdf | ldiff_cdf    | n/a      | n/a     
+scale    | PDF   | PMF  |  CDF  | CCDF  | diff of CDFs | inv CDF  | PRNG
+---------|-------|------|-------|----------------------|----------|-----
+*linear* | pdf   | pmf  | cdf   | ccdf  | diff_cdf     | inv_cdf  | rng
+*log*    | lpdf  | lpdf | lccdf |       | ldiff_cdf    | n/a      | n/a     
 
 e.g., normal_pdf, normal_lpdf, normal_cdf, normal_lcdf, normal_ccdf, normal_lccdf
 
