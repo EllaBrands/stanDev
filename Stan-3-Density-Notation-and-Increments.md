@@ -122,6 +122,11 @@ cauchy_lpdf(y | mu, tau);              // normalized
     * won't work if there is branching on parameters
     * need the values on the inside for mixture models
 
+* Aki suggests following Andrew's *BDA* notation with `q()` being unnormalized form of `p()`, so
+    * instead of `beta_lpdf<norm=true>(y | a, b)`, write `beta_lqdf(y | a, b)`
+    * could be confusing given `q` usage for quantiles in R
+    
+
 ## Scalar/Vector Output Control
 
 See:  https://github.com/stan-dev/stan/issues/1697
