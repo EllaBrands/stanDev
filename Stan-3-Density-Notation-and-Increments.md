@@ -174,9 +174,20 @@ where `target` is the target log density.
 
 #### Discussion
 
-* `target` is sufficiently neutral that nobody's going to analyze it
+* `target` is sufficiently neutral that nobody's going to overanalyze it
 
 * need to make `target` a reserved word
+
+* need to restrict usage of `target` assignment to `+=`
+
+* For consistency, we should 
+    * allow `+=` for other variables
+    * replace `<-` with `=` for assignment (deprecate `<-`)
+
+* Do we allow users to access the value of `target` in appropriate blocks?
+    * could help with debugging if target goes to `-inf` or to `NaN`
+
+* Do we allow vectors or other containers on the right-hand side, as we do for `increment_log_prob()` now?
 
 * First consideration was to using streaming operator
     * `target << normal_lpdf(y | mu, sigma);`
@@ -185,23 +196,19 @@ where `target` is the target log density.
 * Another consideration was to using streaming with nothing on left side
     * really confusing
 
-* For consistency, we should 
-    * allow `+=` for other variables
-    * fallow `=` in place of `<-` and deprecate `<-`
-
-* Do we allow users to access value of `target` even if they can't assign it?
-
 * Could avoid streaming altogether and use a new symbol for the prefix like:
+
 ```
 @normal_lpdf(mu | 0, 1);
 @normal_lpdf(beta | mu, sigma);
 @cauchy_lpdf(sigma | 0, 2.5);
 ```
-* Do we allow vectors or other containers on the right-hand side, as we do for `increment_log_prob()` now?
+
+but nobody liked that idea other than me (Bob).
 
 ## Link Functions in Density Names
 
-Current approach doesn't scale.
+Current approach doesn't scale because we need to mark both link function (type of parameter) and name of function and its output.
 
 #### Current
 
@@ -212,16 +219,25 @@ bernoulli_logit(alpha) == bernoulli(inv_logit(alpha))
 
 #### Proposed
 
-```
-poisson<link=log>(alpha)
-```
+Keep as is.
+
+
+
 
 #### Discussion
 
-* Verbose.  What if there are two arguments, `link1` and `link2`?
+* Original plan from Aki was to do this:
+
+```
+poisson<link=log>(alpha)
+bernoulli<link=logit>(alpha)
+```
+
+* But that's verbose and then have to deal with multiple argument type names
 
 * User's may overgeneralize from the general syntax to assume arguments that don't exist
     * so just use `bernoulli_logit` instead of `bernoulli<link=logit>`
+
 
 ## User-Defined Functions
 
@@ -231,12 +247,12 @@ Use current versions of function names, with `_log` allowing sampling statement 
 
 #### Proposed
 
-Use proposed versions of suffixes, with `_pdf` supporting vertical bar notation.
+Use proposed versions of suffixes, with `_lpdf` supporting vertical bar notation.
 
-Use "??" instead of "_l" in user-defined functions with access to increment-log-density streaming.
+Use `_target` suffix instead of `_lp` (deprecate `_lp`) to allow access to `target`
 
-Deprecate (not eliminate) use of `_log` in sampling statements.
+Deprecate (not eliminate) use of `_log` and `_lp` suffixes in user-defined functions.
 
 #### Discussion
 
-* What do we use in place of `_lp` for functions that have access to `target`?  I don't think `_target` makes sense!
+* I think everyone's OK with this.
