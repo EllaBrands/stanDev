@@ -15,32 +15,28 @@ scale      | PDF   | PMF     |  CDF     | CCDF     | inverse CDF | PRNG
 
 scale    | PDF   | PMF  |  CDF  | CCDF  | diff of CDFs | inv CDF  | PRNG
 ---------|-------|------|-------|-------|--------------|----------|-----
-*linear* | pdf   | pmf  | cdf   | ccdf  | diff_cdf     | inv_cdf  | rng
+*linear* | n/a   | n/a  | n/a   | n/a   | n/a          | inv_cdf  | rng
 *log*    | lpdf  | lpmf | lcdf  | lccdf | ldiff_cdf    | n/a      | n/a     
-
-e.g., normal_pdf, normal_lpdf, normal_cdf, normal_lcdf, normal_ccdf, normal_lccdf
 
 Deprecate (not eliminate) existing functions.
 
-Don't bother implementing the linear alternatives for ones with sensible log scales, at least for now.
-
 ##### Discussion
 
-* We should think of PMFs as PDFs.
+* The `pmf` vs. `pdf` suffix was up in the air after our last discussion.
 
-* For inverse CDF, is the argument in (0, 1), or is it log odds or log prob?
+* For inverse CDF, is the argument in (0, 1), or is it log odds or log prob?  Or do we have multiple parameterizations?
 
-* Andrew suggests we should only supply the log functions where relevant and drop the "l" suffix, so that's
+* Andrew suggests we should only supply the log functions where relevant and drop the "l" suffix and "pdf" and "pmf" suffixes, so that's
 
 scale   | PDF   | PMF  |  CDF  | CCDF  | diff of CDFs
 --------|-------|------|-------|-------|--------------
-*log*   |  pdf  | pdf  |   cdf |  ccdf | diff_cdf
+*log*   |  ε    |  ε   |   cdf |  ccdf | diff_cdf
 
-and then
+where `ε` is the empty string, and then
 
 scale    | RNG | inv CDF
 ---------|-----|--------
-*linear* | rng | icdf
+*linear* | rng | inv_cdf
 
 
 ## Distribution Name Defaults to Log Density
