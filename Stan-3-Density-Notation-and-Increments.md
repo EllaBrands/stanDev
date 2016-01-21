@@ -39,25 +39,6 @@ scale    | RNG | inv CDF
 *linear* | rng | inv_cdf
 
 
-## Distribution Name Defaults to Log Density
-
-#### Proposal
-
-Writing `normal(y | mu, sigma)` would produce the same value as `normal_lpdf(y | mu, sigma)`
-
-#### Discussion 
-
-* Not good to have two ways to write the same thing
-
-* Removing `normal_lpdf` then removes the symmetry, so it's
-
-```
-normal(y | mu, sigma)
-normal_cdf(y | mu, sigma)
-normal_ccdf(y | mu, sigma)
-normal_diff_cdf(y_l, y_h | mu, sigma)
-normal_inv_cdf(p, mu, sigma)
-```
 
 ## Vertical Bar Notation
 
