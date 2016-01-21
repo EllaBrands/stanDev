@@ -91,10 +91,14 @@ cauchy_lpdf(y | mu, tau);         // unnormalized
 
 #### Discussion
 
+* Ideally, everything would be normalized everywhere, but it's a computational burden
+
 * The original proposal was for
     * `cauchy_lpdf<norm=true>(y | mu, tau)` : normalized
     * `cauchy_lpdf<norm=false>(y | mu, tau)` : unnormalized
     * `cauchy_lpdf(y | mu, tau)` : undecided
+
+* Using just `cauchy_lpdf<norm>` rather than `cauchy_lpdf<norm=true>` is suboptimal if we want other arguments with values.
 
 * The default is *unnormalized*
     * this is going to lead to a lot of confusion from users who expect normalization as the default
@@ -105,8 +109,8 @@ cauchy_lpdf(y | mu, tau);         // unnormalized
     * need the values on the inside for mixture models
 
 * Aki suggests following Andrew's *BDA* notation with `q()` being unnormalized form of `p()`, so
-    * instead of `beta_lpdf<norm=true>(y | a, b)`, write `beta_lqdf(y | a, b)`
-    * could be confusing given `q` usage for quantiles in R
+    * instead of `beta_lpdf(y | a, b)` for the unnormalized pdf, write `beta_lqdf(y | a, b)`
+    * would be confusing given `q` usage for quantiles in R
     
 
 ## Scalar/Vector Output Control
