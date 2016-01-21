@@ -115,6 +115,8 @@ cauchy_lpdf(y | mu, tau);         // unnormalized
 
 ## Scalar/Vector Output Control
 
+Right now, the densities return the sum of log densities for vector inputs;  it'd be nice to be able to control this and produce a vector of outputs, which is necessary for WAIC and other similar calculations.
+
 See:  https://github.com/stan-dev/stan/issues/1697
 
 #### Current 
@@ -137,18 +139,20 @@ sum_log_lik <- sum(log_lik);
 To be able to use vectorized form in generated quantities (and maybe sometimes elsewhere?) PDF has special arguments for vector output, defaulting to `false`:
 
 ```
-log_lik <- normal_lpdf<norm=true,vector=true>(y | mu, tau);
+log_lik <- normal_lpdf<norm, vector=true>(y | mu, tau);
 ```
 
 or PDF has special arguments for summing, defaulting to `true`:
 
 ```
-log_lik <- normal_lpdf<norm=true,sum=false>(y | mu, tau);
+log_lik <- normal_lpdf<norm, sum=false>(y | mu, tau);
 ```
 
 #### Discussion
 
-Current form is difficult because use vectorized sampling statements, but not in generated quantities with RNGs or evaluation for WAIC, etc.
+* Current form is difficult because use vectorized sampling statements, but not in generated quantities with RNGs or evaluation for WAIC, etc.
+
+* Not clear we really are going to keep computing WAIC, etc., given the current focus on cross-validation.
 
 ## Increment Log Density Statement
 
