@@ -263,3 +263,207 @@ Use current versions of function names, with `_log` allowing sampling statement 
 #### Discussion
 
 * I think everyone's OK with this.
+
+## Examples
+
+#### Simple linear regression
+
+```
+data {
+  int N;
+  vector[N] y;
+  vector[N] x;
+}
+paramters {
+  real alpha;
+  real beta;
+  real<lower=0> sigma;
+}
+model {
+  target += normal_lpdf(alpha | 0, 10);
+  target += normal_lpdf(beta | 0, 2);
+  target += cauchy_lpdf(sigma | 0, 2.5);
+  target += normal_lpdf(y | alpha * x + beta, sigma);
+}
+```
+
+#### Simple Normal Mixture
+
+```
+model {
+  target += normal_lpdf(mu | 0, 1);
+  target += lognormal_lpdf(sigma | 0, 1);
+  target += beta_lpdf(lambda | 2, 2);
+  for (n in 1:N)
+    target += log_sum_exp(log(lambda) + normal_lpdf(y[n] | mu[1], sigma[1],
+                          log1m(lambda) + normal_lpdf(y[n] | mu[2], sigma[2]);
+}
+```
+
+#### Hurdle
+
+```
+model {
+  target += beta_pdf(theta | 2, 2);
+  target += gamma_pdf(lambda | 2, 2);
+  target += bernoulli_pmf(y[n] == 0 | theta);
+  if (y[n] > 0)
+    target += poisson_pmf(y[n] | lambda) T[1,];
+}
+```
+
+#### Measurement Error (Rounding)
+
+```
+data {
+  int<lower=0> N;
+  vector[N] y;
+}
+parameters {
+  real mu;
+  real<lower=0> sigma_sq;
+  vector<lower=-0.5, upper=0.5>[5] y_err;
+}
+transformed parameters {
+  real<lower=0> sigma;
+  vector[N] z;
+  sigma = sqrt(sigma_sq);
+  z = y + y_err;
+} 
+model {
+  target += -2 * log(sigma);
+  target += normal_lpdf(z | mu, sigma);
+}
+```
+
+#### Left Censoring
+
+```
+data {
+  int<lower=0> N_obs;
+  int<lower=0> N_cens;
+  real y_obs[N_obs];
+}
+parameters {
+  real<upper=min(y_obs)> L;
+  real mu;
+  real<lower=0> sigma;
+} 
+model {
+  target += normal_lpdf(L | mu, sigma);
+  target += normal_lpdf(y_obs | mu, sigma);
+  target += N_cens * normal_lcdf(L | mu, sigma);
+}
+```
+
+#### Occupancy Model
+
+```
+functions {
+  matrix cov_matrix_2d(vector sigma, real rho) {
+    matrix[2,2] Sigma;
+    Sigma[1,1] = square(sigma[1]);
+    Sigma[2,2] = square(sigma[2]);
+    Sigma[1,2] = sigma[1] * sigma[2] * rho;
+    Sigma[2,1] = Sigma[1,2];
+    return Sigma;
+  }
+
+  real lp_observed(int x, int K, real logit_psi, real logit_theta) {
+    return log_inv_logit(logit_psi) 
+      + binomial_logit_lpmf(x | K, logit_theta);
+  }
+
+  real lp_unobserved(int K, real logit_psi, real logit_theta) {
+    return log_sum_exp(lp_observed(0, K, logit_psi, logit_theta),
+                       log1m_inv_logit(logit_psi));
+  }
+
+  real lp_never_observed(int J, int K, real logit_psi, real logit_theta,
+                         real Omega) {
+      real lp_unavailable;
+      real lp_available;
+      lp_unavailable = bernoulli_lpmf(0 | Omega);
+      lp_available = bernoulli_lpmf(1 | Omega)
+        + J * lp_unobserved(K, logit_psi, logit_theta);
+      return log_sum_exp(lp_unavailable, lp_available);
+    }
+}
+data {
+  int<lower=1> J;  // sites within region
+  int<lower=1> K;  // visits to sites
+  int<lower=1> n;  // observed species
+  int<lower=0, upper=K> x[n,J];  // observed count of species i at site j
+  int<lower=n> S;  // superpopulation size
+}
+parameters {
+  real alpha;  //  site-level abundance
+  real beta;   //  site-level detection
+  real<lower=0, upper=1> Omega;  // availability of species
+
+  real<lower=-1,upper=1> rho_uv;  // correlation of (abundance, detection)
+  vector<lower=0>[2] sigma_uv;    // sd of (abundance, detection)
+  vector[2] uv[S];                // species-level (abundance, detection)
+}
+transformed parameters {
+  vector[S] logit_psi;    // log odds  of occurrence
+  vector[S] logit_theta;  // log odds of detection
+  for (i in 1:S)
+    logit_psi[i] = uv[i,1] + alpha;
+  for (i in 1:S)
+    logit_theta[i] = uv[i,2] + beta;
+}
+model {
+
+  // priors
+  target += cauchy_lpdf(alpha | 0, 2.5);
+  target += cauchy_lpdf(beta | 0, 2.5);
+  target += cauchy_lpdf(sigma_uv | 0, 2.5);
+  target += beta_lpdf((rho_uv + 1) / 2 | 2, 2);
+  target += multi_normal_lpdf(uv | rep_vector(0, 2), cov_matrix_2d(sigma_uv, rho_uv));
+  target += beta_lpdf(Omega | 2, 2);
+
+  // likelihood
+  for (i in 1:n) {
+    target += bernoulli_lpmf(1 | Omega); // observed, so available
+    for (j in 1:J) {
+      if (x[i,j] > 0)
+        target += lp_observed(x[i,j], K, logit_psi[i], logit_theta[i]);
+      else
+        target += lp_unobserved(K, logit_psi[i], logit_theta[i]);
+    }
+  }
+
+  for (i in (n + 1):S)
+    target += lp_never_observed(J, K, logit_psi[i], logit_theta[i], Omega);
+}
+
+generated quantities {
+  real<lower=0,upper=S> E_N;   // model-based expected population size
+  int<lower=0,upper=S> E_N_2;  // posterior simulated population size
+  vector[2] sim_uv;
+  real logit_psi_sim;
+  real logit_theta_sim;
+
+  E_N = S * Omega; // pure expected by model
+
+  E_N_2 = n;
+  for (i in (n+1):S) {
+    real lp_unavailable;
+    real lp_available;
+    real Pr_available;
+    lp_unavailable = bernoulli_norm_lpmf(0 | Omega);  // norm doesn't really do anything here
+    lp_available = bernoulli_norm_lpmf(1 | Omega)
+      + J * lp_unobserved(K, logit_psi[i], logit_theta[i]);
+    Pr_available = exp(lp_available 
+                       - log_sum_exp(lp_unavailable, lp_available));
+    E_N_2 += bernoulli_rng(Pr_available);
+  }
+
+  sim_uv = multi_normal_rng(rep_vector(0,2),
+                            cov_matrix_2d(sigma_uv, rho_uv));
+  logit_psi_sim = alpha + sim_uv[1];
+  logit_theta_sim = beta + sim_uv[2];
+}
+```
+
