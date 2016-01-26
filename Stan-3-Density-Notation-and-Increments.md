@@ -24,7 +24,7 @@ Deprecate (not eliminate) existing functions.
 
 * The `pmf` vs. `pdf` suffix was up in the air after our last discussion.
 
-* For inverse CDF, is the argument in (0, 1), or is it log odds or log prob?  Or do we have multiple parameterizations?
+* For inverse CDF, we may want an alternative parameterization with a logit-scale parameter.
 
 * Andrew suggests we should only supply the log functions where relevant and drop the "l" suffix and "pdf" and "pmf" suffixes, so that's
 
@@ -50,17 +50,31 @@ To distinguish conditional densities from joint densities in the notation.
 
 #### Proposed
 
-`normal_lpdf(y | mu, sigma)`
+For pdfs and pmfs, we use the bar to separate the outcome from the parameters:
+
+```
+normal_lpdf(y | mu, sigma)
+```
+
+Ditto for cdfs, etc.
+
+```
+normal_lccdf(y | mu, sigma);
+```
 
 and for multivariate outcomes, we could even write
 
-`foo_lpdf(y1, y2 | alpha, beta)`         
+```
+foo_lpdf(y1, y2 | alpha, beta)` 
+```
 
 #### Discussion
 
 * Unconventional
     * not found in any other programming language
     * users may infer some kind of sampling rather than evaluation
+
+* Not clear how we resolve pmf vs. pdf when it's mixed (e.g., a mixture of a pdf and pmf, as in a proper spike-and-slab)
 
 * Adds one more horizontal space over `,`
 
@@ -82,10 +96,10 @@ increment_log_prob(normal_log(y, mu, sigma));
 
 #### Proposed
 
-PDF has special arguments for normalization, defaulting to `false`:
+The name of the function will get a `_norm` suffix before the `lpdf`, as in:
 
 ```
-cauchy_lpdf<norm>(y | mu, tau);   // normalized
+cauchy_norm_lpdf(y | mu, tau);    // normalized
 cauchy_lpdf(y | mu, tau);         // unnormalized
 ```
 
@@ -139,20 +153,20 @@ sum_log_lik <- sum(log_lik);
 To be able to use vectorized form in generated quantities (and maybe sometimes elsewhere?) PDF has special arguments for vector output, defaulting to `false`:
 
 ```
-log_lik <- normal_lpdf<norm, vector=true>(y | mu, tau);
-```
-
-or PDF has special arguments for summing, defaulting to `true`:
-
-```
-log_lik <- normal_lpdf<norm, sum=false>(y | mu, tau);
+vector[N] y;
+vector[N] ll;
+...
+ll <- vec_normal_norm_lpdf(y | mu, tau);
 ```
 
 #### Discussion
 
+* These suffixes are going to start piling up and nobody's going to be able to remember the order.
+
 * Current form is difficult because use vectorized sampling statements, but not in generated quantities with RNGs or evaluation for WAIC, etc.
 
 * Not clear we really are going to keep computing WAIC, etc., given the current focus on cross-validation.
+
 
 ## Increment Log Density Statement
 
@@ -168,33 +182,28 @@ Make it clear that we're incrementing an underlying accumulator rather than forw
 
 Replace both of these with a single version:
 
-1.  `target += normal_lpdf(y | mu, sigma);`
+1.  `target += normal_lpdf(y | mu, sigma);` where `target` is the target log density.
 
-where `target` is the target log density.
+Furthermore,
+
+1.  Deprecate `<-` for assignment and replace with `=`
+
+1.  Allow general use of `+=` for incrementing variables.
+
+1.  Do not allow general access to `target` --- it only lives on left of `+=`;  we supply an existing function to get its value.
+
+1.  Make `target` a reserved word (minor backward-compatibility breaking)
+
+1.  Do not allow vectors on the right of `+=` meaning to sum them all (currently, `increment_log_prob()` allows that (have to be careful here in our translator).
 
 #### Discussion
 
 * `target` is sufficiently neutral that nobody's going to overanalyze it
 
-* need to make `target` a reserved word
-
-* need to restrict usage of `target` assignment to `+=`
-
-* For consistency, we should 
-    * allow `+=` for other variables
-    * replace `<-` with `=` for assignment (deprecate `<-`)
-
-* Do we allow users to access the value of `target` in appropriate blocks?
-    * could help with debugging if target goes to `-inf` or to `NaN`
-
-* Do we allow vectors or other containers on the right-hand side, as we do for `increment_log_prob()` now?
-
 * First consideration was to using streaming operator
     * `target << normal_lpdf(y | mu, sigma);`
-    * too confusing because `<<` is unfamiliar and it's not really streaming
-
-* Another consideration was to using streaming with nothing on left side
-    * really confusing
+    * decided it was too confusing because `<<` is unfamiliar and it's not really streaming
+    * `<< normal_lpdf(y | mu, sigma)` and just plain `normal_lpdf(y | mu, sigma)` also rejected
 
 * Could avoid streaming altogether and use a new symbol for the prefix like:
 
@@ -222,8 +231,6 @@ bernoulli_logit(alpha) == bernoulli(inv_logit(alpha))
 Keep as is.
 
 
-
-
 #### Discussion
 
 * Original plan from Aki was to do this:
@@ -247,11 +254,11 @@ Use current versions of function names, with `_log` allowing sampling statement 
 
 #### Proposed
 
-Use proposed versions of suffixes, with `_lpdf` supporting vertical bar notation.
+1. Use proposed versions of suffixes, with `_lpdf` and `_cdf` and `_ccdf` and `_diff_cdf` (when we get to it) supporting vertical bar notation.
 
-Use `_target` suffix instead of `_lp` (deprecate `_lp`) to allow access to `target`
+1.  Use `_target` suffix instead of `_lp` (deprecate `_lp`) to allow access to `target`
 
-Deprecate (not eliminate) use of `_log` and `_lp` suffixes in user-defined functions.
+1. Deprecate (not eliminate for now) use of `_log` and `_lp` suffixes in user-defined functions.
 
 #### Discussion
 
