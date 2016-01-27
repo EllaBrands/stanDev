@@ -304,11 +304,11 @@ model {
 
 ```
 model {
-  target += beta_pdf(theta | 2, 2);
-  target += gamma_pdf(lambda | 2, 2);
-  target += bernoulli_pmf(y[n] == 0 | theta);
+  target += beta_lpdf(theta | 2, 2);
+  target += gamma_lpdf(lambda | 2, 2);
+  target += bernoulli_lpmf(y[n] == 0 | theta);
   if (y[n] > 0)
-    target += poisson_pmf(y[n] | lambda) T[1,];
+    target += poisson_lpmf(y[n] | lambda) T[1,];
 }
 ```
 
