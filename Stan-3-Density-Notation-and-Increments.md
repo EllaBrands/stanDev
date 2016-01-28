@@ -306,10 +306,11 @@ model {
 model {
   target += beta_lpdf(theta | 2, 2);
   target += gamma_lpdf(lambda | 2, 2);
-  target += bernoulli_lpmf(y[n] == 0 | theta);
-  for (n in 1:N)
+  for (n in 1:N) {
+    target += bernoulli_lpmf(y[n] == 0 | theta);
     if (y[n] > 0)
       target += poisson_lpmf(y[n] | lambda) T[1,];
+  }
 }
 ```
 
