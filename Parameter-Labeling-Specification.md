@@ -2,6 +2,47 @@ Not all parameters are created equal.
 
 **Goal:** Provide labeling functionality for parameters. We can then treat parameters with special labels differently in our inference algorithms.
 
+## Example Usage for MML
+
+Consider the following hierarchical model.
+```C++
+data {
+  int<lower=1> N;
+  int<lower=1> J;
+  int<lower=1> K;
+  real y[N];
+  int<lower=1, upper=J> group[N];
+}
+parameters {
+  vector[K] phi;              // mu, log_sigma_y, log_sigma_alpha
+  vector[J] alpha;
+}
+transformed parameters {
+  real mu;
+  real<lower=0> sigma_y;
+  real<lower=0> sigma_alpha;
+  mu <- phi[1];
+  sigma_y <- exp(phi[2]);
+  sigma_alpha <- exp(phi[3]);
+}
+model {
+  real y_pred[N];
+  for (n in 1:N){
+    y_pred[n] <- mu + alpha[group[n]];
+  }
+  increment_log_prob(normal_log(y, y_pred, sigma_y));
+  increment_log_prob(normal_log(alpha, 0, sigma_alpha));
+  increment_log_prob(log(sigma_y));
+  increment_log_prob(log(sigma_alpha));
+  print(lp__);
+}
+```
+We want to estimate the hyperparameters `phi`, integrated over the local parameters `alpha`.
+
+**Related notes:** [Max Marginal Optimization (lmer) Design](https://github.com/stan-dev/stan/wiki/Max-Marginal-Optimization-(lmer)-Design), [MLE and MML Design](https://github.com/stan-dev/stan/wiki/MLE-and-MML-Design)
+
+## Example Usage for Discrete Parameters
+
 ## Example Usage for ADVI
 
 Assume `K` parameters in a model.
@@ -42,45 +83,6 @@ model {
 ```
 
 It makes sense to use a full-rank approximation for the hierarchical parameters `alpha`, but use a mean-field approximation for the low-level parameters `w`. 
-
-## Example Usage for MML
-
-Consider the following hierarchical model.
-```C++
-data {
-  int<lower=1> N;
-  int<lower=1> J;
-  int<lower=1> K;
-  real y[N];
-  int<lower=1, upper=J> group[N];
-}
-parameters {
-  vector[K] phi;              // mu, log_sigma_y, log_sigma_alpha
-  vector[J] alpha;
-}
-transformed parameters {
-  real mu;
-  real<lower=0> sigma_y;
-  real<lower=0> sigma_alpha;
-  mu <- phi[1];
-  sigma_y <- exp(phi[2]);
-  sigma_alpha <- exp(phi[3]);
-}
-model {
-  real y_pred[N];
-  for (n in 1:N){
-    y_pred[n] <- mu + alpha[group[n]];
-  }
-  increment_log_prob(normal_log(y, y_pred, sigma_y));
-  increment_log_prob(normal_log(alpha, 0, sigma_alpha));
-  increment_log_prob(log(sigma_y));
-  increment_log_prob(log(sigma_alpha));
-  print(lp__);
-}
-```
-We want to estimate the hyperparameters `phi`, integrated over the local parameters `alpha`.
-
-**Related notes:** [Max Marginal Optimization (lmer) Design](https://github.com/stan-dev/stan/wiki/Max-Marginal-Optimization-(lmer)-Design), [MLE and MML Design](https://github.com/stan-dev/stan/wiki/MLE-and-MML-Design)
 
 ## Proposal
 
