@@ -103,6 +103,8 @@ I've found these very useful so far.
 
 4.  Lunn et al.  <i>The BUGS Book</i>.
 
+5.  Useful discussion on stiff/non-stiff solver need: <a href="https://reference.wolfram.com/language/tutorial/NDSolveStiffnessTest.html">Wolfram NDSolveStiffnesTest</a>
+
 ### Collections of models
 
 There are several collections of models that are useful.  Here are the BUGS models:
