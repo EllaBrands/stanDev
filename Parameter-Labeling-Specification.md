@@ -2,9 +2,9 @@ Not all parameters are created equal.
 
 **Goal:** Provide labeling functionality for parameters. We can then treat parameters with special labels differently in our inference algorithms.
 
-__Disclaimer__: This is a very rough work in progress. It does not detail a concrete (or good) solution. Rather, it itemizes the general extensions of current algorithms that cannot currently be implemented.
+_Disclaimer_: This is a very rough work in progress. It does not detail a concrete (or good) solution. Rather, it itemizes the general extensions of current algorithms that cannot currently be implemented.
 
-## Example Usage for MML
+## Motivation for MML
 
 Consider the following hierarchical model.
 ```C++
@@ -39,13 +39,15 @@ model {
   print(lp__);
 }
 ```
-We want to estimate the hyperparameters `phi`, integrated over the local parameters `alpha`.
+We want to estimate the hyperparameters `phi`, integrated over the local parameters `alpha`. To do so, the user needs somehow to signal to the program which are parameters to optimize over and which are parameters to integrate over.
 
 **Related notes:** [Max Marginal Optimization (lmer) Design](https://github.com/stan-dev/stan/wiki/Max-Marginal-Optimization-(lmer)-Design), [MLE and MML Design](https://github.com/stan-dev/stan/wiki/MLE-and-MML-Design)
 
-## Example Usage for Discrete Parameters
+## Motivation for Discrete Parameters
 
-## Example Usage for ADVI
+We have no way to distinguish between discrete and continuous parameters. We need this before we can start implementing a inference algorithm for models with discrete parameters.
+
+## Motivation for ADVI
 
 Assume `K` parameters in a model.
 
@@ -92,45 +94,19 @@ It makes sense to use a full-rank approximation for the hierarchical parameters 
 
 We would like to specify the labels at runtime, based on arguments depending on each inference algorithm. We do this similar to how we specify inits.
 
+A similar interface applies to maximum marginal likelihood.
+```bash
+./foo mml hyperparameters=“phi" local="alpha"
+```
+
 For ADVI, consider the following:
 
 ```bash
 ./foo advi meanfield=“w” fullrank=“alpha, sigma”
 ```
 
-All parameters labeled with `fullrank` will get assigned to a full-rank variational approximation. In this case, that's a `D+1` dimensional multivariate Gaussian with `bigO( (D+1)^2 )` variational parameters.
+All parameters labeled with `fullrank` will get assigned to a full-rank variational approximation. All parameters labeled with `meanfield` (or left unlabeled) will get assigned to a mean-field variational approximation.
 
-All parameters labeled with `meanfield` (or left unlabeled) will get assigned to a mean-field variational approximation. In this case, that's a `D` dimensional diagonal Gaussian with `bigO( D )` variational parameters.
+### Implementation
 
-A similar interface applies to maximum marginal likelihood.
-```bash
-./foo mml hyperparameters=“phi" local="alpha"
-```
-
-### Model implementation
-
-See however init does it.
-
-### (archives)
-Consider the following labeling scheme.
-
-```C++
-parameters {
-  vector<lower=0,#fullrank>[D] alpha; // hierarchical latent variables
-  real<lower=0,#fullrank> sigma;      // standard deviation
-  vector<#meanfield>[D] w;            // weights (coefficients) vector
-}
-```
-We would want a function similar to `get_param_names` that writes the label names out.
-
-```C++
-void get_label_names(std::vector<std::string>& labels) const;
-```
-
-On the ADVI side, we would build a hybrid variational family
-```C++
-src/stan/variational/families/normal_hybrid.hpp
-```
-that would use these labels in a meaningful way.
-
-**NOTE** We don't need to touch how `cont_params_` work. Nor do we need to play with the gradients at all. We would still only need `model_.template log_prob<false, true>` and `stan::model::gradient` for ADVI.
+This is done similarly to how the `init` argument for inference algorithms is done.
