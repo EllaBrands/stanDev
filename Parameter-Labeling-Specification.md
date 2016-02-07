@@ -2,6 +2,8 @@ Not all parameters are created equal.
 
 **Goal:** Provide labeling functionality for parameters. We can then treat parameters with special labels differently in our inference algorithms.
 
+__Disclaimer__: This is a very rough work in progress. It does not detail a concrete (or good) solution. Rather, it itemizes the general extensions of current algorithms that cannot currently be implemented.
+
 ## Example Usage for MML
 
 Consider the following hierarchical model.
