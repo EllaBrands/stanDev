@@ -4,7 +4,7 @@ Not all parameters are created equal.
 
 _Disclaimer_: This is a very rough work in progress. It does not detail a concrete (or good) solution. Rather, it itemizes the general wishlists of algorithms that cannot currently be implemented.
 
-## Motivation for MML
+## Maximum marginal likelihood
 
 Consider the following hierarchical model.
 ```C++
@@ -43,11 +43,15 @@ We want to estimate the hyperparameters `phi`, integrated over the local paramet
 
 **Related notes:** [Max Marginal Optimization (lmer) Design](https://github.com/stan-dev/stan/wiki/Max-Marginal-Optimization-(lmer)-Design), [MLE and MML Design](https://github.com/stan-dev/stan/wiki/MLE-and-MML-Design)
 
-## Motivation for Discrete Parameters
+## Discrete Parameters
 
 We have no way to distinguish between discrete and continuous parameters. We need this before we can start implementing a inference algorithm for models with discrete parameters.
 
-## Motivation for ADVI
+## Local Latent Variables
+
+Right now everything is global. Inference algorithms should be able to know how to distinguish between latent variables which are specific to a single data point, or are global latent variables. This makes them scale to much higher dimensions.
+
+## ADVI
 
 Assume `K` parameters in a model.
 
