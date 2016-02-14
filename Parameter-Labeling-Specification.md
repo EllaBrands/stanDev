@@ -41,7 +41,7 @@ model {
 ```
 We want to estimate the hyperparameters `phi`, integrated over the local parameters `alpha`. To do so, the user needs somehow to signal to the program which are parameters to optimize over and which are parameters to integrate over.
 
-**Related notes:** [Max Marginal Optimization (lmer) Design](https://github.com/stan-dev/stan/wiki/Max-Marginal-Optimization-(lmer)-Design), [MLE and MML Design](https://github.com/stan-dev/stan/wiki/MLE-and-MML-Design)
+**Related notes:** [MLE and MML Design](https://github.com/stan-dev/stan/wiki/MLE-and-MML-Design)
 
 ## Discrete Parameters
 
