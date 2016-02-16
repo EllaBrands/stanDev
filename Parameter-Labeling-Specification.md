@@ -114,3 +114,9 @@ All parameters labeled with `fullrank` will get assigned to a full-rank variatio
 ### Implementation
 
 This is done similarly to how the `init` argument for inference algorithms is done.
+
+Example of init file
+```{R}
+phi <- "global"
+alpha <- "local"
+```
