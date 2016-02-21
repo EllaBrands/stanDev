@@ -2,18 +2,79 @@
 
 Create a small library with Stan/Math as submodules that allows an interface to use Protocol Buffers for data input files to Stan, output of samples, input of initial values, input of control parameters, and output of messages.  The best use case is that it reduces the complexity of a client-server version of Stan dramatically. The prototype/illustration for this wrapper is being developed in a separate [repo](github.com/sakrejda/protostan).    
 
-##  Protocol Buffers
+##  Protocol Buffers overview with example
 Protocol Buffers is intended for [cross-platform](https://developers.google.com/protocol-buffers/docs/overview#what-are-protocol-buffers) sharing of [small messages](https://developers.google.com/protocol-buffers/docs/techniques#large-data).  The format is binary and described externally in .proto files.  An example .proto file is:
 
 ~~~
-message SearchRequest {
-  string query = 1;
-  int32 page_number = 2;  // Which page number do we want?
-  int32 result_per_page = 3;  // Number of results to return per page.
+syntax = "proto3";
+
+package stan.proto;
+
+/**
+ * Input for stan::lang::compile wrapper.  
+ */
+message StanCompileRequest {
+  string model_name = 1;      /// Name of the Stan model.
+  string model_code = 2;      /// Stan-language code for the model.
+}
+
+/**
+ * Output from stan::lang::compile wrapper.  
+ */
+message StanCompileResponse {
+  enum State {
+    UNKNOWN = 0;     /// Default value in case of bad set value.
+    INCOMPLETE = 1;  /// Indicates compilation is not finished, resend StanCompileRequest
+    SUCCESS = 2;     /// Indicates compilation succeeded, check messages for warnings.
+    ERROR = 3;       /// Indicates compilation failed, check messages for errors.
+  }
+  State state = 1;     /// Return code for compilation request.
+  string cpp_code = 2; /// C++ code for the model provided in StanCompileRequest.
+  string messages = 3; /// Check for Stan compiler warnings or errors.
 }
 ~~~
 
 The protoc compiler takes this .proto file and uses plugins to generate code for any [supported](https://developers.google.com/protocol-buffers/docs/reference/overview) languages.  The result is native code which can construct/read well defined messages.  The Protocol Buffers language definition specifies data types, with [mapping](https://developers.google.com/protocol-buffers/docs/proto3#scalar) to data types in supported languages.  
+
+A thin wrapper that takes code from the above .proto interface file and provides a C++ API for calling Stan's compile function:
+
+~~~
+#include <stan/proto/compile.pb.h>
+#include <stan/lang/compiler.hpp>
+#include <iostream>
+#include <sstream>
+#include <string>
+
+namespace stan {
+  namespace proto {
+    stan::proto::StanCompileResponse compile(
+      const stan::proto::StanCompileRequest& request) {
+      stan::proto::StanCompileResponse response;
+      std::ostringstream err_stream;
+      std::istringstream stan_stream(request.model_code());
+      std::ostringstream cpp_stream;
+
+      response.set_state(stan::proto::StanCompileResponse::ERROR);
+      try {
+        bool valid_model = stan::lang::compile(&err_stream,
+                                               stan_stream,
+                                               cpp_stream,
+                                               request.model_name());
+        response.set_messages(err_stream.str());
+        if (valid_model) {
+          response.set_state(stan::proto::StanCompileResponse::SUCCESS);
+          response.set_cpp_code(cpp_stream.str());
+        }
+      } catch(const std::exception& e) {
+        response.set_messages(e.what());
+      }
+      return response;
+    }
+  }
+}
+~~~
+
+It only takes a [little more code](https://github.com/sakrejda/servestan/blob/master/src/servestan/servestan.cpp) to get a server version that listens to Protocol Buffer messages on a socket and responds with protocol buffer messages.  The "servestan" code is currently not in sync so don't bother trying it...
 
 ## Benefits
 
