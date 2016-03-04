@@ -1,6 +1,11 @@
-## Proposal - In Progress,  dev-list discussion...
+## Proposal
 
 Create a small library with Stan/Math as submodules that allows an interface to use Protocol Buffers for data input files to Stan, output of samples, input of initial values, input of control parameters, and output of messages.  The best use case is that it reduces the complexity of a client-server version of Stan dramatically. The prototype/illustration for this wrapper is being developed in a separate [repo](github.com/sakrejda/protostan).    
+
+## Accomplished so far:
+ - A wrapper around stan::compile, with tests.
+ - A length-delimited serialization format 
+ - An complete writer callback using the format, with round-trip tests.
 
 ##  Protocol Buffers overview with example
 Protocol Buffers is intended for [cross-platform](https://developers.google.com/protocol-buffers/docs/overview#what-are-protocol-buffers) sharing of [small messages](https://developers.google.com/protocol-buffers/docs/techniques#large-data).  The format is binary and described externally in .proto files.  An example .proto file is:
