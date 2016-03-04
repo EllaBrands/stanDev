@@ -136,4 +136,7 @@ Sometimes a user knows they don't need a Jacobian or have supplied one.  Sometim
 
 In many models, such as PK/PD random-effects models, the density comes in natural blocks that could be evaluated in parallel.  The trick is going to be figuring out how to factor the density definition so that components of it can be tackled in parallel.
 
+#### Caching difference in log probability (with constraints vs without)
+
+See discussion in issue [#584](https://github.com/stan-dev/stan/issues/584), but here's the gist: should we calculate the log prob with and without constants once, cache the difference, and then use this to initialize `lp__` in subsequent iterations?
 
