@@ -16,4 +16,4 @@ _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
 * __Developer name.  Short description.__
-* Ben. Can we do enough testing soon to support / move to C++11 for Stan3?
+* Ben. Can we do enough testing soon to support / move to C++11 for Stan3 [Link](https://github.com/stan-dev/stan/wiki/Cpp11-Upgrade)?
