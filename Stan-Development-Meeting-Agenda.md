@@ -10,7 +10,7 @@ meeting._
 
 * Developer name.  Short description.  Desired resolution.
 
-### Open Discussion
+### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
