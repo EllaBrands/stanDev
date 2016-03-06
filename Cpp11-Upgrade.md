@@ -12,13 +12,7 @@ As of Rtools 3.3, the GCC is based on version 4.9.3, but there are seperate tool
 
 #### PyStan
 
-Newer versions of Python will not have a problem (e.g., Python 3.x) with C++11 extensions. The entire scientific computing "stack" in Python (numpy, etc) is on Python 3 these days so as long as there's a deprecation plan with nice visible, public warnings, I think Stan should go ahead and use C++11.
-
-Insofar as Windows support is concerned, it's important that the C++11 features used are supported by *Visual Studio 2010*.  
-
-https://wiki.apache.org/stdcxx/C++0xCompilerSupport
-
-Allen said Windows would be okay if we switched to C++11.
+Python will not have a problem with C++11. Previously, Windows was a concern but this is no longer the case. (Python 3.5 on Windows uses Visual C++ 2015 (also known as Visual C++ 14.0).)
 
 ####  MatlabStan, Stan.jl
 
