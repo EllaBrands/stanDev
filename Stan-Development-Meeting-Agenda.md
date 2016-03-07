@@ -17,3 +17,4 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 * Ben. Can we do enough testing soon to support / move to C++11 for Stan3 [Link](https://github.com/stan-dev/stan/wiki/Cpp11-Upgrade)?
+* Krzysztof. Is there interest in having a binary storage format for input data? output? non-data input?  Streaming read/write of data as key/value/index turns out to be pretty fast using [protobuf](https://github.com/sakrejda/protostan/blob/develop/src/protostan/interface_callbacks/writer/binary_proto_stream_writer.hpp) (e.g.- round-trip encoding/decoding time for 100,000 random doubles or short random strings using an interface_callbacks writer class was ~200ms), could be generally viable beyond CloudStan dreams(?) What are your preferred alternatives? [Notes](https://github.com/stan-dev/stan/wiki/Protocol-Buffers-for-serialization-of-input-data,-output-samples,-initial-values,-input-parameters,-and-output-messages,)
