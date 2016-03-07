@@ -1,10 +1,33 @@
 # Intro
 
-The ability to do ODEs has made Stan very attractive to many researchers. But there are a lot more things that we could, in principle, do to user-defined functions. Like with ODEs, there may be a lot of foreseeable and unforeseen issues with numerical stability, execution speed, posterior geometry, etc.
+The ability to do ODEs has made Stan very attractive to many researchers. But there are a lot more things that could be done with user-defined functions (see below for examples); functions that apply to other functions are often called "functionals" and we will use that terminology here to separate them from first order functions that operate on integer and real values. 
+
+## Issues
+
+The following issues apply ode_integrate and will also apply to new functionals:
+
+0. Stan does not support types for functions or functions as first-class objects, so there is no way to declare the type of a function or functional other than implicitly through its signature.
+
+0. Without function typing, coding new functionals is awkward because it has to be done directly in the C++ grammars for statements because unlike regular functions, there's no typing for functionals built into Stan.
+
+0. Passing arguments is awkward when using `integrate_ode` because all data have to be packed into a `real[]` and / or an `int[]`;  this stems from two issues
+    
+    0. Functions can't access other Stan variables (like data) because they are defined first and have lexical scope.
+
+    0. Stan doesn't support polymorphism in functionals so the function argument to `ode_integrate` has a fixed type.
+
+0.  Like with ODEs, there may be a lot of foreseeable and unforeseen issues with numerical stability, execution speed, posterior geometry, etc.
 
 # Scope
 
-At the moment, user-defined functions are defined in the global namespace and thus all of their arguments have to be explicitly passed to them. This is already awkward when using `integrate_ode` because all data have to be packed into a `real[]` and / or an `int[]`. While this is tolerable for a lot of ODE problems, it would be tedious if the problem required matrices of different sizes. It gets worse if we contemplate supporting other functionals that do not have as much structure as ODEs.
+At the moment, user-defined functions have [lexical/static scope](https://en.wikipedia.org/wiki/Scope_(computer_science)#Lexical_scoping) (as in Java/C/C++) and also appear before any other variable declarations.  This has two consequences:
+
+* CON: all of their arguments must be passed to them explicitly
+
+* PRO: they are completely encapsulated by their definitions
+
+
+While this is tolerable for a lot of ODE problems, it would be tedious if the problem required matrices of different sizes. It gets worse if we contemplate supporting other functionals that do not have as much structure as ODEs.
 
 One solution to this problem would be to make user-defined function (capable of being) class functions or friend functions of the class so that they could access things declared in the `data` block, the `transformed data` block, and the `parameters` block without having to explicitly pass them to the user-defined function.
 
@@ -81,4 +104,3 @@ There are also some integrals where we should be using a specialized numerical a
 ### FFTs
 
 ### Characteristic functions
-
