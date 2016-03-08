@@ -4,12 +4,13 @@ _Short (less than 1 minute) description of work in the past week._
 ### Unresolved Topics
 _Address any open topics from the past meeting._
 
+* Ben. RStan is broken on develop.
+
 ### New Topics
 _New topics that should be addressed immediately or by the next
 meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
-* Ben. RStan is broken on develop. Daniel said he would fix the writer fallout.
 
 * Andrew. Fitting a model with latent jumps (from Novartis).  See graphs here:  http://www.stat.columbia.edu/~gelman/temp/Screen%20Shot%202016-03-07%20at%204.29.55%20PM.png
 
