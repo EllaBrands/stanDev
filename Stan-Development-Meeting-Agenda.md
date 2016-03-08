@@ -28,4 +28,4 @@ including speculation and brainstorming._
 
 * Bob.  How are we going to start the Stan Book?  Who's the audience going to be and what level(s) will the book be written with (Krushcke / Gelman & Hill / BDA or a mix)?  If we want to deploy on the web as PDF, which software to use to write it?  
 
-* Daniel. I put up the start of a design document for the [Stan Library's services refactor](/Services-Refactor-Design-Document.md). Need thoughts / comments, if you want to provide any. Michael, please feel free to edit / add.
+* Daniel. I put up the start of a design document for the [Stan Library's services refactor](https://github.com/stan-dev/stan/wiki/Services-Refactor-Design-Document). Need thoughts / comments, if you want to provide any. Michael, please feel free to edit / add.
