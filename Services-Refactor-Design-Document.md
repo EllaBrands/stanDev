@@ -8,7 +8,7 @@ The current code wasn't designed. It just grew and grew. There have been heroic 
 - RStan
   - [stan_fit.hpp](https://github.com/stan-dev/rstan/blob/develop/rstan/rstan/inst/include/rstan/stan_fit.hpp): 1598 lines 
   - [stan_args.hpp](https://github.com/stan-dev/rstan/blob/develop/rstan/rstan/inst/include/rstan/stan_args.hpp): 834 lines
-- [PyStan](https://github.com/stan-dev/pystan/blob/develop/pystan/stan_fit.hpp): 1760 lines
+- [PyStan](https://github.com/stan-dev/pystan/blob/develop/pystan/stan_fit.hpp): 1760 lines (stan_fit.hpp and stan_args.hpp in one file)
 
 This isn't good.
 
