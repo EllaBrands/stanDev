@@ -334,4 +334,4 @@ Adding a new algorithm (say another 24) will be easier | Testing is much, much h
 
 ## Discussion
 
-
+Comments by @ariddell: The title of this page should be [Cahiers de doléances](https://en.wikipedia.org/wiki/Cahiers_de_dol%C3%A9ances). The C++ code in PyStan referenced in "Overview" is borderline unmaintainable, in my opinion. Until it's maintainable and legible, it's extremely difficult to recruit new developers to PyStan. Until it's maintainable it's difficult to add new features and fix bugs. Bref, I second everything expressed on this page.
