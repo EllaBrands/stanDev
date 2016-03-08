@@ -1,3 +1,5 @@
+DEPRECATED: This page contains outdated information.
+
 
 NB: This page has not yet been updated to reflect discussions that took place surrounding the [[User Interface Guidelines for Developers]]
 
