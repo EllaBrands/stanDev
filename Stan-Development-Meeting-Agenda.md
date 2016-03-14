@@ -13,9 +13,14 @@ meeting._
 * __Developer name.  Short description.  Desired resolution.__
 
 * Responsibility for finer-grained Repos
-    * Name: Bob.  
+    * Name: Bob
     * Description: Assigning responsibility for repos and breaking stan-dev/stan into language, algorithms, and services.
     * Resolution: Decision to do it or not, and if yes, putting people in charge.  
+
+* Function library for Stan programs
+    * Name Bob
+    * Description: Figure out where to put them and how we vet them from users.
+    * Resolution: Enough info to announce to users and start collecting.
 
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
