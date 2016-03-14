@@ -4,7 +4,7 @@ _Short (less than 1 minute) description of work in the past week._
 ### Unresolved Topics
 _Address any open topics from the past meeting._
 
-* Ben. RStan is broken on develop.
+* Ben. RStan is working on develop but won't be accepted due to printf in Sundials.
 
 ### New Topics
 _New topics that should be addressed immediately or by the next
