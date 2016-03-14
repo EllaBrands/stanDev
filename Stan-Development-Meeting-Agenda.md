@@ -12,8 +12,18 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+* Responsibility for finer-grained Repos
+    * Name: Bob.  
+    * Description: Assigning responsibility for repos and breaking stan-dev/stan into language, algorithms, and services.
+    * Resolution: Decision to do it or not, and if yes, putting people in charge.  
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
 * __Developer name.  Short description.__
+
+* (low priority) WTF does GMO compute?
+     * Bob
+     * See title.
+ 
