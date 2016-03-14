@@ -23,7 +23,11 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
-* (low priority) WTF does GMO compute?
+* WTF does GMO compute?
      * Bob
      * See title.
+
+* CloudStan
+     * Bob
+     * This keeps getting pushed off due to feature creep.  Can we settle on something simple to build and launch that'll satisfy Andrew and provide the first vegetable for the stone soup?
  
