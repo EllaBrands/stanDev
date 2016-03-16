@@ -62,7 +62,7 @@ Current algorithms:
   - full rank
 - gradient test (1)
 
-Total: 23
+Total: 19
 
 
 ### Scenario 2: Adding a new algorithm
@@ -103,7 +103,8 @@ In addition to the list above, Michael believes we'll be adding:
     - diagonal Riemannian metric with windowed adaptation
     - dense Riemannian metric
     - dense Riemannian metric with windowed adaptation
-Total: 47
+
+Total (including other algorithms): 43
 
 But perhaps we won't be adding and exposing all of these to users.
 
