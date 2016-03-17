@@ -14,6 +14,8 @@ _Address any open topics from the past meeting._
 _New topics that should be addressed immediately or by the next
 meeting._
 
+* Developer: Krzysztof.  Short description: let's get opinions on overall Stan [output format](https://github.com/stan-dev/stan/wiki/Output-format) in now.  Desired resolution: list all options for overall format that need to be considered on the Wiki, set us up to decide about the overall format and start a design discussion.
+
 * __Developer name.  Short description.  Desired resolution.__
 
 ### Open Discussion Topics
