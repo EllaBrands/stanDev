@@ -24,4 +24,4 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
- 
+ * Betancourt.  What should the absolute accuracy goals be for the ODE integrators?
