@@ -25,4 +25,3 @@ including speculation and brainstorming._
 * __Developer name.  Short description.__
 
  * Betancourt.  What should the absolute accuracy goals be for the ODE integrators?
- * Jonah. Plans for repository of useful user-defined functions (organization, testing requirements, etc.).
