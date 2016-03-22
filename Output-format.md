@@ -1,5 +1,7 @@
 ## Requirements suggested so far, with options ##
 - easily plugged into libraries that require .csv input
+ - compatible with R's data.table::fread (no comment lines)
+ - compatible with... 
 - streaming
 - container for multiple data types (samples, diagnostic, etc...)
  - directories
