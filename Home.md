@@ -140,6 +140,7 @@ The next section describes the process, then we'll describe testing.
 * [How to Write Unit Tests](wiki/How-to-Write-Unit-Tests-with-GoogleTest)
 * [Code Quality Requirements](wiki/Code-Quality)
 * [Coding Style and Idioms](wiki/Coding-Style-and-Idioms)
+* [Include-what-you-use](wiki/include-what-you-use)
 
 
 ### General Notes for Developer Process
