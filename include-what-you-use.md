@@ -1,6 +1,8 @@
 # Installation on Mac
 Easy installation requires Homebrew.
+
 Steps:
+
 1. `brew tap jasonmp85/iwyu`
 2. `brew install iwyu`
 
