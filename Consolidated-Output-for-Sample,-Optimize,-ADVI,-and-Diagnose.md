@@ -93,13 +93,31 @@ Ideally, nothing will be order sensitive other than the order of iterations.
 * vector<double>: draws from variational approximation, inv. transformed back to constrained scale
 * [ like optimization, no timing info written out ]
 
-#### *CURRENT* Diagnostic writer
+#### Diagnostic writer
 
 * string: version number (multi line)
 * string: config (multi line)
 * string: header as comment
 * vector<double>: iter, time-in-seconds, elbo (only every refresh or so often)
 
+
+## *CURRENT* DIAGNOSE
+
+#### Info writer (like "Message" writer for HMC)
+
+* string: config [multiple lines]
+* string: "test gradient mode"
+* string: log prob = <value> [should have structure]
+* string: "header" with idx, value, model finite diff, error
+* string: "values" matching header [multiple lines, one per parameter]
+
+#### Sample writer
+
+[ exact dupe of info writer in terms of messages, output is to file with comments # at beginning of each line ]
+
+#### Diagnostic writer
+
+[ exact dupe of info writer in terms of messages, output is to file with comment # at beginning of each line ]
 
 
 # BIG DESIGN DECISION
