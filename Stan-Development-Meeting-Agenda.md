@@ -12,6 +12,8 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+* Daniel. Stan v2.10. When do we code freeze?
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
