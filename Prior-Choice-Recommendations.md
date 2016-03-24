@@ -57,3 +57,8 @@
 
 * Covariance matrix
   * Ben recommends LKJ(4).  LKJ(1) is uniform on the correlation matrix but this gets weird if you look at the marginals.  Ben thinks 4 df is a reasonable default. No, Ben doesn't (and it is a shape parameter rather than the degrees of freedom). Anything over 2 is very concentrated at the identity matrix.
+
+* Scale parameters in hierarchical models
+  * Gelman (2006) suggested half-Cauchy with mode at 0 and scale set to a large value (in the 8-schools example, we used the value 25), or with the scale estimated from data in a hierarchical-hierarchical setting in which there are many variance parameters which can be given a common prior.
+  * The Gelman (2006) recommendations may be too weak for many purposes.  If the number of groups is small, the data don't provide much information on the group-level variance, and so it can make sense to use stronger prior information, in two ways.  First:  Cauchy might be too broad, maybe better to use something like a t_4 or even half-normal if you don't think there's a chance of any really big values.  Second:  maybe the scale parameter for this hyperprior should be set to something reasonable, not to something large.  This would suggest something like half-normal(0,1) or half-t(4,0,1) as default choices.
+  * Historically, a prior on the scale parameter with a long right tail has been considered "conservative" in that it allows for large values of the scale parameter which in turn correspond to minimal pooling.  But from a modern point of view, minimal pooling is not a default, and a statistical method that underpools can be thought of as overreacting to noise and thus "anti-conservative."
