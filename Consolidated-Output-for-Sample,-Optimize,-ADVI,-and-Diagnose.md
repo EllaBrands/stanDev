@@ -38,9 +38,9 @@ Ideally, nothing will be order sensitive other than the order of iterations.
 
 #### Diagnostic writer
 
-* vector<string>: diagnostic quantity names (e.g., unconstrained parameters) (exactly once) [HEAVY DUPLICATION]
-* vector<double>: warmup values (once per sampling iteration) [HEAVY DUPLICATION]
-* vector<double>: sample values (once per sampling iteration) [HEAVY DUPLICATION]
+* vector<string>: diagnostic quantity names (e.g., unconstrained parameters) (exactly once) [SOME DUPLICATION]
+* vector<double>: warmup values (once per sampling iteration) [SOME DUPLICATION]
+* vector<double>: sample values (once per sampling iteration) [SOME DUPLICATION]
 * ... everything else from sample writer ... [COMPLETE DUPLICATION]
 
 
