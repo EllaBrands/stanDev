@@ -5,6 +5,7 @@ Welcome to the Stan wiki. This page is primarily intended for developers, both a
 * [Pull Request Template](wiki/Pull-Request-Template)
 * [Developer Process](wiki/Developer-Process)
 * [Coding Style and Idioms](wiki/Coding-Style-and-Idioms)
+* [Issue Mover for GitHub](https://github-issue-mover.appspot.com/)
 
 # Contents
 
