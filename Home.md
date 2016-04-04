@@ -45,8 +45,6 @@ The next section describes the process, then we'll describe testing.
 1. **Create an issue on GitHub.**
 
   Issues should be focused and have limited scope. Each issue should conceptually be one thing. It is common for a project to spawn multiple issues. It is also common to have to start work on one issue and then generate multiple issues. Use your best judgement, but in most cases, smaller issues are better than bigger issues.
-
-  If you need help, these links for [Stan bug report](https://github.com/stan-dev/stan/issues/new?body=%23%23%20Bug%20Report%0A%0A__Version__%0A%0A__Description__%0A%0A__Steps__%0A%0A__Output__%0A%0A__Expected%20Output__%0A%0A__Additional%20Information__%0A%0A) and [Stan feature request](https://github.com/stan-dev/stan/issues/new?body=%23%23%20Feature%20Request%0A%0A__Version__%0A%0A__Category__%0A%0A__Description__%0A%0A__Example__%0A%0A__Additional%20Information__%0A%0A) prepopulate the issue with a template.
   
   Did I mention we prefer more smaller issues than fewer large issues? 
   
@@ -104,7 +102,7 @@ The next section describes the process, then we'll describe testing.
   
   Once all of the prerequisites are done, create a GitHub pull request. In most cases, the base branch with be `develop`. If it's a bugfix, the base branch might be the latest hotfix branch, but we haven't been using hotfix branches that often.
   
-  Create the pull request using the GitHub web interface. You will have to push your branch to origin (GitHub) first in order for the web interface to know about your branch. Fill out the [Pull Request Template](wiki/Pull-Request-Template). Then hit submit.
+  Create the pull request using the GitHub web interface. You will have to push your branch to origin (GitHub) first in order for the web interface to know about your branch. Fill out the Pull Request Template. Then hit submit.
   
   Our continuous integration will then take the pull request and run the tests.
   
