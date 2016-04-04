@@ -30,9 +30,7 @@ level in language and math.
 
 # Where to add issues
 
-Since the development of Stan happens across multiple repositories now, adding a single feature may span multiple repositories. Take a look at the diagram and add issues to each of the repositories that need to change in order to accomodate the feature request or issue.
-
-Since that statement is a bit abstract, below are more concrete use cases.
+Since the development of Stan happens across multiple repositories now, adding a single feature may span multiple repositories. Take a look at the diagram and add issues to each of the repositories that need to change in order to accommodate the feature request or issue.
 
 
 # Use Cases
