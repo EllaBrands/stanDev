@@ -48,7 +48,7 @@ The next section describes the process, then we'll describe testing.
   
   Did I mention we prefer more smaller issues than fewer large issues? 
 
-  See: [Where do I create a new issue?](Where-do-I-create-a-new-issue).
+  See: [Where do I create a new issue?](Where-do-I-create-a-new-issue)
   
 2. **Create a branch for the issue.**
 
