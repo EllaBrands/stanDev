@@ -24,5 +24,5 @@ including speculation and brainstorming._
 
  * Betancourt.  What should the absolute accuracy goals be for the ODE integrators?
  * Ben / Allen. Should we support the Feather format?
- * Sebastian. Introduction round; Discussion on ode tolerances; merge of robust integrator pull into 2.10?
+ * Sebastian. cvodes integration...would need help
  * Aki: test models framework?
