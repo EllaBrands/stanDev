@@ -14,6 +14,8 @@ meeting._
 
 * Daniel. Stan v2.10. When do we code freeze?
 
+* Bob. Error handling for functions.  Decide whether to (a) follow the C++ std library in error handling (e.g., log(-1) returns NaN but doesn't raise an exception), or (b) throw when we detect an unrecoverable error?  
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
