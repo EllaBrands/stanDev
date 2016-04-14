@@ -81,5 +81,7 @@
 
 * Prior for cutpoints in ordered logit or probit regression
   * For full Bayes, uniform priors typically should be ok, I think.
-  * For modal estimation, put in some pseudodata in each category to prevent "cutpoint collapse"
+  * For modal estimation, put in some pseudodata in each category to prevent "cutpoint collapse."
+  * Cutpoints are ordered (by definition).  Put the prior on the differences between the cutpoints rather than the cutpoints themselves.
+  * Alternatively, put a prior on the cutpoints and partially pool them, not to a constant, but to a linear function.  That is, if the cutpoints are c[1],...,c[K], don't do c[k] ~ normal(mu, sigma); instead do c[k] ~ normal(a + b*k, sigma), estimating the hyperparameters a and b from data.  It will probably make sense to put informative priors on a, b, and sigma too.
   * Need to flesh out this section with examples.
