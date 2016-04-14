@@ -22,6 +22,19 @@
   * One principle:  write down what you think the prior should be, then spread it out.  The idea is that the cost of setting the prior too narrow is more severe than the cost of setting it too wide.  I've been having trouble formalizing this idea. 
   * See this paper:  http://arxiv.org/pdf/1403.4630.pdf , I don't fully understand it all but it seems like a step in the right direction
 
+* Boundary-avoiding priors for modal estimation (posterior mode, MAP, marginal posterior mode, marginal maximum likelihood, MML)
+  * These are for parameters such as group-level scale parameters, group-level correlations, group-level covariance matrix
+  * What all these parameters have in common is that (a) they're defined on a space with a boundary, and (b) the likelihood, or marginal likelihood, can have a mode on the boundary. Most famous example is the group-level scale parameter tau for the 8-schools hierarchical model.
+  * With full Bayes the boundary shouldn't be a problem (as long as you have any proper prior).
+  * But with modal estimation, the estimate can be on the boundary, which can create problems in posterior predictions.  For example, consider a varying-intercept varying-slope multilevel model which has an intercept and slope for each group.  Suppose you fit marginal maximum likelihood and get a modal estimate of 1 for the group-level correlation.  Then in your predictions the intercept and slope will be perfectly correlated, which in general will be unrealistic.
+  * For a one-dimensional parameter restricted to be positive (e.g., the scale parameter in a hierarchical model), we recommend Gamma(2,0) prior (that is, p(tau) proportional to tau) which will keep the mode away from 0 but still allows it to be arbitrarily close to the data if that is what the likelihood wants.  For details see this paper by Chung et al.:  http://www.stat.columbia.edu/~gelman/research/published/chung_etal_Pmetrika2013.pdf
+    * Gamma(2,0) biases the estimate upward.  When number of groups is small, try Gamma(2,1/A), where A is a scale parameter representing how high tau can be.
+  * For a correlation parameter, a Beta(2,2) parameter on 2*(rho - 1/2) will keep the point estimate away from the boundary.
+    * Again, for full Bayes, a uniform prior on rho will serve a similar purpose.  But for modal estimation, the Beta(2,2) prior will keep the estimate off the boundary while allowing it to be arbitrarily close if so demanded by the data.
+  * For a hierarchical covariance matrix, we suggest a Wishart (not inverse-Wishart) prior; see this paper by Chung et al.:  http://www.stat.columbia.edu/~gelman/research/published/chung_cov_matrices.pdf
+  * For _non_ hierarchical variance and covariance parameters--that is, when these are estimated using direct data--we don't usually need these boundary-avoiding priors, even for modal estimation, because the likelihood goes to zero at the degenerate points of the model.  Hierarchical models are different because the data for these distributions are not directly observed, and it turns out that zero group-level variances can be consistent with the data.
+  * Thus, boundary-avoiding priors for modal estimation can be useful for other models with indirect data, such as latent-parameter models and measurement-error models.
+
 * Prior for linear regression
   * Rescale predictors and outcomes
   * By default, use the same sorts of priors we recommend for logistic regression?
@@ -41,24 +54,26 @@
 
   See Vehtari & Piironen (2015). Projection predictive variable selection using Stan+R. [arXiv:1508.02502](http://arxiv.org/abs/1508.02502)
 
-* Degrees of freedom in Student's t distribution
+* Prior for degrees of freedom in Student's t distribution
 
   A recommended easy default option is
   * nu ~ gamma(2,0.1); 
 
   This was proposed and anlysed by Juárez and Steel (2010) (Model-based clustering of non-Gaussian panel data based on skew-t distributions. Journal of Business & Economic Statistics 28, 52–66.). Juárez and Steel compere this to Jeffreys prior and report that the difference is small.  Simpson et al (2014) (arXiv:1403.4630) propose a theoretically well justified "penalised complexity (PC) prior", which they show to have a good behavior for the degrees of freedom, too. PC prior might be the best choice, but requires numerical computation of the prior (which could computed in a grid and interpolated etc.). It would be feasible to implement it in Stan, but it would require some work. Unfortunately no-one has compared PC prior and this gamma prior directly, but based on the discussion with Daniel Simpson, although PC prior would be better this gamma(2,0.1) prior is not a bad choice. Thus, I would use it until someone implements the PC prior for degrees of freedom of the Student's t in Stan.
 
-* Elasticities (regressions on log-log scale)
+* Prior for elasticities (regressions on log-log scale)
   * We expect these to be between 0 and 1. But we don't want hard constraints.  So maybe N(.5,.5) is a good default
 
-* A single correlation parameter
+* Prior for a single correlation parameter
   * Uniform(-1,1) is noninformative
   * Other times we will expect a correlation to be positive, for example the correlation between a pre-test and post-test.  Here it could make sense to model using some latent score, that is to move to some sort of IRT model.  We should give an example of this for the wiki
 
-* Covariance matrix
+* Prior for a covariance matrix
   * Ben recommends LKJ(4).  LKJ(1) is uniform on the correlation matrix but this gets weird if you look at the marginals.  Ben thinks 4 df is a reasonable default. No, Ben doesn't (and it is a shape parameter rather than the degrees of freedom). Anything over 2 is very concentrated at the identity matrix.
 
-* Scale parameters in hierarchical models
+* Prior for scale parameters in hierarchical models
   * Gelman (2006) suggested half-Cauchy with mode at 0 and scale set to a large value (in the 8-schools example, we used the value 25), or with the scale estimated from data in a hierarchical-hierarchical setting in which there are many variance parameters which can be given a common prior.
   * The Gelman (2006) recommendations may be too weak for many purposes.  If the number of groups is small, the data don't provide much information on the group-level variance, and so it can make sense to use stronger prior information, in two ways.  First:  Cauchy might be too broad, maybe better to use something like a t_4 or even half-normal if you don't think there's a chance of any really big values.  Second:  maybe the scale parameter for this hyperprior should be set to something reasonable, not to something large.  This would suggest something like half-normal(0,1) or half-t(4,0,1) as default choices.
   * Historically, a prior on the scale parameter with a long right tail has been considered "conservative" in that it allows for large values of the scale parameter which in turn correspond to minimal pooling.  But from a modern point of view, minimal pooling is not a default, and a statistical method that underpools can be thought of as overreacting to noise and thus "anti-conservative."
+
+* Prior for cutpoints in ordered logit or probit regression
