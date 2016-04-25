@@ -24,6 +24,5 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
- * Betancourt.  What should the absolute accuracy goals be for the ODE integrators?
  * Ben / Allen. Should we support the Feather format?
  * Sebastian. cvodes integration...would need help
