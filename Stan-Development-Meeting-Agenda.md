@@ -4,8 +4,6 @@ _Short (less than 1 minute) description of work in the past week._
 ### Unresolved Topics
 _Address any open topics from the past meeting._
 
-* Is there going to be a 2.10 release soon?
-
 ### New Topics
 _New topics that should be addressed immediately or by the next
 meeting._
