@@ -25,4 +25,6 @@ including speculation and brainstorming._
 * __Developer name.  Short description.__
 
  * Ben / Allen. Should we support the Feather format?
- * Sebastian. cvodes integration...would need help
+ * Sebastian:
+    * cvodes_integrator: CRTP or function overloading? If CRTP, could someone help?
+    * ode_system design 
