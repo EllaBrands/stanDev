@@ -29,7 +29,7 @@ When writing a function, we should keep in mind that the operators we use must b
 	
 That’s it! The rest is regular C++ with the caveat that every function and class must be templated if they contain parameters.
 
-#### C++ Coding: Templates and other practices
+### C++ Coding: Templates and other practices
 
 As explained in the previous section, functions need to be templated to allow Stan to treat parameter arguments as either a `var` or a `double`. 
 
@@ -136,7 +136,7 @@ Stan uses two types of vectors in C++. Standard vectors (`std::vector`) are comp
 Once we have modified `function_signatures.h`, we need to compile stan/math. 
 
 
-###4. Adding Higher-Order Functions
+### Adding Higher-Order Functions
 I will elaborate more on this section later, but here's at least a good place to start at.
 
 Higher-order functions are functions that take other functions as arguments. An example of such a function would be an Ordinary Differential Equation integrator. `Add()` does not handle arguments which are function, and we therefore need to do a bit more work to expose higher-order functions to Stan. 
