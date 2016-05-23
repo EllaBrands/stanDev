@@ -18,15 +18,15 @@ In general, the basic steps are:
 We plan to use [ReferenceClasses](http://stat.ethz.ch/R-manual/R-devel/library/methods/html/refClass.html) throughout. See the bottom of [this](https://github.com/stan-dev/rstan/blob/develop/rstan3/R/rstan.R#L255) for the canonical example
 ```R
 # Step 1 --- Create an object of StanProgram-class
-program <- StanProgram(program_code = mc, program_name = name)     # preferable to specify a file
+foo <- stan_compile(program_code = mc, program_name = name)     # preferable to specify a file
                                            
 # Step 2 --- Create a StanProgramWithData-class object
-dprogram <- program$instantiate()
+compiled_program_with_data <- foo$instantiate(data)
  
 # Step 3 --- Estimate the parameters
-estimates <- dprogram$optimize()       # maximum a posteriori estimator
-estimates <- dprogram$ehmc(delta = .9) # MCMC from the posterior distribution
- 
+estimates <- compiled_program_with_data$optimize()       # maximum a posteriori estimator
+estimates <- compiled_program_with_data$ehmc(delta = .9) # MCMC from the posterior distribution
+
 # Step 4 --- Diagnose any problems
 ```
 
@@ -35,10 +35,10 @@ WIP
 ```python
 # Step 1 --- Create a StanProgram *class*
 import pystan
-MyStanProgram = pystan.compile(program_code=code, program_name=name)
+MyStanProgramClass = pystan.compile(program_code=code, program_name=name)
 
 # Step 2 --- Create an instance of StanProgram (with data, equivalent to StanProgramWithData-class object)
-dprogram = MyStanProgram(data)
+program = MyStanProgramClass(data)
 
 # Step 3 --- Estimate the parameters
 estimates = dprogram.optimize()       # maximum a posteriori estimator
