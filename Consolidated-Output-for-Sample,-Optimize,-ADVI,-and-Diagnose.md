@@ -125,5 +125,146 @@ Ideally, nothing will be order sensitive other than the order of iterations.
 Do we write all this info out with structure or just as key-vals where the interface needs to know the set of possible keys?  
 
 
-   
+
+** IN PROGRESS BELOW HERE**
+
+## *PROPOSED* HMC Output
+
+#### Message writer
+    
+- key: string ("stan_version_major"), value: integer
+- key: string ("stan_version_minor"), value: integer
+- key: string ("stan_version_patch"), value: integer
+- key: string ("model"), value: string
+- key: string ("method"), value: string
+- key: string ("num_samples"), value: integer
+- key: string ("num_warmup"), value: integer
+- key: string ("save_warmup"), value: integer, 0 = false, 1 = true
+- key: string ("thin"), value: integer
+- key: string ("engaged"), value: integer, 0 = false, 1 = true
+- key: string ("gamma"), value: double
+- key: string ("delta"), value: double 
+- key: string ("kappa"), value: double
+- key: string ("t0"), value: integer
+- key: string ("init_buffer"), value: integer
+- key: string ("term_buffer"), value: integer
+- key: string ("window"), value: integer
+- key: string ("algorithm"), value: string
+- key: string ("engine"), value: string
+- key: string ("max_depth"), value: integer
+- key: string ("metric"), value: integer
+- key: string ("stepsize"), value: integer
+- key: string ("stepsize jitter"), value: integer
+- key: string ("id"), value: integer
+- key: string ("data file"), value: string
+- key: string ("init file"), value: string
+- key: string ("seed"), value: integer (?)
+- key: string ("output file"), value: string
+- key: string ("diagnostic file"), value: string
+- key: string ("refresh"), value: integer
+- key: string ("step size"), value: real
+- key: string ("mass matrix"), value: real(s)
+ 
+* string: gradient timing info (time per log density + gradient eval); plus projections for completion
+
+* string: (INFO) iteration # + sampling/warmup indicator 
+* string: (WARN) non-fatal warning (e.g., rejection from sampler)
+* string: (FATAL) fatal warning (e.g., can't find valid inits)
+* string: timing  [DUPLICATED IN SAMPLE WRITER]
+
+#### Sample writer
+
+- config as message writer
+- key: string ("parameter names"), value: vector of strings
+- key: string ("warmup values"), value: vector of real 
+- key: string ("adaptation stepsize"), value: real
+- key: string ("adaptation mass matrix"), value: vector/matrix of real
+- key: string ("sampling draws"), value: vector of real 
+* **string: timing (should be numeric and based on types)**
+
+#### Diagnostic writer
+
+- key: string ("diagnostics quantity names"), value: vector of reals
+* vector<string>: diagnostic quantity names (e.g., unconstrained parameters) (exactly once) [SOME DUPLICATION]
+* vector<double>: warmup values (once per sampling iteration) [SOME DUPLICATION]
+* vector<double>: sample values (once per sampling iteration) [SOME DUPLICATION]
+* ... everything else from sample writer ... [COMPLETE DUPLICATION]
+
+
+## *PROPOSED* Optimization
+
+#### Info writer (analogous to "Message" writer in HMC)
+
+* string: config [per config line] (not recoverable without structure) [DUPLICATED IN OUTPUT WRITER]
+* string: initial joint log probability (should be number)
+* string: optimization progress header (should be vector<string>) [not just once, every 50 * refresh iterations]
+* string: optimization progress values (should be vector<double> + notes string)
+* string: note as to whether algorithm terminated normally (convergence message) or not (error msg) [broken down into two calls to strings]
+
+#### Output writer (analogous to "Sample" writer in HMC)
+
+* string: Stan version numbers (one call per line; should be numeric)
+* string: config [per config line] (not recoverable without structure)
+* vector<string>: parameter names (e.g., CSV header) [exactly once]
+* vector<double>: parameter values (once per iteration OR just once at end depending on config to command)
+
+#### Diagnostic writer (currently useless)
+
+* ... repeats version numbers and config from output writer ... [DUPLICATE]
+
+
+## *PROPOSED* ADVI 
+
+#### Message writer
+
+* string: config [per config line] (not recoverable without structure) [DUPLICATED IN OUTPUT WRITER]
+* string: this is advi (thank you very much); blank line; this is experimental
+* string: gradient timing info (time per log density + gradient eval); plus projections
+* string: "begin eta adaptation"
+* string: iteration number (with same functions for formatting) [multiple lines, all say "Adaptation", hardcoded every 50]
+* string: "success" (if successful)
+* string: "all proposed stepsizes fail" (if fail to adapt, thrown as exception and then given to writer by top-level command dispatcher)
+* string: "begin SGAscent (not Descent)"
+* string: header for intermediate output (but not structured other than with spaces) (should be vector<string>)
+* string: iterations for "main" ADVI algorithm output every so often based on refresh? (should be vector<double> plus string, where string is usually empty but may be some kind of note [are these documented somewhere?])
+* string: "drawing N sample*s* from approximate posterior ... COMPLETED"
+
+
+#### Parameter writer (analogous to "Sample" writer in HMC)
+
+* string: Stan version number(s) (multiple lines)
+* string: config [per config line] (not recoverable without structure) [DUPLICATED IN MESSAGE WRITER]
+* vector<string>: csv header for "parameters" and the like
+* string: adaptation information (eta, as two strings) [should be structured with number and variable]
+* vector<double>: ADVI "solution" (mean parameters for normal approx, inv. transformed back to constrained) [exactly once]
+* vector<double>: draws from variational approximation, inv. transformed back to constrained scale
+* [ like optimization, no timing info written out ]
+
+#### Diagnostic writer
+
+* string: version number (multi line)
+* string: config (multi line)
+* string: header as comment
+* vector<double>: iter, time-in-seconds, elbo (only every refresh or so often)
+
+
+## *PROPOSED* DIAGNOSE
+
+#### Info writer (like "Message" writer for HMC)
+
+* string: config [multiple lines]
+* string: "test gradient mode"
+* string: log prob = <value> [should have structure]
+* string: "header" with idx, value, model finite diff, error
+* string: "values" matching header [multiple lines, one per parameter]
+
+#### Sample writer
+
+[ exact dupe of info writer in terms of messages, output is to file with comments # at beginning of each line ]
+
+#### Diagnostic writer
+
+[ exact dupe of info writer in terms of messages, output is to file with comment # at beginning of each line ]
+
+
 
