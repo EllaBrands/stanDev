@@ -15,5 +15,5 @@ _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
 * __Developer name.  Short description.__
-* Aki. To give additional motivation for getting more elementary math functions vectorized: GPs could be made faster by 1) computing distance matrices in transformed data, 2) vectorizing covariance matrix computation (as then the expression tree should be much much smaller). 
+
   
