@@ -129,6 +129,8 @@ Do we write all this info out with structure or just as key-vals where the inter
 ** IN PROGRESS BELOW HERE**
 
 ## *PROPOSED* HMC Output
+Note all key:value items move to message writer (?).  Some items (e.g.-mass matrix) are structured so we really need key:value not just key:scalar/string.  
+
 
 #### Message writer
     
@@ -164,31 +166,25 @@ Do we write all this info out with structure or just as key-vals where the inter
 - key: string ("refresh"), value: integer
 - key: string ("step size"), value: real
 - key: string ("mass matrix"), value: real(s)
- 
-* string: gradient timing info (time per log density + gradient eval); plus projections for completion
-
-* string: (INFO) iteration # + sampling/warmup indicator 
-* string: (WARN) non-fatal warning (e.g., rejection from sampler)
-* string: (FATAL) fatal warning (e.g., can't find valid inits)
-* string: timing  [DUPLICATED IN SAMPLE WRITER]
-
-#### Sample writer
-
-- config as message writer
-- key: string ("parameter names"), value: vector of strings
-- key: string ("warmup values"), value: vector of real 
-- key: string ("adaptation stepsize"), value: real
+- key: string ("adaptation step size"), value: real
 - key: string ("adaptation mass matrix"), value: vector/matrix of real
-- key: string ("sampling draws"), value: vector of real 
-* **string: timing (should be numeric and based on types)**
+- key: string ("timing (s) per gradient evaluation"), value: real
+- key: string ("timing (s) per 1000 transitions, 10 leapfrog steps per transition (s)"), value: real 
+- key: string ("iteration"), value: integer
+- key: string ("WARN"), value: string
+- key: string ("FATAL"), value: string
 
-#### Diagnostic writer
+#### Sample writer, NOT key-value, order matters:
 
-- key: string ("diagnostics quantity names"), value: vector of reals
-* vector<string>: diagnostic quantity names (e.g., unconstrained parameters) (exactly once) [SOME DUPLICATION]
-* vector<double>: warmup values (once per sampling iteration) [SOME DUPLICATION]
-* vector<double>: sample values (once per sampling iteration) [SOME DUPLICATION]
-* ... everything else from sample writer ... [COMPLETE DUPLICATION]
+- parameter names: value: vector of strings
+- warmup values: value: vector of real 
+- sampling draws: value: vector of real 
+
+#### Diagnostic writer, NOT key-value, order matters:
+
+- diagnostics quantity names: value: vector of strings
+- warmup values: value: vector of reals 
+- sampling draws: value: vector of reals 
 
 
 ## *PROPOSED* Optimization
@@ -265,6 +261,5 @@ Do we write all this info out with structure or just as key-vals where the inter
 #### Diagnostic writer
 
 [ exact dupe of info writer in terms of messages, output is to file with comment # at beginning of each line ]
-
 
 
