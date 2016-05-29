@@ -128,6 +128,13 @@ Do we write all this info out with structure or just as key-vals where the inter
 
 ** IN PROGRESS BELOW HERE**
 
+In general: 
+
+- key:value for per-run stuff
+- csv-style progress file
+- csv-style output file
+- csv-style diagnostic file
+
 ## *PROPOSED* HMC Output
 Note all key:value items move to message writer (?).  Some items (e.g.-mass matrix) are structured so we really need key:value not just key:scalar/string.  
 
@@ -189,13 +196,35 @@ Note all key:value items move to message writer (?).  Some items (e.g.-mass matr
 
 ## *PROPOSED* Optimization
 
-#### Info writer (analogous to "Message" writer in HMC)
+#### Message ("Info") writer
+- key: string ("stan_version_major"), value: integer
+- key: string ("stan_version_minor"), value: integer
+- key: string ("stan_version_patch"), value: integer
+- key: string ("model"), value: string
+- key: string ("method"), value: string
+- key: string ("algorithm"), value: string
+- key: string ("init_alpha"), value: real
+- key: string ("tol_obj"), value: real
+- key: string ("tol_rel_obj"), value: real
+- key: string ("tol_grad"), value: real
+- key: string ("tol_rel_grad"), value: real
+- key: string ("tol_param"), value: real
+- key: string ("history_size"), value: integer
+- key: string ("iter"), value: integer
+- key: string ("save_iterations"), value: integer, 0 = false, 1 = true
+- key: string ("id"), value: integer
+- key: string ("data file"), value: string
+- key: string ("init file"), value: string
+- key: string ("seed"), value: integer (?)
+- key: string ("output file"), value: string
+- key: string ("diagnostic file"), value: string
+- key: string ("refresh"), value: integer
+- key: string ("initial log joint probability"), value: real
 
-* string: config [per config line] (not recoverable without structure) [DUPLICATED IN OUTPUT WRITER]
-* string: initial joint log probability (should be number)
-* string: optimization progress header (should be vector<string>) [not just once, every 50 * refresh iterations]
-* string: optimization progress values (should be vector<double> + notes string)
-* string: note as to whether algorithm terminated normally (convergence message) or not (error msg) [broken down into two calls to strings]
+- parameter names: value: vector of strings
+- optimization progress: value: vector of real 
+
+- key: string("Optimization outcome"), value: string (e.g.-"Optimization terminated normally: Convergence detected: relative gradient magnitude is below tolerance")
 
 #### Output writer (analogous to "Sample" writer in HMC)
 
@@ -261,5 +290,4 @@ Note all key:value items move to message writer (?).  Some items (e.g.-mass matr
 #### Diagnostic writer
 
 [ exact dupe of info writer in terms of messages, output is to file with comment # at beginning of each line ]
-
 
