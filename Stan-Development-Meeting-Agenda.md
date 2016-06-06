@@ -16,4 +16,8 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
+* Bob Carpenter.  Should I go ahead and support the following two changes:
+    - `target +=` in transformed parameters
+    - PRNGs in transformed data
+
   
