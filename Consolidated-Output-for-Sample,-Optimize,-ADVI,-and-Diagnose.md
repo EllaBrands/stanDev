@@ -130,10 +130,10 @@ Do we write all this info out with structure or just as key-vals where the inter
 
 In general there are four "writers": 
 
-- Info writer: key:value for per-run stuff, configuration and other single values (e.g.-adapted step size).
-- Progress writer: key-value with log level for progress messages
+- Info writer: key:value for per-run stuff, configuration and other single values (e.g.-adapted step size) always output complete configuration, is a bug otherwise, should be usable for reproducing a run, is a bug otherwise
+- Progress writer: key-value with log level for progress messages, respects log4j log levels
 - Output writer: csv-style output file, estimates and related diagnostic quantities
-- Diagnostic writer: csv-style diagnostic file, internal versions of parameters and related diagnostic quantities
+- Diagnostic writer: csv-style diagnostic file, internal versions of parameters and related diagnostic quantities, potentially respects log4j log levels
 
 ## *PROPOSED* HMC Output
 
