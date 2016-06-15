@@ -139,44 +139,46 @@ In general:
 Note all key:value items move to message writer (?).  Some items (e.g.-mass matrix) are structured so we really need key:value not just key:scalar/string.  
 
 
-#### Message writer
+#### Configuration writer
     
 - key: string ("stan_version_major"), value: integer
 - key: string ("stan_version_minor"), value: integer
 - key: string ("stan_version_patch"), value: integer
-- key: string ("model"), value: string
+- key: string ("model_name"), value: string
 - key: string ("method"), value: string
-- key: string ("num_samples"), value: integer
-- key: string ("num_warmup"), value: integer
-- key: string ("save_warmup"), value: integer, 0 = false, 1 = true
-- key: string ("thin"), value: integer
-- key: string ("engaged"), value: integer, 0 = false, 1 = true
-- key: string ("gamma"), value: double
-- key: string ("delta"), value: double 
-- key: string ("kappa"), value: double
-- key: string ("t0"), value: integer
-- key: string ("init_buffer"), value: integer
-- key: string ("term_buffer"), value: integer
-- key: string ("window"), value: integer
-- key: string ("algorithm"), value: string
-- key: string ("engine"), value: string
-- key: string ("max_depth"), value: integer
-- key: string ("metric"), value: integer
-- key: string ("stepsize"), value: integer
-- key: string ("stepsize jitter"), value: integer
-- key: string ("id"), value: integer
-- key: string ("data file"), value: string
-- key: string ("init file"), value: string
-- key: string ("seed"), value: integer (?)
-- key: string ("output file"), value: string
-- key: string ("diagnostic file"), value: string
-- key: string ("refresh"), value: integer
-- key: string ("step size"), value: real
-- key: string ("mass matrix"), value: real(s)
-- key: string ("adaptation step size"), value: real
-- key: string ("adaptation mass matrix"), value: vector/matrix of real
-- key: string ("timing (s) per gradient evaluation"), value: real
-- key: string ("timing (s) per 1000 transitions, 10 leapfrog steps per transition (s)"), value: real 
+- key: string ("sampling:algorithm"), value: string
+- key: string ("hmc:engine"), value: string
+- key: string ("sampling:num_samples"), value: integer
+- key: string ("sampling:num_warmup"), value: integer
+- key: string ("sampling:save_warmup"), value: integer, 0 = false, 1 = true
+- key: string ("sampling:thin"), value: integer
+- key: string ("nuts:adapt"), value: integer, 0 = false, 1 = true
+- key: string ("nuts:gamma"), value: double
+- key: string ("nuts:delta"), value: double 
+- key: string ("nuts:kappa"), value: double
+- key: string ("nuts:t0"), value: integer
+- key: string ("nuts:init_buffer"), value: integer
+- key: string ("nuts:term_buffer"), value: integer
+- key: string ("nuts:window"), value: integer
+- key: string ("nuts:max_depth"), value: integer
+- key: string ("hmc:metric"), value: integer
+- key: string ("hmc:stepsize"), value: integer
+- key: string ("hmc:id"), value: integer
+- key: string ("input:data_file"), value: string
+- key: string ("input:init_file"), value: string
+- key: string ("hmc:seed"), value: integer (?)
+- key: string ("output:configuration_file"), value: string
+- key: string ("output:samples_file"), value: string
+- key: string ("output:diagnostic_file"), value: string
+- key: string ("output:refresh"), value: integer
+- key: string ("hmc:step_size"), value: real
+- key: string ("hmc:mass_matrix"), value: real(s)
+- key: string ("hmc:adaptation_step_size"), value: real
+- key: string ("hmc:adaptation_mass_matrix"), value: vector/matrix of real
+- key: string ("timing:gradient_evaluation"), value: real
+- key: string ("timing:estimate"), value: real, definition: (s) per 1000 transitions, 10 leapfrog steps per transition (s)")
+
+#### Progress writer:
 - key: string ("iteration"), value: integer
 - key: string ("WARN"), value: string
 - key: string ("FATAL"), value: string
@@ -192,6 +194,8 @@ Note all key:value items move to message writer (?).  Some items (e.g.-mass matr
 - diagnostics quantity names: value: vector of strings
 - warmup values: value: vector of reals 
 - sampling draws: value: vector of reals 
+
+
 
 
 ## *PROPOSED* Optimization
