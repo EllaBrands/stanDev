@@ -128,16 +128,14 @@ Do we write all this info out with structure or just as key-vals where the inter
 
 ** IN PROGRESS BELOW HERE**
 
-In general: 
+In general there are four "writers": 
 
-- key:value for per-run stuff
-- csv-style progress file
-- csv-style output file
-- csv-style diagnostic file
+- Info writer: key:value for per-run stuff, configuration and other single values (e.g.-adapted step size).
+- Progress writer: key-value with log level for progress messages
+- Output writer: csv-style output file, estimates and related diagnostic quantities
+- Diagnostic writer: csv-style diagnostic file, internal versions of parameters and related diagnostic quantities
 
 ## *PROPOSED* HMC Output
-Note all key:value items move to message writer (?).  Some items (e.g.-mass matrix) are structured so we really need key:value not just key:scalar/string.  
-
 
 #### Configuration writer
     
@@ -146,7 +144,7 @@ Note all key:value items move to message writer (?).  Some items (e.g.-mass matr
 - key: string ("stan_version_patch"), value: integer
 - key: string ("model_name"), value: string
 - key: string ("method"), value: string
-- key: string ("sampling:algorithm"), value: string
+- key: string ("algorithm"), value: string
 - key: string ("hmc:engine"), value: string
 - key: string ("sampling:num_samples"), value: integer
 - key: string ("sampling:num_warmup"), value: integer
@@ -200,98 +198,84 @@ Note all key:value items move to message writer (?).  Some items (e.g.-mass matr
 
 ## *PROPOSED* Optimization
 
-#### Message ("Info") writer
+#### Info writer
 - key: string ("stan_version_major"), value: integer
 - key: string ("stan_version_minor"), value: integer
 - key: string ("stan_version_patch"), value: integer
-- key: string ("model"), value: string
+- key: string ("model_name"), value: string
 - key: string ("method"), value: string
 - key: string ("algorithm"), value: string
-- key: string ("init_alpha"), value: real
-- key: string ("tol_obj"), value: real
-- key: string ("tol_rel_obj"), value: real
-- key: string ("tol_grad"), value: real
-- key: string ("tol_rel_grad"), value: real
-- key: string ("tol_param"), value: real
-- key: string ("history_size"), value: integer
-- key: string ("iter"), value: integer
-- key: string ("save_iterations"), value: integer, 0 = false, 1 = true
+- key: string ("optimization:init_alpha"), value: real
+- key: string ("optimization:tol_obj"), value: real
+- key: string ("optimization:tol_rel_obj"), value: real
+- key: string ("optimization:tol_grad"), value: real
+- key: string ("optimization:tol_rel_grad"), value: real
+- key: string ("optimization:tol_param"), value: real
+- key: string ("optimization:history_size"), value: integer
+- key: string ("optimization:max_iterations"), value: integer
+- key: string ("optimization:save_iterations"), value: integer, 0 = false, 1 = true
 - key: string ("id"), value: integer
-- key: string ("data file"), value: string
-- key: string ("init file"), value: string
+- key: string ("input:data_file"), value: string
+- key: string ("input:init_file"), value: string
 - key: string ("seed"), value: integer (?)
-- key: string ("output file"), value: string
-- key: string ("diagnostic file"), value: string
-- key: string ("refresh"), value: integer
-- key: string ("initial log joint probability"), value: real
+- key: string ("output:estimate_file"), value: string
+- key: string ("output:diagnostic_file"), value: string
+- key: string ("output:refresh"), value: integer
+- key: string ("optimization:initial_log_probability"), value: real, definition: initial log joint probability
+
+#### Progress writer
+- key: string ("iteration"), value: integer
+- key: string ("WARN"), value: string
+- key: string ("FATAL"), value: string
+- key: string ("INFO"), value: string
+- key: string("outcome"), value: string (e.g.-"converged")
+
+#### Sample writer, NOT key-value, order matters:
 
 - parameter names: value: vector of strings
-- optimization progress: value: vector of real 
+- warmup values: value: vector of real 
+- sampling draws: value: vector of real 
 
-- key: string("Optimization outcome"), value: string (e.g.-"Optimization terminated normally: Convergence detected: relative gradient magnitude is below tolerance")
+#### Diagnostic writer, NOT key-value, order matters:
 
-#### Output writer (analogous to "Sample" writer in HMC)
+- diagnostics quantity names: value: vector of strings
+- warmup values: value: vector of reals 
+- sampling draws: value: vector of reals 
 
-* string: Stan version numbers (one call per line; should be numeric)
-* string: config [per config line] (not recoverable without structure)
-* vector<string>: parameter names (e.g., CSV header) [exactly once]
-* vector<double>: parameter values (once per iteration OR just once at end depending on config to command)
-
-#### Diagnostic writer (currently useless)
-
-* ... repeats version numbers and config from output writer ... [DUPLICATE]
 
 
 ## *PROPOSED* ADVI 
 
+#### Info writer
+
+
 #### Message writer
-
-* string: config [per config line] (not recoverable without structure) [DUPLICATED IN OUTPUT WRITER]
-* string: this is advi (thank you very much); blank line; this is experimental
-* string: gradient timing info (time per log density + gradient eval); plus projections
-* string: "begin eta adaptation"
-* string: iteration number (with same functions for formatting) [multiple lines, all say "Adaptation", hardcoded every 50]
-* string: "success" (if successful)
-* string: "all proposed stepsizes fail" (if fail to adapt, thrown as exception and then given to writer by top-level command dispatcher)
-* string: "begin SGAscent (not Descent)"
-* string: header for intermediate output (but not structured other than with spaces) (should be vector<string>)
-* string: iterations for "main" ADVI algorithm output every so often based on refresh? (should be vector<double> plus string, where string is usually empty but may be some kind of note [are these documented somewhere?])
-* string: "drawing N sample*s* from approximate posterior ... COMPLETED"
+- key: string ("iteration"), value: integer
+- key: string ("WARN"), value: string
+- key: string ("FATAL"), value: string
+- key: string ("INFO"), value: string
+- key: string("outcome"), value: string (e.g.-"converged")
 
 
-#### Parameter writer (analogous to "Sample" writer in HMC)
+#### Sample writer, NOT key-value, order matters:
 
-* string: Stan version number(s) (multiple lines)
-* string: config [per config line] (not recoverable without structure) [DUPLICATED IN MESSAGE WRITER]
-* vector<string>: csv header for "parameters" and the like
-* string: adaptation information (eta, as two strings) [should be structured with number and variable]
-* vector<double>: ADVI "solution" (mean parameters for normal approx, inv. transformed back to constrained) [exactly once]
-* vector<double>: draws from variational approximation, inv. transformed back to constrained scale
-* [ like optimization, no timing info written out ]
+- parameter names: value: vector of strings
+- warmup values: value: vector of real 
+- sampling draws: value: vector of real 
 
-#### Diagnostic writer
+#### Diagnostic writer, NOT key-value, order matters:
 
-* string: version number (multi line)
-* string: config (multi line)
-* string: header as comment
-* vector<double>: iter, time-in-seconds, elbo (only every refresh or so often)
+- diagnostics quantity names: value: vector of strings
+- warmup values: value: vector of reals 
+- sampling draws: value: vector of reals 
+
 
 
 ## *PROPOSED* DIAGNOSE
 
 #### Info writer (like "Message" writer for HMC)
 
-* string: config [multiple lines]
-* string: "test gradient mode"
-* string: log prob = <value> [should have structure]
-* string: "header" with idx, value, model finite diff, error
-* string: "values" matching header [multiple lines, one per parameter]
-
 #### Sample writer
 
-[ exact dupe of info writer in terms of messages, output is to file with comments # at beginning of each line ]
-
 #### Diagnostic writer
-
-[ exact dupe of info writer in terms of messages, output is to file with comment # at beginning of each line ]
 
