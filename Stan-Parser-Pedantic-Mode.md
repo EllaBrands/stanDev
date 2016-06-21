@@ -6,7 +6,7 @@ To start with, I'll list the patterns in no particular order.  Ultimately we'll 
 
 - Uniform distributions.  All uses of uniform() should be flagged.  Just about all the examples we've ever seen are either superfluous (as they just add a constant to the log density) or mistaken (in that they should have been entered as bounds on parameters).
 
-- <lower=A, upper=B> should be flagged in all cases except A=0, B=1.
+- Parameter bounds of the form "<lower=A, upper=B>" should be flagged in all cases except A=0, B=1.
 
 - Any parameter whose name begins with "sigma" should have <lower=0> in its declaration; otherwise flag.
 
