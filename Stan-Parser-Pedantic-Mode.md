@@ -11,3 +11,7 @@ To start with, I'll list the patterns in no particular order.  Ultimately we'll 
 - Any parameter whose name begins with "sigma" should have <lower=0> in its declaration; otherwise flag.
 
 - gamma(A,B) or inv_gamma(A,B) should be flagged if A = B < 1.  (The point is to catch those well-intentioned but poorly-performing attempts at improper priors.)
+
+- if/else statements in the transformed parameters or model blocks:  These can cause problems with HMC so should probably be flagged as such.
+
+- If there are other common and easily-identifiable Stan programming errors, we should aim to catch them too.
