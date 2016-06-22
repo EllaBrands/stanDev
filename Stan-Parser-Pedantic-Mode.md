@@ -72,3 +72,13 @@ The patterns in question are complex syntactic relationships in some clases, lik
 Mike:
 
 So what’s the best place to introduce these checks? It’s not dissimilar for what’s already done with the Jacobian checks, no?
+
+Bob:
+
+It depends what they are.  I should've been clearer that I meant on the fly as in find the issue as it's parsing.
+
+There are two approaches --- plumb enough information top down through the parser so that we can check inside of a single expression or statement --- that's what the Jacobian check does now.  To do that, the source of every variable needs to be plumbed through the entire parse tree.  If we do more of that it's going to get ugly.  Some of these are "peephole" warnings --- things you can catch just locally.
+
+For others, we have the AST and can design walkers for it that walk over the code any old way and report.
+
+Or, we could do something hacky with regexes along the lines of cpplint (a Python program, not something plumbed into the C++ parser, at least as far as I know).
