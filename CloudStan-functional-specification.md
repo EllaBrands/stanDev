@@ -6,6 +6,21 @@ A functional specification describes how a product will work entirely from the u
 3.    To let stakeholders know what they are getting.
 -->
 
+# Goals
+
+The main goal is to get outsiders interested in and aware of Stan.
+
+We want a demonstration system so that a potential user can see Stan running in real time and can play with the model.
+
+Key features:
+- Can be run from browser (so that the user does not need to download R or Stan).
+- User should be able to change the Stan program and re-run.
+- User should be able to change the data and re-run.
+- There should be a library of examples (example includes Stan program, data, and a paragraph of background explanation).
+- It would be good if the user could see the chains moving while Stan is running.  Simplest approach would be for user to pick two parameters and then there could be a graph showing the 4 chains in 4 different colors, showing the trace of the two parameters.
+- Also it would be cool to display the steps of individual HMC iterations.
+
+It's ok if it requires a password.  So that way we can use our own server and not worry about people overwhelming it.  If CloudStan works well, we can thinking about getting funding to host it on a server so anyone can use it, or maybe have a system where people pay for the server time.  But no need to worry about this right away.
 
 # Overview
 
