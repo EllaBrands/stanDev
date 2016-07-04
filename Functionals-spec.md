@@ -18,6 +18,8 @@ The following issues apply ode_integrate and will also apply to new functionals:
 
 0.  Like with ODEs, there may be a lot of foreseeable and unforeseen issues with numerical stability, execution speed, posterior geometry, etc.
 
+0. In addition, now that we could require C++11, we could permit lambda functions in the Stan language.
+
 # Scope
 
 At the moment, user-defined functions have [lexical/static scope](https://en.wikipedia.org/wiki/Scope_(computer_science)#Lexical_scoping) (as in Java/C/C++) and also appear before any other variable declarations.  This has two consequences:
@@ -31,6 +33,8 @@ While this is tolerable for a lot of ODE problems, it would be tedious if the pr
 
 One solution to this problem would be to make user-defined function (capable of being) class functions or friend functions of the class so that they could access things declared in the `data` block, the `transformed data` block, and the `parameters` block without having to explicitly pass them to the user-defined function.
 
+Also, lambda functions can capture variables declared in previous blocks, but the C++ syntax is sort of awkward and possibly hard to map from the Stan language.
+
 # Possible Functionals
 
 Here are some additional functionals that we may want to expose in the Stan language.
@@ -43,7 +47,7 @@ In some dynamic problems, the likelihood of the data depends on derivatives.
 real foo(vector theta);
 ...
 vector[K] g;
-g <- gradient(foo, theta);
+g = gradient(foo, theta);
 ```
 
 ## Jacobians
@@ -53,7 +57,7 @@ In some dynamic problems, the likelihood of the data depends on derivatives. Als
 vector foo(vector theta);
 ...
 matrix[K,K] J;
-J <- jacobian(foo, theta);
+J = jacobian(foo, theta);
 ```
 
 ## Optimization
@@ -63,8 +67,8 @@ Many users have asked for the ability to implicitly define transformed parameter
 real foo(vector theta);
 ...
 vector[K] theta_star;
-theta_star <- rep_vector(0, K);          // starting values
-theta_star <- minimize(foo, theta_star); // or maximize(foo, theta_star)
+theta_star = rep_vector(0, K);          // starting values
+theta_star = minimize(foo, theta_star); // or maximize(foo, theta_star)
 ```
 
 ## Roots
@@ -74,8 +78,8 @@ Many users have asked for the ability to implicitly define transformed parameter
 real foo(vector theta);
 ...
 vector[K] theta_root;
-theta_root <- rep_vector(0, K); // starting values
-theta_root <- find_root(foo, theta_root, lower, upper);
+theta_root = rep_vector(0, K); // starting values
+theta_root = find_root(foo, theta_root, lower, upper);
 ```
 
 ## Covariance functions
@@ -93,7 +97,7 @@ Marco has been working on this. Here a key question is getting the error bound o
 real foo(real theta);
 ...
 real area;
-area <- integrate(foo, lower, upper, tolerance);
+area = integrate(foo, lower, upper, tolerance);
 ```
 Ultimately, we will probably need different numerical integration schemes, such as `integrate_gauss_hermite`, etc.
 
