@@ -96,6 +96,7 @@ CloudStan will not support the following features (to start):
 - run multiple programs at once
 - history of runs
 
+Each of these are already included on SageMathCloud.
 
 # Flowchart (screen by screen specification)
 
