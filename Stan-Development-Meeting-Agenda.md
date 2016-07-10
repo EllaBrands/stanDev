@@ -20,5 +20,10 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
-
+* Sebastian. odeSD inclusion?
+    * Pro: Faster than CVODES for large & sparse ODE systems (systems biology, spatial SIR); I have seen 7x speed increase over CVODES
+    * Pro: C++ header only solver
+    * Pro: stiff solver
+    * Con: LGPL
+    * Con: Requires ODE RHS f AND ODE RHS f' => easy to write down, but Stan language heavy
   
