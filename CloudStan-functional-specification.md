@@ -48,7 +48,7 @@ CloudStan is a client for Stan that runs from a browser. It will allow users to:
 
 # Mostly Complete Free Implementation
 
-Click this [link](https://cloud.sagemath.com/projects/9cead8b7-e246-4ed2-b46f-9ad93dff442f/files/StanMathCloud.html) and copy the project to your own project on SageMathCloud.
+Click this [link](https://cloud.sagemath.com/projects/9cead8b7-e246-4ed2-b46f-9ad93dff442f/files/StanMathCloud.html) and copy the project to your own project on SageMathCloud to be able to execute the code.
 
 # Scenarios
 
