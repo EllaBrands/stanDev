@@ -50,6 +50,8 @@ vector[K] g;
 g = gradient(foo, theta);
 ```
 
+This would also permit [Generalized Fiducial Inference](http://amstat.tandfonline.com.ezproxy.cul.columbia.edu/doi/abs/10.1080/01621459.2016.1165102#.V414_YYxoxw) with Stan.
+
 ## Jacobians
 
 In some dynamic problems, the likelihood of the data depends on derivatives. Also, if a user does a transformation that requires adjusting `lp__` by the logarithm of the absolute value of the determinant of the Jacobian matrix of the inverse transformation, it would be useful to be able to produce that Jacobian matrix for cases where the determinant does not take a simple analytical form.
