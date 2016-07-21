@@ -1,20 +1,6 @@
-# Substance
+# CppLint Style
 
-## Indexing Containers
-
-For container indexes, use:
-
-* `size_t` for `std::vector<S>`,
-
-* `int` for `Eigen::Matrix<S, R, C>`, and
-
-* `stan::math::index_type<T>::type` for template params `T` that might be instantiated as either a `std::vector<S>` or `Eigen::Matrix<S, R, C>`.
-
-One could argue we should always use `Eigen::Matrix<S, R, C>::size_type` for Eigen constructs just in case we ever decide that we want to change their default indexing from `int` to something else.  But `int` should be OK for now because if we change the index type for some reason, the compiler will let us find instances.
-
-# Style
-
-We will follow the [Google Style Guide](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html) except for the exceptions listed in the following sections.
+We will follow the [Google Style Guide](https://google.github.io/styleguide/cppguide.html) except for the exceptions listed in the following sections.
 
 `cpplint.py` is a Python (2.7) script that checks for these guidelines. Here is a make target that will check the source code for any instances that do not conform to this standard:
 
@@ -36,9 +22,9 @@ Listed below are Stan's exceptions to the Google Style Guide. These rules that c
 
 These rules are ordered in the same order as the Google Style Guide.
 
-### [Header Files](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Header_Files)
+### [Header Files](https://google.github.io/styleguide/cppguide.html#Header_Files)
 
-#### [Self-contained Headers](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Self_contained_Headers)
+#### [Self-contained Headers](https://google.github.io/styleguide/cppguide.html#Self_contained_Headers)
 
     Header files should be self-contained and end in .h. Files that 
     are meant for textual inclusion, but are not headers, should end 
@@ -47,20 +33,20 @@ These rules are ordered in the same order as the Google Style Guide.
 Our header files are `.hpp` files.
     
 
-### [Scoping](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Scoping)
+### [Scoping](https://google.github.io/styleguide/cppguide.html#Scoping)
 
-#### [Namespaces](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Namespaces) `[runtime/indentation_namespace, readability/namespace]`
+#### [Namespaces](https://google.github.io/styleguide/cppguide.html#Namespaces) `[runtime/indentation_namespace, readability/namespace]`
 
 **Named Namespaces**
 
 * allow indentation inside namespaces 
 * allow skipping of `// namespace foo` after closing bracket of namespace
 
-#### [Nonmember, Static Member, and Global Functions](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Nonmember,_Static_Member,_and_Global_Functions)
+#### [Nonmember, Static Member, and Global Functions](https://google.github.io/styleguide/cppguide.html#Nonmember,_Static_Member,_and_Global_Functions)
 
 We'll have trouble with "Nonmember functions should not depend on external variables" due to our use of globals for memory management
 
-#### [Static and Global Variables](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Static_and_Global_Variables)
+#### [Static and Global Variables](https://google.github.io/styleguide/cppguide.html#Static_and_Global_Variables)
 
 Not sure about how this impacts our memory management:
 
@@ -78,9 +64,9 @@ Because of our autodiff, we can't comply with:
 
 Otherwise, we should follow it. 
 
-### [Classes](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Classes)
+### [Classes](https://google.github.io/styleguide/cppguide.html#Classes)
 
-#### [Explicit Constructors](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Explicit_Constructors)
+#### [Explicit Constructors](https://google.github.io/styleguide/cppguide.html#Explicit_Constructors)
 
 This won't work for our autodiff type `var()` and `fvar()`, but otherwise sounds like a good idea:feasible:
 
@@ -101,9 +87,9 @@ I think this is because they're inline by default, but I don't think it matters 
 > may be defined inline.
 
 
-### [Other C++ Features](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Other_C++_Features)
+### [Other C++ Features](https://google.github.io/styleguide/cppguide.html#Other_C++_Features)
 
-#### [Reference Arguments](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Reference_Arguments) `[runtime/references]`
+#### [Reference Arguments](https://google.github.io/styleguide/cppguide.html#Reference_Arguments) `[runtime/references]`
 
 I strongly disagree with this one, which they claim is a "very
 strong convention in Google code"
@@ -117,23 +103,23 @@ semantics.
 
 So much for their injunction to assume readers of the code will know C++.
 
-#### [Friends](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Friends)
+#### [Friends](https://google.github.io/styleguide/cppguide.html#Friends)
 
 I'm not sure if our use of `var` will allow this:
 
 > Friend declarations should always be in the private section.
 
-#### [Exceptions](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Exceptions)
+#### [Exceptions](https://google.github.io/styleguide/cppguide.html#Exceptions)
 
 We will allow exceptions.
 
-#### [Run-time Type Information (RTTI)](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Run-Time_Type_Information__RTTI_)
+#### [Run-time Type Information (RTTI)](https://google.github.io/styleguide/cppguide.html#Run-Time_Type_Information__RTTI_)
 
 We have to violate this for the existing exception hierarchy in throwing exceptions with line numbers from Stan programs (otherwise I agree).
 
 > Avoid using Run Time Type Information (RTTI).
 
-#### [Streams](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Streams)
+#### [Streams](https://google.github.io/styleguide/cppguide.html#Streams)
 
  No, no, no.  they want `printf` of all things (which causes runtime errors).
 
@@ -167,9 +153,9 @@ Of course, we use none of their approved modules (though Boost Spirit's not on i
 
 > Use only approved libraries from the Boost library collection.
 
-### [Naming](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Naming)
+### [Naming](https://google.github.io/styleguide/cppguide.html#Naming)
 
-#### [File names](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html#File_Names)
+#### [File names](https://google.github.io/styleguide/cppguide.html#File_Names)
 
 No, I like Boost and Eigen here, because they follow C++ rather
 than C conventions:
