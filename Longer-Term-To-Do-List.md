@@ -151,4 +151,8 @@ Add a lint-like or warnings in a syntax checker.  Issue to cover include:
 
 Figure out if different transforms have different behaviors for sampling.  From @betanalpha:  My intuition is that the well-posed transformations will all end up being equivalent (as we’ve seen with the simplex transformations) but it’s definitely worth exploring and writing up. The whole “map to R^{n}” is  an important principle that is rarely discussed in the statistical literature  but is crucial for efficient algorithms. 
 
+#### Run until convergence
+
+Figure out how to do online monitoring of convergence so we can run until we converge without specifying number of iterations.  Need to set thresholds so we don't get bias due to early stopping (not even sure this is possible, but if not, we want to understand why).
+
 
