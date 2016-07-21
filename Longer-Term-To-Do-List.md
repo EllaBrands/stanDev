@@ -140,3 +140,15 @@ In many models, such as PK/PD random-effects models, the density comes in natura
 
 See discussion in issue [#584](https://github.com/stan-dev/stan/issues/584), but here's the gist: should we calculate the log prob with and without constants once, cache the difference, and then use this to initialize `lp__` in subsequent iterations?
 
+#### Syntax Checker --- Lint, etc.
+
+Add a lint-like or warnings in a syntax checker.  Issue to cover include:
+* variables being used before they're defined
+* inv_gamma, gamma with small arguments
+* normal with large scale
+
+#### Geometry research
+
+Figure out if different transforms have different behaviors for sampling.  From @betanalpha:  My intuition is that the well-posed transformations will all end up being equivalent (as we’ve seen with the simplex transformations) but it’s definitely worth exploring and writing up. The whole “map to R^{n}” is  an important principle that is rarely discussed in the statistical literature  but is crucial for efficient algorithms. 
+
+
