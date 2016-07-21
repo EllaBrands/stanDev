@@ -161,4 +161,6 @@ This is high priority, but we don't know how to do it.  We want to be able to te
 * get the "right" answer to within MCMC error
 * make sure we have speed regression tests so we don't get slowdowns by surprise
 
+#### CSV I/O
 
+Andrew wants this, but no idea how to do it given that CSV format isn't very general.  We'll probably need to read multiple file types at once if we want this to work.
