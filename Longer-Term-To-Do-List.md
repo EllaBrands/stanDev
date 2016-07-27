@@ -34,16 +34,6 @@ Something to run models in the cloud.
 
 Including both the fitting and the evaluation of how well the variance approxmations work.  Andrew wants to use his "GMO" algorithm.
 
-#### Stiff ODE Solver
-
-Integrate either 
-
-- fasta: simpler, it looks like, and what deSolve does in R
-- Sundials: more feature rich, what Sebastian's urging us to use
-
-Then 
- 
-- bigger coupled system with our own autodiff
 
 #### Implicit Functions and Differential Algebraic Equations (DAE)
 
