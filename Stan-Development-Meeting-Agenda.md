@@ -22,7 +22,3 @@ _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
 * __Developer name.  Short description.__
-
-* Sebastian. chain ID / chain specific data: Either by chain ID or by multiple input data files for cmdstan.
-* Sebastian. Hypergeometrics 2F1: If we don't have a definition (confirm), then I may just drop the issue
-* Sebastian. Nested includes?
