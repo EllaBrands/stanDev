@@ -1,7 +1,7 @@
 This is a place where developers and users can pool ideas on different ways to facilitate the use of Stan in Pharmacometrics, and other fields that present similar challenges. 
 
 ## Challenges
-* Solve non-linear systems of ODEs
+* Solve large systems of ODEs
 * Handle event schedule (of clinical trials)
 * Create template and functions that make coding efficient 
 * Make code easy to install and maintain 
@@ -16,4 +16,9 @@ New Stan functions for pharmacometrics applications are programmed in C++. They 
 This method allows elaborate pharmacometrics procedures to be efficiently coded in Stan. The possibility to work directly in Stan should also give the user flexibility.  
 
 At a C++ level, all the exposed functions call the same function Pred, which handles the event schedule and predicts the amount in each compartment for all events. On the other hand Pred1, which predicts amounts for one event, varies from one function to the other. This structural scheme is meant to make Torsten easily expendable: to add a new function, a developer only needs to focus on how to predict amounts for one event, while the rest is handled by the Pred function. 
+
+Example code is available on GitHub: https://github.com/charlesm93/example-models/tree/feature/issue-70-PKPDexamples-torsten/PKPD/torsten
+
+Specifically, I recommend looking at the `torstenManual.pdf` for information on how to use Torsten, run the example code, as well as some information on the design. 
+
 
