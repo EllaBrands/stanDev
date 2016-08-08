@@ -49,7 +49,7 @@ Expose the function to the parser by adding the appropriate code to [`src/stan/l
 
 #### Add to Relevant Header File
 
-Depending on where you put the function, you'll need to include its definition file in the appropriate header include to make sure it's visible to models.  For instance, if the function is going into `stan/math/functions/...` then it should be included into `stan/math/functions.hpp`.
+Depending on where you put the function (see the rules above), you'll need to include its definition file in the appropriate header include to make sure it's visible to models.  For instance, if the function is going into `stan/math/rev/arr/foo.hpp` then `#include <stan/math/rev/arr/foo.hpp>` should be included added to `stan/math/rev/arr.hpp`.
 
 #### Unit Testing
 
