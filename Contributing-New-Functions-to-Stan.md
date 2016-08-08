@@ -12,6 +12,37 @@ Implement the new function in the appropriate location, most likely in the [stan
 
 It is important to implement the function in such a way that it is templated such that it can be called with auto-diff variables for parameters and double values for data.  Again, see the existing functions for examples.
 
+#### Directories for code
+
+In general, implementations should go int the lowest directory possible, subject to the orderings
+
+```
+ scal < arr < mat
+
+ prim < rev < mix;
+
+ prim < fwd < mix;
+```
+
+If the left-hand type occurs, the directory has to be at least the minimum on the right
+
+```
+  Code includes     directory must be at least
+  -------------     --------------------------
+  Eigen::Matrix     mat
+  std::vector       arr
+  stan::math::rev   rev
+  stan::math::fwd   fwd
+```
+
+Everything else follows from these two rules.  The directories are laid out two deep, with
+
+```
+(prim | fwd | rev | mix) / (scal | arr | mat)
+```
+
+
+
 #### Expose Function Signature to Stan Models
 
 Expose the function to the parser by adding the appropriate code to [`src/stan/lang/function_signatures.hpp`](https://github.com/stan-dev/stan/blob/develop/src/stan/lang/function_signatures.h) and implement function signature tests by adding models to `src/test/gm/model_specs/compiled/`.
