@@ -29,9 +29,9 @@ ODE-based models have applications in multiple fields, such as pharmacometrics, 
 
 Users should be able:
 
-a. write the solution operator in the function block of stan
-b. pick an ODE integrator 
-c. call a built-in analytical operator
+1. write the solution operator in the function block of stan
+2. pick an ODE integrator 
+3. call a built-in analytical operator
 
 Note that a solution operator may apply only to certain kind of events. For example, I had to write unique operators for Steady State approximations for the one a two compartment pharmacokinetic models. 
 
@@ -52,9 +52,10 @@ Note that a solution operator may apply only to certain kind of events. For exam
 ## Event Handler 
 
 Event Handler should be able to:
-(a) augment the schedule so that it contains all the events that alter the state of the system
-(b) apply a solution operator to each event of the augmented event schedule
-(c) return the predicted quantities for at all events of the original event schedule
+
+1. augment the schedule so that it contains all the events that alter the state of the system
+2. apply a solution operator to each event of the augmented event schedule
+3. return the predicted quantities for at all events of the original event schedule
 
 State Changers: 
 * discontinuous change in quantity (bolus dosing)
@@ -67,7 +68,7 @@ State Changers:
 
 The solution operator may change from one event to the other (steady state approximation may require a different operator for efficient computation). 
 
-We could split the Event Handler into two functions that respectively handle (a), and (b) + (c). The advantage of doing so is that often times the Event Schedule only involves data and the augmenting of the event schedule can thus take place in the transformed data block. (b) usually handles model parameters, used in the ODE system. 
+We could split the Event Handler into two functions that respectively handle (1), and (2) + (3). The advantage of doing so is that often times the Event Schedule only involves data and the augmenting of the event schedule can thus take place in the transformed data block. (2) usually handles model parameters, used in the ODE system. 
 
 ## Domain Specific Applications
 
