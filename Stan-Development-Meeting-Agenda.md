@@ -24,3 +24,5 @@ including speculation and brainstorming._
 * __Developer name.  Short description.__
 
 * Sebastian. Do we need to have a prim version of integrate_ode_rk45? I would like to make coupled_ode_system inherit from ode_system. The ode_system includes autodiff code and uses Eigen. The consequence is that all ODE code ends up in rev/mat. If ode_system is the base of coupled_ode_system, then it brings the Jacobian wrt to states with it. This is required for stiff integration (not required for non-stiff).
+
+* Sebastian. Parallelization with OpenMP. A prototype works - ways to roll this into Stan?
