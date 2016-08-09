@@ -79,15 +79,23 @@ Needs:
 * the ability to input an event schedule that follows NONMEM conventions
 * functions that return amounts in each compartment at each event
 
+There are currently two prototype libraries on GitHub aimed at facilitating Stan for PKPD modeling: The **PKPD Library** and **Torsten**. These prototypes offer two different approaches: the PKPD Library comprises Stan files and R scripts, while Torsten is a set of procedures directly coded in C++. Authors of both projects are working together towards an optimal approach. 
 
-#### Torsten 
-(prototype version 0.8: pharmacometrics specific implementation)
+In addition, the R package **PMX Stan** also supports Bayesian PKPD modeling in Stan (http://andrewgelman.com/2015/10/05/pmxstan-an-r-package-to-facilitate-bayesian-pkpd-modeling-with-stan/). 
 
-Four new Stan expressions for pharmacometrics applications are programmed in C++. They are integrated within Stan so that they may be used in a manner identical to built-in Stan functions. The expressions predict amounts in a compartment model, given an event schedule. The input data follows NONMEM conventions. The current prototype contains analytical solutions to one and two compartment models with first-order absorption (including solutions for steady state approximations), and numerical solutions to ODE based models. In the latter case, the user can specify the ODE system in the function block of a Stan file. 
+#### Draft of PKPD Library 
+The files in this library are an attempt to ease writing PKPD models in Stan. Pharmacokinetic (PK) models describe the relationship of drug concentration in a given subject over time as a function of the dosing history. PK models facilitate mass action kinetics laws to describe the drug absorption, distribution and elimination process with a compartmental approximation.
+
+https://github.com/stan-dev/example-models/tree/feature/issue-72-stan-pkpdlib/misc/pkpd
+
+
+#### Torsten: A PKPD Model Library for Stan 
+
+Four new Stan custom expressions for pharmacometrics applications are programmed in C++. They are integrated within Stan so that they may be used in a manner identical to built-in Stan functions. The expressions predict amounts in a compartment model, given an event schedule. The input data follows NONMEM conventions. The current prototype contains analytical solutions to one and two compartment models with first-order absorption (including solutions for steady state approximations), and numerical solutions to ODE based models. In the latter case, the user can specify the ODE system in the function block of a Stan file. 
 
 At a C++ level, all the exposed functions call the same function Pred, which acts as the *event handler*, i.e it augments the event schedule and applies a solution operator to the ODE system at each event. The solution operators Pred1, or PredSS for steady state approximations, predicts amounts for one event, and varies from one expression to the other. This structural scheme is meant to make Torsten easily expandable: to add a new function, a developer only needs to focus on how to predict amounts for one event, while the rest is handled by the Pred function. 
 
-Example code is available on GitHub: https://github.com/charlesm93/example-models/tree/feature/issue-70-PKPDexamples-torsten/PKPD/torsten
+https://github.com/charlesm93/example-models/tree/feature/issue-70-PKPDexamples-torsten/PKPD/torsten
 
 Specifically, I recommend looking at the `torstenManual.pdf` for information on how to use Torsten, run the example code, as well as some information on the design. 
 
