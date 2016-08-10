@@ -65,7 +65,7 @@ Add a test with all signatures in the form of a model in `test/gm` to make sure 
 
 #### Model Tests
 
-We need models in test_models instantiating all the possible ways the function can be instantiated.  Examples are in `src/test/test-models/good` for ones that pass and in `src/test/test-models/bad` for ones that don't.  Specifically, the function signature tests should go in `src/test/test-models/good/function-signatures`.  Then there are drivers for these tests in `src/test/unit/lang/parser` --- look at the ones that are there to see how to test that models don't parse or throw the right warnings when trying to parse them.
+We need models in test_models instantiating all the possible ways the function can be instantiated.  Examples are in `src/test/test-models/good` for ones that pass and in `src/test/test-models/bad` for ones that don't.  Specifically, the function signature tests should go in `src/test/test-models/good/function-signatures`.  Then there are drivers for these tests in `src/test/unit/lang/parser` --- look at the ones that are in `src/test/unit/lang/parser/other_test.cpp` to see how to test that models don't parse or throw the right warnings when trying to parse them.
 
 #### Documentation
 
