@@ -1,7 +1,7 @@
 This is a place where developers and users can pool ideas on different ways to facilitate the use of Stan for complex Ordinary Differential Equations (ODE) based models. 
 
 # Introduction
-An ODE based models describes the evolution of certain quantities of interest over time. Our goal is to compute these quantities at the various events of an event schedule. An *event* corresponds to either a measurement or a change in the state of the system. If the system is fully described by ODE, knowing the state y0 at time t0 fully defines the solution at finite times, provided there are no exterior changes in the state of the system. Exploiting this property, we can sequentially calculate the quantities of interest one event at a time, if we set the initial conditions at the current event to be the quantities at the previous event. For this strategy to be successful, we need:
+An ODE based models describes the evolution of certain quantities of interest over time. Our goal is to compute these quantities at the various events of an event schedule. An *event* corresponds to either a measurement (or observation) or a change in the state of the system. If the system is fully described by ODE, knowing the state y0 at time t0 fully defines the solution at finite times, provided there are no exterior changes in the state of the system. Exploiting this property, we can sequentially calculate the quantities of interest one event at a time, if we set the initial conditions at the current event to be the quantities at the previous event. For this strategy to be successful, we need:
 
 1. a solution operator that solves the ODE system at any one particular event
 2. an event schedule that includes all the events that alter the state of the system 
@@ -40,14 +40,18 @@ Note that a solution operator may apply only to certain kind of events. For exam
 * stiff ODE solver: CVODES (bdf)
 
 #### Not Implemented
-* Solver for linear systems using matrix exponentials
 * Adaptive method that recognizes when ODE is in a stiff and non-stiff region, and switches between the bdf and rk45 methods
+* Additional ODE solvers
+  * Matrix Exponential
+  * Adams Moulton
 * Analytical solutions for compartment models
   * extensively used in pharmacometrics, but also seems to have applications in other fields (see soil metamodel: https://github.com/soil-metamodel/stan/tree/master/soil-incubation)
 * Solver for Steady State approximation (boundary value problem)
   * Root solver
   * IDAS from Sundials (?)
+  * Numerical solution of algebraic equations
 * Parallelization ODE solving (for multiple patients -- population models)
+
   
 ## Event Handler 
 
@@ -57,16 +61,23 @@ Event Handler should be able to:
 2. apply a solution operator to each event of the augmented event schedule
 3. return the predicted quantities for at all events of the original event schedule
 
+Measurement/Observation Event: More generally times at which the user wants a solution that will be used in other calculations, e.g., likelihood calculation.
+
+Examples from pharmacometrics are written in parentheses.  
+
 State Changers: 
 * discontinuous change in quantity (bolus dosing)
-* continuous change in quantity (infusion)
-* reset event (set all quantities of interest to 0)
+* continuous change in quantity (rate)
+* reset event: set all quantities of interest to 0
 * steady state approximation
 * change in parameters of the ODE system
   * time-dependent parameters 
   * variation within levels (inter-individual, inter-study, ...)
+* change in input function
+  * change in constant rate input for a quantity (change in input rate for one compartment) 
+* Lag time: Shifts the time at which state changers occur (in pharmacometrics, lag times are usually compartment specific, meaning they only affect one quantity. They can however be multiple lag time parameters)
 
-The solution operator may change from one event to the other (steady state approximation may require a different operator for efficient computation). 
+The solution operator may change from one event to the other (steady state approximations may require a different operator for efficient computation). 
 
 We could split the Event Handler into two functions that respectively handle (1), and (2) + (3). The advantage of doing so is that often times the Event Schedule only involves data and the augmenting of the event schedule can thus take place in the transformed data block. (2) usually handles model parameters, used in the ODE system. 
 
