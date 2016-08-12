@@ -57,6 +57,10 @@ Warning message:  "Warning:  Variable ** is used on line *** but is nowhere defi
 
 Warning message:  "Warning:  Variable ** is used on line *** but is not defined until line ****.  Declare the variable before it is used."
 
+- Large or small numbers.
+
+Warning message:  "Try to make all your parameters scale free.  You have a constant in your program that is less than 0.1 or more than 10 in absolute value on line **.  This suggests that you might have parameters in your model that have not been scaled to roughly order 1.  We suggest rescaling using a multiplier; see section *** of the manual for an example.
+
 - If there are other common and easily-identifiable Stan programming errors, we should aim to catch them too.
 
 Comments from Bob:
