@@ -210,7 +210,7 @@ More interestingly, *pred* usually calls the evolution operator *pred1*. Note th
 Finally, when *pred* has gone through all the events, it returns the quantities at each event. The final output only has quantities from the original event schedule, not the augmented one. 
 
 
-## Improving Torsten's Design
+## Improving from Torsten's Design
 
 Goal:
 * provide a more general framework for event handling
