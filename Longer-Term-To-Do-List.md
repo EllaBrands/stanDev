@@ -154,3 +154,49 @@ This is high priority, but we don't know how to do it.  We want to be able to te
 #### CSV I/O
 
 Andrew wants this, but no idea how to do it given that CSV format isn't very general.  We'll probably need to read multiple file types at once if we want this to work.
+
+#### Copulas via Higher Order Autodiff
+
+(Copied from closed issues https://github.com/stan-dev/math/issues/42 and https://github.com/stan-dev/stan/issues/938).  Next step is to start a Wiki for design and then when we have something in mind create a concrete issue.  Here's what @bgoodri said:
+
+In the case of a copula, we know the explicit form of the multivariate CDF of the marginal uniforms
+
+```
+F(u_1, u_2, ..., u_d | theta)
+```
+but for Stan's purposes we need the (logarithm of the) copula density function, which is
+
+```
+dF(u_1, u_2, ..., u_d | theta)
+------------------------------ = f(u_1, u_2, ..., u_d | theta)
+du_1,du_2,...,du_d
+```
+
+but for large d, there is sometimes no explicit form of `f(u_1, u_2, ..., u_d | theta)`. So, loosely speaking, it would be great if we could evaluate 
+
+```
+var f_log(var_vector u, var theta) {
+  const int d = u.rows();
+  var p = F(u, theta);
+  var dp_du_1 = get_partial(p, u[1]);
+  var dp_du_1_du_2 = get_partial(dp_du_1, u[2]);
+  /* more of these */
+  var log_density = log(get_partial(dp_du_*, u[d]);
+  return log_density;
+}
+```
+
+And what @syclik replied:
+
+We can do this with second-order autodiff.  But it's not going to be super efficient in high dimensions, because each dimension is going to involve a forward pass on the function F, unless we can figure out how to do nested evaluation the way we are building up the ode solver.
+
+The `get_partial()` operation you have will be a forward-mode auto-diff d_ value.  That can then be logged, or whatever, and autodiffed through for HMC.
+
+If the F doesn't involve any pdf or cdf calls in Stan, could do it now.  Otherwise, we're going to have to wait until the 2nd order autodiff is completed.  It's held up on Windows testing at the moment.
+
+Are there a fixed number of these, or do people write their own F?  
+
+
+
+
+
