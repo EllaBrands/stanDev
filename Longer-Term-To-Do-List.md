@@ -196,6 +196,13 @@ If the F doesn't involve any pdf or cdf calls in Stan, could do it now.  Otherwi
 
 Are there a fixed number of these, or do people write their own F?  
 
+#### Testing prob functions, cdfs, ccdfs and log forms
+
+Originally from https://github.com/stan-dev/math/issues/357, where @bob-carpenter said:
+
+Add all the missing tests.  We need to make sure that changing the answer breaks a test.  It's impossible to refactor these functions without tests and they need it badly to remove redundant calculations.
+
+First step is to enumerate which tests are needed by poring over each of the functions.  Daniel mentioined a lot of these are already handled in the testing framework, but we need some doc on how to use that and need to review it to make sure it covers everything.
 
 
 
