@@ -47,9 +47,11 @@ Warning message:  "Warning:  Your Stan code has no indentation and this makes it
 
 - Code has blank lines.
 
-Warning message:  "Warning:  Your Stan code has blank lines and this makes it more difficult to read.  See *** for guidelines on writing easy-to-read Stan programs."
+Warning message:  "Warning:  Your Stan code has blank lines and this makes it more difficult to read.  See *** for guidelines on writing easy-to-read Stan programs."  (Bob:  I don't think we want to flag all blank lines, just ones at starts of blocks---otherwise, they're convenient for organizing)
 
-- Undefined variables.  Bob describes this as a biggy that's a lot harder to code.
+- Vectorization that doesn't involve first argument.  For example, `y[n] ~ normal(mu, sigma)` where `y[n]` is a scalar and `mu` is a vector  --- it leads to too many density increments.
+
+- Undefined variables.  Bob describes this as a biggy that's a lot harder to code.  (Bob:  But when we have compound declare/define, then we can flag any variable that's defined and not declared at the same time.  It is much harder to find ones that never get defined;  not impossible, just requires a second pass or keeping track of which variables aren't defined as we go along.)
 
 Warning message:  "Warning:  Variable ** is used on line *** but is nowhere defined.  Check your spelling or add the appropriate declaration."
 
