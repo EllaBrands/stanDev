@@ -148,7 +148,7 @@ The next section describes the process, then we'll describe testing.
 The Git and code review process used for developers and some useful tools:
 
 * [How to Contribute a New Function to Stan](wiki/Contributing-New-Functions-to-Stan)
-* [Developer Tools and Tricks](wiki/Developer-Tricks)
+* [Developer Tools and Tricks](wiki/Dev:-Tricks)
 * [OS and Platform Detection Macros for C++](wiki/Compiler-and-OS-Detection-Macros-for-Cpp)
 
 ---
