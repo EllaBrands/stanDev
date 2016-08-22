@@ -69,6 +69,8 @@ The next section describes the process, then we'll describe testing.
   If you're fixing a bug, first create a (unit) test that demonstrates the bug. This should fail on the branch without applying fix to code. Commit that test (`git commit` so it gets added to the history). Then fix the issue. The test failure should go away. **This test is a necessary condition for getting the patch in.**
 
   If you're creating a new feature, then every new piece of code should be unit tested (with exceptions). Any sections that touch existing code should be tested. See the section on testing to get a feel for what we want tested.
+
+**Tip:** The commit message for the final commit for the issue should have `fixes #N` where N is the issue number;  that will make sure the issue is closed when the pull request is merged (you can also use `closes` or `resolves` in place of `fixes`).
   
 4. **Prerequisites for creating a pull request.**
 
