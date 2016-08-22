@@ -10,6 +10,13 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+Daniel and Bob.  Should we have some exceptions terminate all algorithms (e.g.,
+`std::out_of_range`) and some that don't terminate (e.g., `std::domain_error`)?
+Decision.
+
+Sebastian.  Should we support Intel's math lib (MKL) with specialized builds?
+Decision.
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
