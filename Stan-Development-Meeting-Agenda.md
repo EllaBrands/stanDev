@@ -17,7 +17,7 @@ Decision.
 Sebastian.  Should we support Intel's math lib (MKL) with specialized builds?
 Decision.
 
-Rob Trangucci. Use cases for lower-triangular and symmetric matrices.
+Rob Trangucci. Use cases for lower-triangular and symmetric matrix types in Stan Math.
 
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
