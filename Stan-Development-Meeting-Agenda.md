@@ -17,6 +17,8 @@ Decision.
 Sebastian.  Should we support Intel's math lib (MKL) with specialized builds?
 Decision.
 
+Rob Trangucci. Use cases for lower-triangular and symmetric matrices.
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
