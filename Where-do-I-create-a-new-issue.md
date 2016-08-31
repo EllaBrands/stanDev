@@ -6,7 +6,6 @@ Stan development happens across multiple repositories. The diagram below shows t
 ```               
 math <- language <- algorithms <- services <- pystan
                                            <- rstan   <- rstanarm
-                                                      <- rethinking
                                            <- cmdstan <- statastan
                                                       <- matlabstan
                                                       <- stan.jl
@@ -51,7 +50,7 @@ Since the development of Stan happens across multiple repositories now, adding a
 1. Add an issue to the `math` repository. This propagates downstream.
 
 
-## Request an RStan feature request
+## Request an RStan feature
 
 1. Add an issue to the `rstan` repository.
 2. If this was for a downstream project like `rstanarm`, also add a new issue to the downstream project.
