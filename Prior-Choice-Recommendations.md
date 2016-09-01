@@ -76,6 +76,7 @@
   * Uniform(-1,1) is noninformative
   * Other times we will expect a correlation to be positive, for example the correlation between a pre-test and post-test.  Here it could make sense to model using some latent score, that is to move to some sort of IRT model.  We should give an example of this for the wiki
   * If doing modal estimation, see section on Boundary Avoiding Priors above
+  * [Penalised complexity priors are available](http://arxiv.org/abs/1608.08941) for auto-regressive processes. For order=1, different priors are recommended depending on the natural base model. 
 
 * Prior for a covariance matrix
   * Ben recommends LKJ(4).  LKJ(1) is uniform on the correlation matrix but this gets weird if you look at the marginals.  Ben thinks 4 df is a reasonable default. No, Ben doesn't (and it is a shape parameter rather than the degrees of freedom). Anything over 2 is very concentrated at the identity matrix.
@@ -97,3 +98,4 @@
 * Priors for Gaussian Processes
   * If the range of the x-axis values are pre-scaled to unit range (0-1, -.5-.5, etc), using the "inverse-lengthscale" parameterization (`CovMat[i,j] <- exp(dx*inv_rho) * eta ;`) means that for values of the inverse-lengthscale parameter ('inv_rho') between 0 & 1 implies a covariance structure from which sampled functions will be essentially linear (at least monotonic) across the range of the data. Thus, combined with a lower bound on 'inv_rho' at zero, the typical peaked-at-zero priors like 'inv_rho ~ normal(0,1)' will reflect a bias for simpler functions. Using a peaked-at-zero-but-heavy-tailed prior like 'inv_rho ~ student_t(4,0,1)' gives more credibility to more wiggly functions, but maintains the overall bias for simplicity.
   * If the range of the y-axis are pre-scaled to unit range, a prior of `normal(0,1)` on both the "signal magnitude" parameter `eta` and the "noise magnitude" parameter `sigma` reflects a prior on the signal-to-noise ratio that is peaked at .5.
+  * For Matern fields, then the [joint penalised complexity prior](http://arxiv.org/abs/1503.00256) is available for the parameters (variance, range) parameters
