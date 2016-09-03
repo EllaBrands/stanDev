@@ -1,6 +1,11 @@
-Here's an example of what the doc should look like, so
-I can make some concrete recommendations on style (all
-of which are standard for Javadoc and presumably doxygen):
+First off, here's a link to the 
+
+* [Doxygen manual](https://www.stack.nl/~dimitri/doxygen/manual/index.html) (stack.nl doxygen site)
+
+
+#### Function doc
+
+Here's an example of what the doc should look like, so I can make some concrete recommendations on style (all of which are standard for Javadoc and presumably doxygen):
 
 ```
 /**
