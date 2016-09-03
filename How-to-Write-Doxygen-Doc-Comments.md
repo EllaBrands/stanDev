@@ -27,6 +27,8 @@ of which are standard for Javadoc and presumably doxygen):
 
 * There is a space separating the parameters/return/throw statements, with template parameters first, arguments next in the order they appear in the function, followed by the return (if any) and exceptions (if any).
 
+* Start new paragraphs with `<p>` as it will make sure the HTML does the right thing.
+
 #### What to Document
 
 * The first sentence, which will be used for a summary in the higher level docs, should be a concise but precise one-sentence statement of what the function returns and what its side effects are if any, based on what the arguments are.  
@@ -47,15 +49,70 @@ of which are standard for Javadoc and presumably doxygen):
 
 #### Class Documentation
 
+Here's an example:
+
+```
+/**
+ * The <code>compl</code> class represents an imaginary number
+ * in terms of a contained real and imaginary components whose memory
+ * is managed in this class.
+ *
+ * @tparam T scalar type for real and imaginary components
+ */
+template <typename T>
+class compl {
+private:
+  const T rc_;
+  const T ic_;
+public:
+  /**
+   * Construct a complex number from the specified real
+   * and imaginary components.
+   *
+   * @param[in] rc real component
+   * @param[in] ic imaginary component
+   */
+  compl(double rc, double ic) : rc_(rc), ic_(ic) { }
+  
+  /**
+   * Construct a complex number from the specified real
+   * component, with zero imaginary component.
+   *
+   * @param[in] rc real component
+   */
+  compl(double rc) : rc_(rc), ic_(0) { }
+  
+  /**
+   * Return the real component of this complex
+   * number.
+   *
+   * @return real component
+   */
+  T rc() const { return rc_; }
+
+  /**
+   * Return the imaginary component of this complex
+   * number.
+   *
+   * @return imaginary component
+   */
+  T ic() const { return ic_; }
+};
+```
+
 * Classes should be documented themselves at the point where the class is declared (not where it's defined if this is separated).
 
 * The class doc should talk about what instances of the class do in broad terms, but should not document arguments to constructors, provide a complete list of methods, etc.  It can talk about implementation details and why to use the class.
+
+* The word "this" is used to refer to the instance of the class on which a method acts.
 
 * Public and protected constructors should be documented.
 
 * Public and protected member variables should be documented.
 
 * No need to document the private components of a class with doxygen as they are not part of the API;  comments for developers can be included in whatever form seems helpful.
+
+* It's OK to leave the copy constructor implicit if it's generated implicitly.
 
 #### Using LaTeX
 
@@ -78,5 +135,14 @@ of which are standard for Javadoc and presumably doxygen):
 \f}
 ```
 
+#### Referring to Code
 
+If you are referring to other code components, use the code element, as in `<code>foo(a, b, c)</code>`
+
+
+#### Other Special Commands
+
+Doxygen provides a rich set of commands for formatting and linking external references.  See:
+
+* [Guide to Doxygen Commands](https://www.stack.nl/~dimitri/doxygen/manual/commands.html) (stack.nl doxygen manual)
  
