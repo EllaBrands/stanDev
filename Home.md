@@ -4,6 +4,7 @@ Welcome to the Stan wiki. This page is primarily intended for developers, both a
 
 * [Dev: Git Process](wiki/Dev:-Git-Process)
 * [Coding Style and Idioms](wiki/Coding-Style-and-Idioms)
+* [How to Write Code Doc with Doxygen](wiki/How-to-Write-Doxygen-Doc-Comments)
 * [Issue Mover for GitHub](https://github-issue-mover.appspot.com/)
 
 # Contents
