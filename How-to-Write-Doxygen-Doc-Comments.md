@@ -134,7 +134,7 @@ public:
 * Equation arrays via
 
 ```
-\f{eqnarray*}
+\f{eqnarray*}{
   f(x) & = & a (x + 1)
        & = ^ a x + a
 \f}
