@@ -137,8 +137,9 @@ public:
 
 #### Referring to Code
 
-If you are referring to other code components, use the code element, as in `<code>foo(a, b, c)</code>`
+* For generic code-type formatting, use the code element, as in `<code>foo(a, b, c)</code>`
 
+* To link to other bits of the API (member variables, functions, classes, etc.), see [linking to other code](https://www.stack.nl/~dimitri/doxygen/manual/autolink.html) (stack.nl doxygen manual)
 
 #### Other Special Commands
 
