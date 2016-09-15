@@ -19,6 +19,8 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+Bob Carpenter.  Overflow exception vs. -infinity return for log(0), log1p(-1), log1m(1), and beta_lccdf(1 | a, b), beta_lcdf(0 | a, b).  Decision.
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
