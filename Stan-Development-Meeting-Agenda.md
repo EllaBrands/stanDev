@@ -10,6 +10,8 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+Carpenter.  Fail at run time rather than compile time if the parser can't resolve integrate_ode argument is data?  Decision. 
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
