@@ -13,6 +13,8 @@ meeting._
 Carpenter.  Fail at run time rather than compile time if the parser can't resolve integrate_ode argument is data?  Decision.
 Daniel.     Refactor status: Stan ready. CmdStan and RStan good to go. Could I have help testing RStan? Once PyStan is good, can we merge?
 
+Aki. Features making implementation of EP-life and GMO easier.
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
