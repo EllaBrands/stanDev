@@ -10,6 +10,14 @@
   * You think a parameter could be anywhere from 0 to 1, so you set the prior to uniform(0,1).  Try normal(.5,.5) instead.
   * A scale parameter is restricted to be positive and you want to give it a vague prior, so you set to uniform(0,100) (or, worse, uniform(0,1000)).  If you just want to be vague, you could just specify no prior at all, which in Stan is equivalent to a noninformative uniform prior on the parameter.  Or you could give a weak prior such as exponential with expected value 10 (that's exponential(0.1), I think) or half-normal(0,10) (that's implmented as normal(0,10) with a <lower=0> constraint in the declaration of the parameter) or half-Cauchy(0,5) or even something more informative such as half-normal(0,1) or half-t(3,0,1).
 
+* Super-weak priors to better diagnose major problems
+  * For example, normal(0,100) priors added for literally every parameter in the model.  The assumption is that everything's on unit scale so these priors will have no effect--unless the model is blowing up from nonidentifiablity.  The super-weak prior allows you to see problems without the model actually blowing up.  We could even have a setting in Stan that automatically adds this information for every parameter.
+
+* Super-constraining priors; you should also specify inits
+  * Consider the following scenario:  You fit a model, and in order to keep your inference under control, you set some of the parameters to fixed, preset values.  Now you want to let these parameters float; that is, you want to estimate them from data.  But if you just jump all the way to flat priors, or even weakly informative priors, your inferences blow up, as there are still things you need to understand about your model.  So you ease into it by giving your parameters very strong priors.  For example, if you had a parameter that you'd given a preset value of 4, you try it with a normal (4, 0.1) prior, or maybe normal (4, 1).
+
+    When you do this, you also should also specify initial values.  Why?  Because, by default, Stan draws inits uniformly from (-1, 1) (or maybe it's (-2, 2); I don't remember).  If you have a parameter that you want to set to be near 4, say, you should set inits to be near 4 also.
+
 * Generic prior for anything
   * Andrew has been using independent N(0,1), as in section 3 of this paper:  http://www.stat.columbia.edu/~gelman/research/published/stan_jebs_2.pdf
     * I don't mind the short tails; if you think they're a problem because you think a parameter could be far from 0, that's information that can and should be included in the prior
