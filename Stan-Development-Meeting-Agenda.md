@@ -10,7 +10,8 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
-Carpenter.  Fail at run time rather than compile time if the parser can't resolve integrate_ode argument is data?  Decision. 
+Carpenter.  Fail at run time rather than compile time if the parser can't resolve integrate_ode argument is data?  Decision.
+Daniel.     Refactor status: Stan ready. CmdStan and RStan good to go. Could I have help testing RStan? Once PyStan is good, can we merge?
 
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
