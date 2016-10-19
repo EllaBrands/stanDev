@@ -120,4 +120,4 @@ Yes, please.
 
 #### Mixed Operations
 
-How about multiply a sparse matrix by a dense vector?  We already use that operation in RStanArm and it's Stan's one supported sparse matrix operation.  I don't think it's something Eigen supports other than by promoting the sparse vector up to dense.
+How about multiply a sparse matrix by a dense vector?  We already use that operation in RStanArm and it's Stan's one supported sparse matrix operation.  I don't think it's something Eigen supports other than by promoting the sparse vector up to dense. (Dan S: Eigen has this. operator* is overloaded for MatrixBase<OtherDerived>, and dense vectors are a special case of dense matrices, matlab-style.)
