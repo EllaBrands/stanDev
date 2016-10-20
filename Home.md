@@ -1,198 +1,74 @@
 Welcome to the Stan wiki. This page is primarily intended for developers, both active and new to Stan.
 
-## Useful Links
+## User Facing Pages
 
-* [Dev: Git Process](wiki/Dev:-Git-Process)
-* [Coding Style and Idioms](wiki/Coding-Style-and-Idioms)
-* [How to Write Code Doc with Doxygen](wiki/How-to-Write-Doxygen-Doc-Comments)
-* [Issue Mover for GitHub](https://github-issue-mover.appspot.com/)
+Only the following are user-facing pages;  the rest are aimed at Stan developers.
 
-# Contents
+* [Prior choice](https://github.com/stan-dev/stan/wiki/Prior-Choice-Recommendations)
+* [Frequently encountered problems](https://github.com/stan-dev/stan/wiki/Frequently-Encountered-Problems)
+* [Installing older versions](https://github.com/stan-dev/stan/wiki/Installing-Older-Versions-of-Stan-and-RStan)
+* [Where do I create a new issue?](https://github.com/stan-dev/stan/wiki/Where-do-I-create-a-new-issue)
 
-* [Developer Process](#developer-process)
-* [Model Concept](#model-concept)
-* [Feature Design Docs](#stan-feature-specs-and-design-docs)
-* [Long Term To-Do List](#long-term-to-do-list)
+## Developer Process
 
-[//]: # (DL: Rearrange. I think it makes sense to split this section into)
-[//]: # (DL:   two parts: common information to be accessed by current)
-[//]: # (DL:   developers, a second part for process that's useful for )
-[//]: # (DL:   new developers)
-
-# Developer Process
-
-We don't like process, but it's necessary for coordinating a development team. Process, itself, is fluid and we adjust it when it is either a bottleneck or it fails to capture some practical development process.
-
-We have multiple goals for our process:
-
-- introduce changes to Stan
-- ensure the proposed changes are maintainable:
-    - designed properly
-    - uses consistent coding style
-    - uses idiomatic C++ conventions (so other people can understand the code)
-    - documented
-- keep the `develop` branch in a working state
-- "good enough" for the next person to be able to:
-    - understand the intent of the code
-    - have an easy time instantiating the code (unit tests)
-    - feel like it can be changed without destroying all of Stan
-
-The next section describes the process, then we'll describe testing.
-
-
-## The Process
-
-1. **Create an issue on GitHub.**
-
-  Issues should be focused and have limited scope. Each issue should conceptually be one thing. It is common for a project to spawn multiple issues. It is also common to have to start work on one issue and then generate multiple issues. Use your best judgement, but in most cases, smaller issues are better than bigger issues.
-  
-  Did I mention we prefer more smaller issues than fewer large issues? 
-
-  See: [Where do I create a new issue?](Where-do-I-create-a-new-issue)
-  
-2. **Create a branch for the issue.**
-
-  In your local clone / fork of the Stan repo, create a branch from `develop`. (Branching from `develop` is the right move most of the time, but there are occasions where you might want to use another branch as the base branch.) Replace the `#` below with the issue number from above.
-  - If the issue is a bug, then name the branch: `bugfix/issue-#-short-description`.
-  - If the issue is a feature, then name the branch: `feature/issue-#-short-description`.
-
-  This should look like: 
-  `> git checkout -b feature/issue-#-short-description`
-
-  For more detailed information on our management of branches, see [Developer Process](wiki/Developer-Process).
-  
-3. **Fix the issue.**
-
-  Fix the issue on the branch that was created. This branch will be used to create a pull request.
-  
-  Note: limit the fixes on the branch to the issue. If you find yourself fixing other things on the branch: stop, create a new issue, and follow the process to fix that separate issue. Multiple conceptual fixes together on one branch will slow down the time it takes for it to get into the code base and may not get in as-is. 
-  
-  If you're fixing a bug, first create a (unit) test that demonstrates the bug. This should fail on the branch without applying fix to code. Commit that test (`git commit` so it gets added to the history). Then fix the issue. The test failure should go away. **This test is a necessary condition for getting the patch in.**
-
-  If you're creating a new feature, then every new piece of code should be unit tested (with exceptions). Any sections that touch existing code should be tested. See the section on testing to get a feel for what we want tested.
-
-**Tip:** The commit message for the final commit for the issue should have `fixes #N` where N is the issue number;  that will make sure the issue is closed when the pull request is merged (you can also use `closes` or `resolves` in place of `fixes`).
-  
-4. **Prerequisites for creating a pull request.**
-
-  Before a pull request can make it into the Stan `develop` branch, it needs to be up to standards. Not all of these apply for every pull request, but for most, it does:
-
-  1. Testing
-      - New / changed code must be tested. There should be new tests.
-      - All header tests must pass: `> make test-headers` (this ensures each file has enough includes)
-      - All unit tests must pass: `> runTests.py src/test/unit`
-      - All integration tests must pass: `> runTests.py src/test/integration`
-      - We have some performance tests in `src/test/performance`. These need to compile, but they may not pass locally: there's some configuration dependent, fragile test in there now.
-  2. Documentation
-      - All new / changed code must be documented. There should be doxygen documentation for code. If this affects something in the manual, that should be changed appropriately.
-      - `> make doxygen` must report 0 warnings / errors.
-      - `> make manual` must compile the manual successfully.
-  3. Code Quality
-      - As much of the code should be written idiomatic to either C++ or math. This is subjective, but it's important to remember we're working as a team and the person that writes it may not be the person that needs to fix it later.
-      - We use cpplint to check for consistent C++ style. We have relaxed some of the rules; the description of the rules can be found in [Coding Style and Idioms](wiki/Coding-Style-and-Idioms)
-      - Run `> make cpplint`. Your branch should introduce 0 new cpplint errors. (We are currently at 69 as of 2.8.0 and are trying to get it to 0.)
-
-  Summary. In short, these things must pass in order for the pull request to go in. We would prefer if you checked before you submitted your pull request.
-  
-  - `> make test-headers`
-  - `> runTests.py src/test/unit`
-  - `> runTests.py src/test/integration`
-  - `> make doxygen`
-  - `> make manual`
-  - `> make cpplint`
-  
-
-4. **Create a pull request.**
-  
-  Once all of the prerequisites are done, create a GitHub pull request. In most cases, the base branch with be `develop`. If it's a bugfix, the base branch might be the latest hotfix branch, but we haven't been using hotfix branches that often.
-  
-  Create the pull request using the GitHub web interface. You will have to push your branch to origin (GitHub) first in order for the web interface to know about your branch. Fill out the Pull Request Template. Then hit submit.
-  
-  Our continuous integration will then take the pull request and run the tests.
-  
-5. **Code review of pull request.**
-
-  Before anyone reviews a pull request, it must pass the tests on the continuous integration machines. Note: the continuous integration tests sometimes fail due to configuration and is not a problem on the pull request. If you think this is the case, let someone know.
-  
-  Someone on the Stan team will look at the code for:
-
-  - usefulness, or at least having the code do what you claim it does
-  - tests. Making sure enough of the code is tested. Making sure code can be instantiated outside of running all of Stan. This also helps with design. If you can't verify that something does what you want it to do, something's not right.
-  - idiomatic use of C++. Once again, this is subjective, but this should allow other people to help out with the code in the future.
-  - documentation. Tests don't detect whether appropriate documentation was added. People can do that.
-
-  Note: if it doesn't pass tests, it won't get reviewed. If there's something tricky and you need help, the stan-dev list is the right place to go. If you don't currently have permissions to post there, email mc.stanislaw@gmail.com asking for permissions on stan-dev.
-
-6. **Fix the branch, if required.**
-
-  That should be pretty straightforward.
-
-7. **It gets merged**
-
-  Right now, it's @syclik that merges things into `develop`. (There's not official gate-keeper and it doesn't always have to be @syclik.) The things he looks for:
-  - tests pass
-  - someone on the core team has reviewed the pull request thoroughly
-  - someone on the core team has approved of the pull request
+* [Dev process overview](https://github.com/stan-dev/stan/wiki/Developer-process-overview)
+* [Code quality](https://github.com/stan-dev/stan/wiki/Code-Quality)
+* [Coding style and idioms](https://github.com/stan-dev/stan/wiki/Coding-Style-and-Idioms)
+* [Continuous integration](https://github.com/stan-dev/stan/wiki/Continuous-Integration-Testing)
+* [Contributing new functions](https://github.com/stan-dev/stan/wiki/Contributing-New-Functions-to-Stan)
+* [Git process](https://github.com/stan-dev/stan/wiki/Dev:-Git-Process)
+* [Testing tools and procedures](https://github.com/stan-dev/stan/wiki/Development-Testing:--Tools-and-Procedures)
+* [Doxygen for API doc](https://github.com/stan-dev/stan/wiki/How-to-Write-Doxygen-Doc-Comments)
+* [Googletest for unit tests](https://github.com/stan-dev/stan/wiki/How-to-Write-Unit-Tests-with-GoogleTest)
+* [Jenkins for continuous integration](https://github.com/stan-dev/stan/wiki/Jenkins)
+* [Continuous integration](https://github.com/stan-dev/stan/wiki/Testing:-Continuous-Integration)
+* [Upgrade version numbers](https://github.com/stan-dev/stan/wiki/Process:-upgrade-version-numbers)
+* [Testing framework](https://github.com/stan-dev/stan/wiki/Testing-framework)
+* [Python unit test script](https://github.com/stan-dev/stan/wiki/Testing-Stan-using-Gnu-Make-and-Python)
 
 
 
-### Testing
+## Feature Specifications
 
-* [Unit Testing with Python](wiki/Testing-Stan-using-Gnu-Make-and-Python)
-* [Continuous Integration Testing](wiki/Continuous-Integration)
-* [How to Write Unit Tests](wiki/How-to-Write-Unit-Tests-with-GoogleTest)
-* [Code Quality Requirements](wiki/Code-Quality)
-* [Coding Style and Idioms](wiki/Coding-Style-and-Idioms)
-* [Include-what-you-use](wiki/include-what-you-use)
+* [CloudStan](https://github.com/stan-dev/stan/wiki/CloudStan-functional-specification)
+* [ODE models](https://github.com/stan-dev/stan/wiki/Complex-ODE-Based-Models)
+* [Log levels and consolidated output across interfaces](https://github.com/stan-dev/stan/wiki/Design:-Consolidated-Output-for-Sample,-Optimize,-ADVI,-and-Diagnose)
+* [Logging](https://github.com/stan-dev/stan/wiki/Logging-Spec)
+* [Documentation reorganization](https://github.com/stan-dev/stan/wiki/Documentation-Organization)
+* [Tuple data type](https://github.com/stan-dev/stan/wiki/Functional-Spec:-List-Tuple-types)
+* [Sparse matrix data type](https://github.com/stan-dev/stan/wiki/Functional-Spec:-Sparse-Matrix-Data-Types)
+* [Functionals and higher-order functions](https://github.com/stan-dev/stan/wiki/Functionals-spec)
+* [JSON I/O](https://github.com/stan-dev/stan/wiki/JSON-for-model-data-and-parameters)
+* [Protocol buffer I/O](https://github.com/stan-dev/stan/wiki/Protocol-Buffers-for-serialization-of-input-data,-output-samples,-initial-values,-input-parameters,-and-output-messages,)
+* [Max (marginal) likelihood](https://github.com/stan-dev/stan/wiki/MLE-and-MML-Design)
+* [Output format](https://github.com/stan-dev/stan/wiki/Output-format)
+* [Parameter labeling](https://github.com/stan-dev/stan/wiki/Parameter-Labeling-Specification)
+* [Ragged arrays](https://github.com/stan-dev/stan/wiki/Ragged-array-spec)
+* [Services refactor](https://github.com/stan-dev/stan/wiki/Services-Refactor-Design-Document)
+* [Stan 3 unified interface](https://github.com/stan-dev/stan/wiki/Stan-3-Unified-Interface)
+* [Stan C++ API refactor](https://github.com/stan-dev/stan/wiki/Stan-Cpp-API-Refactor)
+* [Stan 3 density notation and increments](https://github.com/stan-dev/stan/wiki/Stan-3-Density-Notation-and-Increments)
+* [Parser pedantic mode](https://github.com/stan-dev/stan/wiki/Stan-Parser-Pedantic-Mode)
 
+## Stan Meetings
 
-### General Notes for Developer Process
+* [Dev meeting agenda](https://github.com/stan-dev/stan/wiki/Stan-Development-Meeting-Agenda)
 
-The Git and code review process used for developers and some useful tools:
+## To-Do List
 
-* [How to Contribute a New Function to Stan](wiki/Contributing-New-Functions-to-Stan)
-* [Developer Tools and Tricks](wiki/Dev:-Tricks)
-* [OS and Platform Detection Macros for C++](wiki/Compiler-and-OS-Detection-Macros-for-Cpp)
+* [Longer-term to-do items](https://github.com/stan-dev/stan/wiki/Longer-Term-To-Do-List)
 
----
+## Developer Miscellany
 
-# Model Concept
+* [Compiler and OS detection in C++](https://github.com/stan-dev/stan/wiki/Compiler-and-OS-Detection-Macros-for-Cpp)
+* [C++ 11](https://github.com/stan-dev/stan/wiki/Cpp11-Upgrade)
+* [Helpful tricks](https://github.com/stan-dev/stan/wiki/Dev:-Tricks)
+* [Include what you use](https://github.com/stan-dev/stan/wiki/include-what-you-use)
+* [Model C++ concept](https://github.com/stan-dev/stan/wiki/Model-Concept)
+* [ODE integrator support](https://github.com/stan-dev/stan/wiki/ODE-Integrator-Support)
+* [Developer UI guidelines](https://github.com/stan-dev/stan/wiki/User-Interface-Guidelines-for-Developers)
+* [Yeti cluster at Columbia](https://github.com/stan-dev/stan/wiki/Yeti-Cluster)
 
-Explanation of the code generated for a model:
+## Advertising and Fundraising
 
-* [Stan Model Concept](wiki/Model-Concept) 
-
----
-
-# Stan Feature Specs and Design Docs
-
-Specs and design docs and for Stan features, as originally proposed.  See Stan developer group mailing list for more discussion around specific features.
-
-* [ODE Design](wiki/ODE-Integrator-Support)
-
-* [MLE and MML Design](wiki/MLE-and-MML-Design)
-
-* [Command Refactor Spec](wiki/Stan-API-Refactor)
-
-* [Testing framework](wiki/Testing-framework)
-
-* [Ragged array spec](wiki/Ragged-array-spec)
-
-
----
-
-# Long Term To-Do List
-
-This is complementary to the issue tracker of smaller tidbits:
-
-* [Longer-Term To-Do List](wiki/Longer-Term-To-Do-List)
-
-### C++11 Migration Plan
-
-* [C++11 Migration Plan](wiki/Cpp11-Upgrade)
-
-### Out-of-Date To-Do List
-
-GitHub's issue tracker is more up to date and contains a `project` tag if you're looking for projects. An older list of to-do items, with some more ambitious projects, is here:
-
-* [Stan To-Do List](wiki/To-Do-List)
+* [Sell sheets](https://github.com/stan-dev/stan/wiki/Stan-Advertising-Webpages)
