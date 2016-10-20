@@ -81,13 +81,13 @@ public:
 };
 ```
 
-It's not possible to declare an `operator[]` member function because there's no way to calculate the return type statically.  Consider:
+<b>Problem 2:</b>  It's not possible to declare an `operator[]` member function because there's no way to calculate the return type statically.  Consider:
 
 ```
   ??? operator[](int n) { return n == 0 ? head() : tail()[n - 1]; }
 ```
 
-The argument `n` is only known at run time and will determine return value of type.  We could always go with the lisp convention:
+The argument `n` is only known at run time and will determine return value of type. This is true of Stan programs as well as C++ programs---if `x` is a list and `n` is an integer, then the runtime value of `n` determines the type of `x[n]`.  We don't do this anywhere else in Stan.
 
 ```
 car(x) = head(x)
@@ -97,7 +97,18 @@ caddr(x) = head(tail(tail(x)))
 ...
 ```
 
-We could try to get around this by providing a `void *` return type for `operator[]` and then having the Stan program cast it back to what it needs to be.
+only with better names:
+
+```
+at_1(x)
+at_2(x)
+at_3(x)
+...
+```
+
+These are all statically typable because the digit is determined statically.  We could do this with template programs with integer type parameters.
+
+We could try to get around this by providing a `void *` return type for `operator[]` and then having the Stan program cast it back to what it needs to be.  But even there, we can't 
 
 
 The only problem is that 'm having a bit of trouble seeing how to declare a return type for the indexing operator as the index won't be known until run time.
