@@ -108,7 +108,4 @@ at_3(x)
 
 These are all statically typable because the digit is determined statically.  We could do this with template programs with integer type parameters.
 
-We could try to get around this by providing a `void *` return type for `operator[]` and then having the Stan program cast it back to what it needs to be.  But even there, we can't 
-
-
-The only problem is that 'm having a bit of trouble seeing how to declare a return type for the indexing operator as the index won't be known until run time.
+We could try to get around this by providing a `void *` return type for `operator[]` and then having the Stan program cast it back to what it needs to be.  But even there, we can't check the return type statically in the Stan program unless the argument is an integer literal.
