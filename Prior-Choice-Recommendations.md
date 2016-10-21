@@ -38,6 +38,11 @@
   * One principle:  write down what you think the prior should be, then spread it out.  The idea is that the cost of setting the prior too narrow is more severe than the cost of setting it too wide.  I've been having trouble formalizing this idea. 
   * See this paper:  http://arxiv.org/pdf/1403.4630.pdf , I don't fully understand it all but it seems like a step in the right direction
 
+* Setting priors based on the prior predictive distribution (I. J. Good:  "Method of imaginary results")
+  * Example:  LKJ etc, setting priors on cov matrices and looking at the implied prior on correlations
+  * Example:  in linear regression, setting a prior on R-squared.  Ben came up with this idea and implemented it in stan_lm() in rstanarm)
+  * Example:  "On the Hyperprior Choice for the Global Shrinkage Parameter in the Horseshoe Prior" by Juho Piironen and Aki Vehtari.  https://arxiv.org/abs/1610.05559  Not just horseshoe, also hierarchical shrinkage model
+
 * Boundary-avoiding priors for modal estimation (posterior mode, MAP, marginal posterior mode, marginal maximum likelihood, MML)
   * These are for parameters such as group-level scale parameters, group-level correlations, group-level covariance matrix
   * What all these parameters have in common is that (a) they're defined on a space with a boundary, and (b) the likelihood, or marginal likelihood, can have a mode on the boundary. Most famous example is the group-level scale parameter tau for the 8-schools hierarchical model.
@@ -62,13 +67,15 @@
     where s is chosen to provide weak information on the expected
     scale, and 3<nu<7.
 
-    Assuming that nonbinary variables have been scaled to have mean 0  and standard deviation 0.5, Gelman et al (2008) (A Weakly Informative Default Prior Distribution for Logistic and Other
-    Regression Models) recommended student_t(1,0,2.5) (Cauchy distribution). Later it has been observed that this has too thick tails, so that in cases where data is not informative (e.g., in case of separation) the sampling from the posterior is challenging (see, e.g., Ghosh et al, 2015,
-    http://arxiv.org/abs/1507.07170). Thus Student's t distribution with higher degrees of freedom is recommended. There is not yet conclusive results what specific value should be recommended, and thus the current recommendation is to choose 3<nu<7. Normal distribution is not recommended as a weakly informative prior, because it is not robust (see, O'Hagan (1979) On outlier rejection phenomena in Bayes inference.). Normal distribution would be fine as an informative prior.
+    Assuming that nonbinary variables have been scaled to have mean 0  and standard deviation 0.5, Gelman et al (2008) (A Weakly Informative Default Prior Distribution for Logistic and Other Regression Models) recommended student_t(1,0,2.5) (Cauchy distribution). Later it has been observed that this has too thick tails, so that in cases where data is not informative (e.g., in case of separation) the sampling from the posterior is challenging (see, e.g., Ghosh et al, 2015, http://arxiv.org/abs/1507.07170). Thus Student's t distribution with higher degrees of freedom is recommended. There is not yet conclusive results what specific value should be recommended, and thus the current recommendation is to choose 3<nu<7. Normal distribution is not recommended as a weakly informative prior, because it is not robust (see, O'Hagan (1979) On outlier rejection phenomena in Bayes inference.). Normal distribution would be fine as an informative prior.
 
-* Sparsity promoting prior for the regression coefficients
+* Sparsity promoting prior for the regression coefficients ("Bayesian model reduction")
 
-  See Vehtari & Piironen (2015). Projection predictive variable selection using Stan+R. [arXiv:1508.02502](http://arxiv.org/abs/1508.02502)
+  See Piironen and Vehtari (2015). Projection predictive variable selection using Stan+R. [arXiv:1508.02502](http://arxiv.org/abs/1508.02502)
+  
+  Also "On the Hyperprior Choice for the Global Shrinkage Parameter in the Horseshoe Prior" by Juho Piironen and Aki Vehtari.  https://arxiv.org/abs/1610.05559 
+
+  We want to compare this horseshoe or HS implementation in rstarm to lasso and glmnet
 
 * Prior for degrees of freedom in Student's t distribution
 
