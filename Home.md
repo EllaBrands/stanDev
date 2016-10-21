@@ -1,12 +1,10 @@
 ## Welcome!
 
-This is the top-level Wiki for the Stan project.  Most of the content is aimed at developers, though some may be of interest to users.  If you're not a Stan developer or thinking of becoming one, you're probably looking for:
+This is the top-level Wiki for the Stan project as well as the Wiki for the stan-dev/stan repository.  Most of the content is aimed at developers, though some may be of interest to users.  If you're not a Stan developer or thinking of becoming one, you're probably looking for:
 
 * [Stan Home Page](http://mc-stan.org/)
 
-Each of the Stan code repositories here on GitHub has its own set of Wiki pages, with information for the language, algorithms, and developer process and tools listed here.
-
-## User Facing Wiki Pages
+There are a few remaining user-facing Wiki pages that haven't been moved to the web site:
 
 * [Prior choice](https://github.com/stan-dev/stan/wiki/Prior-Choice-Recommendations)
 * [Where do I report bugs or request features?](https://github.com/stan-dev/stan/wiki/Where-do-I-create-a-new-issue)
@@ -20,6 +18,21 @@ Each of the Stan code repositories here on GitHub has its own set of Wiki pages,
 ## Stan Meetings
 
 * [Dev meeting agenda](https://github.com/stan-dev/stan/wiki/Stan-Development-Meeting-Agenda)
+
+## GitHub Repositories and Submodule Relationships
+
+The development for the math library, language and algorithms, and interfaces are arranged into the following repositories with arrows indicating submodule inclusions.
+
+```               
+math <- stan <- pystan
+             <- rstan   <- rstanarm
+             <- cmdstan <- statastan
+                        <- matlabstan
+                        <- stan.jl
+                        <- MathematicaStan
+```
+
+Currently, the `stan` repo includes the language, the algorithms, and the service API for the interfaces.  There are additional repos for tools such as the emacs mode, R plotting, R Shiny interface, web pages, etc.
 
 ## Developer Process
 
