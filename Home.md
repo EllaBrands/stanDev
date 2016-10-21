@@ -1,10 +1,10 @@
 ## Welcome!
 
-This is the top-level developer Wiki for the Stan project.  If you're not a Stan developer, you're probably looking for:
+This is the top-level Wiki for the Stan project.  Most of the content is aimed at developers, though some may be of interest to users.  If you're not a Stan developer or thinking of becoming one, you're probably looking for:
 
-* [Stan's Home Page](http://mc-stan.org/)
+* [Stan Home Page](http://mc-stan.org/)
 
-Each of the Stan code repositories here on GitHub has its own set of Wiki pages, with information of interest to all projects being listed here.
+Each of the Stan code repositories here on GitHub has its own set of Wiki pages, with information for the language, algorithms, and developer process and tools listed here.
 
 ## User Facing Wiki Pages
 
