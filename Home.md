@@ -76,13 +76,13 @@ Currently, the `stan` repo includes the language, the algorithms, and the servic
 * [Functionals and higher-order functions](https://github.com/stan-dev/stan/wiki/Functionals-spec)
 * [Stan 3 density notation and increments](https://github.com/stan-dev/stan/wiki/Stan-3-Density-Notation-and-Increments)
 * [Parameter labeling](https://github.com/stan-dev/stan/wiki/Parameter-Labeling-Specification)
-* [Logging](https://github.com/stan-dev/stan/wiki/Logging-Spec)
 * [Parser pedantic mode](https://github.com/stan-dev/stan/wiki/Stan-Parser-Pedantic-Mode)
 
 #### Interfaces
 
 * [Services refactor](https://github.com/stan-dev/stan/wiki/Services-Refactor-Design-Document)
 * [CloudStan](https://github.com/stan-dev/stan/wiki/CloudStan-functional-specification)
+* [Logging](https://github.com/stan-dev/stan/wiki/Logging-Spec)
 * [Log levels and consolidated output across interfaces](https://github.com/stan-dev/stan/wiki/Design:-Consolidated-Output-for-Sample,-Optimize,-ADVI,-and-Diagnose)
 * [Stan 3 unified interface](https://github.com/stan-dev/stan/wiki/Stan-3-Unified-Interface)
 * [Stan C++ API refactor](https://github.com/stan-dev/stan/wiki/Stan-Cpp-API-Refactor)
@@ -102,9 +102,6 @@ Currently, the `stan` repo includes the language, the algorithms, and the servic
 #### Documentation
 
 * [Documentation reorganization](https://github.com/stan-dev/stan/wiki/Documentation-Organization)
-
-
-
 
 
 
