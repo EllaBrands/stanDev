@@ -1,5 +1,3 @@
-# Developer Process
-
 We don't like process, but it's necessary for coordinating a development team. Process, itself, is fluid and we adjust it when it is either a bottleneck or it fails to capture some practical development process.
 
 We have multiple goals for our process:
@@ -38,7 +36,7 @@ The next section describes the process, then we'll describe testing.
   This should look like: 
   `> git checkout -b feature/issue-#-short-description`
 
-  For more detailed information on our management of branches, see [Developer Process](wiki/Developer-Process).
+  For more detailed information on our management of branches, see [Developer Process](https://github.com/stan-dev/stan/wiki/Dev:-Git-Process).
   
 3. **Fix the issue.**
 
