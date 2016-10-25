@@ -204,6 +204,10 @@ Add all the missing tests.  We need to make sure that changing the answer breaks
 
 First step is to enumerate which tests are needed by poring over each of the functions.  Daniel mentioined a lot of these are already handled in the testing framework, but we need some doc on how to use that and need to review it to make sure it covers everything.
 
+## Discrete Parameters
+
+So far, we don't know how to tackle this one.  We'd ideally like to be able to compute the Markov blanket of a graphical model and do Gibbs, but Stan's language is too general for that.  One approach would be a sublanguage for graphical models.  Another approach would be to just tack on Gibbs or Metropolis as is, but we don't know how to pull out the conditionals for Gibbs or the marginal of the discrete parameters for Metropolis without evaluating the whole density.
+
 
 
 
