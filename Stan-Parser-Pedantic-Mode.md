@@ -2,7 +2,6 @@ Background:
 
 We see lots of errors in Stan code that could be caught automatically.  These are not syntax errors; rather, they're errors of programming or statistical practice that we would like to flag.  The plan is to have a "pedantic" mode of the Stan parser that will catch these problems (or potential problems) and emit warnings.  I'm imagining that "pedantic" will ultimately be the default setting, but it should also be possible for users to turn off pedantic mode if they really want.
 
-
 Choices in implementation:
 
 - It would be fine with me to have this mode always on, but I could see how some users would be irritated if, for example, they really want to use an inverse-gamma model or if they have a parameter called sigma that they want to allow to be negative, etc.  If it is _not_ always on, i'd prefer it to be on by default, so that the user would have to declare "--no-check-mode" to get it to _not_ happen.
@@ -64,6 +63,12 @@ Warning message:  "Warning:  Variable ** is used on line *** but is not defined 
 Warning message:  "Try to make all your parameters scale free.  You have a constant in your program that is less than 0.1 or more than 10 in absolute value on line **.  This suggests that you might have parameters in your model that have not been scaled to roughly order 1.  We suggest rescaling using a multiplier; see section *** of the manual for an example.
 
 - If there are other common and easily-identifiable Stan programming errors, we should aim to catch them too.
+
+Pedantic mode for Rstanarm:
+
+- Flag predictors that are not on unit scale
+
+- Check if a predictor is constant
 
 Comments from Bob:
 
