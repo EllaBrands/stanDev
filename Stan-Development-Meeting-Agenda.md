@@ -11,7 +11,7 @@ meeting._
 * __Developer name.  Short description.  Desired resolution.__
 
 Jonah/Ben/Aki. rstanarm argument handling for non-exponential-family distributions?
-
+Bob. Trademark for Stan name, logo, and name + logo (3 separate payments).  Decision.
 
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
