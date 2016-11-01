@@ -14,9 +14,9 @@ meeting._
 
 1. Jonah/Ben/Aki. rstanarm argument handling for non-exponential-family distributions?
 
-2. Bob. Trademark for Stan name, logo, and name + logo (3 separate payments).  Decision.
+1. Daniel. Forward mode. If anyone has time, tackle forward mode implementation. Resolution: indicate the importance of this and how easy it is to get started. 
 
-3. Daniel. Forward mode. If anyone has time, tackle forward mode implementation. Resolution: indicate the importance of this and how easy it is to get started. 
+1.  Bob.  licenses for web site tutorials and other matieral.  Resolution: decide on license or lack of license for reuse.
 
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
