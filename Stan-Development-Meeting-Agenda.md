@@ -10,6 +10,12 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+11/02
+
+1. Charles. Matrix Exponential: 
+(a) Find a metric to predict when the pade approximation goes off the rail. Proposed metric is the theoretical upper bound for the relative tolerance.
+(b) Do we have users who run with LDBL_MANT_DIG > 112? How does higher precision affect the matrix exponential problem?
+
 10/27
 
 1. Jonah/Ben/Aki. rstanarm argument handling for non-exponential-family distributions?
