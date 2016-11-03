@@ -16,6 +16,12 @@ meeting._
 (a) Find a metric to predict when the pade approximation goes off the rail. Proposed metric is the theoretical upper bound for the relative tolerance.
 (b) Do we have users who run with LDBL_MANT_DIG > 112? How does higher precision affect the matrix exponential problem?
 
+2. Daniel. StanCon registration / talks. For anyone interested, register.
+
+3. Daniel. StanCon sponsorship. Get emails out to those that might sponsor StanCon.
+
+
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
