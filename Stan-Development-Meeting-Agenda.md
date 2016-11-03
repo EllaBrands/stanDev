@@ -10,6 +10,11 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+11/10
+
+1. Bob. licenses for web site tutorials and other matieral. Resolution: decide on license or lack of license for reuse.
+
+
 11/02
 
 1. Charles. Matrix Exponential: 
