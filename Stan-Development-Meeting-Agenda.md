@@ -12,11 +12,13 @@ meeting._
 
 11/10
 
-1. Bob. licenses for web site tutorials and other matieral. Resolution: decide on license or lack of license for reuse.
+1. Bob. licenses for web site tutorials and other material. Resolution: decide on license or lack of license for reuse.
 
-2. Phil Price is in town and has a time series decomposition model.  I (Andrew) thought it could be fun to discuss, also this is an example of the sort of stat modeling discussion that we should be able to find a place for.
+2. Aki. Documentation reordering, splitting and other big changes.
 
-3. Andrew.  Office space options and plans for new hires.
+3. Phil Price is in town and has a time series decomposition model.  I (Andrew) thought it could be fun to discuss, also this is an example of the sort of stat modeling discussion that we should be able to find a place for.
+
+4. Andrew.  Office space options and plans for new hires.
 
 11/02
 
