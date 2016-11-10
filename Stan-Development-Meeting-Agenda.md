@@ -14,6 +14,9 @@ meeting._
 
 1. Bob. licenses for web site tutorials and other matieral. Resolution: decide on license or lack of license for reuse.
 
+2. Phil Price is in town and has a time series decomposition model.  I (Andrew) thought it could be fun to discuss, also this is an example of the sort of stat modeling discussion that we should be able to find a place for.
+
+3. Andrew.  Office space options and plans for new hires.
 
 11/02
 
