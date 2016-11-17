@@ -14,7 +14,7 @@ meeting._
 
 1. Aki. Next steps for documentation reordering, splitting and other big changes?
 
-2. Charles. Timeline for developing local functions, functionals, and implementing Powell's method. 
+2. Charles. Timeline for developing local functions, functionals, and implementing Powell's method to solve systems of nonlinear algebraic equations. 
 
 11/10
 
