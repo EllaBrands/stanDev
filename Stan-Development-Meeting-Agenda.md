@@ -16,24 +16,6 @@ meeting._
 
 2. Charles. Timeline for developing local functions, functionals, and implementing Powell's method to solve systems of nonlinear algebraic equations. 
 
-11/10
-
-1. Bob. licenses for web site tutorials and other material. Resolution: decide on license or lack of license for reuse.
-
-3. Phil Price is in town and has a time series decomposition model.  I (Andrew) thought it could be fun to discuss, also this is an example of the sort of stat modeling discussion that we should be able to find a place for.
-
-4. Andrew.  Office space options and plans for new hires.
-
-11/02
-
-1. Charles. Matrix Exponential: 
-(a) Find a metric to predict when the pade approximation goes off the rail. Proposed metric is the theoretical upper bound for the relative tolerance.
-(b) Do we have users who run with LDBL_MANT_DIG > 112? How does higher precision affect the matrix exponential problem?
-
-2. Daniel. StanCon registration / talks. For anyone interested, register.
-
-3. Daniel. StanCon sponsorship. Get emails out to those that might sponsor StanCon.
-
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
