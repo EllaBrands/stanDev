@@ -22,4 +22,3 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
-1. Aki. Kaggle Kernel experience.
