@@ -10,11 +10,13 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+11/17 
+
+1. Aki. Next steps for documentation reordering, splitting and other big changes?
+
 11/10
 
 1. Bob. licenses for web site tutorials and other material. Resolution: decide on license or lack of license for reuse.
-
-2. Aki. Documentation reordering, splitting and other big changes.
 
 3. Phil Price is in town and has a time series decomposition model.  I (Andrew) thought it could be fun to discuss, also this is an example of the sort of stat modeling discussion that we should be able to find a place for.
 
@@ -30,10 +32,10 @@ meeting._
 
 3. Daniel. StanCon sponsorship. Get emails out to those that might sponsor StanCon.
 
-
-
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
 * __Developer name.  Short description.__
+
+1. Aki. Kaggle Kernel experience.
