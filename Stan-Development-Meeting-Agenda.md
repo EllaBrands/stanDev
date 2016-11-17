@@ -14,6 +14,8 @@ meeting._
 
 1. Aki. Next steps for documentation reordering, splitting and other big changes?
 
+2. Charles. Timeline for developing local functions, functionals, and implementing Powell's method. 
+
 11/10
 
 1. Bob. licenses for web site tutorials and other material. Resolution: decide on license or lack of license for reuse.
