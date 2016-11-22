@@ -9,6 +9,8 @@ _New topics that should be addressed immediately or by the next
 meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
+Bob.  Should we save variables declared at top of model block and avoid having to duplicate work in generated quantities?  Decision.
+Bob.  Should we have a `jacobian +=` statement that increments the Jacobian and whose inclusion in the log density is controlled by the Jacobian template parameter?  Decision.
 
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
