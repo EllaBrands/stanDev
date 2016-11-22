@@ -115,3 +115,6 @@
   * If the range of the y-axis are pre-scaled to unit range, a prior of `normal(0,1)` on both the "signal magnitude" parameter `eta` and the "noise magnitude" parameter `sigma` reflects a prior on the signal-to-noise ratio that is peaked at .5.
   * For Matern fields, then the [joint penalised complexity prior](http://arxiv.org/abs/1503.00256) is available for the parameters (variance, range) parameters
   * In practice when we fit Gaussian processes we often either set the length-scale parameter to a fixed value corresponding to some desired level of smoothing, or we give it a strong prior.  The identification issues are real, and have to do with things such as, it's hard to identify much going on at a lower wavelength than the data spacing or a higher wavelength than the total range of the data, hence it can make perfect sense to either fix the value of hyperparameters or give them strong priors to make the model do what you want it to do.
+
+* When using informative priors, be explicit about every choice; write a sentence about each parameter in the model.
+  * For an example see section 4.1 of this paper:  http://www.stat.columbia.edu/~gelman/research/unpublished/objectivityr3.pdf
