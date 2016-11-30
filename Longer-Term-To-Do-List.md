@@ -60,6 +60,20 @@ This requires integrating the Eigen sparse matrix lib.
 
 Need these for scalable Gaussian processes.  The goal for Andrew is to code Aki's birthday model in Stan.
 
+#### Null space type. See stan-dev/stan#380
+
+Implement a vector type that satisfies
+
+A * u = 0
+
+for a given (k by n) matrix A.
+
+Algorithmically, we need to compute the SVD of A then store the (n - k) rightmost vectors of V, v_{i}. The unconstrained parameters are then the coefficients of the expansion
+
+u = sum_{i} \alpha_{i} v_{i}.
+
+Because A is constant, the Jacobian is constant and the gradients are simple.
+
 #### Riemannian-Manifold Hamiltonian Monte Carlo (RHMC)
 
 This is waiting on higher-order autodiff.
