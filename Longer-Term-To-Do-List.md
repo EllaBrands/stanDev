@@ -60,7 +60,9 @@ This requires integrating the Eigen sparse matrix lib.
 
 Need these for scalable Gaussian processes.  The goal for Andrew is to code Aki's birthday model in Stan.
 
-#### Null space type. See stan-dev/stan#380
+#### Null space type. 
+
+See stan-dev/stan#380
 
 Implement a vector type that satisfies
 
