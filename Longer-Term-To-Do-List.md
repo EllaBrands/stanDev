@@ -228,6 +228,23 @@ First step is to enumerate which tests are needed by poring over each of the fun
 
 So far, we don't know how to tackle this one.  We'd ideally like to be able to compute the Markov blanket of a graphical model and do Gibbs, but Stan's language is too general for that.  One approach would be a sublanguage for graphical models.  Another approach would be to just tack on Gibbs or Metropolis as is, but we don't know how to pull out the conditionals for Gibbs or the marginal of the discrete parameters for Metropolis without evaluating the whole density.
 
+#### Cache results of expensive calculations.
+
+Copied from a stan-dev/stan issue:
+
+Introduce some mechanism for distributions to keep track of calculations that can be reused.
+
+From Marcus Brubaker on stan-dev:
+
+The issue of Sigma = var \* ConstantMatrix is more interesting and potentially promising if we can fix it in a general way.  I'd like to propose that we think about adding a mechanism whereby distribution functions can precompute properties of constant parameters and store them somewhere.  This could include things like matrix factorizations, determinants, normalizing constants, validity checks, etc.  Then during sampling/optimization they can be re-used.  This could benefit a significant number of models.
+
+Then replying to a question from Michael Betancourt about just specializing *:
+
+The expensive part of this isn't the multiplication, although that's not exactly free.  It's that every time Sigma is passed to, e.g., multi_normal_log, its Cholesky factorization has to be recomputed even though it's exactly the same except that it's rescaled.  Part of this can be fixed by a special distribution, e.g., multi_normal_scaled_covar_log(y,mu,var,C) or something like that.  But ultimately, when Sigma is a large enough matrix, that repeated factorization really hurts.
+
+In the past we've generally ignored wasted computation like this because it was usually dwarfed by the autodiff costs but now that we've got that somewhat under control through the use of custom vari's, things like this are now showing up at the top of the profiles in these models.
+
+
 
 
 
