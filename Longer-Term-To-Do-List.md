@@ -108,6 +108,10 @@ The issue with the integration is how to deal with the ensemble samples given th
 
 We can add this, but we never figured out any decent adaptation.
 
+#### Nested Sampling
+
+See [stan-dev/stan#360](https://github.com/stan-dev/stan/issues/360)
+
 #### Pre-Specified Mass Matrices
 
 Right now, we only create them via adaptation.  Requires working out a data format for them, though we should probably use whatever we use for inits and data.
