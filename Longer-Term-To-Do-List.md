@@ -62,7 +62,7 @@ Need these for scalable Gaussian processes.  The goal for Andrew is to code Aki'
 
 #### Null space type. 
 
-See stan-dev/stan#380
+See https://github.com/stan-dev/stan/issues/380
 
 Implement a vector type that satisfies
 
