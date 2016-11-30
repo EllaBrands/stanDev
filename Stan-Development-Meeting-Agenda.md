@@ -2,6 +2,8 @@
 _Short (less than 1 minute) description of work in the past week._
 
 ### Unresolved Topics
+
+Tian Zheng will come by to hear your thoughts about Facebook/Wiki/community/etc for Stan programs.
 _Address any open topics from the past meeting._
 
 ### New Topics
