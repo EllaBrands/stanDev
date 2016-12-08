@@ -27,7 +27,11 @@ compiled_program_with_data <- foo$instantiate(data)
 estimates <- compiled_program_with_data$optimize()       # maximum a posteriori estimator
 estimates <- compiled_program_with_data$ehmc(delta = .9) # MCMC from the posterior distribution
 
-# Step 4 --- Diagnose any problems
+# Diagnose any problems
+# TODO
+
+# sampling (default) then extract
+fit <- TODO
 ```
 
 ### Typical PyStan session
@@ -44,7 +48,12 @@ program = MyStanProgramClass(data)
 estimates = dprogram.optimize()       # maximum a posteriori estimator
 estimates = dprogram.ehmc(delta=.9) # MCMC from the posterior distribution
  
-# Step 4 --- Diagnose any problems
+# Diagnose any problems
+# TODO
+
+# sampling (default) then extract
+fit = dprogram.sampling()
+alpha = dprogram['alpha']
 ```
 
 ### Typical CmdStan session
