@@ -31,7 +31,8 @@ estimates <- compiled_program_with_data$ehmc(delta = .9) # MCMC from the posteri
 # TODO
 
 # sampling (default) then extract
-fit <- TODO
+fit <- compiled_program_with_data$sampling()
+alpha <- fit$alpha
 ```
 
 ### Typical PyStan session
@@ -53,7 +54,7 @@ estimates = dprogram.ehmc(delta=.9) # MCMC from the posterior distribution
 
 # sampling (default) then extract
 fit = dprogram.sampling()
-alpha = dprogram['alpha']
+alpha = fit['alpha']
 ```
 
 ### Typical CmdStan session
