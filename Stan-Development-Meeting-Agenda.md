@@ -15,6 +15,7 @@ meeting._
 #### 12/8/2016
 
 * Daniel. Stan refactor: [stan-dev/stan#1751](https://github.com/stan-dev/stan/issues/1751). Waiting for review on Stan.
+* Daniel. StanCon update: Early registration ends 12/20/2016. 67 attendees so far (11 of them are free: developers). 17 students, 24 academic, 26 industry. Sponsors: Metrum, Stan Group, Columbia DSI. Resolution: just info.
 
 
 #### 12/1/2016
