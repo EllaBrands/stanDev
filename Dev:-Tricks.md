@@ -78,3 +78,11 @@ To make sure you never have tabs in your code files, you can use this in your ``
 ```
 
 You can rename --- the "Java" in the title is a holdover from where I first got the macros.
+
+You can also automatically remove line-final whitespace (this is just for C++, but it could be hooked elsewhere):
+
+```
+(add-hook 'c++-mode-hook
+          (lambda () (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
+
+```
