@@ -86,7 +86,7 @@ I will use the term "parameter" to designate parameters and parameter dependent 
 
 Stan computes the gradient of the posterior to efficiently explore the parameter space of a model. For each parameter, stan stores the value and the derivative in a object `var` or `fvar`, respectively used for reverse and forward mode automatic differentiation.  
 
-A function acting on a parameter should be overloaded for `double`, `var`, and `fvar` types. The easiest way to do this is to use a template type. If you decide to code the derivatives by hand, you need to overload the function. For example *sin(x)* has the signatures `sin(var x)` and `sin(fvar<T> x)`, and the derivative is explicitly coded as *cos(x)*. If you do not explicitly code the derivative, automatic differentiation *approximates* the derivative. 
+A function acting on a parameter should be overloaded for `double`, `var`, and `fvar` types. The easiest way to do this is to use a template type. If you decide to code the derivatives by hand, you need to overload the function. For example *sin(x)* has the signatures `sin(double)`, `sin(const var& x)` and `template <typename T> sin(const fvar<T>& x)`;  in the latter two, the partial derivatives are explicitly coded. If you do not explicitly code the derivative, automatic differentiation *approximates* the derivative. 
 
 A variable may be a function of parameters and data. In that case, if at least one of the arguments is a parameter, so is the returned object. This is consitent with the above definition of a parameter.
 
