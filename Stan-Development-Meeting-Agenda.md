@@ -28,3 +28,4 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
+* Jonah. How should users cite Stan and the interfaces? Context: http://discourse.mc-stan.org/t/how-to-cite-stan-is-confusing/162/10
