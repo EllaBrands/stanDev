@@ -20,24 +20,30 @@ Data "corrections" such as background subtraction and deconvolution censor infor
 
 # 3. Start simple
 
-As important as generative modeling is, it's also important to start simple.  Instead of trying to model every detail of the experiment immediately, begin with a simple approximation that captures the gross features of the data generating process.  
+As important as generative modeling is, it's also important to start simple.  Instead of trying to model every detail of the experiment immediately, begin with a simple approximation that captures the gross features of the data generating process.    Relative to long, complex models, simple models are much easier to communicate and drastically easier to debug.  
 
-Relative to long, complex models, simple models are much easier to communicate and drastically easier to debug.  Once you can verify that the simple model is being fit correctly then you can evaluate the validity 
-
-2.    Start simple!  Build your model in stages, ensuring
-      good fits at each stage.
-
-
+Once you can fit the initial simple model you can add more structure in stages, making sure that you can fit the model after each addition.  In this way you can identify problematic structures as you add them, instead of trying to find them amongst the many possible structures in the full model.
 
 # 4. Validate your fit
 
-## Try to recover simulated values
+You want to know the dirty truth?  Statistical algorithms don't always give you the right answer.  Even Stan.  If you can't verify that your statistical algorithm is giving an accurate answer then you can't tell whether a bad fit is due to the model not capturing the data generating process or your statistical algorithm returning garbage!
 
-3.    Fit your model to simulated data to ensure that
-       Stan can recover the true values.
+Here we will focus on verifying the output of Markov chain Monte Carlo, especially with the Hamiltonian Monte Carlo algorithm used in Stan.  All of these criteria are necessary but not sufficient conditions for a good fit -- in other words they all identify problems that will ensure a bad fit but none of them can guarantee a good fit.
+
+## Recover simulated values
+
+One of the most powerful means of validating a statistical algorithm is to verify that you can recover the ground truth from simulated data.  Begin by selecting reasonable "true" values for each of your parameters, simulating data according to your model, and then trying to fit your model with the simulated data.  A nice consistency check is whether or not the 5% to 95% marginal posterior interval captures each of the "true" parameter values.  If your fit does not pass this check then something is going wrong with the statistical algorithm and your model, and you will not be able to trust it when applied to real data.  
+
+The simulated data itself can be generated in Stan using the random number generators in the generated quantities block or using random number generators in your favorite computing environment like R or Python.  The simulation process itself will follow directly from the model, although if you have not focused on building your model generatively then it may not be easy to see that!  
 
 ## Check generic diagnostics
+
+The best generic diagnostic for the accuracy of a Markov chain Monte Carlo algorithm is the split R-hat statistic which quantifies the consistency of an ensemble of Markov chains.  The idea is to run multiple Markov chains, 4 is an okay default but running more makes the diagnostic more sensitive, and ensure that they're all exploring the same regions of parameter space.  **If even one chain is inconsistent with the others then all of the chains are suspect!**  In practice we have found that requiring ```Rhat < 1.1``` is a good default requirement for each parameter.
+
+Another potential problem to keep in mind is Markov chains that explore very slowly.  Slow chains lead to low numbers of effective samples, and if there are too few effective samples then we can't accurate estimate the number of effective samples at all.  A good check for such issues is the number of effective samples per iteration -- if ```N_eff / N < 0.001``` then you should be suspect of the effective sample size calculation.
 
 ## Check algorithm-specific diagnostics
 
 4.    Keep an eye on those diagnostics!
+
+# 5. Heed the Folk Theorem
