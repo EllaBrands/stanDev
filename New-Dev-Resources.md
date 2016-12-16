@@ -5,6 +5,8 @@
 
 Each of the repos should be able to be worked on independently. The ones with dependencies include them as git submodules.
 
+Maybe most importantly, each of the repos also has their own wiki! Don't forget to check that wiki homepage and search there as well.
+
 # How to contribute
 Try picking an issue off the github issues for the relevant repo. Math is potentially a good place to start as it has no dependencies. Generally speaking the "develop" branch should be stable and passing the build and tests. You should begin your changes there. For more details see the developer process in the links.
 
