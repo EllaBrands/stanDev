@@ -44,6 +44,14 @@ Another potential problem to keep in mind is Markov chains that explore very slo
 
 ## Check algorithm-specific diagnostics
 
-4.    Keep an eye on those diagnostics!
+Hamiltonian Monte Carlo is provides not only state-of-the-art sampling speed, it also provides state-of-the-art diagnostics.  Unlike other algorithms, when Hamiltonian Monte Carlo fails it fails sufficiently spectacularly that we can easily identify the problems.
+
+In practice this means checking that there are no _divergence_ in your fit.  Divergences are automatically reported in some interfaces, namely RStan, but they can be directly access in the fit output in all interfaces.
+
+There is an additional _energy_ diagnostic in development that will be made available to the interfaces soon.
 
 # 5. Heed the Folk Theorem
+
+The Folk Theorem of Statistical Computing is a heuristic developed by Andrew Gelman stating that most statistical computational problems are due not to the algorithm being used but rather the model itself.  For example, a poorly-identified model with diffuse priors will require sojourns into the extremes of parameter space that will break even the best statistical algorithms.  Instead of trying to build an algorithm that can handle such extreme values, we can simply replace the diffuse priors with weakly-informative priors and use the existing algorithm.
+
+The Folk Theorem is an important perspective because if forces the user to confront and evaluate the assumptions inherent to their model.  This is especially useful when adhering to a sequential model building process where problematic model structures are easy to identify.  Moreover, the Folk Theorem provides continued motivation for generative modeling -- in practice you will find that many modeling problems are non-generative in nature, and replacing that structure with a generative component almost always provides significant improvement.
