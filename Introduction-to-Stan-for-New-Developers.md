@@ -26,9 +26,6 @@ There are many additional resources available for learning how to optimize C++ c
 
 ## Contributing to the Interfaces
 
-- May need core code knowledge
-- Adding auxiliary functions, etc.
+The Stan interfaces wrap the core C++ code and expose its functionality to other languages, such as R and Python.  Consequently contributions to the interfaces may require knowledge of how to couple these languages together, for example with Rccp and Cython, or be built entirely in the interface language.  For details on a specific interface please consult the corresponding GitHub repository.
 
-
-
-- Now go checkout issues trackers on GitHub!
+Once you have familiarized yourself with our process take a look at the GitHub issue trackers for the many tasks that need to be tackled!  We look forward to hearing from you on Discourse and seeing your pull requests!
