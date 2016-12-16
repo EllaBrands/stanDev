@@ -6,32 +6,26 @@ Every developer has their own local development setup, but we have compiled [var
 
 ## Style
 
-https://github.com/stan-dev/stan/wiki/Code-Quality
-https://github.com/stan-dev/stan/wiki/Coding-Style-and-Idioms
+In order to ensure that we can quickly read and understand contributions, consistent style is incredibly important.  We have adopted conventions for [code quality](https://github.com/stan-dev/stan/wiki/Code-Quality) and [code style](https://github.com/stan-dev/stan/wiki/Coding-Style-and-Idioms) to which all contributions must conform.
 
 ## Testing
 
-https://github.com/stan-dev/stan/wiki/How-to-Write-Unit-Tests-with-GoogleTest
-https://github.com/stan-dev/stan/wiki/Testing-Stan-using-Gnu-Make-and-Python
+The robustness of Stan is only as good as our test coverage, and we require that all new contributions are adequately tested.  We use the [GoogleTest framework](https://github.com/stan-dev/stan/wiki/How-to-Write-Unit-Tests-with-GoogleTest) for writing tests and [GnuMake and Python](https://github.com/stan-dev/stan/wiki/Testing-Stan-using-Gnu-Make-and-Python) for running those tests.
 
-## Contributing
+## Contributing to Stan
 
-Lots of good Git tutorials online.  
+We have adopted the GitFlow process for incorporating new contributions into Stan.  If you are not yet familiar with Git we recommend that you check out many of the great Git tutorials freely available online.  Once you are comfortable with Git itself you can read about are particular implementation of GitFlow [here](https://github.com/stan-dev/stan/wiki/Dev:-Git-Process) and [here](https://github.com/stan-dev/stan/wiki/Developer-process-overview).  
 
-https://github.com/stan-dev/stan/wiki/Dev:-Git-Process
-https://github.com/stan-dev/stan/wiki/Developer-process-overview
-
-https://github.com/stan-dev/stan/wiki/Testing:-Continuous-Integration
-
+All new contributions are also tested with out [continuous integration framework](https://github.com/stan-dev/stan/wiki/Testing:-Continuous-Integration).
 
 ## Contributing Core Code
 
-- C++, Templates
-http://www.agner.org/optimize/optimizing_cpp.pdf
-https://www.amazon.com/Templates-Complete-Guide-David-Vandevoorde/dp/0201734842
-https://www.amazon.com/Modern-Design-Generic-Programming-Patterns/dp/0201704315
+The core code in Stan is written in heavily-templated C++ to ensure high-performance.  There are many great C++ tutorials available online, for example [cplusplus.org](http://www.cplusplus.com/doc/tutorial/), and once you are familiar with the basics of the language you can tackle the subtleties of templates.  We highly recommend [Vandevoorde and Josuttis](https://www.amazon.com/Templates-Complete-Guide-David-Vandevoorde/dp/0201734842) and [Alexandrescu](https://www.amazon.com/Modern-Design-Generic-Programming-Patterns/dp/0201704315).
+
+There are many additional resources available for learning how to optimize C++ code, including [Agner Fog's manuscript](http://www.agner.org/optimize/optimizing_cpp.pdf) and the many books of, amongst others, Scott Meyers and Herb Sutter.
 
 ## Contributing to the Interfaces
+
 - May need core code knowledge
 - Adding auxiliary functions, etc.
 
