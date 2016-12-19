@@ -4,6 +4,10 @@ Firstly, the Stan project is [hosted on GitHub](https://github.com/stan-dev) so 
 
 Every developer has their own local development setup, but we have compiled [various helpful ](https://github.com/stan-dev/stan/wiki/Dev:-Tricks) that you might find useful.
 
+## Project layout
+
+You can see the overarching Stan project structure [here](https://github.com/stan-dev/stan/wiki#github-repositories-and-submodule-relationships). Each of the repos can be worked on independently, though some will include others as git submodules if they are dependent. Each of the repos also has their own wiki! Don't forget to check that wiki homepage and search it for information that might be related to that subproject.
+
 ## Style
 
 In order to ensure that we can quickly read and understand contributions, consistent style is incredibly important.  We have adopted conventions for [code quality](https://github.com/stan-dev/stan/wiki/Code-Quality) and [code style](https://github.com/stan-dev/stan/wiki/Coding-Style-and-Idioms) to which all contributions must conform.
@@ -29,3 +33,17 @@ There are many additional resources available for learning how to optimize C++ c
 The Stan interfaces wrap the core C++ code and expose its functionality to other languages, such as R and Python.  Consequently contributions to the interfaces may require knowledge of how to couple these languages together, for example with Rccp and Cython, or be built entirely in the interface language.  For details on a specific interface please consult the corresponding GitHub repository.
 
 Once you have familiarized yourself with our process take a look at the GitHub issue trackers for the many tasks that need to be tackled!  We look forward to hearing from you on Discourse and seeing your pull requests!
+
+## Stan developer resources
+* [Stan project structure](https://github.com/stan-dev/stan/wiki#github-repositories-and-submodule-relationships)
+* [Stan Users Group](https://groups.google.com/forum/#!categories/stan-users/general)
+* [Discourse](http://discourse.mc-stan.org/)
+* [Developer process](https://github.com/stan-dev/stan/wiki/Developer-process-overview)
+* [Contributing a new Stan function](https://github.com/stan-dev/stan/wiki/Contributing-New-Functions-to-Stan)
+* [Stan C++ style guide](https://github.com/stan-dev/stan/wiki/Coding-Style-and-Idioms)
+* [Autodiff paper](https://arxiv.org/abs/1509.07164) Details the implementation and math library generally
+
+## C++ resources
+* [Vandevoorde's C++ Templates] (http://www.josuttis.com/tmplbook/)
+* [Alexandrescu's Modern C++ Design] (http://erdani.com/index.php/books/modern-c-design/)
+* [Agner Fog's manuscript](http://www.agner.org/optimize/optimizing_cpp.pdf)
