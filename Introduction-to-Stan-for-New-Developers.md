@@ -42,6 +42,7 @@ Once you have familiarized yourself with our process take a look at the GitHub i
 * [Contributing a new Stan function](https://github.com/stan-dev/stan/wiki/Contributing-New-Functions-to-Stan)
 * [Stan C++ style guide](https://github.com/stan-dev/stan/wiki/Coding-Style-and-Idioms)
 * [Autodiff paper](https://arxiv.org/abs/1509.07164) Details the implementation and math library generally
+* [Some Bayesian Modeling Techniques in Stan](https://www.youtube.com/watch?v=uSjsJg8fcwY)
 
 ## C++ resources
 * [Vandevoorde's C++ Templates] (http://www.josuttis.com/tmplbook/)
