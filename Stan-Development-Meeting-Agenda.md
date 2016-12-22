@@ -12,7 +12,8 @@ meeting._
 
 #### 12/22/2016
 
-* Daniel. StanCon update: Early registration ended with 107 registrants! We've had 2 registrants since: 109.
+* Daniel. StanCon update: Early registration ended with 107 registrants! We've had 2 registrants since: 109. Resolution: just info.
+* Daniel. RStan: https://github.com/stan-dev/rstan/issues/371 is a problem. It's broken functionality in other packages, so please add tests to check that the output from `stan_rdump()` is readable by stan-dev/stan's dump.hpp. Resolution: add tests.
 
 #### 12/8/2016
 
