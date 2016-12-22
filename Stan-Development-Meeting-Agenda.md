@@ -11,7 +11,7 @@ meeting._
 * __Developer name.  Short description.  Desired resolution.__
 
 #### 12/22/2016
-* Charles. How can autodiff handle IF statements, conditional of the value of a parameter? Works with finite diff and I think the derivative is defined.
+* Charles. How can autodiff handle IF statements, conditional on the value of a parameter? Works with finite diff and I think the derivative is defined.
 
 #### 12/8/2016
 
