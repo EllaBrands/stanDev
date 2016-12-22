@@ -10,6 +10,10 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+#### 12/22/2016
+
+* Daniel. StanCon update: Early registration ended with 107 registrants! We've had 2 registrants since: 109.
+
 #### 12/8/2016
 
 * Daniel. Stan refactor: [stan-dev/stan#1751](https://github.com/stan-dev/stan/issues/1751). Waiting for review on Stan.
