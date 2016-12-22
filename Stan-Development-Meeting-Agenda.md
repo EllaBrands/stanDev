@@ -10,9 +10,6 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
-#### 12/22/2016
-* Charles. How can autodiff handle IF statements, conditional on the value of a parameter? Works with finite diff and I think the derivative is defined.
-
 #### 12/8/2016
 
 * Daniel. Stan refactor: [stan-dev/stan#1751](https://github.com/stan-dev/stan/issues/1751). Waiting for review on Stan.
