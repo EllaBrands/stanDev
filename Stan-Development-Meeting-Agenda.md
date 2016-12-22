@@ -4,33 +4,16 @@ _Short (less than 1 minute) description of work in the past week._
 ### Unresolved Topics
 _Address any open topics from the past meeting._
 
+* Daniel. RStan: https://github.com/stan-dev/rstan/issues/371 is a problem. It's broken functionality in other packages, so please add tests to check that the output from `stan_rdump()` is readable by stan-dev/stan's dump.hpp. Resolution: add tests.
+
 ### New Topics
 _New topics that should be addressed immediately or by the next
 meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
-#### 12/22/2016
-
-* Daniel. StanCon update: Early registration ended with 107 registrants! We've had 2 registrants since: 109. Resolution: just info.
-* Daniel. RStan: https://github.com/stan-dev/rstan/issues/371 is a problem. It's broken functionality in other packages, so please add tests to check that the output from `stan_rdump()` is readable by stan-dev/stan's dump.hpp. Resolution: add tests.
-
-#### 12/8/2016
-
-* Daniel. Stan refactor: [stan-dev/stan#1751](https://github.com/stan-dev/stan/issues/1751). Waiting for review on Stan.
-* Daniel. StanCon update: Early registration ends 12/20/2016. 67 attendees so far (11 of them are free: developers). 17 students, 24 academic, 26 industry. Sponsors: Metrum, Stan Group, Columbia DSI. Resolution: just info.
-
-
-#### 12/1/2016
-
-* Bob.  Should we save variables declared at top of model block and avoid having to duplicate work in generated quantities?  Decision.
-* Bob.  Should we have a `jacobian +=` statement that increments the Jacobian and whose inclusion in the log density is controlled by the Jacobian template parameter?  Decision.
-
-
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
 * __Developer name.  Short description.__
-
-* Jonah. How should users cite Stan and the interfaces? Context: http://discourse.mc-stan.org/t/how-to-cite-stan-is-confusing/162/10
