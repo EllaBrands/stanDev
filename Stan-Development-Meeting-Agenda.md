@@ -12,7 +12,7 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
-1/5/2017
+*1/5/2017*
 
 * Daniel. Refactor: Stan has been reviewed. Resolution: sign off by:
 - [x] CmdStan: Daniel
