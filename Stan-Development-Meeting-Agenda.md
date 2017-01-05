@@ -12,6 +12,14 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+1/5/2017
+
+* Daniel. Refactor: Stan has been reviewed. Resolution: sign off by:
+- [x] CmdStan: Daniel
+- [ ] RStan: Ben / Jonah
+- [ ] PyStan: Allen
+
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
