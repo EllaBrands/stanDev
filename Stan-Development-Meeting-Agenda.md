@@ -25,3 +25,5 @@ _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
 * __Developer name.  Short description.__
+
+* Bob. Mixture models.
