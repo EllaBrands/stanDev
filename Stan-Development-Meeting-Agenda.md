@@ -12,7 +12,7 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
-*1/5/2017*
+**1/5/2017**
 
 * Daniel. Refactor pull request: Stan has been reviewed. [Link to github PR](https://github.com/stan-dev/stan/pull/2004) Resolution: sign off by:
 - [x] CmdStan: Daniel
