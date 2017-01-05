@@ -15,9 +15,9 @@ meeting._
 **1/5/2017**
 
 * Daniel. Refactor pull request: Stan has been reviewed. [Link to github PR](https://github.com/stan-dev/stan/pull/2004) Resolution: sign off by:
-- [x] CmdStan: Daniel
-- [ ] RStan: Ben / Jonah
-- [ ] PyStan: Allen
+  - [x] CmdStan: Daniel
+  - [x] RStan: Ben / Jonah
+  - [ ] PyStan: Allen
 
 
 ### Open Discussion Topics
