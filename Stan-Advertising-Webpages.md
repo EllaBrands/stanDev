@@ -1,3 +1,14 @@
+Should do soon:  writeup for Sloan.  Include this example:
+
+On Jan 6, 2017, at 9:12 AM, Linas Mockus <linasmockus2@gmail.com> wrote:
+
+
+Hi,
+
+I saw some posts about using stan for federal projects. If it is still relevant we are using for FDA to determine inter/intra variability of different drugs. The model is a very simple hierarchical with error in variables to incorporate analytical error. In fact I am using Brugs & stan to verify the results. We are considering CU, physical properties, and dissolution (fiber optics every minute). We expect bunch of publications over the next 2.5 years.
+
+We are working on NIH proposal and will use stan for compartmental modeling using covariates such as creatine clearance/BUN/age/etc. Probably will use Torsen for this. 
+
 Hi all.  We've been collecting Stan examples and Stan testimonials, and now we want to put together some promotional materials.
 
 We have various audiences in mind.  In no particular order:
