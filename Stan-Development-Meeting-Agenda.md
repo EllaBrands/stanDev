@@ -26,4 +26,6 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
+* Andrew. Some discussion of what will be needed to implement GMO in Stan.
+
 * Bob. Mixture models.
