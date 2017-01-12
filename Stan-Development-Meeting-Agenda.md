@@ -20,4 +20,6 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
+Betancourt.  http://andrewgelman.com/2011/09/29/hamiltonian-monte-carlo-stories/
+
 Betancourt.  Trans-Atlantic funding opportunities.
