@@ -20,7 +20,7 @@ Here's an example of what the doc should look like, so I can make some concrete 
  */
  template <typename T>
  inline std::vector<T> sort_desc(std::vector<T> xs) {
-   check_not_nan("sort_asc", "container argument", xs);
+   check_not_nan("sort_desc", "container argument", xs);
    std::sort(xs.begin(), xs.end(), std::greater<T>());
    return xs;
  }
