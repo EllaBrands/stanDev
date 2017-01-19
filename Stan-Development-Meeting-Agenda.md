@@ -16,6 +16,8 @@ Betancourt.  Divergence threshold.  Should we increase it?
 
 Betancourt.  Average acceptance probability calculation.  Can I change it?
 
+StanCon 2017. Status. No action required.
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
