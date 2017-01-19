@@ -14,6 +14,8 @@ Andrew. Hiring. Plan for considering applicants and potential joint hires elsewh
 
 Betancourt.  Divergence threshold.  Should we increase it?
 
+Betancourt.  Average acceptance probability calculation.  Can I change it?
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
