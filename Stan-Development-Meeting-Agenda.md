@@ -14,11 +14,17 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+* Andrew. Hiring. Plan for considering applicants and potential joint hires elsewhere.
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
 * __Developer name.  Short description.__
+
+* Andrew. In one week, we hope to have a clear demonstration that GMO works and then we can discuss implementation in Stan.
+
+* Andrew. Priors for rstanarm.
 
 Betancourt.  http://andrewgelman.com/2011/09/29/hamiltonian-monte-carlo-stories/
 
