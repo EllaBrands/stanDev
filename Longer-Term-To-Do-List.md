@@ -26,6 +26,10 @@ Need to figure out
 
 Bring all the models up to current stats and coding standards.
 
+#### Function includes
+
+allow includes in Stan programs.  allow users to submit
+
 #### CloudStan
 
 Something to run models in the cloud.
