@@ -33,9 +33,9 @@ Something to run models in the cloud.
 
 Use built-in Eigen GPU and multi-threading for matrix arithmetic.
 
-#### Maximum Marginal Likelihood
+#### Maximum Marginal Likelihood: GMO
 
-Including both the fitting and the evaluation of how well the variance approxmations work.  Andrew wants to use his "GMO" algorithm.
+Including both the fitting and the evaluation of how well the variance approxmations work.  Andrew wants to use his gradient marginal optimization (GMO) algorithm.
 
 
 #### Implicit Functions and Differential Algebraic Equations (DAE)
