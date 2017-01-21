@@ -37,6 +37,14 @@ Use built-in Eigen GPU and multi-threading for matrix arithmetic.
 
 Including both the fitting and the evaluation of how well the variance approxmations work.  Andrew wants to use his gradient marginal optimization (GMO) algorithm.
 
+#### Graphical Model Wrappers
+
+So we can handle missing data or forward simulation.
+
+#### Standalone Generated Quantities
+
+Run generated quantities for an already fit model using only parameter draws.
+
 
 #### Implicit Functions and Differential Algebraic Equations (DAE)
 
