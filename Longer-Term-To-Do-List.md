@@ -22,6 +22,10 @@ Need to figure out
 - target audience and level of stats background we assume
 - whether to have it depend on a given interface for concreteness or to make it interface neutral with appendices
 
+#### Example program updates
+
+Bring all the models up to current stats and coding standards.
+
 #### CloudStan
 
 Something to run models in the cloud.
