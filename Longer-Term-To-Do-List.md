@@ -49,10 +49,13 @@ So we can handle missing data or forward simulation.
 
 Run generated quantities for an already fit model using only parameter draws.
 
+#### Stochastic diff eq models
+
+Process error models in addition to measurement errors for diff eqs.
 
 #### Implicit Functions and Differential Algebraic Equations (DAE)
 
-Ben's been asking for the first for years.  The deSolve package in R does both, I think.
+This will let us implement some additional distributions and also solvers.
 
 #### Stochastic Black-Box Variational Inference (SBBVI)
 
