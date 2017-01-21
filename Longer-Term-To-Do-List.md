@@ -29,6 +29,9 @@ Something to run models in the cloud.
 * user-defined models
 * pre-existing models with user data
 
+#### GPU and Multi-Core Matrix Operations
+
+Use built-in Eigen GPU and multi-threading for matrix arithmetic.
 
 #### Maximum Marginal Likelihood
 
