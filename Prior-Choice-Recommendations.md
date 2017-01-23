@@ -118,3 +118,8 @@
 
 * When using informative priors, be explicit about every choice; write a sentence about each parameter in the model.
   * For an example see section 4.1 of this paper:  http://www.stat.columbia.edu/~gelman/research/unpublished/objectivityr3.pdf
+
+* Priors for rstanarm
+  * Default priors should all be autoscaled---this is particularly relevant for stan_glm().  In particular, for the normal-distribution link, prior_aux should be scaled to the residual sd of the data.  Currently it's an unscaled normal(0,5) which will be a very strong prior if the scale of the data happens to be large.
+  * Should stan_lm() be tied to the R-squared prior?
+  * If priors are user-specified, it seems to me that autoscaling should _not_ be the default.  Once you're specifying a prior from the outside, I'm guessing it will almost always be on the direct scale.
