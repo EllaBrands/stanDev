@@ -20,6 +20,8 @@ meeting._
 
 Bob.  Power tests/experimental design for measurements for stiff soil-carbon compartment models.  Some suggestions on how to go about it.
 
+Bob.  Google Summer of Code through NumFOCUS (they'll do paperwork).  Get projects if anyone's interested in mentoring.
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
