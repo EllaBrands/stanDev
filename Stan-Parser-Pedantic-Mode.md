@@ -134,3 +134,15 @@ There are two approaches --- plumb enough information top down through the parse
 For others, we have the AST and can design walkers for it that walk over the code any old way and report.
 
 Or, we could do something hacky with regexes along the lines of cpplint (a Python program, not something plumbed into the C++ parser, at least as far as I know).
+
+#### Indentation Errors
+
+Catch when a program's indentation doesn't match the braces.  E.g.,
+
+```
+for (i in 1:10)
+  mu[i] ~ normal(0, 1);
+  sigma[i] ~ cauchy(0, 2);
+```
+
+Should flag the line with `sigma` as it's not in scope.
