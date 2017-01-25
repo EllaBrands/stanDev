@@ -4,13 +4,10 @@ _Short (less than 1 minute) description of work in the past week._
 ### Unresolved Topics
 _Address any open topics from the past meeting._
 
-Andrew. Hiring. Plan for considering applicants and potential joint hires elsewhere.
+Andrew and Dustin.  GMO.  Dustin will present some GMO results and we can discuss plans for implementing in Stan.
+(Andrew needs to leave Stan meeting 11:30 so it would be good to have this discussion early in the meeting.)
 
-Betancourt.  Divergence threshold.  Should we increase it?
-
-Betancourt.  Average acceptance probability calculation.  Can I change it?
-
-StanCon 2017. Status. No action required.
+Andrew. Hiring. We should look at some applicants.  No rush but we shouldn't wait too long.
 
 ### New Topics
 _New topics that should be addressed immediately or by the next
