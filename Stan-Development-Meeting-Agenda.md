@@ -19,6 +19,8 @@ Bob.  Power tests/experimental design for measurements for stiff soil-carbon com
 
 Bob.  Google Summer of Code through NumFOCUS (they'll do paperwork).  Get projects if anyone's interested in mentoring.
 
+Thel. Adding FFT to stan, design decisions (not exposing complex arithmetic, returning matrices).
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
