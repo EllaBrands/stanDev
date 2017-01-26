@@ -14,7 +14,7 @@ Stan C++ will provide an API to the interfaces, offering services for optimizati
 # Current state of the refactor
 
 - Considerable work has been done on the branch `issue-1361-writer_callback`: https://github.com/stan-dev/stan/tree/feature/issue-1361-writer_callback
-- Issue #1361 records considerable discussion.
+- Issue [#1361](https://github.com/stan-dev/stan/issues/1361) records considerable discussion.
 
 # ``command`` with Callbacks
 
