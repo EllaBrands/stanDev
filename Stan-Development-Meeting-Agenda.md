@@ -12,6 +12,8 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+Betancourt.  What's holding up the new Cholesky branch?  Merge or not to merge, otherwise what needs to be done.
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
