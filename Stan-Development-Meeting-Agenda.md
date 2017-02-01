@@ -14,6 +14,8 @@ meeting._
 
 Betancourt.  What's holding up the new Cholesky branch?  Merge or not to merge, otherwise what needs to be done.
 
+Margossian. root finder: I realize we were going with Eigen's dogleg method, but we should consider KINSOL's solver, which will be easier to parallelize. 
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
