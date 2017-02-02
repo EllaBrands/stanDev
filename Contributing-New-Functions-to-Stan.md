@@ -268,3 +268,7 @@ We do not edit `function_signatures.h`, but instead "directly" modify Stan's gra
 |semantic_actions.hpp|
 |term_grammar_def.hpp|
 |term_grammar.hpp|
+
+#### Adding Gaussian Process Covariance Functions
+
+Implementing Gaussian processes requires three different functions.  Details are given in https://github.com/stan-dev/stan/wiki/Adding-a-Gaussian-Process-Covariance-Function. 
