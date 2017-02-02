@@ -24,4 +24,6 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
+Andrew.  Scaling and priors as part of parameter specification in Stan language?
+
 Betancourt.  Gaussian process covariance function implementations -- compute as intermediary object or just produce the needed probabilistic objects (densities or Cholesky factors)? 
