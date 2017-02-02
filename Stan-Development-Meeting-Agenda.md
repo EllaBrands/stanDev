@@ -16,6 +16,8 @@ Betancourt.  What's holding up the new Cholesky branch?  Merge or not to merge, 
 
 Margossian. root finder: I realize we were going with Eigen's dogleg method, but we should consider KINSOL's solver, which will be easier to parallelize. 
 
+Gabry. Need to decide on rstanarm default behavior with priors before Andrew's book. We have a meeting to discuss rstanarm issues Friday AM but it would be good to get everyone's opinion today and then a subset of us can discuss in more detail Friday. 
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
