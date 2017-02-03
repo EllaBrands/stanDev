@@ -4,8 +4,6 @@ _Short (less than 1 minute) description of work in the past week._
 ### Unresolved Topics
 _Address any open topics from the past meeting._
 
-Andrew and Dustin.  GMO.  Dustin will present some GMO results and we can discuss plans for implementing in Stan?
-
 ### New Topics
 _New topics that should be addressed immediately or by the next
 meeting._
@@ -24,6 +22,6 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
-Andrew.  Scaling and priors as part of parameter specification in Stan language?
+Andrew.  Priors as part of parameter specification in Stan language?
 
 Betancourt.  Gaussian process covariance function implementations -- compute as intermediary object or just produce the needed probabilistic objects (densities or Cholesky factors)? 
