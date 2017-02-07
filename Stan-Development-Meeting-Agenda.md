@@ -24,4 +24,6 @@ including speculation and brainstorming._
 
 Andrew.  Priors as part of parameter specification in Stan language?
 
+Andrew.  Nonidentifiability in symmetric probabilistic matrix factorization model.
+
 Betancourt.  Gaussian process covariance function implementations -- compute as intermediary object or just produce the needed probabilistic objects (densities or Cholesky factors)? 
