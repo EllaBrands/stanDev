@@ -16,6 +16,8 @@ Margossian. root finder: I realize we were going with Eigen's dogleg method, but
 
 Gabry. Need to decide on rstanarm default behavior with priors before Andrew's book. We have a meeting to discuss rstanarm issues Friday AM but it would be good to get everyone's opinion today and then a subset of us can discuss in more detail Friday. 
 
+Sebastian. Parallel ODEs in Stan using OpenMP (linear speedup with # CPUs!): It works by hijacking the ODE facilities. Do we want this in Stan to be available to all users? If yes, then: Need for ODE system refactor (stiff+non-stiff)? Who wants to join? More work needed: Analytic Jacobians of ODE rhs (optionally with code-generation); ragged arrays.
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
