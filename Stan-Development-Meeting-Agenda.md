@@ -10,6 +10,8 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+Carpenter.  What do we want to do with vector views, matrices, etc.  Decision about what to do (isn't that always the desired resolution)?
+
 Betancourt.  What's holding up the new Cholesky branch?  Merge or not to merge, otherwise what needs to be done.
 
 Margossian. root finder: I realize we were going with Eigen's dogleg method, but we should consider KINSOL's solver, which will be easier to parallelize. 
