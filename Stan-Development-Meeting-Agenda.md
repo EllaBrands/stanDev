@@ -16,6 +16,8 @@ Carpenter.  What do we want to do with vector views, matrices, etc.  Decision ab
 
 Sebastian. Parallel ODEs in Stan using OpenMP (linear speedup with # CPUs!): It works by hijacking the ODE facilities. Do we want this in Stan to be available to all users? If yes, then: Need for ODE system refactor (stiff+non-stiff)? Who wants to join? More work needed: Analytic Jacobians of ODE rhs (optionally with code-generation); ragged arrays.
 
+Aki. Mike made a proposal on adding GP covariance functions with cov, chol, lpdf. In discourse there was some dicussion. I have couple questions.
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
