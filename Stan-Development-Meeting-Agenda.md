@@ -12,8 +12,6 @@ meeting._
 
 Betancourt.  Merging algorithm changes.  Establish an actual policy instead of vague agreements that end up falling apart on the first merge.
 
-Carpenter.  What do we want to do with vector views, matrices, etc.  Decision about what to do (isn't that always the desired resolution)? [ed: Be specific on "what to do" -- as is this sounds extremely vague. Checklists, etc welcome].
-
 Sebastian. Parallel ODEs in Stan using OpenMP (linear speedup with # CPUs!): It works by hijacking the ODE facilities. Do we want this in Stan to be available to all users? If yes, then: Need for ODE system refactor (stiff+non-stiff)? Who wants to join? More work needed: Analytic Jacobians of ODE rhs (optionally with code-generation); ragged arrays.
 
 Aki. Mike made a proposal on adding GP covariance functions with cov, chol, lpdf. In discourse there was some dicussion. I have couple questions.
