@@ -1,5 +1,7 @@
 One of the exciting items on the horizon for Stan is incorporating more and more Gaussian process covariance functions, especially those that exploit structure for faster computations.  At the same time, that structure will be cumbersome to propagate through the various computations needed to incorporate a Gaussian process in Stan, including determinant calculations and matrix divisions.  To ensure that Gaussian processes in Stan can take advantage of as much intrinsic structure as possible without requiring a completely suite of specialized linear algebra we have decided that each specialized Gaussian process covariance function introduced in Stan must have three implementations.
 
+Note that if the covariance matrix is likely to be ill-posed then it is probably best to implement not the covariance function in isolation but rather it's sum with a diagonal jitter, ideally given as a parameter that can be set by the user either as data or as a parameter.
+
 ## Dense Covariance Matrix
 
 Each Gaussian process implementation must have a function that returns a dense covariance matrix,
