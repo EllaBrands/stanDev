@@ -10,13 +10,9 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
-Carpenter.  What do we want to do with vector views, matrices, etc.  Decision about what to do (isn't that always the desired resolution)?
+Betancourt.  Merging algorithm changes.  Establish an actual policy instead of vague agreements that end up falling apart on the first merge.
 
-Betancourt.  What's holding up the new Cholesky branch?  Merge or not to merge, otherwise what needs to be done.
-
-Margossian. root finder: I realize we were going with Eigen's dogleg method, but we should consider KINSOL's solver, which will be easier to parallelize. 
-
-Gabry. Need to decide on rstanarm default behavior with priors before Andrew's book. We have a meeting to discuss rstanarm issues Friday AM but it would be good to get everyone's opinion today and then a subset of us can discuss in more detail Friday. 
+Carpenter.  What do we want to do with vector views, matrices, etc.  Decision about what to do (isn't that always the desired resolution)? [ed: Be specific on "what to do" -- as is this sounds extremely vague. Checklists, etc welcome].
 
 Sebastian. Parallel ODEs in Stan using OpenMP (linear speedup with # CPUs!): It works by hijacking the ODE facilities. Do we want this in Stan to be available to all users? If yes, then: Need for ODE system refactor (stiff+non-stiff)? Who wants to join? More work needed: Analytic Jacobians of ODE rhs (optionally with code-generation); ragged arrays.
 
@@ -26,8 +22,6 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
-Andrew.  Priors as part of parameter specification in Stan language?
-
 Andrew.  Nonidentifiability in symmetric probabilistic matrix factorization model.
 
-Betancourt.  Gaussian process covariance function implementations -- compute as intermediary object or just produce the needed probabilistic objects (densities or Cholesky factors)? 
+Andrew.  Priors as part of parameter specification in Stan language?
