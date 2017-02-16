@@ -19,3 +19,8 @@ including speculation and brainstorming._
 Andrew.  Nonidentifiability in symmetric probabilistic matrix factorization model.
 
 Andrew.  Priors as part of parameter specification in Stan language?
+
+Charles. For algebraic solver: evaluating the Jacobian of the solver with respect to the parameters. I'm a little confused about which variables are fixed and which ones vary.
+
+Charles. Passing tuning parameters for ODEs in higher-order function. Function gets properly parsed, math unit tests work, but final implementation doesn't.
+
