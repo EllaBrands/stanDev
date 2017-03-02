@@ -17,3 +17,5 @@ including speculation and brainstorming._
 * __Developer name.  Short description.__
 
 Betancourt.  StanCon in UK?  Potential local support via Turing Institute.
+
+Betancourt.  Intuition of LKJ correlation distribution.
