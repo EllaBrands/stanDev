@@ -6,7 +6,7 @@ Currently Stan does not allow for within-chain parallelism due to
 2. requirement to run on all major platforms (including Windows)
 3. inability of most of our users (laptop) hardware to run more than 4 processes at once.
 
-This can become a major bottleneck whenever many expensive operations are required to defined the log-density. Of course, counter-argument 3 is always a given, but as Stan is used more and more on large problems which are usually solved on computer clusters, we will dismiss it in the discussion here.
+This can become a major bottleneck whenever many expensive operations are required to define the log-density. Of course, counter-argument 3 is always a given, but as Stan is used more and more on large problems which are usually solved on computer clusters, we will dismiss it in the discussion here.
 
 A very common situation for Stan models are hierarchical models which require the evaluation of the per-group mean for group-specific parameter sets. So consider the situation when we have g=1...G groups and each group has a parameter vector theta_g of length P. A good example are longitudinal hierarchical models where the group mean is defined by an ODE which must be solved using our stiff or non-stiff ODE solver for each group at the time-points ts at which we have data observed.
 
@@ -15,7 +15,7 @@ Right now, a Stan program will have to call the `integrate_ode` function for eac
 Since hierarchical models are so common in Stan and many models evolve around a repeated evaluation of some expensive function this page aims to discuss and collect ideas to solve this. The key ideas are
 
 - Augment the Stan language with specialized `_parallel` functions in addition to the base function
-- The `_parallel` function must not use AD to calculate the gradients, but instead use analytic only expression. The analytic expressions are calculated in parallel and then merged back into the AD graph.
+- The `_parallel` function must not use AD to calculate the gradients, but instead use analytic only expressions. The analytic expressions are calculated in parallel and then merged back into the AD graph.
 - Use OpenMP which is a cross-platform compiler solution allowing simple parallelizations of for loops. Compilers not supporting OpenMP will still compile the program, but no parallelization will occur.
 
 We will use the ODE case as an example below, but I would assume (hope) that other subsystems in Stan can facilitate this approach (GPs)?
