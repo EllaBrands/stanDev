@@ -39,7 +39,13 @@ We will use the ODE case as an example below, but I would assume (hope) that oth
 
 The basic idea is to add to the Stan language parallel versions of particularly expensive functions. This implies that functions which were previously called for each group with data specific to the given group now need to be called with all data specified at once. The `integrate_ode` function currently has the signature
 
-`real [,] integrate_ode(ode_functor, real[] y0_g, real t0_g, real[] ts_g, real[] x_r_g, int[] x_i_g)`
+```C++
+real [,] integrate_ode(ode_functor,
+                       real[] y0_g, real t0_g,
+                       real[] ts_g,
+                       real[] x_r_g,
+                       int[] x_i_g)
+```
 
 The `integrate_ode_parallel` function now has to take all data at once for all groups and as we do not have ragged arrays in the Stan language (yet), we need to add respective slicing index vectors:
 
