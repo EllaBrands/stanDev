@@ -5,6 +5,9 @@
   * Some principles we don't like:  invariance, Jeffreys, entropy
   * Weakly informative prior should contain enough information to regularize:  the idea is that the prior rules out unreasonable parameter values but is not so strong as to rule out values that might make sense
   * Weakly informative rather than fully informative:  the idea is that the loss in precision by making the prior a bit too weak (compared to the true population distribution of parameters or the current expert state of knowledge) is less serious than the gain in robustness by including parts of parameter space that might be relevant.  It's been hard for us to formalize this idea.
+  * When using informative priors, be explicit about every choice; write a sentence about each parameter in the model.
+    * For an example see section 4.1 of this paper: http://www.stat.columbia.edu/~gelman/research/unpublished/objectivityr3.pdf
+
 
 * Don't use uniform priors, or hard constraints more generally, unless the bounds represent true constraints (such as scale parameters being restricted to be positive, or correlations restricted to being between -1 and 1).  Some examples:
   * You think a parameter could be anywhere from 0 to 1, so you set the prior to uniform(0,1).  Try normal(.5,.5) instead.
@@ -120,9 +123,6 @@
   * If the range of the y-axis are pre-scaled to unit range, a prior of `normal(0,1)` on both the "signal magnitude" parameter `eta` and the "noise magnitude" parameter `sigma` reflects a prior on the signal-to-noise ratio that is peaked at .5.
   * For Matern fields, then the [joint penalised complexity prior](http://arxiv.org/abs/1503.00256) is available for the parameters (variance, range) parameters
   * In practice when we fit Gaussian processes we often either set the length-scale parameter to a fixed value corresponding to some desired level of smoothing, or we give it a strong prior.  The identification issues are real, and have to do with things such as, it's hard to identify much going on at a lower wavelength than the data spacing or a higher wavelength than the total range of the data, hence it can make perfect sense to either fix the value of hyperparameters or give them strong priors to make the model do what you want it to do.
-
-* When using informative priors, be explicit about every choice; write a sentence about each parameter in the model.
-  * For an example see section 4.1 of this paper:  http://www.stat.columbia.edu/~gelman/research/unpublished/objectivityr3.pdf
 
 # Priors for rstanarm
   * Default priors should all be autoscaled---this is particularly relevant for stan_glm().  In particular, for the normal-distribution link, prior_aux should be scaled to the residual sd of the data.  Currently it's an unscaled normal(0,5) which will be a very strong prior if the scale of the data happens to be large.
