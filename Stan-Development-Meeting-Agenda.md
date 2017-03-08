@@ -25,3 +25,7 @@ Andrew.  Running Stan setting fixed time rather than fixed #iterations; ragged R
 Andrew.  Language improvements that would allow structures of parameters, for example sigma_a and eta_a in non-centered parameterization.
 
 Andrew.  Systematizing the workflow for debugging or confidence building.
+
+Ben / Sean / Steve: Using GPUs for Eigen operations
+
+Ben: Stan 2.15.0 release before R 3.4.0 in mid-to-late April?
