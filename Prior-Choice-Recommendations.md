@@ -1,4 +1,4 @@
-* General principles:
+* [General principles](#general-principles):
   * [Simpson et al. paper](http://arxiv.org/abs/1403.4630) has principles based on nestable models
   * Many times when people recommend default priors, they are restricting to some version of conjugacy for closed forms or for Gibbs; we don't care about that
   * Computational goal in Stan:  reducing instability which can typically arise from bad geometry in the posterior, heavy tails that can cause Stan to adapt poorly and have heavy tails
