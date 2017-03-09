@@ -10,6 +10,8 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+- Daniel. Logging for services. Mind if I mock up something that resembles: https://github.com/stan-dev/stan/wiki/Logging-Spec?
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
