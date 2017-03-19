@@ -12,6 +12,18 @@ We really want to move to using C++11 for both code cleanliness and efficiency, 
 
 This is required to take pressure off the interfaces and provide more uniformity.  We're being held up in basic design w.r.t. how much C++ we want to expose in the form of callbacks and how flat vs. hierarchical to make the commands.
 
+#### Portable I/O across input and ouptut and interfaces
+
+<i>Round trip</i>: It's hard to get data out of a set of draws and into the format needed to be used as input.  This makes it hard to simulate data using Stan and then fit it easily.  There are tools within RStan (and presumably PyStan) to do this, but nothing that works for CmdStan.
+
+<i>Portability</i>: There's not a good data format that can be used for our example models that can be read by all interfaces.  
+
+CmdStan:  limited R dump format
+RStan:  anything you can get into memory, including R dump format
+PyStan:  anythnig you can get into memory, but R dump format not implemented
+
+It'd be nice to have something like protocol buffers or JSON serving as a universal format, with a nice way to translate output data into input data.  The problem there is that input is a single data set, whereas output is a sequence of draws that needs to be accessible both column-wise and row-wise and needs to stream out by row, ideally without a lot of per-row metadata.
+ 
 #### Protocol Buffer Transport Layer
 
 This is related to command refactoring and will probably live on top of it.  
