@@ -1,3 +1,5 @@
+# General Logging discussion
+
 Following up on [this previous discussion](https://github.com/stan-dev/stan/wiki/Consolidated-Output-for-Sample,-Optimize,-ADVI,-and-Diagnose), moving forward we need to separate out I/O into information that is meant to be interactive and information that is meant to be passed to the interface programmatically, for example into a file or local R or Python environment.  
 
 At the moment all I/O is awkwardly convolved in various ```interface_callback:::writer``` implementations.  For example, in MCMC implementations there are info and error writers as well as sample and diagnostic writers that are wrapped in the ```services::mcmc_writer``` class.
@@ -18,13 +20,13 @@ Note that I'm not included TRACE as I don't think we'll need that level of granu
 
 The logger itself would be easiest to use if implemented as a single class that could be passed around through the code, but there are various scopes of the logger and various ways to implement the different levels of output.
 
-# Where to define the logger?
+## Where to define the logger?
 
 Should the logger be a wrapper that aggregates many ```interface_callback::writer`` instances, one for each level?
 
 Or should the ```interface_callback::writer``` be generalized to implement the levels directly?  This latter approach would be somewhat awkward as ```interface_callback::writer``` instances are also used for file I/O which does not utilize these levels of output.
 
-# How to implement logger levels?
+## How to implement logger levels?
 
 Regardless of where the logger is defined, we have to define a specification for how to access each level.
 
