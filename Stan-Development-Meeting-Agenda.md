@@ -16,4 +16,3 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
-* Jonah/Imad. Model comparison / predictive performance estimation for spatial models and other models with dense covariance matrices in the likelihood.
