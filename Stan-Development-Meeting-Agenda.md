@@ -10,9 +10,11 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
-Betancourt.  StanCon 2018 go ahead.
+Betancourt.  StanCon 2018 go ahead.  Yay or nay.
 
-Betancourt.  Any interest in a stats-is-important paper for Nautilus?  http://nautil.us.
+Betancourt.  Any interest in a stats-is-important paper for Nautilus?  http://nautil.us. Whether or not to reach out to contact.
+
+Betancourt.  Shall we transition the Users' List to Discourse?  What would be first steps?
 
 Sebastian. Non-stiff ODE speedup pull-request (https://github.com/stan-dev/math/pull/513). Short description of changes. Reviewer candidates.
 
