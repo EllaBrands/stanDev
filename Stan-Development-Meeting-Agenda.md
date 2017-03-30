@@ -29,3 +29,5 @@ Sebastian.  Parallelization. Do we want to go into the direction of https://gith
 Sebastian.  Parallel ODE: The prototype is fully done, i.e. I have created a `stan_ode_model` R function. Do we want to make this available in some form and if so how? An extra rstanode repo / a branch in rstan repo?
 
 Betancourt.  How to move forward on changing CmdStan output?
+
+Steve. Update on GPUs for Cholesky decompositions
