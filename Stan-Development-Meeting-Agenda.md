@@ -18,6 +18,8 @@ Betancourt.  Shall we transition the Users' List to Discourse?  What would be fi
 
 Sebastian. Non-stiff ODE speedup pull-request (https://github.com/stan-dev/math/pull/513). Short description of changes. Reviewer candidates.
 
+Sakrejda. Want to finalize my hypergeometric function bugfix pull request: 1) can't access Jenkins tests; 2) is my test case (posted on discourse) using the beta-binomial correctly?; 3) is beta-binomial-lcdf using the F32 wrong? 3) Do we need a more general F32? 
+
 Ben. 2.15 release schedule
 
 ### Open Discussion Topics
