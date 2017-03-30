@@ -18,6 +18,8 @@ Betancourt.  Shall we transition the Users' List to Discourse?  What would be fi
 
 Sebastian. Non-stiff ODE speedup pull-request (https://github.com/stan-dev/math/pull/513). Short description of changes. Reviewer candidates.
 
+Ben. 2.15 release schedule
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
