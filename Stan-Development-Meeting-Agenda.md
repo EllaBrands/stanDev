@@ -27,3 +27,5 @@ including speculation and brainstorming._
 Sebastian.  Parallelization. Do we want to go into the direction of https://github.com/stan-dev/stan/wiki/Parallelism-in-Stan ? Essentially the idea is to introduce specialized "wahtever_parallel" functions which use OpenMP. Do we want something else?
 
 Sebastian.  Parallel ODE: The prototype is fully done, i.e. I have created a `stan_ode_model` R function. Do we want to make this available in some form and if so how? An extra rstanode repo / a branch in rstan repo?
+
+Betancourt.  How to move forward on changing CmdStan output?
