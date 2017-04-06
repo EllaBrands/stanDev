@@ -22,6 +22,8 @@ Sakrejda. Want to finalize my hypergeometric function bugfix pull request: 1) ca
 
 Ben. 2.15 release schedule
 
+Charles. algebra_solver: use relative tolerance (built in Eigen) on x and absolute tolerance on F.
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
