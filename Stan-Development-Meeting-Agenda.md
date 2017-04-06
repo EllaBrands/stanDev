@@ -33,3 +33,7 @@ including speculation and brainstorming._
 Betancourt.  How to move forward on changing CmdStan output?
 
 Steve. Update on GPUs for Cholesky decompositions
+
+Andrew.  Stan workflow when setting parameters to fixed values
+
+Andrew.  Verbose options
