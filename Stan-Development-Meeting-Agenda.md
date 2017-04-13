@@ -12,6 +12,7 @@ meeting._
 
 Sakrejda.  https://github.com/stan-dev/math/pull/515   Ready to merge or not? If not, what does it need?
 
+Charles m. Algebra solver: make sure checks (relative tolerance, etc.) are acceptable.
 
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
