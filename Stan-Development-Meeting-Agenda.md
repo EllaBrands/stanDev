@@ -10,6 +10,9 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+Sakrejda.  https://github.com/stan-dev/math/pull/515   Ready to merge or not? If not, what does it need?
+
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
