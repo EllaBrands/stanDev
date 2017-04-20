@@ -22,6 +22,8 @@ Sakrejda.  https://github.com/stan-dev/math/pull/515   Ready to merge or not? If
 
 Charles m. Algebra solver: make sure checks (relative tolerance, etc.) are acceptable.
 
+Ben. `Eigen::Map<const Eigen::SparseMatrix<double> > * vector_v` in rstanarm with Eigen 3.3
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
