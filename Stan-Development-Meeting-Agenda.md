@@ -12,7 +12,7 @@ meeting._
 
 Betancourt. C++11 workshop next week!  Any good references or ideas of how to proceed?
 
-Andrew. Coursera or Edx or Datacamp course?
+Andrew (must leave before noon). Coursera or Edx or Datacamp course?
 
 Aki. StanCon in Finland end of August 2018 or 2019? Which year?
 
