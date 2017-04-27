@@ -18,4 +18,4 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
-Betancourt.  Python examples for WiMLDS workshop.
+Betancourt.  Python examples for WiMLDS workshop.  Mid July work for everyone?
