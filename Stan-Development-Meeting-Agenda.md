@@ -12,6 +12,8 @@ meeting._
 
 Betancourt. C++11 workshop next week!  Any good references or ideas of how to proceed?
 
+Andrew. Coursera or Edx or Datacamp course?
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
