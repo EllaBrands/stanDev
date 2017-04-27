@@ -16,6 +16,8 @@ Andrew. Coursera or Edx or Datacamp course?
 
 Aki. StanCon in Finland end of August 2018 or 2019? Which year?
 
+Sean. Simplifying release and submodule update processes (maybe no one cares, but want to check). 
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
