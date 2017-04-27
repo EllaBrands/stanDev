@@ -14,6 +14,8 @@ Betancourt. C++11 workshop next week!  Any good references or ideas of how to pr
 
 Andrew. Coursera or Edx or Datacamp course?
 
+Aki. StanCon in Finland end of August 2018 or 2019? Which year?
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
