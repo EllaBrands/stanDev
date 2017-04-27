@@ -18,6 +18,8 @@ Aki. StanCon in Finland end of August 2018 or 2019? Which year?
 
 Sean. Simplifying release and submodule update processes (maybe no one cares, but want to check). 
 
+Sebastian. From rstan derived R packages are subject to copyleft, i.e. are forced to use the GPL. Can we/do we want to change that and give people a choice to not use the GPL?
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
