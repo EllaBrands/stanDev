@@ -10,8 +10,12 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+Betancourt. C++11 workshop next week!  Any good references or ideas of how to proceed?
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
 * __Developer name.  Short description.__
+
+Betancourt.  Python examples for WiMLDS workshop.
