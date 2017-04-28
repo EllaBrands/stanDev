@@ -3,7 +3,7 @@
   * Super-vague but proper prior:  normal(0, 1e6);
   * Weakly informative prior, very weak:  normal(0, 10);
   * Generic weakly informative prior:  normal(0, 1);
-  * Specific informative prior:  normal(0.4, 0.2) or whatever.  Sometimes this can be expressed as a scaling followed by a generic prior:  theta = 0.4 + 0.2*z; z ~ normal(0.4, 0.2);
+  * Specific informative prior:  normal(0.4, 0.2) or whatever.  Sometimes this can be expressed as a scaling followed by a generic prior:  theta = 0.4 + 0.2*z; z ~ normal(0, 1);
 
 # General principles
   * [Simpson et al. paper](http://arxiv.org/abs/1403.4630) has principles based on nestable models
