@@ -278,7 +278,15 @@ The expensive part of this isn't the multiplication, although that's not exactly
 
 In the past we've generally ignored wasted computation like this because it was usually dwarfed by the autodiff costs but now that we've got that somewhat under control through the use of custom vari's, things like this are now showing up at the top of the profiles in these models.
 
+#### Tensor data type
 
+Something like:
+
+```
+tensor[L, M, N] x;
+```
+
+There's support in Eigen.  We just need to decide if any built-in arithmetic (like * and +) work on them and what special operations to support.  We can build it in stages, starting with the data type.
 
 
 
