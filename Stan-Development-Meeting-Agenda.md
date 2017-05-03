@@ -25,6 +25,8 @@ including speculation and brainstorming._
 
 Sebastian. From rstan derived R packages are subject to copyleft, i.e. are forced to use the GPL. Can we/do we want to change that and give people a choice to not use the GPL?
 
+Sebastian. Compilers. Consideration of gcc 4.8.x (C++11 complete, less C++14 support) as the minimal compiler. This is the standard compiler in RHEL7 which is used in many cluster installations.
+
 * __Developer name.  Short description.__
 
 Betancourt.  Python examples for WiMLDS workshop.  Mid July work for everyone?
