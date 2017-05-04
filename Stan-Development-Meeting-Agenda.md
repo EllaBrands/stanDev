@@ -14,6 +14,7 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+Betancourt.  How long should we support Stan Users Google Group?  When to close it to new questions.
 
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
