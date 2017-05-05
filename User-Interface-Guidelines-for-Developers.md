@@ -76,7 +76,7 @@ TBD but StataStan also calls CmdStan but would probably have some quirks
 
 ### PyStan
 
-TBD
+TBD, basically the same
 
 ## StanProgramWithData
 
@@ -120,7 +120,7 @@ Hopefully, we can use [exposeClass()](http://www.inside-r.org/packages/cran/rcpp
 
 ### PyStan methods for the StanProgramWithData instance
 
-TBD
+TBD, basically the same
 
 ## MCMC output containers
 
