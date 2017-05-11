@@ -11,6 +11,8 @@ meeting._
 * __Developer name.  Short description.  Desired resolution.__
 
 Betancourt.  Should we kill Stan Core?  Delete or not to delete.
+Daniel. Non-safe use of external packages. Not good.
+Daniel. Additional projects on stan-dev. Should we have a process before adding things? There's a gelman organization that's a good candidate for projects that are just starting out.
 
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
