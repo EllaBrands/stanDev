@@ -1,4 +1,4 @@
-We want to institute some new policies on code, documentation, and testing quality. We are now (May 11 2017) okay with having two separate namespaces, one for the `stan::math` public API and another one inside called `detail` that will have hidden implementation details that likely only developers will ever notice. The `detail` code has similar quality requirements but doesn't have the same completeness requirements for docs and testing that API functions have. 
+We want to institute some new policies on code, documentation, and testing quality. We are now (May 11 2017) okay with having two separate namespaces, one for the `stan::math` public API and another one inside called `internal` that will have hidden implementation details that likely only developers will ever notice. The `internal` code has similar quality requirements but doesn't have the same completeness requirements for docs and testing that API functions have. 
 
 1.  Every `stan::math` function is part of our API and needs doxygen documentation indicating
     1. what its arguments are and whether they are input or output or both (`@param[in]`, `@param[out]`, or `@param[in,out]` tags)
