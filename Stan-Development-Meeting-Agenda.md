@@ -20,6 +20,7 @@ meeting._
   * stat_comp_benchmarks
   * visual-diagnostics
   * nomad
+
   I'm not suggesting we push them out immediately, but I'm not sure how we're spawning new projects. If we're limiting discourse to just things that are on stan-dev, then I want to make sure we're ok with additions.
 
 ### Open Discussion Topics
