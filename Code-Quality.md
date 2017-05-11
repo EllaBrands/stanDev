@@ -1,6 +1,6 @@
-We want to institute some new policies on code, documentation, and testing quality.
+We want to institute some new policies on code, documentation, and testing quality. We are now (May 11 2017) okay with having two separate namespaces, one for the `stan::math` public API and another one inside called `detail` that will have hidden implementation details that likely only developers will ever notice. The `detail` code has similar quality requirements but doesn't have the same completeness requirements for docs and testing that API functions have. 
 
-1.  Every single function needs doxygen documentation indicating
+1.  Every `stan::math` function is part of our API and needs doxygen documentation indicating
     1. what its arguments are and whether they are input or output or both (`@param[in]`, `@param[out]`, or `@param[in,out]` tags)
     2.  what it's template parameters are (`@tparam` tag)
     3.  any constraints on the values of the arguments and an indication of what happens (typically exceptions) if the constraints are violated
@@ -9,7 +9,7 @@ We want to institute some new policies on code, documentation, and testing quali
 
 2.  Reused code needs to be broken out into reusable functions.
 
-3.  Every function needs tests evaluating all the of constraints and conditions indicated by (1) as well as indicating that the right value is being computed
+3.  Every `stan::math` function needs tests evaluating all the of constraints and conditions indicated by (1) as well as indicating that the right value is being computed
 
 4.  Variables should have informative names (within reason).
 
