@@ -26,6 +26,7 @@ meeting._
 - Andrew. Help users navigate the Stan users list and discourse.
 - Andrew. Coursera.
 
+- Mitzi. RNG in transformed data
 
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
