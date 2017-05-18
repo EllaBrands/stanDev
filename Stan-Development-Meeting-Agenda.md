@@ -20,4 +20,4 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
-- Andrew.  Lowess replacement using splines or GPs?  Lasso replacement using horseshoe.
+- Andrew.  rstanarm:  Lowess replacement using splines or GPs?  Lasso replacement using horseshoe.
