@@ -25,4 +25,6 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
+* Sebastian. Status on current mpi prototype. Mpi into Stan? Should we start to design this?
+
 
