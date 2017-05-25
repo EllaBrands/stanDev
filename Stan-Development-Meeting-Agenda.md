@@ -17,8 +17,12 @@ meeting._
 
 Betancourt.  Developer interest in Boston-area physics workshop in the fall? Yes/no.
 
+Margossian. What is the best approach to compare the efficiency of two ODE solvers / more generally Stan functions? I've written tests in C++ that use the clock() function. But the measurements I get for CPU times do not agree with what I observe when I run the full Stan model (i.e. using time required to produce 1000 independent samples as a metric).
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
 * __Developer name.  Short description.__
+
+
