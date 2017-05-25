@@ -1,9 +1,7 @@
 ### Roundtable
 _Short (less than 1 minute) description of work in the past week._
 
-- 5/25. Daniel: working on incorporating logging into `stan-dev/stan`. Should have a pull request ready by next week. 
-    
-    (I've been really short on sleep lately and most likely will not stay for the meeting to try to take a nap. Didn't know where else to drop this.)
+- 5/25. Daniel: working on incorporating logging into `stan-dev/stan`. Should have a pull request ready by next week. (I've been really short on sleep lately and most likely will not stay for the meeting to try to take a nap. Didn't know where else to drop this.)
 
 
 ### Unresolved Topics
