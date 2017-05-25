@@ -15,25 +15,7 @@ In general, the basic steps are:
 3. Call one of the algorithms Stan supports to estimate the model. The output is to be handled by a VarWriter that can be implemented and passed in by the interface.
 
 ### Typical R session
-We plan to use [ReferenceClasses](http://stat.ethz.ch/R-manual/R-devel/library/methods/html/refClass.html) throughout. See the bottom of [this](https://github.com/stan-dev/rstan/blob/develop/rstan3/R/rstan.R#L255) for the canonical example
-```R
-# Step 1 --- Create an object of StanProgram-class
-foo <- stan_compile(program_code = mc, program_name = name)     # preferable to specify a file
-                                           
-# Step 2 --- Create a StanProgramWithData-class object
-compiled_program_with_data <- foo$instantiate(data)
- 
-# Step 3 --- Estimate the parameters
-estimates <- compiled_program_with_data$optimize()       # maximum a posteriori estimator
-estimates <- compiled_program_with_data$ehmc(delta = .9) # MCMC from the posterior distribution
-
-# Diagnose any problems
-# TODO
-
-# sampling (default) then extract
-fit <- compiled_program_with_data$sampling()
-alpha <- fit$alpha
-```
+We plan to use [ReferenceClasses](http://stat.ethz.ch/R-manual/R-devel/library/methods/html/refClass.html) throughout. See the examples section of [this](https://github.com/stan-dev/rstan/blob/develop/rstan3/R/rstan.R) for a canonical R example.
 
 ### Typical PyStan session
 WIP
@@ -65,24 +47,23 @@ TBD but Julia and MATLAB just call CmdStan and thus would be similar.
 
 TBD but StataStan also calls CmdStan but would probably have some quirks
 
-## StanProgram
+## StanConfig
 
 ### RStan
 
-**instance fields**
-- stan_code: character
-- cpp_code: character
-- dso: S4 cxxdso (from inline) which includes cxx_flags as a slot
+* program.name  (like "8schools")
+* shared.object (path to the shared object on disk)
+* a field for each thing declared in the `data` block of a Stan program
 
 ### PyStan
 
 TBD, basically the same
 
-## StanProgramWithData
+## StanModule
 
 ### Methods provided by the Stan library to all interfaces
 
-The program class would expose the following methods from the abstract base class:
+The class would expose the following methods from the abstract base class (that needs to be implemented):
 
 - scalar log_prob(unconstrained_params)
 - vector grad(unconstrained_params)
@@ -92,8 +73,6 @@ The program class would expose the following methods from the abstract base clas
 - scalar laplace_approx(unconstrained_params)
 - vector constrain_params(unconstrained_params = <vector>)
 - vector unconstrain_params(constrained_params = <vector>)
-
-The program class would expose the following additional methods
 - tuple  params_info() would return
     - parameter names
     - lower and upper bounds, if any
@@ -101,62 +80,30 @@ The program class would expose the following additional methods
     - declared type (cov_matrix, etc.)
     - which were declared in the parameters, transformed parameters, and generated quantities blocks
  
-It is not clear if the following algorithms would be methods or stand-alone functions that input a program and configuration options:
+It is not clear if the following algorithms would be methods, methods of a different class, or stand-alone functions that input a program and configuration options:
 
-- tuple [a-z]+hmc()
-- tuple lbfgs()
-- tuple bfgs()
-- tuple newton()
-- tuple vb()
-
-### R methods for the StanProgramWithData instance
-Hopefully, we can use [exposeClass()](http://www.inside-r.org/packages/cran/rcpp/docs/exposeClass) with [setRcppClass()](http://www.inside-r.org/packages/cran/rcpp/docs/setRcppClass) to expose Stan's abstract base class for programs as an (internal) ReferenceClass in RStan at build time and then inherit a (public) ReferenceClass from that when the data are passed in at run time. For example,
-```R
-> dprogram$log_prob(params)
-> dprogram$ehmc(chains = 8)
-> dprogram$optimize() # alias for default, no arguments allowed
-> dprogram$sample()   # alias for default, no arguments allowed
-```
-
-### PyStan methods for the StanProgramWithData instance
-
-TBD, basically the same
+- tuple sample()
+- tuple advi()
+- tuple maximize()
 
 ## MCMC output containers
 
 ### RStan
 
-The VarWriter would fill an Rcpp::NumericVector with appropriate dimensions. Then there would be a new (S4) class that is basically an array to hold MCMC output for a particular parameter, which hinges on the params_info() method. The (array slot of a) StanParameter has dimensions equal to the original dimensions plus two additional trailing dimensions, namely chains and iterations. Thus,
+The VarWriter would fill an Rcpp::NumericVector with appropriate dimensions. Then there would be a new (S4) class that is basically an array to hold MCMC output for a particular parameter, which hinges on the params_info() method. The (array slot of a) StanType has dimensions equal to the original dimensions plus two additional trailing dimensions, namely chains and iterations. Thus,
 - if the parameter is originally a scalar, on the interface side it acts like a 3D array that is 1 x chains x iterations
 - if the parameter is originally a (row) K-vector, on the interface side it acts like a 3D array that is K  x chains x iterations
 - if the parameter is originally a matrix, on the interface side it acts like like a 4D array that is rows x cols x chains x iterations
 - if the parameter is originally a ``std::vector`` of type ``foo``, on the interface side it acts like a multidimensional array with dimensions equal to the union of the ``std::vector`` dimensions, the ``foo`` dimensions, chains, and iterations
 
 The advantages of having such a class hierarchy are
-- can do customized summaries; i.e. a ``StanCovMatrix`` would not have its upper triangle summarized because that is redundant with the lower triangle and we can separate the variances from the covariances and a ``StanCholeskyFactorCov`` would not have its upper triangle summarized because its elements are fixed zeros
+- can do customized summaries; i.e. a ``cov_matrix`` would not have its upper triangle summarized because that is redundant with the lower triangle and we can separate the variances from the covariances and a ``cholesky_factor_cov`` would not have its upper triangle summarized because its elements are fixed zeros
 - can easily call unconstrain methods (in C++) for one unknown rather than having to do it for all unknowns
-- can implement probabalistic programming; i.e. if ``beta`` is a ``StanVector`` then ``mu <- X %*% beta`` is a ``StanVector`` but whose dimensions are N x chains x iterations and if ``variance`` is a ``StanReal`` then ``sigma <- sqrt(variance)`` is a ``StanReal``, which can be summarized (including n_eff, etc.)
-
-The class tree looks like
-- StanParameter: a virtual class with slots for name (character), theta (array), and type (character among {unconstrained parameter, constrained parameter, transformed parameter, generated quantity, diagnostic})
-    - StanReal
-        - StanInteger which can only be a generated quantity or diagnostic
-            - StanFactor which has a levels slot to indicate the categories corresponding to the integer draws
-    - StanMatrix
-        - StanCovMatrix
-            - StanCorrMatrix
-        - StanCholeskyFactorCov
-            - StanCholeskyFactorCorr
-        - StanVector
-            - StanRowVector
-            - StanSimplex
-            - StanUnit
-
-In R, there is not much distinction between a vector and a one-column matrix or between a vector and a row vector, so the inheritance is R-based rather than Stan-based.
+- can implement probabalistic programming; i.e. if ``beta`` is a estimated vector in Stan, then in R ``mu <- X %*% beta`` is N x chains x iterations and if ``variance`` is a scalar then ``sigma <- sqrt(variance)`` is a can be summarized appropriately (including n_eff, etc.)
 
 ### PyStan
 
-TBD. Allen is ambivalent about doing something like a StanParameter class hierarchy
+TBD. Allen is ambivalent about doing something like a StanType class hierarchy
 
 ### CmdStan
 
@@ -166,18 +113,7 @@ Everything gets written to a flat CSV file
 
 ### StanFitMCMC class in R
 
-**instance fields**
-- warmup_draws:  named list where each element is a ``StanParameter``
-- sample_draws : named list where each element is a ``StanParameter``
-- timestamps: timestamp (long) for each iteration (possibly roll into param_draws)
-- mass matrix : NULL | params | params x params : double
-
-```R
-> estimates$plot()     # or $pairs(), $traceplot(), etc.
-> estimates$posterior_means() # possibly accumulate posterior_variances too
-> estimates$show()     # minimal
-> estimates$summary()  # exhaustive 
-```
+TBD
 
 ### StanFitMCMC class in PyStan
 
