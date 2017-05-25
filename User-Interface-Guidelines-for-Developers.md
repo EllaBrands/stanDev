@@ -10,9 +10,17 @@ Previous discussion
 ## Overview / Example User Session
 In general, the basic steps are:
 
-1. Instantiate the templates, which will become more demanding once we start using algorithms that rely on fvars
-2. Construct an instance of the program by passing the data to it. Bob thinks that we need to have an abstract base class for programs to inherit from, rather than templating the program. It is not yet clear what all the public methods of the abstract base class will be.
+1. Compile the C++, which will become more demanding once we start using algorithms that rely on fvars
+2. Instantiate it. Bob thinks that we need to have an abstract base class for programs to inherit from, rather than templating the program. It is not yet clear what all the public methods of the abstract base class will be.
 3. Call one of the algorithms Stan supports to estimate the model. The output is to be handled by a VarWriter that can be implemented and passed in by the interface.
+4. Diagnose
+
+## Major Unresolved issues
+
+* To what extent should the steps in the interfaces mirror those of the C++ / CmdStan?
+* What should be stand-alone functions and what should be methods, as in `build(config)` vs. `config$build()`?
+* Do we need a separate class that only exposes the algorithms in the C++ library or is it better to for the class to expose both algorithms and lower-level functions like `log_prob`?
+* How granular should the estimation functions be, as in `$hmc_nuts_diag_e_adapt()` vs. `$hmc(adapt = TRUE, diag = TRUE, metric = "Euclidean")`
 
 ### Typical R session
 We plan to use [ReferenceClasses](http://stat.ethz.ch/R-manual/R-devel/library/methods/html/refClass.html) throughout. See the examples section of [this](https://github.com/stan-dev/rstan/blob/develop/rstan3/R/rstan.R) for a canonical R example.
