@@ -23,8 +23,8 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
-Andrew.  Coursera plans
-Andrew.  Code Ocean as a possible platform for Cloud Stan?
+* Andrew.  Coursera plans
+* Andrew.  Code Ocean as a possible platform for Cloud Stan?
 
 * Sebastian. Status on current mpi prototype. Mpi into Stan? Should we start to design this?
 * Ben. The rstan3 design
