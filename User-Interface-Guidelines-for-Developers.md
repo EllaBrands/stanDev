@@ -30,21 +30,21 @@ WIP
 ```python
 # Step 1 --- Create a StanProgram *class*
 import pystan
-MyStanProgramClass = pystan.compile(program_code=code, program_name=name)
+MyStanProgram = pystan.compile(program_code=code)
 
-# Step 2 --- Create an instance of StanProgram (with data, equivalent to StanProgramWithData-class object)
-program = MyStanProgramClass(data)
+# Step 2 --- Create an instance of MyStanProgram (with data, equivalent to StanProgramWithData-class object)
+program = MyStanProgram(data)
 
 # Step 3 --- Estimate the parameters
-estimates = dprogram.optimize()       # maximum a posteriori estimator
-estimates = dprogram.ehmc(delta=.9) # MCMC from the posterior distribution
- 
+estimates = program.optimize()       # maximum a posteriori estimator
+estimates = program.sample() # MCMC from the posterior distribution
+estimates = program.hmc_nuts_diag_e_adapt(delta=0.9)  # advanced users, unlikely to use
+
 # Diagnose any problems
 # TODO
 
 # sampling (default) then extract
-fit = dprogram.sampling()
-alpha = fit['alpha']
+alpha = estimates['alpha']
 ```
 
 ### Typical CmdStan session
