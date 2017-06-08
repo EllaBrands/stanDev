@@ -11,9 +11,6 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
-Betancourt.  Pre-StanCon course/tutorial? Who would be interested in
-a free course or a paid course?
-
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
