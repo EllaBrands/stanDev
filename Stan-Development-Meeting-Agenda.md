@@ -17,6 +17,8 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
+Andrew.  Diagnostics and adaptation for approximate algorithms.
+
 Andrew. Should we consider putting this into Stan:  Jeffrey Regier, Michael I. Jordan, Jon McAuliffe
 Fast Black-box Variational Inference through Stochastic Trust-Region Optimization
 https://arxiv.org/abs/1706.02375
