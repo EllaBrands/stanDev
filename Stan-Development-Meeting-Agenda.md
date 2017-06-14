@@ -17,6 +17,8 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
+Breck. Proposal to adopt approach from Producing Open Source Software, Karl Fogel (http://producingoss.com/) as the framework for Stan development. 
+
 Andrew.  Diagnostics and adaptation for approximate algorithms.
 
 Andrew. Should we consider putting this into Stan:  Jeffrey Regier, Michael I. Jordan, Jon McAuliffe
