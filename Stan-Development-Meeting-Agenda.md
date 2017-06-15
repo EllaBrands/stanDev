@@ -11,6 +11,9 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+Betancourt. Women in Machine Learning day-long workshop confirmed for
+Saturday, July 22.  Who wants to help teach?
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
