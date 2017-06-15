@@ -44,7 +44,7 @@ Another potential problem to keep in mind is Markov chains that explore very slo
 
 ## Check algorithm-specific diagnostics
 
-Hamiltonian Monte Carlo is provides not only state-of-the-art sampling speed, it also provides state-of-the-art diagnostics.  Unlike other algorithms, when Hamiltonian Monte Carlo fails it fails sufficiently spectacularly that we can easily identify the problems.
+Hamiltonian Monte Carlo provides not only state-of-the-art sampling speed, it also provides state-of-the-art diagnostics.  Unlike other algorithms, when Hamiltonian Monte Carlo fails it fails sufficiently spectacularly that we can easily identify the problems.
 
 In practice this means checking that there are no _divergence_ in your fit.  Divergences are automatically reported in some interfaces, namely RStan, but they can be directly access in the fit output in all interfaces.
 
