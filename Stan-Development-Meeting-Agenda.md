@@ -19,6 +19,6 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
-Roger Grosse (Oxford). MCMC reliability diagnostics for Stan.
+Roger Grosse (Toronto). MCMC reliability diagnostics for Stan.
 
 Andrew and Sebastian.  Paper on approximate models, approximate algorithms, and faster computing for big models.
