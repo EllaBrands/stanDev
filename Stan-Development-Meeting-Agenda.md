@@ -22,3 +22,5 @@ including speculation and brainstorming._
 Roger Grosse (Toronto). MCMC reliability diagnostics for Stan.
 
 Andrew and Sebastian.  Paper on approximate models, approximate algorithms, and faster computing for big models.
+
+Andrew.  vector[J] theta ~ normal(0, 1);
