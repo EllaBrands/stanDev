@@ -52,7 +52,7 @@ To make sure you never have tabs in your code files, you can use this in your ``
 (defun java-mode-untabify ()
    (save-excursion
      (goto-char (point-min))
-     (if (search-forward "t" nil t)
+     (if (search-forward "\t" nil t)
          (untabify (1- (point)) (point-max))))
    nil)
 
