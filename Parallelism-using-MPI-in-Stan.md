@@ -37,39 +37,46 @@ To warrant good efficiency we need to
 
 # Stan language
 
-The current proposal is to define a `map` function which takes as arguments
-
-- a worker function which performs a chunk of work. The signature of that function shall be
-```
-real[] foo(real[] params, real[] x_r, int[] x_i)
-```
-
-- we also need a integer array `int[] f_out` which encodes the ragged structure of the return values of the worker function. The user anyway must know the output structure himself to be able to make sense of any output.
-
-- ragged arrays of parameters and data (real and int)
-
-In pseudo code this will look like
+The current proposal is to define a parallelizable `map()` function of the form found in languages such as Lisp.
 
 ```
-real[] map(F f, int[] f_end,
+/**
+ * @param f  the function to map, with signature `(real[] params, real[] x_r, int[] x_i) : real[]`
+ * @param y_end  ragged end points for the returned value
+ * @param param  ragged parameter values
+ * @param param_end  ragged parameter vector end points
+ * @param x_r  ragged real data values
+ * @param x_r_end  ragged real data end points
+ * @param x_i  ragged integer data values
+ * @param x_i_end  ragged integer data end points
+ * @return ragged return values
+ */
+real[] map(F f, int[] y_end,
            real[] param, int[] param_end,
            real[] x_r, int[] x_r_end,
            int[] x_i, int[] x_i_end) {
-  ... validate all ends are same size, in bounds, ordered
-  real[f_end[size(f_end)]] y;
-  int f_start = 1;
+
+  ... validate all end sequences are 
+      same size, ascending order, non-negtive ...
+
+  int N = size(y_end);  // number of function calls
+  real[y_end[N]] y;     // return value
+  int y_start = 1;      // ragged array start points
   int param_start = 1;
   int x_r_start_ = 1;
-  int x_r_start = 1;
-  for (i in 1:size(param_end) *in parallel*) {
-    y[f_start:f_end[i]] = f(param_start[param_start:param_end[i]], 
+  int x_i_start = 1;
+
+  // IN PARALLEL:
+  for (i in 1:N) {
+    y[y_start:y_end[i]] = f(param_start[param_start:param_end[i]], 
                             x_r[x_r_start:x_r_end[i]],
                             x_i[x_i_end:x_i_end[i]]);
     param_start = param_end[i] + 1;
     x_r_start = x_r_end[i] + 1;
     x_i_start = x_i_end[i] + 1;
-    f_start = f_end[i] + 1;
+    y_start = y_end[i] + 1;
   }
+
   return y;
 }
 ```
@@ -84,18 +91,20 @@ The *in parallel* section will proceed in the steps
 
 4. On the root node, the results are injected into the AD tree with the `precomputed_gradients` approach using pointers to avoid unnecessary copies.
 
-The above procedure assumed that the data has been shipped once to the workers. This is doable given that we can detect that the data is in scope of the `map` construct.
+The above procedure assumed that the data has been shipped once to the workers. This is doable given that we can detect that the data is in scope of the `map` construct.   *[Question:  is there a way to do this on the first call and then set a flag we can check later to make sure the variables have already been shipped?]*
+
+We'll also need a serial implementation of `map()` which pretty much just implements the pseudocode.  
 
 # Notes on the prototype
 
 The `cmdstan` implementation works roughly as follows:
 
-1. A modified `main.cpp` is used. The MPI environment is initialized in the `main-mpi.cpp` and the `env.abort()` is called on the main process to shutdown all workers when the root terminates.
+1. A modified `main.cpp` is used. The MPI environment is initialized in the `main-mpi.cpp` and the `env.abort()` is called on the main process to shutdown all workers when the root terminates.  *[Question:  Would it be easier to generate a single `main.cpp` and have the compilation of it controlled by some kind of flag?]*
 
 2. The root and the workers start normally. All processes call at the end of the `transformed data` block a `setup_mpi_function`.
 
-3. The `setup_mpi_function` determines the `f_out` (ragged structure of the function outputs) and behaves differently on  the different nodes
-   - workers go into an infinite loop where they wait for packets of parameters from the root; in addition the workers subset the data to the set of data which is allocated the the worker
+3. The `setup_mpi_function` determines the `y_out` (ragged structure of the function outputs) and behaves differently on  the different nodes
+   - workers go into an infinite loop where they wait for packets of parameters from the root; in addition the workers subset the data to the set of data which is allocated the the worker *[Question:  Can we do this more efficiently than spin-waiting?]* 
    - the root: here the function returns with a data structure which maps each job to a worker id and the output sizes per job
 
 4. only on the root node the `run_mpi_function` is ever called in the `transformed parameters` block which does
@@ -107,6 +116,5 @@ The `cmdstan` implementation works roughly as follows:
    - all results are registered in the AD stack
 
 5. The workers are terminated with an MPI abort command which is sent whenever the root finishes.
-
 
 
