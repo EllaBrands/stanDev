@@ -118,4 +118,35 @@ The `cmdstan` implementation works roughly as follows:
 
 5. The workers are terminated with an MPI abort command which is sent whenever the root finishes.
 
+### Rectangular Version
+
+We might want to try to do a rectangular version first because the function signature is super simple.
+
+```
+/**
+ * Return sequence of results. by applyin th
+ */
+vector[] map_rectangular(F f, vector[] theta, vector[] x_r, int[,] x_i);
+```
+
+The function `f` itself is the same as in the ragged version.
+
+### Design like GPU
+
+We want the map function itself to have two implementations, one that is MPI and one that is serial.  So there'd
+be three functions:
+
+File `map_foo.hpp`
+```
+... map_foo(...) {
+#ifdef USE_MPI_FOR_STAN
+  return map_foo_mpi(...);
+#elif
+  return map_foo_serial(...);
+#endif
+}
+```
+
+Then there are two separate implementation files, `map_foo_mpi` and `map_foo_serial`.
+
 
