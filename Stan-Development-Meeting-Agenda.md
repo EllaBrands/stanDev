@@ -18,3 +18,5 @@ including speculation and brainstorming._
 * __Developer name.  Short description.__
 
 * Sebastian. Discuss open points of MPI design, see [MPI design](https://github.com/stan-dev/stan/wiki/Parallelism-using-MPI-in-Stan) ... I will be joining 45min late, so only if this fits this meeting.
+
+* Breck. Decision making in Stan project.
