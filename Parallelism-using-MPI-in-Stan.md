@@ -198,7 +198,7 @@ map_rect_mpi(const F& f,
 }
 ```
 
-We may also need one for `fvar<var>` and `fvar<fvar<var> >` if this one can't be made generic enough.
+Unless this can be made general, we'll also need an `fvar<var>` and `fvar<fvar<var> >` if we want those to be parallelizable.  Should be a huge win for things like Hessians---embarassingly parallel speedups are possible.
 
 #### Primitive MPI
 
