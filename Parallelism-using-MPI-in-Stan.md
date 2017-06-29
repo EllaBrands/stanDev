@@ -198,17 +198,21 @@ map_rect_mpi(const F& f,
 }
 ```
 
+We may also need one for `fvar<var>` and `fvar<fvar<var> >` if this one can't be made generic enough.
+
 #### Primitive MPI
 
 No need to synch for this one.  It can be optional as the real speed gains come from reverse mode.
 
+It can be used for `double, `fvar<double>`, and `fvar<fvar<double> >` without need for synch.  Anything involving `var` would need to synch.
+
 File `stan/math/prim/mat/functor/map_rect_mpi.hpp`:
 
 ```
-template <typename F>
-std::vector<Eigen::Matrix<var, -1, 1> >
+template <typename T, typename F>
+std::vector<Eigen::Matrix<T, -1, 1> >
 map_rect_mpi(const F& f,
-             const std::vector<Eigen::Matrix<var, -1, 1> >& theta,
+             const std::vector<Eigen::Matrix<T, -1, 1> >& theta,
              const std::vector<Eigen::VectorXd>& x_r,
              const vector<vector<int> >& x_i) {
 
