@@ -141,27 +141,50 @@ be three functions:
 
 File `map_rect.hpp`
 ```
-... map_rect(...) {
-#ifdef USE_MPI_FOR_STAN
-  return map_rect_mpi(...);
+template <typename F, typename T>
+std::vector<Eigen::Matrix<T, -1, 1> >
+map_rect(const F& f,
+         const std::vector<T>& theta,
+         const std::vector<Eigen::VectorXd>& x_r,
+         const vector<vector<int> >& x_i) {
+#ifdef STAN_MPI_MAP
+  return map_rect_mpi(f, theta, x_r, x_i);
 #elif
-  return map_rec_serial(...);
+  return map_rect_serial(f, theta, x_r, x_i);
 #endif
+}
+```
+
+File `map_rect_serial.hpp`:
+```
+template <typename F, typename T>
+std::vector<Eigen::Matrix<T, -1, 1> >
+map_rect(const F& f,
+         const std::vector<T>& theta,
+         const std::vector<Eigen::VectorXd>& x_r,
+         const vector<vector<int> >& x_i) {
+  check_match_sizes(theta, x_r);
+  check_match_sizes(x_r, x_i);
+  std::vector<Eigen::Matrix<T, -1, 1> > y(theta.size());
+  for (size_t i = 0; i < theta.size(); ++i)
+    y[i] = f(theta[i], x_r[i], x_i[i]);
+  return y;
 }
 ```
 
 File `map_rect_mpi.hpp`
 ```
-  vector<T> map_foo_mpi(const F& f,
-                        vector<T>& theta,
-                        const vector<T>& x_r,
-                        const vector<vector<int> >& x_i) {
+vector<T> map_rect_mpi(const F& f,
+                       const vector<T>& theta,
+                       const vector<VectorXd>& x_r,
+                       const vector<vector<int> >& x_i) {
   ... MPI implementation...
+}
 ```
 
-File `map_rect_serial.hpp`:
-```
-  same signature
-  ... standard implementation ...
-```
+* There will need to be two implementations, one that's simple and one that handles the reverse-mode autodiff.  (Dont' need to do anything for forward-mode autodiff as there's nothing to synchronize.)
+    * `stan/math/prim/mat/functor`
+    * `stan/math/rev/math/functor`
 
+
+* QUESTION: Shold we call the function `apply()` rather than `map()`?  (Lisp: (map ), Python: map(), R: sapply())
