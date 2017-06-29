@@ -22,6 +22,7 @@ The basic idea of parallelism using the message passage interface is that we can
 
 # Open points
 
+- Name for the new function?
 - Do we want to enable multiple `map` calls in a Stan program or just allow a single one?
 - Is the ragged array construct what we want to use (it really is a workaround)?
 - How is the backend configured? At compile time?
