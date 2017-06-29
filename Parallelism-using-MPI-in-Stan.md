@@ -120,7 +120,7 @@ The `cmdstan` implementation works roughly as follows:
 
 ### Rectangular Version
 
-We might want to try to do a rectangular version first because the function signature is super simple.
+We might want to try to do a rectangular version first because the function signature is super simple.  From Stan, it will look like it has this signature:
 
 ```
 /**
@@ -134,17 +134,21 @@ vector[] map_rect(F f, vector[] theta, vector[] x_r, int[,] x_i);
 
 The function `f` itself is the same as in the ragged version.
 
-### Design like GPU
+* QUESTION: Shold we call the function `apply()` rather than `map()`?  (Lisp: (map ), Python: map(), R: sapply())
 
-We want the map function itself to have two implementations, one that is MPI and one that is serial.  So there'd
-be three functions:
 
-File `map_rect.hpp`
+### Implementation
+
+#### Top-Level Function
+
+Delegates to `_mpi` or `_serial` implementation, which then gets picked up with argument-dependent lookup if reverse-mode autodiff types are involved.
+
+File `stan/math/prim/mat/functor/map_rect.hpp`:
 ```
 template <typename F, typename T>
 std::vector<Eigen::Matrix<T, -1, 1> >
 map_rect(const F& f,
-         const std::vector<T>& theta,
+         const std::vector<Eigen::Matrix<T, -1, 1> >& theta,
          const std::vector<Eigen::VectorXd>& x_r,
          const vector<vector<int> >& x_i) {
 #ifdef STAN_MPI_MAP
@@ -155,14 +159,18 @@ map_rect(const F& f,
 }
 ```
 
-File `map_rect_serial.hpp`:
+#### Primitive Serial Implementation
+
+This one will be used for all serial calls, which need no special treatment.
+
+File `stan/math/prim/mat/functor/map_rect_serial.hpp`:
 ```
 template <typename F, typename T>
 std::vector<Eigen::Matrix<T, -1, 1> >
-map_rect(const F& f,
-         const std::vector<T>& theta,
-         const std::vector<Eigen::VectorXd>& x_r,
-         const vector<vector<int> >& x_i) {
+map_rect_serial(const F& f,
+                const std::vector<Eigen::Matrix<T, -1, 1> >& theta,
+                const std::vector<Eigen::VectorXd>& x_r,
+                const vector<vector<int> >& x_i) {
   check_match_sizes(theta, x_r);
   check_match_sizes(x_r, x_i);
   std::vector<Eigen::Matrix<T, -1, 1> > y(theta.size());
@@ -172,19 +180,39 @@ map_rect(const F& f,
 }
 ```
 
-File `map_rect_mpi.hpp`
+
+#### Reverse-mode MPI implementation
+
+This is the one that will count for speed improvements.
+
+File `stan/math/rev/mat/functor/map_rect_mpi.hpp`:
 ```
-vector<T> map_rect_mpi(const F& f,
-                       const vector<T>& theta,
-                       const vector<VectorXd>& x_r,
-                       const vector<vector<int> >& x_i) {
-  ... MPI implementation...
+template <typename F>
+std::vector<Eigen::Matrix<var, -1, 1> >
+map_rect_mpi(const F& f,
+             const std::vector<Eigen::Matrix<var, -1, 1> >& theta,
+             const std::vector<Eigen::VectorXd>& x_r,
+             const vector<vector<int> >& x_i) {
+
+   ... mpi implementation with synch for derivative handling ...
 }
 ```
 
-* There will need to be two implementations, one that's simple and one that handles the reverse-mode autodiff.  (Dont' need to do anything for forward-mode autodiff as there's nothing to synchronize.)
-    * `stan/math/prim/mat/functor`
-    * `stan/math/rev/math/functor`
+#### Primitive MPI
 
+No need to synch for this one.  It can be optional as the real speed gains come from reverse mode.
 
-* QUESTION: Shold we call the function `apply()` rather than `map()`?  (Lisp: (map ), Python: map(), R: sapply())
+File `stan/math/prim/mat/functor/map_rect_mpi.hpp`:
+
+```
+template <typename F>
+std::vector<Eigen::Matrix<var, -1, 1> >
+map_rect_mpi(const F& f,
+             const std::vector<Eigen::Matrix<var, -1, 1> >& theta,
+             const std::vector<Eigen::VectorXd>& x_r,
+             const vector<vector<int> >& x_i) {
+
+   ... mpi implementation with no synch ...
+}
+```
+
