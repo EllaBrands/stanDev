@@ -151,16 +151,17 @@ File `map_rect.hpp`
 ```
 
 File `map_rect_mpi.hpp`
-
+```
   vector<T> map_foo_mpi(const F& f,
                         vector<T>& theta,
                         const vector<T>& x_r,
                         const vector<vector<int> >& x_i) {
   ... MPI implementation...
+```
 
 File `map_rect_serial.hpp`:
-
+```
   same signature
   ... standard implementation ...
-
+```
 
