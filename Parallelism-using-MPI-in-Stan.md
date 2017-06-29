@@ -124,9 +124,12 @@ We might want to try to do a rectangular version first because the function sign
 
 ```
 /**
- * Return sequence of results. by applyin th
+ * Return sequence of results of applying function to parallel elements
+ * of theta, x_r, x_i, so that for 1 <= n <= size(theta) 
+ *
+ *   map_rectangular(f, theta, x_r, x_i)[n] = f(theta[n], x_r[n], x_i[n])
  */
-vector[] map_rectangular(F f, vector[] theta, vector[] x_r, int[,] x_i);
+vector[] map_rect(F f, vector[] theta, vector[] x_r, int[,] x_i);
 ```
 
 The function `f` itself is the same as in the ragged version.
@@ -136,17 +139,28 @@ The function `f` itself is the same as in the ragged version.
 We want the map function itself to have two implementations, one that is MPI and one that is serial.  So there'd
 be three functions:
 
-File `map_foo.hpp`
+File `map_rect.hpp`
 ```
-... map_foo(...) {
+... map_rect(...) {
 #ifdef USE_MPI_FOR_STAN
-  return map_foo_mpi(...);
+  return map_rect_mpi(...);
 #elif
-  return map_foo_serial(...);
+  return map_rec_serial(...);
 #endif
 }
 ```
 
-Then there are two separate implementation files, `map_foo_mpi` and `map_foo_serial`.
+File `map_rect_mpi.hpp`
+
+  vector<T> map_foo_mpi(const F& f,
+                        vector<T>& theta,
+                        const vector<T>& x_r,
+                        const vector<vector<int> >& x_i) {
+  ... MPI implementation...
+
+File `map_rect_serial.hpp`:
+
+  same signature
+  ... standard implementation ...
 
 
