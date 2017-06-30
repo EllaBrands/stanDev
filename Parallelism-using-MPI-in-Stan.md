@@ -159,7 +159,7 @@ map_rect(const F& f,
 }
 ```
 
-#### Primitive Serial Implementation
+#### General Serial Implementtion
 
 This one will be used for all serial calls.  It applies the function to each element of the parallel argument arrays. 
 
@@ -181,9 +181,27 @@ map_rect_serial(const F& f,
 ```
 
 
-#### Reverse-mode MPI (parallel implementation)
 
-This is the one that will count for speed improvements.  It has to synchronize derivatives to reassemble the expression graph from the partials and result.
+#### Primitive, Forward Parallel: `double`
+
+This one can be templated to handle `double`.
+
+File `stan/math/prim/mat/functor/map_rect_mpi.hpp`:
+
+```
+template <typename F>
+std::vector<Eigen::VectorXd>
+map_rect_mpi(const F& f,
+             const std::vector<Eigen::VectorXd>& theta,
+             const std::vector<Eigen::VectorXd>& x_r,
+             const vector<vector<int> >& x_i);
+```
+
+There are lots of internal calcs that could use this, such as computing posterior summaries.
+
+#### Reverse-mode Parallel: `var`
+
+This is the one that will count for speed improvements.  It has to synchronize derivatives to reassemble the expression graph from the partials and result.  Matched by argument dependent lookup.
 
 File `stan/math/rev/mat/functor/map_rect_mpi.hpp`:
 ```
@@ -192,32 +210,51 @@ std::vector<Eigen::Matrix<var, -1, 1> >
 map_rect_mpi(const F& f,
              const std::vector<Eigen::Matrix<var, -1, 1> >& theta,
              const std::vector<Eigen::VectorXd>& x_r,
-             const vector<vector<int> >& x_i) {
-
-   ... mpi implementation with synch for derivative handling ...
-}
+             const vector<vector<int> >& x_i);
 ```
 
-We could use the map function internally to implement Hessians.  Then we'll have to think about load balancing.
+#### Forward parallel: `fvar<double>`, `fvar<fvar<double> >`
 
-#### Primitive MPI (parallel implementation)
+These need to be specialized to put an `fvar<double>` back together in terms of value and tangent of type `double`.  Same for `fvar<fvar<double> >` with value and tange of type `fvar<double>`.  Matched by argument dependent lookup.
 
-No need to synch for this one.  It can be tempalted to handle `double, `fvar<double>`, and `fvar<fvar<double> >` without need for synch.  Anything involving `var` would need to synch.
-
-File `stan/math/prim/mat/functor/map_rect_mpi.hpp`:
-
+File `stan/math/fwd/mat/functor/map_rect_mpi.hpp`:
 ```
-template <typename T, typename F>
-std::vector<Eigen::Matrix<T, -1, 1> >
+template <typename F>
+std::vector<Eigen::Matrix<fvar<double>, -1, 1> >
 map_rect_mpi(const F& f,
-             const std::vector<Eigen::Matrix<T, -1, 1> >& theta,
+             const std::vector<Eigen::Matrix<fvar<double>, -1, 1> >& theta,
              const std::vector<Eigen::VectorXd>& x_r,
-             const vector<vector<int> >& x_i) {
+             const vector<vector<int> >& x_i);
 
-   ... mpi implementation with no synch ...
-}
+template <typename F>
+std::vector<Eigen::Matrix<fvar<fvar<double> >, -1, 1> >
+map_rect_mpi(const F& f,
+             const std::vector<Eigen::Matrix<fvar<fvar<double> >, -1, 1> >& theta,
+             const std::vector<Eigen::VectorXd>& x_r,
+             const vector<vector<int> >& x_i);
 ```
 
-#### `fvar<var>` and `fvar<fvar<var> >` MPI (parallel implementation)
+These are very low priority.
 
-These also need their own implementation that builds an `fvar<var>` out of the return values and also does the right thing with the value and tangent of type `var` with respect to the reverse-mode graph.  This will be a huge win for computing things like Hessians.
+#### Mixed parallel: `fvar<var>` and `fvar<fvar<var> >`
+
+Mixed mode needs a custom implementation to handle `fvar<var>` out of the return values and do the right thing with value and tangent variables with type `var`.  This will be a huge win for computing things like Hessians.  Matched by argument dependent lookup.
+
+File `stan/math/mix/mat/functor/map_rect_mpi.hpp`:
+```
+template <typename F>
+std::vector<Eigen::Matrix<fvar<var>, -1, 1> >
+map_rect_mpi(const F& f,
+             const std::vector<Eigen::Matrix<fvar<var>, -1, 1> >& theta,
+             const std::vector<Eigen::VectorXd>& x_r,
+             const vector<vector<int> >& x_i);
+
+template <typename F>
+std::vector<Eigen::Matrix<fvar<fvar<var> >, -1, 1> >
+map_rect_mpi(const F& f,
+             const std::vector<Eigen::Matrix<fvar<fvar<var> >, -1, 1> >& theta,
+             const std::vector<Eigen::VectorXd>& x_r,
+             const vector<vector<int> >& x_i);
+```
+
+These would be particularly useful for Hessian calculations and for RHMC, but are low priority compared to reverse mode and primitive.
