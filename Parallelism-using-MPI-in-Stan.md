@@ -134,14 +134,14 @@ vector[] map_rect(F f, vector[] theta, vector[] x_r, int[,] x_i);
 
 The function `f` itself is the same as in the ragged version.
 
-* QUESTION: Shold we call the function `apply()` rather than `map()`?  (Lisp: (map ), Python: map(), R: sapply())
+* *QUESTION: Should we call the function `apply()` rather than `map()`?* Lisp: (map f x);  Python: map(f, x);  R: sapply(f, x).
 
 
 ### Implementation
 
 #### Top-Level Function
 
-Delegates to `_mpi` or `_serial` implementation, which then gets picked up with argument-dependent lookup if reverse-mode autodiff types are involved.
+This is the only implementation of `map_rect`.  It delegates to `_mpi` or `_serial` implementation based on whether the `STAN_MPI_MAP` is defined.  
 
 File `stan/math/prim/mat/functor/map_rect.hpp`:
 ```
@@ -161,7 +161,7 @@ map_rect(const F& f,
 
 #### Primitive Serial Implementation
 
-This one will be used for all serial calls, which need no special treatment.
+This one will be used for all serial calls.  It applies the function to each element of the parallel argument arrays. 
 
 File `stan/math/prim/mat/functor/map_rect_serial.hpp`:
 ```
@@ -181,9 +181,9 @@ map_rect_serial(const F& f,
 ```
 
 
-#### Reverse-mode MPI implementation
+#### Reverse-mode MPI (parallel implementation)
 
-This is the one that will count for speed improvements.
+This is the one that will count for speed improvements.  It has to synchronize derivatives to reassemble the expression graph from the partials and result.
 
 File `stan/math/rev/mat/functor/map_rect_mpi.hpp`:
 ```
@@ -198,13 +198,11 @@ map_rect_mpi(const F& f,
 }
 ```
 
-Unless this can be made general, we'll also need an `fvar<var>` and `fvar<fvar<var> >` if we want those to be parallelizable.  Should be a huge win for things like Hessians---embarassingly parallel speedups are possible.
+We could use the map function internally to implement Hessians.  Then we'll have to think about load balancing.
 
-#### Primitive MPI
+#### Primitive MPI (parallel implementation)
 
-No need to synch for this one.  It can be optional as the real speed gains come from reverse mode.
-
-It can be used for `double, `fvar<double>`, and `fvar<fvar<double> >` without need for synch.  Anything involving `var` would need to synch.
+No need to synch for this one.  It can be tempalted to handle `double, `fvar<double>`, and `fvar<fvar<double> >` without need for synch.  Anything involving `var` would need to synch.
 
 File `stan/math/prim/mat/functor/map_rect_mpi.hpp`:
 
@@ -220,3 +218,6 @@ map_rect_mpi(const F& f,
 }
 ```
 
+#### `fvar<var>` and `fvar<fvar<var> >` MPI (parallel implementation)
+
+These also need their own implementation that builds an `fvar<var>` out of the return values and also does the right thing with the value and tangent of type `var` with respect to the reverse-mode graph.  This will be a huge win for computing things like Hessians.
