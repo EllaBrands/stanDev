@@ -20,6 +20,10 @@ The basic idea of parallelism using the message passage interface is that we can
 - dynamic allocation of jobs; would be nice to have, but this can be left for a later implementation
 - (?) multiple regions of parallelism (?)
 
+# Future Goals
+
+- Sparsity detection. For higher order autodiff many derivates will be zero (right?) in many cases. Therefore, a sparse communication should speed things up for such applications.
+
 # Open points
 
 - Name for the new function?
