@@ -85,7 +85,7 @@
   
   Also "On the Hyperprior Choice for the Global Shrinkage Parameter in the Horseshoe Prior" by Juho Piironen and Aki Vehtari.  https://arxiv.org/abs/1610.05559 
 
-  We want to compare this horseshoe or HS implementation in rstarm to lasso and glmnet
+  We want to compare this horseshoe or HS implementation in rstanarm to lasso and glmnet
 
 # Prior for degrees of freedom in Student's t distribution
 
