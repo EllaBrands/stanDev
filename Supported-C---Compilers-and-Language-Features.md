@@ -3,6 +3,9 @@
 * [Microsoft Visual Studio 2015](https://msdn.microsoft.com/en-us/library/hh567368.aspx) (as required by PyStan on Windows)
 * clang, which will basically always be a superset of the above two and so won't hold us back.
 
+# C++ Standard library
+If you're using clang, we'll try to use the llvm project's libc++, so that means you need to have libc++-dev (or equivalent package) installed. If you're using g++, we'll default to the gcc project's stdlibc++, which is usually included with g++.
+
 # Language Features
 ### [C++11 features](http://blog.smartbear.com/c-plus-plus/the-biggest-changes-in-c11-and-why-you-should-care/)
 * everything except for Expression SFINAE
