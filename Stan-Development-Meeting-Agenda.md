@@ -17,6 +17,4 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
-* Sebastian. Discuss open points of MPI design, see [MPI design](https://github.com/stan-dev/stan/wiki/Parallelism-using-MPI-in-Stan) ... I will be joining 45min late, so only if this fits this meeting.
-
 * Breck. Decision making in Stan project. Now with Hyper Link Technology! to notes from _Producing Open Source Software_ and Apache Foundation. https://docs.google.com/document/d/1yErmt7KGN5R-U4UsHsP42gxfh_xCQK2jFMnFHoPBBhg/edit?usp=sharing TL;DR Consensus decision making backed by approval voting, electorate are contributors. If it is obvious, do what ever it is, we can always back it out. Play nice.
