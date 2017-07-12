@@ -9,8 +9,6 @@ _Address any open topics from the past meeting._
 _New topics that should be addressed immediately or by the next
 meeting._
 
-* Andrew Gelman and Jon Zelner.  Inference for models with discrete states as occur in epidemiology.
-
 * __Developer name.  Short description.  Desired resolution.__
 
 ### Open Discussion Topics
@@ -19,4 +17,4 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
-* Breck. Decision making in Stan project. Now with Hyper Link Technology! to notes from _Producing Open Source Software_ and Apache Foundation. https://docs.google.com/document/d/1yErmt7KGN5R-U4UsHsP42gxfh_xCQK2jFMnFHoPBBhg/edit?usp=sharing TL;DR Consensus decision making backed by approval voting, electorate are contributors. If it is obvious, do what ever it is, we can always back it out. Play nice.
+* Andrew Gelman and Jon Zelner.  Inference for models with discrete states as occur in epidemiology. (edit from Betancourt: these models require inference over tree spaces).
