@@ -24,3 +24,5 @@ including speculation and brainstorming._
 * Sebastian. MP design 2: Given that data should be local, we have to stick this stuff into stan (or into stan-math if we include the solution of design question 1 into stan-math). If it goes into stan...how and where/is that OK given we integrate things deeply with the AD stack?
 
 * Andrew.  Speed comparisons for Stan optimize for simple linear and logistic regressions.
+
+* Ben. Function names in Stan3
