@@ -36,7 +36,7 @@ We currently have these inference algorithms:
   1. mean field
   2. full rank
 
-The first thing to realize is that the analysis of the different classes of inference algorithms do very different things. Currently, we only have one way of reading the output, which assumes that the output was sampled. This has posed difficulty with implementing things like ADVI.
+Currently, we only have one way of reading the output, which assumes that the output was sampled. In practice the different classes of inference algorithms do not even treat the posterior density consistently.  For example the log density for sampling is calculated for the point representing draw, whereas for VI there is no one obvious point to calculate the density at.  This has posed difficulty with implementing new algorithms (e.g.- ADVI) and led to hacks in the interfaces or incomplete implementation of accessors for algorithm data.  
 
 ## Proposed solution
 
@@ -92,7 +92,7 @@ Instead of just having `callbacks::writer& sample_writer` and `callbacks::writer
 2. A callback for the adaptation information. The one used here will only take the diagonal elements, but we'd also have one that accepts just the stepsize (for `unit_e`) and another that accepts the dense matrix (for `dense_e`).
 3. A callback for things that pertain to sampling, so this should just accept `lp__`.
 4. A callback for things that pertain to the `nuts` algorithms. This should accept `accept_stat__`, `stepsize__`, `treedepth__`, `n_leapfrog__`, `divergent__`, `energy__`. Other inference algorithms can have different things here.
-5. A writer for all the constrained parameters. This can be configured to not writer all values.
+5. A writer for all the constrained parameters. This can be configured to not write all values.
 6. A writer for all the generated quantities.
 7. A writer for the unconstrained parameters.
 
