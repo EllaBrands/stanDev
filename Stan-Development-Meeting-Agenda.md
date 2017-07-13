@@ -26,3 +26,5 @@ including speculation and brainstorming._
 * Andrew.  Speed comparisons for Stan optimize for simple linear and logistic regressions.
 
 * Ben. Function names in Stan3
+
+* Breck. Governance
