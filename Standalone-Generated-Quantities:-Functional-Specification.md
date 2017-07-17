@@ -30,3 +30,9 @@ All in, this looks like about 4 person months and will need to involve a distrib
 * C++: low-level I/O for cmdstan
 * R: for rstan
 * Python: for pystan
+
+### Using Previous Program
+
+We need to be able to read in data, create transformed data, transform parameters and create transformed parameters just as they were in the original program.  It would probably be easiest just to use that original program for this piece rather than requiring it to be copied into the new generated quantities block.
+
+Maybe it'd be better to just have the generated quantities block be edited on the original program.  I'm trying to imagine what the workflow is going to be like here.  Do you just keep tinkering with one program's generated quantities block or do you write a bunch of them while leaving the original program alone?  I almost prefer the second one, but there's less bookkeeping for Stan itself in the first.
