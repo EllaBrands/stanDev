@@ -28,6 +28,19 @@ The core code in Stan is written in heavily-templated C++ to ensure high-perform
 
 There are many additional resources available for learning how to optimize C++ code, including [Agner Fog's manuscript](http://www.agner.org/optimize/optimizing_cpp.pdf) and the many books of, amongst others, Scott Meyers and Herb Sutter.
 
+## Contributing new densities
+
+Having a comprehensive set of useful densities coded in the Stan math library is a benefit to users.  Densities are also a maintenance burden both for testing and for understanding the code base.  As a result we are somewhat cautious about including new densities. Guidelines for including densities:
+
+- The pdf, cdf, and rng should be available so users of the Stan language don't need to check the manual.
+- There should be a computational benefit to coding the density in C++.  Some densities can easily and efficiently be specified in the Stan language and the benefits of coding them in C++ are limited.  It helps to provide some evidence of the computational benefits.
+- The density should be applicable to a range of problems.
+- If the density's C++ code re-implements or improves on functions already present in the math library, the necessary improvements should be coded separately in the math library.
+- Ongoing interest from the code author in maintaining the code.
+
+
+
+
 ## Contributing to the Interfaces
 
 The Stan interfaces wrap the core C++ code and expose its functionality to other languages, such as R and Python.  Consequently contributions to the interfaces may require knowledge of how to couple these languages together, for example with Rccp and Cython, or be built entirely in the interface language.  For details on a specific interface please consult the corresponding GitHub repository.
