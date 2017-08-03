@@ -9,7 +9,7 @@ _Address any open topics from the past meeting._
 _New topics that should be addressed immediately or by the next
 meeting._
 
-- Aki: StanCon in Helsinki
+* Aki: StanCon in Helsinki. Dates?
 
 * __Developer name.  Short description.  Desired resolution.__
 
