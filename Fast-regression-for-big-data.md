@@ -1,3 +1,12 @@
+General categorization of approaches to Bayesian computing with big data:
+- approximate models
+- approximate algorithms
+- data subsetting
+- faster computing for big models
+Sebastian's interested in this project.
+
+This is related to the "workflow" issue that keeps coming up.
+
 Some things to do:
 
 - Fast regression with point estimates and fixed priors (using rstanarm using the optimize=TRUE setting to replace bayesglm):  Currently rstanarm in optimize=TRUE setting is kinda slow because it does simulations and computes second derivatives.  I'm not quite clear on which of these things (or others) is the CPU hog, but we'll want some "light" versions that will run fast.
