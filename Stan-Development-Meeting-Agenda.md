@@ -9,8 +9,6 @@ _Address any open topics from the past meeting._
 _New topics that should be addressed immediately or by the next
 meeting._
 
-* Aki: StanCon in Helsinki. Dates?
-
 * __Developer name.  Short description.  Desired resolution.__
 
 ### Open Discussion Topics
@@ -18,3 +16,5 @@ _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
 * __Developer name.  Short description.__
+
+Betancourt.  A/B testing in Stan for WiMLDS.
