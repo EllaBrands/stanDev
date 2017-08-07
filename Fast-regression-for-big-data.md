@@ -3,6 +3,7 @@ General categorization of approaches to Bayesian computing with big data:
 - approximate algorithms
 - data subsetting
 - faster computing for big models
+
 Sebastian's interested in this project.
 
 This is related to the "workflow" issue that keeps coming up.
