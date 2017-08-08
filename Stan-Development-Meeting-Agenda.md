@@ -18,3 +18,6 @@ including speculation and brainstorming._
 * __Developer name.  Short description.__
 
 Betancourt.  A/B testing in Stan for WiMLDS.
+
+Mohammad Khabbazian. I am working with Professor Tian Zheng on neural activity time series. 
+
