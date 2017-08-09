@@ -22,3 +22,5 @@ Betancourt.  A/B testing in Stan for WiMLDS.
 Mohammad Khabbazian. I am working with Professor Tian Zheng on neural activity time series. 
 
 Dan Simpson.  Posterior mode computation for transformed parameters.
+
+Andrew.  Coauthors needed to write bayesplot paper for JRSS with Jonah and Andrew.
