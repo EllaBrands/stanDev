@@ -10,6 +10,11 @@ These are some of our goals:
 4. Use subsets of the output. RStan and PyStan currently have features to only record certain values. CmdStan doesn't save the warmup by default. We should continue to support this behavior.
 5. Maintenance. Be able to expand the output to accommodate new inference algorithms in addition to updating output for existing inference algorithms.
 
+What we're missing:
+
+- Momento. With Mitzi's latest fixes with the metric and the two-argument random seed, we should be able to stop and restart.
+
+
 ## Inference Algorithms
 
 We currently have these inference algorithms:
@@ -88,6 +93,7 @@ int hmc_nuts_diag_e_adapt(Model& model, stan::io::var_context& init,
 ```
 
 Instead of just having `callbacks::writer& sample_writer` and `callbacks::writer& diagnostic_writer`, I'd suggest we move to splitting that into:
+
 1. A writer for which algorithm has been chosen, perhaps the arguments to the algorithm, and maybe this can also stash the elapsed time.
 2. A callback for the adaptation information. The one used here will only take the diagonal elements, but we'd also have one that accepts just the stepsize (for `unit_e`) and another that accepts the dense matrix (for `dense_e`).
 3. A callback for things that pertain to sampling, so this should just accept `lp__`.
@@ -97,6 +103,80 @@ Instead of just having `callbacks::writer& sample_writer` and `callbacks::writer
 7. A writer for the unconstrained parameters.
 
 It would be on the interface to determine how these things are serialized. One implementation could be to recreate the CmdStan csv format, but I think we can move from that pretty easily.
+
+### Concrete example: hmc\_nuts\_diag\_e\_adapt()
+
+
+Proposed solution is to write an `hmc_writer` interface. This would be able to handle all of the 12 `hmc` related algorithms.
+
+Here's what the `hmc_writer` interface would look like:
+```
+class {
+  public:
+    
+};
+```
+
+Here's what the service method would look like:
+```
+template <class Model>
+int hmc_nuts_diag_e_adapt(Model& model, stan::io::var_context& init,
+                          stan::io::var_context& init_inv_metric,
+                          unsigned int random_seed, unsigned int chain,
+                          double init_radius, int num_warmup,
+                          int num_samples, double stepsize,
+                          double stepsize_jitter, int max_depth,
+                          double delta, double gamma, double kappa,
+                          double t0, unsigned int init_buffer,
+                          unsigned int term_buffer, unsigned int window,
+                          callbacks::interrupt& interrupt,
+                          callbacks::logger& logger,
+                          callbacks::hmc_writer& hmc_writer) {
+```
+
+Note:
+
+- changing the writers to `hmc_writer`
+- removing `num_thin`, `save_warmup`, and `refresh`; these are now controls of the `hmc_writer`
+
+Here's how the flow of calling `hmc_writer` would happen through the `hmc_nuts_diag_e_adapt()` function:
+
+- We don't need to save how `hmc_nuts_diag_e_adapt` was called. We can assume that the caller has access to exactly how it was called.
+- Before the first iteration, it will call these functions in this order:
+	- `initial_unconstrained_parameters(const std::vector<double>& unconstrained)`
+	- `initial_sampler_state(...)`
+	- `initial_sample_parameters(...)`?
+		- `(log_prob__, accept_stat__)`
+- Before each iteration, it will call these functions in this order:
+	- `start_iteration(int iteration, bool warmup)`
+    - `random_seed(int iteration, long, long)`
+- Write out the sampler parameters. There are two options here:
+	- After each time the sampler parameters change (with an adaptive warmup phase)
+	- With each iteration
+	- These are something like (not all of these together):
+		- `step_size__`
+		- `max_depth__`
+		- the inverse mass matrix
+	- I'll need to dig a little deeper, but there are really only a few things that change; what we need to be careful about is making sure everything that can change is captured. If we only write it out every change, then we can only start at each window boundary. If we write it out at every iteration, we can restart anywhere.
+- After the competition of each iteration, it will call these functions in this order:
+	- `sampler_parameters(int iteration, bool warmup, ...)` (this will have named and typed arguments)
+		-  `(energy__)` 
+		-  `(tree_depth__, n_leapfrog__, divergent__, energy__`)
+	- `metric(int iteration, bool warmup, ...)`
+	- `unconstrained_parameters(int iteration, bool warmup, const std::vector<double&> unconstrained)`
+	- `transformed_parameters(int iteration, bool warmup, const std::vector<double&> unconstrained)`: maybe we can have a check function to be efficient about these functions
+	- `constrained_parameters(int iteration, bool warmup, const std::vector<double&> unconstrained)`
+	- `generated_quantities(int iteration, bool warmup, const std::vector<double&> unconstrained)`
+- After the last iteration, we call the function:
+	- `complete()` or something like that.
+
+Some things that I haven't included:
+- after warmup is finished, write out the time
+- at complete, maybe write out the time	
+
+If we guarantee the order that things are being written out to the `hmc_writer`, we can exactly create the CmdStan output.
+
+
 
 
 ## Reading the output
