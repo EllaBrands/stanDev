@@ -17,10 +17,6 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
-Betancourt.  A/B testing in Stan for WiMLDS.
+Andrew.  Just checking on bayesplot paper for JRSS with Jonah and Andrew, as it's due end of Aug.
 
-Mohammad Khabbazian. I am working with Professor Tian Zheng on neural activity time series. 
-
-Dan Simpson.  Posterior mode computation for transformed parameters.
-
-Andrew.  Coauthors needed to write bayesplot paper for JRSS with Jonah and Andrew.
+Andrew.  Stan movies.  Stan blog.
