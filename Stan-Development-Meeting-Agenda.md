@@ -23,4 +23,4 @@ Andrew.  (I won't be at the Stan meeting on Thurs and probably won't be able to 
 
 Andrew.  Stan movies.  Stan blog.
 
-Andrew.  Fitting discrete models in Stan (I put this on discourse).
+Andrew.  Fitting discrete models in Stan (I put this on discourse:  http://discourse.mc-stan.org/t/fitting-markov-models-with-latent-discrete-states/1568 ).
