@@ -11,6 +11,8 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+Breck: Funding clearing house. 16 live proposals folks, we need some winnowing and help writing. 
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
