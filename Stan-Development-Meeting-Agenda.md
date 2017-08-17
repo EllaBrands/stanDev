@@ -13,6 +13,8 @@ meeting._
 
 Breck: Funding clearing house. 16 live proposals folks, we need some winnowing and help writing. 
 
+Sebastian: Testing special code like MPI - how? Issues: additional dependencies (MPI installation+build boost libraries) and requirement to build .cpp file with mpicxx compiler.
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
