@@ -13,7 +13,7 @@ meeting._
 
 Breck: Funding clearing house. 16 live proposals folks, we need some winnowing and help writing. 
 
-Sebastian: Testing special code like MPI - how? Issues: additional dependencies (MPI installation+build boost libraries) and requirement to build .cpp file with mpicxx compiler.
+Sebastian: Testing special code like MPI - how? Issues: (1) additional dependencies (MPI installation+build boost libraries), (2) requirement to build .cpp file with mpicxx compiler and (3) test executable must be started using "mpirun -np 4 mpi_test".
 
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
