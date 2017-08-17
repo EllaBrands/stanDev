@@ -21,13 +21,13 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
-Andrew.  Just checking on bayesplot paper for JRSS with Jonah and Andrew, as it's due end of Aug.
-
 Andrew.  (I won't be at the Stan meeting on Thurs and probably won't be able to join the hangout either, so others can discuss the topics below, or else we can put them off until when I return.)
 
 Andrew.  Stan movies.  Stan blog.
 
 Andrew.  Fitting discrete models in Stan (I put this on discourse:  http://discourse.mc-stan.org/t/fitting-markov-models-with-latent-discrete-states/1568 ).
+
+Andrew.  Just checking on bayesplot paper for JRSS with Jonah and Andrew, as it's due end of Aug.
 
 Bob.  Model concept base class access to variable declarations.  Current proposal here:  https://github.com/stan-dev/stan/issues/2370
 
