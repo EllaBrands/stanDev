@@ -12,7 +12,7 @@ Implement the new function in the appropriate location, most likely in the [stan
 
 It is important to implement the function in such a way that it is templated such that it can be called with auto-diff variables for parameters and double values for data.  Again, see the existing functions for examples.
 
-#### Directories for code
+#### Directories for code (Math library)
 
 In general, implementations should go int the lowest directory possible, subject to the orderings
 
@@ -27,12 +27,12 @@ In general, implementations should go int the lowest directory possible, subject
 If the left-hand type occurs, the directory has to be at least the minimum on the right
 
 ```
-  Code includes     directory must be at least
-  -------------     --------------------------
-  Eigen::Matrix     mat
-  std::vector       arr
-  stan::math::rev   rev
-  stan::math::fwd   fwd
+  Code includes      directory must be at least
+  -------------      --------------------------
+  Eigen::Matrix      mat
+  std::vector        arr
+  stan::math::var    rev
+  stan::math::fvar   fwd
 ```
 
 Everything else follows from these two rules.  The directories are laid out two deep, with
@@ -41,40 +41,37 @@ Everything else follows from these two rules.  The directories are laid out two 
 (prim | fwd | rev | mix) / (scal | arr | mat)
 ```
 
-
-
-#### Expose Function Signature to Stan Models
-
-Expose the function to the parser by adding the appropriate code to [`src/stan/lang/function_signatures.hpp`](https://github.com/stan-dev/stan/blob/develop/src/stan/lang/function_signatures.h) and implement function signature tests by adding models to `src/test/gm/model_specs/compiled/`.
-
-#### Add to Relevant Header File
+#### Add to Relevant Header File (Math library)
 
 Depending on where you put the function (see the rules above), you'll need to include its definition file in the appropriate header include to make sure it's visible to models.  For instance, if the function is going into `stan/math/rev/arr/foo.hpp` then `#include <stan/math/rev/arr/foo.hpp>` should be included added to `stan/math/rev/arr.hpp`.
 
-#### Unit Testing
+#### Unit Testing (Math library)
 
 Implement a unit test for the function which covers both the value (i.e., that it computes the right thing), the gradients of the function, and the error behavior (e.g., when the function is passed illegal values).  Looking at a unit test of a similar function will help give a sense of how to do this.  
 
 You should check all the ways in which it can be called --- that is all permutations of scalars/vectors and double and autodiff variables.
 
-An individual unit test, e.g., `src/test/unit-agrad-rev/functions/log_test.cpp`, can be run with `make test/unit-agrad-rev/functions/log`.
+An individual unit test, e.g., [`test/unit/math/prim/scal/fun/abs_test.cpp`](https://github.com/stan-dev/math/blob/develop/test/unit/math/prim/scal/fun/abs_test.cpp), can be run with `./runTests.py test/unit/math/prim/scal/fun/abs_test.cpp`.
 
-After the individual test passes, make sure that `make test-unit` and `make test-headers` both pass.
+After the individual test passes, make sure that `./runTests.py test/unit` and `make test-headers` both pass.
 
-Add a test with all signatures in the form of a model in `test/gm` to make sure it's compilable from within a Stan model.
+#### Expose Function Signature to Stan Models (Stan library)
 
-#### Model Tests
+Expose the function to the parser by adding the appropriate code to [`src/stan/lang/function_signatures.hpp`](https://github.com/stan-dev/stan/blob/develop/src/stan/lang/function_signatures.h).
 
-We need models in test_models instantiating all the possible ways the function can be instantiated.  Examples are in `src/test/test-models/good` for ones that pass and in `src/test/test-models/bad` for ones that don't.  Specifically, the function signature tests should go in `src/test/test-models/good/function-signatures`.  Then there are drivers for these tests in `src/test/unit/lang/parser` --- look at the ones that are in `src/test/unit/lang/parser/other_test.cpp` to see how to test that models don't parse or throw the right warnings when trying to parse them.
+#### Model Tests (Stan library)
 
-#### Documentation
+We need models in test_models instantiating all the possible ways the function can be instantiated.  Examples are in [`src/test/test-models/good`](https://github.com/stan-dev/stan/blob/develop/src/test/test-models/good) for ones that pass and in [`src/test/test-models/bad`](https://github.com/stan-dev/stan/blob/develop/src/test/test-models/bad) for ones that don't. Specifically, the function signature tests should go in [`src/test/test-models/good/function-signatures`](https://github.com/stan-dev/stan/blob/develop/src/test/test-models/good/function-signatures).
 
-Add reference documentation to the manual.  Ideally with a formula for it.  Include a reference if it's uncommon.
+There are drivers for these tests in [`src/test/unit/lang/parser`](https://github.com/stan-dev/stan/blob/develop/src/test/unit/lang/parser) --- look at the ones that are in [`src/test/unit/lang/parser/other_test.cpp`](https://github.com/stan-dev/stan/blob/develop/src/test/unit/lang/parser/other_test.cpp) to see how to test that models don't parse or throw the right warnings when trying to parse them.
+
+#### Documentation (Math and Stan libraries)
+
+Add Doxygen docs to any new functions and reference documentation to the manual (in the Stan library).  Ideally with a formula for it.  Include a reference if it's uncommon.
 
 #### Submit
 
-Submit a pull request on GitHub.  We'll review the code, doc and tests, perhaps iterate over fixes, verify that it passes tests, and then merge it into Stan.  
-
+Submit a pull request on GitHub.  We'll review the code, doc and tests, perhaps iterate over fixes, verify that it passes tests, and then merge it into Stan. Details on the submission process can be found on the [Git-Process](https://github.com/stan-dev/stan/wiki/Dev:-Git-Process) wiki page.
 
 ### Creating a C++ Function for Stan
 
