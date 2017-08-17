@@ -28,3 +28,9 @@ Andrew.  (I won't be at the Stan meeting on Thurs and probably won't be able to 
 Andrew.  Stan movies.  Stan blog.
 
 Andrew.  Fitting discrete models in Stan (I put this on discourse:  http://discourse.mc-stan.org/t/fitting-markov-models-with-latent-discrete-states/1568 ).
+
+Bob.  Model concept base class access to variable declarations.  Current proposal here:  https://github.com/stan-dev/stan/issues/2370
+
+Bob.  Managing project assets like URLs.  I don't like personally owning our URLs.  Can we transfer to NumFOCUS? 
+
+Bob.  Probabilistic testing.  Existing tests test bytewise results rather than probabilistic results, so whenever anything changes in the density code or RNG code or we move to a new platform, we have to rethink everything as we're doing now w.r.t. 2.17.  Any ideas? 
