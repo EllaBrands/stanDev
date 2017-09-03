@@ -26,11 +26,26 @@ The basic idea of parallelism using the message passage interface is that we can
 
 # Open points
 
-- Name for the new function?
-- Do we want to enable multiple `map` calls in a Stan program or just allow a single one?
-- Is the ragged array construct what we want to use (it really is a workaround)?
-- How is the backend configured? At compile time?
-- Backends we need are: MPI, serial, others?
+- Building: Building against a shared boost mpi and boost serialization works, but static linking looks tricky => do we need to ensure a static build process?
+
+- Testing: Additional *external* dependencies! How to manage this? Travis?
+   - Additional build dependencies
+   - MPI OS dependency
+   - Stan test program must be called with `mpirun`
+
+- How to handle nested map calls? Disallow them?
+
+- The current proposal caches the data after its first send.
+   - The user gives a uid for dataset identification. OK?
+   - Do we need a flush operation which clears the cache?
+   - Can we assume a smart user who will always use the same uid for the same data set or do we need some checks (which can only be ad-hoc unless we pay the price for hashing)?
+
+Sebastian answered, 2nd Sept:
+- Name for the new function? `map_rect`
+- Do we want to enable multiple `map` calls in a Stan program or just allow a single one? Yes, we want to allow multiple ones.
+- Is the ragged array construct what we want to use (it really is a workaround)? No, we can go with a single version.
+- How is the backend configured? At compile time? Yes, at compile time.
+- Backends we need are: MPI, serial? That's all.
 
 # Efficiency
 
