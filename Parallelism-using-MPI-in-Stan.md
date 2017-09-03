@@ -141,17 +141,17 @@ The `cmdstan` implementation works roughly as follows:
 
 We might want to try to do a rectangular version first because the function signature is super simple.  From Stan, it will look like it has this signature:
 
+Update from Sebastian: We should opt for a semi-mixed version which will give us all we ever need. That is, the input shall be rectangular, but the output will be a *ragged* array. The reason is simple: Padding `var` arrays would be very expensive while padding data is virtually for free given that data is only ever transmitted once. The *ragged* output can be easily transformed to a rectangular output if the output is indeed regular by using some `to_` conversion functions (convert to vector, then to matrix, done).
+
 ```
 /**
  * Return sequence of results of applying function to parallel elements
  * of theta, x_r, x_i, so that for 1 <= n <= size(theta) 
  *
- *   map_rectangular(f, theta, x_r, x_i)[n] = f(theta[n], x_r[n], x_i[n])
+ *   map_rectangular(f, theta, x_r, x_i) = c(..., f(theta[n], x_r[n], x_i[n]), f(theta[n+1], x_r[n+1], x_i[n+1]), ...)
  */
-vector[] map_rect(F f, vector[] theta, vector[] x_r, int[,] x_i);
+real[] map_rect(F f, real[,] theta, real[,] x_r, int[,] x_i);
 ```
-
-The function `f` itself is the same as in the ragged version.
 
 * *QUESTION: Should we call the function `apply()` rather than `map()`?* Lisp: (map f x);  Python: map(f, x);  R: sapply(f, x).
 
