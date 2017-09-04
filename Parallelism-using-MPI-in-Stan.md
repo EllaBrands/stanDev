@@ -26,6 +26,11 @@ The basic idea of parallelism using the message passage interface is that we can
 
 # Open points
 
+- Finalize design (maybe I pair program with Bob?)
+   - Naming and placement of MPI utilities (new mpi namespace? use of an internal namespace?)
+   - A minimal unit test is here: https://github.com/stan-dev/math/blob/feature/concept-mpi/test/unit/math/rev/arr/functor/map_rect_mpi_test.cpp
+   - And here is how this integrates with cmdstan: https://github.com/stan-dev/cmdstan/blob/feature/proto-mpi/src/cmdstan/main-mpi2.cpp
+
 - Building: Building against a shared boost mpi and boost serialization works, but static linking looks tricky => do we need to ensure a static build process?
 
 - Testing: Additional *external* dependencies! How to manage this? Travis?
