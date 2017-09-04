@@ -45,6 +45,8 @@ The basic idea of parallelism using the message passage interface is that we can
    - Do we need a flush operation which clears the cache?
    - Can we assume a smart user who will always use the same uid for the same data set or do we need some checks (which can only be ad-hoc unless we pay the price for hashing)?
 
+- Start of more user-friendly version as agreed here: http://discourse.mc-stan.org/t/mpi-design-discussion/1103/38?u=wds15
+
 Sebastian answered, 2nd Sept:
 - Name for the new function? `map_rect`
 - Do we want to enable multiple `map` calls in a Stan program or just allow a single one? Yes, we want to allow multiple ones.
