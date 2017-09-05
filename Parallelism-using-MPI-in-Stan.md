@@ -24,28 +24,51 @@ The basic idea of parallelism using the message passage interface is that we can
 
 - Sparsity detection. For higher order autodiff many derivates will be zero (right?) in many cases. Therefore, a sparse communication should speed things up for such applications.
 
-# Open points
+# Open points, discussed Sept 4th
+
+*italic text summarizes decision* during meeting from Sept 4th with Sebastian, Bob, Charles, Daniel and Sean. **bold items** mark action items:
 
 - Finalize design (maybe I pair program with Bob?)
    - Naming and placement of MPI utilities (new mpi namespace? use of an internal namespace?)
    - A minimal unit test is here: https://github.com/stan-dev/math/blob/feature/concept-mpi/test/unit/math/rev/arr/functor/map_rect_mpi_test.cpp
    - And here is how this integrates with cmdstan: https://github.com/stan-dev/cmdstan/blob/feature/proto-mpi/src/cmdstan/main-mpi2.cpp
 
+*most MPI stuff will be crammed into an internal namespace. After another clean sweep from Sean and eventual iteration with Sebastian we will kick off a pull-request.* **Sean to review code in stan-math/feature/concept-mpi and align with Sebastian on design**.
+
 - Building: Building against a shared boost mpi and boost serialization works, but static linking looks tricky => do we need to ensure a static build process?
+
+*static building preferred, but not a must. We will target Mac and Linux first; Windows is optional.* **Daniel to look into details as to how to integrate and if static build can be done.**
 
 - Testing: Additional *external* dependencies! How to manage this? Travis?
    - Additional build dependencies
    - MPI OS dependency
    - Stan test program must be called with `mpirun`
 
+*We will test MPI stuff with extra special code on internal Jenkins. No Travis.*
+
 - How to handle nested map calls? Disallow them?
+
+*We will disallow them most likely in one or the other way (runtime or better at Stan compile time). I just implemented a runtime lock based thing such that there can never be two dispatched commands at a time.*
 
 - The current proposal caches the data after its first send.
    - The user gives a uid for dataset identification. OK?
    - Do we need a flush operation which clears the cache?
    - Can we assume a smart user who will always use the same uid for the same data set or do we need some checks (which can only be ad-hoc unless we pay the price for hashing)?
 
+*Burdening C++ users to manage uids identifying immutable data is OK. No flush operation for now. C++ users are smart by definition.*
+
 - Start of more user-friendly version as agreed here: http://discourse.mc-stan.org/t/mpi-design-discussion/1103/38?u=wds15
+
+**Bob to start stan language work. Bob, Daniel and Charles offered to write unit tests once pull-requests starts.**
+
+Next steps:
+
+- Sean and Sebastian align on design (naming, placement, ...)
+- Open pull-request
+- Unit tests / build system
+- Stan language
+
+We intend to start with the simple `map_rect` version first which does not include a shared parameter vector. What's next we will decide along (options are shared/not shared and aggregating/not aggregating).
 
 Sebastian answered, 2nd Sept:
 - Name for the new function? `map_rect`
