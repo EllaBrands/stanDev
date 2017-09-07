@@ -21,3 +21,5 @@ including speculation and brainstorming._
 * __Developer name.  Short description.__
 
 Project with DataCamp
+
+Andrew.  Cleaner output for Stan and rstan.
