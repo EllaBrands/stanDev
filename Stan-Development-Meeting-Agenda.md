@@ -24,3 +24,7 @@ Carpenter.  What should we do about PyStan licensing?  It sounds like Allen want
 Carpenter.  Web page governance?  We have no way to decide what should go on the web pages as nobody's in charge of them.  I built the first version of the pages.  Michael launched the second version, but I substantially modified the organization over time as new things got added.  Then Michael completely rebuilt the pages recently to organize around "about" and "users" and "developers" at the top level rather than "docs" and "interfaces", etc. at the top level.   Andrew has different ideas of how they should be organized (I think he wants only two tabs---so I wanted seven or eight, Michael used about half that, and Andrew wants to cut it in half again).  Given that we have roughly zero expertise in web design and measurements, it didn't seem like arguments would amount to anything other than "I think it'll be better this way."
 
 Gelman.  Stan books.  I talked with our editor at CRC about the Bayes Econ book (with Jim Savage and others) and the Stan book.  We should figure out how difficult it would be to put together the Stan book:  maybe we already have 90% from existing materials?  It would be good to be able to do this without it feeling like "work."
+
+Gelman.  Blue-sky ideas for Keck grant:  https://research.columbia.edu/content/2018-keck-foundation-research-grants
+
+Gelman:  Datacamp and Coursera (again).
