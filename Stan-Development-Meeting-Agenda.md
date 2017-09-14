@@ -33,3 +33,5 @@ Gelman.  Blue-sky ideas for Keck grant:  https://research.columbia.edu/content/2
 Gelman:  Datacamp and Coursera (again).
 
 Talts.  Code style.  We need something more precise to make code reviewe easier.
+
+Gelman.  Demos/movies
