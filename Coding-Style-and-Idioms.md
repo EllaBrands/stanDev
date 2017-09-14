@@ -76,7 +76,7 @@ I don't quite think our uses match their exception:
 
 > Classes that are intended to be transparent wrappers around other classes are also exceptions.
 
-#### [Declaration Order](http://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Declaration_Order)
+#### [Declaration Order](https://google.github.io/styleguide/cppguide.html#Declaration_Order)
 
 **Inline class definition**
 
@@ -125,7 +125,7 @@ We have to violate this for the existing exception hierarchy in throwing excepti
 
 > Use streams only for logging.
 
-#### [Integer Types](http://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Integer_Types)
+#### [Integer Types](https://google.github.io/styleguide/cppguide.html#Integer_Types)
 
 I think this is wrong because of `size_t`, and because of the crazy `__float128` extension:
 
@@ -141,13 +141,13 @@ Although I agree with the motivation to avoid subtle bugs, this messes up our ot
 use an unsigned type.
 
 
-#### [Template Metaprogramming](http://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Template_metaprogramming)
+#### [Template Metaprogramming](https://google.github.io/styleguide/cppguide.html#Template_metaprogramming)
 
 Too late for this (and they hate `enable_if`, but make an exception for general Boost packages like Boost Spirit):
 
 > Avoid complicated template programming.
 
-#### [Boost](http://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Boost)
+#### [Boost](https://google.github.io/styleguide/cppguide.html#Boost)
 
 Of course, we use none of their approved modules (though Boost Spirit's not on it despite being mentioned elsewhere), but we use lots of other ones.
 
@@ -162,7 +162,7 @@ than C conventions:
 
     C++ files should end in .cc and header files should end in .h
 
-#### [Type Names](http://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Type_Names)
+#### [Type Names](https://google.github.io/styleguide/cppguide.html#Type_Names)
 
 We went with Boost and Stroustroup, not Eigen and Google:
 
@@ -170,7 +170,7 @@ We went with Boost and Stroustroup, not Eigen and Google:
 
 Though we haven't been entirely consistent (e.g., VectorView).
 
-#### [Variable Names](http://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Variable_Names)
+#### [Variable Names](https://google.github.io/styleguide/cppguide.html#Variable_Names)
 
 We do this everywhere, including struct declarations.
 
@@ -178,13 +178,13 @@ We do this everywhere, including struct declarations.
 underscores between words. Data members of classes (but not structs)
 additionally have trailing underscores.
 
-#### [Constant Names](http://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Constant_Names)
+#### [Constant Names](https://google.github.io/styleguide/cppguide.html#Constant_Names)
 
 We went with the all-caps convention, not this:
 
 > Use a k followed by mixed case, e.g., kDaysInAWeek, for constants defined globally or within a class.
 
-#### [Function Names](http://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Function_Names)
+#### [Function Names](https://google.github.io/styleguide/cppguide.html#Function_Names)
 
 Again, we followed Stroustroup, not Google:
 
@@ -196,9 +196,9 @@ least follow Java's camel case, which would be "myExcitingFunction()"
 to distinguish from types.
 
 
-### [Comments](http://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Comments)
+### [Comments](https://google.github.io/styleguide/cppguide.html#Comments)
 
-#### [Comment Style](http://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Comment_Style)
+#### [Comment Style](https://google.github.io/styleguide/cppguide.html#Comment_Style)
 
 I disagree with
 
@@ -206,7 +206,7 @@ I disagree with
 
 We should always use // other than for doc comments.  The problem with /* ... */ is that you can't comment it out when you're debugging.  
 
-#### [File Comments](http://google-styleguide.googlecode.com/svn/trunk/cppguide.html#File_Comments) `[legal/copyright]`
+#### [File Comments](https://google.github.io/styleguide/cppguide.html#File_Comments) `[legal/copyright]`
 
 I think we should avoid this:
 
@@ -224,10 +224,10 @@ Just say no to this kind of redundancy:
 Follow the authorial rule:  show, don't tell!
 
 
-### [Formatting](http://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Formatting)
+### [Formatting](https://google.github.io/styleguide/cppguide.html#Formatting)
 
 
-#### [Pointer and Reference Expressions](http://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Pointer_and_Reference_Expressions)
+#### [Pointer and Reference Expressions](https://google.github.io/styleguide/cppguide.html#Pointer_and_Reference_Expressions)
 
 Let's stick to space following rather than preceding `&`, as in this example:
 
@@ -236,7 +236,7 @@ char* c;
 const string& str;
 ```
 
-#### [Boolean Expressions](http://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Boolean_Expressions)
+#### [Boolean Expressions](https://google.github.io/styleguide/cppguide.html#Boolean_Expressions)
 
 They allow wraps either way, but I strongly prefer the typesetting convention of operators initial in lines, so prefer
 
@@ -258,7 +258,7 @@ if (this_one_thing > this_other_thing &&
 }
 ```
 
-#### [Class Format](http://google-styleguide.googlecode.com/svn/trunk/cppguide.html#Class_Format) `[whitespace/indent]`
+#### [Class Format](https://google.github.io/styleguide/cppguide.html#Class_Format) `[whitespace/indent]`
 
 This is unconventional for C++, but I'm OK with it, though don't like the one space. **DL: I don't like one space.**
 
