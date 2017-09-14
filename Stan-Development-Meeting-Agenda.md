@@ -31,3 +31,5 @@ Gelman.  Stan books.  I talked with our editor at CRC about the Bayes Econ book 
 Gelman.  Blue-sky ideas for Keck grant:  https://research.columbia.edu/content/2018-keck-foundation-research-grants
 
 Gelman:  Datacamp and Coursera (again).
+
+Talts.  Code style.  We need something more precise to make code reviewe easier.
