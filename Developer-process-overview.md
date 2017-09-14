@@ -67,7 +67,7 @@ Before a pull request can make it into the Stan `develop` branch, it needs to be
 
   3. Code Quality
       - As much of the code should be written idiomatic to either C++ or math. This is subjective, but it's important to remember we're working as a team and the person that writes it may not be the person that needs to fix it later.
-      - We use cpplint to check for consistent C++ style. We have relaxed some of the rules; the description of the rules can be found in [Coding Style and Idioms](wiki/Coding-Style-and-Idioms)
+      - We use cpplint to check for consistent C++ style. We have relaxed some of the rules; the description of the rules can be found in [Coding Style and Idioms](https://github.com/stan-dev/stan/wiki/Coding-Style-and-Idioms)
       - Run `> make cpplint`. Your branch should introduce 0 new cpplint errors. (We are currently at 69 as of 2.8.0 and are trying to get it to 0.)
 
 Summary. In short, these things must pass in order for the pull request to go in. We would prefer if you checked before you submitted your pull request.
