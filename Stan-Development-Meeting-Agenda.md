@@ -13,6 +13,7 @@ meeting._
 
 Carpenter.  Should everyting we distribute on the web site have an open license?  Decision.
 
+Betancourt.  Jumping Rivers Proposal.  Opinions.
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
