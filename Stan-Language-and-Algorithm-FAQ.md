@@ -6,6 +6,8 @@ This is more of a collection of answers than questions hence the name.  It might
 
 - *Sampling statements (`~`) only increment the log density.*  All operands, including the value to the left of the `~`, must be defined before the sampling statement is executed.
 
+- *Log density `lp__` is on unconstrained scale with Jacobians up to a constant*.  The `lp__` variable shouldn't be used for model comparison.  It includes the log Jacobian adjustments for any parameter constraints and any constants involved in sampling statement log densities are dropped.
+
 - *Constrain parameters to match support.*  Every value for the parameters that satisfies the declared constraints should have finite density (finite log density).  If not, random initialization may fail and sampling or optimization may devolve to rejection sampling and exhibit bias (due to inability to adapt to placement of rejected volumes).  This also means not rejecting or returning negative infinity as a log density as a means of trying to define constraints.  Also, constraints on transformed parameters are meant to be satisfied, not used to reject otherwise legal values of parameters.
 
 - *Do not use interval-bounded priors unless physically necessary.*   Although `<lower = 0, upper = 1>` must be used for parameters representing probabilities, interval bounds tend to provide poor priors both statistically and computationally.  If values beyond the bounds are consistent with the other parameters and data, probability mass will bunch up at the boundaries, biasing estimates and pushing the sampler or optimizer out to plus or minus infinity on the unconstrained scale.
