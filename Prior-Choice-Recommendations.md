@@ -126,11 +126,8 @@
   * Need to flesh out this section with examples.
 
 # Priors for Gaussian processes
-  * See also recommendations in Section 18.3 in [Stan reference manual](https://github.com/stan-dev/stan/releases/download/v2.16.0/stan-reference-2.16.0.pdf)
-  * If the range of the x-axis values are pre-scaled to unit range (0-1, -.5-.5, etc), using the "inverse-lengthscale" parameterization (`CovMat[i,j] <- exp(dx*inv_rho) * eta ;`) means that for values of the inverse-lengthscale parameter ('inv_rho') between 0 & 1 implies a covariance structure from which sampled functions will be essentially linear (at least monotonic) across the range of the data. Thus, combined with a lower bound on 'inv_rho' at zero, the typical peaked-at-zero priors like 'inv_rho ~ normal(0,1)' will reflect a bias for simpler functions. Using a peaked-at-zero-but-heavy-tailed prior like 'inv_rho ~ student_t(4,0,1)' gives more credibility to more wiggly functions, but maintains the overall bias for simplicity.
-  * If the range of the y-axis are pre-scaled to unit range, a prior of `normal(0,1)` on both the "signal magnitude" parameter `eta` and the "noise magnitude" parameter `sigma` reflects a prior on the signal-to-noise ratio that is peaked at .5.
+  * See recommendations in Section 18.3 in [Stan reference manual](https://github.com/stan-dev/stan/releases/download/v2.16.0/stan-reference-2.16.0.pdf) (especially the part titled "Priors for Gaussian Process Parameters")
   * For Matern fields, then the [joint penalised complexity prior](http://arxiv.org/abs/1503.00256) is available for the parameters (variance, range) parameters
-  * In practice when we fit Gaussian processes we often either set the length-scale parameter to a fixed value corresponding to some desired level of smoothing, or we give it a strong prior.  The identification issues are real, and have to do with things such as, it's hard to identify much going on at a lower wavelength than the data spacing or a higher wavelength than the total range of the data, hence it can make perfect sense to either fix the value of hyperparameters or give them strong priors to make the model do what you want it to do.
 
 # Priors for rstanarm
   * Default priors should all be autoscaled---this is particularly relevant for stan_glm().  In particular, for the normal-distribution link, prior_aux should be scaled to the residual sd of the data.  Currently it's an unscaled normal(0,5) which will be a very strong prior if the scale of the data happens to be large.
