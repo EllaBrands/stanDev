@@ -13,7 +13,7 @@ General categorization of approaches to Bayesian computing with big data:
 
 Sebastian's interested in this project.
 
-This is related to the "workflow" issue that keeps coming up.
+Dan Simpson points the relevance of asymptotic arguments.
 
 Some things to do:
 
