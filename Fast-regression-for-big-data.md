@@ -9,7 +9,8 @@ General categorization of approaches to Bayesian computing with big data:
 - approximate models
 - approximate algorithms
 - data subsetting
-- faster computing for big models
+- faster general computing that allows one to fit many big models (for example, GPUs for matrix algebra)
+- faster computing for specific models (for example, integrating out the linear parameters in a hierarchical linear regression)
 
 Sebastian's interested in this project.
 
