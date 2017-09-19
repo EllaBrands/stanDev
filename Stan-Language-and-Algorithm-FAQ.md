@@ -37,14 +37,13 @@ This is more of a collection of answers than questions hence the name.  It might
 
 - *Use specialized functions wherever possible*.  Do not create a diagonal matrix, then multiply---use the specialized multiplication (`diag_pre_multiply`, `diag_post_multiply`, and `quad_form_diag`.
 
-- *Use Cholesky factor parameterizations of correlation matrices and scale.*  Rather than using a covariance matrix parameter or even a correlation matrix parameter, use a Cholesky factor for a correlation matrix and scale with a vector of scales using `diag_pre_multiply`.  Use an LKJ prior on the Cholesky factor of the correlation matrix. (`lkj_cholesky()`).  The correlation and/or covariance matrix may be recovered in the generated quantities block.
+- *Use Cholesky factor parameterizations of correlation matrices and scale.*  Rather than using a covariance matrix parameter or even a correlation matrix parameter, use a Cholesky factor for a correlation matrix and scale with a vector of scales using `diag_pre_multiply`.  Use an LKJ prior on the Cholesky factor of the correlation matrix. (`lkj_cholesky()`).  The correlation and/or covariance matrix may be recovered in the generated quantities block.  The [language manual chapter on regression](http://mc-stan.org/documentation) contains a worked example in context;  more recommendations for priors can be found in the [Prior Choice Recommendations Wiki](https://github.com/stan-dev/stan/wiki/Prior-Choice-Recommendations).
 
 - *Code formatting matters for readability and maintainability.*  Use standard formatting, ideally the one we use in the manual.  No tabs, indent two spaces, spaces around braces (`{`, `}`) and arithmetic and comparison operators (`+`, `&&`, etc.),  no space around parentheses (`(`, `)`) or brackets (`[`, `]`), break lines before operands not after, align multiple arguments on the next line under the previous argument.  Indent blocks. Minimize vertical spaces.  Assume the reader of your program knows Stan---don't document the language. Use functions with descriptive names (verbs) wherever possible.
 
 - *Keep Stan code in standalone files.*  This makes it easier to index line numbers in parser or runtime errors and easier to share programs among different clients and the users' group.
 
 - *To debug, build a program up from simpler tested parts in steps and validate on simulated data.*  Do not start trying to implement a long program and then provide it real data.  Instead, begin with simple programs tested on simulated data (for posterior interval coverage, not for point estimate error), then continue to refine the program and data simulator until it is ready for real data.  
-
 
 
 
