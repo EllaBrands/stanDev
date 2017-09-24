@@ -80,6 +80,24 @@ void unconstrain(const var_context& c,
   vector<double>& unconstrained_params) const;
 
 };  // class model
+
+struct var_decl {
+  std::string type_;
+  long num_dims_;
+  bool has_lb_;
+  bool has_ub_;
+}
+
+struct sized_var_decl : public var_decl {
+  std::vector<long> dims_;  // constrained dimensions
+}
+  
+struct value : public sized_var_decl {
+  double lb_;  // -inf if unbounded below
+  double ub_;  // +inf if unbounded above
+  std::vector<double> value_;
+};
+
 }  // namespace model
 }  // namespace stan
 ```
