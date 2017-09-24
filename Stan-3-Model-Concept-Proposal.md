@@ -20,7 +20,7 @@ foo(const var_context& data);
 
 // Return number of unconstrained parameters.
 // @return number of unconstrained parameters.
-long num_unconstrained_params();
+long num_unconstrained_params() const;
 
 // Return log density of unconstrained parameters, writing any
 // program output to the specified output stream.
