@@ -5,30 +5,77 @@ Not considering the issue of a virtual base class, I think we want something lik
 namespace stan {
 namespace model {
 class model {
+// Construct a model reading data from the specified
+// context.
+// @param[in] var_context definitions of data variables
 model(const var_context& data);
 
+// Destruct model.
 ~model();
 
-long num_params();
+// Return number of unconstrained parameters.
+// @return number of unconstrained parameters.
+long num_unconstrained_params();
 
+// Return log density of unconstrained parameters, writing any
+// program output to the specified output stream.
+// @tparam propto true if constants dropped in sampling statements
+// @tparam jacobian true if jacobian included for constraining transforms
+// @tparam T scalar type
+// @param[in] unconstrained_params sequence of unconstrained parameters
+// @param[in,out] print_msgs stream for program print statements
+// @return log density
 template <bool propto, bool jacobian, typename T>
-log_density(const std::vector<double>& unconstrained_params, 
+log_density(const std::vector<T>& unconstrained_params, 
             ostream& print_msgs) const;
 
+// Return sequence of variable value objects in order of declaration.
+// @tparam rng type of RNG used in generated quantities block
+// @param[in] p include parameters
+// @param[in] tp include transformed parameters
+// @param[in] gq include generated quantities
+// @param[in] unconstrained_params unconstrained parameter values
+// @param[in,out] print_msgs stream to which print statements from program are written
+// @param[in,out] rng base RNG for generated quantities
+// @return sequence of constrained variable values
 template <class BaseRNG& rng>
 vector<value> var_values(bool p, bool tp, bool gq,
-                         const std::vector<double>& unconstrained_params,
-                         std::ostream& print_msgs, BaseRNG& rng) const;
+                 const std::vector<double>& unconstrained_params,
+                 std::ostream& print_msgs, BaseRNG& rng) const;
 
-static std::vector<var_decl> var_decls(bool d, bool td, bool p, bool tp, bool gq);
+// Return sequence of variable declarations in declaration order
+// from specified blocks.
+// @param[in] d include data
+// @param[in] td include transformed data
+// @param[in] p include parameters
+// @param[in] tp include transformed parameters
+// @param[in] gq include generated quantities
+// @return variable declarations of specified blocks
+static std::vector<var_decl> var_decls(bool d, bool td, bool p,
+                                       bool tp, bool gq);
 
-std::vector<sized_var_decl> sized_var_decls(bool d, bool td, bool p, bool tp, bool gq) const;
+// Return variable declarations with sizes in declaration order
+// from specified blocks
+// @param[in] d include data
+// @param[in] td include transformed data
+// @param[in] p include parameters
+// @param[in] tp include transformed parameters
+// @param[in] gq include generated quantities
+// @return sized variable declarations of specified blocks
+std::vector<sized_var_decl> sized_var_decls(bool d, bool td,
+                               bool p, bool tp, bool gq) const;
 
+// Set unconstrained parameters to values derived from
+// the specified context.
+// @param[in] c context defining constrained parameter values
+// @param[in,out] unconstrained_params value set with unconstrained
+//   values
 void unconstrain(const var_context& c,
                  vector<double>& unconstrained_params) const;
 };  // class model
 }  // namespace model
 }  // namespace stan
+```
 
 We can't really have a useful base class with template methods because template methods can't be declared as virtual (no way to allocate symbol table statically until instantiations are known).
 
