@@ -1,14 +1,19 @@
 
-Not considering the issue of a virtual base class, I think we want something like this:
+Not considering the issue of a virtual base class, I think we want something like this for model class `foo` (there are two illegal empty lines vs. strict Google style, but otherwise I think it's compliant).
 
 ```
 namespace stan {
 namespace model {
-class model {
+
+// Class for holding data, transforming between constrained and
+// unconstrained parameter values, and for evaluating log
+// densities.
+class foo {
+
 // Construct a model reading data from the specified
 // context.
 // @param[in] var_context definitions of data variables
-model(const var_context& data);
+foo(const var_context& data);
 
 // Destruct model.
 ~model();
@@ -27,7 +32,7 @@ long num_unconstrained_params();
 // @return log density
 template <bool propto, bool jacobian, typename T>
 log_density(const std::vector<T>& unconstrained_params, 
-            ostream& print_msgs) const;
+  ostream& print_msgs) const;
 
 // Return sequence of variable value objects in order of declaration.
 // @tparam rng type of RNG used in generated quantities block
@@ -40,8 +45,8 @@ log_density(const std::vector<T>& unconstrained_params,
 // @return sequence of constrained variable values
 template <class BaseRNG& rng>
 vector<value> var_values(bool p, bool tp, bool gq,
-                 const std::vector<double>& unconstrained_params,
-                 std::ostream& print_msgs, BaseRNG& rng) const;
+  const std::vector<double>& unconstrained_params,
+  std::ostream& print_msgs, BaseRNG& rng) const;
 
 // Return sequence of variable declarations in declaration order
 // from specified blocks.
@@ -52,7 +57,7 @@ vector<value> var_values(bool p, bool tp, bool gq,
 // @param[in] gq include generated quantities
 // @return variable declarations of specified blocks
 static std::vector<var_decl> var_decls(bool d, bool td, bool p,
-                                       bool tp, bool gq);
+  bool tp, bool gq);
 
 // Return variable declarations with sizes in declaration order
 // from specified blocks
@@ -63,15 +68,16 @@ static std::vector<var_decl> var_decls(bool d, bool td, bool p,
 // @param[in] gq include generated quantities
 // @return sized variable declarations of specified blocks
 std::vector<sized_var_decl> sized_var_decls(bool d, bool td,
-                               bool p, bool tp, bool gq) const;
+  bool p, bool tp, bool gq) const;
 
 // Set unconstrained parameters to values derived from
 // the specified context.
 // @param[in] c context defining constrained parameter values
 // @param[in,out] unconstrained_params value set with unconstrained
-//   values
+// values
 void unconstrain(const var_context& c,
-                 vector<double>& unconstrained_params) const;
+  vector<double>& unconstrained_params) const;
+
 };  // class model
 }  // namespace model
 }  // namespace stan
