@@ -1,22 +1,5 @@
-We can't really have a useful base class with template methods. The template parameters now are
 
-* dropping constants (boolean `propto`)
-    - true or false
-
-* including Jacobian adjustment (boolean `jacobian`)
-    - true or false
-
-* RNG (class `BaseRNG`)
-
-* scalar type for density evaluation (numbered by derivative order)
-
-    - (0) `double`
-    - (1) `var`
-    - (2) `fvar<var>`
-    - (3) `fvar<fvar<var>>`
-
-Expanding that out would be 16 implementations.  `propto` can be controlled by the model to bring it down to 8.  Right now, Stan doesn't use the higher-order fvar, so that brings it down to 4:  +/- Jacobian, `double`, and `var`. 
-
+Not considering the issue of a virtual base class, I think we want something like this:
 
 ```
 namespace stan {
@@ -46,3 +29,30 @@ void unconstrain(const var_context& c,
 };  // class model
 }  // namespace model
 }  // namespace stan
+
+We can't really have a useful base class with template methods because template methods can't be declared as virtual (no way to allocate symbol table statically until instantiations are known).
+
+The template parameters now are
+
+#### Density function
+
+* dropping constants (boolean `propto`)
+    - true or false
+
+* including Jacobian adjustment (boolean `jacobian`)
+    - true or false
+
+* scalar type for density evaluation (numbered by derivative order)
+
+    - (0) `double`
+    - (1) `var`
+    - (2) `fvar<var>`
+    - (3) `fvar<fvar<var>>`
+
+#### Generated quantities
+
+* RNG (class `BaseRNG`)
+
+Expanding this all out would lead to 16 fully instantiated methods.
+
+Can we let `propto` be controlled within the model itself?  Right now, there's an issue with `T = double, propto=true` in that all the `~` densities drop out.  Should we just let that go and leave it up to the model to use `target +=` to get the full density if they want it in `double` form?  Or do we need some kind of better external control where `propto` is really just "optimize for MCMC and don't calculate total density"?
