@@ -125,6 +125,7 @@ The template parameters now are
 
 Expanding this all out would lead to 16 fully instantiated methods.  Can we let `propto` be controlled within the model itself?  Right now, there's an issue with `T = double, propto=true` in that all the `~` densities drop out.  Should we just let that go and leave it up to the model to use `target +=` to get the full density if they want it in `double` form?  Or do we need some kind of better external control where `propto` is really just "optimize for MCMC and don't calculate total density"?
 
+DanSimpson: It might be nice to have this depend on a flag. Usually, the current default is exactly what you want, but if someone wants to do something with marginal likelihoods for whatever reason, it would be much cleaner to have an interface parameter like "normalized = TRUE" that would tell `~` to set `propto=false`.
 #### Iterators?
 
 An alternative to the `std::vector<T>` type for unconstrained parameters, we could have constant or writeable iterator begin or begin/end pairs.
