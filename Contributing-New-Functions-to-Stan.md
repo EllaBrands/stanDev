@@ -269,3 +269,75 @@ We do not edit `function_signatures.h`, but instead "directly" modify Stan's gra
 #### Adding Gaussian Process Covariance Functions
 
 Implementing Gaussian processes requires three different functions.  Details are given in https://github.com/stan-dev/stan/wiki/Adding-a-Gaussian-Process-Covariance-Function. 
+
+
+## Testing New Functions
+
+
+There are a mish-mash of testing frameworks that various developers have sprinkled throughout the `unit/test` directory of the `stan-dev/math` repo.  This summarizes what is going on.  It should make writing tests for functions easier.
+
+#### Testing simple functions
+
+For testing one and two scalar argument functions, there are two alternatives, depending on whether the function i vectorized or not.
+
+For the simple unvectorized tests, you can see an example of a complete test for operator addition here:
+
+```
+test/unit/math/mix/core/operator_addition_test.cpp
+```
+
+You will see that it defines a structure 
+
+```
+struct op_addition_f {
+  template <typename T1, typename T2>
+  static typename boost::math::tools::promote_args<T1, T2>::type
+  apply(const T1& x1, const T2& x2) {
+    return x1 + x2;
+  }
+};
+```
+
+with a static tempate function `apply()`, which just passes through the result to `operator+()`.  Autodiff versions will be brought in by argument-dependent lookup. 
+
+The test itself is then run with:
+
+```
+TEST(mathMixCore, opratorAddition) {
+  stan::math::test::test_common_args<op_addition_f, false>();
+}
+```
+
+The first template parameter is the name of the structure defining the function, here `op_addition_f`.  The second argument is `true` if the function is a comparison operator (they return integer values, not real values, so are tested slightly differently).  This function then cycles through various typical arguments, positive, zero, negative, infinite, and not-a-number, making sure that the result of the basic function on `double` values matches and the derivatives match at all levels of autodiff.
+
+The actual code for testing each level of autodiff is in the framework file:
+```
+test/unit/math/mix/mat/util/autodiff_tester.hpp
+```
+
+The tests cover all the autodiff cases.
+
+* reverse: `var`, 
+* forward: `fvar<double>`, `fvar<fvar<double>>`
+* mixed: `fvar<var>`, `fvar<fvar<var>>`
+
+**Warning:** The test framework assumes you already have tests for primitives, `double` and `int`.
+
+#### Testing vectorized functions
+
+Follow the example in `test/unit/math/mix/mat/fun/acosh_test.cpp`.  
+
+You'll see that there's a required static `apply` function, as before, that wraps up the `acosh()` function and has a `using stan::math::acosh` file to allow it to be found along with the `std::` namespace version.
+
+There is then an integer and templated `apply_base` function which just call the static function above.  The reason `int` is broken out is that it uses the template argument of the `apply` function called to explicitly promote to `double`.  
+
+The rest of the static functiosn provide definitions of valid and invalid inputs of both `double` and `int` varieties.
+
+Then there are four macro calls at the end of the file to test at each level.  These get played out in test harnesses in each of the included files with the actual tests, such as
+
+```
+test/unit/math/rev/mat/vectorize/rev_scalar_unary_test.hpp
+```
+
+If you dive into that file, it's just more includes of files starting with `expect_` (named following google test conventions) that instantiate the test macros and register them with a testing harness.
+
