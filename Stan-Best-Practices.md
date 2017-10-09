@@ -10,7 +10,7 @@ Write your program to be easily read.  Use indentation to separate blocks of cod
 
 Facilitate reproducibility by saving the Stan program, data, and inits in separate files so that anyone can fit your model in any of the Stan interfaces.  Saving data and inits is simplified with the ```stan_rdump``` and ```read_rdump``` functions provided by some of the interfaces -- see the individual interfaces for more information.
 
-Ideally, your analysis will be broken up into a Stan program, a data file, possibly an init file, and scripts that process the analysis in your favorite environment.  Because each of these files with constantly evolve as you improve your analysis, we highly recommend using version control software such as ```git``` and supporting services like GitHub.  Hosting your analysis on GitHub is free and not only provides a backup of your project but also a history of all of your changes in case you need to revert any bad updates.
+Ideally, your analysis will be broken up into a Stan program, a data file, possibly an init file, and scripts that process the analysis in your favorite environment.  Because each of these files will constantly evolve as you improve your analysis, we highly recommend using version control software such as ```git``` and supporting services like GitHub.  Hosting your analysis on GitHub is free and not only provides a backup of your project but also a history of all of your changes in case you need to revert any bad updates.
 
 # 2. Think generatively
 
