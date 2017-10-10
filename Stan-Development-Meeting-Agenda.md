@@ -24,3 +24,5 @@ including speculation and brainstorming._
 * __Developer name.  Short description.__
 
 Andrew.  Can we add a missing-data type to avoid ugly hashing.  Yes I know it will only work with continuous missing data but still.
+
+Bob & Matthijs.  What other GLMs should be added after bernoulli-logit?
