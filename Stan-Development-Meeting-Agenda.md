@@ -18,6 +18,4 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
-Sean. Distribution tests run only on PR merge or once a week?
-
 Andrew.  Can we add a missing-data type to avoid ugly hashing.  Yes I know it will only work with continuous missing data but still.
