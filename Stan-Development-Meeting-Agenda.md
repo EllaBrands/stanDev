@@ -11,7 +11,7 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
-* Daniel. Allow everyone to post on the "Developers" category on Discourse (see: http://discourse.mc-stan.org/t/proposal-remove-restriction-on-developer-category-within-discourse/2269)? Resolution: decide on whether to do this or not.
+* Daniel. Allow everyone to post on the "Developers" category on [Discourse](http://discourse.mc-stan.org/t/proposal-remove-restriction-on-developer-category-within-discourse/2269)? Resolution: decide on whether to do this or not.
 
   More detail: there's currently a poll in the discourse thread. The count is currently 5-2 (in favor of opening up the Developers category vs. leaving it as read-all, write after approval). Although it's a poll, we don't need to leave this to a vote if we think it's better one way or another.
 
