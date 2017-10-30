@@ -32,4 +32,6 @@ Andrew.  We can briefly review all the papers/projects we're working on with Dan
 
 Andrew.  Coursera update.
 
+Andrew.  rstan issues, including:  setting mass matrix, extracting target() and gradients, etc.
+
 Breck- Generated Quantities Scheduling
