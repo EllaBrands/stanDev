@@ -35,3 +35,5 @@ Andrew.  Coursera update.
 Andrew.  rstan issues, including:  setting mass matrix, extracting target() and gradients, etc.
 
 Breck- Generated Quantities Scheduling
+
+Andrew.  EJ Wagenmakers thingie.
