@@ -41,3 +41,5 @@ Andrew.  EJ Wagenmakers thingie.
 Andrew.  Better timing estimates.
 
 Andrew.  When running Stan from Rstudio:  the processes won't die.  When running Stan from R console:  pinwheel.
+
+Mitzi:  time to sing Happy Birthday to Bob
