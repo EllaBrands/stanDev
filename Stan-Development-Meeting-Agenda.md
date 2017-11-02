@@ -34,3 +34,5 @@ Andrew.  rstan issues, including:  setting mass matrix, extracting target() and 
 Breck- Generated Quantities Scheduling
 
 Andrew.  EJ Wagenmakers thingie.
+
+Andrew.  Better timing estimates.
