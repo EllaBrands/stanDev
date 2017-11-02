@@ -11,6 +11,7 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+* Aki. GP covariance functions.
 
 
 ### Open Discussion Topics
