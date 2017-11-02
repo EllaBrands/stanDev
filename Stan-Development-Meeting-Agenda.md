@@ -13,6 +13,8 @@ meeting._
 
 * Aki. GP covariance functions.
 
+* Aki. MXNet
+
 
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
