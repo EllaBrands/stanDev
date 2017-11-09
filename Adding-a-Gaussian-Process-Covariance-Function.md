@@ -14,9 +14,9 @@ This dense matrix will lose any structure inherent to the specific Gaussian proc
 
 ## Non-Centered Parameterization
 
-Additionally, each implementation must have a function that returns a non-centered parameterization of a zero-mean Gaussian process, `y = L * z`,
+Additionally, each implementation must have a function that returns a non-centered parameterization of a zero-mean Gaussian process, `y = mu + L * z`,
 
-    vector gp_name_ncp(vector z, real[] x, ..., data real jitter)
+    vector gp_name_ncp(vector mu, vector z, real[] x, ..., data real jitter)
 
 If the covariance function is structured then that structure can be exploited in the C++ implementation of this function to realize the corresponding speed up.  
 
@@ -24,7 +24,7 @@ If the covariance function is structured then that structure can be exploited in
 
 Each implementation must also have a function that returns the log probability density function of a zero-mean multivariate normal with the Gaussian process's covariance matrix,
 
-    real gp_name_lpdf(vector y, real[] x, ..., data real jitter)
+    real gp_name_lpdf(vector y, vector mu, real[] x, ..., data real jitter)
 
 from which we can implement a centered parameterization of the Gaussian process.
 
@@ -34,4 +34,4 @@ Again, if the covariance function is structured then that structure can be explo
 
 Finally, each implementation must have a function that returns a realization of the Gaussian process,
 
-    real gp_name_rng(real[] x, ..., data real jitter)
+    real gp_name_rng(vector mu, real[] x, ..., data real jitter)
