@@ -40,7 +40,7 @@
     * Scale by sd of data.  This is done in education settings, here the sd is the sd of test scores of all kids in a single grade, for example
     * In a regression, take logs of (positive-constrained) predictors and outcomes, then coefs can be interpreted as elasticities
     * Scale by some conventional value, for example if a parameter has a "typical" value of 4.5, you could work with log(theta/4.5).  We did some things like this in our PK/PD project with Sebastian1. For example, in epidemiological studies it is common to standardize with the expected number of events.
-  * Once parameters are scale-free, we want them to be on "unit scale"--that is, of order of magnitude 1.  We don't want parameters to have values like 0.01 or 100, we want them to be not too far or too close to 0
+  * Once parameters are scale-free, we want them to be on "unit scale"--that is, of order of magnitude 1.  We don't want parameters to have values like 0.01 or 100, we want them to be not too far or too close to 0.  How should we do this?  The typical method is to divide by the scale. We prefer a robust estimator of the scale (such as the MAD) over the sample standard deviation. 
     * But sometimes parameters really are close to 0 on a real scale, and we need to allow that.  For example, the tiny effect of some ineffective treatment.  We would not want to "artificially" scale this up to 1 just to follow some principle.  Here's an example:  in education it's hard to see big effects.  An effect of .1 sd is actually pretty damn big, given that "1 sd" represents all the variation across kids.  In a setting where true effects are small, we need to allow that.
 
 # Generic weakly informative prior
