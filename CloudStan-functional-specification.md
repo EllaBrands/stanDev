@@ -51,7 +51,7 @@ CloudStan is a client for Stan that runs from a browser. It will allow users to:
 1. Create an account at https://cloud.sagemath.com . You can use your Google, GitHub, etc. account.
 2. After signing in, create a "Project" called "test" or something. You do not need to upgrade.
 3. Go to this [link](https://cloud.sagemath.com/projects/9cead8b7-e246-4ed2-b46f-9ad93dff442f)
-4. Copy and paste the hyperlinked word StanMathCloud into your session
+4. Click the hyperlinked word StanMathCloud 
 5. Click the icon called "Check all" to mark the 3 files
 6. Click the icon called "Copy"
 7. In the dropdown menu for "In the project", select "test" or whatever you called your project
@@ -59,7 +59,7 @@ CloudStan is a client for Stan that runs from a browser. It will allow users to:
 9. Click on the "Projects" item in the top left of the browser window
 10. Click on the hyperlinked word "test" or whatever you called your project
 11. Click on the hyperlinked word "StanMathCloud.ipynb"
-12. Pull down Kernel tab and select R(SageMath)
+12. Pull down Kernel menu item and select R(SageMath)
 13. You can edit any cell in this Jupyter Notebook and execute the cell by pressing Control+Enter. Or you can execute all cells by clicking Cell->Run All
 
 If we had a [paid](https://cloud.sagemath.com/policies/pricing.html) plan, we could access extra features, such as internet connectivity. 
