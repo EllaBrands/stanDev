@@ -21,3 +21,7 @@ including speculation and brainstorming._
 Andrew.  We can briefly review all the papers/projects we're working on with Dan, Aki, etc.  I think there are about 10 of them (GMO, hlm's, weak priors, simulation-based checking, Bayesian workflow, a few more I can't remember right now).
 
 Andrew.  Stan demo and movie.
+
+Andrew.  Stan manual:  add change-point models.
+
+Andrew.  Stan modeling cheat sheet.
