@@ -109,8 +109,8 @@
   * [Penalised complexity priors are available](http://arxiv.org/abs/1608.08941) for auto-regressive processes. For order=1, different priors are recommended depending on the natural base model. 
 
 # Prior for a covariance matrix
-  * Ben recommends LKJ(4).  LKJ(1) is uniform on the correlation matrix but this gets weird if you look at the marginals.  Ben thinks 4 df is a reasonable default. No, Ben doesn't (and it is a shape parameter rather than the degrees of freedom). Anything over 2 is very concentrated at the identity matrix.
-  * If doing modal estimation, see section on Boundary Avoiding Priors above
+  * There is a consensus now to decompose a covariance matrix into a correlation matrix and something else. There is less consensus on whether the something else should be standard deviations or variances and less consensus on what the prior should be.
+  * If doing modal estimation, see section on [Boundary Avoiding Priors](#boundary-avoiding-priors-for-modal-estimation-posterior-mode-map-marginal-posterior-mode-marginal-maximum-likelihood-mml) above.
 
 # Prior for scale parameters in hierarchical models
   * Gelman (2006) suggested half-Cauchy with mode at 0 and scale set to a large value (in the 8-schools example, we used the value 25), or with the scale estimated from data in a hierarchical-hierarchical setting in which there are many variance parameters which can be given a common prior.
