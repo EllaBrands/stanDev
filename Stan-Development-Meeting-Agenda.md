@@ -31,3 +31,5 @@ Andrew.  Stan demo and movie.
 Andrew.  Stan manual:  add change-point models.
 
 Andrew.  Stan modeling cheat sheet.
+
+Andrew.  Stan intro material.
