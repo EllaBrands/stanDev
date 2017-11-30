@@ -10,6 +10,10 @@ _New topics that should be addressed immediately or by the next
 meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
+ 
+* Sebastian. MPI Stan functions. Do we need any more tests of the MPI prototype or can we move forward with the signatures proposed (see [here](http://discourse.mc-stan.org/t/mpi-design-discussion/1103/233)). A short discussion of the input format of the parameters would be great; I am happy to explain concerns about it (Stan language consistency / performance considerations).
+
+* Sebastian. MPI test system. I figured how to run MPI tests, but this requires to introduce a custom `main` function for tests. Will this suffice and can we adapt the makefile system? See [here](https://github.com/stan-dev/math/blob/d717be647beb06e5c5419caaf83ff923ae02331b/test/unit/math/prim/mat/functor/map_rect_mpi_test.cpp#L94).
 
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
