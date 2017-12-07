@@ -15,8 +15,6 @@ meeting._
 
 * Sebastian. MPI test system. How to handle special MPI needs, see my [question here](http://discourse.mc-stan.org/t/gpu-ci-testing/2572/7). Guidance on what to do with MPI tests given they have to be disabled on some contexts.
 
-* Matthijs. Master's projects. I'd like to advertise two possible thesis projects for MSc students, here in Oxford: one on the reliability of VI and one on compiler optimisations for probabilistic programming. The idea is that both would involve using and hopefully contributing to Stan. I'd like to see if anyone has any suggestions / comments.
-
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
