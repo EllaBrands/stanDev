@@ -4,10 +4,6 @@ This list is meant to complement the issue tracker and help prioritize projects.
 
 We need to gather up all the backward-compatiblity breaking interface changes and do them at once as a Stan 3 rollout. 
 
-#### C++11 Migration
-
-We really want to move to using C++11 for both code cleanliness and efficiency, but we're held up by CRAN.
-
 #### Command Refactor
 
 This is required to take pressure off the interfaces and provide more uniformity.  We're being held up in basic design w.r.t. how much C++ we want to expose in the form of callbacks and how flat vs. hierarchical to make the commands.
