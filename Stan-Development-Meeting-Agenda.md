@@ -11,9 +11,9 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
  
-* Sebastian. MPI Stan functions. Do we need any more tests of the MPI prototype or can we move forward with the signatures proposed (see [here](http://discourse.mc-stan.org/t/mpi-design-discussion/1103/233)). A short discussion of the input format of the parameters would be great; I am happy to explain concerns about it (Stan language consistency / performance considerations).
+* Sebastian. MPI / non-MPI runs exact reproducibility. See (http://discourse.mc-stan.org/t/non-exact-reproducibility-issue-with-different-ad-schemes-possible/2693/2)[here for details]. Do we require exact reproducibility for MPI / non-MPI runs. I guess the same applies for GPU / non-GPU runs.
 
-* Sebastian. MPI test system. I figured how to run MPI tests, but this requires to introduce a custom `main` function for tests. Will this suffice and can we adapt the makefile system? See [here](https://github.com/stan-dev/math/blob/d717be647beb06e5c5419caaf83ff923ae02331b/test/unit/math/prim/mat/functor/map_rect_mpi_test.cpp#L94).
+* Sebastian. MPI test system. How to handle special MPI needs, see my (http://discourse.mc-stan.org/t/gpu-ci-testing/2572/7)[question here]. Guidance on what to do with MPI tests given they have to be disabled on some contexts.
 
 * Matthijs. Master's projects. I'd like to advertise two possible thesis projects for MSc students, here in Oxford: one on the reliability of VI and one on compiler optimisations for probabilistic programming. The idea is that both would involve using and hopefully contributing to Stan. I'd like to see if anyone has any suggestions / comments.
 
