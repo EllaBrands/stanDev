@@ -11,9 +11,7 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
  
-* Sebastian. MPI / non-MPI runs exact reproducibility. See [here for details](http://discourse.mc-stan.org/t/non-exact-reproducibility-issue-with-different-ad-schemes-possible/2693/2). Do we require exact reproducibility for MPI / non-MPI runs. I guess the same applies for GPU / non-GPU runs.
-
-* Sebastian. MPI test system. How to handle special MPI needs, see my [question here](http://discourse.mc-stan.org/t/gpu-ci-testing/2572/7). Guidance on what to do with MPI tests given they have to be disabled on some contexts.
+* Sebastian. Would everyone agree to include boost build to facilitate building of mpi and serialization? Pro: Very likely a lot easier in the future to install mpi+serialization. Con: Quite some stuff to integrate. At this point I would like to know if this is an option we should follow-up or not.
 
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
