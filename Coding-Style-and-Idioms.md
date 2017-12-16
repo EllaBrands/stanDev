@@ -1,7 +1,8 @@
-# CppLint Style
+We generally follow the [Google Style Guide](https://google.github.io/styleguide/cppguide.html) except for the exceptions listed in the following sections.
 
-We will follow the [Google Style Guide](https://google.github.io/styleguide/cppguide.html) except for the exceptions listed in the following sections.
+## Automated style checking tools
 
+### cpplint
 `cpplint.py` is a Python (2.7) script that checks for these guidelines. Here is a make target that will check the source code for any instances that do not conform to this standard:
 
 ```
@@ -14,6 +15,44 @@ RUN_CPPLINT = python2 stan/lib/cpplint_4.45/cpplint.py
 ```
 
 The make target includes Stan-specific options and limits the tests to the src/stan directory.
+
+### clang-format
+clang-format is a tool that will automatically format C++ code according to formatting rules in the `.clang-format` file. Our file is just a few changes from the vanilla Google Style guide. To see which rules are different, you can run this command:
+```sh
+clang-format --style=google -dump-config > google
+diff google .clang-format 
+```
+And here's the current output:
+```
+15,16c15,16
+< AllowShortIfStatementsOnASingleLine: true
+< AllowShortLoopsOnASingleLine: true
+---
+> AllowShortIfStatementsOnASingleLine: false
+> AllowShortLoopsOnASingleLine: false
+36c36
+< BreakBeforeBinaryOperators: None
+---
+> BreakBeforeBinaryOperators: All
+86c86
+< SortIncludes:    true
+---
+> SortIncludes:    false
+```
+
+You can see the rule definitions [here.](https://clang.llvm.org/docs/ClangFormatStyleOptions.html) clang-format doesn't deal with many of our exceptions to the Style guide, below, as they are difficult to automate or not strictly formatting related.
+
+#### Setup
+First, [install `clang-format`](http://geant.cern.ch/content/clang-format-git-hook)
+##### Editor setup
+Emacs - there's a plugin/script called `google-c-style`. You can find it [here](https://raw.githubusercontent.com/google/styleguide/gh-pages/google-c-style.el) or just install from MELPA.
+
+Spacemacs - you can add `google-c-style` to `dotspacemacs-additional-packages`.
+
+Vim- check out https://github.com/google/vim-codefmt
+
+##### Git hook
+There is a pre-commit hook in hooks/pre-commit, and if you run `bash hooks/install_hooks.sh` it will be installed for you. Going forward, it will run `clang-format -i` (which implicitly uses the `.clang-format` file in the repo) on any changed files to format them. If you need to disable this for some reason (though your tests will fail if you haven't formatted things correctly) you can use `git commit --no-verify`.
 
 
 ## Exceptions to the Google Style Guide
@@ -31,17 +70,7 @@ These rules are ordered in the same order as the Google Style Guide.
     in .inc. Separate -inl.h headers are disallowed.
     
 Our header files are `.hpp` files.
-    
-
-### [Scoping](https://google.github.io/styleguide/cppguide.html#Scoping)
-
-#### [Namespaces](https://google.github.io/styleguide/cppguide.html#Namespaces) `[runtime/indentation_namespace, readability/namespace]`
-
-**Named Namespaces**
-
-* allow indentation inside namespaces 
-* allow skipping of `// namespace foo` after closing bracket of namespace
-
+   
 #### [Nonmember, Static Member, and Global Functions](https://google.github.io/styleguide/cppguide.html#Nonmember,_Static_Member,_and_Global_Functions)
 
 We'll have trouble with "Nonmember functions should not depend on external variables" due to our use of globals for memory management
@@ -195,7 +224,6 @@ change.  And I really hate that they capitalize --- they should at
 least follow Java's camel case, which would be "myExcitingFunction()"
 to distinguish from types.
 
-
 ### [Comments](https://google.github.io/styleguide/cppguide.html#Comments)
 
 #### [Comment Style](https://google.github.io/styleguide/cppguide.html#Comment_Style)
@@ -222,73 +250,3 @@ Just say no to this kind of redundancy:
 > Every file should have a comment at the top describing its contents.
 
 Follow the authorial rule:  show, don't tell!
-
-
-### [Formatting](https://google.github.io/styleguide/cppguide.html#Formatting)
-
-
-#### [Pointer and Reference Expressions](https://google.github.io/styleguide/cppguide.html#Pointer_and_Reference_Expressions)
-
-Let's stick to space following rather than preceding `&`, as in this example:
-
-```
-char* c;
-const string& str;
-```
-
-#### [Boolean Expressions](https://google.github.io/styleguide/cppguide.html#Boolean_Expressions)
-
-They allow wraps either way, but I strongly prefer the typesetting convention of operators initial in lines, so prefer
-
-```
-if (this_one_thing > this_other_thing
-    && a_third_thing == a_fourth_thing
-    && yet_another && last_one) {
-  ...
-}
-```
-
-to
-
-```
-if (this_one_thing > this_other_thing &&
-    a_third_thing == a_fourth_thing &&
-    yet_another && last_one) {
-  ...
-}
-```
-
-#### [Class Format](https://google.github.io/styleguide/cppguide.html#Class_Format) `[whitespace/indent]`
-
-This is unconventional for C++, but I'm OK with it, though don't like the one space. **DL: I don't like one space.**
-
-<blockquote>
-Sections in public, protected and private order, each indented one space.
-
-The basic format for a class declaration (lacking the comments, see Class Comments for a discussion of what comments are needed) is:
-
-```
-class MyClass : public OtherClass {
- public:      // Note the 1 space indent!
-  MyClass();  // Regular 2 space indent.
-  explicit MyClass(int var);
-  ~MyClass() {}
-
-  void SomeFunction();
-  void SomeFunctionThatDoesNothing() {
-  }
-
-  void set_some_var(int var) { some_var_ = var; }
-  int some_var() const { return some_var_; }
-
- private:
-  bool SomeInternalFunction();
-
-  int some_var_;
-  int some_other_var_;
-};
-```
-
-
-
-
