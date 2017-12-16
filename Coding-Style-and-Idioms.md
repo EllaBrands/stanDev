@@ -1,4 +1,4 @@
-We generally follow the [Google Style Guide](https://google.github.io/styleguide/cppguide.html) except for the exceptions listed in the following sections.
+We generally follow the [Google Style Guide](https://google.github.io/styleguide/cppguide.html) except for the exceptions listed in the following sections. We use a few tools to automate style and formatting checking, but they don't completely capture our formatting and style guidelines.
 
 ## Automated style checking tools
 
