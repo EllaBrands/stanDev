@@ -101,8 +101,8 @@ ragged<ragged<int[]>>[M] y = ...;
 ```
 
 * `y[n] : ragged<int[]>[M[n]] for n in 1:N`
-* `y[n, m] : int[] for n in 1:N, m in 1:M[n]`
-* `y[n, m, k] : int for n in 1:N, m in 1:M[n], k in 1:M[n,m]`
+* `y[n, m] : int[] for n in 1:N, m in 1:size(M[n])`
+* `y[n, m, k] : int for n in 1:N, m in 1:size(M[n]), k in 1:M[n,m]`
 
 ##### Type Aliases
 
@@ -135,7 +135,7 @@ int<lower = 0>[N, 2] M2;
 matrix[M2] y;  // =def=  ragged<matrix>[M2] y;
 ```
 
-Will this completely avoid the need to have ragged types?
+Will this completely avoid the need to use `ragged<T>`? 
 
 
 ### What is a Ragged Array?
