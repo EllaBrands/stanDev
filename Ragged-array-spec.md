@@ -2,6 +2,142 @@
 
 The goal is to allow ragged arrays, and arrays of differently sized matrices and vectors.
 
+### Spec
+
+#### General specification
+
+If `T` is a container type (vector, row vector, matrix, or array) and `M` is an array of size specfications for `T`, then the following declares a ragged array of elements of type `T` of varying sizes
+```
+ragged<T>[M] y;
+```
+The size array `M` has one size specification for `T` for each element of `y`:
+
+* `size(M) = N`
+* `size(y) = N`
+
+Then, for accessing, each element is of the specified type with the specified size,
+
+* `y[n] : T[M[n]] for n in 1:N`
+
+
+##### Example: ragged 2D array
+
+```
+int[5] a1;
+int[7] a2;
+int[11] a3;
+y = { a1, a2, a3 };
+```
+```
+int N = 3;
+int[N] M = { 5, 7, 11 };
+ragged<int[]>[M] y = ...;
+```
+
+* `y[n] : int[M[n]]  for n in 1:N`
+* `y[n, m] : int  for n in 1:N, m in 1:M[n]`
+
+
+##### Example: ragged array of vectors
+
+```
+vector[5] v1;
+vector[7] v2;
+vector[11] v3;
+y = { v1, v2, v3 };
+```
+```
+int N = 3;
+int[N] M = { 5, 7, 11 };
+ragged<vector>[M] y = ...;
+```
+
+* `y[n] : vector[M[n]]  for n in 1:N`
+* `y[n, m] : real  for n in 1:N, m in 1:M[n]`
+
+
+##### Example: ragged array of matrices
+
+```
+matrix[13, 17] M1;
+matrix[19, 23] M2;
+matrix[29, 31] M3;
+y = { M1, M2, M3 }
+```
+```
+int N = 3;
+int[N, 2] M = { { 13, 17 },
+                { 19, 23 },
+		{ 29, 31 } };
+ragged<matrix>[M] y = ...;
+```
+
+* `y[n] : matrix[M[n]] =def= matrix[M[n, 1], M[n, 2]]  for n in 1:N`
+* `y[n, m] : row_vector[M[n, 2]] for n in 1:N, m in 1:M[n, 1]`
+* `y[n, m, k] : real for n in 1:N, m in 1:M[n, 1], k in 1:M[n, 2]`
+
+
+##### Ragged array of ragged arrays
+
+```
+y =
+{ { { 3, 2 },
+    { 1, 7, 5 } },
+
+  { { 1 },
+    { 5, 15, 112 } },
+
+  { { 5, 12, 15, 100, 2012 } },
+
+  { { 2, 3 },
+    { 4, 5, 6 },
+    { 7, 8, 9 } } }
+```
+
+```
+int N = 4;
+ragged<int[]>[{2, 2, 1, 3}] M = { { 2, 3 }, { 1, 3 }, { 5 }, { 2, 3, 4 } };
+ragged<ragged<int[]>>[M] y = ...;
+```
+
+* `y[n] : ragged<int[]>[M[n]] for n in 1:N`
+* `y[n, m] : int[] for n in 1:N, m in 1:M[n]`
+* `y[n, m, k] : int for n in 1:N, m in 1:M[n], k in 1:M[n,m]`
+
+##### Type Aliases
+
+Some sugar to help the syntax go down
+
+```
+ragged_int == ragged<int[]>
+ragged_real == ragged<real[]>
+
+ragged_vector == ragged<vector>
+ragged_row_vector = ragged<row_vector>
+ragged_matrix = ragged<matrix>[M]
+
+ragged_int3D == ragged<ragged<int[]>>
+ragged_real3D == ragged<ragged<int[]>>
+```
+
+#### Implicit declarations
+
+Use the regular type names, but when they see arguments are for ragged, create a ragged type.  
+
+```
+int<lower = 0> N;
+int<lower = 0>[N] M;
+int[M] y;  // =def= ragged<int[]>[M] y;
+
+vector[M] y; // =def= ragged<int[]>[M] y;
+
+int<lower = 0>[N, 2] M2;
+matrix[M2] y;  // =def=  ragged<matrix>[M2] y;
+```
+
+Will this completely avoid the need to have ragged types?
+
+
 ### What is a Ragged Array?
 
 This specification will use the C++ notation for arrays.  For example, `{ a, b c }` will denote a size-3 array with elements `a`, `b`, and `c`.
