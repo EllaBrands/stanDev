@@ -65,6 +65,14 @@ Warning message:  "Try to make all your parameters scale free.  You have a const
 - Warn user if parameter has no priors or multiple priors
 Bruno Nicenboim suggested this on https://github.com/stan-dev/stan/issues/2445)
 
+- Warn user if parameter has indexes but is used without indexes in a loop, e.g.,
+```
+real[N] y;
+for (n in 1:N)
+  y ~ normal(0, 1);  // probably not what user intended
+```
+
+
 - If there are other common and easily-identifiable Stan programming errors, we should aim to catch them too.
 
 Pedantic mode for Rstanarm:
