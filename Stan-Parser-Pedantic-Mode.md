@@ -62,6 +62,9 @@ Warning message:  "Warning:  Variable ** is used on line *** but is not defined 
 
 Warning message:  "Try to make all your parameters scale free.  You have a constant in your program that is less than 0.1 or more than 10 in absolute value on line **.  This suggests that you might have parameters in your model that have not been scaled to roughly order 1.  We suggest rescaling using a multiplier; see section *** of the manual for an example.
 
+- Warn user if parameter has no priors or multiple priors
+Bruno Nicenboim suggested this on https://github.com/stan-dev/stan/issues/2445)
+
 - If there are other common and easily-identifiable Stan programming errors, we should aim to catch them too.
 
 Pedantic mode for Rstanarm:
