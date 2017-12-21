@@ -29,3 +29,5 @@ Andrew.  Stan modeling cheat sheet.
 Andrew.  Stan intro material.
 
 Andrew.  Missing-data imputation.
+
+Andrew.  Paper/doc for GP's
