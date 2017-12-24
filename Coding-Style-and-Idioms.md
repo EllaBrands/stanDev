@@ -43,7 +43,11 @@ And here's the current output:
 You can see the rule definitions [here.](https://clang.llvm.org/docs/ClangFormatStyleOptions.html) clang-format doesn't deal with many of our exceptions to the Style guide, below, as they are difficult to automate or not strictly formatting related.
 
 #### Setup
-First, [install `clang-format`](http://geant.cern.ch/content/clang-format-git-hook)
+First, [install `clang-format`](http://geant.cern.ch/content/clang-format-git-hook). If you're on a mac and using homebrew, please install clang-format@2017-06-22 with this command:
+```
+brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/574560408e2ea6787a0af716e91d11468e878b31/Formula/clang-format.rb
+```
+
 ##### Editor setup
 Emacs - there's a plugin/script called `google-c-style`. You can find it [here](https://raw.githubusercontent.com/google/styleguide/gh-pages/google-c-style.el) or just install from MELPA.
 
