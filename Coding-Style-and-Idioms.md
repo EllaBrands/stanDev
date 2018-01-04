@@ -17,30 +17,7 @@ RUN_CPPLINT = python2 stan/lib/cpplint_4.45/cpplint.py
 The make target includes Stan-specific options and limits the tests to the src/stan directory.
 
 ### clang-format
-clang-format is a tool that will automatically format C++ code according to formatting rules in the `.clang-format` file. Our file is just a few changes from the vanilla Google Style guide. To see which rules are different, you can run this command:
-```sh
-clang-format --style=google -dump-config > google
-diff google .clang-format 
-```
-And here's the current output:
-```
-15,16c15,16
-< AllowShortIfStatementsOnASingleLine: true
-< AllowShortLoopsOnASingleLine: true
----
-> AllowShortIfStatementsOnASingleLine: false
-> AllowShortLoopsOnASingleLine: false
-36c36
-< BreakBeforeBinaryOperators: None
----
-> BreakBeforeBinaryOperators: All
-86c86
-< SortIncludes:    true
----
-> SortIncludes:    false
-```
-
-You can see the rule definitions [here.](https://clang.llvm.org/docs/ClangFormatStyleOptions.html) clang-format doesn't deal with many of our exceptions to the Style guide, below, as they are difficult to automate or not strictly formatting related.
+clang-format is a tool that will automatically format C++ code according to formatting rules in the `.clang-format` file. Our file is just a few changes from the vanilla Google Style guide. `clang-format` doesn't deal with many of our exceptions to the Style guide, below, as they are difficult to automate or not strictly formatting related.
 
 #### Setup
 First, [install `clang-format`](http://geant.cern.ch/content/clang-format-git-hook). If you're on a mac and using homebrew, please install clang-format@2017-06-22 with this command:
@@ -63,6 +40,31 @@ Vim- check out https://github.com/google/vim-codefmt
 ##### Git hook
 There is a pre-commit hook in hooks/pre-commit, and if you run `bash hooks/install_hooks.sh` it will be installed for you. Going forward, it will run `clang-format -i` (which implicitly uses the `.clang-format` file in the repo) on any changed files to format them. If you need to disable this for some reason (though your tests will fail if you haven't formatted things correctly) you can use `git commit --no-verify`.
 
+##### Differences from clang-format's `--style=google`
+To see which rules are different, you can run this command:
+```sh
+clang-format --style=google -dump-config > google
+diff google .clang-format 
+```
+And here's the current output:
+```
+15,16c15,16
+< AllowShortIfStatementsOnASingleLine: true
+< AllowShortLoopsOnASingleLine: true
+---
+> AllowShortIfStatementsOnASingleLine: false
+> AllowShortLoopsOnASingleLine: false
+36c36
+< BreakBeforeBinaryOperators: None
+---
+> BreakBeforeBinaryOperators: All
+86c86
+< SortIncludes:    true
+---
+> SortIncludes:    false
+```
+
+You can see the rule definitions [here.](https://clang.llvm.org/docs/ClangFormatStyleOptions.html) 
 
 ## Exceptions to the Google Style Guide
 
