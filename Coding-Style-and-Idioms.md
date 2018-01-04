@@ -48,6 +48,11 @@ First, [install `clang-format`](http://geant.cern.ch/content/clang-format-git-ho
 brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/574560408e2ea6787a0af716e91d11468e878b31/Formula/clang-format.rb
 ```
 
+If you're on Ubuntu Linux, you can use if you're on Ubuntu you can use update-alternatives:
+```
+sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-5.0 100
+```
+
 ##### Editor setup
 Emacs - there's a plugin/script called `google-c-style`. You can find it [here](https://raw.githubusercontent.com/google/styleguide/gh-pages/google-c-style.el) or just install from MELPA.
 
