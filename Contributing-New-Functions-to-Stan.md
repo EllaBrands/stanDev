@@ -220,7 +220,7 @@ add("foo", VECTOR_T, ...);
 The following lines expose the foo function used as an example in the previous section:
 
 ```bash
-std::vector<expr_type> arg_types; // declare a vector, which contains elements of type "arg_types"
+std::vector<function_arg_type> arg_types; // declare a vector, which contains elements of type "arg_types"
 // Next, add elements to our vector
 for(int i = 0; i<2; i++){arg_types.push_back(vector_types[1]);}
 for(int i = 0; i<2; i++) {arg_types.push_back(int_vector_types[1]);}
