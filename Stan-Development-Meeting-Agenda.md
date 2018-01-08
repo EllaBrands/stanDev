@@ -33,3 +33,5 @@ Andrew.  Missing-data imputation.
 Andrew.  Paper/doc for GP's
 
 Andrew.  Not running generated quantities each step when Stan is optimizing.
+
+Andrew, Aki, Ben.  R-hat:  (a) fixing the formula, (b) using order statistics and z-scores, (c) multivariate R-hat
