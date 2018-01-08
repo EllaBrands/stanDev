@@ -31,3 +31,5 @@ Andrew.  Stan intro material.
 Andrew.  Missing-data imputation.
 
 Andrew.  Paper/doc for GP's
+
+Andrew.  Not running generated quantities each step when Stan is optimizing.
