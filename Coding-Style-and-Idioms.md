@@ -25,8 +25,9 @@ First, [install `clang-format`](http://geant.cern.ch/content/clang-format-git-ho
 brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/574560408e2ea6787a0af716e91d11468e878b31/Formula/clang-format.rb
 ```
 
-If you're on Ubuntu Linux, you can use if you're on Ubuntu you can use update-alternatives:
+If you're on Ubuntu Linux, you can use if you're on Ubuntu you can use the LLVM PPA to install clang-format-5.0 and then use update-alternatives to set it as the default. Find the relevant 5.0 PPA here: https://apt.llvm.org/ and follow their PPA install instructions, then:
 ```
+sudo apt-get install clang-format-5.0
 sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-5.0 100
 ```
 
