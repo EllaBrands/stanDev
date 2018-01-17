@@ -20,12 +20,16 @@ The make target includes Stan-specific options and limits the tests to the src/s
 clang-format is a tool that will automatically format C++ code according to formatting rules in the `.clang-format` file. Our file is just a few changes from the vanilla Google Style guide. `clang-format` doesn't deal with many of our exceptions to the Style guide, below, as they are difficult to automate or not strictly formatting related.
 
 #### Setup
-First, [install `clang-format`](http://geant.cern.ch/content/clang-format-git-hook). If you're on a mac and using homebrew, please install clang-format@2017-06-22 with this command:
+First, [install `clang-format`](http://geant.cern.ch/content/clang-format-git-hook). If you're on a mac and using homebrew, please install clang-format@2017-11-14 with this command:
 ```
-brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/574560408e2ea6787a0af716e91d11468e878b31/Formula/clang-format.rb
+brew install clang-format@2017-11-14
+```
+If you're already on a previous version of clang-format, you can upgrade with 
+```
+brew upgrade clang-format@2017-11-14
 ```
 
-If you're on Ubuntu Linux, you can use if you're on Ubuntu you can use the LLVM PPA to install clang-format-5.0 and then use update-alternatives to set it as the default. Find the relevant 5.0 PPA here: https://apt.llvm.org/ and follow their PPA install instructions, then:
+If you're on Ubuntu Linux, you can use if you're on Ubuntu you can use the LLVM PPA to install clang-format-5.0 and then use update-alternatives to set it as the default. Find the relevant 5.0 PPA for your version of Ubuntu here: https://apt.llvm.org/ and follow their PPA install instructions, then:
 ```
 sudo apt-get install clang-format-5.0
 sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-5.0 100
