@@ -11,7 +11,9 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
  
-* Sebastian. Would everyone agree to include boost build to facilitate building of mpi and serialization? Pro: Very likely a lot easier in the future to install mpi+serialization. Con: Quite some stuff to integrate. At this point I would like to know if this is an option we should follow-up or not.
+* Sebastian. Merging MPI... how to proceed?
+
+* Sebastian. Volunteer to review analytic gradient version of multi_normal_cholesky (>2x speedups for d>100 problems)?
 
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
