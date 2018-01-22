@@ -10,6 +10,8 @@ _New topics that should be addressed immediately or by the next
 meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
+
+* Charles. Stan 2.18 release.
  
 * Sebastian. Merging MPI... how to proceed?
 
