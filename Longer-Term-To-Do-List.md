@@ -57,10 +57,6 @@ Including both the fitting and the evaluation of how well the variance approxmat
 
 So we can handle missing data or forward simulation.
 
-#### Standalone Generated Quantities
-
-Run generated quantities for an already fit model using only parameter draws.
-
 #### Stochastic diff eq models
 
 Process error models in addition to measurement errors for diff eqs.
