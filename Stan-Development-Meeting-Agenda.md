@@ -23,3 +23,6 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
+* Andrew.  Verbose options in output.
+
+* Andrew.  real theta ~ normal(0, 1);
