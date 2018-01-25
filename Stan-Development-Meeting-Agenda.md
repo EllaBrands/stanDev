@@ -23,21 +23,3 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
-
-Andrew.  We can briefly review all the papers/projects we're working on with Dan, Aki, etc.  I think there are about 10 of them (GMO, hlm's, weak priors, simulation-based checking, Bayesian workflow, a few more I can't remember right now).
-
-Andrew.  Stan demo and movie.
-
-Andrew.  Stan modeling cheat sheet.
-
-Andrew.  Stan intro material.
-
-Andrew.  Missing-data imputation.
-
-Andrew.  Paper/doc for GP's
-
-Andrew.  Not running generated quantities each step when Stan is optimizing.
-
-Andrew, Aki, Ben.  R-hat:  (a) fixing the formula, (b) using order statistics and z-scores, (c) multivariate R-hat
-
-Andrew.  Hiring a programmer.
