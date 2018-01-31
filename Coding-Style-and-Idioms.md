@@ -28,7 +28,7 @@ If you're already on a previous version of clang-format, you can upgrade with
 ```
 brew upgrade clang-format@2017-11-14
 ```
-
+(if that doesn't work, try `brew install clang-format` or `brew upgrade clang-format` and get whatever your computer thinks is the latest)
 If you're on Ubuntu Linux, you can use if you're on Ubuntu you can use the LLVM PPA to install clang-format-5.0 and then use update-alternatives to set it as the default. Find the relevant 5.0 PPA for your version of Ubuntu here: https://apt.llvm.org/ and follow their PPA install instructions, then:
 ```
 sudo apt-get install clang-format-5.0
