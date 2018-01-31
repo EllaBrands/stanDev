@@ -53,7 +53,7 @@ Once you have familiarized yourself with our process take a look at the GitHub i
 * [Discourse](http://discourse.mc-stan.org/)
 * [Developer process](https://github.com/stan-dev/stan/wiki/Developer-process-overview)
 * [Contributing a new Stan function](https://github.com/stan-dev/stan/wiki/Contributing-New-Functions-to-Stan)
-* [Stan C++ style guide](https://github.com/stan-dev/stan/wiki/Coding-Style-and-Idioms)
+* [Stan C++ style guide](https://github.com/stan-dev/stan/wiki/Coding-Style-and-Idioms) (includes some developer environment setup)
 * [Autodiff paper](https://arxiv.org/abs/1509.07164) Details the implementation and math library generally
 * [Some Bayesian Modeling Techniques in Stan](https://www.youtube.com/watch?v=uSjsJg8fcwY)
 
