@@ -17,6 +17,8 @@ meeting._
 
 * Sebastian. Interest in more parallel stuff? Short documentation in wiki on `operands_and_partials` asynchronous execution concept which is an alternative to OpenMP. Pro: general/no need for MPI/Stan programs stay as they are; Con: I don't have time to do it any time soon.
 
+* Sebastian. Sparse matrices. Any hope for soon solutions? Function which is unsafe to use in addition to what we have with big warnings (sorry if I missed any of this, but this is important for many models).
+
 ### Open Discussion Topics
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
