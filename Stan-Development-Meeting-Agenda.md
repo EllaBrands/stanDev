@@ -10,8 +10,6 @@ _New topics that should be addressed immediately or by the next
 meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
-
-* Charles. Stan 2.18 release.
  
 * Sebastian+Ben. Logic for cmdstan mass matrix reloading and num_warmup=0/engaged=1 issue.
 
