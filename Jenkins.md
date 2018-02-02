@@ -1,3 +1,5 @@
+http://discourse.mc-stan.org/t/new-jenkins-jobs-tutorial/2383
+
 # Background
 
 Our Jenkins configuration isn't the best. I, Daniel, am trying to take inventory of our current situation so we can make it better. We've evolved our Jenkins config over the years. I'm the only one that's keeping tabs on it, for now. 
