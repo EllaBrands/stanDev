@@ -5,64 +5,85 @@ I'd like to add a heterogeneous typed container to Stan's language.
 A declaration would look something like this:
 
 ```
-tuple<T1, ..., TN> x;
+(T1, ..., TN) x;
 ```
 
-where `T1` through `TN` are sized type specifications.   Or we could use `seq` or `list` in place of `tuple` --- they're both shorter.
+where `T1` through `TN` are sized type specifications.
 
-<b>Issue:</b>  This is a bit tricky in that we don't have a generic sized type system yet, only the unsized one used for functions and the one involved with declaring variables.  The obvious choices work for basic types, like `real` or `matrix[3, 2]`, but it's trickier for arrays.  For arrays of reals, that's also easy, because we can use something like `real[3, 2]` for a 2D array of reals.  For a 2D array of vectors, we'll have to use something like `vector[3][4, 5]`.  At that point, I thik I'd want to introduce these into the language itself as an alternative to the mixed form 
+<b>Issue:</b>  To make this fly, we need to have a way of declaring sized types contiguously.  Right now, declarations like `int x[3]` split the `int` and `[3]`.  Mitzi's working on this as part of the general refactor of the underlying type system.
+
+## Tuple Expressions
+
+The expression for creating tuples can follow the array notation (`{ a, b, c }`) and vector notation (`[a, b, c]`) and use `(a, b, c)`.  This will create a tuple of type `(typeof(a), typeof(b), typeof(c))`, which will be inferrable.  
+
+## Tuple Accessors
+
+We can't have general access by integer because we can't figure out the type statically and Stan is strongly statically typed.  So we'll have to hardcode the accessors, as in:
 
 ```
-vector[3] x[4, 5];
+tuple(S, T, U) x;
+...
+S a = x.1;
+T b = x.2;
+U c = x.3;
+// x.4 causes compilation error
 ```
 
-where the size of the array comes after the variable, but the size of the basic type goes on the basic type.
+And just to say this again, we can't have `x[n]` for some runtime-determined `n` because we need to determine return type statically.
+
 
 ## Heads, Tails, and Concatenations
 
-It shold be possible to get the head or tail of a tuple.  
+We can follow Lisp and define some basic operations on tuples as lists, including heads (car),
 
 ```
-tuple<T2, ..., TN> tail(tuple<T1, T2, ..., TN> a);
-T1 head(tuple<T1, ..., TN> a);
+T1 
+head((T1, ..., TN) a);
 ```
 
-and concatenate them back into a tuple
+tails (cdr),
 
 ```
-tuple<T1, T2, ..., TN> cat(T1 a, tuple<T2, ..., TN> b);
+(T2, ..., TN)
+tail((T1, T2, ..., TN) a);
 ```
 
-## Element Indexing lvalues and rvalues
-
-We should also be able to get (rvalue) and set (lvalue) by element
+and concatenation (cat)
 
 ```
-tuple<real, int, vector[2]> a;
-real c;
-int d;
-vector[2] e;
-
-c = a[1];
-d = a[2];
-e = a[3];
-
-a[1] = c;
-a[2] = d;
-a[3] = e;
+(T1, T2, ..., TN)
+concat(T1 a, (T2, ..., TN) b);
 ```
 
-I don't think we should make `head()` and `tail()` return lvalues, though we could.
 
-We probably also want an appending function that isn't overloaded with cat:
+
+## Lvalues
+
+We want to allow tuples and elements of tuples on the left-hand side of assignments, as in:
 
 ```
-tuple<T1, ..., TN, U1, ..., UM> append(tuple<T1, ..., TN> a, tuple<U1, ..., UM> b);
+(double, int) a;
+a = (3.7, 2);  // assign to 
+a.1 = 4.2;
 ```
+
+## Promotion (Covariance)
+
+Should tuples be fully covariant?  That means that whenever `a` is a subtype of `b` (e.g., `int` is a subtype of `real`), then `(..., a, ...)` is a subtype of `(..., b, ...)` in a tuple.  This would allow us to assign an integer and double tuple to a pair of double value tuples, `(int, double, matrix)` assignable to `(double, double, matrix)`.  If that doesn't work, the expression construction syntax is going to be confusing when `int` doesn't act like `double`.
+
+## Alternative syntax
+
+Instead of `(T1, ..., TN)`, we could use `tuple(T1, ..., TN)`.  It's a little more explicit.  The implicit version matches behavior in Python.  
+
+## Not R lists
+
+Tuple are not meant to be dynamic heterogeneous containers like lists in R.  The types are declared statically like every other variable in Stan.
+
+
 
 ## C++ Implementation
 
-This is easy on the data-type side in C++:
+We can drop down to C++11 tuple types if they scale or use a Lisp-type encoding.
 
 ```
 struct nil_tuple {
@@ -80,32 +101,3 @@ public:
   T& tail() { return tail_; }  // const return?
 };
 ```
-
-<b>Problem 2:</b>  It's not possible to declare an `operator[]` member function because there's no way to calculate the return type statically.  Consider:
-
-```
-  ??? operator[](int n) { return n == 0 ? head() : tail()[n - 1]; }
-```
-
-The argument `n` is only known at run time and will determine return value of type. This is true of Stan programs as well as C++ programs---if `x` is a list and `n` is an integer, then the runtime value of `n` determines the type of `x[n]`.  We don't do this anywhere else in Stan.
-
-```
-car(x) = head(x)
-cdr(x) = tail(x)
-cadr(x) = head(tail(x))
-caddr(x) = head(tail(tail(x)))
-...
-```
-
-only with better names:
-
-```
-at_1(x)
-at_2(x)
-at_3(x)
-...
-```
-
-These are all statically typable because the digit is determined statically.  We could do this with template programs with integer type parameters.
-
-We could try to get around this by providing a `void *` return type for `operator[]` and then having the Stan program cast it back to what it needs to be.  But even there, we can't check the return type statically in the Stan program unless the argument is an integer literal.
