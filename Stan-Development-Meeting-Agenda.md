@@ -11,11 +11,11 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
-* Aki (8 Feb). n_eff pull request in RStan stalled due to testing problem.
+* Aki (15 Feb). n_eff pull request in RStan stalled due to testing problem.
 
-* Aki (8 Feb). How to test instructions.
+* Aki (15 Feb). How to test instructions.
  
-* Aki+Yuling (8 Feb). ADVI diagnostics.
+* Aki+Yuling (15 Feb). ADVI diagnostics.
  
 * Sebastian+Ben. Logic for cmdstan mass matrix reloading and num_warmup=0/engaged=1 issue.
 
