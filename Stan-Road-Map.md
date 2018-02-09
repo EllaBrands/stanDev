@@ -44,7 +44,7 @@ Used for marginal posterior modes or max marginal likelihood (MML).
     - where p(phi) = INTEGRATE_Theta p(phi, theta) d.theta.
 
 
-### Expectation propgation
+### Expectation propagation
 
 Used for data-parallel approximate Bayes.  Still largely a work in
 progress.
