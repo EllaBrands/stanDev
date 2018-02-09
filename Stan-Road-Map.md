@@ -326,7 +326,20 @@ features or algorithms.
 
 ## Discourse Forums
 
-Do we need a more online alternative such as Slack?
+http://discourse.mc-stan.org
+
+The current admins (02/2018) are:
+- Daniel Lee
+- Jonah Gabry
+- Allen Riddell
+- Sean Talts
+
+The mods are:
+- Bob Carpenter
+
+Our plan is limited to total 5 mods or admins at a time. We switch admins from time to time.
+
+Do we need a more online alternative such as Slack? Sean set one up here: mc-stan.slack.com
 
 
 ## Stan Conferences (StanCon)
