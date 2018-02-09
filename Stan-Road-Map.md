@@ -364,9 +364,9 @@ services, all the other modules reside in their own GitHub repositories.
 * Stan language:  Bob Carpenter
     - Stan manual:  Bob Carpenter
 * Stan algorithms:  Michael Betancourt
-* Stan services:  ??? (-> Mitzi Morris?)
+* Stan services:  Daniel Lee
 
-* CmdStan: Daniel Lee (-> Mitzi Morris?)
+* CmdStan: Michael Betancourt
 * RStan:  Ben Goodrich
     - RStanArm:  Ben Goodrich
     - ShinyStan:  Jonah Gabry
