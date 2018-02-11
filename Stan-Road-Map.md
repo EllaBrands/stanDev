@@ -1,419 +1,346 @@
 # Stan Road Map
 
-This document is intended to serve as a broad outline of the future
-direction of the Stan project as a whole.  The Stan project is
-entirely open source.  The contours of the road map and progress made
-along it will be driven by a wide variety of developers, advisors, and
-project managers.  Stan is powered by an even broader community of
-users and instructors.  Improvements in core algorithms will largely
-be powered by a global network of researchers studying statistics,
-algorithms, and systems.
+This document is a broad plan for the future direction of the *software
+products* of the Stan project.  Stan is very much a group effort and we
+strongly encourage everyone to get involved in design.
+
+#### Open source licensing
+
+The code underlying Stan is 100% open source (core is BSD, interfaces
+copyleft where required).
+
+#### Software governance
+
+The Stan project is organized around functional modules; this roadmap
+follows the same modules.
+
+Stan's software is managed largely by consensus of the developers.
+Becoming a developer is as easy as having a substantial pull request
+with tests and documentation merged into develop; merge and review
+priveleges are granted after several months of ongoing contributions.
+A single developer has final authority in each repository for
+situations in which consensus cannot be reached (such intervention has
+only been necessary a couple times over six years).
+
+#### Feature process
+
+1. Features begin as discussions among Stan developers and users.  The
+best place to do this is the Stan Discourse forums.
+2.  The broad feature desiderata are converted to functional
+specifications, which convey what the feature will look like in the
+final product from a client perspective.  For large features, this is
+typically done through a GitHub Wiki page.
+3.  The functional specification is broken down into a technical
+specification laying out how it may be implemented.  This is typically
+done on the GitHub issue tracker.
+4.  One or more developers implements the feature (code, tests, and
+documentation) in a branch from one or more of the Stan GitHub
+repositories.
+5.  The code goes through continuous integration testing, then one or
+more core developers review the code through GitHub.  The reviewer may
+suggest or require improvements, sending the process back to step 4
+(or sometimes earlier).  When the reviewer is satisfied, the code is
+merged into the development branch of the relevant repository, where
+it will be included in the next stable release.
+
+We strongly encourage the community to get involved in every stage of this process.
+
+#### Stan 3
+
+After we've gathered all the interface changes we think we want to keep
+for a longer run and have run a while with existing functionality
+deprecated, we will release Stan 3 and remove all the old deprecated
+functionality.  This will break backward compatibility.  It is very unlikely to happen in 2018.
+
+PyStan 3 will happen earlier to enable ISC (non-copyleft) licensing;  it won't coincide with any change in the language.
 
 
 
-## Algorithm Research
+# Stan Modules
+
+This section lists the Stan modules and developer in charge of them as
+well as upstream dependencies (modules on which the stated modules depends)
+and downstream dependencies (modules which depend on the stated package).
+
+#### Core C++ Modules
+
+| Module | Repository | Manager | Upstream | Downstream |
+| ------ | ---------- | ------- | -------- | ---------- |
+| Math Library  | `stan-dev/math` | Daniel Lee | | language |
+| Language | `stan-dev/stan` | Bob Carpenter | math | algorithms |
+| Algorithms | `stan-dev/stan` | Michael Betancourt | math | language |
+| Services | `stan-dev/stan` | Daniel Lee | algorithms, language | interfaces |
+
+#### Interfaces
+
+| Module | Repository | Manager | Upstream | Downstream |
+| ------ | ---------- | ------- | -------- | ---------- |
+| CmdStan | `stan-dev/cmdstan` | Michael Betancourt | services | |
+| RStan | `stan-dev/rstan` | Ben Goodrich | services, bayesplot | |
+| PyStan | `stan-dev/pystan` | Allen Riddell | services | |
+| Stan.jl | `goedman/Stan.jl` | Robert Goedman | services | |
+| MatlabStan | `brian-lau/MatlabStan` | Brian Lau | services | |
+| StataStan | `stan-dev/statastan` | Robert L. Grant | services | |
+| MathematicaStan | `stan-dev/MathematicaStan` | Vincent Picaud | services | |
+
+#### Higher-Level Interfaces
+
+| Module | Repository | Manager | Upstream | Downstream |
+| ------ | ---------- | ------- | -------- | ---------- |
+| RStanArm | `stan-dev/rstanarm` | Ben Goodrich | rstan, rstantools, loo, bayesplot, shinystan | |
+
+#### Posterior Analysis, Visualization, Packaging
+
+| Module | Repository | Manager | Upstream | Downstream |
+| ------ | ---------- | ------- | -------- | ---------- |
+| loo | `stan-dev/loo` | Jonah Gabry | | rstanarm |
+| bayesplot | `stan-dev/bayesplot` | Jonah Gabry | | rstan, rstanarm |
+| shinystan | `stan-dev/shinystan` | Jonah Gabry | bayesplot | |
+| rstantools | `stan-dev/rstantools` | Jonah Gabry | rstanarm | |
+
+#### Web site
+
+| Module | Repository | Manager | Upstream | Downstream |
+| ------ | ---------- | ------- | -------- | ---------- |
+| web site | `stan-dev/stan-dev.github.io` | Breck Baldwin | | |
+
+# Math Library Roadmap
+* *Repository*: `stan-dev/math`
+* *Manager*: Daniel Lee
+
+#### Multi-core parallelism
+* Message passing interface (MPI) implementation
+* Push data to processors; communicate parameters, return values and
+  gradients
+* Map/reduce abstraction on top of MPI for autodiff
+* Expose rectangular dense map function to language
+
+#### GPU parallelism
+* Underlying matrix opertion implementations
+* Push data to GPUs
+* Initially target quadratic data, cubic operation functions: Cholesky decomposition, log determinant, matrix multiply
+
+#### Autodiff Testing Framework
+* document what we currently have
+* extend to multivariate input types (matrix, vector, array)
+* extend to integer types (arguments only---return doesn't need
+  autodiff)
+* extend to vectorized functions including reductions like distributions and pointwise vectorizations like the math functions
 
 
-### Simulation-based calibration (SBC)
 
+
+# Language Roadmap
+* *Repository*: `stan-dev/stan`
+* *Manager*: Bob Carpenter
+
+#### Multi-core parallelism
+* Generic `map()` function which may be configured to use MPI with
+  local data
+
+#### Data types and operations
+* *Simply typed functions*: application, abstraction with binding
+   (i.e., lambdas with closures)
+* *64-bit integers*:  replace current 32-bit implementation
+* *Tuples*: statically typed sequences of heterogeneous types
+* *Ragged arrays*: contain elements of the same shape, but varying sizes
+* *Sparse matrices, vectors*: plus arithmtic, solvers
+* *Boolean*: to allow easy selection; subtype of `int`
+
+#### Calculus functions
+* Differential algebraic equation (DAE) solver
+* Partial differential equation (PDE) solvers
+
+#### General functions
+* Compound generalized linear models (GLM)
+* approximate GLM (a la INLA)
+* Hidden Markov models (HMM)
+* Gaussian process (GP) covariance functions
+* Vectorization including n-ary functions, multivariate functions,
+  multivariate distributions, and comparison operators
+
+#### Documentation
+* Break current manual into user's guide, language spec, and
+  supporting materials
+* Move manuals to HTML format with bookdown (R markdown)
+* Produce formal syntax and semantics
+* Parser, abstract syntax tree, generator code (dev facing)
+
+#### Covariance
+Make Stan fully covariant so any function or assignment to a type may
+be used with a subtype.
+* every type is a subtype of itself
+* `int` is a subtype of `real`
+* `A[]` is a subtype of `B[]` if `A` is a subtype of `B`
+* `A -> B` is a subtype of `C -> D` if `C` is a subtype of `A` and `B`
+  is a subtype of `D`
+
+#### User-defined functions with analytic gradients
+* Allow users to specify analytic gradients for functions
+* Test framework for correctness of user's definition
+
+#### Error diagnostics
+* Improve user interpretability of error messages with suggestions for
+  remediation
+* Vectorize error handling in math lib to include positions everywhere
+* Pedantic mode/lint system to take over from existing heuristics
+  (eliminating parser false positive warnings)
+* Remove false positive compiler warnings
+
+#### Compilation efficiency
+Most of this speedup will come through algorithms and the math library.
+
+#### Model combinators
+* Combine models consisting of parameters, data, and log density
+contributions.
+
+#### Plug-in extensions
+Allow users to define new functions in C++ and easily include them in
+Stan; this is much more powerful with function types.
+
+#### Flexible derivatives for subsets of parameters
+Allow a subset of parameters to be fixed and derivatives only
+calculated for remainder.
+
+#### Standoff abstract syntax tree (dev facing)
+* Simple s-expressions rather than variant types to allow easy
+  generation and intermediate transformation
+* Pretty printer from abstract syntax tree
+
+#### Model class (dev facing)
+
+* Properly modularized abstract base class to enable easy
+  implementation by clients
+* Constant correctness
+* Flexible, structured access to declared variable declarations, data
+  values, and transforms
+
+
+
+# Algorithms Roadmap
+* *Repository*: `stan-dev/stan`
+* *Manager*: Michael Betancourt
+
+#### Simulation-based calibration (SBC)
 * methodology for large-scale, precise calibration generalizing the
   approach of Cook, Gelman and Rubin
+* implementing necessary services for methodology
 
-* (interfaces) implementing methodology
-
-
-### Autodiff-based variationali inference (ADVI)
-
+#### Autodiff-based variational inference (ADVI)
 Approximate Bayes with variational inference with multivariate normal
 variational family (on the unconstrained scale) and a nested Monte
 Carlo estimate of the gradient of an expectation.
-
-* figure out where it works and why
-    - diagnose optimization failures
-    - diagnose approximation failures
-    - develop adaptation and optimization algorithms
-
+* diagnose optimization failures
+* diagnose approximation failures
+* develop adaptation and optimization algorithms
 * explore alternative family parameterizations
 
-### Gradient-based Marginal Optimization (GMO)
-
+#### Gradient-based Marginal Optimization (GMO)
 Used for marginal posterior modes or max marginal likelihood (MML).
+* develop algorithm
+* validate vs. lme4
+* optimize implementation
 
-*  Algorithm requires same nested Monte Carlo as ADVI
-    - Find phi* = argmax_theta p(phi)
-    - where p(phi) = INTEGRATE_Theta p(phi, theta) d.theta.
+#### Expectation propgation
+Used for data-parallel approximate Bayes.
+* choose version to use, tuning params, etc.
+* implement serial version in C++ using Stan's log density and gradient
+* simulate parallel version in C++
+* implement parallel version with MPI (?)
 
-
-### Expectation propagation
-
-Used for data-parallel approximate Bayes.  Still largely a work in
-progress.
-
-* Develop algorithm
-    - choose version to use, tuning params, etc.
-    - implement serial version in C++ using Stan's log density and gradient
-    - simulate parallel version in C++
-    - implement parallel version with MPI (?)
-
-
-### Riemannian Hamiltonian Monte Carlo (RHMC)
-
+#### Riemannian Hamiltonian Monte Carlo (RHMC)
 * depends on:  testing higher-order autodiff
 * integrate into build process
-* integrate into interfaces
 
-### Core Algorithms
-
+#### Core Algorithms
 * More flexible and continuous adaptation for HMC/NUTS
-
 * More flexible output control through interfaces
-    - particularly silent mode through RStan
+    - silent mode through RStan
 
 
-## Stan Language
 
-### 64-bit integers
+# Services Roadmap
+* *Repository*: `stan-dev/stan`
+* *Manager*: Daniel Lee
 
-Ben Goodrich is a long way along scripting this.  Turns out 32 bits
-really are limitations for integers and people want to use integers
-north of 2e+9.
+#### Configuration builder for service functions
+* Employ builder pattern with defaults to allow, e.g.,
+```
+adaptive_euclidean_nuts.stepsize(0.1).adapt_delta(0.99).run();
+```
 
+#### Server-side embedding
+Allow Stan to be easily embedded in server-side applications.
 
-### Data types
+#### I/O
 
-This will include language components for constructing, accessing
-components, and assignment.  It will also include basic I/O for
-constraining, unconstraining, and these will need to be propagated
-through the services to the interfaces, which will themselves need to
-deal with formats for the new data types in their native languages.
+* Introduce protocol buffer binary I/O format for streaming file-based
+  and network I/O
 
-* tuples
-* ragged arrays
-* sparse matrices and vectors
-* functions
-* boolean (allow easier vectorized indexing); subtype of int
 
-### Expressions
 
-* function closures (lambdas with binding)
-* general function application
+# CmdStan Roadmap
+* *Repository*: `stan-dev/cmdstan`
+* *Manager*: Michael Betancourt
 
-### Covariance
 
-Extend legal assignments and function calls so that Stan's type system
-is fully covariant.  Syntactically, if A is a subtype of B, it means
-an expression of type A can be used wherever an expression of type B
-is required.  Semantically, the set of denotations of expressions of
-type A will be a subset of those of type B.  Covariance is defined
-inductively on the basis of primitive types, which for Stan is only a
-single relation.
 
-* primitive
-    - arithmetic:  int is a subtype of real
+# RStan Roadmap
+* *Repository*: `stan-dev/rstan`
+* *Manager*: Ben Goodrich
 
-To be covariant requires closure under inductively defined types, so
-that if A' is a subtype of A, then
 
-* containers
-    - (ragged) arrays:  A'[] is a subtype of A[]
-    - (sparse) matrices: only real matrices, so not relevant
 
-* functions:
-    - domain: A -> B is a subtype of A' -> B
-    - range:  B -> A' is a subtype of B -> A
+# PyStan Roadmap
+* *Repository*: `stan-dev/pystan`
+* *Manager*: Allen Riddell
 
-### I/O
+#### PyStan 3
 
-* move to standard, binary I/O format for file-based and network
-  I/O
-    - protocol buffers
-* support streaming, peekable, output
-    - GUI progress monitor
-*
+* ISC license (like MIT or BSD license)
 
-### Language documentation
 
-* Move manual to bookdown format to generate HTML and pdf
+# Web Site Roadmap
+* *Repository*: `stan-dev/stan-dev.github.io`
+* *Manager*: Breck Baldwin
 
-* Formal semantics with type theory and execution
 
+# Miscellaneous
 
-### Compound function acceleration
+I'm including things that don't fit into any given module here.
 
-* GLM functions
+#### Installers and installation procedures
+* Pre-built binary installers for C++ components
+* Checklisted installation procedures by platform
 
+#### Applications
+* New application areas exemplified with case studies or manual chapters
 
-### More general vectorization
+#### Forums
+* Dev team and user chat (some open source alternative to Slack, preferably)
 
-* binary functioins and beyond
-* multivariate functions
-    - matrix functions
-    - lpdf and lpmf
-* vectorize comparison
-    - use result for indexing
+#### Wikis
+* Remove irrlevant wiki pages
+* Consolidate and organize wikis for easy access
 
-### Model combinators
+#### Teaching, tutorials, and meetups
+* Intro probability theory and stats to support applied Bayesian stats
+* Applied statistical modeling by model type and application area
+* Programming basics (R, Python, etc.) and Stan
+* Computational statistics (MCMC, etc.)
+* Specific interfaces
 
-More of a research problem in how to combine models.  This can't be
-done through functions because there is no way to introduce
-parameters, data, etc.
+#### Conferences
+* Process for selecting locations and local organizers
+* Schedule
 
+#### Governance
+* Who is a developer?
+* Who appoints/deposes managers of repositories?
 
-### Standoff abstract syntax tree
-
-This will allow for much easier compiler optimizations and code
-generation for different targets as well as providing an easier target
-for alternative interfaces.
-
-### Compilation efficiency
-
-Right now, the time to compile a Stan model is an enormous bottleneck
-for model exploration.  Our goal is to reduce that substantially;  we
-don't really know how much improvement is possible
-
-* Precompile as much of the math and model library as possible
-    - all matrix operations can be
-* Precompile generic instantiations of distribution library, e.g.,
-    - normal(T1* y, int size_y,
-             T2* mu, int size_mu,
-	     T3* sigma, int size_sigma)
-      for T1, T2, T3 in { var, double }
-    - delegate all the current templated calls
-
-### Plug-in language extensions
-
-Allow users to define new functions in C++ and easily include them in
-Stan.
-
-* this will only cover use cases in Torsten (Metrum's pharma framework for
-  RStan) where they define new integrators when we have functional types
-
-### Flexible derivatives for subsets of parameters
-
-We need this for a lot of the algorithm development where some
-parameters are kept fixed and derivatives calculated for others.
-Requires a way to specify from the outside or inside the language.
-
-
-
-## Diagnostic error messages
-
-We need to improve error message understandability to users.  Messages
-that seem clear to developers are often perplexing to users, who are
-more often domain experts than seasoned programmers or computational
-statisticians.
-
-* Our biggest push is going to be to remove extraneous false positive
-  warnings
-    - compiler warnings from C++
-    - warnings from the Stan language parser
-
-* Error messages from the language with clearer indications of
-  arguments, indexing position, etc.
-
-* Catching errors in configuration, calling pattern, etc., as early as
-  possible in an algorithm, interface, or Stan program (e.g., check
-  all the arguments are in place before compling a Stan program in an
-  RStan call to stan())
-
-* Error messages from algorithms indicating failures need to have
-  clearer descriptions and ideally next actions for users
-
-
-## Robustness
-
-
-## Multi-Process Parallelization
-
-This provides massive scalability and efficiency gains for likelihood
-functions, which are typically naturally parallelizable in way that
-leads to low communication overhead for gradients and values.  It
-works over mulitple machines on a network or multiple cores on a
-single machine.  It can also speedup single-core computations by
-reducing memory overhead with nested gradient reductions in the
-forward pass of reverse-mode autodiff.
-
-* Implement generic map function using MPI
-    - simple map/reduce abstraction layer over MPI
-    - push data to compute nodes for static data arguments
-    - nested gradient calculations for reduction into expression graph
-
-
-## GPU Parallelization
-
-GPUs provide up to an order of magnitude speedup using inexpensive
-hardware for double-based calculations involving large, regular data
-structures, such as matrices.
-
-* Implement matrix operations on GPU with analytic gradients
-* Initially focus on quadratic data, cubic computation algorithms
-  that are widely used in multivariate models (such as Gaussian
-  processes)
-    - Cholesky factorization
-    - matrix multiply
-    - log determinant
-
-
-
-## Services Framework
-
-* Extend to new I/O frameworks
-
-* Flexible default configuration for services
-    - function argument builder pattern, e.g.
-      adaptive_euclidean_nuts.stepsize(0.1).adapt_delta(0.99).run();
-    - ideally the bit before .run() would be reusable
-    - builder (lower case) pattern for function
-
-* Allow Stan to be easily embedded in server-side applications.
-
-* Create AWS(?) version as example of Stan-as-a-service
-
-
-## Autodiff Testing Framework
-
-One of the main bottlenecks to developing new functions in the math
-library with autodiff is the challenge of testing all the
-instantiations of a function.  This can largely be automated with a
-general enough testing framework.  It's been started and applied to
-scalar arguments in test/unit/mix for all the built-in operators.
-
-* extend to multivariate input types (matrix, vector, array)
-
-* extend to integer types (arguments only---return doesn't need
-  autodiff)
-
-* extend to vectorized functions
-    - reductions like distributions
-    - pointwise vectorizations like the math functions
-
-## Operations
-
-The main goal here is to make it easier to develop for Stan.  This
-encompasses our continuous integration and builds for devlopers.
-
+#### Operations (dev facing)
 * better error messages from Jenkins (this may be solved)
-
 * alternative to Travis with fewer timeouts
-
 * cluster-based and AWS testing to remove bottlenecks
-
 * maintaining robust build scripts as systems and compilers evolve and
   Stan's compiler dependencies grow (e.g., CVODES binary)
-
-
-## Installation
-
-* checklisted installation procedures by platform
-* pre-built binary installers
-
-
-## Applications
-
-Push into new application areas.  This will largely be driven by the
-develoment of tutorial materials often coupled with new language
-features or algorithms.
-
-
-## Teaching, Meetups, and Tutorials
-
-* probability theory and statistics
-* applied statistical modeling
-* programming (Stan, R/Python/...)
-* computational statistics
-* Stan, RStan, RStanArm, PyStan, ...
-
-
-## Discourse Forums
-
-http://discourse.mc-stan.org
-
-The current admins (02/2018) are:
-- Daniel Lee
-- Jonah Gabry
-- Allen Riddell
-- Sean Talts
-
-The mods are:
-- Bob Carpenter
-
-Our plan is limited to total 5 mods or admins at a time. We switch admins from time to time.
-
-Do we need a more online alternative such as Slack? Sean set one up here: mc-stan.slack.com
-
-
-## Stan Conferences (StanCon)
-
-
-## Web Site
-
-
-## Governance
-
-We need governance for a range of issues
-
-### Who is a developer?
-
-Basically anyone who submits a substantial pull request to one of our
-official repositories with documentation and tests.  In special cases,
-we've added advisors who work closely with us on algorithms to the
-list of developers.
-
-### Software governance
-
-The current situation is that we try to work by consensus, deferring
-to experts in whatever is being done.  To break deadlocks, a single
-person has final decision making power for each module of code.   The
-big question facing us is whether to move to a more purely democratic
-form of governance putting everything to a vote among the developers
-at large and trusting those without knowledge of an issue to abstain.
-
-#### Persons in charge of Stan modules
-
-Other than the Stan repo, which contains the language, algorithmns, and
-services, all the other modules reside in their own GitHub repositories.
-
-* Math library:  Daniel Lee
-* Stan language:  Bob Carpenter
-    - Stan manual:  Bob Carpenter
-* Stan algorithms:  Michael Betancourt
-* Stan services:  Daniel Lee
-
-* CmdStan: Michael Betancourt
-* RStan:  Ben Goodrich
-    - RStanArm:  Ben Goodrich
-    - ShinyStan:  Jonah Gabry
-    - BayesPlot: Jonah Gabry
-    - loo: Jonah Gabry
-* PyStan:  Allen Riddell
-
-* MatlabStan: Brian Lau
-* Stan.jl (Julia): Robert Goedman
-* StataStan:  Robert L. Grant
-* MathematicaStan: Vincent Picaud
-
-* Web site: Breck Baldwin
-
-## Licensing
-
-* Have to decide how to license/enforce trademarks on Stan and the logo
-
-* PyStan3 will move to the ISC license (simplified MIT without
-  copyleft)
-
-
-# Stan 3
-
-This is the big one.  When we've gathered all the interface changes we
-think we want to keep for a longer run and have run a while with
-existing functionality deprecated, we will release Stan 3 and remove
-all the old deprecated functionality (thus breaking backward
-compatibility).
-
-This is unlikely to happen in 2018 and may not even happen in 2019.
-
-The big struggle is going to be the increasing amount of material
-being developed for our current interfaces.  Hopefully the nagging
-about deprecated features will have already been enough to get them to
-update, but it's a pain to keep up with this kind of thing, so it's
-going to be painful no matter what we do.
