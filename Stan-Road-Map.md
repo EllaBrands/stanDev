@@ -108,7 +108,7 @@ and downstream dependencies (modules which depend on the stated package).
 * *Repository*: `stan-dev/math`
 * *Manager*: Daniel Lee
 
-#### Multi-core parallelism
+#### MPI parallelism (multi-core, cluster)
 * Message passing interface (MPI) implementation
 * Push data to processors; communicate parameters, return values and
   gradients
@@ -120,15 +120,41 @@ and downstream dependencies (modules which depend on the stated package).
 * Push data to GPUs
 * Initially target quadratic data, cubic operation functions: Cholesky decomposition, log determinant, matrix multiply
 
-#### Autodiff Testing Framework
+#### OpenMP parallelism (multiple threads)
+* within Eigen for some matrix operations
+* parallelize double calculations in distribution functions
+
+#### Autodiff testing framework
 * document what we currently have
 * extend to multivariate input types (matrix, vector, array)
 * extend to integer types (arguments only---return doesn't need
   autodiff)
 * extend to vectorized functions including reductions like distributions and pointwise vectorizations like the math functions
 
+#### C++11 upgrades
+* simplify code with C++11 `auto`, foreach, lambdas, etc.
 
+#### Efficiency upgrades
+* reduce copying and support Eigen expression templates with more generic arguments
 
+#### Metaprogram unification
+* remove redundant metaprograms
+* extend boundary conditions of existing programs
+
+#### Vectorization framework
+* framework to allow easy vectorization beyond unary scalars
+
+#### Sparse matrix arithmetic
+* basic implementations on top of Eigen
+* analytic derivatives
+
+#### Internals documentation
+* explain code organization
+* explain metaprograms and utility classes
+* examples of how to implement and test different kinds of functions
+
+#### Remove scal/array/matrix distinction
+* Collect `scal`, `arr`, `mat` into single files under top-level organization
 
 # Language Roadmap
 * *Repository*: `stan-dev/stan`
@@ -150,6 +176,7 @@ and downstream dependencies (modules which depend on the stated package).
 #### Calculus functions
 * Differential algebraic equation (DAE) solver
 * Partial differential equation (PDE) solvers
+* Definite integrators, bounded and unbounded
 
 #### General functions
 * Compound generalized linear models (GLM)
@@ -344,3 +371,5 @@ I'm including things that don't fit into any given module here.
 * cluster-based and AWS testing to remove bottlenecks
 * maintaining robust build scripts as systems and compilers evolve and
   Stan's compiler dependencies grow (e.g., CVODES binary)
+
+#### Performance and accuracy regression tests
