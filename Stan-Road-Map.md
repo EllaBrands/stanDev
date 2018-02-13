@@ -1,8 +1,10 @@
 # Stan Road Map
 
-This document is a broad plan for the future direction of the *software
-products* of the Stan project.  Stan is very much a group effort and we
-strongly encourage everyone to get involved in design.
+This document is a broad plan for the future direction of the
+*software products* of the Stan project.  Stan is very much a group
+effort and we welcome contributions at every stage of software
+develoment: algorithms, API design, coding, documentation, and testing.
+If you're interested in getting involved in development, here's the [Stan developers home page](http://mc-stan.org/developers/).
 
 #### Open source licensing
 
@@ -12,7 +14,7 @@ copyleft where required).
 #### Software governance
 
 The Stan project is organized around functional modules; this roadmap
-follows the same modules.
+follows the same module structure as the software.
 
 Stan's software is managed largely by consensus of the developers.
 Becoming a developer is as easy as having a substantial pull request
