@@ -250,6 +250,15 @@ calculated for remainder.
 * *Repository*: `stan-dev/stan`
 * *Manager*: Michael Betancourt
 
+#### Smooth warmup
+* instead of blocked adaptation, add rolling average that adapts smoothly
+* challenge will be getting step size adapted at the same time
+
+#### Timed and automatic warmup and sampling iterations
+* set target effective sample size and run only long enough to get there
+* runs based on largest effective sample size for given time
+* ideally has smooth warmup
+
 #### Simulation-based calibration (SBC)
 * methodology for large-scale, precise calibration generalizing the
   approach of Cook, Gelman and Rubin
