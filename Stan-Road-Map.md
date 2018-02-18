@@ -237,13 +237,16 @@ calculated for remainder.
 * Pretty printer from abstract syntax tree
 
 #### Model class (dev facing)
-
-* Properly modularized abstract base class to enable easy
+* properly modularized abstract base class to enable easy
   implementation by clients
-* Constant correctness
-* Flexible, structured access to declared variable declarations, data
+* constant correctness
+* flexible, structured access to declared variable declarations, data
   values, and transforms
 
+#### Stan 3 language
+* blockless model a la SlicStan with full functions
+* target for StataStan or a new embedded PyStan
+* rethink Spirit Qi parser choice; target standoff AST
 
 
 # Algorithms Roadmap
@@ -254,10 +257,14 @@ calculated for remainder.
 * instead of blocked adaptation, add rolling average that adapts smoothly
 * challenge will be getting step size adapted at the same time
 
-#### Timed and automatic warmup and sampling iterations
-* set target effective sample size and run only long enough to get there
-* runs based on largest effective sample size for given time
-* ideally has smooth warmup
+#### Timed and sample size budgeted processing
+* set a time budget, and try to generate largest n_eff in that time
+* set an n_eff budget, and run only long enough to get there
+* start with better estimated finish times
+
+#### Online progress monitor (GUI)
+* online monitoring of means, variances, R-hat with Welford's algorithm
+* report summaries in output
 
 #### Simulation-based calibration (SBC)
 * methodology for large-scale, precise calibration generalizing the
