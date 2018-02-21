@@ -158,6 +158,9 @@ and downstream dependencies (modules which depend on the stated package).
 #### Remove scal/array/matrix distinction
 * Collect `scal`, `arr`, `mat` into single files under top-level organization
 
+#### Performance monitoring and testing
+* Add a way to measure speed between branches
+
 # Language Roadmap
 * *Repository*: `stan-dev/stan`
 * *Manager*: Bob Carpenter
