@@ -23,8 +23,8 @@ including speculation and brainstorming._
 * __Developer name.  Short description.__
 
 Bob Carpenter.  Governance, specifically
-    1. whether we're OK with someone with a final say on each module of our code (mostly aligned with repos),
-    2. how we make someone an official code-reviewer/merger or if such a thing even makes sense beyond (1),
-    3. how we make high-level project decisions about things like IP and the rights to run StanCon (e.g., delegate to NumFOCUS?), decide on licensing for code (or leave it with (1) as we do now), and other IP like the logo (which is owned by NumFOCUS, but doesn't necessary need to be controlled by that leadership body), etc.
-    4. relation to NumFOCUS, which collects non-profit donations for us, helps us run StanCon, and which has its own leadership body for making decisions about 
-    5.  others I'm sure I'm forgetting now
+1. whether we're OK with someone with a final say on each module of our code (mostly aligned with repos),
+2. how we make someone an official code-reviewer/merger or if such a thing even makes sense beyond (1),
+3. how we make high-level project decisions about things like IP and the rights to run StanCon (e.g., delegate to NumFOCUS?), decide on licensing for code (or leave it with (1) as we do now), and other IP like the logo (which is owned by NumFOCUS, but doesn't necessary need to be controlled by that leadership body), etc.
+4. relation to NumFOCUS, which collects non-profit donations for us, helps us run StanCon, and which has its own leadership body for making decisions about 
+5.  others I'm sure I'm forgetting now
