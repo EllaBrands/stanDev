@@ -15,6 +15,8 @@ Bob Carpenter.  Should we include a Jacobian option for optimization?  Right now
 
 Bob Carpenter.  Signature for `map_rect` includes `Eigen::Matrix` types or not (just `std::vector`)?   Yea/nay.
 
+Breck Baldwin. Travel to SciPy
+
 ### Open Discussion Topics
 
 _Any topics that do not need to be addressed in the short term,
