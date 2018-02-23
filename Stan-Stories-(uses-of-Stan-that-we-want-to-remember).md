@@ -1,9 +1,47 @@
 This page collects examples of Stan use out in the world that will help us understand our impact. 
 
+### rethinking
+
+R package behind the *Statistical Rethinking* book we recommend.
+
+Developed by Richard McElreath at University of Leipzig.
+
 
 ### ScalaStan 
+
+Embedded version of domain-specific language that compiles down to Stan.
+
+Developed by Joe Wingbermuehle at Cibo Technologies.
+
 ### Prophet 
-### BRMS ??don't know what this is.
+
+https://research.fb.com/prophet-forecasting-at-scale/
+
+Time-series forecasting with periodic (e.g., seasonal, weekly) and ad-hoc (e.g., pre- and post-holiday) effects.  Interfaces in R and Python.
+
+Developed by Sean J. Taylor and Ben Letham at Facebook.  
+
+### brms
+
+https://cran.r-project.org/web/packages/brms/index.html
+
+Widely used R package providing expression-based modeling.  It's been around longer than rstanarm.  
+
+Developed by Paul-Christian Bürkner at University of Münster.
+
+### torsten
+
+R package developed for pharmacological modeling in RStan, with common data structures and built-in modeling.  
+
+Develeloped by yonicd (GitHub handle), Charles Margossian, and Yi Zhang at Metrum Research, Inc.
+
+### PMXStan
+
+http://andrewgelman.com/2015/10/05/pmxstan-an-r-package-to-facilitate-bayesian-pkpd-modeling-with-stan/
+
+R interface to Stan with pharmacology data structures and built-in models.
+
+Developed by Yuan Xiong, David A. James, Fei He, and Wenping Wang at Novartis.
 
 
 ### RStudio downloads run 2/18 
