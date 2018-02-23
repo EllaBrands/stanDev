@@ -7,17 +7,26 @@ This page collects examples of Stan use out in the world that will help us under
 
 
 ### RStudio downloads run 2/18 
-`
-> install.packages("dlstats")
-> library(dlstats)
-> s <- cran_stats("rstan")
-> tail(s)
-35 2017-11-01 2017-11-30     11980   rstan
-36 2017-12-01 2017-12-31     12294   rstan
-37 2018-01-01 2018-01-31     16215   rstan
-> sum(s$downloads)
-[1] 250148
-`
+
+`> install.packages("dlstats")`
+
+`> library(dlstats)`
+
+`> s <- cran_stats("rstan")`
+
+`> tail(s)`
+
+`35 2017-11-01 2017-11-30     11980   rstan`
+
+`36 2017-12-01 2017-12-31     12294   rstan`
+
+`37 2018-01-01 2018-01-31     16215   rstan`
+
+`> sum(s$downloads)`
+
+`[1] 250148`
+
+
 So, 250K downloads **just through RStudio**.  brms has 100K,
 rstanarm 65K, and prophet 40K.  rstanarm's at 3K/month.  That
 doesn't include any of the other R mirrors, or any of the other
@@ -63,3 +72,19 @@ among applied statisticians).  Some examples from current listings:
 and/or Matlab" and "Absolutely high fluency with R and/or Python and
 Bayesian MCMC tools such as JAGS or STAN".  The Yankees advertised on
 our sites and other major league teams have advertised.  
+
+### Projects
+
+LIGO gravitational wave experiments. 
+
+Neutrino experiments at MIT (Talia from StanCon's group)
+
+### Other metrics
+
+> 'mc-stan.org' has 1060 cites in google scholar
+
+It's even higher than that if you look for other things like
+the phrase "Stan Development Team".  I hunted deeper a year or
+two ago and found over 100 papers using Stan to fit their models.
+There's a lot that just cite us in the "JAGS and BUGS and Stan" sort
+of way.   It's really hard to count.
