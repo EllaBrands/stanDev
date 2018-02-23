@@ -7,7 +7,7 @@ This page collects examples of Stan use out in the world that will help us under
 
 
 ### RStudio downloads run 2/18 
-
+`
 > install.packages("dlstats")
 > library(dlstats)
 > s <- cran_stats("rstan")
@@ -17,7 +17,7 @@ This page collects examples of Stan use out in the world that will help us under
 37 2018-01-01 2018-01-31     16215   rstan
 > sum(s$downloads)
 [1] 250148
-
+`
 So, 250K downloads **just through RStudio**.  brms has 100K,
 rstanarm 65K, and prophet 40K.  rstanarm's at 3K/month.  That
 doesn't include any of the other R mirrors, or any of the other
