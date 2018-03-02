@@ -102,6 +102,29 @@ This will be necessary in order to create a pull request to have the work merged
 *Fourth*, when finished, create a pull request. A pull request indicates that the work is done and should be merged back to the appropriate branch.  Instructions on pull requests are in the next section.
 
 
+#### 4.1 Contributing to another organization's forked branch
+
+Suppose someone makes a pull request to `stan-dev/stan` from a fork of the `stan` repository in their own GitHub organization.  If their organization is named `theirorg`, the fork will reside in `theirorg/stan` on a branch with a name like `feature/foo`.    That branch name will be listed on he pull request as the source of the requested merge.
+
+First, you need to clone their repository:
+
+    > git clone https://github.com/theirorg/stan
+
+Then checkout their branch:
+
+    > cd stan
+    > git checkout feature/foo
+
+Now you can work on their branch.  When you're ready to push your changes back to their branch, you can set up an alias `theirstan` the remote origin of the repository:
+
+    > git remote add theirstan https://github.com/theirorg/stan
+
+Then, all you need to do is push:
+
+    > git push theirstan feature/foo
+
+Yes, the permissions will just automatically let you do that.  [If that's not true if you don't have merge permissions on stan-dev, please include an updated process if you know what it is.]
+
 ### 5. Pull Requests
 
 #### 5.1 Preconditions for Pull Requests
