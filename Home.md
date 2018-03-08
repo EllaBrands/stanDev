@@ -11,6 +11,9 @@ There are a few remaining user-facing Wiki pages that haven't been moved to the 
 * [Frequently encountered problems](https://github.com/stan-dev/stan/wiki/Frequently-Encountered-Problems)
 * [Installing older versions](https://github.com/stan-dev/stan/wiki/Installing-Older-Versions-of-Stan-and-RStan)
 
+## Introduction for aspiring Stan developers
+See https://github.com/stan-dev/stan/wiki/Introduction-to-Stan-for-New-Developers
+
 ## To-Do List
 
 * [Longer-term to-do items](https://github.com/stan-dev/stan/wiki/Longer-Term-To-Do-List)
