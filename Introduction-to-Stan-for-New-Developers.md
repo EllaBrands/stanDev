@@ -1,4 +1,4 @@
-Welcome to Stan!  We're excited that you are interested in contributing to the project.  Before you can contribute you will have to familiarize yourself with the particular processes for new contributions that we have incorporated to facilitate the growth of the project.
+Welcome to Stan!  We're excited that you're interested in contributing to the project.  Before you're able to contribute, there are some processes and other information that are good to know.
 
 The Stan project is [hosted on GitHub](https://github.com/stan-dev) so you will have to create a GitHub account if you do not yet already have one. Developer discussions are [hosted on Discourse](http://discourse.mc-stan.org) so you will have to create an account there in order to ask questions or participate in discussions.
 
