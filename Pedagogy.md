@@ -71,6 +71,6 @@ Five courses of roughly five weeks each, with 1--2 hours of lecture/per week and
 * Bob/Andrew/Advait/...
 
 ## Other groups we could serve
-* Scientists that don't know how to program but use stats packages. RStanArm users. 
+* Scientists that don't know how to program but use stats packages. Scientists who program in statistical languages like R and want to do Bayesian analyses. RStanArm users. 
 * Lay public
 * Journalists
