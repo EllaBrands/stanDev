@@ -122,3 +122,7 @@ Currently, the `stan` repo includes the language, the algorithms, and the servic
 ## Advertising and Fundraising
 
 * [Sell sheets](https://github.com/stan-dev/stan/wiki/Stan-Advertising-Webpages)
+
+## Teaching
+
+* [Some areas of pedagogy](https://github.com/stan-dev/stan/wiki/Pedagogy)
