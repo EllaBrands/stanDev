@@ -15,7 +15,7 @@ Bob Carpenter.  Should we include a Jacobian option for optimization?  Right now
 
 Bob Carpenter.  Signature for `map_rect` includes `Eigen::Matrix` types or not (just `std::vector`)?   Yea/nay.
 
-Charles Margossian. Upon a user's inquiry, guesstimate for release data of Stan 2.18?
+Charles Margossian. Passing on a user's inquiry: guesstimate for release date of Stan 2.18?
 
 
 ### Open Discussion Topics
