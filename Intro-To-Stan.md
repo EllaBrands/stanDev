@@ -1,6 +1,10 @@
 # A place to collect and eventually disseminate Stan introductions
 
 # Notes 
+
+Also here's an intro from a statistical perspective:
+http://www.stat.columbia.edu/~gelman/research/published/stan_jebs_2.pdf
+
 Here's a 45 minute introductory video from Michael:
 
   https://www.youtube.com/watch?v=xWQpEAyI5s8
