@@ -1,5 +1,7 @@
 # Stan Pedagogy Efforts
 
+[Intro To Stan page](https://github.com/stan-dev/stan/wiki/Intro-To-Stan)
+
 Basic education constituencies defined by those willing to teach/create materials.
 
 ## Private-sector Managers / Public-sector Policy Makers
