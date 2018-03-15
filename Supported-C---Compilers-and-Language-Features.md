@@ -13,6 +13,7 @@ If you're using clang, we'll try to use the llvm project's libc++, so that means
 * auto and decltype(auto) return types
 * generic lambdas
 
+See [this page](http://en.cppreference.com/w/cpp/compiler_support) for extreme detail.
 
 There is some discussion here: http://discourse.mc-stan.org/t/moving-to-c-11-again/75/21
 See also https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Using-C_002b_002b14-code for how to emulate features that the compiler is missing.
