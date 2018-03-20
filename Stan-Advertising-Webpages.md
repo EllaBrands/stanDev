@@ -28,3 +28,15 @@ We have various audiences in mind.  In no particular order:
 Probably we can think of other potential audiences too.
 
 The point is that we currently have lots of materials, but not always a place to point people.  Stan's homepage is crisp and clean; I like it.  But now I want some "brochures."
+
+
+============
+
+A Finnish company Smartly.io is proudly using
+http://www.smartly.io/blog/tutorial-how-we-productized-bayesian-revenue-estimation-with-stan
+
+A Finnish company Reaktor has the apartment price model
+http://kannattaakokauppa.fi/#/en/
+and the code
+https://github.com/reaktor/Neliohinnat
+That service is more like advertising of their skills, and it's not public that they are doing something more elaborate for some customer. Reaktor data science team is using Stan for initial experiments and then the final model can be implemented without Stan.
