@@ -17,6 +17,7 @@ Bob Carpenter.  Signature for `map_rect` includes `Eigen::Matrix` types or not (
 
 Charles Margossian. Passing on a user's inquiry: guesstimate for release date of Stan 2.18?
 
+Sebastian Weber. Has anyone looked into thread-specific globals ([see here](http://en.cppreference.com/w/cpp/language/storage_duration))? This *could* open the door for threaded AD without any locking if I am not totally off!
 
 ### Open Discussion Topics
 
