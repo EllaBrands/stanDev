@@ -1,11 +1,36 @@
-With the first successful MPI prototype (https://github.com/stan-dev/cmdstan/tree/feature/proto-mpi/examples/mpi), let's start to design it here.
-
 The basic idea of parallelism using the message passage interface is that we can use autodiff just as is, since MPI will start *independent* processes. All what MPI does is to organize the exchange of messages between the different processes.
 
 # Requirements
 
-- guess what...you need MPI! Using macports this can be installed on macOS with `sudo port install openmpi`. This will install a MPI compiler and the mpirun command.
-- `boost.mpi` & `boost.serialization` libraries installed as binaries and hooked into the Stan build system
+Guess what...a working base MPI installation is needed. The base MPI installation provides the command line tools
++ `mpicxx`: The recommended  compiler command to use when building any MPI application.
++ `mpirun`: Wrapper binary used to start a MPI enabled binary on a given machine.
+
+Currently Stan supports MPI on macOS and Linux. For these platforms all MPI base installations are supported which are supported by `boost.mpi`. However, Stan testing is only performed with the `mpich` base system. For macOS macports or homebrew have a `mpich` package available. For Linux `mpich` (or `openmpi`) should be available through the package manager of your distribution.
+
+Note that Stan builds it's own `boost.mpi` & `boost.serialization` libraries and installs these into it's lib sub-folder. Should the OS provide these boost libraries and there is a need to use them, then the build system needs to be adjusted for this (through `make/local`). By default both libraries are build using `boost.build` which should recognize the base MPI system available.
+
+# Building `stan-math` with MPI
+
+A working base MPI installation (`mpirun` & `mpicxx`) is required for Stan's MPI facilities. Stan uses the `boost.mpi` library to interface with the low-level C-library MPI base system. The `boost.mpi` furthermore depends on the `boost.serialization` library which is build automatically once needed. To activate MPI for Stan please proceed as follows:
+
+0. Ensure that a base MPI installation is available and accessible on the system. Stan's tests are executed using the `mpich` distribution, but any other base MPI installation compatible with `boost.mpi` should work. See the [instructions from `boost.mpi`](http://www.boost.org/doc/libs/1_66_0/doc/html/mpi/getting_started.html#mpi.mpi_impl) for help on ensuring that the base MPI system works.
+1. Put `STAN_MPI=true` into the `make/local` file.
+2. Put `CC=mpicxx` into the `make/local` file. Alternatively, the user may specify the compiler to use with all compiler and linker options needed to build a MPI enabled binary (the command `mpicxx -show` displays for `mpich` what is executed / `openmpi` uses `mpicxx -show-me`).
+
+Once `STAN_MPI` and the compiler is set accordingly, then Stan will automatically build MPI enabled binaries. Note that the `boost.mpi` and `boost.serialization` library are build and linked against dynamically. In order to make it easy to use these libraries the paths for the dynamic libraries are hard-coded into the generated binaries. The `-rpath` option of the linker is used to achieve this. While this works out of the box on Linux, a few additional steps are needed on macOS during library building which are all handled in full automation by the makfiles.
+
+# How to run MPI tests in `stan-math`
+
+All units tests in `stan-math` are run in MPI mode with the `mpich` base installation on the Jenkins machine. There are two types of tests to discriminate:
+
+- conventional tests: The comprise all unit tests as we run them in serial non-MPI mode. In order to run these tests in a MPI like way we compile these with the `mpicxx` command and execute them with the `mpirun` run command. However, we explicitly disable for these serial tests the use of multiple processes. That is, the `runTests.py` script executes the tests with `mpirun -np 1 test/unit/.../.../some_test`. Starting up multiple threads for serial only tests would lead to race conditions since these codes are not prepared for parallelism.
+
+- dedicated mpi tests: All tests matching the regular expression `*mpi_*test.cpp` will be executed by `runTests.py` with `mpirun -np #CPU test/unit/.../.../some_mpi_test.cpp` and #CPU will be set to the same argument as given to the `-j` option of `runTests.py`, but it will use are least 2 processes. This is to ensure that the MPI tests are actually run with multiple processes in parallel to emulate behavior under MPI execution. Note that `mpirun` is usually configured to disallow #CPU to exceed the number of physical CPUs found on the machine. 
+
+# The rest of this wiki is mostly outdated...
+
+... so ignore for now.
 
 # Goals
 
