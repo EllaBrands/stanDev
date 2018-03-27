@@ -17,6 +17,8 @@ Bob Carpenter.  Signature for `map_rect` includes `Eigen::Matrix` types or not (
 
 Sebastian Weber. Has anyone looked into thread-specific globals ([see here](http://en.cppreference.com/w/cpp/language/storage_duration))? This *could* open the door for threaded AD without any locking if I am not totally off!
 
+Sean Talts. Different goals and use-cases for performance, regression, and end-to-end numerical accuracy testing.
+
 ### Open Discussion Topics
 
 _Any topics that do not need to be addressed in the short term,
