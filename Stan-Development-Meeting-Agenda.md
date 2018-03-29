@@ -15,9 +15,11 @@ Bob Carpenter.  Should we include a Jacobian option for optimization?  Right now
 
 Bob Carpenter.  Signature for `map_rect` includes `Eigen::Matrix` types or not (just `std::vector`)?   Yea/nay.
 
-Sebastian Weber. Has anyone looked into thread-specific globals ([see here](http://en.cppreference.com/w/cpp/language/storage_duration))? This *could* open the door for threaded AD without any locking if I am not totally off!
-
 Sean Talts. Different goals and use-cases for performance, regression, and end-to-end numerical accuracy testing.
+
+Sebastian Weber. Do we want C++11 map_rect_async asap? Concerns? Is Apple clang a must have?
+
+Sebastian Weber. Parallelism beyond MPI in stan-math. Do we want openmp? Or better go with C++11/17 facilities (TS parallelism likely in 17 or use of [parallel libstdc++](https://gcc.gnu.org/onlinedocs/libstdc++/manual/parallel_mode_design.html)). Plan for moving forward would be great (immediate decision or ongoing discussion).
 
 ### Open Discussion Topics
 
