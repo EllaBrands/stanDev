@@ -34,3 +34,7 @@ Bob Carpenter.  Governance, specifically
 3. how we make high-level project decisions about things like IP and the rights to run StanCon (e.g., delegate to NumFOCUS?), decide on licensing for code (or leave it with (1) as we do now), and other IP like the logo (which is owned by NumFOCUS, but doesn't necessary need to be controlled by that leadership body), etc.
 4. relation to NumFOCUS, which collects non-profit donations for us, helps us run StanCon, and which has its own leadership body for making decisions about 
 5.  others I'm sure I'm forgetting now
+
+Andrew.  Various user issues
+- Running Stan for fixed amount of time instead of fixed number of iterations
+- other issues
