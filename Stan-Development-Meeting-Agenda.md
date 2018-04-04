@@ -17,6 +17,8 @@ Sebastian Weber. Do we want C++11 map_rect_async asap? Concerns? Is Apple clang 
 
 Sebastian Weber. Parallelism beyond MPI in stan-math. Do we want openmp? Or better go with C++11/17 facilities (TS parallelism likely in 17 or use of [parallel libstdc++](https://gcc.gnu.org/onlinedocs/libstdc++/manual/parallel_mode_design.html)). Plan for moving forward would be great (immediate decision or ongoing discussion).
 
+Bob Carpenter.  Can we add a bunch new devs who've been adding things but aren't on our dev list?
+
 ### Open Discussion Topics
 
 _Any topics that do not need to be addressed in the short term,
