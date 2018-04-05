@@ -11,8 +11,6 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
-Sean Talts. Different goals and use-cases for performance, regression, and end-to-end numerical accuracy testing.
-
 Sebastian Weber. Threading in stan-math. Do we want to make a working thread_local C++11 feature a requirement for compilers? Yes/no. See  [discourse discussion](http://discourse.mc-stan.org/t/potentially-dropping-support-for-older-versions-of-apples-version-of-clang/3780/5) and [the ad thread pull](https://github.com/stan-dev/math/pull/809).
 
 Bob Carpenter.  Can we add a bunch new devs who've been adding things but aren't on our dev list?
