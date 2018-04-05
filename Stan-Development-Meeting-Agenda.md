@@ -19,6 +19,8 @@ Sebastian Weber. Parallelism beyond MPI in stan-math. Do we want openmp? Or bett
 
 Bob Carpenter.  Can we add a bunch new devs who've been adding things but aren't on our dev list?
 
+Ben Goodrich. What is up with numerical integration? Should we just use Boost's?
+
 ### Open Discussion Topics
 
 _Any topics that do not need to be addressed in the short term,
