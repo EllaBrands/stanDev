@@ -13,6 +13,8 @@ meeting._
 
 Breck. Scut Week--5 days of 'some day' for all the annoying tests, documentation or cruft that we have been saying we will get to 'some day'. 
 
+Charles. Tests on Laplace approximation. When the latent Gaussian is "high-dimensional" (M = 100 or 500), what kind of solver should we use? Powell is slow and Newton unstable. What about gradient descent?
+
 Old??: Sebastian Weber. Threading in stan-math. Do we want to make a working thread_local C++11 feature a requirement for compilers? Yes/no. See  [discourse discussion](http://discourse.mc-stan.org/t/potentially-dropping-support-for-older-versions-of-apples-version-of-clang/3780/5) and [the ad thread pull](https://github.com/stan-dev/math/pull/809).
 
 Old: Bob Carpenter.  Can we add a bunch new devs who've been adding things but aren't on our dev list?
