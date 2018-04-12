@@ -15,7 +15,7 @@ Breck. Scut Week--5 days of 'some day' for all the annoying tests, documentation
 
 Charles. Tests on Laplace approximation. When the latent Gaussian is "high-dimensional" (M = 100 or 500), what kind of solver should we use? Powell is slow and Newton unstable. What about gradient descent?
 
-Old??: Sebastian Weber. Threading in stan-math. Do we want to make a working thread_local C++11 feature a requirement for compilers? Yes/no. See  [discourse discussion](http://discourse.mc-stan.org/t/potentially-dropping-support-for-older-versions-of-apples-version-of-clang/3780/5) and [the ad thread pull](https://github.com/stan-dev/math/pull/809).
+Sebastian. Is there interest in a super-fast singleton in stan-math ([the one from here](https://www.theimpossiblecode.com/blog/c11-generic-singleton-pattern/))? Yes/No. If yes, where to stuff it? Warning: this must use pointers (but I think that's really OK).
 
 Old: Bob Carpenter.  Can we add a bunch new devs who've been adding things but aren't on our dev list?
 
