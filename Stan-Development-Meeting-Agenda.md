@@ -22,6 +22,8 @@ including speculation and brainstorming._
 
 * __Developer name.  Short description.__
 
+Jonah. Tested library of user defined functions.
+
 Andrew.  Various user issues
 - Running Stan for fixed amount of time instead of fixed number of iterations
 - other issues
