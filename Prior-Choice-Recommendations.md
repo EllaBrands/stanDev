@@ -43,6 +43,14 @@
   * Once parameters are scale-free, we want them to be on "unit scale"--that is, of order of magnitude 1.  We don't want parameters to have values like 0.01 or 100, we want them to be not too far or too close to 0.  How should we do this?  The typical method is to divide by the scale. We prefer a robust estimator of the scale (such as the MAD) over the sample standard deviation. 
     * But sometimes parameters really are close to 0 on a real scale, and we need to allow that.  For example, the tiny effect of some ineffective treatment.  We would not want to "artificially" scale this up to 1 just to follow some principle.  Here's an example:  in education it's hard to see big effects.  An effect of .1 sd is actually pretty damn big, given that "1 sd" represents all the variation across kids.  In a setting where true effects are small, we need to allow that.
 
+# Story: When the generic prior fails. The case of the Negative Binomial.
+
+The generic prior for everything works can fail dramatically when the parameterization of the distribution is bad. One example that pops up from time to time (both in INLA and rstanarm) is the problems in putting priors on the over-dispersion parameter of the negative binomial distribution. 
+
+The `neg_binomial_2` distribution in Stan is parameterized so that the mean is `mu` and the variance is `mu*(1 + mu/phi)`. If you use the "generic prior for everything" for phi, such as a `phi ~ half-N(0,1)`, then most of the prior mass is on models with a large amount of over-dispersion. This will lead to a prior-data conflict if the data only exhibits a small amount of over-dispersion. 
+
+The generic prior works much much better in on the parameter `1/phi`.  Even better, you can use `1/sqrt(phi)`. This can be motivated by noticing you can write a negative binomial a `y | g ~ Poisson(g*mu)`, `g ~ gamma(phi,phi)` and the standard deviation of `g` is `1/sqrt(phi)`.  Some more information is in the second-last section of [this blog](http://andrewgelman.com/2018/04/03/justify-my-love/).
+
 # Generic weakly informative prior
   * This talk from 2014:  http://www.stat.columbia.edu/~gelman/presentations/wipnew2_handout.pdf (slightly updated version of 2011 paper)
   * One principle:  write down what you think the prior should be, then spread it out.  The idea is that the cost of setting the prior too narrow is more severe than the cost of setting it too wide.  I've been having trouble formalizing this idea. 
