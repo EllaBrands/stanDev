@@ -17,10 +17,6 @@ shortened: goo.gl/9TWsZz
 
 Jonah. Development in Julia. Brian Parbhu has volunteered to help and is joining by video for the meeting today (April 26th)
 
-Sebastian. Add osx+Xcode 9.3 on travis for testing threading with clang (my suggestion is to only run those tests with this config which directly deal with threading)? Yes/No
-
-Sebastian. (Not sure if to be discussed here): Are people good with my suggestion as to how to move forward with threading, [see here.](http://discourse.mc-stan.org/t/test-systems-supported-compiler-os/3907/5)
-
 ### Open Discussion Topics
 
 _Any topics that do not need to be addressed in the short term,
