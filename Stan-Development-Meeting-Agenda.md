@@ -11,6 +11,10 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+Breck & Lauren: Stan survey, seeking questions. https://docs.google.com/spreadsheets/d/1gRVZYhg_OzG7R4FO_RWR6htgdDlAkw5rI0Pzj8yfzqo/edit?usp=sharing
+
+shortened: goo.gl/9TWsZz
+
 Jonah. Development in Julia. Brian Parbhu has volunteered to help and is joining by video for the meeting today (April 26th)
 
 Sebastian. Add osx+Xcode 9.3 on travis for testing threading with clang (my suggestion is to only run those tests with this config which directly deal with threading)? Yes/No
