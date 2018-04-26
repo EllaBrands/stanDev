@@ -45,11 +45,11 @@
 
 # Story: When the generic prior fails. The case of the Negative Binomial.
 
-The generic prior for everything works can fail dramatically when the parameterization of the distribution is bad. One example that pops up from time to time (both in INLA and rstanarm) is the problems in putting priors on the over-dispersion parameter of the negative binomial distribution. 
+The generic prior for everything can fail dramatically when the parameterization of the distribution is bad. One example that pops up from time to time (both in INLA and rstanarm) is the problems in putting priors on the over-dispersion parameter of the negative binomial distribution. 
 
 The `neg_binomial_2` distribution in Stan is parameterized so that the mean is `mu` and the variance is `mu*(1 + mu/phi)`. If you use the "generic prior for everything" for phi, such as a `phi ~ half-N(0,1)`, then most of the prior mass is on models with a large amount of over-dispersion. This will lead to a prior-data conflict if the data only exhibits a small amount of over-dispersion. 
 
-The generic prior works much much better in on the parameter `1/phi`.  Even better, you can use `1/sqrt(phi)`. This can be motivated by noticing you can write a negative binomial a `y | g ~ Poisson(g*mu)`, `g ~ gamma(phi,phi)` and the standard deviation of `g` is `1/sqrt(phi)`.  Some more information is in the second-last section of [this blog](http://andrewgelman.com/2018/04/03/justify-my-love/).
+The generic prior works much much better on the parameter `1/phi`.  Even better, you can use `1/sqrt(phi)`. This can be motivated by noticing you can write a negative binomial a `y | g ~ Poisson(g*mu)`, `g ~ gamma(phi,phi)` and the standard deviation of `g` is `1/sqrt(phi)`.  Some more information is in the second-last section of [this blog](http://andrewgelman.com/2018/04/03/justify-my-love/).
 
 # Generic weakly informative prior
   * This talk from 2014:  http://www.stat.columbia.edu/~gelman/presentations/wipnew2_handout.pdf (slightly updated version of 2011 paper)
