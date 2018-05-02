@@ -38,3 +38,9 @@ https://github.com/ermeel86/paramaetricsurvivalmodelsinstan
 - implement time-varying hazard ratios, like in section 4.1. in R&P.
 - Work with (smooth) random-walk priors for $\gamma$ in order to allow for more knots, c.f. http://mc-stan.org/users/documentation/case-studies/splines_in_stan.html
 
+# Datasets for testing
+
+- https://web.stanford.edu/%7Ehastie/CASI_files/DATA/ncog.html
+- https://web.stanford.edu/~hastie/CASI/data.html
+- https://github.com/chjackson/flexsurv-dev/blob/master/data/bc.txt
+
