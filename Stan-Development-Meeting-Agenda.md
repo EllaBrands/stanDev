@@ -17,6 +17,8 @@ shortened: goo.gl/9TWsZz
 
 Jonah. Development in Julia. Brian Parbhu has volunteered to help and is joining by video for the meeting today (April 26th)
 
+Sebastian. Merge map_rect_concurrent with the conventions introduced and reviewed by @sakrejda, [see discourse](http://discourse.mc-stan.org/t/map-rect-concurrent-about-to-land/4054)? Yes/No/More reviews?
+
 ### Open Discussion Topics
 
 _Any topics that do not need to be addressed in the short term,
