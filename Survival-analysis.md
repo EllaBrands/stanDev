@@ -23,6 +23,11 @@ Jonah Gabry http://discourse.mc-stan.org/t/survival-models-in-rstanarm/3998/28
 
 https://github.com/ermeel86/paramaetricsurvivalmodelsinstan
 
+### References
+
+- https://www.ncbi.nlm.nih.gov/pubmed/12210632
+- https://projecteuclid.org/euclid.ss/1177012761
+
 ### Todos
 
 - Try to reproduce further examples from the literature:
@@ -31,5 +36,4 @@ https://github.com/ermeel86/paramaetricsurvivalmodelsinstan
 - Implement the proportional odds model version
 - use survival formula parser for covariates
 - Work with (smooth) random-walk priors for $\gamma$ in order to allow for more knots, c.f. http://mc-stan.org/users/documentation/case-studies/splines_in_stan.html
-
 
