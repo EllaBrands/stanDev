@@ -27,8 +27,9 @@ https://github.com/ermeel86/paramaetricsurvivalmodelsinstan
 
 - Try to reproduce further examples from the literature:
    - https://web.stanford.edu/~hastie/CASI_files/DATA/ncog.html
-- Work with NAs
+- add support for NAs
 - Implement the proportional odds model version
+- use survival formula parser for covariates
 - Work with (smooth) random-walk priors for $\gamma$ in order to allow for more knots, c.f. http://mc-stan.org/users/documentation/case-studies/splines_in_stan.html
 
 
