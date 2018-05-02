@@ -17,3 +17,10 @@ Jonah Gabry http://discourse.mc-stan.org/t/survival-models-in-rstanarm/3998/28
 - Cox-PH type models with a functional prior on baseline
 - non-proportional models with interaction with time and covariates
 
+# First implementations
+
+## Cox-PH with I-splines for log cumulative baseline hazard (Royston & Parmar)
+
+https://github.com/ermeel86/paramaetricsurvivalmodelsinstan
+
+
