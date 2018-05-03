@@ -32,7 +32,7 @@ https://github.com/ermeel86/paramaetricsurvivalmodelsinstan
 ### Remarks / Concerns
 
 - The I-splines, in contrast to restricted cubic splines, guarantee monotonicity (in time) for the log cumulative hazard function, which strictly speaking is required for a consistent survival model.
-- The original RP model used restricted cubic splines, which in particular as constrained to be linear beyond the boundary knots. This was advertised to be useful for out-of-sample prediction. It’s not clear, yet, how the I-isplines extrapolate beyond the boundary knots.
+- The original RP model used restricted cubic splines, which in particular are constrained to be linear beyond the boundary knots. This was advertised to be useful for out-of-sample prediction. It’s not clear, yet, how the I-isplines extrapolate beyond the boundary knots.
 
 ### Todos
 
