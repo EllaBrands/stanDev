@@ -29,6 +29,11 @@ https://github.com/ermeel86/paramaetricsurvivalmodelsinstan
 - [Monotone Regression Splines in Action](https://projecteuclid.org/euclid.ss/1177012761)
 - [The current application of the Royston- Parmar model for prognostic modeling in health research: a scoping review](https://link.springer.com/content/pdf/10.1186%2Fs41512-018-0026-5.pdf)
 
+### Remarks / Concerns
+
+- The I-splines, in contrast to restricted cubic splines, guarantee monotonicity (in time) for the log cumulative hazard function, which strictly speaking is required for a consistent survival model.
+- The original RP model used restricted cubic splines, which in particular as constrained to be linear beyond the boundary knots. This was advertised to be useful for out-of-sample prediction. It’s not clear, yet, how the I-isplines extrapolate beyond the boundary knots.
+
 ### Todos
 
 - Try to reproduce further examples from the literature:
