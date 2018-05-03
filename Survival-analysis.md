@@ -27,6 +27,7 @@ https://github.com/ermeel86/paramaetricsurvivalmodelsinstan
 
 - [Flexible parametric proportional-hazards and proportional-odds models for censored survival data, with application to prognostic modelling and estimation of treatment effects](https://www.ncbi.nlm.nih.gov/pubmed/12210632)
 - [Monotone Regression Splines in Action](https://projecteuclid.org/euclid.ss/1177012761)
+- [The current application of the Royston- Parmar model for prognostic modeling in health research: a scoping review](https://link.springer.com/content/pdf/10.1186%2Fs41512-018-0026-5.pdf)
 
 ### Todos
 
@@ -43,4 +44,3 @@ https://github.com/ermeel86/paramaetricsurvivalmodelsinstan
 - https://web.stanford.edu/%7Ehastie/CASI_files/DATA/ncog.html
 - https://web.stanford.edu/~hastie/CASI/data.html
 - https://github.com/chjackson/flexsurv-dev/blob/master/data/bc.txt
-
