@@ -11,6 +11,8 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
+Aki, Dan, Andrew: Rhat, n_eff, ranks
+
 Breck & Lauren: Stan survey, seeking questions. https://docs.google.com/spreadsheets/d/1gRVZYhg_OzG7R4FO_RWR6htgdDlAkw5rI0Pzj8yfzqo/edit?usp=sharing
 
 shortened: goo.gl/9TWsZz
