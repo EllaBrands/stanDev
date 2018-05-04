@@ -34,10 +34,13 @@ Some things to do:
     - MPI for multi-core or multi-computer parallelism;  this will let us split the likelihood into bits in general, not just in the linear case supported by RStanArm
     - GPU support for matrix operations;  if we get some way to farm the data out once rather than continually transmitting it as in the Cholesky factorization prototype we have now, then we'll close the gap with somehting like Edward on very simple models that are dominate by a data matrix times parameter vector multiplication
 
-- Example.  Data on grades indexed by students and teachers:  Each student has several grades from each teacher in each year.  Use item-response model:  grade = mu + student_ability - teacher_difficulty + error.  Students and teachers each have aging curves so that ability and difficulty vary over time.  Can fit big model in Stan but it's slow; that's ok.  Now want to update each week in new school year given new data.  Particularly challenging cases are teachers and students who previously were in lower school systems.  Approaches to updating the posterior distribution with new week's information:
-   - Importance weighting.  Should be fast but could have difficulty when new parameters are being introduced.
-   - Approx the posterior dist of teacher parameters and hyperparameters with multivariate normal, then use this as a prior to fit full data independently for each student.  Similarly fit model independently for each teacher, using previous posterior of teacher parameters and hyperparameters as an approximate prior.
-In any case, the plan would be to update the entire model off-line every couple weeks or whatever.  We're not planning to do full "particle filtering"; we just want to do these quick updates.
+- Example.
+
+  - Data on grades indexed by students and teachers:  Each student has several grades from each teacher in each year.  Use item-response model:  grade = mu + student_ability - teacher_difficulty + error.  Students and teachers each have aging curves so that ability and difficulty vary over time.  Can fit big model in Stan but it's slow; that's ok.  Now want to update each week in new school year given new data.  Particularly challenging cases are teachers and students who previously were in lower school systems.  Approaches to updating the posterior distribution with new week's information:
+    - Importance weighting.  Should be fast but could have difficulty when new parameters are being introduced.
+    - Approx the posterior dist of teacher parameters and hyperparameters with multivariate normal, then use this as a prior to fit full data independently for each student.  Similarly fit model independently for each teacher, using previous posterior of teacher parameters and hyperparameters as an approximate prior.
+
+  - In any case, the plan would be to update the entire model off-line every couple weeks or whatever.  We're not planning to do full "particle filtering"; we just want to do these quick updates.
 Key feature of problem that we want to leverage is that, conditional on hyperparameters and teacher parameters, the post dist is indep in the student parameters.  Similarly, conditional on hyperparameters and student parameters, the post dist is indep in the teacher parameters.  We can use this:
-   - In imp weighting, we can independently update for each student and each teacher (ignoring, for each student, the updated info on each teacher, and vice versa).
-   - In the independent posterior distributions, we can fit each student (and, separately, each teacher) in parallel.
+    - In imp weighting, we can independently update for each student and each teacher (ignoring, for each student, the updated info on each teacher, and vice versa).
+    - In the independent posterior distributions, we can fit each student (and, separately, each teacher) in parallel.
