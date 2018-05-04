@@ -38,7 +38,6 @@ Some things to do:
    - Importance weighting.  Should be fast but could have difficulty when new parameters are being introduced.
    - Approx the posterior dist of teacher parameters and hyperparameters with multivariate normal, then use this as a prior to fit full data independently for each student.  Similarly fit model independently for each teacher, using previous posterior of teacher parameters and hyperparameters as an approximate prior.
 In any case, the plan would be to update the entire model off-line every couple weeks or whatever.  We're not planning to do full "particle filtering"; we just want to do these quick updates.
-
 Key feature of problem that we want to leverage is that, conditional on hyperparameters and teacher parameters, the post dist is indep in the student parameters.  Similarly, conditional on hyperparameters and student parameters, the post dist is indep in the teacher parameters.  We can use this:
    - In imp weighting, we can independently update for each student and each teacher (ignoring, for each student, the updated info on each teacher, and vice versa).
-   - In 
+   - In the independent posterior distributions, we can fit each student (and, separately, each teacher) in parallel.
