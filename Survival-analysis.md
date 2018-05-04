@@ -49,3 +49,4 @@ https://github.com/ermeel86/paramaetricsurvivalmodelsinstan
 - https://web.stanford.edu/%7Ehastie/CASI_files/DATA/ncog.html
 - https://web.stanford.edu/~hastie/CASI/data.html
 - https://github.com/chjackson/flexsurv-dev/blob/master/data/bc.txt
+- http://stat.ethz.ch/R-manual/R-devel/library/MASS/html/leuk.html
