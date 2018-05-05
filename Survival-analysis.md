@@ -55,4 +55,4 @@ https://github.com/ermeel86/paramaetricsurvivalmodelsinstan
 
 - *Link to GitHub follows*
 - The R package `splines2` provides functionality to calculate integrated B-splines (hence the derivatives are simply B-splines)
-- If all the weights for the integrated-B-splines-basis-functions are equal (and non-negative), the resulting function is linear with $0$ intercept. The corresponding linear combination of B-splines is a constant function. We could thus try and apply smooth random walk priors and allow for larger number of knots than usual.
+- If all the weights for the integrated-B-splines-basis-functions are equal (and non-negative), the resulting function is linear with $0$ intercept. The corresponding linear combination of B-splines is a constant function. We could try and apply smooth random walk priors and allow for larger number of knots than usual.
