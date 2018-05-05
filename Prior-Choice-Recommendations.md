@@ -28,6 +28,12 @@
 
     When you do this, you also should also specify initial values.  Why?  Because, by default, Stan draws inits uniformly from (-1, 1) (or maybe it's (-2, 2); I don't remember).  If you have a parameter that you want to set to be near 4, say, you should set inits to be near 4 also.
 
+# How informative is the prior?
+
+* "The prior can often only be understood in the context of the likelihood": http://www.stat.columbia.edu/~gelman/research/published/entropy-19-00555-v2.pdf
+
+* Here's an idea for not getting tripped up with default priors:  For each parameter (or other qoi), compare the posterior sd to the prior sd.  If the posterior sd for any parameter (or qoi) is _more than 0.1 times the prior sd_, then print out a note:  "The prior distribution for this parameter is informative." Then the user can go back and check that the default prior makes sense for this particular example.
+
 # Generic prior for anything
   * Andrew has been using independent N(0,1), as in section 3 of this paper:  http://www.stat.columbia.edu/~gelman/research/published/stan_jebs_2.pdf
     * I don't mind the short tails; if you think they're a problem because you think a parameter could be far from 0, that's information that can and should be included in the prior
