@@ -23,8 +23,6 @@ Sebastian. Merge map_rect_concurrent with the conventions introduced and reviewe
 
 Sebastian. Should we prune the sundials distribution to the bits and pieces we actually need as done in the past with CVODES? Are the noprintf macros still needed for CRAN?
 
-Jonah. How can we do a better job keeping installation instructions up to date?
-
 ### Open Discussion Topics
 
 _Any topics that do not need to be addressed in the short term,
