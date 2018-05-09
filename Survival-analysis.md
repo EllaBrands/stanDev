@@ -46,6 +46,7 @@ https://github.com/ermeel86/paramaetricsurvivalmodelsinstan
 
 # Datasets for testing
 
+- Great resource: http://vincentarelbundock.github.io/Rdatasets/datasets.html
 - https://web.stanford.edu/%7Ehastie/CASI_files/DATA/ncog.html
 - https://web.stanford.edu/~hastie/CASI/data.html
 - https://github.com/chjackson/flexsurv-dev/blob/master/data/bc.txt
