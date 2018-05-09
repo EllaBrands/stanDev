@@ -23,6 +23,10 @@ Sebastian. Merge map_rect_concurrent with the conventions introduced and reviewe
 
 Sebastian. Should we prune the sundials distribution to the bits and pieces we actually need as done in the past with CVODES? Are the noprintf macros still needed for CRAN?
 
+Charles. Recommendation for references for recent advances in autodiff?
+
+Charles. Using past iterations to compute initial guesses for numerical solvers.
+
 ### Open Discussion Topics
 
 _Any topics that do not need to be addressed in the short term,
