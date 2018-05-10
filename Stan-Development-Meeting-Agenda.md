@@ -11,16 +11,6 @@ meeting._
 
 * __Developer name.  Short description.  Desired resolution.__
 
-Andrew, Jonah, Aki: non-invertible Hessian in Stan optimize
-
-Breck & Lauren: Stan survey, seeking questions. https://docs.google.com/spreadsheets/d/1gRVZYhg_OzG7R4FO_RWR6htgdDlAkw5rI0Pzj8yfzqo/edit?usp=sharing
-
-shortened: goo.gl/9TWsZz
-
-Sebastian. Merge map_rect_concurrent with the conventions introduced and reviewed by @sakrejda, [see discourse](http://discourse.mc-stan.org/t/map-rect-concurrent-about-to-land/4054)? Yes/No/More reviews?
-
-Sebastian. Should we prune the sundials distribution to the bits and pieces we actually need as done in the past with CVODES? Are the noprintf macros still needed for CRAN?
-
 Charles. Recommendation for references for recent advances in autodiff?
 
 Charles. Using past iterations to compute initial guesses for numerical solvers.
