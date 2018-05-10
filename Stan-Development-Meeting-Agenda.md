@@ -20,7 +20,7 @@ Charles. Using past iterations to compute initial guesses for numerical solvers.
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
-Andrew, Jonah, Aki: non-invertible Hessian in Stan optimize.  More generally, issues with scaling and parameterization in regression models, both for Nuts and optimizing.
+Andrew, Jonah, Ben, Aki: non-invertible Hessian in Stan optimize.  More generally, issues with scaling and parameterization in regression models, both for Nuts and optimizing.
 
 * __Developer name.  Short description.__
 
