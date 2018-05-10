@@ -13,8 +13,6 @@ meeting._
 
 Andrew, Jonah, Aki: non-invertible Hessian in Stan optimize
 
-Aki, Dan, Andrew: Rhat, n_eff, ranks
-
 Breck & Lauren: Stan survey, seeking questions. https://docs.google.com/spreadsheets/d/1gRVZYhg_OzG7R4FO_RWR6htgdDlAkw5rI0Pzj8yfzqo/edit?usp=sharing
 
 shortened: goo.gl/9TWsZz
