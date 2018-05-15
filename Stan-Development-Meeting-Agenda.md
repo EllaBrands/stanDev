@@ -9,7 +9,7 @@ _Address any open topics from the past meeting._
 _New topics that should be addressed immediately or by the next
 meeting._
 
-* __Developer name.  Short description.  Desired resolution.__
+* __Date added. Developer name.  Short description.  Desired resolution.__
 
 Charles. Recommendation for references for recent advances in autodiff?
 
@@ -22,6 +22,6 @@ including speculation and brainstorming._
 
 Andrew, Jonah, Ben, Aki: non-invertible Hessian in Stan optimize.  More generally, issues with scaling and parameterization in regression models, both for Nuts and optimizing.
 
-* __Developer name.  Short description.__
+* __Date added. Developer name.  Short description.__
 
 Jonah. Tested library of user defined functions.
