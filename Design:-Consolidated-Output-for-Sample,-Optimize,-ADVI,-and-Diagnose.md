@@ -9,6 +9,7 @@ These are some of our goals:
 3. Interoperability between interfaces. We should be able to run in one interface and perform analysis in another interface.
 4. Use subsets of the output. RStan and PyStan currently have features to only record certain values. CmdStan doesn't save the warmup by default. We should continue to support this behavior.
 5. Maintenance. Be able to expand the output to accommodate new inference algorithms in addition to updating output for existing inference algorithms.
+6. Be able to add new streams of diagnostic information easily (see e.g. [thread on adding ends of divergent transitions](http://discourse.mc-stan.org/t/getting-the-location-gradients-of-divergences-not-of-iteration-starting-points/4226/) )
 
 What we're missing:
 
@@ -42,6 +43,133 @@ We currently have these inference algorithms:
   2. full rank
 
 Currently, we only have one way of reading the output, which assumes that the output was sampled. In practice the different classes of inference algorithms do not even treat the posterior density consistently.  For example the log density for sampling is calculated for the point representing draw, whereas for VI there is no one obvious point to calculate the density at.  This has posed difficulty with implementing new algorithms (e.g.- ADVI) and led to hacks in the interfaces or incomplete implementation of accessors for algorithm data.  
+
+## Alternative proposed solution
+
+This is an alternative proposed by Martin Modrák. The main issue I have with the Proposed solution below is that it doesn't make it easy to add additional types of information - e.g. last points of divergent transitions, some per-step (not per-iteration) data etc. A new type of information would require a new function in the signature of the logging object, affecting all implementations (in particular most likely all interfaces).
+
+In my proposal, the basic unit is a *data stream*. Each algorithm would provide a set of data streams. Those data streams will be piped through a single relay object. Consumers (interfaces) would register with the relay object to collect individual data streams. This will also nicely allow parameters passed to the interface to modify which information is gathered (e.g. per step information in NUTS might be handled only when necessary). Different algorithms will have different sets of recognized data streams, but otherwise the implementation would be identical. 
+
+There would be multiple types of data streams:
+
+1. Key-value => receives name-value pairs, order doesn't matter. Designed in particular for sending algorithm parameters
+2. Table => Same as current stream of per-iteration data. Receives the names of columns and their data types first and then expects rows with this exact structure. It might also be useful to have a specific "indexing object" to be sent for each row, that would contain important info for possible filtering (iteration no. etc.) - otherwise it would be fragile to extract the necessary information from the individual rows.
+3. Message log => For messages and errors. Might actually be implemented as a table (with columns like "Line","File","Level", "Message", ...). Although I wonder whether logging wouldn't be handled best by a dedicated logging library - I am not very familiar with the C++ ecosystem, but I guess there has to be something similar to log4j.
+
+The set of streams for each algorithm will be defined by an `enum`. Alternatively, we might constrain that there would be only one key-value stream and only one message log stream, while multiple table streams would be allowed.
+
+Each data stream will have its separate contract on data types, frequency, ordering etc. E.g. we might promise that the "algorithm parameters" stream will only be used before data start to be sent to "iterations" stream.
+
+Some sketches of method signatures to make this clearer (ignoring the message log as this IMHO requires more thought):
+
+Defining stream types:
+```c++
+class hmc_output_streams {
+  enum key_value {algorithm_params, timing};
+  enum table {iterations, divergences_end_points, unconstrained_params, rng_state };
+  struct indexing {
+     int iteration;
+     bool is_warmup;
+  }
+}
+```
+
+consumers:
+```c++
+class key_value_consumer {
+   virtual void consume_item(const string& key, const string& value) = 0;
+   //Maybe allow strong-typed handling?
+   virtual void consume_int(const string& key, int value) {
+       consume_item(key, str_to_int(value));
+   }  
+
+   virtual void close() = 0;
+}
+
+template<class OutputStreams>
+ class table_consumer {
+    //Header defining functions, probably more combinations of type/arity needed
+    virtual void add_double_column(const string& name) = 0;
+    virtual void add_double_columns(const vector<string>& names) = 0;
+
+    virtual void add_int_column(const string& name) = 0;
+    virtual void add_string_column(const string& name) = 0;
+   
+    virtual void header_end() = 0;
+
+    virtual void void row_start(const OutputStreams::indexing& index) = 0;
+    virtual void consume_double(double value) = 0;
+    virtual void consume_doubles(const std::vector<double>& values) = 0;
+    virtual void consume_doubles(const Eigen::VectorXd& values) = 0;
+    
+    virtual void consume_int(int value) = 0;
+    ...
+    
+    virtual void row_end() = 0;
+    virtual void close() = 0;
+ }
+```
+
+The relay object:
+```c++
+template<class OutputStreams>
+ class output_relay {
+    void set_key_value_consumer(OutputStreams::key_value stream_id, key_value_consumer& consumer);
+    bool has_key_value_consumer(OutputStreams::key_value stream_id);
+
+    //Would probably return some NUL consumer, if no consumer was registered
+    key_value_consumer& get_key_value_consumer(OutputStreams::key_value stream_id); 
+
+    void set_table_consumer(OutputStreams::table stream_id, table_consumer<OutputStreams::index>& consumer);
+    bool has_table_consumer(OutputStreams::table stream_id);
+    table_consumer<OutputStreams::index>& get_table_consumer(OutputStreams::table stream_id);
+ }
+```
+
+Usage within the sampler:
+
+```c++
+void generate_transitions(..., output_relay<hmc_output_streams> &relay) {
+   ...
+   relay.get_key_value_consumer(hmc_output_streams::algorithm_params).consume_value("adapt_delta", delta);
+   relay.get_key_value_consumer(hmc_output_streams::algorithm_params).close();
+   ...
+   table_consumer<hmc_output_streams::index> iterations_consumer = relay.get_table_consumer(hmc_output_streams::iterations);
+   iterations_consumer.add_double_columns(<<model param names>>);
+   iterations_consumer.add_double_column("energy__");
+   iterations_consumer.add_int_column("divergent__");
+   iterations_consumer.header_end();
+   
+   for (int m = 0; m < num_iterations; ++m) {
+      ...
+      iterations_consumer.row_start(hmc_output_streams::index(m));
+      iterations_consumer.consume_doubles(<<values from sampler>>);
+      iterations_consumer.consume_double(sampler.energy_);
+      iterations_consumer.consume_int(sampler.divergent_);
+      iterations_consumer.row_end()
+   }
+   iterations.close();
+}
+
+```
+
+Optional streams withing transitions: 
+```c++
+bool base_nuts::build_tree(...) {
+    if ((h - H0) > this->max_deltaH_) {
+        this->divergent_ = true;
+        // When efficiency is important, it may be reasonable to sorround the `consume` call in an if to avoid
+        // gathering the info
+        if(relay.has_table_consumer(hmc_output_streams::divergences_end_points)) {
+          <<get the values from sampler>>
+          relay.get_table_consumer(hmc_output_streams::divergences_end_points).consume_doubles(divergent_values);
+        }
+    }
+  
+}
+```
+
+CODA: maybe `consumer` / `consume` is not a great naming. Maybe `stream` / `send`?. Happy to hear suggestions.
 
 ## Proposed solution
 
