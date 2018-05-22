@@ -1,22 +1,24 @@
+NB: the text below is re-writing things from (Daniel Lee, Martin Modrák, and Krzysztof Sakrejda).  You can see that in the page history better, but everybody keeps putting these notes in so fine I will too.  Are you happy now? I also use e-mail for Gb-size file attachments.
+
 ## Problem
 
-As I'm working through how the output is generated from within Stan, I'm seeing some of the technical difficulties we have with our current design (single writer trying to handle all types of output). I'll try to outline what we're trying to do, then describe what I think could work for us.
+The current design has problems for moving forward:
 
-These are some of our goals:
+1. There's an init writer, a sample writer, and a diagnostic writer + logger.  The sample writer gets algorithm parameters (mixed types) and model parameters (doubles) and is responsible for writing them all.  The diagnostic writer gets (for sampling) the momenta (doubles) for each parameter as well as the gradients (doubles) for each parameter.  The overall problem is that the separation of concerns is not clean (so, e.g. momenta and gradients are interleaved in the diagnostic writer) and some outputs don't have a clear place to go.  For example in CmdStan the diagonal of the mass matrix is output as a comment in the middle of the csv + comments output.  
+2. The logger would be an ideal place to log additional info (such as optionally, as Martin has suggested, divergence-related information) but all logger output is text and it's creating extra work to, e.g., translate std::vector<double> -> text -> native R type.  The interfaces have to work too hard to implement basic functionality and they are diverging because of it.  
+3. Output has to be manipulated within the algorithm implementations to fit right into the writers.  There's no reason for the algorithm to know about how its output is handled, it should just pass it on.
 
-1. Run a specific inference algorithm from a particular Stan interface and produce output.
-2. Take the output and perform analysis afterwards.
-3. Interoperability between interfaces. We should be able to run in one interface and perform analysis in another interface.
-4. Use subsets of the output. RStan and PyStan currently have features to only record certain values. CmdStan doesn't save the warmup by default. We should continue to support this behavior.
-5. Maintenance. Be able to expand the output to accommodate new inference algorithms in addition to updating output for existing inference algorithms.
-6. Be able to add new streams of diagnostic information easily (see e.g. [thread on adding ends of divergent transitions](http://discourse.mc-stan.org/t/getting-the-location-gradients-of-divergences-not-of-iteration-starting-points/4226/) )
+## Current goals:
 
-What we're missing:
+1. Run a each Stan algorithm, from each interface, and produce output with minimal interface-specific code.
+2. Maintenance. Be able to expand the output to accommodate new inference algorithms in addition to updating output for existing inference algorithms.
+3. Be able to add new streams of diagnostic information easily (see e.g. [thread on adding ends of divergent transitions](http://discourse.mc-stan.org/t/getting-the-location-gradients-of-divergences-not-of-iteration-starting-points/4226/) )
 
-- Momento. With Mitzi's latest fixes with the metric and the two-argument random seed, we should be able to stop and restart.
+## Future goals (so current non-goals):
+1. Interoperability between interfaces. We should be able to run in one interface and perform analysis in another interface.  This will be a breaking change and is therefore Stan3 material.
+2. Use subsets of the output. RStan and PyStan currently have features to only record certain values. CmdStan doesn't save the warmup by default. The interface implementation could be shared between RStan/PyStan/CmdStan and allow filtering. This is not a breaking change since default behavior can match current default behavior.
 
-
-## Inference Algorithms
+## Problem in detail
 
 We currently have these inference algorithms:
 
@@ -42,7 +44,48 @@ We currently have these inference algorithms:
   1. mean field
   2. full rank
 
-Currently, we only have one way of reading the output, which assumes that the output was sampled. In practice the different classes of inference algorithms do not even treat the posterior density consistently.  For example the log density for sampling is calculated for the point representing draw, whereas for VI there is no one obvious point to calculate the density at.  This has posed difficulty with implementing new algorithms (e.g.- ADVI) and led to hacks in the interfaces or incomplete implementation of accessors for algorithm data.  
+Currently, the output approach works well for sampling since it's gotten most attention but not so much for optimization/ADVI.  For example ADVI has no obvious point density to calculate and currently outputs a confusing default value (NA or something?). This has posed difficulty with implementing new algorithms (e.g.- ADVI) and led to hacks in the interfaces or incomplete implementation of accessors for algorithm data.  All the interfaces have typed output (e.g.-error messages, mass matrix) that get converted to text and piped into the logger, which is not ideal since the interfaces have to take text and parse it to produce basic diagnostic output.
+
+## What the output layer will provide to the algorithms:
+
+A 'relay' object that has methods to dump output into _without conversion_, methods on the relay object will cover
+1. key-value output `relay.kv<handler_type>(string key, T value)`
+2. heterogeneous table output with:
+  - Column types specified at template instantiation
+  - Column names are specified at construction
+  - Proper usage w.r.t. types is checked at construction
+  - Proper usage w.r.t. number of columns checked at run-time
+  - `relay.table<handler_type>(T1 v1, T2 v2, ...);`
+  - (MAYBE): `relay.table<handler_type>(T v);` they do have to be 
+    pushed in correct order but do not have to be collected prior to push.
+3. homogenous table output with:
+  - Column types specified at template instantiation
+  - Column names are specified at construction
+  - Proper usage w.r.t. types is checked at construction
+  - Proper usage w.r.t. number of columns checked at run-time
+  - requirement that an entire row is written at once.
+  - `relay.array<handler_type>(std::vector<T>/Eigen::vector<T>)`
+4. logger output (using the current logger), this is the text-output stream of last resort.
+
+The algorithm should use the simplest one available and prefer to not modify output.  For example sampler parameters should be in a heterogeneous table if they are available near the same call site, key-value output can be used with irregularly-produced output, homogeneous tables are best for model parameters, and we should avoid separating output types with special suffixes (e.g.-the current situation with lp__, treedepth__, etc...).  The `handler_type` (consumer?) specifies types for the table/array and how different types are handled in the key/value call.  
+
+## What the output implementation will provide to the interfaces
+
+1. Interfaces should only have to write the `handler_type` classes for each array to cover
+2. We should provide common handler_type classes for, e.g., file output
+3. We should provide common handler_type classes for ignoring output
+
+... more not done
+
+## What algorithm implementations will have to provide to interfaces
+
+Description of the required `handler_type`s
+
+... more not done
+
+-----------------------------------------------------------
+Older stuff, hopefully merged above in an ok way.
+-----------------------------------------------------------
 
 ## Alternative proposed solution
 
