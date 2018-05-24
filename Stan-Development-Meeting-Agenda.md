@@ -23,4 +23,4 @@ including speculation and brainstorming._
 
 * Jonah. Tested library of user defined functions.
 
-* New data type - distribution? input posterior draws from another fit as data?
+* 5/24/2018. Sean. New data type - distribution? input posterior draws from another fit as data?
