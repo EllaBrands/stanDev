@@ -1,4 +1,4 @@
-NB: the text below is re-writing things from (Daniel Lee, Martin Modrák, and Krzysztof Sakrejda).  You can see that in the page history better, but everybody keeps putting these notes in so fine I will too.  Are you happy now? I also use e-mail for Gb-size file attachments.
+NB: the text below is re-writing things from (Daniel Lee, Martin Modrák, and Krzysztof Sakrejda). 
 
 ## Problem
 
