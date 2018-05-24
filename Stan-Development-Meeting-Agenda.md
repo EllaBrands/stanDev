@@ -18,9 +18,3 @@ _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
 * __Date added. Developer name.  Short description.__
-
-* Andrew, Jonah, Ben, Aki: non-invertible Hessian in Stan optimize.  More generally, issues with scaling and parameterization in regression models, both for Nuts and optimizing.
-
-* Jonah. Tested library of user defined functions.
-
-* 5/24/2018. Sean. New data type - distribution? input posterior draws from another fit as data?
