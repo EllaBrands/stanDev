@@ -11,8 +11,6 @@ meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
-* 5/14. Daniel Lee. If anyone would like to join a monthly Math library planning meeting, please respond via Discourse: http://discourse.mc-stan.org/t/monthly-math-library-planning-meeting/4173. 
-  (Sorry -- I won't be at the meeting this week; I'm talking to the DDMoRE Foundation to get a better understanding of what they want from Stan.)
 
 ### Open Discussion Topics
 
