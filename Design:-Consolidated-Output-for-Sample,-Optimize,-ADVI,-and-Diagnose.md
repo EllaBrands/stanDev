@@ -1,3 +1,7 @@
+See:  http://discourse.mc-stan.org/t/proposal-for-consolidated-output/4263
+
+for discussion.
+
 NB: the text below is re-writing things from (Daniel Lee, Martin Modrák, and Krzysztof Sakrejda). 
 
 ## Problem
@@ -642,4 +646,3 @@ In general there are four "writers":
 #### Sample writer
 
 #### Diagnostic writer
-
