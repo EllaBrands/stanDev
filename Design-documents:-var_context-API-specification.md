@@ -1,3 +1,26 @@
+## Construction
+
+On [discourse](http://discourse.mc-stan.org/t/proposal-for-consolidated-output/4263/9?u=sakrejda) Bob suggests that we make it possible to create a var_context using a builder pattern:
+
+> For all of this to be super flexible, it’d also be nice to have a var_context_builder, something like:
+> `var_context vc = var_context::builder().matrix("a", m).real("f".2.3);`
+> Not quite sure how to implement that, though.
+
+## Suggested changes
+
+1. Move dim validation from model to var_context
+2. Remove validation from model
+3. Add unconstrained to constrained transform map
+4. Change parser
+
+New: have the model pass transformation functors
+to the var_context
+
+Move transforms into their own classes: http://discourse.mc-stan.org/t/var-context-what-do-we-want-from-it/3665
+
+
+## Code examples
+
 These are from @betanalpha:
 
 ```
