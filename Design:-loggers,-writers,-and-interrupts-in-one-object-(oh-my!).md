@@ -1,6 +1,4 @@
-See [discourse](http://discourse.mc-stan.org/t/proposal-for-consolidated-output/4263) for discussion.
-
-NB: the text below is re-writing things from (Daniel Lee, Martin Modrák, and Krzysztof Sakrejda). 
+See [discourse](http://discourse.mc-stan.org/t/proposal-for-consolidated-output/4263) for discussion, see history for whodunit.
 
 ## Problem
 
@@ -46,7 +44,7 @@ We currently have these inference algorithms:
   1. mean field
   2. full rank
 
-Currently, the output approach works well for sampling since it's gotten most attention but not so much for optimization/ADVI.  For example ADVI has no obvious point density to calculate and currently outputs a confusing default value (NA or something?). This has posed difficulty with implementing new algorithms (e.g.- ADVI) and led to hacks in the interfaces or incomplete implementation of accessors for algorithm data.  All the interfaces have typed output (e.g.-error messages, mass matrix) that get converted to text and piped into the logger, which is not ideal since the interfaces have to take text and parse it to produce basic diagnostic output.  To add new outputs we need to pass more and more types of writers which modifies the signatures of services and breaks the interface.
+Currently, the output approach works well for sampling since it's gotten most attention but not so much for optimization/ADVI.  For example ADVI has no obvious point density to calculate and currently outputs a confusing default value (NA or something?). This has posed difficulty with implementing new algorithms (e.g.- ADVI) and led to hacks in the interfaces or incomplete implementation of accessors for algorithm data.  All the algorithms have typed output (e.g.-error messages, mass matrix) that get converted to text and piped into the logger, which is not ideal since the interfaces have to take text and parse it to produce basic diagnostic output.  To add new outputs we need to pass more and more types of writers which modifies the signatures of services and breaks the interfaces.
 
 ## Solutions:
 
@@ -54,14 +52,16 @@ Currently, the output approach works well for sampling since it's gotten most at
 
 2) The reason so many relay classes are required is just to differentiate 
 between which relay is called in which algorithm, and the difference within the 13 HMC relay versions
-are discrete (diagonal vs. unit mass matrix) and combinatorial (only 2 kinds of HMC, 3 kinds of mass matrices, plus adapt/no-adapt).  Instead of having a whole relay class for each algorithm class, you could use a policy-based design where the information about, e.g., the kind of mass matrix the algorithm will end up writing lives in a policy class (https://en.wikipedia.org/wiki/Policy-based_design).  Martin [implemented](https://repl.it/repls/TidyExtrasmallProlog) something like this.
+are discrete (diagonal vs. unit mass matrix) and combinatorial (only 2 kinds of HMC, 3 kinds of mass matrices, plus adapt/no-adapt).  Instead of having a whole relay class for each algorithm class, you could use a policy-based design where the information about, e.g., the kind of mass matrix the algorithm will end up writing lives in a policy class (https://en.wikipedia.org/wiki/Policy-based_design).  Martin [implemented](https://repl.it/repls/TidyExtrasmallProlog) something like this.  Krzysztof [separated the code out into separate files so it's clearer who would be responsible for what](https://repl.it/@KrzysztofSakrej/TidyExtrasmallProlog-1)
 
-
-
-K notes: haven't re-written below here
 
 ## What the objects are:
-1. A `relay` that is called when output needs to be produced.  The r
+1. A `relay` that is 1) constructed by the interface code; 2) used as an argument to service functions; and 3) called in `stan-dev/stan` at the site where output needs to be relayed to the interface.  This is at least a struct holding a set of purpose-specific writers.  It can also be a templated class as in Martin's code.
+2. For each output type: structs (are they usually called tags?) that define what each output type is.
+3. Interface-defined data stream types that describe how each output type defined by a tag will be handled.
+
+For example see original code: https://repl.it/repls/TidyExtrasmallProlog
+Also see how code could be split in Stan: https://repl.it/@KrzysztofSakrej/TidyExtrasmallProlog-1
 
 ## What the output layer will provide to the algorithms:
 
