@@ -1,4 +1,7 @@
+For a tutorial on interacting with the current Jenkins jobs, please see this discourse post:
 http://discourse.mc-stan.org/t/new-jenkins-jobs-tutorial/2383
+
+The rest of this wiki is historical.
 
 # Background
 
