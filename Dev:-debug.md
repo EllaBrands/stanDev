@@ -1,6 +1,6 @@
 The following only applies to Math library.
 
-There is minimalist debug build, replacing `-O3` with `-g -O0` in `CXXFLAGS`.
+Makefile provides a minimalist debug build, replacing `-O3` with `-g -O0` in `CXXFLAGS`.
 
 To switch on debug build, add the following line in `make/local`
 ```bash
