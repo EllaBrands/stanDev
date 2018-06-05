@@ -20,3 +20,5 @@ including speculation and brainstorming._
 * __Date added. Developer name.  Short description.__
 
 Aki, Andrew, Dan.  Adaptation schedule and do we really need a default of 2000?
+
+Andrew.  What will be in Command Stan?  R-hat, n_eff, default summaries?
