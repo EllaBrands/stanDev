@@ -18,3 +18,5 @@ _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
 * __Date added. Developer name.  Short description.__
+
+Aki, Andrew, Dan.  Adaptation schedule and do we really need a default of 2000?
