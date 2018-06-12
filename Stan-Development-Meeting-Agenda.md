@@ -26,3 +26,5 @@ Andrew.  What will be in Command Stan?  R-hat, n_eff, default summaries?
 Andrew, Bob, Dan S.  Stan manual and books.
 
 Andrew, Dan S.  Bayes for big data, etc.
+
+06/12. Charles. Quadratic optimizer: differentiating functions with boundary constraints. 
