@@ -11,6 +11,7 @@ meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
+* 2018-06-14. Aki. StanCon update and question about StanCon developer talks.
 
 ### Open Discussion Topics
 
