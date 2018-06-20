@@ -87,7 +87,7 @@ Currently, the `stan` repo includes the language, the algorithms, and the servic
 * [CloudStan](https://github.com/stan-dev/stan/wiki/CloudStan-functional-specification)
 * [Logging](https://github.com/stan-dev/stan/wiki/Logging-Spec)
 * [Log levels and consolidated output across interfaces](https://github.com/stan-dev/stan/wiki/Design:-Consolidated-Output-for-Sample,-Optimize,-ADVI,-and-Diagnose)
-* [Stan 3 unified interface](https://github.com/stan-dev/stan/wiki/Stan-3-Unified-Interface)
+* [User Interface Guidelines for Developers (e.g., PyStan, RStan)](https://github.com/stan-dev/stan/wiki/User-Interface-Guidelines-for-Developers)
 * [Stan C++ API refactor](https://github.com/stan-dev/stan/wiki/Stan-Cpp-API-Refactor)
 
 #### I/O
