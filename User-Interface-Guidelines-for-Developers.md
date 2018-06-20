@@ -6,29 +6,36 @@ Previous discussion
 - [Stan-3-Unified-Interface](https://github.com/stan-dev/stan/wiki/Stan-3-Unified-Interface)
 - [Interfaces-3.0-Spec](https://github.com/stan-dev/rstan/wiki/Interfaces-3.0-Spec)
 
+# Significant Changes
+1. New user-facing API (see below for examples)
+2. Standardize on CmdStan parameter names. For example, use ``num_chains`` (CmdStan) everywhere rather than the current split (PyStan and RStan use ``chains``).
+3. ``permuted`` does not exist
 
-## Overview / Example User Session
-In general, the basic steps are:
+# Major Unresolved issues
 
-1. Compile the C++, which will become more demanding once we start using algorithms that rely on fvars
-2. Instantiate it. Bob thinks that we need to have an abstract base class for programs to inherit from, rather than templating the program. It is not yet clear what all the public methods of the abstract base class will be.
-3. Call one of the algorithms Stan supports to estimate the model. The output is to be handled by a VarWriter that can be implemented and passed in by the interface.
-4. Diagnose
+* Should the function/method previously known as ``optimize`` be renamed to be ``maximize``? Whatever decision is made, the renaming should take place in all interfaces (including CmdStan). (AR and BG agree on ``maximize``)
+* Should the function/method previously known as ``vb`` be called via ``experimental_advi_meanfield`` and ``experimental_advi_fullrank`` (mirroring the C++ services names)?
+* ~To what extent should the steps in the interfaces mirror those of the C++ / CmdStan?~ (User-facing API shown below is OK.)
+* ~What should be stand-alone functions and what should be methods, as in `build(config)` vs. `config$build()`?~ (No separate compile / build step.)
+* ~Do we need a separate class that only exposes the algorithms in the C++ library or is it better to for the class to expose both algorithms and lower-level functions like `log_prob`?~ (No separate classes. Advanced users will have workarounds.)
+* ~How granular should the estimation functions be, as in `$hmc_nuts_diag_e_adapt()` vs. `$hmc(adapt = TRUE, diag = TRUE, metric = "Euclidean")`~ (Decided by the C++ API refactor. 99% of users will just call the ``sample`` method.)
 
-## Major Unresolved issues
+## RStan-specific 
+* Eliminate ``stan`` function? (PyStan has removed it.)
 
-* To what extent should the steps in the interfaces mirror those of the C++ / CmdStan?
-* What should be stand-alone functions and what should be methods, as in `build(config)` vs. `config$build()`?
-* Do we need a separate class that only exposes the algorithms in the C++ library or is it better to for the class to expose both algorithms and lower-level functions like `log_prob`?
-* How granular should the estimation functions be, as in `$hmc_nuts_diag_e_adapt()` vs. `$hmc(adapt = TRUE, diag = TRUE, metric = "Euclidean")`
+# Other Changes and Notes
+1. Store draws internally with draws/chains in last dimension (num_params, num_draws, num_chains) with an eye to ragged array support and/or adding additional draws.
+2. To the extent possible, RStan and PyStan should use the same names for internal operations and internal class attributes.
 
-### Typical R session
+# Typical User Sessions
+
+## Typical R session
 We plan to use [ReferenceClasses](http://stat.ethz.ch/R-manual/R-devel/library/methods/html/refClass.html) throughout. See the examples section of [this](https://github.com/stan-dev/rstan/blob/develop/rstan3/R/rstan.R) for a canonical R example.
 
-### Typical PyStan session
+## Typical PyStan session
 ```python
 import pystan
-posterior = pystan.compile(program_code, data=schools_data)
+posterior = pystan.build(program_code, data=schools_data)
 fit = posterior.sample(num_chains=1, num_samples=200, num_warmup=200)
 alpha = fit["alpha"]
 
@@ -36,29 +43,15 @@ estimates = fit.optimize()
 estimates = fit.hmc_nuts_diag_e_adapt(delta=0.9)  # advanced users, unlikely to use
 ```
 
-### Typical CmdStan session
+## Typical CmdStan session
 
 TBD but Julia and MATLAB just call CmdStan and thus would be similar.
 
-### Typical StataStan session
+## Typical StataStan session
 
 TBD but StataStan also calls CmdStan but would probably have some quirks
 
-## StanConfig
-
-### RStan
-
-* program.name  (like "8schools")
-* shared.object (path to the shared object on disk)
-* a field for each thing declared in the `data` block of a Stan program
-
-### PyStan
-
-TBD, basically the same
-
-## StanModule
-
-### Methods provided by the Stan library to all interfaces
+# Methods provided by the Stan library to all interfaces
 
 The class would expose the following methods from the abstract base class (that needs to be implemented):
 
@@ -77,15 +70,9 @@ The class would expose the following methods from the abstract base class (that 
     - declared type (cov_matrix, etc.)
     - which were declared in the parameters, transformed parameters, and generated quantities blocks
  
-It is not clear if the following algorithms would be methods, methods of a different class, or stand-alone functions that input a program and configuration options:
+# MCMC output containers
 
-- tuple sample()
-- tuple advi()
-- tuple maximize()
-
-## MCMC output containers
-
-### RStan
+## RStan
 
 The VarWriter would fill an Rcpp::NumericVector with appropriate dimensions. Then there would be a new (S4) class that is basically an array to hold MCMC output for a particular parameter, which hinges on the params_info() method. The (array slot of a) StanType has dimensions equal to the original dimensions plus two additional trailing dimensions, namely chains and iterations. Thus,
 - if the parameter is originally a scalar, on the interface side it acts like a 3D array that is 1 x chains x iterations
@@ -98,21 +85,21 @@ The advantages of having such a class hierarchy are
 - can easily call unconstrain methods (in C++) for one unknown rather than having to do it for all unknowns
 - can implement probabalistic programming; i.e. if ``beta`` is a estimated vector in Stan, then in R ``mu <- X %*% beta`` is N x chains x iterations and if ``variance`` is a scalar then ``sigma <- sqrt(variance)`` is a can be summarized appropriately (including n_eff, etc.)
 
-### PyStan
+## PyStan
 
 TBD. Allen is ambivalent about doing something like a StanType class hierarchy
 
-### CmdStan
+## CmdStan
 
 Everything gets written to a flat CSV file
 
 ## MCMC output bundle
 
-### StanFitMCMC class in R
+## StanFitMCMC class in R
 
 TBD
 
-### StanFitMCMC class in PyStan
+## StanFitMCMC class in PyStan
 
 **instance fields**
 - param_draws : This needs to be [ params x chains x iterations ] : double in contiguous memory or similar if the C++ API for split_rhat is going to be called directly and fast.
@@ -135,9 +122,4 @@ note: computation of the hessian is optional at optimization time
 - (optinal) hessian
 - (optional) diagnostic param values: diagnostic params x iterations
 - diagnostic param names: diagnostic params : string
-
-## Recommendations and style guidelines
-- consistent variable names (either ``num_warmup`` and ``num_iter`` or use ``warmup`` and ``iter``, not a mix)
-- at the start of sampling, the (default) config for the chosen sampling algorithm should be displayed with helpful tips for adjustments (perhaps using color? follow clang's color strategy)
-- cache programs if possible
 
