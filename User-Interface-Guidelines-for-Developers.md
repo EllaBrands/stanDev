@@ -1,6 +1,6 @@
 This page describes how users will use Stan 3.0 to compile and fit programs. This page is intended for developers of any user interfaces to Stan.
 
-These changes will take place in concert with the [[Stan C++ API Refactor|Stan Cpp API Refactor]]. Also, the [R implementation](https://github.com/stan-dev/rstan/blob/develop/rstan3/R/AllClass.R) has tentatively started.
+These changes will take place in concert with the [[Stan C++ API Refactor|Stan Cpp API Refactor]] (finished!). Also, the [R implementation](https://github.com/stan-dev/rstan/blob/develop/rstan3/R/AllClass.R) has tentatively started.
 
 Previous discussion
 - [Stan-3-Unified-Interface](https://github.com/stan-dev/stan/wiki/Stan-3-Unified-Interface)
@@ -26,25 +26,14 @@ In general, the basic steps are:
 We plan to use [ReferenceClasses](http://stat.ethz.ch/R-manual/R-devel/library/methods/html/refClass.html) throughout. See the examples section of [this](https://github.com/stan-dev/rstan/blob/develop/rstan3/R/rstan.R) for a canonical R example.
 
 ### Typical PyStan session
-WIP
 ```python
-# Step 1 --- Create a StanProgram *class*
 import pystan
-MyStanProgram = pystan.compile(program_code=code)
+posterior = pystan.compile(program_code, data=schools_data)
+fit = posterior.sample(num_chains=1, num_samples=200, num_warmup=200)
+alpha = fit["alpha"]
 
-# Step 2 --- Create an instance of MyStanProgram (with data, equivalent to StanProgramWithData-class object)
-program = MyStanProgram(data)
-
-# Step 3 --- Estimate the parameters
-estimates = program.optimize()       # maximum a posteriori estimator
-estimates = program.sample() # MCMC from the posterior distribution
-estimates = program.hmc_nuts_diag_e_adapt(delta=0.9)  # advanced users, unlikely to use
-
-# Diagnose any problems
-# TODO
-
-# sampling (default) then extract
-alpha = estimates['alpha']
+estimates = fit.optimize()
+estimates = fit.hmc_nuts_diag_e_adapt(delta=0.9)  # advanced users, unlikely to use
 ```
 
 ### Typical CmdStan session
