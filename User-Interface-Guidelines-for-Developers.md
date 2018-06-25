@@ -2,10 +2,6 @@ This page describes how users will use Stan 3.0 to compile and fit programs. Thi
 
 These changes will take place in concert with the [[Stan C++ API Refactor|Stan Cpp API Refactor]] (finished!). Also, the [R implementation](https://github.com/stan-dev/rstan/blob/develop/rstan3/R/AllClass.R) has tentatively started.
 
-Previous discussion
-- [Stan-3-Unified-Interface](https://github.com/stan-dev/stan/wiki/Stan-3-Unified-Interface)
-- [Interfaces-3.0-Spec](https://github.com/stan-dev/rstan/wiki/Interfaces-3.0-Spec)
-
 # Significant Changes
 1. New user-facing API (see below for examples)
 2. Standardize on CmdStan parameter names. For example, use ``num_chains`` (CmdStan) everywhere rather than the current split (PyStan and RStan use ``chains``).
