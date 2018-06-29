@@ -11,6 +11,8 @@ meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
+* 2018-06-29. Sebastian. Planning release of 2.18. Roadmap to 2.18 (MPI was our gatekeeper and it is in now).
+
 * 2018-06-14. Aki. StanCon update and question about StanCon developer talks.
 
 ### Open Discussion Topics
