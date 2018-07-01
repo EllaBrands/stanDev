@@ -33,7 +33,9 @@ We plan to use [ReferenceClasses](http://stat.ethz.ch/R-manual/R-devel/library/m
 import pystan
 posterior = pystan.build(program_code, data=schools_data)
 fit = posterior.sample(num_chains=1, num_samples=200, num_warmup=200)
-alpha = fit["alpha"]
+alpha = fit["alpha"]  # shape (param_stan_dimensions, num_draws * num_chains) NEW!
+
+fit.to_frame()  # shape (num_chains * num_draws, num_flat_params)
 
 estimates = fit.optimize()
 estimates = fit.hmc_nuts_diag_e_adapt(delta=0.9)  # advanced users, unlikely to use
