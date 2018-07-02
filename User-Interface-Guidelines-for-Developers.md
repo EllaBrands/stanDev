@@ -32,7 +32,7 @@ We plan to use [ReferenceClasses](http://stat.ethz.ch/R-manual/R-devel/library/m
 ```python
 import pystan
 posterior = pystan.build(program_code, data=schools_data)
-fit = posterior.sample(num_chains=1, num_samples=200, num_warmup=200)
+fit = posterior.sample(num_chains=1, num_samples=2000)
 alpha = fit["alpha"]  # shape (param_stan_dimensions, num_draws * num_chains) NEW!
 
 fit.to_frame()  # shape (num_chains * num_draws, num_flat_params)
