@@ -26,6 +26,8 @@ including speculation and brainstorming._
 
 * 2018-7-05. Bob Carpenter.  Should Stan be more focused as a project?
 
+* 2017-7-05. Allen / Ben. Update on Stan3 Python and R interfaces
+
 Andrew, Dan S.  Bayes for big data, etc.
 
 06/12. Charles. Quadratic optimizer: differentiating functions with boundary constraints. 
