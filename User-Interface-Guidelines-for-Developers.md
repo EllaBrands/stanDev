@@ -35,7 +35,7 @@ alpha = fit["alpha"]  # shape (param_stan_dimensions, num_draws * num_chains) NE
 
 fit.to_frame()  # shape (num_chains * num_draws, num_flat_params)
 
-estimates = fit.optimize()
+estimates = fit.maximize()
 estimates = fit.hmc_nuts_diag_e_adapt(delta=0.9)  # advanced users, unlikely to use
 ```
 
