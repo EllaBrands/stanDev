@@ -22,6 +22,10 @@ including speculation and brainstorming._
 
 * __Date added. Developer name.  Short description.__
 
+* 2018-7-05. Bob Carpenter.  How do we increase throughput for continuous integration?
+
+* 2018-7-05. Bob Carpenter.  Should Stan be more focused as a project?
+
 Andrew, Dan S.  Bayes for big data, etc.
 
 06/12. Charles. Quadratic optimizer: differentiating functions with boundary constraints. 
