@@ -1,6 +1,9 @@
 ### Roundtable
 _Short (less than 1 minute) description of work in the past week._
 
+### Microphone in Watson Conference Room
+
+**Shure**
 
 ### Unresolved Topics
 _Address any open topics from the past meeting._
