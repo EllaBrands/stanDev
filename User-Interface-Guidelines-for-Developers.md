@@ -1,6 +1,4 @@
-This page describes how users will use Stan 3.0 to compile and fit programs. This page is intended for developers of any user interfaces to Stan.
-
-These changes will take place in concert with the [[Stan C++ API Refactor|Stan Cpp API Refactor]] (finished!). Also, the [R implementation](https://github.com/stan-dev/rstan/blob/develop/rstan3/R/AllClass.R) has tentatively started.
+This page has recommendations on how users will use Stan to compile programs and draw samples. These recommendations are being implemented in "RStan 3" and "PyStan 3". This page is intended for developers of any user interfaces to Stan.
 
 # Significant Changes
 1. New user-facing API (see below for examples)
