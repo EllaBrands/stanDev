@@ -11,6 +11,8 @@ meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
+* 2018-07-05. Andrew.  New plan to break up Stan meetings in two:  Stan Engineering and Stan-Adjacent Research.
+
 * 2018-06-29. Sebastian. Planning release of 2.18. Roadmap to 2.18 (MPI was our gatekeeper and it is in now).
 
 * 2018-06-14. Aki. StanCon update and question about StanCon developer talks.
@@ -28,6 +30,6 @@ including speculation and brainstorming._
 
 * 2017-7-05. Allen / Ben. Update on Stan3 Python and R interfaces
 
-Andrew, Dan S.  Bayes for big data, etc.
+* 2017-07-05. Andrew, Aki, Dan S, Ben.  Computational strategies when Stan is too slow and posterior is well-behaved:  marginal optimization, ADVI, Inla, etc. [Stan-adjacent research]
 
 06/12. Charles. Quadratic optimizer: differentiating functions with boundary constraints. 
