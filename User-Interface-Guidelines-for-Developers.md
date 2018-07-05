@@ -4,11 +4,13 @@ This page has recommendations on how users will use Stan to compile programs and
 1. New user-facing API (see below for examples)
 2. Standardize on CmdStan parameter names. For example, use ``num_chains`` (CmdStan) everywhere rather than the current split (PyStan and RStan use ``chains``).
 3. ``permuted`` does not exist
+4. Replace ``sampling`` with ``sample`` verb, ``optimizing`` with verb ``maximize``
+5. Remove generic ``vb`` method, replace with ``experimental_advi_meanfield`` and ``experimental_advi_fullrank``
 
 # Major Unresolved issues
 
-* Should the function/method previously known as ``optimize`` be renamed to be ``maximize``? Whatever decision is made, the renaming should take place in all interfaces (including CmdStan). (AR and BG agree on ``maximize``)
-* Should the function/method previously known as ``vb`` be called via ``experimental_advi_meanfield`` and ``experimental_advi_fullrank`` (mirroring the C++ services names)?
+* ~Should the function/method previously known as ``optimize`` be renamed to be ``maximize``? Whatever decision is made, the renaming should take place in all interfaces (including CmdStan). (AR and BG agree on ``maximize``)~ (yes, discussed 2018-07-05)
+* ~Should the function/method previously known as ``vb`` be called via ``experimental_advi_meanfield`` and ``experimental_advi_fullrank`` (mirroring the C++ services names)?~ (yes, discussed on 2018-07-05)
 * ~To what extent should the steps in the interfaces mirror those of the C++ / CmdStan?~ (User-facing API shown below is OK.)
 * ~What should be stand-alone functions and what should be methods, as in `build(config)` vs. `config$build()`?~ (No separate compile / build step.)
 * ~Do we need a separate class that only exposes the algorithms in the C++ library or is it better to for the class to expose both algorithms and lower-level functions like `log_prob`?~ (No separate classes. Advanced users will have workarounds.)
