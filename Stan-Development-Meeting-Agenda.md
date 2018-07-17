@@ -10,6 +10,8 @@ meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
+* 2018-07-17. Andrew. How to schedule Stan core software meetings and Stan-adjacent research meetings?
+
 ### Open Discussion Topics
 
 _Any topics that do not need to be addressed in the short term,
