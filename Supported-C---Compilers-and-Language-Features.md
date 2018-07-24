@@ -4,14 +4,16 @@
 * linux / gcc 5 / stdlibc++ OpenMPI
 * mac clang 6 libc++ OR linux clang 6 libc++ distribution tests (without row vectors)
 
-### Additional tests on merge to develop
-
-* linux / gcc 5 / stdlibc++ Threading
-* mac / clang 6 libc++ OR linux / gcc 5 stdlibc++ GPU
-* mac clang 6 libc++ OR linux clang 6 stdlibc++ distribution tests (with row vectors)
+### Additional tests on merge to develop 
+* linux / gcc 5 / stdlibc++ Threading unit tests
+* mac / clang 6 libc++ OR linux / gcc 5 stdlibc++[1] GPU unit tests
+* mac clang 6 libc++ OR linux clang 6 stdlibc++[2] distribution tests (with row vectors)
 
 So there will be a little bit of non-determinism for the sake of running tests more quickly on available hardware.
 
+[1] the GPU libraries are currently broken on Linux, so currently they run on Mac and Linux is an aspirational target.
+
+[2] clang 6 is also aspirational on that Linux box - clang 3.8 is the only one that works without libc++ right now. 
 
 # C++ Standard library version
 If you're on Mac, this is probably libc++, and on Windows or Linux this is probably GNU's stdlibc++. We should support both for the versions of compilers we support.
