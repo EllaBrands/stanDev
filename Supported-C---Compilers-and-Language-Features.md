@@ -15,16 +15,6 @@ So there will be a little bit of non-determinism for the sake of running tests m
 
 [2] clang 6 is also aspirational on that Linux box - clang 3.8 is the only one that works without libc++ right now. 
 
-For tests, these are the tests that should be tested on each of those configurations:
-1. header tests. `make test-headers`
-2. unit tests. `./runTests.py test/unit`
-3. distribution tests. `./runTests.py test/prob` (listed here for completeness; it's not feasible to run these tests on a lot of configurations)
-
-These tests only need to be run on one platform since they're not compiler dependent:
-1. CppLint. `make cpplint`
-2. Math dependencies (checks the source to make sure it's not including headers in a bad way). `make test-math-dependencies`
-3. Building doxygen. `make doxygen`
-
 # C++ Standard library version
 If you're on Mac, this is probably libc++, and on Windows or Linux this is probably GNU's stdlibc++. We should support both for the versions of compilers we support.
 
