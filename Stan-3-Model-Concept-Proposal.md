@@ -17,7 +17,7 @@ class foo {
 foo(const var_context& data);
 
 // Destruct model.
-~model();
+~foo();
 
 // Return number of unconstrained parameters.
 // @return number of unconstrained parameters.
