@@ -21,6 +21,9 @@ including speculation and brainstorming._
 
 * __Date added. Developer name.  Short description.__
 
+
+* 7 August 2018.  Bob.  Different integrators.  Ben Bales tells me that (a) he has a problem for which a hand-built Euler solver works but our built-in RK45 fails, and (b) that Yi is working on an adjoint sensitivity integrator that's going to still need the alloc-stack to malloc internally and get cleaned up.
+
 * 2018-07-12. Ben.  New Era of Correctness
 ```
 // [[Rcpp::plugins(cpp14)]]
