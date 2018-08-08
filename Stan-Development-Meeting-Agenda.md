@@ -24,7 +24,7 @@ including speculation and brainstorming._
 
 * 7 August 2018.  Bob.  Different integrators.  Ben Bales tells me that (a) he has a problem for which a hand-built Euler solver works but our built-in RK45 fails, and (b) that Yi is working on an adjoint sensitivity integrator that's going to still need the alloc-stack to malloc internally and get cleaned up.
 
-Ben 2. Continuing on what Bob added -- the issue was that RK45 was super slow and forward Euler seemed good enough. Fails is such a harsh word, but that is probably what I said. I'd also like to talk about adjoint sensitivity and the possibility of switching to using Cvodes sparse solves stuff with fvar Jacobian-vector products while we're on the topic of ODEs.
+Ben 2. Continuing on what Bob added, I'd also like to talk about adjoint sensitivity and the possibility of switching to using Cvodes sparse solves stuff with fvar Jacobian-vector products while we're on the topic of ODEs.
 
 * 2018-07-12. Ben.  New Era of Correctness
 ```
