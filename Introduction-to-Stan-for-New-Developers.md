@@ -81,3 +81,4 @@ Once you have familiarized yourself with our process take a look at the GitHub i
 * [Alexandrescu's Modern C++ Design] (http://erdani.com/index.php/books/modern-c-design/)
 and the free PDF here: [Modern C++ PDF](http://index-of.co.uk/C++/C++%20Design%20Generic%20Programming%20and%20Design%20Patterns%20Applied.pdf)
 * [Agner Fog's manuscript](http://www.agner.org/optimize/optimizing_cpp.pdf)
+* [On template metaprograms](https://www.fluentcpp.com/2017/06/02/write-template-metaprogramming-expressively/)
