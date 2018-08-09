@@ -25,6 +25,7 @@ including speculation and brainstorming._
 
 * __Date added. Developer name.  Short description.__
 
+* 2018-08-09. Andrew.  What to do when people email me with questions about Stan-related projects?
 
 * 7 August 2018.  Bob.  Different integrators.  Ben Bales tells me that (a) he has a problem for which a hand-built Euler solver works but our built-in RK45 fails, and (b) that Yi is working on an adjoint sensitivity integrator that's going to still need the alloc-stack to malloc internally and get cleaned up.
 
