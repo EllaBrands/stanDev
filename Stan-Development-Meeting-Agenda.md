@@ -10,6 +10,8 @@ meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
+* 2018-08-09. Andrew.  Verbose options in stan, rstan, rstanarm.
+
 * 2018-07-19. Andrew. Starting at our next meeting, we will try Sean's suggestion of first doing the Stan-adjacent research meeting (informally led by me) from 11 to 11:30, then at 11:30 starting the Stan core software meeting (informally led by Bob).  So people can join at either time, depending on their interest.  We'll see how that works out!
 
 * 2018-07-27. Andrew.  Default priors for ordered logit.
