@@ -12,6 +12,8 @@ meeting._
 
 * 2018-08-09. Andrew.  Verbose options in stan, rstan, rstanarm.
 
+* 2018-08-09 Aki. Scaling in mcmc_areas: 1) same height, 2) same area, 3) square root height. https://ctg2pi.wordpress.com/2015/02/24/principles-of-posterior-visualization/
+
 * 2018-07-19. Andrew. Starting at our next meeting, we will try Sean's suggestion of first doing the Stan-adjacent research meeting (informally led by me) from 11 to 11:30, then at 11:30 starting the Stan core software meeting (informally led by Bob).  So people can join at either time, depending on their interest.  We'll see how that works out!
 
 * 2018-07-27. Andrew.  Default priors for ordered logit.
