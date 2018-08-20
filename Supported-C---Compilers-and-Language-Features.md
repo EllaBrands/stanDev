@@ -19,6 +19,8 @@ So there will be a little bit of non-determinism for the sake of running tests m
 If you're on Mac, this is probably libc++, and on Windows or Linux this is probably GNU's stdlibc++. We should support both for the versions of compilers we support.
 
 # C++ Language Features
+We are not yet testing the Math repo on GCC 4.9.3, but we will soon and we need that compiler to work to support the way RStan on Windows links with the R binary at runtime. This is our limiting compiler and means we can use:
+
 ### [C++11 features](http://blog.smartbear.com/c-plus-plus/the-biggest-changes-in-c11-and-why-you-should-care/)
 * everything except for Expression SFINAE
 ### C++14 features
