@@ -9,15 +9,28 @@ This document describes the current set of tests for the Stan compiler.  The com
 
 ## Unit tests
 
-The directory `src/test/unit/lang` contains a set of unit tests for the Stan compiler.
+The directory `src/test/unit/lang` contains a set of unit tests for the Stan compiler.  Features are mainly tested in isolation; some tests may test the outcome of a chain of operations.
 
 ### Preprocessor unit tests
 
+`src/test/unit/lang/io/program_reader_test.cpp` - extensively tests pre-processor, test models in `stc/test/test-models/good/included`
+
 ### AST unit tests
+
+- `src/test/unit/lang/ast/type` - API level tests for all variable types in the Stan language
+- `src/test/unit/lang/ast/node` - tests for all variable declarations in the Stan language, extensive tests on indexing nodes, some AST nodes are not fully tested.
+- `src/test/unit/lang/ast/fun`  - some tests for particularly complex functions
+- `src/test/unit/lang/ast/sigs` - tests function signatures
 
 ### Parser unit tests
 
+`src/test/unit/lang/parser` - test files have been added as new features have been added to the language.
+
 ### Generator unit tests
+
+`src/test/unit/lang/generator` - some tests for specific language constructs.
+
+There are a set of brittle tests which take a minimal Stan program, e.g., single block, single variable declaration, run it through the compiler, and then check that the generated c++ code is _exactly_ as expected, using simple string matching.
 
 ## Integration tests
 
