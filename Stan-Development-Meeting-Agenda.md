@@ -10,7 +10,7 @@ meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
-* 2018-08-23. Aki. New Rhat and n_eff.
+* 2018-08-23. Aki. New Rhat and n_eff. https://avehtari.github.io/rhat_neff/rhat_neff.html
 
 * 2018-08-09. Andrew.  Verbose options in stan, rstan, rstanarm.
 
