@@ -24,6 +24,8 @@ The directory `src/test/unit/lang` contains a set of unit tests for the Stan com
 makefile test: `make test/integration/compile_models`
 - Tests that all Stan programs under `src/test/test-models/good` be compiled, linked, and loaded into a runtime executable.
 
+Some unit tests require instantiating and running a Stan model, e.g. services and variational tests.
+
 ## End-to-end tests
 
 https://github.com/stan-dev/performance-tests-cmdstan This is a system which takes a set of known models and inputs, compiles and runs the models and then checks that the outputs obtained are within epsilon of the outputs of the current release(?)   The set of models comes from repo https://github.com/stan-dev/stat_comp_benchmarks.
