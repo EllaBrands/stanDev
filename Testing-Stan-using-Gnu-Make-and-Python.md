@@ -11,16 +11,31 @@ The following programs and tools are required:
  - Python:  versions 2.7 and up
  - Unix utilities `find` and `grep`
 
-The Stan `makefile` uses helper files in the directory `make/`.   The helper file `~/.config/stan/make.local` or `make/local` is used to customize makefile options.  Typical customizations are setting the compiler option flags:
-  - `CC` specifies the name of the C++ compiler. Example: `CC=clang++`
-  - `O` specifies the optimization level. `0` for least code optimization, `3` for greatest amount of code optimization. Example: `O=0`
-  - `MAKEFLAGS` specifies the number of cores used by <code>make</code>, ranging from 1 to min(total cores, 16).  Example: `MAKEFLAGS = -j2`
+To customize Stan's build options, variables can be set in a file called `make/local`. This is the preferred way of customizing the build. You can also set it more permanently by setting variables in `~/.config/stan/make.local`.
 
-The `make/local` file in the Stan repository is empty. To add `CC=clang++` and `O=0` to `make/local` type:
+Note: variables in `make/local` override variables in `~/.config/stan/make/local`.
+
+**Nota bene:** these build instructions are not in the released version yet. This is for v2.18.0++. Prior to this, the build instructions are similar, but not identical.
+
+There are a lot of make variables that can be set. In general, `CXXFLAGS_*` is for C++ compiler flags, `CPPFLAGS_*` is for C preprocessor flags, `LDFLAGS_*` is for linker flags, and `LDLBIS_*` is for libraries that need to be linked in.
+
+These are the more common make flags that could be set:
+- `CXX`: C++ compiler
+- `MATH`: location of the Stan Math library.
+- `CXXFLAGS_OS`: compiler flags specific to the operating system.
+- `CPPFLAGS_OS`: C preprocessor flags specific to the operating system.
+- `O`: optimization level. Defaults to `3`.
+- `O_STANC`: optimization level for building the Stan compiler. Defaults to `0`.
+- `INC_FIRST`: this is a C++ compiler option. If you need to include any headers before Math's headers, this is where to specify it. Default is empty.
+- `LDFLAGS_OS`: linker flags for the operating system
+- `LDLIBS_OS`: link libraries for the operating system
+
+For additional make options, see [Building and Running Tests](https://github.com/stan-dev/math/wiki/Developer-Doc#building-and-running-tests) in the Math wiki.
+
+The `make/local` file in the Stan repository is empty. To add `CXX=clang++` and `O=0` to `make/local` type:
 ```
-> echo "CC=clang++" >> make/local
+> echo "CXX=clang++" >> make/local
 > echo "O=0" >> make/local
-> echo "MAKEFLAGS=-j2" >> make/local
 ```
 
 ### 2. The Python script, `runTests.py`
@@ -41,7 +56,7 @@ or
 
 Arguments:
 - the first optional argument is `-j<#cores>` for building the test in parallel.  If this argument is present, it will be passed along to the <code>make</code> command and will override system defaults and `MAKEFLAGS` set in <code>make/local</code>.
-- the rest of the arguments should either specify a single test file (`*_test.cpp`) or a test directory. 
+- the rest of the arguments should either specify a single test file (`*_test.cpp`) or a test directory.
 
 #### Example: running a single unit test.
 
@@ -52,7 +67,7 @@ To run a single unit test, specify the path of the test as an argument. Example:
 
 To run multiple unit tests at once, specify the paths of the tests separated by a space. Example:
 ```
-> ./runTests.py src/test/unit/math/prim/scal/fun/abs_test.cpp  src/test/unit/math/prim/scal/fun/Phi_test.cpp 
+> ./runTests.py src/test/unit/math/prim/scal/fun/abs_test.cpp  src/test/unit/math/prim/scal/fun/Phi_test.cpp
 ```
 
 These can also take the `-j` flag for parallel builds. For example:
@@ -60,7 +75,7 @@ These can also take the `-j` flag for parallel builds. For example:
 > ./runTests.py -j4 src/test/unit/math/prim/scal/fun/abs_test.cpp
 ```
 
-**Note:** On some systems it may be necessary to change the access permissions to make `runTests.py` executable:   
+**Note:** On some systems it may be necessary to change the access permissions to make `runTests.py` executable:
    `> chmod +x runTests.Py`
 This only needs to be done once.
 
