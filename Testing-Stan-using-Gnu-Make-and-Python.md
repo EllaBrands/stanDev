@@ -1,7 +1,8 @@
-The Stan repository contains functional and unit tests under the directory `src/test`.  There is a makefile for Gnu make that runs these targets, `makefile` and a helper Python script `runTests.py` which calls this makefile to build and run the targets.
+The Stan repository contains functional and unit tests under the directory `src/test`.  There is a makefile for Gnu make that runs these targets, `makefile`, and a helper Python script, `runTests.py`, which calls this makefile to build and run the targets.
 
 1. Prerequisite tools and settings.
 2. How to run tests via script `runTests.py`.
+3. How to run a single model integration test.
 
 ### 1. Prerequisite tools and settings.
 
@@ -94,4 +95,50 @@ To run multiple directories, separate the directories by a space. Example:
 To build in parallel, provide the `-j` flag with the number of cores. Example:
 ```
 > ./runTests.py -j4 src/test/unit/math
+```
+
+
+### 3. How to run a single model integration test
+
+We have test Stan programs located in the `src/test/test-models/good` folder. For example, `src/test/test-models/good/funs1.stan`. We test that each of these can be generated into valid C++ header files that can be compiled.
+
+The `src/test/integration/compile_models_test.cpp` will test all Stan programs in `src/test/test-models/good` are compilable.
+
+We can also test that a single Stan program is valid. Let's say you wanted to test this Stan file: `src/test/test-models/good/map_rect.stan`
+
+If you type:
+
+```
+> make test/test-models/good/map_rect.hpp-test
+```
+
+then it'll do a number of things (in this order):
+
+1. build `test/test-models/stanc` --- it's a stripped down version of the compiler
+
+2. generate the C++: it goes from `src/test/test-models/good/map_rect.stan` to `test/test-models/good/map_rect.hpp`
+
+3. the `*-test` target attempts to compile it by including it into a file with a `main()`. That file with the `main()` looks like this (it instantiates the log prob with the types we care about):
+
+```
+// test/test-model-main.cpp
+int main() {
+  stan::io::var_context *data = NULL;
+  stan_model model(*data);
+
+  std::vector<stan::math::var> params;
+  std::vector<double> x_r;
+  std::vector<int> x_i;
+
+  model.log_prob<false, false>(params, x_i);
+  model.log_prob<false, true>(params, x_i);
+  model.log_prob<true, false>(params, x_i);
+  model.log_prob<true, true>(params, x_i);
+  model.log_prob<false, false>(x_r, x_i);
+  model.log_prob<false, true>(x_r, x_i);
+  model.log_prob<true, false>(x_r, x_i);
+  model.log_prob<true, true>(x_r, x_i);
+
+  return 0;
+}
 ```
