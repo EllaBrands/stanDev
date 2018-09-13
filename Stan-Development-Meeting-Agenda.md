@@ -9,6 +9,7 @@ _New topics that should be addressed immediately or by the next
 meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
+
 13 September 2018. Ben #2. -stdlib=libc++ flag in makefiles. Ben #2 not feeling solely responsible for whatever decision in made.
 
 27 August 2018.  Bob Carpenter.  How do we back up Stan assets like videos?  backup plan.
