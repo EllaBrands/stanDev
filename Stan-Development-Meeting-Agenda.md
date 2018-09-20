@@ -18,4 +18,5 @@ _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
 * __Date added. Developer name.  Short description.__
+
 20 September 2018.  Ben.  How are we going to move forward on the complex numbers PR(s)?
