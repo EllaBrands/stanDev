@@ -6,6 +6,12 @@ A functional specification describes how a product will work entirely from the u
 3.    To let stakeholders know what they are getting.
 -->
 
+This has largely been achieved via RStudio Cloud. Click on
+
+https://rstudio.cloud/project/56157
+
+and make a "permanent" copy in order to do your own Stan work.
+
 # Goals
 
 The main goal is to get outsiders interested in and aware of Stan.
