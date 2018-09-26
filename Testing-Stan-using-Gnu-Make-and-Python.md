@@ -16,7 +16,7 @@ To customize Stan's build options, variables can be set in a file called `make/l
 
 Note: variables in `make/local` override variables in `~/.config/stan/make/local`.
 
-**Nota bene:** these build instructions are not in the released version yet. This is for v2.18.0++. Prior to this, the build instructions are similar, but not identical.
+**Nota bene:** these build instructions are not in the released version yet. This is for the `develop` branch (post v2.18.0. Prior to this, the build instructions are similar, but not identical.
 
 There are a lot of make variables that can be set. In general, `CXXFLAGS_*` is for C++ compiler flags, `CPPFLAGS_*` is for C preprocessor flags, `LDFLAGS_*` is for linker flags, and `LDLBIS_*` is for libraries that need to be linked in.
 
