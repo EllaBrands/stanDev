@@ -12,6 +12,8 @@ meeting._
 
 20 September 2018.  Ben.  Should we buy a CatchBox for workshops and classes? If so, can we put the Stan logo on it?
 
+27 September 2018. Matthijs. Are we interested in syntactic sugar for bounded discrete parameters? See proposal [here](https://drive.google.com/file/d/1WAtXkcazeYFifhwiu_e6HuvzaC8HsEfS/view?usp=sharing).
+
 ### Open Discussion Topics
 
 _Any topics that do not need to be addressed in the short term,
