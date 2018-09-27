@@ -14,13 +14,13 @@ meeting._
 
 27 September 2018. Matthijs. Are we interested in syntactic sugar for bounded discrete parameters? See proposal [here](https://drive.google.com/file/d/1WAtXkcazeYFifhwiu_e6HuvzaC8HsEfS/view?usp=sharing).
 
+27 September 2018. Aki. Splines examples?
+
 ### Open Discussion Topics
 
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
 * __Date added. Developer name.  Short description.__
-
-27 September 2018. Aki. Splines examples?
 
 20 September 2018.  Ben.  How are we going to move forward on the complex numbers PR(s)?
