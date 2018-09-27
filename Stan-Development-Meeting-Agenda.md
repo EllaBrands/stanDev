@@ -21,6 +21,6 @@ including speculation and brainstorming._
 
 * __Date added. Developer name.  Short description.__
 
-27 September 2018. Aki. Mass matrix adaptation.
+27 September 2018. Aki. Splines examples?
 
 20 September 2018.  Ben.  How are we going to move forward on the complex numbers PR(s)?
