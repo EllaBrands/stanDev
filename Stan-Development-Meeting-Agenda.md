@@ -22,3 +22,5 @@ including speculation and brainstorming._
 * __Date added. Developer name.  Short description.__
 
 20 September 2018.  Ben.  How are we going to move forward on the complex numbers PR(s)?
+
+4 October 2018. Charles. Good way to generate a dense covariance matrix for a Poisson latent Gaussian model?
