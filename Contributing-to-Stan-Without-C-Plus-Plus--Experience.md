@@ -131,6 +131,12 @@ description and then accuracy and speed comparisons with
 extensively documented hardware and software environments to
 ensure reproducibility.
 
+# Translating Analysis and Graphics Packages
+
+Packages like `loo` and `bayesplot` in R work with RStan, but do not have counterparts in Python to work with PyStan.  Or in other interfaces.
+
+At an even more ambitious level, there are not analogues of rstanarm or brms in Python.  
+
 # Mathematical Support
 
 Many of the contributions to the Stan language are limited not
