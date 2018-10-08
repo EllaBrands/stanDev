@@ -2,7 +2,7 @@ Welcome to Stan!  We're excited that you're interested in contributing to the pr
 
 The Stan project is [hosted on GitHub](https://github.com/stan-dev) so you will have to create a GitHub account if you do not yet already have one. Developer discussions are [hosted on Discourse](http://discourse.mc-stan.org) so you will have to create an account there in order to ask questions or participate in discussions.
 
-Most of the following discussion is aimed at people who want to contribute code to Stan. But there are [many other ways to contribute!](https://github.com/stan-dev/stan/wiki/Contributing-to-Stan-Without-C-Plus-Plus--Experience)
+Most of the following discussion is aimed at people who want to contribute C++ code to Stan. But there are [many other ways to contribute that don't involve C++](https://github.com/stan-dev/stan/wiki/Contributing-to-Stan-Without-C-Plus-Plus--Experience)!
 
 ## Project layout
 
