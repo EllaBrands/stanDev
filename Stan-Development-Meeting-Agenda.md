@@ -12,8 +12,7 @@ meeting._
 
 4 October 2018. Bob.  Can I move the user's guide to its own repo?  What should it be called?
 
-27 September 2018. Matthijs. Are we interested in syntactic sugar for bounded discrete parameters? See proposal [here](https://drive.google.com/file/d/1WAtXkcazeYFifhwiu_e6HuvzaC8HsEfS/view?usp=sharing).
-
+9 October 2018. Matthijs. Pythonic PyStan (with help from IBM).
 
 
 ### Open Discussion Topics
