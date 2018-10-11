@@ -14,6 +14,7 @@ meeting._
 
 9 October 2018. Matthijs. Pythonic PyStan (with help from IBM).
 
+11 October 2018. Aki. gh-pages?
 
 ### Open Discussion Topics
 
