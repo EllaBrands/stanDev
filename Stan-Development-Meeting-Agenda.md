@@ -10,11 +10,15 @@ meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
-4 October 2018. Bob.  Can I move the user's guide to its own repo?  What should it be called?
-
 9 October 2018. Matthijs. Pythonic PyStan (with help from IBM).
 
 11 October 2018. Aki. gh-pages?
+
+11 October 2018.  Bob.  Optimizer in Stan language?  Does it require 2nd order autodiff?
+
+11 October 2018.  Bob.  Stan 3 Roadmap.
+
+11 October 2018.  Bob (for Sean and Matthijs).  Stan++ language and math lib.
 
 ### Open Discussion Topics
 
