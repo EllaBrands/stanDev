@@ -40,43 +40,93 @@ To summarize: (taken from section "Stan Data Types" in the Stan manual)
 * Integer or real types may be constrained with lower bounds, upper bounds, or both.
 * The compound data types include vector (of real values), row_vector (of real values), and matrix (of real values).
 * Stan supports arrays of arbitrary order of any of the basic data types or constrained basic data types.
-* There are four constrained vector data types, simplex for unit simplexes, unit_vector for unit-length vectors, ordered for ordered vectors of scalars and positive_ordered for vectors of positive ordered scalars. There are specialized matrix data types corr_matrix and cov_matrix for correlation and covariance matrices.
+* There are constrained vector data types: `simplex` for unit simplexes, `unit_vector` for unit-length vectors, `ordered` for ordered vectors of scalars, `positive_ordered` for vectors of positive ordered scalars.  There are specialized matrix data types `corr_matrix` and `cov_matrix` for correlation and covariance matrices, and Cholesky factors of correlation matrix (`cholesky_factor_corr`) and covariance matrices (`cholesky_factor`)
 * Stan supports arrays of arbitrary order of any of the basic data types or constrained basic data types.
 
-### Variable declarations
 
-Stan data and parameters are declaired in the model file.  See Stan reference manual section "Data Types and Variable Declarations."  Examples:
-* primitive int: `int i;`
-* primitive real: `real a;`
-* 1-dimensional array of reals:  `real a[5];`
-* 1-dimensional vector:  `vector[5] a;`  (all vectors are vectors of reals).
-* 1-dimensional row_vector: `row_vector[5] a;`
-* 2-dimensional matrix: `matrix[2,3] b;` (all matrices are matrices of reals).
-* 2-dimensional array of reals: `real b[2,3];`
-* array of vectors: `vector[3] b[2];`
-* array of row vector: `row_vector[2] b[3];`
+## Stan declarations and JSON values
 
-### Stan variable definitions as JSON name : value pairs
+This section lists the Stan declarations and matching JSON specifications.  
 
-Data declarations, corresponding JSON data definitions:
-* primitive int: `int i;`  JSON `"i" : 17`
-* primitive real: `real a;` JSON `"a" : 17` `"a" : 17.2`<br>
-for NaN, +inf, -inf:  JSON `"a" : "NaN"` `"a" : "+inf"`
-* 1-dimensional array of reals:  `real a[5];`  JSON `"a" : [ 1, 2, 3.3, 4.0, 5 ]`<br>
-because JSON doesn't require array elements to all be of the same type, the string representations for NaN and the infinities are also syntactically valid.
-* 1-dimensional vector:  `real a[5];`  JSON  `"a" : [ 1, 2, 3.3, 4.0, 5 ]`
-* 1-dimensional row_vector: `row_vector[5] a;` JSON  `"a" : [ 1, 2, 3.3, 4.0, 5 ]`
-* 2-dimensional matrix: `matrix[2,3] b;` JSON `"b" : [ [ 1, 2, 3 ] , [ 4, 5, 6 ] ]`<br>
-(even though Stan matrices are stored in column order).
-* 2-dimensional array of reals: `real b[2,3];` JSON `"b" : [ [ 1, 2, 3] , [ 4, 5, 6 ] ]`
-* higher dimensional arrays are possible, where dimensions are ordered first to last, which generalizes the row-major order for the above example.  E.g., `real c[2,3,2]` (two rows, three columns, 2 shelves) would be declared in JSON as `"c" : [ [ [ 1, 2 ] , [ 3, 4 ] , [ 5, 6 ] ] , [ [ 7, 8 ] , [ 9 , 10 ] , [ 11, 12 ] ] ]`
-* array of vectors: `vector[3] b[2];` JSON `"b" : [ [ 1, 2, 3 ] , [ 4, 5, 6 ] ]`
-* array of row vector: `row_vector[2] b[3];` JSON `"b" : [ [ 1, 2 ], [ 3, 4 ], [ 5, 6 ] ]`
-* array of matrices: `matrix[2,3] c[4];` JSON `"c" : [ [ [ 1, 2, 3 ] , [ 4, 5, 6 ] ] , [ [ 7, 8, 9 ] , [ 10 , 11, 12 ] ] , [ [ 13, 14, 15 ] , [ 16, 17, 18 ] ] , [ [ 19, 20, 21 ] , [ 22, 23, 24 ] ] ]`
-* 2D array of vectors of length 4: `vector[4] c[2,3];` JSON `"c" : [ [ [ 1, 2, 3, 4], [ 5, 6, 7, 8] , [ 9, 10, 11, 12] ], [ [ 13, 14, 15, 16 ] , [ 17, 18, 19, 20 ] , [ 21, 22, 23, 24 ] ] ]`
+### Value types
 
-A data file would be a single object consisting of multiple name-value pairs.<br>
-`{ "a" : 17, "b" : [ 1, 1.1, -9e5 ] }`<br>
-`{ "N" : 10, "y" : [ 0, 1, 0, 0, 0, 0, 0, 0, 0, 1 ] }`
+Not-a-number and infinite values are encoded as strings, which may be mixed with numbers; examples are given with the first set of real values.  
 
+Values consisting only of integers may be assigned to integer types or to promoted real/vector types of the appropriate shape.
+
+### Examples 
+
+The examples are all unconstrained, but the same JSON data structure holds for constrained types, including the Cholesky factors.
+
+#### primitive int
+`int i;`
+
+`"i" : 17`
+
+#### primitive real
+`real a;` 
+
+`"a" : 17` 
+
+`"a" : 17.2`
+
+`"a" : "NaN"`
+
+`"a" : "+inf"`
+
+`"a" : "-inf"`
+
+#### array of int
+`int a[5];`
+
+`"a" : [1, 2, 3, 4, 5];`
+
+#### array of reals, vector, row vector
+`real a[5];`  
+
+`vector[5] a;`
+
+`row_vector[5] a;`
+
+`"a" : [ 1, 2, 3.3, "NaN", 5 ]`
+
+#### 2D array of reals, array of vector, array of row vector, matrix
+`real b[2, 3];`
+
+`vector[3] b[2];`
+
+`row_vector[3] b[2];`
+
+`matrix[2, 3] b;`
+
+`"b" : [ [ 11, 12, 13 ],
+         [ 21, 22, 23 ] ]`
+
+#### 3D array of reals, 2D array of vector, 2D array of row vector, array of matrix
+`real b[2, 3, 4];`
+
+`vector[4] b[2, 3];`
+
+`row_vector[4] b[2, 3];`
+
+`matrix[3, 4] b[2];`
+
+`"b" : [ [ [111, 112, 113, 114],
+           [121, 122, 123, 124], 
+           [131, 132, 133, 134] ],
+         [ [211, 212, 213, 214],
+           [221, 222, 223, 224], 
+           [231, 232, 233, 234] ] ]`
+
+
+#### 4D and beyond
+
+The pattern continues, with first-index first indexing.  
+
+## JSON Data Files
+
+A data file would be a single object consisting of multiple name-value pairs.
+
+    { "a" : 17, "b" : [ 1, 1.1, -9e5 ] }
+    { "N" : 10, "y" : [ 0, 1, 0, 0, 0, 0, 0, 0, 0, 1 ] }
 
