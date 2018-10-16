@@ -10,6 +10,9 @@ meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
+16 Oct.  Andrew.  Opportunity to teach Stan short course in Europe.
+
+16 Oct.  Andrew.  Rstanarm issues.
 
 ### Open Discussion Topics
 
