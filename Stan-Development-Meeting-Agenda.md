@@ -18,6 +18,8 @@ meeting._
 
 18 Oct.  Andrew.  Movie to go with Stan on RStudio Cloud.
 
+18 Oct. Sean. `install_tensorflow()` style script plan.
+
 ### Open Discussion Topics
 
 17 Oct. Charles. Bayes for big data: HMC with stochastic gradients?
