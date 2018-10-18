@@ -14,6 +14,8 @@ meeting._
 
 16 Oct.  Andrew.  Rstanarm issues.
 
+18 Oct. Matthijs. Stan manual status.
+
 ### Open Discussion Topics
 
 17 Oct. Charles. Bayes for big data: HMC with stochastic gradients?
