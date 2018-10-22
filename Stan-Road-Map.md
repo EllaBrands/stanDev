@@ -8,44 +8,31 @@ If you're interested in getting involved in development, here's the [Stan develo
 
 #### Open source licensing
 
-The code underlying Stan is 100% open source (core is BSD, interfaces
-copyleft where required).
+Stan's code and documentation will remain 100% open source (the core is BSD, interfaces vary).
 
 #### Software governance
 
-The Stan project is organized around functional modules; this roadmap
-follows the same module structure as the software.
+The Stan project is managed as a whole by the Stan Governing Body (SGB).   The software component of Stan is managed by the Technical Working Group (TWG) at the discretion of the SGB. The TWG has a chair plus technical leads for each of the functional areas of Stan's software:
 
-Stan's software is managed largely by consensus of the developers.
-Becoming a developer is as easy as having a substantial pull request
-with tests and documentation merged into develop; merge and review
-priveleges are granted after several months of ongoing contributions.
-A single developer has final authority in each repository for
-situations in which consensus cannot be reached (such intervention has
-only been necessary a couple times over six years).
+* Chair (stan-dev): Bob Carpenter
+* Math Library (stan-dev/math): Daniel Lee
+* Language (stan-dev/stan): Sean Talts
+* Algorithms (stan-dev/stan):  Michael Betancourt
+* CmdStan (stan-dev/cmdstan):  Mitzi Morris
+* PyStan (stan-dev/pystan): Allen Riddell
+* RStan (stan-dev/rstan): Ben Goodrich
+    * RStanArm (stan-dev/rstanarm): Ben Goodrich
+    * rstantools (stan-dev/rstantoolds): Ben Goodrich
+    * bayesplot (stan-dev/bayesplot): Jonah Gabry
+    * loo (stan-dev/loo): Jonah Gabry
+    * ShinyStan (stan-dev/shinystan): Jonah Gabry
+    * brms (paul-buerkner/brms): Paul Bürkner
+* MatlabStan (brian-lau/MatlabStan): Brian Lau
+* Stan.jl (goedman/Stan.jl): Rob Goedman
+* StataStan (stan-dev/statastan): Robert Grant
+* MathematicaStan (stan-dev/MathematicaStan):  Vincent Picaud
 
-#### Feature process
-
-1. Features begin as discussions among Stan developers and users.  The
-best place to do this is the Stan Discourse forums.
-2.  The broad feature desiderata are converted to functional
-specifications, which convey what the feature will look like in the
-final product from a client perspective.  For large features, this is
-typically done through a GitHub Wiki page.
-3.  The functional specification is broken down into a technical
-specification laying out how it may be implemented.  This is typically
-done on the GitHub issue tracker.
-4.  One or more developers implements the feature (code, tests, and
-documentation) in a branch from one or more of the Stan GitHub
-repositories.
-5.  The code goes through continuous integration testing, then one or
-more core developers review the code through GitHub.  The reviewer may
-suggest or require improvements, sending the process back to step 4
-(or sometimes earlier).  When the reviewer is satisfied, the code is
-merged into the development branch of the relevant repository, where
-it will be included in the next stable release.
-
-We strongly encourage the community to get involved in every stage of this process.
+There are many other packages using Stan that are not managed by the Stan project directly, so they are not included here (e.g., ScalaStan).
 
 #### Stan 3
 
