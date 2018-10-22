@@ -22,7 +22,7 @@ The Stan project is managed as a whole by the Stan Governing Body (SGB).   The s
 * PyStan (stan-dev/pystan): Allen Riddell
 * RStan (stan-dev/rstan): Ben Goodrich
     * RStanArm (stan-dev/rstanarm): Ben Goodrich
-    * rstantools (stan-dev/rstantoolds): Ben Goodrich
+    * rstantools (stan-dev/rstantoolds): Jonah Gabry
     * bayesplot (stan-dev/bayesplot): Jonah Gabry
     * loo (stan-dev/loo): Jonah Gabry
     * ShinyStan (stan-dev/shinystan): Jonah Gabry
@@ -31,6 +31,10 @@ The Stan project is managed as a whole by the Stan Governing Body (SGB).   The s
 * Stan.jl (goedman/Stan.jl): Rob Goedman
 * StataStan (stan-dev/statastan): Robert Grant
 * MathematicaStan (stan-dev/MathematicaStan):  Vincent Picaud
+
+In addition to the software, we also have:
+
+* Stan Web site (stan-dev/stan-dev.io.github): Breck Baldwin
 
 There are many other packages using Stan that are not managed by the Stan project directly, so they are not included here (e.g., ScalaStan).
 
@@ -56,7 +60,7 @@ and downstream dependencies (modules which depend on the stated package).
 | Module | Repository | Manager | Upstream | Downstream |
 | ------ | ---------- | ------- | -------- | ---------- |
 | Math Library  | `stan-dev/math` | Daniel Lee | | language |
-| Language | `stan-dev/stan` | Bob Carpenter | math | algorithms |
+| Language | `stan-dev/stan` | Sean Talts | math | algorithms |
 | Algorithms | `stan-dev/stan` | Michael Betancourt | math | language |
 | Services | `stan-dev/stan` | Daniel Lee | algorithms, language | interfaces |
 
