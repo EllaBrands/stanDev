@@ -48,55 +48,6 @@ functionality.  This will break backward compatibility.  It is very unlikely to 
 PyStan 3 will happen earlier to enable ISC (non-copyleft) licensing;  it won't coincide with any change in the language.
 
 
-
-# Stan Modules
-
-This section lists the Stan modules and developer in charge of them as
-well as upstream dependencies (modules on which the stated modules depends)
-and downstream dependencies (modules which depend on the stated package).
-
-#### Core C++ Modules
-
-| Module | Repository | Manager | Upstream | Downstream |
-| ------ | ---------- | ------- | -------- | ---------- |
-| Math Library  | `stan-dev/math` | Daniel Lee | | language |
-| Language | `stan-dev/stan` | Sean Talts | math | algorithms |
-| Algorithms | `stan-dev/stan` | Michael Betancourt | math | language |
-| Services | `stan-dev/stan` | Daniel Lee | algorithms, language | interfaces |
-
-#### Interfaces
-
-| Module | Repository | Manager | Upstream | Downstream |
-| ------ | ---------- | ------- | -------- | ---------- |
-| CmdStan | `stan-dev/cmdstan` | Michael Betancourt | services | |
-| RStan | `stan-dev/rstan` | Ben Goodrich | services, bayesplot | |
-| PyStan | `stan-dev/pystan` | Allen Riddell | services | |
-| Stan.jl | `goedman/Stan.jl` | Robert Goedman | services | |
-| MatlabStan | `brian-lau/MatlabStan` | Brian Lau | services | |
-| StataStan | `stan-dev/statastan` | Robert L. Grant | services | |
-| MathematicaStan | `stan-dev/MathematicaStan` | Vincent Picaud | services | |
-
-#### Higher-Level Interfaces
-
-| Module | Repository | Manager | Upstream | Downstream |
-| ------ | ---------- | ------- | -------- | ---------- |
-| RStanArm | `stan-dev/rstanarm` | Ben Goodrich | rstan, rstantools, loo, bayesplot, shinystan | |
-
-#### Posterior Analysis, Visualization, Packaging
-
-| Module | Repository | Manager | Upstream | Downstream |
-| ------ | ---------- | ------- | -------- | ---------- |
-| loo | `stan-dev/loo` | Jonah Gabry | | rstanarm |
-| bayesplot | `stan-dev/bayesplot` | Jonah Gabry | | rstan, rstanarm |
-| shinystan | `stan-dev/shinystan` | Jonah Gabry | bayesplot | |
-| rstantools | `stan-dev/rstantools` | Jonah Gabry | rstanarm | |
-
-#### Web site
-
-| Module | Repository | Manager | Upstream | Downstream |
-| ------ | ---------- | ------- | -------- | ---------- |
-| web site | `stan-dev/stan-dev.github.io` | Breck Baldwin | | |
-
 # Math Library Roadmap
 * *Repository*: `stan-dev/math`
 * *Manager*: Daniel Lee
