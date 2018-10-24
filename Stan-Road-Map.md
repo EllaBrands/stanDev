@@ -52,13 +52,6 @@ PyStan 3 will happen earlier to enable ISC (non-copyleft) licensing;  it won't c
 * *Repository*: `stan-dev/math`
 * *Manager*: Daniel Lee
 
-#### MPI parallelism (multi-core, cluster)
-* Message passing interface (MPI) implementation
-* Push data to processors; communicate parameters, return values and
-  gradients
-* Map/reduce abstraction on top of MPI for autodiff
-* Expose rectangular dense map function to language
-
 #### GPU parallelism
 * Underlying matrix opertion implementations
 * Push data to GPUs
@@ -323,10 +316,6 @@ I'm including things that don't fit into any given module here.
 #### Conferences
 * Process for selecting locations and local organizers
 * Schedule
-
-#### Governance
-* Who is a developer?
-* Who appoints/deposes managers of repositories?
 
 #### Operations (dev facing)
 * better error messages from Jenkins (this may be solved)
