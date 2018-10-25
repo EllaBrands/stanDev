@@ -22,7 +22,7 @@ meeting._
 
 ### Open Discussion Topics
 
-17 Oct. Charles. Bayes for big data: HMC with stochastic gradients?
+25 Oct. Charles. Bayes for big data: HMC with stochastic gradients?
 
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
