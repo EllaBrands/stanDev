@@ -1,5 +1,7 @@
 ## Proposal
 
+_this feature has been implemented and added to the CmdStan interface by https://github.com/stan-dev/cmdstan/pull/652_
+
 Use JSON instead of S dump format for data input files to Stan.
 
 The model file contains the data declarations.
@@ -129,4 +131,3 @@ A data file would be a single object consisting of multiple name-value pairs.
 
     { "a" : 17, "b" : [ 1, 1.1, -9e5 ] }
     { "N" : 10, "y" : [ 0, 1, 0, 0, 0, 0, 0, 0, 0, 1 ] }
-
