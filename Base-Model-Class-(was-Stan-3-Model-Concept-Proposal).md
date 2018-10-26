@@ -9,19 +9,21 @@ namespace model {
 // Class for holding data, transforming between constrained and
 // unconstrained parameter values, and for evaluating log
 // densities.
-class foo {
+class model_base {
 
 // Construct a model reading data from the specified
 // context.
 // @param[in] var_context definitions of data variables
-foo(const var_context& data);
+model_base(); 
 
 // Destruct model.
-~foo();
+virtual ~model_base();
+
+void set_data(const var_context& data);
 
 // Return number of unconstrained parameters.
 // @return number of unconstrained parameters.
-long num_unconstrained_params() const;
+virtual long num_unconstrained_params() const;
 
 // Return log density of unconstrained parameters, writing any
 // program output to the specified output stream.
