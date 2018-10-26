@@ -235,9 +235,9 @@ grad_hess_log_prob(const M& model,
                    ostream* msgs = 0);
 ```
 
-#### Log Probability
+#### Log Probability Function, Propto
 
-Log probability with propto=true for double-valued parameters.  It calls the auto-diff version by converting parameters to var, so it'll be relatively slow, but it'll give answers that match those computed using log_prob with var inputs. 
+Log probability function, returning log density up to a constant.  It has propto=true for double-valued parameters.  It calls the auto-diff version by converting parameters to var, so it'll be relatively slow, but it'll give answers that match those computed using log_prob with var inputs. 
 
 ```
 template <bool jacobian_adjust_transform, class M>
