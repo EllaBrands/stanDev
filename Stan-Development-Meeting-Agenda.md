@@ -16,6 +16,8 @@ meeting._
 
 1st Nov. Sebastian. Does it make sense to have ODE integrators provide the solutions of the states with higher relative accuracy vs the gradients? Does it buy sampling performance something (knowing lp more precisely vs the gradients is worthwhile, I think)? Are we up to yet another ODE call?
 
+1 Nov. Andrew. Blog, publicity, etc.
+
 ### Open Discussion Topics
 
 25 Oct. Charles. Bayes for big data: HMC with stochastic gradients?
