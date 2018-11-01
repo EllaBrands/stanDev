@@ -18,6 +18,8 @@ meeting._
 
 1 Nov. Andrew. Blog, publicity, etc.
 
+1 Nov. Andrew. Constrained and unconstrained parameters.
+
 ### Open Discussion Topics
 
 25 Oct. Charles. Bayes for big data: HMC with stochastic gradients?
