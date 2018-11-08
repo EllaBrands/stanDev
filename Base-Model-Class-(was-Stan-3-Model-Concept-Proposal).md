@@ -1,6 +1,16 @@
 #### Proposal for Model Concept
 
-Not considering the issue of a virtual base class, I think we want something like this for model class `foo` (there are two illegal empty lines vs. strict Google style, but otherwise I think it's compliant).
+note:  description of existing model concept functions on
+[this wiki page](https://github.com/stan-dev/stan/wiki/Model-Concept)
+
+##### Design constraints/goals/etc:
+
+1. model class can be compiled as a single translation unit
+
+2. define full set of methods needed by interfaces for the full Stan workflow.
+
+3. leverage modern C++
+
 
 ```
 namespace stan {
