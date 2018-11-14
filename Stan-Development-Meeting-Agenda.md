@@ -10,6 +10,10 @@ meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
+14th Nov. Charles. Do we want a Newton solver in Stan. When would it work better in than Powell's method.
+
+14th Nov. Charles. Do we want an optimization function (i.e. max objective function).
+
 10/30 . Ben . Can we either sign the Mac clang4/6 installer or front the $100 Apple Developer Tax? Yes
 
 1st Nov. Sebastian. Can we have an optional `coupled_ode_system` in stan-math which enables an easy way to provide analytic Jacobians for ODE solving (leads to >2x speedups for cases I have seen)? We could allow for this using compile time flags, for example.
