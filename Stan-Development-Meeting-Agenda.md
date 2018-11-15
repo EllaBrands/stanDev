@@ -14,6 +14,12 @@ meeting._
 
 14th Nov. Charles. Do we want an optimization function (i.e. max objective function).
 
+15 Nov. Aki/Paul: New Rhat, Reff, MCSE diagnostics , see the proposed output in [a notebook](https://avehtari.github.io/rhat_reff/rhat_reff.html)
+
+15 Nov. Aki/Måns: k-hat diagnostics for Laplace(/ADVI) in rstan/loo. See details [here](https://docs.google.com/document/d/19foJZnwlc3TusOCs5-co1w743Hf9zkYMhN4P654qzYg/edit?usp=sharing).
+
+All below old and done?
+
 10/30 . Ben . Can we either sign the Mac clang4/6 installer or front the $100 Apple Developer Tax? Yes
 
 1st Nov. Sebastian. Can we have an optional `coupled_ode_system` in stan-math which enables an easy way to provide analytic Jacobians for ODE solving (leads to >2x speedups for cases I have seen)? We could allow for this using compile time flags, for example.
@@ -23,8 +29,6 @@ meeting._
 1 Nov. Andrew. Blog, publicity, etc.
 
 1 Nov. Andrew. Constrained and unconstrained parameters.
-
-15 Nov. Aki/Måns: k-hat diagnostics for Laplace(/ADVI) in rstan/loo. See details [here](https://docs.google.com/document/d/19foJZnwlc3TusOCs5-co1w743Hf9zkYMhN4P654qzYg/edit?usp=sharing).
 
 ### Open Discussion Topics
 
