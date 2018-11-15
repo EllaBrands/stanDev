@@ -18,6 +18,8 @@ meeting._
 
 15 Nov. Aki/Måns: k-hat diagnostics for Laplace(/ADVI) in rstan/loo. See details [here](https://docs.google.com/document/d/19foJZnwlc3TusOCs5-co1w743Hf9zkYMhN4P654qzYg/edit?usp=sharing).
 
+15 Nov. Matthijs: Functions reference document is broken.
+
 All below old and done?
 
 10/30 . Ben . Can we either sign the Mac clang4/6 installer or front the $100 Apple Developer Tax? Yes
