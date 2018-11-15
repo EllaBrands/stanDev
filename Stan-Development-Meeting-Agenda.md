@@ -24,6 +24,8 @@ meeting._
 
 1 Nov. Andrew. Constrained and unconstrained parameters.
 
+15 Nov. Aki/Måns: k-hat diagnostics for Laplace(/ADVI) in rstan/loo. See details [here](https://docs.google.com/document/d/19foJZnwlc3TusOCs5-co1w743Hf9zkYMhN4P654qzYg/edit?usp=sharing).
+
 ### Open Discussion Topics
 
 25 Oct. Charles. Bayes for big data: HMC with stochastic gradients?
