@@ -1,4 +1,4 @@
-# Stan Road Map
+# Stan Roadmap
 
 This document is a broad plan for the future direction of the
 *software products* of the Stan project.  Stan is very much a group
