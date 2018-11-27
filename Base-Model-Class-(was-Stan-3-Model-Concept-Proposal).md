@@ -22,7 +22,6 @@ namespace model {
 class model_base {
 
 // Construct a model
-// @param[in] var_context definitions of data variables
 model_base(); 
 
 // Destruct model.
