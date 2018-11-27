@@ -21,14 +21,15 @@ namespace model {
 // densities.
 class model_base {
 
-// Construct a model reading data from the specified
-// context.
+// Construct a model
 // @param[in] var_context definitions of data variables
 model_base(); 
 
 // Destruct model.
 virtual ~model_base();
 
+// Read data from specified context
+// @param[in] var_context definitions of data variables
 void set_data(const var_context& data);
 
 // Return number of unconstrained parameters.
