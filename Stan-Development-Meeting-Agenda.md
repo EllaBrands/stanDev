@@ -10,6 +10,8 @@ meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
+28 Nov.  Bob Carpenter.  When and where is StanCon 2019?  We can't keep postponing the decision indefinitely.  Desired resolution is a deadline for external organizer then decision to do it ourselves or just skip it.
+
 28th Nov. Aki/Yuling. ADVI diagnostic needs logq and logp, what to call them in csv?
 
 14th Nov. Charles. Do we want a Newton solver in Stan. When would it work better in than Powell's method.
