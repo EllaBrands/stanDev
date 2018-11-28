@@ -10,13 +10,11 @@ meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
+28th Nov. Aki/Yuling. ADVI diagnostic needs logq and logp, what to call them in csv?
+
 14th Nov. Charles. Do we want a Newton solver in Stan. When would it work better in than Powell's method.
 
 14th Nov. Charles. Do we want an optimization function (i.e. max objective function).
-
-15 Nov. Aki/Paul: New Rhat, Reff, MCSE diagnostics , see the proposed output in [a notebook](https://avehtari.github.io/rhat_reff/rhat_reff.html)
-
-15 Nov. Aki/Måns: k-hat diagnostics for Laplace(/ADVI) in rstan/loo. See details [here](https://docs.google.com/document/d/19foJZnwlc3TusOCs5-co1w743Hf9zkYMhN4P654qzYg/edit?usp=sharing).
 
 15 Nov. Matthijs: Functions reference document is broken.
 
