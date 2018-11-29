@@ -16,6 +16,8 @@ meeting._
 
 29 Nov.  Andrew.  Stan license.
 
+29 Nov.  Andrew.  "Stan This Month"
+
 28 Nov.  Bob Carpenter.  When and where is StanCon 2019?  We can't keep postponing the decision indefinitely.  Desired resolution is a deadline for external organizer then decision to do it ourselves or just skip it.
 
 28th Nov. Aki/Yuling. ADVI diagnostic needs logq and logp, what to call them in csv?
@@ -33,10 +35,6 @@ All below old and done?
 1st Nov. Sebastian. Can we have an optional `coupled_ode_system` in stan-math which enables an easy way to provide analytic Jacobians for ODE solving (leads to >2x speedups for cases I have seen)? We could allow for this using compile time flags, for example.
 
 1st Nov. Sebastian. Does it make sense to have ODE integrators provide the solutions of the states with higher relative accuracy vs the gradients? Does it buy sampling performance something (knowing lp more precisely vs the gradients is worthwhile, I think)? Are we up to yet another ODE call?
-
-1 Nov. Andrew. Blog, publicity, etc.
-
-1 Nov. Andrew. Constrained and unconstrained parameters.
 
 ### Open Discussion Topics
 
