@@ -20,8 +20,6 @@ meeting._
 
 28 Nov.  StanCon2019 is in Cambridge: Some general questions, request for feedback.
 
-28th Nov. Aki/Yuling. ADVI diagnostic needs logq and logp, what to call them in csv?
-
 14th Nov. Charles. Do we want a Newton solver in Stan. When would it work better in than Powell's method.
 
 14th Nov. Charles. Do we want an optimization function (i.e. max objective function).
