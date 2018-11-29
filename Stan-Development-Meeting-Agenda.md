@@ -18,7 +18,7 @@ meeting._
 
 29 Nov.  Andrew.  "Stan This Month"
 
-28 Nov.  Bob Carpenter.  When and where is StanCon 2019?  We can't keep postponing the decision indefinitely.  Desired resolution is a deadline for external organizer then decision to do it ourselves or just skip it.
+28 Nov.  StanCon2019 is in Cambridge: Some general questions, request for feedback.
 
 28th Nov. Aki/Yuling. ADVI diagnostic needs logq and logp, what to call them in csv?
 
