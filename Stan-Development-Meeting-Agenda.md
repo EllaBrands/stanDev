@@ -10,6 +10,8 @@ meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
+30 Nov.  Andrew.  Hierarchical models slow in rstanarm.
+
 29 Nov.  Andrew.  Stan in Rstudio sending output to viewer.
 
 29 Nov.  Andrew.  Writing articles that are based on case studies.
