@@ -12,15 +12,9 @@ meeting._
 
 6 Dec. Matthijs. Static analyses for Stan. Can we exploit conditional independence properties in HMC? Conjugate priors?
 
-6 Dec. Andrew, Aki, Jonah.  Default output.
-
 6 Dec. Matthijs. Talk about Stan at POPL. Any suggestions on what to showcase?
 
 6 Dec. Matthijs. Belief propagation for discrete parameters in Stan. Does anyone see problems with this?
-
-30 Nov.  Andrew.  Hierarchical models slow in rstanarm.
-
-29 Nov.  Andrew.  Stan in Rstudio sending output to viewer.
 
 29 Nov.  Andrew.  Writing articles that are based on case studies.
 
