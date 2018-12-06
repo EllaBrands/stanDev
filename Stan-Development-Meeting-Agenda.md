@@ -10,6 +10,8 @@ meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
+6 Dec. Matthijs. Talk about Stan at POPL. Any suggestions on what to showcase?
+
 6 Dec. Matthijs. Belief propagation for discrete parameters in Stan. Does anyone see problems with this?
 
 30 Nov.  Andrew.  Hierarchical models slow in rstanarm.
