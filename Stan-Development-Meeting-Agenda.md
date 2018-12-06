@@ -9,6 +9,7 @@ _New topics that should be addressed immediately or by the next
 meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
+6 Dec. Matthijs. Static analyses for Stan. Can we exploit conditional independence properties in HMC? Conjugate priors?
 
 6 Dec. Andrew, Aki, Jonah.  Default output.
 
