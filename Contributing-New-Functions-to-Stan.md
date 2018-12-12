@@ -164,7 +164,7 @@ Informational Message: The current Metropolis proposal is about to be rejected b
 Exception thrown at line 169: integrate_ode_bdf: initial state is inf, but must be finite! 
 ```
 
-There exist a bunch of check functions. Here is a (far from complete) list:
+There are many check functions. Here is a (far from complete) list:
 
 |       |
 | --------- |
@@ -228,7 +228,7 @@ Stan uses two types of vectors in C++. Standard vectors (`std::vector`) are comp
 Once you've modified `function_signatures.h`, we need to compile stan. 
 
 
-#####  Adding Higher-Order Functions
+####  Adding Higher-Order Functions
 
 This is a little more specialized. As of now, there is no simple mechanism to add higher-order functions to Stan. Here's at least a good place to start.
 
