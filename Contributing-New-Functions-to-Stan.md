@@ -192,7 +192,7 @@ A function defined in the rev/mat directory should be included in `stan/math/rev
 #include <stan/math/rev/foo.hpp>
 ```
 
-######(b) The file `function_signatures.h` for the Stan language compiler `stanc`
+###### (b) The file `function_signatures.h` for the Stan language compiler `stanc`
 
 The `function_signatures.h` file is located under `stan/src/stan/lang`. Note we are now no longer working in stan/math, but in stan. This means you need to edit the stan-dev/stan git repository. 
 
