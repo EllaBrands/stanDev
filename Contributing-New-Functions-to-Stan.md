@@ -192,52 +192,33 @@ A function defined in the rev/mat directory should be included in `stan/math/rev
 #include <stan/math/rev/foo.hpp>
 ```
 
-######(b) The Function_signatures file
+######(b) The file `function_signatures.h` for the Stan language compiler `stanc`
 
 The `function_signatures.h` file is located under `stan/src/stan/lang`. Note we are now no longer working in stan/math, but in stan. This means you need to edit the stan-dev/stan git repository. 
 
-The `add` procedure exposes the signature of a function to stan. The first argument gives the name of the function, the second argument specifies the return type, and the next arguments the argument types of the function. The following line exposes a function "foo" which returns a double and takes in two integers:
+This file is used by the Stan language parser.  It holds the intermediate representation of a function call in a Stan program in terms of the parser's abstract syntax tree (AST) types.  For the parser, non-array variables are of class `bare_expr_type` and array variables are of class `bare_array_type`.  
+
+The `add` procedure exposes the signature of a function to the parser. The first argument gives the name of the function, the second argument specifies the return type, and the next arguments the argument types of the function. The following line exposes a function "foo" which returns a double and takes in two integers:
 
 ```bash
-add("foo", DOUBLE_T, INT_T, INT_T);
+add("foo", bare_expr_type(double_type()), bare_expr_type(int_type()), bare_expr_type(int_type()));
 ```
 
 For overloaded functions, we need to add a signature for each combination of variable types. If `foo` admits either an integer or a double as its first argument, the proper way to expose the function would be:
 
 ```bash
-add("foo", DOUBLE_T, INT_T, INT_T);
-add("foo", DOUBLE_T, DOUBLE_T, INT_T);
+add("foo", bare_expr_type(double_type()), bare_expr_type(int_type()), bare_expr_type(int_type()));
+add("foo", bare_expr_type(double_type()), bare_expr_type(double_type()), bare_expr_type(int_type()));
 ```
 
-Stan defines a few arguments that have a template type, such as `MATRIX_T` and `VECTOR_T`. For example, to expose a function that returns a template vector:
+It is important to understand the correspondence between the Stan language types, the Stan parser AST types used in the file `function_signatures.h`, and the type in the generated C++ code
 
-```bash
-add("foo", VECTOR_T, ...);
-```
-
-`add` can only have up to 7 arguments. Fortunately you can pass in a vector of arguments, which will only count as one argument. 
-
-The following lines expose the foo function used as an example in the previous section:
-
-```bash
-std::vector<function_arg_type> arg_types; // declare a vector, which contains elements of type "arg_types"
-// Next, add elements to our vector
-for(int i = 0; i<2; i++){arg_types.push_back(vector_types[1]);}
-for(int i = 0; i<2; i++) {arg_types.push_back(int_vector_types[1]);}
-add("foo", MATRIX_T, arg_types);
-```
-
-The object `vector_types[1]` designates a standard vector (`std::vector`) of template elements, and `int_vector_types[1]` refers to a standard vector of integer.  These objects are defined at the top of `function_signatures.h`.   
-
-It is important to understand what these variables correspond to in Stan, in the signature file, and in C++. 
-
-
-| Stan  | ADD | C++                        |
+| Stan  | function_signatures.h | C++                        |
 | ------------- | ------------- | ----------------------------------- |                       
-| vector  | VECTOR_T  | eigen::vector<T>   |
-| matrix  | MATRIX_T  | eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic>   |
-| array[real] | vector_types[1] | std::vector<T> |
-| array[int] | int_vector_types[1] | std::vector<int> | 
+| vector  | bare_expr_type(vector_type())  | eigen::vector&lt;T&gt;   |
+| matrix  | bare_expr_type(matrix_type())  | eigen::Matrix&lt;T, Eigen::Dynamic, Eigen::Dynamic&gt;   |
+| array of reals | bare_expr_type(bare_array_type(double_type(), 1) | std::vector&lt;T&gt; |
+| array of ints | bare_expr_type(bare_array_type(int_type(), 1) | std::vector&lt;int&gt; | 
 
 
 `T`, as usual, is a template. 
@@ -247,7 +228,8 @@ Stan uses two types of vectors in C++. Standard vectors (`std::vector`) are comp
 Once you've modified `function_signatures.h`, we need to compile stan. 
 
 
-#####5) Adding Higher-Order Functions
+#####  Adding Higher-Order Functions
+
 This is a little more specialized. As of now, there is no simple mechanism to add higher-order functions to Stan. Here's at least a good place to start.
 
 Higher-order functions are functions that take other functions as arguments. An example of such a function is an Ordinary Differential Equation integrator. `Add()` does not handle arguments which are function, so we need to do a bit more work to expose higher-order functions to Stan. 
@@ -340,4 +322,3 @@ test/unit/math/rev/mat/vectorize/rev_scalar_unary_test.hpp
 ```
 
 If you dive into that file, it's just more includes of files starting with `expect_` (named following google test conventions) that instantiate the test macros and register them with a testing harness.
-
