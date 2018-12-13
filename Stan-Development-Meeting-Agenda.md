@@ -10,17 +10,15 @@ meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
+13 Dec.  Andrew and Aki.  Stan output.
+
+13 Dec.  Andrew etc.  ADVI in R.
+
 6 Dec. Matthijs. Static analyses for Stan. Can we exploit conditional independence properties in HMC? Conjugate priors?
 
 6 Dec. Matthijs. Talk about Stan at POPL. Any suggestions on what to showcase?
 
 6 Dec. Matthijs. Belief propagation for discrete parameters in Stan. Does anyone see problems with this?
-
-29 Nov.  Andrew.  Writing articles that are based on case studies.
-
-29 Nov.  Andrew.  Stan license.
-
-29 Nov.  Andrew.  "Stan This Month"
 
 28 Nov.  StanCon2019 is in Cambridge: Some general questions, request for feedback.
 
