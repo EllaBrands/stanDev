@@ -10,7 +10,8 @@ meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
-20 Dec.  Bob.  Stan 2.19 release with GPU or 2.18.1 to fix MPI bug?
+20 Dec.  Bob.  Stan 2.19 release with GPU or 2.18.1 to fix threading bug?
+20 Dec.  Sean. How to advertise threading bug?
 
 ### Open Discussion Topics
 
