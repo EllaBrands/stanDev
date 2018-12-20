@@ -10,11 +10,6 @@ meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
-20 Dec.  Bob.  Stan 2.19 release with GPU or 2.18.1 to fix threading bug?
-
-20 Dec.  Sean. How to advertise threading bug?
-
-20 Dec.  Bob.  Fix for API awkwardness requiring iteration of algorithm to get instantiated model.
 
 ### Open Discussion Topics
 
