@@ -5,6 +5,12 @@
   * Generic weakly informative prior:  normal(0, 1);
   * Specific informative prior:  normal(0.4, 0.2) or whatever.  Sometimes this can be expressed as a scaling followed by a generic prior:  theta = 0.4 + 0.2*z; z ~ normal(0, 1);
 
+The above numbers assume that parameters are roughly on unit scale, as is done in education (where 0 is average test score in some standard population (e.g., all students at a certain grade level) and 1 is sd of test scores in that population) or medicine (where 0 is zero dose and 1 is a standard dose such as 10mcg/day of cyanocobalamin, 1,000 IU/day cholecalciferol, etc., as recommended by Sander Greenland in his Modern Epidemiology textbook).
+
+In addition, statements such as "informative" or "weakly informative" depend crucially on what questions are being asked (a point that is related to the idea that the prior can often only be understood in the context of the likelihood (http://www.stat.columbia.edu/~gelman/research/published/entropy-19-00555-v2.pdf)).
+
+For example, it is common to expect realistic effect sizes to be of order of magnitude 0.1 on a standardized scale (for example, an educational innovation that might improve test scores by 0.1 standard deviations).  In that case, a prior of N(0,1) could be considered very strong, in that it puts most of its mass on parameter values that are unrealistically large in absolute value.  When we say this prior is "weakly informative," what we mean is that, if there's a reasonably large amount of data, the likelihood will dominate, and the prior will not be important.  If the data are weak, though, this "weakly informative prior" will strongly influence the posterior inference.  The phrase "weakly informative" is implicitly in comparison to a default flat prior.
+
 # General principles
   * [Simpson et al. paper](http://arxiv.org/abs/1403.4630) has principles based on nestable models
   * Many times when people recommend default priors, they are restricting to some version of conjugacy for closed forms or for Gibbs; we don't care about that
