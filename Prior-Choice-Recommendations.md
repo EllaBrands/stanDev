@@ -5,17 +5,32 @@
   * Generic weakly informative prior:  normal(0, 1);
   * Specific informative prior:  normal(0.4, 0.2) or whatever.  Sometimes this can be expressed as a scaling followed by a generic prior:  theta = 0.4 + 0.2*z; z ~ normal(0, 1);
 
-The above numbers assume that parameters are roughly on unit scale, as is done in education (where 0 is average test score in some standard population (e.g., all students at a certain grade level) and 1 is sd of test scores in that population) or medicine (where 0 is zero dose and 1 is a standard dose such as 10mcg/day of cyanocobalamin, 1,000 IU/day cholecalciferol, etc., as recommended by Sander Greenland in his Modern Epidemiology textbook).
+The above numbers assume that parameters are roughly on unit scale, as is done in education (where 0 is average test score in some standard population (e.g., all students at a certain grade level) and 1 is sd of test scores in that population) or medicine (where 0 is zero dose and 1 is a standard dose such as 10mcg/day of cyanocobalamin, 1,000 IU/day cholecalciferol, etc.; these examples come from Sander Greenland).
 
 In addition, statements such as "informative" or "weakly informative" depend crucially on what questions are being asked (a point that is related to the idea that the prior can often only be understood in the context of the likelihood (http://www.stat.columbia.edu/~gelman/research/published/entropy-19-00555-v2.pdf)).
 
 For example, it is common to expect realistic effect sizes to be of order of magnitude 0.1 on a standardized scale (for example, an educational innovation that might improve test scores by 0.1 standard deviations).  In that case, a prior of N(0,1) could be considered very strong, in that it puts most of its mass on parameter values that are unrealistically large in absolute value.  When we say this prior is "weakly informative," what we mean is that, if there's a reasonably large amount of data, the likelihood will dominate, and the prior will not be important.  If the data are weak, though, this "weakly informative prior" will strongly influence the posterior inference.  The phrase "weakly informative" is implicitly in comparison to a default flat prior.
 
+# Independence
+
+We commonly set up our models so that parameters are independent in their prior distributions.  This is partly for convenience and partly because setting up the model in this way is more understandable.  But this means that we have to be careful with parameterization.  For an example of a parameterization set up so that prior independence seems like a reasonable assumption, see section 2.2 of this paper:  http://www.stat.columbia.edu/~gelman/research/published/bois2.pdf
+
+With hierarchical models, it can be possible to check prior independence using a posterior predictive check.  (The check is posterior given the data but it is prior in the sense of studying the distribution of parameters across groups).  Section 3.3 of this paper, http://www.stat.columbia.edu/~gelman/research/published/bois2.pdf, gives an example of a check in which we could strongly reject the model of prior independence.  The result of this check motivated us to expand our model; prior independence seemed like a reasonable assumption in this expanded model, and it was also consistent with the data.  So, in this example, the appropriate solution was not to allow large prior correlations but rather to set up the model in a way that made substantive sense.
+
+For a general discussion of the point that reparameterization is particularly relevant to Bayesian inference, because of the usual default assumption of prior independence, see section 5.1 of this paper:  http://www.stat.columbia.edu/~gelman/research/published/parameterization.pdf
+
+Even when we explicitly model prior dependence (so we are _not_ assuming prior independence), we typically use a multivariate model such as the LKJ prior in which prior independence (a diagonal covariance matrix) is the baseline.
+
+Another example of a reparameterization is the t(nu, mu, sigma) distribution.  Here, we prefer to set up the prior in terms of nu, mu, sigma/(nu-2) or something like that, to account for the fact that the scale of the distribution (as measured by the sd or median absolute deviation) depends on nu as well as sigma.
+
+For an example of a problem with the naive assumption of prior independence, see section 2.3 of this paper:  Sensitivity Analysis, Monte Carlo Risk Analysis, and Bayesian Uncertainty Assessment, by Sander Greenland, Risk Analysis, 21, 579-583 (2001).  Also related are the papers, 
+Putting Background Information About Relative Risks into Conjugate Prior Distributions, by Sander Greenland, Biometrics 57, 663-670 (2001), Simpson’s Paradox From Adding Constants in Contingency Tables as an Example of Bayesian Noncollapsibility, by Sander Greenland, American Statistician 64, 340-344 (2010).
+
 # General principles
   * [Simpson et al. paper](http://arxiv.org/abs/1403.4630) has principles based on nestable models
   * Many times when people recommend default priors, they are restricting to some version of conjugacy for closed forms or for Gibbs; we don't care about that
   * Computational goal in Stan:  reducing instability which can typically arise from bad geometry in the posterior, heavy tails that can cause Stan to adapt poorly and have heavy tails
-  * Some principles we don't like:  invariance, Jeffreys, entropy
+  * Some principles we don't like:  invariance (that is, setting up a prior based on invariance principles without a sense of what is the meaning of the parameter), Jeffreys (see BDA for brief discussion of this point), maximum entropy
   * Weakly informative prior should contain enough information to regularize:  the idea is that the prior rules out unreasonable parameter values but is not so strong as to rule out values that might make sense
   * Weakly informative rather than fully informative:  the idea is that the loss in precision by making the prior a bit too weak (compared to the true population distribution of parameters or the current expert state of knowledge) is less serious than the gain in robustness by including parts of parameter space that might be relevant.  It's been hard for us to formalize this idea.
   * When using informative priors, be explicit about every choice; write a sentence about each parameter in the model.
@@ -37,6 +52,7 @@ For example, it is common to expect realistic effect sizes to be of order of mag
 # How informative is the prior?
 
 * "The prior can often only be understood in the context of the likelihood": http://www.stat.columbia.edu/~gelman/research/published/entropy-19-00555-v2.pdf
+Or, more generally, in the context of the estimating function, or of the information in the data.
 
 * Here's an idea for not getting tripped up with default priors:  For each parameter (or other qoi), compare the posterior sd to the prior sd.  If the posterior sd for any parameter (or qoi) is _more than 0.1 times the prior sd_, then print out a note:  "The prior distribution for this parameter is informative." Then the user can go back and check that the default prior makes sense for this particular example.
 
