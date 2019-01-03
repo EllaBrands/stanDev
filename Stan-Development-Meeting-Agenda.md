@@ -9,7 +9,7 @@ _New topics that should be addressed immediately or by the next
 meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
-
+* 3rd Jan 2019. Aki. Algorithm test bench using Stan model collection.
 
 ### Open Discussion Topics
 
