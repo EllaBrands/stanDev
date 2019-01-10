@@ -13,6 +13,7 @@ meeting._
 * 8th Jan 2019. Charles. Topics for _Stan this month_ and new year's resolutions.
 * 10th Jan 2019. Sebastian. Including the Intel TBB? Path forward?
 * 10th Jan 2019. Sebastian. Major rewrite of AD tape for Multi-threading? Recommendation to move forward?
+* 10 Jan 2019. Andrew and Matthijs.  Student who wants to do Ph.D. thesis on static analysis of probabilistic programs.
 
 ### Open Discussion Topics
 
