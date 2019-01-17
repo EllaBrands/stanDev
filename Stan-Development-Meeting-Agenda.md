@@ -9,10 +9,7 @@ _New topics that should be addressed immediately or by the next
 meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
-* 8th Jan 2019. Charles. Topics for _Stan this month_ and new year's resolutions.
-* 10th Jan 2019. Sebastian. Including the Intel TBB? Path forward?
-* 10th Jan 2019. Sebastian. Major rewrite of AD tape for Multi-threading? Recommendation to move forward?
-* 10 Jan 2019. Andrew and Matthijs.  Student who wants to do Ph.D. thesis on static analysis of probabilistic programs.
+* 2019-01-17. Ben. Results of BART vs. GPs simulations
 
 ### Open Discussion Topics
 
