@@ -10,6 +10,7 @@ meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 * 2019-01-17. Ben. Results of BART vs. GPs simulations
+* Should we add a dependency on Intel TBB and use it for our threading parallelism?
 
 ### Open Discussion Topics
 
