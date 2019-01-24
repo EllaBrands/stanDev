@@ -9,6 +9,7 @@ _New topics that should be addressed immediately or by the next
 meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
+
 2019-01-24. Sean. threaded math library. Go forward with [TLS PR](https://github.com/stan-dev/math/pull/1103)
 
 ### Open Discussion Topics
