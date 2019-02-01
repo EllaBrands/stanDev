@@ -246,7 +246,9 @@ The reference manual lists deprecated features in an appendix.
 
 ### Major Version and Backward Compatiblity
 
-A change in a library breaks backward compatibility if a program that
+A change in a library breaks backward compatibility if a program 
+using only supported APIs (for Stan, that is the language reference; 
+click [here](https://github.com/stan-dev/math/wiki/Supported-external-API) for the Math library) that
 worked in the previous version no longer works the same way in the
 current version.  For backward-compatibility breaking changes, the
 major version number is incremented.  When the major version is
