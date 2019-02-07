@@ -16,3 +16,5 @@ _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
 * __Date added. Developer name.  Short description.__
+
+7 Feb 2019.  Andrew.  Stacking when there is poor mixing.
