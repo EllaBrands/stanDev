@@ -14,7 +14,7 @@ Stan's code and documentation will remain 100% open source (the core is BSD, int
 
 The Stan project is managed as a whole by the Stan Governing Body (SGB).   The software component of Stan is managed by the Technical Working Group (TWG) at the discretion of the SGB. The TWG has a chair plus technical leads for each of the functional areas of Stan's software:
 
-* Chair (stan-dev): Bob Carpenter
+* Chair (stan-dev): TBD
 * Math Library (stan-dev/math): Daniel Lee
 * Language (stan-dev/stan): Sean Talts
 * Algorithms (stan-dev/stan):  Michael Betancourt
