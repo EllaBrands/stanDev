@@ -9,6 +9,8 @@ _New topics that should be addressed immediately or by the next
 meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
+14 Feb 2019. Matthijs. Stan meeting format.
+14 Feb 2019. Matthijs. Parallel for/foreach-loops.
 
 ### Open Discussion Topics
 
