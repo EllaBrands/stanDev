@@ -14,6 +14,8 @@ meeting._
 
 14 Feb 2019. Matthijs. Parallel for/foreach-loops.
 
+21 Feb 2019. Sebastian. Quick explanation of ODE speedup PR trick.
+
 ### Open Discussion Topics
 
 _Any topics that do not need to be addressed in the short term,
