@@ -16,6 +16,8 @@ meeting._
 
 21 Feb 2019. Sebastian. Quick explanation of ODE speedup PR trick.
 
+21 Feb 2019. Aki. Diagnostics for algorithm optimizing (khat, n_eff, mcse) + sampling-importance-resampling.
+
 ### Open Discussion Topics
 
 _Any topics that do not need to be addressed in the short term,
