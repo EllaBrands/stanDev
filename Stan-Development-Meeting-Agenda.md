@@ -10,13 +10,7 @@ meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
-14 Feb 2019. Matthijs. Stan meeting format.
-
-14 Feb 2019. Matthijs. Parallel for/foreach-loops.
-
-21 Feb 2019. Sebastian. Quick explanation of ODE speedup PR trick.
-
-21 Feb 2019. Aki. Diagnostics for algorithm optimizing (khat, n_eff, mcse) + sampling-importance-resampling.
+Mar 6 2019. Sean. Stan 2.19 release? 
 
 ### Open Discussion Topics
 
@@ -25,4 +19,3 @@ including speculation and brainstorming._
 
 * __Date added. Developer name.  Short description.__
 
-7 Feb 2019.  Andrew.  Stacking when there is poor mixing.
