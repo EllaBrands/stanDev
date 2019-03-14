@@ -13,6 +13,7 @@ meeting._
 - Mar 6 2019. Sean. Stan 2.19 release? 
 - Mar 7 2019. Sebastian. Support for threading PR with all the work requested?
 - Mar 7 2019. Sebastian. Decision process on threading PR if this requires a full major new version number?
+- Mar 14 2019. Ben. Making it easier to compile R and R packages
 
 ### Open Discussion Topics
 
