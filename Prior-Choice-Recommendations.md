@@ -171,3 +171,7 @@ The generic prior works much much better on the parameter `1/phi`.  Even better,
   * Default priors should all be autoscaled---this is particularly relevant for stan_glm().  In particular, for the normal-distribution link, prior_aux should be scaled to the residual sd of the data.  Currently it's an unscaled normal(0,5) which will be a very strong prior if the scale of the data happens to be large.
   * Should stan_lm() be tied to the R-squared prior?
   * If priors are user-specified, it seems to me that autoscaling should _not_ be the default.  Once you're specifying a prior from the outside, I'm guessing it will almost always be on the direct scale.
+
+# Acknowledgements
+
+We thank the U.S. Office of Naval Research for partial support of this work through grant N00014-15-1-2541, "Informative Priors for Bayesian Inference and Regularization."
