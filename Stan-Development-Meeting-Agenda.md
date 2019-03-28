@@ -10,9 +10,6 @@ meeting._
 
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
-- March 21, Breck, Stan mission statement
-
-- Mar 14 2019. Ben. Making it easier to compile R and R packages
 
 ### Open Discussion Topics
 
