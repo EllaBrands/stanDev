@@ -56,8 +56,8 @@ This is a MultiJob project (that's what Jenkins calls it).
       - Requires: python2.7. Cpplint doesn't run on Python 3
       - Build: `make cpplint || echo '--- cpplint has errors ---'` (mask the error message so the post-build action happens)
       - Post-build: scan for compiler warnings (CppLint)
-   - [math dependenices](http://d1m1s1b1.stat.columbia.edu:8080/job/Math Pull Request - Warnings - Dependencies)
-      - Build: `make test-math-dependencies`
+   - math dependenices
+      - Build: `make test-headers`
       - Post-build: scan for compiler warnings (math-dependencies)
       - The parser for `math-dependencies` is a custom one written in Jenkins. Here's what it looks like:
          - Name: `math-dependencies`
@@ -76,7 +76,6 @@ This is a MultiJob project (that's what Jenkins calls it).
 
                 return new Warning(fileName, Integer.parseInt(lineNumber), "Dynamic Parser", category, message);
                 ```
-                
          - Example log message: `src/stan/math/prim/scal/meta/OperandsAndPartials.hpp(21): File includes a stan/math/rev header file. [prim]`
 3. Phase: Quick tests
    - [Unit tests](http://d1m1s1b1.stat.columbia.edu:8080/job/Math%20Pull%20Request%20-%20Tests%20-%20Unit/)
