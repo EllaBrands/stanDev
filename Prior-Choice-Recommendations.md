@@ -58,6 +58,15 @@ Or, more generally, in the context of the estimating function, or of the informa
 
 Michael Betancourt has some related ideas here:  https://betanalpha.github.io/assets/case_studies/principled_bayesian_workflow.html
 
+# Default prior for treatment effects scaled based on the standard error of the estimate
+
+Erik van Zwet suggests an Edlin factor of 1/2.  Assuming that the existing or published estimate is unbiased with known standard error, this corresponds to a default prior that is normal with mean 0 and sd equal to the standard error of the data estimate.  This can't be right--for any given experiment, as you add data, the standard error should decline, so this would suggest that the prior depends on sample size.  (On the other hand, the prior can often only be understood in the context of the likelihood; http://www.stat.columbia.edu/~gelman/research/published/entropy-19-00555-v2.pdf, so we can't rule out an improper or data-dependent prior out of hand.)
+
+Anyway, the discussion with Zwet got me thinking.  If I see an estimate that's 1 se from 0, I tend not to take it seriously; I partially pool it toward 0.  So if the data estimate is 1 se from 0, then, sure, the normal(0, se) prior seems reasonable as it pools the estimate halfway to 0.  But if the data estimate is, say, 4 se's from zero, I wouldn't want to pool it halfway:  at this point, zero is not so relevant.  This suggests something like a t prior.  Again, though, the big idea here is to scale the prior based on the standard error of the estimate.
+
+Another way of looking at this prior is as a formalization of what we do when we see estimates of treatment effects.  If the estimate is only 1 standard error away from zero, we don't take it too seriously:  sure, we take it as some evidence of a positive effect, but far from conclusive evidence--we partially pool it toward zero.  If the estimate is 2 standard errors away from zero, we still think the estimate has a bit of luck to it--just think of the way in which researchers, when their estimate is 2 se's from zero, (a) get excited and (b) want to stop the experiment right there so as not to lose the magic--hence some partial pooling toward zero is still in order.  And if the estimate is 4 se's from zero, we just tend to take it as is.
+
+
 # Generic prior for anything
   * Andrew has been using independent N(0,1), as in section 3 of this paper:  http://www.stat.columbia.edu/~gelman/research/published/stan_jebs_2.pdf
     * I don't mind the short tails; if you think they're a problem because you think a parameter could be far from 0, that's information that can and should be included in the prior
