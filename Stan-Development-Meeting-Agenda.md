@@ -7,9 +7,9 @@ _Address any open topics from the past meeting._
 ### New Topics
 _New topics that should be addressed immediately or by the next
 meeting._
-April 3, 2019. Ben. Do we need a 2.19.1?
-
 * __Date added. Developer name.  Short description.  Desired resolution.__
+
+April 3, 2019. Ben. Do we need a 2.19.1?
 
 ### Open Discussion Topics
 
