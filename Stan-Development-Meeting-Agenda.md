@@ -13,6 +13,8 @@ April 3, 2019. Ben. Do we need a 2.19.1?
 
 April 3, 2019. Ben. What to do about the `monitor` function?
 
+April 3, 2019. Would there be interest in a tutorial on pharmacometrics modeling at Stan Con?
+
 ### Open Discussion Topics
 
 _Any topics that do not need to be addressed in the short term,
