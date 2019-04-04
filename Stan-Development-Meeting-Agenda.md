@@ -10,6 +10,7 @@ meeting._
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
 April 3, 2019. Ben. Do we need a 2.19.1?
+
 April 3, 2019. Ben. What to do about the `monitor` function?
 
 ### Open Discussion Topics
