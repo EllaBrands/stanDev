@@ -9,6 +9,8 @@ _New topics that should be addressed immediately or by the next
 meeting._
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
+April 11, 2019. ESS
+
 April 3, 2019. Ben. Do we need a 2.19.1?
 
 April 3, 2019. Ben. What to do about the `monitor` function?
