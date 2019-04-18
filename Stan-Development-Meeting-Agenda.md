@@ -17,4 +17,5 @@ _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
 * __Date added. Developer name.  Short description.__
+
 18 Apr 2019. Sean. What happens if you try to fit complete noise with logistic regression?
