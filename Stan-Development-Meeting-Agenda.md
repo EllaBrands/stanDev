@@ -17,6 +17,8 @@ April 3, 2019. Ben. What to do about the `monitor` function?
 
 April 3, 2019. Charles. Would there be interest in a tutorial on pharmacometrics modeling at Stan Con?
 
+18 Apr 2019. Mining the Stan mailing list. Any other ideas?
+
 ### Open Discussion Topics
 
 _Any topics that do not need to be addressed in the short term,
