@@ -39,7 +39,26 @@ The `make/local` file in the Stan repository is empty. To add `CXX=clang++` and 
 > echo "O=0" >> make/local
 ```
 
-### 2. The Python script, `runTests.py`
+### 2. Header tests
+
+To run a single header test, add "-test" to the end of the file name. Example: 
+```
+> make src/stan/math/constants.hpp-test
+```
+
+Test all source headers to ensure they are compilable and include enough header files:
+```
+> make test-headers
+```
+
+### 3. Cpplint
+
+Run cpplint.py on source files (unfortunately requires python 2.7)
+```
+> make cpplint
+```
+
+### 4. The Python script, `runTests.py`
 
 The `runTests.py` Python script is responsible for:
  1. building the test executables using Gnu make
@@ -98,7 +117,7 @@ To build in parallel, provide the `-j` flag with the number of cores. Example:
 ```
 
 
-### 3. How to run a single model integration test
+### 5. How to run a single model integration test
 
 We have test Stan programs located in the `src/test/test-models/good` folder. For example, `src/test/test-models/good/funs1.stan`. We test that each of these can be generated into valid C++ header files that can be compiled.
 
