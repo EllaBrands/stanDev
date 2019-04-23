@@ -1,6 +1,6 @@
 First off, here's a link to the 
 
-* [Doxygen manual](https://www.stack.nl/~dimitri/doxygen/manual/index.html) (stack.nl doxygen site)
+* [Doxygen manual](http://www.doxygen.nl/index.html) (doxygen.nl doxygen site)
 
 
 #### Function doc
@@ -144,11 +144,13 @@ public:
 
 * For generic code-type formatting, use the code element, as in `<code>foo(a, b, c)</code>`
 
-* To link to other bits of the API (member variables, functions, classes, etc.), see [linking to other code](https://www.stack.nl/~dimitri/doxygen/manual/autolink.html) (stack.nl doxygen manual)
+* Doxygen supports grave accent symbol syntax markup using \`code\` syntax.
+
+* To link to other bits of the API (member variables, functions, classes, etc.), see [linking to other code](http://www.doxygen.nl/manual/autolink.html) (doxygen.nl manual)
 
 #### Other Special Commands
 
 Doxygen provides a rich set of commands for formatting and linking external references.  See:
 
-* [Guide to Doxygen Commands](https://www.stack.nl/~dimitri/doxygen/manual/commands.html) (stack.nl doxygen manual)
+* [Guide to Doxygen Commands](http://www.doxygen.nl/manual/commands.html) (doxygen.nl doxygen manual)
  
