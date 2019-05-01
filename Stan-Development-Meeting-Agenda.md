@@ -18,4 +18,6 @@ including speculation and brainstorming._
 
 * __Date added. Developer name.  Short description.__
 
+* 30th April. Charles. Static variables in Stan, i.e. variables that persists between iterations. Can be useful for functions that require an initial guess (such as the algebraic solver) and the nested Laplace (see https://discourse.mc-stan.org/t/nested-laplace-approximation-roadmap/8594).
+
 23 Apr 2019. Andrew.  Static analysis so that Stan does not need to re-evaluate the autodiff tree at each step.  Aki says this could be huge for GP's.
