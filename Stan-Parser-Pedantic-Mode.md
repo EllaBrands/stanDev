@@ -157,3 +157,9 @@ for (i in 1:10)
 ```
 
 Should flag the line with `sigma` as it's not in scope.
+
+#### Bad stuff
+
+- Parameter defined but never used.
+
+- Overpromoting.  Parameter defined three times.
