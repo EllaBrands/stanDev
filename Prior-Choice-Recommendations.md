@@ -181,20 +181,6 @@ The generic prior works much much better on the parameter `1/phi`.  Even better,
   * Should stan_lm() be tied to the R-squared prior?
   * If priors are user-specified, it seems to me that autoscaling should _not_ be the default.  Once you're specifying a prior from the outside, I'm guessing it will almost always be on the direct scale.
 
-# Workflow idea
-
-Daniel Lakeland writes:   "I wanted to point at my comments:
-
-https://statmodeling.stat.columbia.edu/2019/03/20/retire-statistical-significance-the-discussion/#comment-1005264
-
-and
-
-https://statmodeling.stat.columbia.edu/2019/03/20/retire-statistical-significance-the-discussion/#comment-1005289
-
-In particular, the second one, which suggests something that it might be useful to recommend for Bayesian workflows: calculating a likelihood ratio for data compared to peak likelihood.
-
-I imagine in Stan using generated quantities to calculate say the .001, .01, .1, .25, .5 quantiles of log(L(Data)/Lmax) or something like that and using this as a measure of model misfit on a routine basis. I think it would be useful to know for example that for a given posterior draw from the parameters, the least likely data points are no less than say 10^-4 times as likely as the data value at the mode of the likelihood, and you'd definitely like to know if some percentage of the data is 10^-37 times less likely ;-) that would flag some serious model mis-fitting."
-
 # Acknowledgements
 
 We thank the U.S. Office of Naval Research for partial support of this work through grant N00014-15-1-2541, "Informative Priors for Bayesian Inference and Regularization."
