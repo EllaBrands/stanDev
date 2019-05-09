@@ -11,6 +11,8 @@ meeting._
 
 * 25th April. Sebastian. Is it OK to use `mingw32-make` on Windows to build Stan-math (and all other `cmdstan` depending interfaces)? This is right now needed to build the Intel TBB on Windows (we still need to figure out why the test-runs take much longer right now with the TBB just being linked in). Desired resolution: It's fine, but that means to change some doc in the project about build instructions and impacts other interfaces.
 
+* May 9. Jonah. Letter of support for [ROpenSci](https://ropensci.org/) grant?
+
 ### Open Discussion Topics
 
 _Any topics that do not need to be addressed in the short term,
