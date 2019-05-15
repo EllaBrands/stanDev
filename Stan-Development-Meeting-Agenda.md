@@ -5,13 +5,12 @@ _Short (less than 1 minute) description of work in the past week._
 _Address any open topics from the past meeting._
 
 ### New Topics
-_New topics that should be addressed immediately or by the next
-meeting._
+
+_New topics that should be addressed immediately or by the next meeting._
+
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
-* 25th April. Sebastian. Is it OK to use `mingw32-make` on Windows to build Stan-math (and all other `cmdstan` depending interfaces)? This is right now needed to build the Intel TBB on Windows (we still need to figure out why the test-runs take much longer right now with the TBB just being linked in). Desired resolution: It's fine, but that means to change some doc in the project about build instructions and impacts other interfaces.
-
-* May 9. Jonah. Letter of support for [ROpenSci](https://ropensci.org/) grant?
+* May 15. Bob Carpenter.  Should we use the `K` or `K - 1` coefficient vector version of multi-logit in `categorical_logit_glm` and `multinomial_logit_glm` functions?
 
 ### Open Discussion Topics
 
@@ -21,5 +20,3 @@ including speculation and brainstorming._
 * __Date added. Developer name.  Short description.__
 
 * 9 May. Aki. OLS trick and sparse matrices.
-
-* 30th April. Charles. Static variables in Stan, i.e. variables that persists between iterations. Can be useful for functions that require an initial guess (such as the algebraic solver) and the nested Laplace (see https://discourse.mc-stan.org/t/nested-laplace-approximation-roadmap/8594).
