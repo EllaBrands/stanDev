@@ -10,6 +10,8 @@ _New topics that should be addressed immediately or by the next meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
+* 6th June. Matthijs. How to expose unnormalized distributions in language.
+
 * 6th June. Charles. Pick one of two paths to improve differentiation of the algebraic solver. See https://github.com/stan-dev/math/issues/1257.
 
 ### Open Discussion Topics
