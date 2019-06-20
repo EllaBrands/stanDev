@@ -10,6 +10,8 @@ _New topics that should be addressed immediately or by the next meeting._
 
 * __Date added. Developer name.  Short description.  Desired resolution.__
 
+* 20 Jun 2019. Andrew. Default prior for the intercept for logistic regression.
+
 * 18 June.  Bob Carpenter.  What is the scope of case studies?  Someone's trying to submit a case study based on the doc for their R package extending Stan.  Is that in scope?
 
 * 6th June. Matthijs. How to expose unnormalized distributions in language.
