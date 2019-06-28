@@ -264,7 +264,7 @@ Allow Stan to be easily embedded in server-side applications.
 
 # CmdStan Roadmap
 * *Repository*: `stan-dev/cmdstan`
-* *Manager*: Michael Betancourt
+* *Manager*: Mitzi Morris
 
 
 
