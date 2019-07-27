@@ -1,3 +1,11 @@
+## This specification is **deprecated.**  
+
+Please see [the current spec](https://github.com/stan-dev/design-docs/blob/master/designs/0003-ragged-containers.md) (in the repo [stan-dev/design-docs](https://github.com/stan-dev/design-docs)).
+
+<br />
+<br />
+
+<del>
 ## Ragged Arrays
 
 The goal is to allow ragged arrays, and arrays of differently sized matrices and vectors.
