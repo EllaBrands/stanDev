@@ -3,6 +3,7 @@
 * mac / clang 6 / libc++ Threading
 * linux / gcc 5 / stdlibc++ OpenMPI
 * mac clang 6 libc++ OR linux clang 6 libc++ distribution tests (without row vectors)
+* Windows gcc 4.9.3
 
 ### Additional tests on merge to develop 
 * linux / gcc 5 / stdlibc++ Threading unit tests
