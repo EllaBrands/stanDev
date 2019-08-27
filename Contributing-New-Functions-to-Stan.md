@@ -230,6 +230,8 @@ Once you've modified `function_signatures.h`, we need to compile stan.
 
 ####  Adding Higher-Order Functions
 
+A new walk through with more detail on adding higher-order functions can be found [here](https://github.com/stan-dev/stan/wiki/Adding-Higher-Order-Functions-to-Stan).
+
 This is a little more specialized. As of now, there is no simple mechanism to add higher-order functions to Stan. Here's at least a good place to start.
 
 Higher-order functions are functions that take other functions as arguments. An example of such a function is an Ordinary Differential Equation integrator. `Add()` does not handle arguments which are function, so we need to do a bit more work to expose higher-order functions to Stan. 
