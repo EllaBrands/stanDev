@@ -19,17 +19,20 @@ The make target includes Stan-specific options and limits the tests to the src/s
 ### clang-format
 clang-format is a tool that will automatically format C++ code according to formatting rules in the `.clang-format` file. Our file is just a few changes from the vanilla Google Style guide. `clang-format` doesn't deal with many of our exceptions to the Style guide, below, as they are difficult to automate or not strictly formatting related.
 
-#### Setup
+#### Mac Setup
 First, [install `clang-format`](http://geant.cern.ch/content/clang-format-git-hook). If you're on a mac and using homebrew, please remove any clang-formats you have installed and then install clang-format@2017-11-14 with this command:
 ```
 brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/5d29e8a6bfbe2e7d8f9525645bb0c00879d0984a/Formula/clang-format.rb
 ```
 (if that doesn't work, try `brew install clang-format` or `brew upgrade clang-format` and get whatever your computer thinks is the latest)
+#### Linux setup
 If you're on Ubuntu Linux, you can use if you're on Ubuntu you can use the LLVM PPA to install clang-format-5.0 and then use update-alternatives to set it as the default. Find the relevant 5.0 PPA for your version of Ubuntu here: https://apt.llvm.org/ and follow their PPA install instructions, then:
 ```
 sudo apt-get install clang-format-5.0
 sudo update-alternatives --install /usr/bin/clang-format clang-format /usr/bin/clang-format-5.0 100
 ```
+
+For other distributions, try installing from source: https://github.com/llvm-mirror/clang/commits/release_50
 
 ##### Editor setup
 Emacs - there's a plugin/script called `google-c-style`. You can find it [here](https://raw.githubusercontent.com/google/styleguide/gh-pages/google-c-style.el) or just install from MELPA.
