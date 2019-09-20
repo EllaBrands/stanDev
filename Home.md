@@ -48,6 +48,10 @@ Currently, the `stan` repo includes the language, the algorithms, and the servic
 
 * [Contributing new functions](https://github.com/stan-dev/stan/wiki/Contributing-New-Functions-to-Stan)
 
+#### New Algorithms
+
+* [Proposing Algorithms for Inclusion Into Stan](https://github.com/stan-dev/stan/wiki/Proposing-Algorithms-for-Inclusion-Into-Stan)
+
 #### Code Style
 
 * [Code quality](https://github.com/stan-dev/stan/wiki/Code-Quality)
