@@ -1,3 +1,5 @@
+Update: This procedure refers to the old compiler, Stan 2. We're attempting to move all compiler work to [stanc3](https://github.com/stan-dev/stanc3). Adding a higher order function is described in [this youtube video](https://www.youtube.com/watch?v=mvLa1LIQvBA) and [this exemplar PR](https://github.com/stan-dev/stanc3/pull/303) (it's much simpler now, thankfully!).
+
 # Introduction
 Higher-order functions are functions that take other functions as arguments.  An example of such a function is an Ordinary Differential Equation integrator. `Add()` doesn’t handle arguments which are functions, so we need to do more work to expose higher-order functions to Stan.
 
