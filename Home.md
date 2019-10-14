@@ -102,6 +102,7 @@ Currently, the `stan` repo includes the language, the algorithms, and the servic
 
 #### Algorithms
 
+* [The Stan Algorithm API](https://github.com/stan-dev/stan/wiki/The-Stan-Algorithm-API)
 * [Max (marginal) likelihood](https://github.com/stan-dev/stan/wiki/MLE-and-MML-Design)
 * [ODE models](https://github.com/stan-dev/stan/wiki/Complex-ODE-Based-Models)
 
