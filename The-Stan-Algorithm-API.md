@@ -10,7 +10,7 @@ The workhorse of the Stan Algorithm Library is a state-of-the-art implementation
 
 Seemingly irrelevant or insignificant details, like the exact implementation of floating point arithmetic, the order of floating point operations, or the consumption of pseudo random number generator states, propagate to significant changes in realized Markov chains.  Consequently bitwise reproducibility of Markov chain output cannot be guaranteed across operating systems, C++ compilers, or computer hardware, or even different versions of the Stan Algorithm Library itself.
 
-Ensemble and expectation behavior of these Markov chain realizations, and that of their corresponding Markov chain Monte Carlo estimators, also cannot be guaranteed in general.  In the ideal circumstances that enable a Markov chain Monte Carlo central limit theorem, however, we can approximately anticipate the distributional behavior of these estimators relative to the exact expectation values.  In particular, if the effective sample size is estimated accurately then for any real-valued function f,
+Ensemble and expectation behavior of these Markov chain realizations, and that of their corresponding Markov chain Monte Carlo estimators, also cannot be guaranteed in general.  In the ideal circumstances that enable a Markov chain Monte Carlo central limit theorem, however, we can approximately anticipate the distributional behavior of these estimators relative to the exact expectation values.  In particular, if the effective sample size is estimated accurately then for any real-valued function f that is square integrable with respect to the target distribution we have
 
 ( \hat{f} - \mathbb{E}[f] ) / \hat{MCMC-SE} ~ normal(0, 1),
 
