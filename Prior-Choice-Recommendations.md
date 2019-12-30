@@ -1,6 +1,6 @@
 # 5 levels of priors
-  * Flat prior;
-  * Super-vague but proper prior:  normal(0, 1e6);
+  * Flat prior (not usually recommended);
+  * Super-vague but proper prior:  normal(0, 1e6) (not usually recommended);
   * Weakly informative prior, very weak:  normal(0, 10);
   * Generic weakly informative prior:  normal(0, 1);
   * Specific informative prior:  normal(0.4, 0.2) or whatever.  Sometimes this can be expressed as a scaling followed by a generic prior:  theta = 0.4 + 0.2*z; z ~ normal(0, 1);
@@ -9,7 +9,7 @@ The above numbers assume that parameters are roughly on unit scale, as is done i
 
 In addition, statements such as "informative" or "weakly informative" depend crucially on what questions are being asked (a point that is related to the idea that the prior can often only be understood in the context of the likelihood (http://www.stat.columbia.edu/~gelman/research/published/entropy-19-00555-v2.pdf)).
 
-For example, it is common to expect realistic effect sizes to be of order of magnitude 0.1 on a standardized scale (for example, an educational innovation that might improve test scores by 0.1 standard deviations).  In that case, a prior of N(0,1) could be considered very strong, in that it puts most of its mass on parameter values that are unrealistically large in absolute value.  When we say this prior is "weakly informative," what we mean is that, if there's a reasonably large amount of data, the likelihood will dominate, and the prior will not be important.  If the data are weak, though, this "weakly informative prior" will strongly influence the posterior inference.  The phrase "weakly informative" is implicitly in comparison to a default flat prior.
+Flat and super-vague priors are not usually recommended and some thought should included to have at least weakly informative priors. For example, it is common to expect realistic effect sizes to be of order of magnitude 0.1 on a standardized scale (for example, an educational innovation that might improve test scores by 0.1 standard deviations).  In that case, a prior of N(0,1) could be considered very strong, in that it puts most of its mass on parameter values that are unrealistically large in absolute value.  When we say this prior is "weakly informative," what we mean is that, if there's a reasonably large amount of data, the likelihood will dominate, and the prior will not be important.  If the data are weak, though, this "weakly informative prior" will strongly influence the posterior inference.  The phrase "weakly informative" is implicitly in comparison to a default flat prior. If there is no prior information directly in scale of parameters, it is common to have some information on the scale for the order of magnitude of the outcomes which can be used to make weakly informative priors ([Gabry, Simpson, Vehtari, Betancourt, and Gelman, 2019](https://doi.org/10.1111/rssa.12378)).
 
 # Independence
 
@@ -53,6 +53,8 @@ Putting Background Information About Relative Risks into Conjugate Prior Distrib
 
 * "The prior can often only be understood in the context of the likelihood": http://www.stat.columbia.edu/~gelman/research/published/entropy-19-00555-v2.pdf
 Or, more generally, in the context of the estimating function, or of the information in the data.
+
+* Prior predictive checking helps to examine how informative the prior on parameters is in the scale of the outcome: https://doi.org/10.1111/rssa.12378
 
 * Here's an idea for not getting tripped up with default priors:  For each parameter (or other qoi), compare the posterior sd to the prior sd.  If the posterior sd for any parameter (or qoi) is _more than 0.1 times the prior sd_, then print out a note:  "The prior distribution for this parameter is informative." Then the user can go back and check that the default prior makes sense for this particular example.
 
