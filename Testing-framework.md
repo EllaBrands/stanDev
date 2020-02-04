@@ -287,3 +287,11 @@ TEST(foo, invalid) {
 ```
 
 The other is to have a single call to the test framework but require subclass definitions, as in src/test/unit/prtest_fixture_distr.hpp. 
+
+## Testing for "similarity"
+
+In many tests, we compare values computed by two different mechanisms, without any assurance any one of them is "correct". For this case there is the `stan::test::expect_near_rel` function which handles NA and Inf values and uses the `stan::test::relative_tolerance` class to express tolerances.
+
+The main idea about tolerances is that we care mainly about relative tolerance, but this fails around zero, so we use absolute tolerance around zero. I.e. the actual relative tolerance grows as we approach zero.
+
+More details and reasoning behind this can be found in the code `relative_tolerance`, [on Dicourse](https://discourse.mc-stan.org/t/expect-near-rel-behaves-weirdly-for-values-around-1e-8/12573/6) and in [PR #1657](https://github.com/stan-dev/math/pull/1657).  
