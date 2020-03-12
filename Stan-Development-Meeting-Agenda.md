@@ -17,5 +17,5 @@ We have moved discussion topics to the topic [Meetings](https://discourse.mc-sta
 _Any topics that do not need to be addressed in the short term,
 including speculation and brainstorming._
 
-* __Date added. Developer name.  Short description.__
+* __Date added. Developer name.  Short description.__  
 2020-03-12, Matthew West, Stan user community survey
