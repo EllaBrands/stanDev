@@ -130,6 +130,14 @@ The generic prior works much much better on the parameter `1/phi`.  Even better,
 
     Assuming that nonbinary variables have been scaled to have mean 0  and standard deviation 0.5, Gelman et al (2008) (A Weakly Informative Default Prior Distribution for Logistic and Other Regression Models) recommended student_t(1,0,2.5) (Cauchy distribution). Later it has been observed that this has too thick tails, so that in cases where data is not informative (e.g., in case of separation) the sampling from the posterior is challenging (see, e.g., Ghosh et al, 2015, http://arxiv.org/abs/1507.07170). Thus Student's t distribution with higher degrees of freedom is recommended. There is not yet conclusive results what specific value should be recommended, and thus the current recommendation is to choose 3<nu<7. Normal distribution is not recommended as a weakly informative prior, because it is not robust (see, O'Hagan (1979) On outlier rejection phenomena in Bayes inference.). Normal distribution would be fine as an informative prior.
 
+# Scaling
+
+As noted above, we've moved away from the Cauchy and I (Andrew) am now using default normal(0.2.5) for rstanarm and normal(0,1) for my own work.  I think the right way to think about the Cauchy is that it's a normal with an unknown scale, so it could be appropriate if applied in a setting where the prior is unscaled and where we have no idea what are the scales of the problem at hand.  In a real life problem the user should have some sense of a scale, and in a completely blind problem (for example, you're running some sort of automatic feature detection program), you should be able to do some prescaling. 
+
+# Data-dependent scaling
+
+By default we scale the prior for regression coefficients based on the data. (see what is done in rstanarm and RAOS). I don't think there's any way around this.  We've been talking for awhile about formalizing this idea so as to move beyond the not-fully-Bayesian practice of data-dependent priors.  Aki writes:  "Instead of talking not-fully-Bayesian practice or double use of data, it might be better to say that we are doing 1+\epsilon use of data (1+\epsilon dipping?), and in most cases this can be done so that the benefit from stabilizing the inference overcomes the problems with 'uninformative' prior or prior whcih can be in bad conflict with the data."  "1 + epsilon dipping" . . . I like it!
+
 # Sparsity promoting prior for the regression coefficients ("Bayesian model reduction")
 
   See Piironen and Vehtari (2015). Projection predictive variable selection using Stan+R. [arXiv:1508.02502](http://arxiv.org/abs/1508.02502)
