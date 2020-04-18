@@ -31,14 +31,17 @@ We plan to use [ReferenceClasses](http://stat.ethz.ch/R-manual/R-devel/library/m
 ## Typical PyStan session
 ```python
 import pystan
-posterior = pystan.build(program_code, data=schools_data)
+posterior = pystan.build(schools_program_code, data=schools_data)
 fit = posterior.sample(num_chains=1, num_samples=2000)
-alpha = fit["alpha"]  # shape (param_stan_dimensions, num_draws * num_chains) NEW!
+mu = fit["mu"]  # shape (param_stan_dimensions, num_draws * num_chains) NEW!
 
 fit.to_frame()  # shape (num_chains * num_draws, num_flat_params)
 
 estimates = fit.maximize()
 estimates = fit.hmc_nuts_diag_e_adapt(delta=0.9)  # advanced users, unlikely to use
+
+# additional features
+assert len(fit) == 3  # three parameters in the 8 schools model: mu, tau, eta
 ```
 
 ## Typical CmdStan session
