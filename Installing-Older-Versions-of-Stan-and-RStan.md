@@ -1,1 +1,0 @@
-Moved to https://github.com/stan-dev/rstan/wiki/Installing-Older-Versions-of-RStan
