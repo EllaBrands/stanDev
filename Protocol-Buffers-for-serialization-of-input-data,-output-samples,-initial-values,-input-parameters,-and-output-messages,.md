@@ -1,1 +1,0 @@
-Moved to branch in design-docs:  https://github.com/stan-dev/design-docs/tree/protobuf-serialization
