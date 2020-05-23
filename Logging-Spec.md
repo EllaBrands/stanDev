@@ -1,1 +1,0 @@
-Moved to https://github.com/stan-dev/design-docs/tree/loggers
