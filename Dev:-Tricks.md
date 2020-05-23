@@ -86,3 +86,16 @@ You can also automatically remove line-final whitespace (this is just for C++, b
           (lambda () (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
 
 ```
+
+## C++
+
+### OS Detection
+
+Not just for Windows:
+
+http://nadeausoftware.com/articles/2012/01/c_c_tip_how_use_compiler_predefined_macros_detect_operating_system
+
+
+And here are some GCC specifics:
+
+http://stackoverflow.com/questions/259248/how-do-i-test-the-current-version-of-gcc
