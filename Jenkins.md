@@ -1,1 +1,0 @@
-Moved to https://github.com/stan-dev/stan/wiki/Testing:-Continuous-Integration
