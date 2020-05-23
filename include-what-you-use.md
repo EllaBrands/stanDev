@@ -1,1 +1,0 @@
-content moved to https://github.com/stan-dev/stan/wiki/Coding-Style-and-Idioms
