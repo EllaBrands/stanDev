@@ -1,1 +1,0 @@
-Moved content to https://github.com/stan-dev/stan/wiki/Testing:-Unit-Tests
