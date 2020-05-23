@@ -1,1 +1,0 @@
-Moved to docs issue for user's guide:  https://github.com/stan-dev/docs/issues/187
