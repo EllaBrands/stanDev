@@ -1,1 +1,0 @@
-moved content to Coding Style and Idioms
