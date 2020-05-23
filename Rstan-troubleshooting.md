@@ -1,1 +1,0 @@
-Moved to:  https://github.com/stan-dev/rstan/wiki/RStan-Troubleshooting
