@@ -5,6 +5,7 @@ Quick links:
 * [Mac](Developer-Tricks#mac)
 * [Fixing Line Feeds and Tabs](Developer-Tricks#fixing-line-feeds-and-tabs)
 * [Emacs](Developer-Tricks#emacs)
+* [C++](Developer-Tricks#cpp)
 
 ## Git
 
@@ -87,7 +88,7 @@ You can also automatically remove line-final whitespace (this is just for C++, b
 
 ```
 
-## C++
+## Cpp
 
 ### OS Detection
 
