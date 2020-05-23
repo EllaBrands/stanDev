@@ -1,6 +1,6 @@
 ## Welcome!
 
-This is the top-level Wiki for the Stan project as well as the Wiki for the stan-dev/stan repository.  Most of the content is aimed at developers, though some may be of interest to users.  If you're not a Stan developer or thinking of becoming one, you're probably looking for:
+This is the top-level Wiki for Stan developers.  There is also a user facing
 
 * [Stan Home Page](http://mc-stan.org/)
 
@@ -11,18 +11,11 @@ There are a few remaining user-facing Wiki pages that haven't been moved to the 
 * [Frequently encountered problems](https://github.com/stan-dev/stan/wiki/Frequently-Encountered-Problems)
 * [Installing older versions](https://github.com/stan-dev/stan/wiki/Installing-Older-Versions-of-Stan-and-RStan)
 
-## Introduction for aspiring Stan developers
+## Introduction to Stan for new developers
+
 See https://github.com/stan-dev/stan/wiki/Introduction-to-Stan-for-New-Developers
 
-## To-Do List
-
-* [Longer-term to-do items](https://github.com/stan-dev/stan/wiki/Longer-Term-To-Do-List)
-
-## Stan Meetings
-
-* [Dev meeting agenda](https://github.com/stan-dev/stan/wiki/Stan-Development-Meeting-Agenda)
-
-## GitHub Repositories and Submodule Relationships
+## GitHub repositories and submodule relationships
 
 The development for the math library, language and algorithms, and interfaces are arranged into the following repositories with arrows indicating submodule inclusions.
 
@@ -72,7 +65,6 @@ Currently, the `stan` repo includes the language, the algorithms, and the servic
 
 * [How to upgrade version numbers](https://github.com/stan-dev/stan/wiki/Process:-upgrade-version-numbers)
 
-
 ## Feature Specifications
 
 #### Language
@@ -110,8 +102,6 @@ Currently, the `stan` repo includes the language, the algorithms, and the servic
 #### Documentation
 
 * [Documentation reorganization](https://github.com/stan-dev/stan/wiki/Documentation-Organization)
-
-
 
 ## Developer Miscellany
 
