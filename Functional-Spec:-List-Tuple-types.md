@@ -1,1 +1,0 @@
-Moved to design docs PR #24.
