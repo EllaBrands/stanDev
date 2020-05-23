@@ -1,1 +1,0 @@
-moved content to issue for ref manual:  https://github.com/stan-dev/docs/issues/189
