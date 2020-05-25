@@ -15,20 +15,6 @@ There are a few remaining user-facing Wiki pages that haven't been moved to the 
 
 See https://github.com/stan-dev/stan/wiki/Introduction-to-Stan-for-New-Developers
 
-## GitHub repositories and submodule relationships
-
-The development for the math library, language and algorithms, and interfaces are arranged into the following repositories with arrows indicating submodule inclusions.
-
-```               
-math <- stan <- pystan
-             <- rstan   <- rstanarm
-             <- cmdstan <- statastan
-                        <- matlabstan
-                        <- stan.jl
-                        <- MathematicaStan
-```
-
-Currently, the `stan` repo includes the language, the algorithms, and the service API for the interfaces.  There are additional repos for tools such as the emacs mode, R plotting, R Shiny interface, web pages, etc.
 
 ## Developer Process
 
