@@ -1,23 +1,12 @@
-## Why we have a process
+# Goals
 
-We don't like process, but it's necessary for coordinating a development team.  We have multiple goals for our developer process:
+The three main goals of the developer process are to support *correctness*, *maintainability* and *ease of development*.  To support correctness, all code must be unit tested for its main and edge case behavior against its API-level documentation.  To support maintainability, all code should be designed as simply and modularly as possible using idiomatic C++ style for understandability.  To support ease of co-operative development, the `develop` branch of every repository should always be in a releasable state.  To support both ease of development and maintainability, code should be written for future developers to read, with the aim of a future developer being able to easily figure out how to call a function and what its return value is.
 
-- Ensure the proposed changes are maintainable
-    - designed properly
-    - uses consistent coding style
-    - uses idiomatic C++ conventions (so other people can understand the code)
-    - documented
-- Keep the `develop` branch in a working state
-    - passing all unit tests
-    - documented at API level
-- Make sure the code is understandable
-    - another should be able to understand the intent of the code
-    - another developer should have an easy time instantiating the code (unit tests)
-    - the code should be modular enough to be changed without destroying all of Stan
+# Process Checklist
 
 ## 1.  Create an issue on GitHub
 
-Issues should be focused and have limited scope. Each issue should conceptually be one thing. It is common for a project to spawn multiple issues. It is also common to have to start work on one issue and then generate multiple issues. Use your best judgement, but in most cases, smaller issues are better than bigger issues.
+Issues should be focused and have limited scope. Each issue should conceptually be one thing. It is common for a larger project to to be broken down into more than one issue or one issue. It is also common to have to start work on one issue and then generate multiple issues. Use your best judgement, but in most cases, smaller issues are better than bigger issues.
   
 Did I mention we prefer more smaller issues than fewer large issues? 
 
