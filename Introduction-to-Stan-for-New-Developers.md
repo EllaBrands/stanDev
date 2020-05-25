@@ -6,7 +6,21 @@ Most of the following discussion is aimed at people who want to contribute C++ c
 
 ## Project layout
 
-You can see the overarching Stan project structure [here](https://github.com/stan-dev/stan/wiki#github-repositories-and-submodule-relationships). Each of the repos can be worked on independently, though some will include others as git submodules if they are dependent. Each of the repos also has their own wiki! Don't forget to check that wiki homepage and search it for information that might be related to that subproject.
+## GitHub repositories and submodule relationships
+
+The development for the math library, language and algorithms, and interfaces are arranged into the following repositories with arrows indicating submodule inclusions.
+
+```      
+math <- stan <- pystan
+             <- rstan   <- rstanarm
+             <- cmdstan <- statastan
+                        <- matlabstan
+                        <- stan.jl
+                        <- MathematicaStan
+     <- stanc3
+```
+
+Currently, the `stan` repo includes the algorithms and the service API for the interfaces.  There are additional repos for tools such as the emacs mode, R plotting, R Shiny interface, web pages, etc. `stanc3` hosts the language compiler.   Some of the modules include others as submodules if there's a code dependency.  Each of the repos also has their own wiki! Don't forget to check that wiki homepage and search it for information that might be related to that subproject.
 
 ## Contributing to Stan
 
