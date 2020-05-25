@@ -9,8 +9,6 @@ The three main goals of the developer process are to support *correctness*, *mai
 Issues should be focused and have limited scope. Each issue should conceptually be one thing. It is common for a larger project to to be broken down into more than one issue or one issue. It is also common to have to start work on one issue and then generate multiple issues. Use your best judgement, but in most cases, smaller issues are better than bigger issues.
   
 Did I mention we prefer more smaller issues than fewer large issues? 
-
-See: [Where do I create a new issue?](Where-do-I-create-a-new-issue)
   
 ## 2. Create a branch for the issue
 
