@@ -32,13 +32,13 @@ The processes governing Stan development are outlined in the
 
 The code style requirements for Stan are covered in
 
-* [Coding Style](https://github.com/stan-dev/stan/wiki/Coding-Style-and-Idioms).
+* [Coding Style Guide](https://github.com/stan-dev/stan/wiki/Coding-Style-and-Idioms).
 
 ### Contributing new functions and algorithms
 
 There is a wiki page about
 
-* [Contributing New Functions](https://github.com/stan-dev/stan/wiki/Contributing-New-Functions-to-Stan)
+* [Contributing New Functions](https://github.com/stan-dev/stan/wiki/Contributing-New-Functions-to-Stan).
 
 and a separate page for
 
