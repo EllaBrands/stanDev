@@ -8,7 +8,7 @@ This is the top-level Wiki for Stan developers.  User-facing information can be 
 
 ## Developer Wikis
 
-This is a complete list of developer-facing Wikis hosted in this repo.
+This section provides a complete list of developer-facing Wikis hosted in this repo.
 
 ### Contributing to Stan without C++/OCaml experience
 
@@ -38,7 +38,7 @@ The code style requirements for Stan are covered in
 
 There is a wiki page about
 
-* [Contributing New Functions](https://github.com/stan-dev/stan/wiki/Contributing-New-Functions-to-Stan).
+* [Contributing New Functions](https://github.com/stan-dev/stan/wiki/Contributing-New-Functions-to-Stan)
 
 and a separate page for
 
