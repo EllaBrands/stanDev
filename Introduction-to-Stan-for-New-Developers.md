@@ -4,8 +4,6 @@ The Stan project is [hosted on GitHub](https://github.com/stan-dev) so you will 
 
 Most of the following discussion is aimed at people who want to contribute C++ code to Stan. But there are [many other ways to contribute that don't involve C++](https://github.com/stan-dev/stan/wiki/Contributing-to-Stan-Without-C-Plus-Plus--Experience)!
 
-## Project layout
-
 ## GitHub repositories and submodule relationships
 
 The development for the math library, language and algorithms, and interfaces are arranged into the following repositories with arrows indicating submodule inclusions.
