@@ -1,1 +1,0 @@
-Moved content to https://github.com/stan-dev/stan/wiki/Introduction-to-Stan-for-New-Developers
