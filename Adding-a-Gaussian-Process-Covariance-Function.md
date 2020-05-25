@@ -1,1 +1,0 @@
-moved content to:  https://github.com/stan-dev/stan/wiki/Contributing-New-Functions-to-Stan
