@@ -1,1 +1,0 @@
-Moved content to:  https://github.com/stan-dev/design-docs/pull/25
