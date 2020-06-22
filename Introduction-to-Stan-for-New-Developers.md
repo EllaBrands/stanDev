@@ -96,7 +96,7 @@ git clean -d -x -f
 ### Git completion
 https://github.com/git/git/tree/master/contrib/completion
 
-* git-prompt.sh. This changes the prompt on the command line to show the current branch. Install by copying it to ~/, follow install instructions. For a cleaner prompt, replace the PS1 suggested with: 
+* git-prompt.sh. This changes the prompt on the command line to show the current branch. Install by copying it to `~/`, follow install instructions. For a cleaner prompt, replace the PS1 suggested with: 
 `PS1='\w$(__git_ps1 " (%s)")> '`
 The prompt will look like:
 `~/stan (master)> `
