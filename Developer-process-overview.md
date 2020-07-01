@@ -401,6 +401,23 @@ Suppose we have just released v2.0.1 so that v2.0.1 is the last tag on master.  
 > git push -u origin hotfix/v2.0.2
 ```
 
+# How to compile with debugging turned on
+
+The Makefile of Math library provides a minimalist debug build, replacing `-O3` with `-g -O0` in `CXXFLAGS`.
+
+To switch on debug build, add the following line in `make/local`
+```bash
+DEBUG = 1     # debug build
+```
+In addition to the usage of debuggers such as GDB, debug build turns on DEBUG macros, so in C++ code one can do
+```c++
+#ifdef DEBUG
+// ...
+#endif
+```
+Last but not least, `cout` and `typeid` is your friend.
+
+
 # Adding a dependency to other software
 
 We want to answer the following questions:
