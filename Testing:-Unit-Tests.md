@@ -165,7 +165,163 @@ int main() {
 ```
 
 
-## GoogleTest Unit Tests for C++
+# Writing, Building and Running Tests
+
+These guidelines were developed for the math library, but apply to all the other C++ repos, too.
+
+## Overview
+
+Everything in Stan math is included in a single translation unit. Some of the external libraries require libraries to be linked in. These are:
+
+- Intel Threading Building Blocks (also known as Intel oneTBB)
+- SUNDIALS for ordinary differential equations solving
+- Boost MPI
+- OpenCL
+
+Within the Math library, the only build targets are the tests. The makefile can be used to build other C++ executables, with all the correct compiler flags for Math. You can also use the `standalone` make feature of the Math library. See [here](https://github.com/stan-dev/math#installation).
+
+## Makefile Variables
+
+To customize how the tests are built in C++, variables can be set in a file called `make/local`. This is the preferred way of customizing the build. You can also set it more permanently by setting variables in `~/.config/stan/make.local`.
+
+Note: variables in `make/local` override variables in `~/.config/stan/make/local`.
+
+There are a lot of make variables that can be set. In general, `CXXFLAGS_*` is for C++ compiler flags, `CPPFLAGS_*` is for C preprocessor flags, `LDFLAGS_*` is for linker flags, and `LDLBIS_*` is for libraries that need to be linked in.
+
+These are the more common make flags that could be set:
+- `CXX`: C++ compiler
+- `CXXFLAGS_OS`: compiler flags specific to the operating system.
+- `CPPFLAGS_OS`: C preprocessor flags specific to the operating system.
+- `O`: optimization level. Defaults to `3`.
+- `INC_FIRST`: this is a C++ compiler option. If you need to include any headers before Math's headers, this is where to specify it. Default is empty.
+- `LDFLAGS_OS`: linker flags for the operating system
+- `LDLIBS_OS`: link libraries for the operating system
+
+
+These are the rest of the variables that can be set:
+
+- C++ compiler flags
+    - `CXXFLAGS_LANG`: sets the language. Currently defaults to `-std=c++1y`
+    - `CXXFLAGS_WARNINGS`: compiler options to squash compiler warnings
+    - `CXXFLAGS_BOOST`: Boost-specific compiler flags
+    - `CXXFLAGS_EIGEN`: Eigen-specific compiler flags
+    - `CXXFLAGS_OPENCL`: OpenCL-specific compiler flags
+    - `CXXFLAGS_MPI`: MPI-specific compiler flags
+- C preprocessor flags
+    - `CPPFLAGS_LANG`:
+    - `CPPFLAGS_WARNINGS`
+    - `CPPFLAGS_BOOST`
+    - `CPPFLAGS_EIGEN`
+    - `CPPFLAGS_OPENCL`
+    - `CPPFLAGS_MPI`
+- Linker flags
+    - `LDFLAGS_LANG`
+    - `LDFLAGS_WARNINGS`
+    - `LDFLAGS_BOOST`
+    - `LDFLAGS_EIGEN`
+    - `LDFLAGS_OPENCL`
+    - `LDFLAGS_MPI`
+- Link libraries
+    - `LDLIBS_LANG`
+    - `LDLIBS_WARNINGS`
+    - `LDLIBS_BOOST`
+    - `LDLIBS_EIGEN`
+    - `LDLIBS_OPENCL`
+    - `LDLIBS_MPI`
+- Misc
+    - `OS`: operating system. Defaults to `Darwin`, `Linux`, or `WindowsNT`.
+    - `MATH`: the location of the math library. Defaults to empty variable (used for Stan and CmdStan).
+    - `EIGEN`: location of the Eigen headers
+    - `BOOST`: location of the Boost headers
+    - `SUNDIALS`: location of the Sundials headers
+    - `INC`: the includes for the C++ compiler
+    - `INC_SUNDIALS`: the Sundials includes
+    - `INC_GTEST`: the Google test includes
+    - `EXE`: the executable file extension. On Windows, defaults to `.EXE`. On other operating system, defaults to an empty variable.
+
+For debugging, there's a useful target for printing Stan variables. It's `print-*` where `*` is the variable. For example, on a Mac:
+
+```
+> make print-CXX
+CXX = clang++
+```
+
+## Writing Tests
+
+We use the GoogleTest (also sometimes named GTest) framework for writing tests and GnuMake and Python for running them. We mostly rely on the `EXPECT_*` macros for non-fatal assertion. These macros are used throughout the tests to test for expected behaviour. See [link](https://github.com/google/googletest/blob/master/googletest/docs/primer.md#assertions) for an overiew of the macros provided by the GTEST library. 
+
+We extended the GTest macros with the following macros for simplified testing of expected values in Eigen matrices, vector and row vectors and also std::vector:
+
+For matrices of doubles:
+- `EXPECT_MATRIX_EQ(A,B)` which tests for elementwise equality of A and B using `EXPECT_EQ`
+- `EXPECT_MATRIX_FLOAT_EQ(A,B)` which tests for elementwise equality of A and B using `EXPECT_FLOAT_EQ`
+- `EXPECT_MATRIX_NEAR(A, B, DELTA)`  which tests if the elementwise difference of A and B is larger than DELTA using `EXPECT_NEAR`
+
+For matrices of other types:
+- `EXPECT_TYPED_MATRIX_EQ(A, B, type)`  which tests for elementwise equality of A and B using `EXPECT_EQ`, where the elements are of the provided type
+- `EXPECT_TYPED_MATRIX_EQ(A, B, type)` tests if the elementwise difference of A and B is larger than DELTA using `EXPECT_NEAR`, where the elements are of the provided type
+
+For std::vectors:
+- `EXPECT_STD_VECTOR_FLOAT_EQ(A, B)` which tests for elementwise equality of A and B using `EXPECT_FLOAT_EQ`
+
+Exceptions:
+- `EXPECT_THROW_MSG(expr, T_e, msg)` which tests if the expression throws the expected exception with the expected message.
+- `EXPECT_THROW_MSG_WITH_COUNT(expr, T_e, msg, count)` which tests if the expression throws the expected exception with a specific number of occurrences of the expected message in the throw message.
+
+Their implementation can be found [here](https://github.com/stan-dev/math/blob/develop/test/unit/util.hpp). 
+
+## Building Tests
+
+The main function of the makefiles is to build test executables. The typical way to build test executables is to use the `runTests.py` python script, but we can use make to directly generate a test executable.
+
+The name of the test executable is the name of the test with the file extension removed for Linux and Mac or replacing the file extension with `.exe` for Windows. For example, to run the test `test/unit/math_include_test.cpp`, we build on Linux and Mac with:
+
+```
+> make test/unit/math_include_test
+```
+
+or on Windows with:
+
+```
+> make test/unit/math_include_test.exe
+```
+
+We can then run the executable from the command line.
+
+
+### Rebuilding Tests
+
+Along with the test executable, the makefiles generate dependency files. The dependency files are generated by using the C++ compiler to list the headers that the test depends on. The dependency file is automatically generated by make and included by make so it knows what header files the test depends on. If none of those files changed, then the executable doesn't need to be rebuilt.
+
+We can build the dependency file directly. For the `test/unit/math_include_test.cpp` example, we can build the dependency file using make:
+
+```
+> make test/unit/math_include_test.d
+```
+
+If you look at the first couple of lines, you'll see:
+
+```
+test/unit/math_include_test.o test/unit/math_include_test.d: \
+  test/unit/math_include_test.cpp stan/math.hpp stan/math/rev/mat.hpp \
+```
+
+Make uses the timestamp of the files to determine whether it needs to be rebuilt. If any of the files listed after the targets (after the `:`) are updated, the executable will be rebuilt. If you've built all the unit tests and only change a single header file, building the unit tests again will selectively rebuild the tests that depends on that header.
+
+## Running Tests
+
+The easiest way to build and run tests is to use the `runTests.py` python script. To run unit tests:
+
+```
+> ./runTests.py test/unit
+```
+
+## Misc: Stan Testing
+
+The [Stan testing](https://github.com/stan-dev/stan/wiki/Testing-Stan-using-Gnu-Make-and-Python) process depends on the makefiles in Math.
+
+
+# GoogleTest Unit Tests for C++
 
 #### What to Test
 
