@@ -497,3 +497,14 @@ Feel free to review a narrow part of the pull request. By that, I mean one of th
     1. **Request changes**. If there are changes that need to be made, finalize your review with "Request changes."
     2. **Comment**.  If you're only reviewing a portion of the pull request, e.g. numeric computation, finalize your review with "Comment" if everything is good.
     3. **Approve**. Finalize the pull request with "Approve" when the pull request is ready to be merged. If you're looking at the whole pull request, then feel free to approve when it's ready. If you're only looking at a part of the pull request, please do not approve. One of the core Math developers will coordinate the different reviewers and approve based on the feedback.
+
+# Backwards compatibility requirements
+
+## How do we keep consistent behavior in the Math library?
+
+We try to keep the behavior of the functions in the Math library consistent for edge cases. Unfortunately, we implemented a lot of functions before we started realizing we should be consistent. That said, we prefer backwards compatibility to consistency -- we shouldn't change behavior until we get to a major version change. If we throw, we want well-formed messages because they do get passed back to the user from within Stan.
+
+We follow these rules in order:
+1. Existing functions should maintain their behavior.
+2. Use the standard library's behavior. That means that we should be using the standard library functions for math if it exists.
+3. Use Boost's math functions. If the error messages aren't nice, find some way to provide nice error messages.
