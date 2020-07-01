@@ -4,6 +4,13 @@ The Stan project is [hosted on GitHub](https://github.com/stan-dev) so you will 
 
 Most of the following discussion is aimed at people who want to contribute C++ code to Stan. But there are [many other ways to contribute that don't involve C++](https://github.com/stan-dev/stan/wiki/Contributing-to-Stan-Without-C-Plus-Plus--Experience)!
 
+
+## Licensing
+
+We're committed to having a permissive open-source license. The stan-dev/math, stan-dev/stan, and stan-dev/cmdstan libraries are [licensed with the BSD 3-Clause License](https://github.com/stan-dev/math/blob/develop/LICENSE.md) and we only accept changes to the code base that compatible with this license.
+
+When you write code, you own the copyright to your code unless you've assigned it to another entity, such as your employer.  Contributions to Stan leave copyright ownership with the contributor or their assignee.  Per the [GitHub terms of service](https://docs.github.com/en/github/site-policy/github-terms-of-service) (see the section, User-Generated Content, any code contributed to Stan through GitHub is released under the same license as the repository to which it is contributed. 
+
 ## GitHub repositories and submodule relationships
 
 The development for the math library, language and algorithms, and interfaces are arranged into the following repositories with arrows indicating submodule inclusions.
@@ -190,3 +197,20 @@ http://stackoverflow.com/questions/259248/how-do-i-test-the-current-version-of-g
 and the free PDF here: [Modern C++ PDF](http://index-of.co.uk/C++/C++%20Design%20Generic%20Programming%20and%20Design%20Patterns%20Applied.pdf)
 * [Agner Fog's C++ optimization tips](http://www.agner.org/optimize/optimizing_cpp.pdf)
 * [On template metaprograms](https://www.fluentcpp.com/2017/06/02/write-template-metaprogramming-expressively/)
+
+# Math library overview
+
+The Stan Math library, referred to as Math or the Math library, is a C++ library for automatic differentiation. It's designed to be usable, extensive and extensible, efficient, scalable, stable, portable, and redistributable in order to facilitate the construction and utilization of algorithms that utilize derivatives.
+
+The Math library implements:
+
+- [reverse mode](https://en.wikipedia.org/wiki/Automatic_differentiation#Reverse_accumulation) automatic differentiation for computing gradients. This is fully tested and is utilized by [Stan](https://github.com/stan-dev/stan).
+- [forward mode](https://en.wikipedia.org/wiki/Automatic_differentiation#Forward_accumulation) automatic differentiation for computing directional derivatives.  This does not work for higher-order functions, but is otherwise completely tested.
+- mixed mode automatic differentiation for computing higher order derivatives. Once forward mode is fully tested, this should work.
+
+Some key features of the Math library's reverse mode automatic differentiation:
+- object oriented design with overloading of operators
+- arena-based memory management
+
+For implementation details of the Math library's automatic differentiation, please read the arXiv paper "[The Stan Math Library: Reverse-Mode Automatic Differentiation in C++](https://arxiv.org/abs/1509.07164)."
+
