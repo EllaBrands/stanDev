@@ -529,3 +529,89 @@ Just that we attempt to test that this API is maintained through time (or semant
 ### References
 
 0. https://discourse.mc-stan.org/t/what-is-the-supported-external-api-of-the-math-library/7438
+
+
+# Updating Libraries
+
+Stan depends on a few libraries. Here are instructions for updating the libraries. This should happen pretty infrequently.
+
+## Overview of Updating Libraries
+
+All the source libraries we depend on are BSD (3-clause) compatible. Stan math currently depends on:
+
+- Boost
+- Eigen
+- Sundials
+- Google Test (for tests)
+- OpenCL
+- CppLint (for code style)
+- TBB (for multi-threading)
+
+To update one of these libraries, the steps are:
+
+1. Create a [new issue](https://github.com/stan-dev/math/issues/new) stating which library needs to be updated.
+2. Download the library source.
+3. Unpack the source into `lib/<library_name>_<version>`
+4. Modify the makefile reference to the library path. This will be found in `make/libraries` at the top of the file.
+4. Git remove the old source and git add the new source. Make a git commit that says `"Updating <library> to version <version>"`.
+5. Follow any specific instuctions for updating the particular library below. If the instructions call for pruning without modification, feel free to do that before making the commit.
+6. Git commit the new changes.
+7. Test to make sure everything still works. Please `make-clean-all` first. The makefiles aren't designed to find files when they have moved locations.
+8. Git push and create a pull request.
+
+Once it goes through the continuous integration, we can merge the pull request into `develop`. Please also update the library version number as listed in the `README.md` of `stan-math`.
+
+## Boost
+
+`std::logic_error("Section not yet written.")`
+
+## Eigen
+
+`std::logic_error("Section not yet written.")`
+
+## Google Test
+
+Google Test will not work directly with MPI. In order to make it work, please update `src/gtest_main.cc` so the main function looks like this:
+
+```{c++}
+GTEST_API_ int main(int argc, char **argv) {
+#ifdef STAN_MPI
+  // for MPI testing we test with all workers in listen mode. No	
+  // output is generated from the workers.	
+  stan::math::mpi_cluster cluster;	
+  cluster.listen();	
+  if (cluster.rank_ != 0)	
+    return 0;
+#endif
+  printf("Running main() from %s\n", __FILE__);
+  testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}
+
+```
+
+This is the only modification that is necessary.
+
+## OpenCL
+
+`std::logic_error("Section not yet written.")`
+
+## CppLint
+
+`std::logic_error("Section not yet written.")`
+
+## Sundials (02/2019)
+
+To upgrade Sundials:
+1. download the target version to `lib/sundials-<version>.tar.gz` from [https://computation.llnl.gov/projects/sundials/sundials-software]
+2. navigate to `lib/`
+3. run from a terminal: `./upgrade-sundials.sh sundials-<version>.tar.gz`
+4. after this is completed, verify that this works and then `git push`
+
+Additional notes:
+The official sundials source code contains printf, sprintf and fprintf
+calls which we have to make optional when compiling the library. This
+is needed due to restrictions imposed by CRAN which disallows these
+function calls to even appear in any binary part of a R package. To
+achieve this we modify the vanilla sundials source files such adequate
+replacements are done.
