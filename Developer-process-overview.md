@@ -445,3 +445,55 @@ We want to answer the following questions:
     * What about subsequent compile times?
 * Where do we want to use this? Does any other source code need to change?
 * How difficult would it be to write our own version of just the functionality we require?
+
+
+# Code Review Guidelines
+
+All pull requests must have these things:
+
+1. clear licensing information. Check that the person that owns the copyright is listed.
+2. the code base remains stable after the merge. Every pull request should pass all the continuous integration tests. There are a very few exceptions when they don't, but that's rare.
+3. the changes proposed are maintainable by the community. We're an open-source project. Once the changes go into the code base, we're all responsible for the code. Please read the code with these things in mind:
+    - overall readability. If it's hard to understand the code and it can be made simpler, please mention that.
+    - code design. It should either be designed with well-known C++ patterns or there should be a good reason it isn't.
+    - documentation. The documentation that goes with the changes should go in this pull request.
+4. the changes are tested. Please verify that there's at least one new test that forces the code to execute. Please also verify there's at least one test that shows how to handle errors in the code. Having just these two tests (without full coverage) is usually enough to trap errors in the future. It is also enough to use these to refactor the code when the time comes.
+5. the changes adhere to the Math library's [C++ standards](https://github.com/stan-dev/stan/wiki/Code-Quality). This is a large code base. We want the quality to be consistent so it's easy to navigate and understand other parts of the code base.
+
+Most of the above is subjective, so please use your best judgement.
+
+Pull requests should be narrow in scope. Please don't let inadvertent changes get into the code base.
+
+## Who Can Review a Pull Request
+
+It would help if anyone that's knowledgable in the code base reviews code. This is also for those that aren't active developers, but can read C++ fluently!
+
+
+## Who Can Merge a Pull Request
+Members of the Stan development team that contribute regularly to the Math library are allowed to merge the pull requests.
+
+If all tests pass and the pull request has been reviewed, if no one merges, @syclik will do so (not on any schedule, but at least once a week).
+
+
+## How to Review a Pull Request
+Thanks! Here are some guidelines on how to review. At a high level, you're making sure the code submitted is indeed what the submitter says they have submitted. If an issue exists and is good, then it should be fixed. There are lots of ways to solve a problem -- we're not always looking for the perfect solution. We're looking for something that can get into the code base without putting a maintenance burden on other developers.
+
+Feel free to review a narrow part of the pull request. By that, I mean one of these things: build process, numerical computation, template metaprogramming. If you're reviewing a small portion of the pull request, please mention it in the comment and only mark it as a **comment** (not as an "Approve"). In most cases, this won't matter, but in the ones that span across different concerns, one of the core developers will coordinate the review and approve.
+
+1. Before starting, review the linked Math issue. That issue should describe what should happen. The pull request will be how that happens.
+2. Wait for the continuous integration to complete and pass. If the tests don't pass, the rest is optional.
+3. Review the pull request text:
+    1. If any of the checklist is missing, please reject the pull request by leaving a comment for the submitter. If there's no response after some time, please close the pull request.
+    2. If the checklist is complete, read the description of the pull request. If the description of the fix doesn't seem right, comment on the pull request.
+    3. If the description of the tests don't seem like they are enough to keep the technical debt down, comment on the pull request asking for more tests. If you can, ask for specific tests.
+4. Review the contents of the pull request. Dig into the code:
+    1. Verify that what was described is indeed what's happening in the code.
+    2. Spot check the tests to verify that they exist.
+    3. Verify documentation exists.
+    4. Check that the code is really readable. When you sign off, you're suggesting that someone else will be able to figure out the code to fix or modify it.
+    3. Add line-specific comments when you can.
+    4. Please check that there aren't other fixes or other code that sneaks into the pull request. Submitters shouldn't be sneaking in patches under the guise of a pull request.
+5. "Review Changes" -- hit the green button and submit the review. We're playing within GitHub's rules, so we need to coordinate together. GitHub will allow the pull request to be merged when all continuous integration tests pass, there are no reviews that request changes, and at least one reviewer has approved. Pull requests are tricky because they can actually spawn across different concerns. Here's how we'll coordinate:
+    1. **Request changes**. If there are changes that need to be made, finalize your review with "Request changes."
+    2. **Comment**.  If you're only reviewing a portion of the pull request, e.g. numeric computation, finalize your review with "Comment" if everything is good.
+    3. **Approve**. Finalize the pull request with "Approve" when the pull request is ready to be merged. If you're looking at the whole pull request, then feel free to approve when it's ready. If you're only looking at a part of the pull request, please do not approve. One of the core Math developers will coordinate the different reviewers and approve based on the feedback.
