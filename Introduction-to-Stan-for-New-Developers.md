@@ -263,3 +263,11 @@ Some key features of the Math library's reverse mode automatic differentiation:
 
 For implementation details of the Math library's automatic differentiation, please read the arXiv paper "[The Stan Math Library: Reverse-Mode Automatic Differentiation in C++](https://arxiv.org/abs/1509.07164)."
 
+# FAQ
+
+## Why do we have `BOOST_DISABLE_ASSERTS` included in the C++ build?
+
+Without including this, Boost will assert if certain inputs do not meet the preconditions of the function. Assertions are difficult to trap and recover from and we want to continue to have control over this behavior.
+
+See [Discourse: Boost defines](https://discourse.mc-stan.org/t/boost-defines/10087) for more details.
+
