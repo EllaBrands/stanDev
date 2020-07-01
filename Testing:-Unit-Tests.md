@@ -721,4 +721,36 @@ In many tests, we compare values computed by two different mechanisms, without a
 The main idea about tolerances is that we care mainly about relative tolerance, but this fails around zero, so we use absolute tolerance around zero. I.e. the actual relative tolerance grows as we approach zero.
 
 More details and reasoning behind this can be found in the code `relative_tolerance`, [on Dicourse](https://discourse.mc-stan.org/t/expect-near-rel-behaves-weirdly-for-values-around-1e-8/12573/6) and in [PR #1657](https://github.com/stan-dev/math/pull/1657).  
+
+
+# Running tests with MPI
+
+Once MPI is enabled, the `runTests.py` script in the `cmdstan/stan/lib/stan_math` directory will run all tests in an environment which resembles a MPI run. There are two types of tests:
+
+- conventional tests: This includes all unit tests which do not use any MPI parallelism. In order to run these tests in a MPI like way we compile these with the `mpicxx` command and execute them with the `mpirun` run command. However, we explicitly disable for these serial tests the use of multiple processes. That is, the `runTests.py` script executes the tests with `mpirun -np 1 test/unit/.../.../some_test`. Starting up multiple threads for serial only tests would lead to race conditions since these codes are not prepared for parallelism.
+
+- dedicated MPI tests: All tests matching the regular expression `*mpi_*test.cpp` will be executed by `runTests.py` with `mpirun -np #CPU test/unit/.../.../some_mpi_test.cpp` and #CPU will be set to the same argument as given to the `-j` option of `runTests.py`, but it will use at least 2 processes. This is to ensure that the MPI tests are actually run with multiple processes in parallel to emulate behavior under MPI execution. Note that `mpirun` is usually configured to disallow #CPU to exceed the number of physical CPUs found on the machine. 
+
+To illustrate what is happening let's consider two examples (assuming MPI is enabled as described above):
+
+- conventional test:
+```
+./runTests.py test/unit/math/prim/mat/functor/map_rect_test.cpp
+# => compilation with mpicxx
+# => execution with mpirun using a single process
+# mpirun -np 1 test/unit/math/prim/mat/functor/map_rect_test
+```
+
+- dedicated MPI test:
+```
+./runTests.py test/unit/math/prim/arr/functor/mpi_cluster_test.cpp
+# => compilation with mpicxx
+# => execution with mpirun using at least two processes
+# mpirun -np 2 test/unit/math/prim/arr/functor/mpi_cluster_test
+
+./runTests.py -j8 test/unit/math/prim/arr/functor/mpi_cluster_test.cpp
+# => compilation with mpicxx
+# => execution with mpirun using 8 processes
+# mpirun -np 8 test/unit/math/prim/arr/functor/mpi_cluster_test
+```
                                                                
