@@ -400,3 +400,31 @@ Suppose we have just released v2.0.1 so that v2.0.1 is the last tag on master.  
 > git checkout -b hotfix/v2.0.2
 > git push -u origin hotfix/v2.0.2
 ```
+
+# Adding a dependency to other software
+
+We want to answer the following questions:
+
+* What is the dependency used for?
+* Why do we need or want this dependency?
+* Is the license compatible with BSD? Does it allow us to distribute its source and binaries?
+* How mature is the dependency?
+  * Are there alternatives?
+  * How often will we need to update the dependency? (How often has it changed over the last year?)
+* How does this affect Math maintainers? 
+  * Will we need to change any of the source before we include it into the Math library?
+  * Is this dependency header-only? Static library? Shared library?
+  * Do we need to change the build to get this to work?
+* How does this affect:
+  * Math developers?
+  * Math users?
+  * Stan?
+  * Stan interface users?
+  * Stan interface maintainers?
+* Can we still support all the same [compilers we support](https://github.com/stan-dev/stan/wiki/Supported-C---Compilers-and-Language-Features) now?
+* How much time does this add to compiling the first model with:
+    * RStan?
+    * CmdStan?
+    * What about subsequent compile times?
+* Where do we want to use this? Does any other source code need to change?
+* How difficult would it be to write our own version of just the functionality we require?
