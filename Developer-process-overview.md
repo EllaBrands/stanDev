@@ -508,3 +508,24 @@ We follow these rules in order:
 1. Existing functions should maintain their behavior.
 2. Use the standard library's behavior. That means that we should be using the standard library functions for math if it exists.
 3. Use Boost's math functions. If the error messages aren't nice, find some way to provide nice error messages.
+
+# Supported Math Library API
+
+### What is the supported Math API?
+1. The Math Library header accessed via `stan/math.hpp`.
+2. All math functions and classes provided by that header in the `stan::math` namespace are supported according to the API and usage listed in their doxygen doc.
+3. How we call (reverse-mode) automatic differentiation (via the functionals `gradient` and `jacobian` found in  `rev/mat/functor/` followed by `recover_memory()`). 
+4. [These compilers and OSes.](https://github.com/stan-dev/stan/wiki/Supported-C---Compilers-and-Language-Features).
+5. Single-threaded, or parallelism via `map_rect`.
+
+### What is not part of the supported API:
+* Autodiff system internals - memory layout, the exact mechanism by which automatic differentiation is performed, etc.
+* Anything in `stan::math::internal`.
+* Anything missing a doc string.
+
+### What does "supported" mean?
+Just that we attempt to test that this API is maintained through time (or semantic version numbers updated accordingly). We also accept bugfixes and pull requests against this API for sure, though of course we also accept many pull requests on things that aren't officially supported yet.
+
+### References
+
+0. https://discourse.mc-stan.org/t/what-is-the-supported-external-api-of-the-math-library/7438
