@@ -271,3 +271,61 @@ Without including this, Boost will assert if certain inputs do not meet the prec
 
 See [Discourse: Boost defines](https://discourse.mc-stan.org/t/boost-defines/10087) for more details.
 
+# Working on Windows
+
+It seems to be challenging these days to get a working Unix compilation toolchain on Windows. 
+
+The complilation shell environment is [MSYS2 MinGW 64-bit](http://www.msys2.org/). When launching, make sure to pick the 64 bit shortcut also. The shell command prompt itself should say (in purple) MINGW64, not MSYS. All commands herein have been run from the top-most `math` folder of this repo.
+
+Reference [this guide on installing g++](https://github.com/orlp/dev-on-windows/wiki/Installing-GCC--&-MSYS2), but with a few modifictions to make it simpler. We won't be installing in non-default directories or doing two installations.
+```
+$ pacman -Syuu
+```
+Then, follow the on screen instructions, which will tell eventually require closing MSYS without using `exit`. _**Then run the exact same command again to finish the process**_. Note, you'll need both toolchains mentioned below. The second, i686, toolchain is for `tbb`, as is the `make` package, which contains `mingw32-make`.
+```
+$ pacman -S --needed base-devel mingw-w64-x86_64-toolchain mingw-64 mingw-w64-i686-toolchain git make
+```
+
+```
+$ which g++
+/mingw64/bin/g++
+
+$ g++ --version
+g++.exe (Rev2, Built by MSYS2 project) 9.2.0
+... rest of listing omitted ...
+```
+
+The make and python based build structure referenced in the [stan developer overview](https://github.com/stan-dev/stan/wiki/Developer-process-overview) is replicated in the stan-math repo, so one can use the instructions there to get an idea of what commands the build system supports, like `make test-headers` or `runTests.py`. Be aware that these commands can take a long time, and that stan-math's continuous integration automated build system, Jenkins, is running older compilers like GCC 4.9. Therefore, new Windows related bugs may be encountered deep in the middle of the tests.
+
+```
+$ which python2
+/usr/bin/python2
+
+$ pacman -Ss python2 | grep installed
+msys/python2 2.7.17-1 [installed]
+```
+
+The build system supports making and running individual tests. You may have to build Google Test first on your own if the makefile doesn't handle it automatically. Directions for this are not given here.
+```
+$ PYTHON2=python2 ./runTests.py test/unit/math/rev/core/var_test.exe
+```
+If that command doesn't work, try swapping the test script with make:
+```
+$ PYTHON2=python2 make test/unit/math/rev/core/var_test.exe
+make: 'test/unit/math/rev/core/var_test.exe' is up to date.
+```
+
+If the test suite isn't built first, client code using numerical integration routines such as `integrate_ode_bdf` may fail to link because the static libraries haven't been built yet. Obviously these files and directories would need to be added to the downstream project makefile's LDLIBS variable, or equivalent.
+```
+$ PYTHON2=python2 make lib/sundials_5.1.0/lib/libsundials_cvodes.a lib/sundials_5.1.0/lib/libsundials_idas.a lib/sundials_5.1.0/lib/libsundials_kinsol.a lib/sundials_5.1.0/lib/libsundials_nvecserial.a
+make: 'lib/sundials_5.1.0/lib/libsundials_cvodes.a' is up to date.
+make: 'lib/sundials_5.1.0/lib/libsundials_idas.a' is up to date.
+make: 'lib/sundials_5.1.0/lib/libsundials_kinsol.a' is up to date.
+make: 'lib/sundials_5.1.0/lib/libsundials_nvecserial.a' is up to date.
+```
+The Intel Thread Building Blocks dynamic library is also required. Note, the `tbb` folder will be created during this process. Note the alternate `make` executable.
+```
+$ PYTHON2=python2 mingw32-make lib/tbb/tbb.dll
+```
+Rather than using `rpath` for the final executable as would be done on Linux, the author recommends just copying the `tbb.dll` to the output folder of your program.
+
