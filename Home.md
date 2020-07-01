@@ -1,10 +1,14 @@
 # Stan Developer Wiki
 
-## Stan project home page
+## General Stan resources
 
 This is the top-level Wiki for Stan developers.  User-facing information can be found on the 
 
 * [Stan project home page](http://mc-stan.org/).
+
+If you have any questions about using Stan or Stan development, please feel free to ask on the 
+
+* [Stan forums](http://discourse.mc-stan.org).
 
 ## Developer Wikis
 
