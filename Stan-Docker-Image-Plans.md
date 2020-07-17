@@ -18,3 +18,4 @@ This page serves to collect ideas for an official Stan Docker image. In a first 
 - support for compilation with ccache to speedup re-compilation 
 - persistency through Docker volumes(?) or local mounts
 - pre-deploy Stan libraries such as the TBB, boost?
+- MPI enable / disabled
