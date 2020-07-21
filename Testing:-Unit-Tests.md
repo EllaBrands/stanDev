@@ -164,6 +164,35 @@ int main() {
 }
 ```
 
+### 6. Expression testing framework
+
+Stan Math is transitioning towards letting function working with Eigen types accept and return general expressions (not just plain matrices). Before we can return expressions from any function exposed to Stan language, all such functions need to be able to accept expressions. This is tested using expression testing framework. It tests that:
+
+ - functions can be compiled with expressions arguments
+ - results when given expressions are same as when given plain matrices (including derivatives)
+ - functions evaluate expressions at most once
+
+Expression testing framework gets a list of all supported function signatures from stanc3 compiler. All functions on this list need to be tested. This way any newly added function is tested without any developer effort and without opportunity to forget on testing. 
+
+During the transitioning period we also have a list of exceptions. Those are functions that have not been modified to accept expressions yet. These are not tested. With time this list will grow shorter and will eventually be removed. Adding new fucntions to this list is not allowed.
+
+For functions, not in the exception list, expression testing framework generates C++ tests in `./test/expressions/tests*_test.cpp`, compiles and runs them.
+
+#### Running expression testing
+
+All expression tests can be run by:
+
+```
+./runTests.py ./test/expressions
+```
+
+Testing just one or a few functions is also supported. Listing some functions this way ignores the exception list, so a function one is working on can be tested regardless of whether it is supposed to work or not. The command is (This will not work if you put `--only-functions` before `./test/expressions` as flag `--only-functions` accepts multiple arguments and it will eat up `./test/expressions` too, unless there is some other flag, such as `-j 1` inbetween.):
+
+```
+./runTests.py ./test/expressions --only-functions sum sin normal_id_glm_lpdf
+```
+
+To verify a function is being tested on can check it is not in the exceptions list in `./test/expressions`. One can also check that test files `./test/expressions/tests*_test.cpp` contain tests for all supported signatures.
 
 # Writing, Building and Running Tests
 
