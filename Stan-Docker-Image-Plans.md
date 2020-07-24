@@ -16,6 +16,9 @@ The question is how exactly the group satisfies a particular use case when the `
 - Should pre-compiled be included?
 - Which existing Docker software stack(s) should these containers build upon?
 
+# Jupyter Docker Stack Proposal
+
+
 # Desired Features
 - fast compiles (clang?)
 - different compiler settings for modelling or Stan development
