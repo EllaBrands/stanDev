@@ -23,7 +23,7 @@ The question is how exactly the group satisfies a particular use case when the `
 - fast compiles (clang?)
 - different compiler settings for modelling or Stan development
 - support for compilation with ccache to speedup re-compilation 
-- persistency through Docker volumes(?) or local mounts
+- persistency through Docker volumes(?) or local mounts ( maybe docker-compose? )
 - pre-deploy Stan libraries such as the TBB, boost
 - MPI enable / disabled
 - Integration with Jenkins
