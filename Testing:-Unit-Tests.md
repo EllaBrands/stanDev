@@ -286,10 +286,6 @@ For matrices of doubles:
 - `EXPECT_MATRIX_FLOAT_EQ(A,B)` which tests for elementwise equality of A and B using `EXPECT_FLOAT_EQ`
 - `EXPECT_MATRIX_NEAR(A, B, DELTA)`  which tests if the elementwise difference of A and B is larger than DELTA using `EXPECT_NEAR`
 
-For matrices of other types:
-- `EXPECT_TYPED_MATRIX_EQ(A, B, type)`  which tests for elementwise equality of A and B using `EXPECT_EQ`, where the elements are of the provided type
-- `EXPECT_TYPED_MATRIX_EQ(A, B, type)` tests if the elementwise difference of A and B is larger than DELTA using `EXPECT_NEAR`, where the elements are of the provided type
-
 For std::vectors:
 - `EXPECT_STD_VECTOR_FLOAT_EQ(A, B)` which tests for elementwise equality of A and B using `EXPECT_FLOAT_EQ`
 
