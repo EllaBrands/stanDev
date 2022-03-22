@@ -1,6 +1,6 @@
 Sometimes a new function is needed in Stan.  This function may compute some special mathematical function, or may be intended to speed up automatic differentiation by avoiding intermediate computations and directly computing the gradients.  This page documents the basic steps necessary to do this.
 
-To be available as part of the Stan language, a function must be added in two places.  First, the C++ relevant code should be added to the [Stan math library](https://github.com/stan-dev/math), along with tests that demonstrate its intended behavior.  Second, the function must be added to the Stan language in the [Stan repository](https://github.com/stan-dev/stan), along with tests that demonstrate that it is parsed as intended.  If you only want a new function available through the Stan math library C++ API it does not need to be exposed to the Stan language. 
+To be available as part of the Stan language, a function must be added in two places.  First, the C++ relevant code should be added to the [Stan math library](https://github.com/stan-dev/math), along with tests that demonstrate its intended behavior.  Second, the function must be added to the Stan language in the [stanc3 Repository](https://github.com/stan-dev/stanc3), along with tests that demonstrate that it is parsed as intended.  If you only want a new function available through the Stan math library C++ API it does not need to be exposed to the Stan language. 
 
 Before doing anything, please read the [Stan Developer Process](https://github.com/stan-dev/stan/wiki/Developer-process-overview) document, setup your git repository and create a `feature/<new function>` branch.  The steps below should, roughly speaking, consist of one commit each in this repository.
 
@@ -57,7 +57,7 @@ After the individual test passes, make sure that `./runTests.py test/unit` and `
 
 #### Expose Function Signature to Stan Models (Stan library)
 
-Expose the function to the parser by adding the appropriate code to [`src/stan/lang/function_signatures.hpp`](https://github.com/stan-dev/stan/blob/develop/src/stan/lang/function_signatures.h).
+Expose the function to the parser by adding the appropriate code to the [stanc3](https://github.com/stan-dev/stanc3) compiler (see below).
 
 #### Model Tests (Stan library)
 
