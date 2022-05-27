@@ -1,3 +1,13 @@
+# Notice: This page is outdated!
+
+Better information on how to add a function to the Stan Math Library is available at https://mc-stan.org/math/
+
+Instructions on adding a function that is already in Stan Math to the Stan compiler can be found at https://mc-stan.org/stanc3/stanc/exposing_new_functions.html
+
+
+----
+## Outdated Text
+
 Sometimes a new function is needed in Stan.  This function may compute some special mathematical function, or may be intended to speed up automatic differentiation by avoiding intermediate computations and directly computing the gradients.  This page documents the basic steps necessary to do this.
 
 To be available as part of the Stan language, a function must be added in two places.  First, the C++ relevant code should be added to the [Stan math library](https://github.com/stan-dev/math), along with tests that demonstrate its intended behavior.  Second, the function must be added to the Stan language in the [stanc3 Repository](https://github.com/stan-dev/stanc3), along with tests that demonstrate that it is parsed as intended.  If you only want a new function available through the Stan math library C++ API it does not need to be exposed to the Stan language. 
