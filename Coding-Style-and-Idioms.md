@@ -6,9 +6,9 @@ We generally follow the [Google Style Guide](https://google.github.io/styleguide
 
 #### On PRs:
 * mac / clang 6 / libc++ Threading
-* linux / gcc 5 / stdlibc++ OpenMPI
+* linux / g++ 5 / stdlibc++ OpenMPI
 * mac clang 6 libc++ OR linux clang 6 libc++ distribution tests (without row vectors)
-* Windows gcc 4.9.3
+* Windows g++ 8 (Rtools 40 toolchain)
 
 #### Additional tests on merge to develop 
 * linux / gcc 5 / stdlibc++ Threading unit tests
