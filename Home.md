@@ -14,6 +14,10 @@ If you have any questions about using Stan or Stan development, please feel free
 
 This section provides a complete list of developer-facing Wikis hosted in this repo.
 
+### "Roadmap"
+
+The Roadmap Wikipage was removed as it was not convenient for discussing plans. [Stan-dev design documents repo](https://github.com/stan-dev/design-docs) lists design documents and functional specs that attempt to describe major changes to our code base. Recent design docs and pull requests for new design docs also indicate potential new major features. Github pull request discussion and review features are used to improve design docs before actual implementation starts.
+
 ### Contributing to Stan without C++/OCaml experience
 
 For a list of ways to contribute to Stan without being a C++/OCaml developer, see
